@@ -1,0 +1,146 @@
+
+反派_02.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+中刺
+  rotate: false
+  xy: 3782, 1800
+  size: 266, 232
+  orig: 268, 234
+  offset: 1, 1
+  index: -1
+反派蘿蔔02
+  rotate: false
+  xy: 2, 389
+  size: 1078, 1643
+  orig: 1289, 1685
+  offset: 107, 31
+  index: -1
+右刺
+  rotate: true
+  xy: 1900, 772
+  size: 329, 68
+  orig: 331, 70
+  offset: 1, 1
+  index: -1
+右手掌
+  rotate: false
+  xy: 1695, 529
+  size: 161, 202
+  orig: 163, 204
+  offset: 1, 1
+  index: -1
+右手臂
+  rotate: true
+  xy: 2162, 1422
+  size: 240, 571
+  orig: 242, 573
+  offset: 1, 1
+  index: -1
+右腳
+  rotate: true
+  xy: 1082, 452
+  size: 279, 611
+  orig: 281, 613
+  offset: 1, 1
+  index: -1
+左刺
+  rotate: false
+  xy: 2735, 1424
+  size: 79, 238
+  orig: 81, 240
+  offset: 1, 1
+  index: -1
+左手掌
+  rotate: true
+  xy: 3507, 1559
+  size: 126, 213
+  orig: 128, 215
+  offset: 1, 1
+  index: -1
+左手臂
+  rotate: true
+  xy: 2980, 1511
+  size: 174, 525
+  orig: 176, 527
+  offset: 1, 1
+  index: -1
+左腳
+  rotate: true
+  xy: 1082, 312
+  size: 138, 617
+  orig: 140, 619
+  offset: 1, 1
+  index: -1
+攻眼
+  rotate: true
+  xy: 1970, 821
+  size: 291, 103
+  orig: 483, 202
+  offset: 101, 39
+  index: -1
+暈眼
+  rotate: true
+  xy: 1956, 1114
+  size: 322, 173
+  orig: 483, 202
+  offset: 81, 0
+  index: -1
+眼睛
+  rotate: true
+  xy: 873, 66
+  size: 321, 173
+  orig: 323, 175
+  offset: 1, 1
+  index: -1
+碎石
+  rotate: false
+  xy: 1082, 1438
+  size: 1078, 594
+  orig: 1080, 596
+  offset: 1, 1
+  index: -1
+身體
+  rotate: true
+  xy: 1082, 733
+  size: 368, 816
+  orig: 370, 818
+  offset: 1, 1
+  index: -1
+身體_改
+  rotate: true
+  xy: 2162, 1664
+  size: 368, 816
+  orig: 549, 995
+  offset: 71, 77
+  index: -1
+閉眼
+  rotate: true
+  xy: 2075, 808
+  size: 304, 66
+  orig: 483, 202
+  offset: 97, 57
+  index: -1
+黑圈
+  rotate: false
+  xy: 2, 2
+  size: 869, 385
+  orig: 871, 387
+  offset: 1, 1
+  index: -1
+黑圈前
+  rotate: false
+  xy: 1082, 1103
+  size: 872, 333
+  orig: 893, 357
+  offset: 0, 0
+  index: -1
+黑圈後
+  rotate: false
+  xy: 2980, 1687
+  size: 800, 345
+  orig: 893, 357
+  offset: 1, 0
+  index: -1

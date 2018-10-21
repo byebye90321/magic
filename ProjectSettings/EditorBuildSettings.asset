@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/LoadingToMain.unity
+    guid: cf4d29cbcd11fd241979b78c6267f647
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 13d3da2a172ea154f9f1401bf2b3f811
+  - enabled: 1
+    path: Assets/Scenes/Collect.unity
+    guid: 9d2776d4aed89074eb1c0f69f4bac1c9
+  - enabled: 1
+    path: Assets/Scenes/Chapter0_1movie.unity
+    guid: 023e1e668ff994342b19513119b4b9c9
+  - enabled: 1
+    path: Assets/Scenes/Chapter0_2book.unity
+    guid: 13817cc7eabd3754cb0e1dd22a4b07ca
+  - enabled: 1
+    path: Assets/Scenes/Chapter0_3movie.unity
+    guid: 0cf9109ef57c03c4b8982b582d8d13f8
+  - enabled: 1
+    path: Assets/Scenes/DrawGame_chapter0.unity
+    guid: 2bc8a3a799ca9f44e85b5aed09c79a21
+  - enabled: 1
+    path: Assets/Scenes/RunGame_chapter0.unity
+    guid: 0f19c95690574dd4e86b3b1bea456204
+  - enabled: 1
+    path: Assets/Scenes/Chapter0_5movie.unity
+    guid: 5d2aef7888b8b164fba13d43cf0aa77c
+  - enabled: 1
+    path: Assets/Scenes/Character.unity
+    guid: 4331bc0aa6a05414a8b40f6faa79d1e0
+  - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: 194d299b4081be842b18ee23850cf945
+  - enabled: 1
+    path: Assets/Scenes/sister_forest.unity
+    guid: 58b7adec59e633749a65c3471155e943
+  - enabled: 1
+    path: Assets/Scenes/DrawGame_sister_forest.unity
+    guid: 6c798669e4de7a1469352eaf59d6fa04
+  - enabled: 1
+    path: Assets/Scenes/Settle.unity
+    guid: 254e4e2d837060b45bd8574010a387d6
+  - enabled: 1
+    path: Assets/Scenes/Tree.unity
+    guid: dbb30a7a17778c8489298388ee1b6790
+  m_configObjects: {}

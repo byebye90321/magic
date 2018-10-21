@@ -1,0 +1,195 @@
+
+妹_72.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+上身
+  rotate: false
+  xy: 2781, 1542
+  size: 382, 502
+  orig: 384, 504
+  offset: 1, 1
+  index: -1
+上身_改
+  rotate: false
+  xy: 2153, 960
+  size: 382, 528
+  orig: 456, 612
+  offset: 20, 32
+  index: -1
+下身
+  rotate: false
+  xy: 3165, 1758
+  size: 441, 286
+  orig: 443, 288
+  offset: 1, 1
+  index: -1
+右大腿
+  rotate: true
+  xy: 1248, 708
+  size: 96, 233
+  orig: 98, 235
+  offset: 1, 1
+  index: -1
+右大腿_改
+  rotate: true
+  xy: 3165, 1558
+  size: 96, 233
+  orig: 197, 298
+  offset: 68, 32
+  index: -1
+左大腿_改
+  rotate: true
+  xy: 3165, 1558
+  size: 96, 233
+  orig: 237, 318
+  offset: 65, 31
+  index: -1
+右小腿
+  rotate: true
+  xy: 885, 700
+  size: 104, 361
+  orig: 106, 363
+  offset: 1, 1
+  index: -1
+右小腿_改
+  rotate: true
+  xy: 2153, 854
+  size: 104, 361
+  orig: 245, 418
+  offset: 70, 16
+  index: -1
+右手下臂
+  rotate: true
+  xy: 3859, 1833
+  size: 113, 183
+  orig: 115, 185
+  offset: 1, 1
+  index: -1
+右掌
+  rotate: true
+  xy: 3400, 1573
+  size: 81, 101
+  orig: 83, 103
+  offset: 1, 1
+  index: -1
+右袖
+  rotate: false
+  xy: 636, 58
+  size: 166, 283
+  orig: 168, 285
+  offset: 1, 1
+  index: -1
+妹_
+  rotate: false
+  xy: 2, 622
+  size: 881, 1422
+  orig: 997, 1520
+  offset: 63, 38
+  index: -1
+妹_包包
+  rotate: false
+  xy: 2153, 1490
+  size: 626, 554
+  orig: 631, 561
+  offset: 5, 0
+  index: -1
+左大腿
+  rotate: true
+  xy: 3859, 1948
+  size: 96, 227
+  orig: 98, 229
+  offset: 1, 1
+  index: -1
+左小腿
+  rotate: false
+  xy: 2537, 1126
+  size: 100, 362
+  orig: 102, 364
+  offset: 1, 1
+  index: -1
+左小腿_改
+  rotate: true
+  xy: 3165, 1656
+  size: 100, 362
+  orig: 269, 420
+  offset: 84, 16
+  index: -1
+左手下臂
+  rotate: false
+  xy: 2537, 942
+  size: 128, 182
+  orig: 130, 184
+  offset: 1, 1
+  index: -1
+左掌
+  rotate: false
+  xy: 3608, 1839
+  size: 249, 205
+  orig: 251, 207
+  offset: 1, 1
+  index: -1
+左袖
+  rotate: false
+  xy: 636, 343
+  size: 196, 277
+  orig: 198, 279
+  offset: 1, 1
+  index: -1
+攻擊表情
+  rotate: false
+  xy: 885, 1426
+  size: 632, 618
+  orig: 718, 698
+  offset: 33, 20
+  index: -1
+正常表情
+  rotate: false
+  xy: 885, 806
+  size: 632, 618
+  orig: 753, 712
+  offset: 68, 34
+  index: -1
+睜眼表情
+  rotate: false
+  xy: 885, 806
+  size: 632, 618
+  orig: 722, 718
+  offset: 37, 40
+  index: -1
+睜眼
+  rotate: true
+  xy: 2639, 1202
+  size: 286, 82
+  orig: 288, 84
+  offset: 1, 1
+  index: -1
+被打表情
+  rotate: false
+  xy: 1519, 1426
+  size: 632, 618
+  orig: 718, 698
+  offset: 33, 20
+  index: -1
+閉眼
+  rotate: false
+  xy: 2781, 1512
+  size: 266, 28
+  orig: 268, 30
+  offset: 1, 1
+  index: -1
+閉眼表情
+  rotate: false
+  xy: 2, 2
+  size: 632, 618
+  orig: 722, 718
+  offset: 37, 40
+  index: -1
+頭
+  rotate: false
+  xy: 1519, 807
+  size: 632, 617
+  orig: 634, 619
+  offset: 1, 1
+  index: -1

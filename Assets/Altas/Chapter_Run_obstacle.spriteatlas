@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Chapter_Run_obstacle
+  m_EditorData:
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: Android
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 47
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+    packingParameters:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 65ac5ef584965e348901bed8843c544e, type: 3}
+    - {fileID: 102900000, guid: 8fe33c8fa05ccbd4db97c6043d7f9e54, type: 3}
+    - {fileID: 2800000, guid: 3a7a80e7e12a7cd43bdedc090609e32a, type: 3}
+    - {fileID: 2800000, guid: 140034d8f61d695409db1217647eec63, type: 3}
+    - {fileID: 2800000, guid: e8e96e09de7d9c14cbab927f7a492329, type: 3}
+    - {fileID: 2800000, guid: 3fbb1185a792adb43a57020033b859f3, type: 3}
+    - {fileID: 2800000, guid: 30a9ef7a724933e4db66d13c5e44112b, type: 3}
+    - {fileID: 2800000, guid: db06cdf1b3645b94b95b41a5716307be, type: 3}
+    - {fileID: 2800000, guid: 5355bda012d1d1c419487d8b7807070e, type: 3}
+    - {fileID: 2800000, guid: 7bf26e3b0ea22594583c4481839e620d, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 7bf26e3b0ea22594583c4481839e620d, type: 3}
+  - {fileID: 21300000, guid: fd8076fe77e86f24491a6bcd2a3a8c03, type: 3}
+  - {fileID: 21300000, guid: 3fbb1185a792adb43a57020033b859f3, type: 3}
+  - {fileID: 21300000, guid: db06cdf1b3645b94b95b41a5716307be, type: 3}
+  - {fileID: 21300000, guid: 30a9ef7a724933e4db66d13c5e44112b, type: 3}
+  - {fileID: 21300000, guid: d442ff8dd0901ea4991d99de68c72075, type: 3}
+  - {fileID: 21300000, guid: 7908b1d2b69f71b4a8e2c86c9bd9aaa2, type: 3}
+  - {fileID: 21300000, guid: 087d4c2936f405f419b7bcab211df8e9, type: 3}
+  - {fileID: 21300000, guid: 118a3261160f6994a862305667f92fe7, type: 3}
+  - {fileID: 21300000, guid: 1078dada31312c14a87e9392c6085856, type: 3}
+  - {fileID: 21300000, guid: c50ad6aaa55d026418a3772a31300cb5, type: 3}
+  - {fileID: 21300000, guid: 8a0c8299bfb45ab4eb81c5b6e27215b7, type: 3}
+  - {fileID: 21300000, guid: a361010cf6d2d1147b134d202ae30c53, type: 3}
+  - {fileID: 21300000, guid: e8e96e09de7d9c14cbab927f7a492329, type: 3}
+  - {fileID: 21300000, guid: 140034d8f61d695409db1217647eec63, type: 3}
+  - {fileID: 21300000, guid: 3a7a80e7e12a7cd43bdedc090609e32a, type: 3}
+  - {fileID: 21300000, guid: c9f4e24e326158a4da9e3ddcead55cff, type: 3}
+  - {fileID: 21300000, guid: 5355bda012d1d1c419487d8b7807070e, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - runBg_light
+  - "\u524D\u666F\u6C34\u667601"
+  - "\u4E3B\u89D2\u689D"
+  - "\u8DD1\u9177\u689D\u6846"
+  - "\u53CD\u6D3E\u689D"
+  - "\u524D\u666F\u6C34\u667604"
+  - "\u524D\u666F\u6C34\u667605"
+  - "\u524D\u666F\u6C34\u667603"
+  - "\u969C\u7919\u726904"
+  - "\u524D\u666F\u6C34\u667602"
+  - "\u969C\u7919\u726905"
+  - "\u969C\u7919\u726904_\u7BB1\u5B50"
+  - "\u969C\u7919\u726906"
+  - "\u53CD\u6D3E\u8DD1\u9177ICON"
+  - "\u5144\u59B9\u8DD1\u9177ICON"
+  - "(\u7121\u5B57\u7248)\u602A\u7269\u52A0\u901F"
+  - "\u969C\u7919\u726904_\u5C0F\u602A\u7269"
+  - runBg_eyes
+  m_Tag: Chapter_Run_obstacle
+  m_IsVariant: 0

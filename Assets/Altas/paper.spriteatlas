@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: paper
+  m_EditorData:
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 47
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+    packingParameters:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: ea53ea5eff2018e4185622983e586b88, type: 3}
+    - {fileID: 102900000, guid: d2d8325e12a10cd4d98150b7cf9a6412, type: 3}
+    - {fileID: 102900000, guid: 64f583385e108c646bf27cce4cccc5f7, type: 3}
+    - {fileID: 2800000, guid: 1693bc311fe8e6040ba83f7e7f467350, type: 3}
+    - {fileID: 2800000, guid: 8f7c8dcc5a451f54bbb138f61df60c7a, type: 3}
+    - {fileID: 2800000, guid: 85395c8da2c848e46b5e72e371536e51, type: 3}
+    - {fileID: 2800000, guid: c6f1a79e4f297794cb258b4e367a5bf2, type: 3}
+    - {fileID: 2800000, guid: 12319b0bc81371048b6aec93995abc76, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 877b1a194dc2faf4ba612b8e810e22cf, type: 3}
+  - {fileID: 21300000, guid: 1603c1bf342645e43a8847cfd987750f, type: 3}
+  - {fileID: 21300000, guid: fef71349074c7d8458c0603246503e94, type: 3}
+  - {fileID: 21300000, guid: 33a06cc8e8434874d9d595721284af7f, type: 3}
+  - {fileID: 21300000, guid: ed5fd74bfb4a6e14394f8029c38bab6d, type: 3}
+  - {fileID: 21300000, guid: 1de7b52028ac50a4d873846ec61649d0, type: 3}
+  - {fileID: 21300000, guid: 738484f75a65f124dbf4a46e89cec5f9, type: 3}
+  - {fileID: 21300000, guid: be79224200fea7a499f52f94c588ff8c, type: 3}
+  - {fileID: 21300000, guid: 7390fd1d23ad6074d908e31344552543, type: 3}
+  - {fileID: 21300000, guid: 76c4c03f8dc8cbc4bbbdc2f9613b49ba, type: 3}
+  - {fileID: 21300000, guid: 3c95c8c712077764fb07f86836fe7515, type: 3}
+  - {fileID: 21300000, guid: 166748f847bd5644bb80ab570c85b13d, type: 3}
+  - {fileID: 21300000, guid: ecb6115cfccf6a444b5eb543d8eddd45, type: 3}
+  - {fileID: 21300000, guid: aa6314a1ec2a1be48a9d3ddc91a93c6c, type: 3}
+  - {fileID: 21300000, guid: f54bc5abcefbf204eafa91152e02b1b0, type: 3}
+  - {fileID: 21300000, guid: 5cfb9c7f151eb10409ea02cdce6c9cd9, type: 3}
+  - {fileID: 21300000, guid: 178ea1ff07c2b2d4fbc7f5e24c4432b1, type: 3}
+  - {fileID: 21300000, guid: 8f7c8dcc5a451f54bbb138f61df60c7a, type: 3}
+  - {fileID: 21300000, guid: c6f1a79e4f297794cb258b4e367a5bf2, type: 3}
+  - {fileID: 21300000, guid: 12319b0bc81371048b6aec93995abc76, type: 3}
+  - {fileID: 21300000, guid: 85395c8da2c848e46b5e72e371536e51, type: 3}
+  - {fileID: 21300000, guid: 87d5ad90229dd08499d40fee8917ca7e, type: 3}
+  - {fileID: 21300000, guid: 1693bc311fe8e6040ba83f7e7f467350, type: 3}
+  - {fileID: 21300000, guid: 01563bd903f65864a8621d1ca86a4774, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - "\u6846"
+  - "\u6846\u5E95\u90E8"
+  - "\u5EC1\u6240\u5834\u666F"
+  - "\u5DE6\u6558\u8FF0\u5E95"
+  - "\u4E9E\u91CC\u65AF\u591A\u5FB7"
+  - "\u5EB7\u5FB7"
+  - "\u8607\u683C\u62C9\u5E95"
+  - "\u5DE6\u6558\u8FF0\u5E95\u5716"
+  - "\u7B2C\u4E8C\u500B\u5C0D\u8A71\u6846"
+  - "\u67CF\u62C9\u5716"
+  - "\u73A9\u626E\u5BB6\u5BB6\u9152"
+  - "\u57162"
+  - "\u7B2C\u4E09\u500B\u5C0D\u8A71\u6846"
+  - "\u57163"
+  - "\u7B2C\u4E00\u500B\u5C0D\u8A71\u6846"
+  - "\u57161"
+  - "\u7B2C\u56DB\u500B\u5C0D\u8A71\u6846"
+  - "\u6B63\u78BA\u7B54\u6848"
+  - "\u9078\u9805\u6709\u88AB\u9078\u64C7"
+  - "\u9078\u9805\u6C92\u88AB\u9078\u64C7"
+  - "\u9078\u64C7\u932F\u8AA4"
+  - "\u59D3\u540D\u5E95"
+  - "\u53C9"
+  - "\u756B\u7DDA"
+  m_Tag: paper
+  m_IsVariant: 0

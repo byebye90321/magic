@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: tree
+  m_EditorData:
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 47
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+    packingParameters:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 404e10f87c1742e4da8f86b8fba9ee81, type: 3}
+    - {fileID: 2800000, guid: 0c1e7f494fd7923488bef8b4b741afea, type: 3}
+    - {fileID: 2800000, guid: b1d02cd2a2db2ca4cb5b6f66eec90975, type: 3}
+    - {fileID: 2800000, guid: 177121739aa6fd040a01d7d09a478eac, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 177121739aa6fd040a01d7d09a478eac, type: 3}
+  - {fileID: 21300000, guid: b1d02cd2a2db2ca4cb5b6f66eec90975, type: 3}
+  - {fileID: 21300000, guid: 0c1e7f494fd7923488bef8b4b741afea, type: 3}
+  - {fileID: 21300000, guid: 404e10f87c1742e4da8f86b8fba9ee81, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - "\u7DDA\u689D4"
+  - "\u7DDA\u689D3"
+  - "\u7DDA\u689D2"
+  - "\u7DDA\u689D1"
+  m_Tag: tree
+  m_IsVariant: 0

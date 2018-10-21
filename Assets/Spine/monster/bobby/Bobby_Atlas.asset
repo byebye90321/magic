@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
+  m_Name: Bobby_Atlas
+  m_EditorClassIdentifier: 
+  atlasFile: {fileID: 4900000, guid: 1c2c93ad6ac3b4a428b9d2efcee331ee, type: 3}
+  materials:
+  - {fileID: 2100000, guid: 2297dedc13ea14e4b9d60aaedde876de, type: 2}
+  - {fileID: 2100000, guid: 24854ca9b40ea824ca6f1498b3b3310b, type: 2}

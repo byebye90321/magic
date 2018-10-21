@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - sound
+  - menuController
+  - floor
+  - obstacle
+  - set
+  - MosterSpeedAdd
+  - fall
+  - obstacleUp
+  - obstacleUp2
+  - EndPoint
+  - monster
+  - EnemyAttack
+  - gameSound
+  - Touch
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - floor
+  - Monster
+  - Player
+  - mouseEffect
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: bg
+    uniqueID: 3367414219
+    locked: 0
+  - name: lineEffect
+    uniqueID: 3192575599
+    locked: 0
+  - name: bg2
+    uniqueID: 2764434993
+    locked: 0
+  - name: obstacle
+    uniqueID: 3535844721
+    locked: 0
+  - name: floor
+    uniqueID: 74829367
+    locked: 0
+  - name: monster
+    uniqueID: 2505807791
+    locked: 0
+  - name: player
+    uniqueID: 2076825951
+    locked: 0
+  - name: bg_front
+    uniqueID: 3644845839
+    locked: 0
+  - name: Effect
+    uniqueID: 1262026175
+    locked: 0
+  - name: monsterAtk
+    uniqueID: 2067886535
+    locked: 0
+  - name: Ending
+    uniqueID: 2426101351
+    locked: 0
+  - name: fade
+    uniqueID: 1240888473
+    locked: 0

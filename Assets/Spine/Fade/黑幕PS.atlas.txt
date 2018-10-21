@@ -1,0 +1,855 @@
+
+黑幕PS.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Comp 1003
+  rotate: true
+  xy: 2559, 2912
+  size: 374, 485
+  orig: 1280, 720
+  offset: 0, 235
+  index: -1
+Comp 1004
+  rotate: true
+  xy: 2006, 2751
+  size: 535, 551
+  orig: 1280, 720
+  offset: 0, 169
+  index: -1
+Comp 1005
+  rotate: false
+  xy: 724, 2720
+  size: 552, 566
+  orig: 1280, 720
+  offset: 0, 154
+  index: -1
+Comp 1032
+  rotate: false
+  xy: 3288, 2
+  size: 680, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1033
+  rotate: true
+  xy: 3288, 3325
+  size: 683, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1036
+  rotate: false
+  xy: 2, 3288
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1037
+  rotate: true
+  xy: 1284, 2728
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1038
+  rotate: true
+  xy: 2, 2006
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1039
+  rotate: false
+  xy: 1278, 2006
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1040
+  rotate: false
+  xy: 2006, 3288
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1041
+  rotate: true
+  xy: 2560, 1630
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1042
+  rotate: false
+  xy: 2, 1284
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1043
+  rotate: true
+  xy: 1284, 724
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1044
+  rotate: true
+  xy: 2, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1045
+  rotate: false
+  xy: 2006, 908
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1046
+  rotate: true
+  xy: 3282, 2006
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1047
+  rotate: true
+  xy: 3288, 724
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1048
+  rotate: false
+  xy: 2006, 186
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1049
+  rotate: false
+  xy: 724, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+
+黑幕PS2.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Comp 1015
+  rotate: false
+  xy: 3450, 1844
+  size: 634, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1016
+  rotate: false
+  xy: 3450, 2566
+  size: 641, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1017
+  rotate: false
+  xy: 3450, 3288
+  size: 643, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1050
+  rotate: false
+  xy: 2, 3288
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1051
+  rotate: true
+  xy: 1284, 2728
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1052
+  rotate: true
+  xy: 2, 2006
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1053
+  rotate: false
+  xy: 724, 2006
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1054
+  rotate: true
+  xy: 2006, 2728
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1055
+  rotate: true
+  xy: 2006, 1446
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1056
+  rotate: true
+  xy: 2, 724
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1057
+  rotate: true
+  xy: 724, 724
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1058
+  rotate: false
+  xy: 1446, 724
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1059
+  rotate: false
+  xy: 2, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1060
+  rotate: false
+  xy: 1284, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1061
+  rotate: false
+  xy: 2566, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1062
+  rotate: true
+  xy: 2728, 2728
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1063
+  rotate: true
+  xy: 2728, 1446
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1064
+  rotate: false
+  xy: 2728, 724
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+
+黑幕PS3.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Comp 1012
+  rotate: false
+  xy: 3450, 1877
+  size: 623, 703
+  orig: 1280, 720
+  offset: 0, 17
+  index: -1
+Comp 1013
+  rotate: false
+  xy: 3450, 2582
+  size: 626, 709
+  orig: 1280, 720
+  offset: 0, 11
+  index: -1
+Comp 1014
+  rotate: false
+  xy: 3450, 3293
+  size: 631, 715
+  orig: 1280, 720
+  offset: 0, 5
+  index: -1
+Comp 1065
+  rotate: false
+  xy: 2, 3288
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1066
+  rotate: true
+  xy: 1284, 2728
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1067
+  rotate: true
+  xy: 2, 2006
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1068
+  rotate: false
+  xy: 724, 2006
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1069
+  rotate: true
+  xy: 2006, 2728
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1070
+  rotate: true
+  xy: 2006, 1446
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1071
+  rotate: true
+  xy: 2, 724
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1072
+  rotate: true
+  xy: 724, 724
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1073
+  rotate: false
+  xy: 1446, 724
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1074
+  rotate: false
+  xy: 2, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1075
+  rotate: false
+  xy: 1284, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1076
+  rotate: false
+  xy: 2566, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1077
+  rotate: true
+  xy: 2728, 2728
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1078
+  rotate: true
+  xy: 2728, 1446
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1079
+  rotate: false
+  xy: 2728, 724
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+
+黑幕PS4.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Comp 1008
+  rotate: true
+  xy: 3450, 1493
+  size: 589, 631
+  orig: 1280, 720
+  offset: 0, 89
+  index: -1
+Comp 1009
+  rotate: false
+  xy: 3450, 2084
+  size: 598, 636
+  orig: 1280, 720
+  offset: 0, 84
+  index: -1
+Comp 1010
+  rotate: false
+  xy: 3450, 2722
+  size: 616, 640
+  orig: 1280, 720
+  offset: 0, 80
+  index: -1
+Comp 1011
+  rotate: false
+  xy: 3450, 3364
+  size: 619, 644
+  orig: 1280, 720
+  offset: 0, 76
+  index: -1
+Comp 1080
+  rotate: false
+  xy: 2, 3288
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1081
+  rotate: true
+  xy: 1284, 2728
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1082
+  rotate: true
+  xy: 2, 2006
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1083
+  rotate: false
+  xy: 724, 2006
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1084
+  rotate: true
+  xy: 2006, 2728
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1085
+  rotate: true
+  xy: 2006, 1446
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1086
+  rotate: true
+  xy: 2, 724
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1087
+  rotate: true
+  xy: 724, 724
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1088
+  rotate: false
+  xy: 1446, 724
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1089
+  rotate: false
+  xy: 2, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1090
+  rotate: false
+  xy: 1284, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1091
+  rotate: false
+  xy: 2566, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1092
+  rotate: true
+  xy: 2728, 2728
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1093
+  rotate: true
+  xy: 2728, 1446
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1094
+  rotate: false
+  xy: 2728, 724
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+
+黑幕PS5.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Comp 1035
+  rotate: true
+  xy: 3288, 122
+  size: 1160, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1095
+  rotate: false
+  xy: 2, 3288
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1096
+  rotate: false
+  xy: 1284, 3288
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1097
+  rotate: false
+  xy: 2566, 3288
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1098
+  rotate: true
+  xy: 2, 2006
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1099
+  rotate: true
+  xy: 2, 724
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1100
+  rotate: false
+  xy: 2, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1101
+  rotate: true
+  xy: 724, 2006
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1102
+  rotate: true
+  xy: 724, 724
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1103
+  rotate: false
+  xy: 1284, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1104
+  rotate: false
+  xy: 2566, 2566
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1105
+  rotate: true
+  xy: 1446, 2006
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1106
+  rotate: true
+  xy: 1446, 724
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1107
+  rotate: true
+  xy: 2168, 1284
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1108
+  rotate: true
+  xy: 2566, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1109
+  rotate: true
+  xy: 2566, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1110
+  rotate: true
+  xy: 2566, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1111
+  rotate: true
+  xy: 2566, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1112
+  rotate: true
+  xy: 2566, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1113
+  rotate: true
+  xy: 2566, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1114
+  rotate: true
+  xy: 2566, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1115
+  rotate: true
+  xy: 2566, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1116
+  rotate: true
+  xy: 2566, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1117
+  rotate: true
+  xy: 2566, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1118
+  rotate: true
+  xy: 2566, 2
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1119
+  rotate: true
+  xy: 2890, 1284
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+
+黑幕PS6.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Comp 1006
+  rotate: false
+  xy: 1332, 860
+  size: 569, 584
+  orig: 1280, 720
+  offset: 0, 136
+  index: -1
+Comp 1007
+  rotate: false
+  xy: 666, 128
+  size: 577, 594
+  orig: 1280, 720
+  offset: 0, 126
+  index: -1
+Comp 1018
+  rotate: false
+  xy: 3092, 2890
+  size: 646, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1019
+  rotate: false
+  xy: 2023, 2168
+  size: 648, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1020
+  rotate: false
+  xy: 1346, 1446
+  size: 657, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1021
+  rotate: false
+  xy: 671, 724
+  size: 659, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1022
+  rotate: false
+  xy: 2, 2
+  size: 662, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1023
+  rotate: false
+  xy: 1356, 2168
+  size: 665, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1024
+  rotate: false
+  xy: 2425, 2890
+  size: 665, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1025
+  rotate: false
+  xy: 2, 724
+  size: 667, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1026
+  rotate: false
+  xy: 677, 1446
+  size: 667, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1027
+  rotate: false
+  xy: 1754, 2890
+  size: 669, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1028
+  rotate: false
+  xy: 683, 2168
+  size: 671, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1029
+  rotate: false
+  xy: 2, 1446
+  size: 673, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1030
+  rotate: false
+  xy: 1076, 2890
+  size: 676, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1031
+  rotate: false
+  xy: 2, 2168
+  size: 679, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+Comp 1034
+  rotate: false
+  xy: 2, 2890
+  size: 1072, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1

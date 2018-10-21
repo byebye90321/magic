@@ -1,0 +1,62 @@
+
+Bully_02.png
+size: 4096,4096
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+右手
+  rotate: false
+  xy: 2787, 2401
+  size: 759, 1493
+  orig: 761, 1495
+  offset: 1, 1
+  index: -1
+左手
+  rotate: false
+  xy: 2018, 2378
+  size: 767, 1516
+  orig: 769, 1518
+  offset: 1, 1
+  index: -1
+攻擊表情
+  rotate: false
+  xy: 2018, 1943
+  size: 644, 433
+  orig: 646, 435
+  offset: 1, 1
+  index: -1
+瀏海
+  rotate: false
+  xy: 2, 2
+  size: 1440, 1247
+  orig: 1442, 1249
+  offset: 1, 1
+  index: -1
+睜眼表情
+  rotate: true
+  xy: 1444, 575
+  size: 674, 406
+  orig: 676, 408
+  offset: 1, 1
+  index: -1
+被打表情
+  rotate: true
+  xy: 2018, 1295
+  size: 646, 356
+  orig: 648, 358
+  offset: 1, 1
+  index: -1
+身體
+  rotate: false
+  xy: 2, 1251
+  size: 2014, 2643
+  orig: 2016, 2645
+  offset: 1, 1
+  index: -1
+閉眼表情
+  rotate: true
+  xy: 3548, 3209
+  size: 685, 367
+  orig: 687, 369
+  offset: 1, 1
+  index: -1

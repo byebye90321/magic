@@ -1,0 +1,318 @@
+{
+"skeleton": { "hash": "y0MSP8XWwGT5VWCXBfZipw7wPPM", "spine": "3.6.53", "width": 2016, "height": 2645 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "身體", "parent": "root", "length": 2592.48, "rotation": 58.58, "x": 82.66, "y": 81.07 },
+	{ "name": "右手", "parent": "身體", "length": 1485.25, "rotation": -149.75, "x": 1949.41, "y": -435.5 },
+	{ "name": "左手", "parent": "身體", "length": 1487.03, "rotation": -151.61, "x": 1612.45, "y": 104.41 },
+	{ "name": "瀏海", "parent": "身體", "length": 1691.23, "rotation": 163.75, "x": 2624.09, "y": 76.14 },
+	{ "name": "睜眼表情", "parent": "身體", "length": 474.15, "rotation": -26.11, "x": 1939.69, "y": -1.08 }
+],
+"slots": [
+	{ "name": "右手", "bone": "右手", "attachment": "右手" },
+	{ "name": "身體", "bone": "身體", "attachment": "身體" },
+	{ "name": "左手", "bone": "左手", "attachment": "左手" },
+	{ "name": "睜眼表情", "bone": "睜眼表情", "attachment": "閉眼表情" },
+	{ "name": "瀏海", "bone": "瀏海", "attachment": "瀏海" }
+],
+"skins": {
+	"default": {
+		"右手": {
+			"右手": { "x": 737.45, "y": -29.1, "rotation": 91.17, "width": 761, "height": 1495 }
+		},
+		"左手": {
+			"左手": { "x": 745.16, "y": -18.28, "rotation": 93.04, "width": 769, "height": 1518 }
+		},
+		"瀏海": {
+			"瀏海": { "x": 857.66, "y": -26.19, "rotation": 138.2, "width": 1442, "height": 1249 }
+		},
+		"睜眼表情": {
+			"攻擊表情": { "x": 293.54, "y": 58.68, "rotation": -32.47, "width": 646, "height": 435 },
+			"睜眼表情": { "x": 305.62, "y": 64.63, "rotation": -32.47, "width": 676, "height": 408 },
+			"被打表情": { "x": 289.82, "y": 11.86, "rotation": -32.47, "width": 648, "height": 358 },
+			"閉眼表情": { "x": 303.16, "y": 43.07, "rotation": -32.47, "width": 687, "height": 369 }
+		},
+		"身體": {
+			"身體": { "x": 1522.58, "y": -108.42, "rotation": -58.58, "width": 2016, "height": 2645 }
+		}
+	}
+},
+"animations": {
+	"death": {
+		"slots": {
+			"睜眼表情": {
+				"attachment": [
+					{ "time": 0, "name": "睜眼表情" },
+					{ "time": 0.2, "name": "被打表情" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{
+						"time": 0,
+						"x": 0,
+						"y": 0,
+						"curve": [ 0.25, 0, 0.041, 1 ]
+					},
+					{ "time": 1, "x": -374.27, "y": 0 }
+				]
+			},
+			"身體": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"瀏海": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": -2.25,
+						"curve": [ 0.25, 0, 0.066, 1 ]
+					},
+					{ "time": 1, "angle": -10.65 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"睜眼表情": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"左手": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": 0,
+						"curve": [ 0.25, 0, 0, 1 ]
+					},
+					{ "time": 1, "angle": 313.02 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"右手": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": 0,
+						"curve": [ 0.25, 0, 0, 1 ]
+					},
+					{ "time": 1, "angle": 313.02 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"hit": {
+		"slots": {
+			"睜眼表情": {
+				"attachment": [
+					{ "time": 0, "name": "睜眼表情" },
+					{ "time": 0.1667, "name": "閉眼表情" },
+					{ "time": 0.3333, "name": "攻擊表情" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": 6.78 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"右手": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{
+						"time": 0.6667,
+						"angle": 286.3,
+						"curve": [ 0.25, 0, 0.049, 1 ]
+					},
+					{ "time": 1.3333, "angle": 82.44, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 82.44 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"左手": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{
+						"time": 0.6667,
+						"angle": 286.3,
+						"curve": [ 0.25, 0, 0.049, 1 ]
+					},
+					{ "time": 1.3333, "angle": 67.33, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 67.33 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"睜眼表情": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": 6.78 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"瀏海": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{
+						"time": 0.6667,
+						"angle": -12.86,
+						"curve": [ 0.968, 0, 0.75, 1 ]
+					},
+					{ "time": 1.3333, "angle": -2.44 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"身體": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": 0,
+						"curve": [ 1, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"angle": 6.78,
+						"curve": [ 1, 0, 0.75, 1 ]
+					},
+					{ "time": 1, "angle": -6.04 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"idle": {
+		"slots": {
+			"睜眼表情": {
+				"attachment": [
+					{ "time": 0, "name": "睜眼表情" },
+					{ "time": 0.3333, "name": "閉眼表情" },
+					{ "time": 0.6667, "name": "睜眼表情" },
+					{ "time": 1.3333, "name": "睜眼表情" },
+					{ "time": 1.6667, "name": "閉眼表情" },
+					{ "time": 2, "name": "睜眼表情" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 3.87 },
+					{ "time": 1, "angle": 0.14 },
+					{ "time": 2, "angle": 3.87 }
+				]
+			},
+			"瀏海": {
+				"rotate": [
+					{ "time": 0, "angle": -6.41 },
+					{ "time": 1, "angle": -2.79 },
+					{ "time": 2, "angle": -6.41 }
+				]
+			},
+			"左手": {
+				"rotate": [
+					{ "time": 0, "angle": -5.96 },
+					{ "time": 1, "angle": 3.38 },
+					{ "time": 2, "angle": -5.96 }
+				]
+			},
+			"右手": {
+				"rotate": [
+					{ "time": 0, "angle": -5.96 },
+					{ "time": 1, "angle": 3.38 },
+					{ "time": 2, "angle": -5.96 }
+				]
+			}
+		}
+	},
+	"walk": {
+		"slots": {
+			"睜眼表情": {
+				"attachment": [
+					{ "time": 0, "name": "睜眼表情" },
+					{ "time": 0.3333, "name": "閉眼表情" },
+					{ "time": 0.6667, "name": "睜眼表情" },
+					{ "time": 1.3333, "name": "睜眼表情" },
+					{ "time": 1.6667, "name": "閉眼表情" },
+					{ "time": 2, "name": "睜眼表情" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 1.62 },
+					{ "time": 1, "angle": -0.21 },
+					{ "time": 2, "angle": 1.62 }
+				]
+			},
+			"身體": {
+				"rotate": [
+					{ "time": 0, "angle": 3.68 },
+					{ "time": 1, "angle": -0.21 },
+					{ "time": 2, "angle": 3.68 }
+				]
+			},
+			"瀏海": {
+				"rotate": [
+					{ "time": 0, "angle": -10.87 },
+					{ "time": 1, "angle": -2.78 },
+					{ "time": 2, "angle": -10.87 }
+				]
+			},
+			"睜眼表情": {
+				"rotate": [
+					{ "time": 0, "angle": 3.68 },
+					{ "time": 1, "angle": -0.21 },
+					{ "time": 2, "angle": 3.68 }
+				]
+			},
+			"左手": {
+				"rotate": [
+					{ "time": 0, "angle": 30.56 },
+					{ "time": 1, "angle": 331.17 },
+					{ "time": 2, "angle": 30.56 }
+				]
+			},
+			"右手": {
+				"rotate": [
+					{ "time": 0, "angle": 312.41 },
+					{ "time": 1, "angle": 23.11 },
+					{ "time": 2, "angle": 312.41 }
+				]
+			}
+		}
+	}
+}
+}
