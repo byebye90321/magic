@@ -1,0 +1,446 @@
+{
+"skeleton": { "hash": "5T89DgHpmamwCxZHCAmJ/Cq1ybM", "spine": "3.6.53", "width": 472, "height": 441 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "身體", "parent": "root", "length": 273.56, "rotation": 94.24, "x": -0.46, "y": 49.6 },
+	{ "name": "右手", "parent": "身體", "length": 139.78, "rotation": -37.06, "x": 108.41, "y": -143.54 },
+	{ "name": "右腳", "parent": "身體", "length": 83.97, "rotation": -163.08, "x": 39.05, "y": -71.28 },
+	{ "name": "圈圈", "parent": "身體", "length": 95.94, "rotation": 12.53, "x": 243.7, "y": -95.31 },
+	{ "name": "左手", "parent": "身體", "length": 129.65, "rotation": 38, "x": 129.31, "y": 138.6 },
+	{ "name": "左腳", "parent": "身體", "length": 86.45, "rotation": -159.17, "x": 35.64, "y": 70.81 },
+	{ "name": "表情", "parent": "身體", "length": 78.67, "rotation": -51.84, "x": 143.45, "y": 4.57 }
+],
+"slots": [
+	{ "name": "左腳", "bone": "左腳", "attachment": "左腳" },
+	{ "name": "右腳", "bone": "右腳", "attachment": "右腳" },
+	{ "name": "左手", "bone": "左手", "attachment": "左手" },
+	{ "name": "右手", "bone": "右手", "attachment": "右手" },
+	{ "name": "身體", "bone": "身體", "attachment": "身體" },
+	{ "name": "圈圈", "bone": "圈圈", "attachment": "圈圈" },
+	{ "name": "表情", "bone": "表情", "attachment": "正常表情" }
+],
+"skins": {
+	"default": {
+		"右手": {
+			"右手": { "x": 75.81, "y": -6.39, "rotation": -57.17, "width": 95, "height": 134 }
+		},
+		"右腳": {
+			"右腳": { "x": 41.9, "y": -1.84, "rotation": 68.84, "width": 51, "height": 83 }
+		},
+		"圈圈": {
+			"圈圈": { "x": 75.07, "y": -4.5, "rotation": -106.05, "width": 149, "height": 107 }
+		},
+		"左手": {
+			"左手": { "x": 64.9, "y": 2.69, "rotation": -132.24, "width": 99, "height": 118 }
+		},
+		"左腳": {
+			"左腳": { "x": 42.3, "y": -0.07, "rotation": 64.93, "width": 55, "height": 82 }
+		},
+		"表情": {
+			"正常表情": { "x": 13.7, "y": 25.74, "rotation": -42.4, "width": 193, "height": 116 },
+			"死掉表情": { "x": 13.7, "y": 25.74, "rotation": -42.4, "width": 220, "height": 130 }
+		},
+		"身體": {
+			"身體": { "x": 194.83, "y": -9.02, "rotation": -94.24, "width": 343, "height": 394 }
+		}
+	}
+},
+"animations": {
+	"death": {
+		"slots": {
+			"表情": {
+				"attachment": [
+					{ "time": 0, "name": "死掉表情" },
+					{ "time": 0.0667, "name": "死掉表情" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": -14.62 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"身體": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": -14.62 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"表情": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": -14.6 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"右手": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": 0,
+						"curve": [ 0.979, 0, 0.75, 1 ]
+					},
+					{ "time": 0.6667, "angle": -52.05 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"左手": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": -81.98 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"右腳": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": 311.23 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"左腳": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": 300.06 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"圈圈": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": -0.45 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"walk": {
+		"bones": {
+			"root": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": -2,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.3333,
+						"angle": 1.43,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"angle": -5.1,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1, "angle": -2 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"身體": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": -2,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.3333,
+						"angle": 1.43,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"angle": -5.1,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1, "angle": -2 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"表情": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": -2,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.3333,
+						"angle": 1.43,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"angle": -5.1,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1, "angle": -2 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"右手": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": -2,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.3333,
+						"angle": -91.38,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"angle": 6.4,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1, "angle": -2 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"左手": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": -2,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.3333,
+						"angle": 97.89,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"angle": -23.6,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1, "angle": -2 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"右腳": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": -2,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.3333,
+						"angle": 311.38,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"angle": 29.78,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1, "angle": -2 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"左腳": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": -2,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.3333,
+						"angle": 18.05,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"angle": 288.16,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1, "angle": -2 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"圈圈": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": -2,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.3333,
+						"angle": -1.75,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"angle": 0.27,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1, "angle": -2 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			}
+		}
+	}
+}
+}

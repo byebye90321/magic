@@ -36,26 +36,6 @@ public class RunGameManager : MonoBehaviour {
 	public GameObject warning;
 	public Canvas canvas;
 
-	//Mask物件
-	/*public GameObject maskPanel;
-	public GameObject blackPanel;
-	public GameObject maskcPoint;
-	public GameObject TeachPanel;
-	public int maskindex = 0;
-	public Text hintText;
-	public Animator mask;*/
-	//-----------二版----------
-	/*public int maskindex = 0;
-	public Text hintText;
-	public GameObject MASKCanvas;
-	public GameObject MASKPANEL;
-	public GameObject MASKALL;
-	public Image maskImage;
-	public Sprite mask1;
-	public Sprite mask2;
-	public Sprite mask3;*/
-
-
 	//--------------音效
 	public AudioSource audio;
 	public AudioClip countSound;
@@ -70,15 +50,11 @@ public class RunGameManager : MonoBehaviour {
 		/*maskPanel.SetActive(false);
 		blackPanel.SetActive(false);*/
 		//StartCoroutine("teach");
+		Application.targetFrameRate = 100;
 		InvokeRepeating("timer", 1, 1);
 	}
 	
 	
-	void Update () {
-
-
-	}
-
 
 	void timer()
 	{

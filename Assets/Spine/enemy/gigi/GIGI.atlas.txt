@@ -1,0 +1,62 @@
+
+GIGI.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+右手
+  rotate: false
+  xy: 345, 158
+  size: 93, 132
+  orig: 95, 134
+  offset: 1, 1
+  index: -1
+右腳
+  rotate: false
+  xy: 440, 209
+  size: 49, 81
+  orig: 51, 83
+  offset: 1, 1
+  index: -1
+圈圈
+  rotate: false
+  xy: 195, 11
+  size: 147, 105
+  orig: 149, 107
+  offset: 1, 1
+  index: -1
+左手
+  rotate: false
+  xy: 345, 40
+  size: 97, 116
+  orig: 99, 118
+  offset: 1, 1
+  index: -1
+左腳
+  rotate: false
+  xy: 444, 127
+  size: 53, 80
+  orig: 55, 82
+  offset: 1, 1
+  index: -1
+正常表情
+  rotate: false
+  xy: 2, 2
+  size: 191, 114
+  orig: 193, 116
+  offset: 1, 1
+  index: -1
+死掉表情
+  rotate: true
+  xy: 345, 292
+  size: 218, 128
+  orig: 220, 130
+  offset: 1, 1
+  index: -1
+身體
+  rotate: false
+  xy: 2, 118
+  size: 341, 392
+  orig: 343, 394
+  offset: 1, 1
+  index: -1
