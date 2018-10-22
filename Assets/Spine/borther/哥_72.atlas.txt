@@ -1,109 +1,103 @@
 
 哥_72.png
-size: 2048,2048
+size: 4096,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 右腳
   rotate: true
-  xy: 2, 85
+  xy: 2, 2
   size: 144, 507
   orig: 146, 509
   offset: 1, 1
   index: -1
 左腳
-  rotate: true
-  xy: 511, 88
+  rotate: false
+  xy: 1444, 922
   size: 141, 504
   orig: 143, 506
   offset: 1, 1
   index: -1
 披風右
-  rotate: true
-  xy: 1017, 56
+  rotate: false
+  xy: 2, 148
   size: 517, 934
   orig: 519, 936
   offset: 1, 1
   index: -1
 披風左
   rotate: false
-  xy: 2, 1080
+  xy: 2, 1084
   size: 591, 959
   orig: 593, 961
   offset: 1, 1
   index: -1
 攻擊表情
-  rotate: true
-  xy: 595, 1192
+  rotate: false
+  xy: 1444, 1428
   size: 847, 615
   orig: 946, 714
   offset: 41, 45
   index: -1
 睜眼
-  rotate: false
-  xy: 2, 30
+  rotate: true
+  xy: 3991, 1760
   size: 283, 53
   orig: 285, 55
   offset: 1, 1
   index: -1
 睜眼表情
   rotate: false
-  xy: 1017, 575
+  xy: 2293, 1428
   size: 847, 615
   orig: 946, 714
   offset: 41, 45
   index: -1
 脖子
-  rotate: true
-  xy: 1829, 1756
+  rotate: false
+  xy: 1587, 1237
   size: 283, 189
   orig: 285, 191
   offset: 1, 1
   index: -1
 蝴蝶翅膀上
   rotate: false
-  xy: 1829, 1641
+  xy: 1587, 1122
   size: 125, 113
   orig: 127, 115
   offset: 1, 1
   index: -1
 蝴蝶翅膀下
   rotate: false
-  xy: 287, 2
+  xy: 1444, 839
   size: 93, 81
   orig: 95, 83
   offset: 1, 1
   index: -1
 被打表情
-  rotate: true
-  xy: 1212, 1192
+  rotate: false
+  xy: 3142, 1428
   size: 847, 615
   orig: 946, 714
   offset: 41, 45
   index: -1
 閉眼
-  rotate: false
-  xy: 2, 7
+  rotate: true
+  xy: 521, 833
   size: 249, 21
   orig: 251, 23
   offset: 1, 1
   index: -1
 閉眼表情
-  rotate: true
-  xy: 2, 231
+  rotate: false
+  xy: 595, 1428
   size: 847, 615
   orig: 946, 714
   offset: 41, 45
   index: -1
-
-哥_722.png
-size: 1024,1024
-format: RGBA8888
-filter: Linear,Linear
-repeat: none
 頭
   rotate: false
-  xy: 2, 2
+  xy: 595, 811
   size: 847, 615
   orig: 849, 617
   offset: 1, 1

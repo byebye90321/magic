@@ -77,7 +77,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 5355bda012d1d1c419487d8b7807070e, type: 3}
   m_PackedSpriteNamesToIndex:
   - "\u64FA\u76EA\u7684\u969C\u7919\u7269"
-  - "\u523A\u51FA\u7684\u969C\u7919\u7269-1"
+  - "\u523A\u51FA\u7684\u969C\u7919\u7269"
   - "\u4E0A\u9762\u969C\u7919\u726903"
   - "\u4E0A\u9762\u969C\u7919\u726902"
   - "\u4E0A\u9762\u969C\u7919\u726901"

@@ -9,7 +9,6 @@ public class fallAnim : MonoBehaviour {
 	Animation fallAnimation;
 	Animator up;
 	Animation upAnimation;
-	public GameObject collider;
 	public GameObject collider2;
 	bool isFall = false;
 	bool isUp = false;
@@ -25,14 +24,6 @@ public class fallAnim : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.tag == "fall")
-		{
-			isFall = true;
-			if (isFall)
-			{
-				fall.SetBool("fallAnim", true);
-			}
-		}
 		if (col.tag == "obstacleUp")
 		{
 			isUp = true;

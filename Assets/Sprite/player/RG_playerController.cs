@@ -17,7 +17,6 @@ public class RG_playerController : MonoBehaviour
 	//-----------------------Player Control----------------------
 	//jump
 	public float jumpForce = 70f;
-	//bool jumping = false;
 	//slide
 	public bool sliding = true;
 	//up&down
@@ -26,7 +25,6 @@ public class RG_playerController : MonoBehaviour
 	public bool Touch;
 
 	//--------------------------velocity-------------------------
-	//public float stop;
 	public float speed;
 	public float hurtSpeed;
 	public float VecitySpeed;
@@ -40,8 +38,10 @@ public class RG_playerController : MonoBehaviour
 	public AudioSource audio;
 	public AudioClip hurtSound;
 	//--------------animator
-	public Animator anim;
-	public SkeletonAnimation skeletonAnimation;
+	public Animator sister;
+	public Animator bother;
+	public SkeletonAnimation skeletonAnimation_S;
+	public SkeletonAnimation skeletonAnimation_B;
 	void Start()
 	{
 		Player = this;
@@ -55,12 +55,14 @@ public class RG_playerController : MonoBehaviour
 	{	
 		if (RunGameManager.gameState == GameState.Start)
 		{
-			skeletonAnimation.state.TimeScale = 0;	
-			
+			skeletonAnimation_S.state.TimeScale = 0;	
+			skeletonAnimation_B.state.TimeScale = 0;
+
 		}
 		else if (RunGameManager.gameState == GameState.Running)
 		{
-			skeletonAnimation.state.TimeScale = 1;
+			skeletonAnimation_S.state.TimeScale = 1;
+			skeletonAnimation_B.state.TimeScale = 1;
 			//--------------jump---------------------
 			Player.transform.position = new Vector3(Player.transform.position.x + VecitySpeed, Player.transform.position.y, 10);
 			grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
@@ -102,18 +104,22 @@ public class RG_playerController : MonoBehaviour
 	//------------------------------------Dead------------------------------------------ 
 		else if (RunGameManager.gameState == GameState.Dead)
 		{
-			skeletonAnimation.loop = false;
+			skeletonAnimation_S.loop = false;
+			skeletonAnimation_B.loop = false;
 			/*skeletonAnimation.AnimationName = "death";*/
-			anim.SetTrigger("death");
+			sister.SetTrigger("death");
+			bother.SetTrigger("death");
 		}
 	//------------------------------------Win------------------------------------------- 
 		else if (RunGameManager.gameState == GameState.Win)
 		{
-			skeletonAnimation.state.TimeScale = 0;
+			skeletonAnimation_S.state.TimeScale = 0;
+			skeletonAnimation_B.state.TimeScale = 0;
 		}
 		else if (RunGameManager.gameState == GameState.Pause)
 		{
-			skeletonAnimation.state.TimeScale = 0;
+			skeletonAnimation_S.state.TimeScale = 0;
+			skeletonAnimation_B.state.TimeScale = 0;
 		}
 		else
 		{
@@ -134,14 +140,16 @@ public class RG_playerController : MonoBehaviour
 				Vector2 offset = pointB - pointA;
 				if (offset.y > 0)
 				{
-					Debug.Log("up");
-					anim.SetTrigger("jump");
+					//Debug.Log("up");
+					sister.SetTrigger("jump");
+					bother.SetTrigger("jump");
 					rigid2D.velocity = new Vector2(0, jumpForce);
 				}
 				else if (offset.y < 0 && sliding==true)
 				{
-					Debug.Log("down");
-					anim.SetTrigger("crouch");
+					//Debug.Log("down");
+					sister.SetTrigger("sliding");
+					bother.SetTrigger("sliding");
 					StartCoroutine("wait");
 				}
 				
