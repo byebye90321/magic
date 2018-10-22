@@ -52,6 +52,11 @@ SpriteAtlas:
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 4fddf7fc7cd8ea44791c9fb78bbe04d7, type: 3}
+  - {fileID: 21300000, guid: a71402df7113ad04c8e91e65855ed8b4, type: 3}
+  - {fileID: 21300000, guid: 03e4082f68384f241bb1746df685f7a8, type: 3}
+  - {fileID: 21300000, guid: 33df7579e30b44144b0fe629656137c7, type: 3}
+  - {fileID: 21300000, guid: 2fb79cc93292ce54a9385497ae06694d, type: 3}
   - {fileID: 21300000, guid: 7bf26e3b0ea22594583c4481839e620d, type: 3}
   - {fileID: 21300000, guid: fd8076fe77e86f24491a6bcd2a3a8c03, type: 3}
   - {fileID: 21300000, guid: 3fbb1185a792adb43a57020033b859f3, type: 3}
@@ -71,6 +76,11 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c9f4e24e326158a4da9e3ddcead55cff, type: 3}
   - {fileID: 21300000, guid: 5355bda012d1d1c419487d8b7807070e, type: 3}
   m_PackedSpriteNamesToIndex:
+  - "\u64FA\u76EA\u7684\u969C\u7919\u7269"
+  - "\u523A\u51FA\u7684\u969C\u7919\u7269-1"
+  - "\u4E0A\u9762\u969C\u7919\u726903"
+  - "\u4E0A\u9762\u969C\u7919\u726902"
+  - "\u4E0A\u9762\u969C\u7919\u726901"
   - runBg_light
   - "\u524D\u666F\u6C34\u667601"
   - "\u4E3B\u89D2\u689D"

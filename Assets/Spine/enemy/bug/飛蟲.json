@@ -1,0 +1,85 @@
+{
+"skeleton": { "hash": "/OjwvG/istYHY5kOyKD/AaZpQcY", "spine": "3.6.53", "width": 316, "height": 255 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "飛蟲身體", "parent": "root", "length": 174.45, "rotation": 122.72, "x": 1.96, "y": 9.94 },
+	{ "name": "翅膀右", "parent": "飛蟲身體", "length": 153.72, "rotation": -50.01, "x": 73.08, "y": -48.1 },
+	{ "name": "翅膀左", "parent": "飛蟲身體", "length": 151.46, "rotation": -26.82, "x": 74.71, "y": -49.15 }
+],
+"slots": [
+	{ "name": "飛蟲身體", "bone": "飛蟲身體", "attachment": "飛蟲身體" },
+	{ "name": "翅膀左", "bone": "翅膀左", "attachment": "翅膀左" },
+	{ "name": "翅膀右", "bone": "翅膀右", "attachment": "翅膀右" }
+],
+"skins": {
+	"default": {
+		"翅膀右": {
+			"翅膀右": { "x": 83.28, "y": -7.65, "rotation": -72.71, "width": 84, "height": 152 }
+		},
+		"翅膀左": {
+			"翅膀左": { "x": 76.97, "y": 2.55, "rotation": -95.89, "width": 77, "height": 156 }
+		},
+		"飛蟲身體": {
+			"飛蟲身體": { "x": 120.28, "y": -0.05, "rotation": -122.72, "width": 316, "height": 225 }
+		}
+	}
+},
+"animations": {
+	"fly": {
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				]
+			},
+			"飛蟲身體": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				]
+			},
+			"翅膀左": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1667, "angle": 21.85 },
+					{ "time": 0.3333, "angle": -36.36 },
+					{ "time": 0.5, "angle": 21.85 },
+					{ "time": 0.6667, "angle": -36.36 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				]
+			},
+			"翅膀右": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1667, "angle": -19.13 },
+					{ "time": 0.3333, "angle": 41.03 },
+					{ "time": 0.5, "angle": -19.13 },
+					{ "time": 0.6667, "angle": 41.03 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				]
+			}
+		}
+	}
+}
+}

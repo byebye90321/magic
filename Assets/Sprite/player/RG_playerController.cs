@@ -6,8 +6,7 @@ public class RG_playerController : MonoBehaviour
 {
 	public static RG_playerController Player;
 
-	Rigidbody2D rigi;
-	/*	AudioSource audio;*/
+	Rigidbody2D rigid2D;
 	public GameObject hurt;
 
 	//-----------------------ground check------------------------
@@ -16,80 +15,69 @@ public class RG_playerController : MonoBehaviour
 	public Transform groundCheck;
 	float groundRadius = 0.1f;
 	//-----------------------Player Control----------------------
+	//jump
 	public float jumpForce = 70f;
-	public float speed;
-	//2段跳
-	//public float jumpForce2 = 10f;
-	bool jumping = false;
-	private float count = 1;
+	//bool jumping = false;
+	//slide
+	public bool sliding = true;
+	//up&down
+	private Vector2 pointA;
+	private Vector2 pointB;
+	public bool Touch;
 
-
-	public float hurtSpeed;
 	//--------------------------velocity-------------------------
-	//	bool pressdown=false;
-	//	public float Vecity = 0.001f;
-	public float stop;
+	//public float stop;
+	public float speed;
+	public float hurtSpeed;
 	public float VecitySpeed;
 	public float MaxSpeed = 0.8f;
 	//---------------------------Hurt-----------------------------
 	public float VecityHurt;
 	public float RecoverySpeed;
 	public GameObject falsh;
-	//------------------------FeverTime---------------------------
-	/*	public float FeverSpeed;
-		public float AnimFeverTime;
-		//-------------------------vecity animation-------------------
-		public float AnimMaxrunSpeed=5f;
-		public float AnimVecity = 0.001f;
-		public float AnimStop;
-		//--------------------------sound-----------------------------
-		public AudioClip JumpSound;*/
-
-	//--------------------------Animation-------------------------
-	/*[SpineAnimation]
-	public string runAnim;
-	[SpineAnimation]
-	public string jumpAnim;
-	[SpineAnimation]
-	public string deathAnim;
-	SkeletonAnimation skeletonAnimation;*/
 
 	//--------------音效
 	public AudioSource audio;
 	public AudioClip hurtSound;
-
+	//--------------animator
 	public Animator anim;
-
+	public SkeletonAnimation skeletonAnimation;
 	void Start()
 	{
 		Player = this;
-
-		rigi = GetComponent<Rigidbody2D>();
-		//audio = GetComponent<AudioSource>();
-		rigi.AddForce(new Vector2(0, 0));
-		rigi.velocity = new Vector2(0, 0f);
+		rigid2D = GetComponent<Rigidbody2D>();
+		rigid2D.AddForce(new Vector2(0, 0));
+		rigid2D.velocity = new Vector2(0, 0f);
 		VecitySpeed = speed;
-		//rend = GetComponent<SpriteRenderer>();
-		/*skeletonAnimation = GetComponent<SkeletonAnimation>();
-		skeletonAnimation.state.SetAnimation(0, "run", true); */ //(起始偵,動畫名,loop)
-
 	}
 
 	void Update()
-	{
-		
+	{	
 		if (RunGameManager.gameState == GameState.Start)
 		{
-			//skeletonAnimation.state.TimeScale = 0;
+			skeletonAnimation.state.TimeScale = 0;	
+			
 		}
-
 		else if (RunGameManager.gameState == GameState.Running)
 		{
-
-			//skeletonAnimation.state.TimeScale = 1;
+			skeletonAnimation.state.TimeScale = 1;
+			//--------------jump---------------------
 			Player.transform.position = new Vector3(Player.transform.position.x + VecitySpeed, Player.transform.position.y, 10);
 			grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+			if (Input.GetMouseButtonUp(0))
+			{
+				pointB = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+				Touch = true;
+			}
+			else
+			{
+				Touch = false;
+			}
 
+			if (Input.GetMouseButtonDown(0))
+			{
+				pointA = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+			}
 
 
 			if (VecitySpeed < speed)
@@ -105,26 +93,27 @@ public class RG_playerController : MonoBehaviour
 				{
 					VecitySpeed = speed;
 				}
-				rigi.velocity = new Vector2(Time.deltaTime * VecitySpeed, rigi.velocity.y);
+				rigid2D.velocity = new Vector2(Time.deltaTime * VecitySpeed, rigid2D.velocity.y);
 			}
-			rigi.velocity = new Vector2(Time.deltaTime * VecitySpeed, rigi.velocity.y);
+			rigid2D.velocity = new Vector2(Time.deltaTime * VecitySpeed, rigid2D.velocity.y);
 			
 		}
 
 	//------------------------------------Dead------------------------------------------ 
 		else if (RunGameManager.gameState == GameState.Dead)
-		{			
-			/*skeletonAnimation.loop = false;
-			skeletonAnimation.AnimationName = "death";*/
+		{
+			skeletonAnimation.loop = false;
+			/*skeletonAnimation.AnimationName = "death";*/
+			anim.SetTrigger("death");
 		}
 	//------------------------------------Win------------------------------------------- 
 		else if (RunGameManager.gameState == GameState.Win)
 		{
-			//skeletonAnimation.state.TimeScale = 0;
+			skeletonAnimation.state.TimeScale = 0;
 		}
 		else if (RunGameManager.gameState == GameState.Pause)
 		{
-			//skeletonAnimation.state.TimeScale = 0;
+			skeletonAnimation.state.TimeScale = 0;
 		}
 		else
 		{
@@ -134,25 +123,30 @@ public class RG_playerController : MonoBehaviour
 	}
 
 	//---------------------------------Jump----------------------------------
-	public void jump()
+	private void FixedUpdate()
 	{
-		if (grounded)
+		if (Touch)
 		{
-			rigi.AddForce(new Vector2(rigi.velocity.x, jumpForce), ForceMode2D.Impulse);
-			anim.SetTrigger("jump");
-			//skeletonAnimation.state.SetAnimation(0, "jump_RE", false);
-			//skeletonAnimation.state.AddAnimation(0, "run", true, 0);
-			//audio.PlayOneShot(JumpSound, 0.2f);//---JumpSound---
-
-			jumping = true;
-
+			if (grounded)
+			{
+				/*Debug.Log(pointA);
+				Debug.Log(pointB);*/
+				Vector2 offset = pointB - pointA;
+				if (offset.y > 0)
+				{
+					Debug.Log("up");
+					anim.SetTrigger("jump");
+					rigid2D.velocity = new Vector2(0, jumpForce);
+				}
+				else if (offset.y < 0 && sliding==true)
+				{
+					Debug.Log("down");
+					anim.SetTrigger("crouch");
+					StartCoroutine("wait");
+				}
+				
+			}
 		}
-		else if ((!grounded && jumping))
-		{
-			Debug.Log("NOjump");
-			jumping = false;
-		}
-		
 	}
 
 	public void Hurt()
@@ -168,6 +162,12 @@ public class RG_playerController : MonoBehaviour
 			falsh.SetActive(false);
 			yield return new WaitForSeconds(0.1f);
 		}	
+	}
+
+	IEnumerator wait() {
+		sliding = false;
+		yield return new WaitForSeconds(0.8f);
+		sliding = true;
 	}
 
 	void OnTriggerEnter2D(Collider2D col)

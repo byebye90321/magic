@@ -1,0 +1,27 @@
+
+飛蟲.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+翅膀右
+  rotate: false
+  xy: 318, 75
+  size: 82, 150
+  orig: 84, 152
+  offset: 1, 1
+  index: -1
+翅膀左
+  rotate: false
+  xy: 402, 71
+  size: 75, 154
+  orig: 77, 156
+  offset: 1, 1
+  index: -1
+飛蟲身體
+  rotate: false
+  xy: 2, 2
+  size: 314, 223
+  orig: 316, 225
+  offset: 1, 1
+  index: -1

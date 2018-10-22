@@ -15,7 +15,6 @@ public class fallAnim : MonoBehaviour {
 	bool isUp = false;
 	// Use this for initialization
 	void Start () {
-		fall = collider.GetComponent<Animator>();
 		up = collider2.GetComponent<Animator>();
 	}
 	
