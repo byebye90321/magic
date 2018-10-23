@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Name: "\u59B9_72_SkeletonData"
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 9e1147228ff17fe4bb6f02c9f96b060a, type: 2}
+  - {fileID: 11400000, guid: d608440a4b9382345860b1d6db42446e, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: 40a664818bdccb642ae4143a557b4b5d, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 1047f219673ab7e48af287f2d4a340f8, type: 3}
   fromAnimation: []
   toAnimation: []
   duration: []
   defaultMix: 0.2
-  controller: {fileID: 9100000, guid: 3c2d19cc4fcfb9947bbe4612fa5ba4d2, type: 2}
+  controller: {fileID: 9100000, guid: 47d82b16871f8494f9bcc00d9e9343ed, type: 2}

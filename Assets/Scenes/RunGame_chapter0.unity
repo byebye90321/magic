@@ -328,8 +328,6 @@ GameObject:
   - component: {fileID: 68309499}
   - component: {fileID: 68309498}
   - component: {fileID: 68309497}
-  - component: {fileID: 68309495}
-  - component: {fileID: 68309493}
   - component: {fileID: 68309491}
   - component: {fileID: 68309492}
   m_Layer: 10
@@ -468,44 +466,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &68309493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 68309489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93964a8c00653f54ab0cbd9d1b5690f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstacleCystal_UP: {fileID: 605479907}
-  obstacleBug_Up: {fileID: 1380133505}
---- !u!61 &68309495
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 68309489}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.81, y: 6.5}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
-    newSize: {x: 1.5, y: 1.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 7.78, y: 11.85}
-  m_EdgeRadius: 0
 --- !u!114 &68309497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,7 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: cbe5e61fb3588d14497f647f00c458f2, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: e4a69f6bd4b5a74418d71e9eb742d159, type: 2}
   initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
@@ -551,7 +511,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: df62491d3de94904ba2b742366df91b4, type: 2}
+  - {fileID: 2100000, guid: d304c3f5c8adbe544af5e37e81babd82, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3375,12 +3335,10 @@ GameObject:
   - component: {fileID: 623244628}
   - component: {fileID: 623244627}
   - component: {fileID: 623244626}
-  - component: {fileID: 623244624}
-  - component: {fileID: 623244622}
   - component: {fileID: 623244621}
   m_Layer: 10
   m_Name: PlayerBother
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3416,44 +3374,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &623244622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 623244619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93964a8c00653f54ab0cbd9d1b5690f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstacleCystal_UP: {fileID: 605479907}
-  obstacleBug_Up: {fileID: 1380133505}
---- !u!61 &623244624
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 623244619}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.63, y: 4.62}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
-    newSize: {x: 1.5, y: 1.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5.33, y: 8}
-  m_EdgeRadius: 0
 --- !u!114 &623244626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3465,7 +3385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: d734330098693be4cb5b56220850f52b, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 6a9189a3585591f4d8f59acd29ea1555, type: 2}
   initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
@@ -3499,7 +3419,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: d76d7ddca89c1c34ba7cb2f9a61b1539, type: 2}
+  - {fileID: 2100000, guid: 0bbc83cafa90e0e4fa21033d4d0c4ac9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5295,9 +5215,11 @@ GameObject:
   - component: {fileID: 1069018175}
   - component: {fileID: 1069018176}
   - component: {fileID: 1069018177}
+  - component: {fileID: 1069018178}
+  - component: {fileID: 1069018179}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5371,6 +5293,44 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &1069018178
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1069018174}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.27, y: -2.59}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.45, y: 1.59}
+  m_EdgeRadius: 0
+--- !u!114 &1069018179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1069018174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93964a8c00653f54ab0cbd9d1b5690f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacleCystal_UP: {fileID: 605479907}
+  obstacleBug_Up: {fileID: 1380133505}
 --- !u!1 &1093825477
 GameObject:
   m_ObjectHideFlags: 0
@@ -6203,7 +6163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.18431373}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.09803922}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -6991,7 +6951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: e4eae7be8662a584e95c74f3f694c518, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 03a5b4a8534ca554db5c84f3bdf03137, type: 2}
   initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
@@ -7025,7 +6985,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: c82e1a4d02b1b6748871ce895a3383cd, type: 2}
+  - {fileID: 2100000, guid: 13a79c2dbab51cf49891f515fd686e21, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7617,7 +7577,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.19}
+  m_Offset: {x: -0.27, y: 0.24}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7628,7 +7588,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.48, y: 0.75}
+  m_Size: {x: 0.56, y: 0.82}
   m_EdgeRadius: 0
 --- !u!1 &1515095018
 GameObject:
