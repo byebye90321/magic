@@ -97,6 +97,7 @@ public class RG_playerController : MonoBehaviour
 				}
 				rigid2D.velocity = new Vector2(Time.deltaTime * VecitySpeed, rigid2D.velocity.y);
 			}
+			
 			rigid2D.velocity = new Vector2(Time.deltaTime * VecitySpeed, rigid2D.velocity.y);
 			
 		}
@@ -138,7 +139,7 @@ public class RG_playerController : MonoBehaviour
 				/*Debug.Log(pointA);
 				Debug.Log(pointB);*/
 				Vector2 offset = pointB - pointA;
-				if (offset.y > 0)
+				if (offset.y > 0 && sliding == true)
 				{
 					//Debug.Log("up");
 					sister.SetTrigger("jump");
@@ -150,19 +151,33 @@ public class RG_playerController : MonoBehaviour
 					//Debug.Log("down");
 					sister.SetTrigger("sliding");
 					bother.SetTrigger("sliding");
-					StartCoroutine("wait");
+					Sliding();
 				}
 				
 			}
 		}
 	}
+	public void Sliding()
+	{
+		VecitySpeed += 0.03f;
+		StartCoroutine("wait");
+	}
+	IEnumerator wait()
+	{
+		sliding = false;
+		yield return new WaitForSeconds(0.8f);
+		VecitySpeed = 0.15f;
+		sister.SetTrigger("run");
+		bother.SetTrigger("run");
+		sliding = true;
+	}
 
 	public void Hurt()
 	{
 		VecitySpeed -= VecityHurt;	
-		StartCoroutine("DoSomeThingInDelay");
+		StartCoroutine("HurtDelay");
 	}
-	IEnumerator DoSomeThingInDelay()
+	IEnumerator HurtDelay()
 	{
 		for (int i = 0; i < 3; i++) {
 			falsh.SetActive(true);
@@ -172,11 +187,7 @@ public class RG_playerController : MonoBehaviour
 		}	
 	}
 
-	IEnumerator wait() {
-		sliding = false;
-		yield return new WaitForSeconds(0.8f);
-		sliding = true;
-	}
+	
 
 	void OnTriggerEnter2D(Collider2D col)
 	{

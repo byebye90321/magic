@@ -9,7 +9,6 @@ TagManager:
   - floor
   - obstacle
   - set
-  - MosterSpeedAdd
   - fall
   - obstacleUp
   - obstacleUp2
@@ -18,6 +17,7 @@ TagManager:
   - EnemyAttack
   - gameSound
   - Touch
+  - MosterStop
   layers:
   - Default
   - TransparentFX

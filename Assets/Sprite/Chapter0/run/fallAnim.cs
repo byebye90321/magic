@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class fallAnim : MonoBehaviour {
 	
+	//Cystal
+	Animator Cystal;
+	public GameObject obstacleCystal_UP;
+	bool CystalUp = false;
 
-	Animator fall;
-	Animation fallAnimation;
-	Animator up;
-	Animation upAnimation;
-	public GameObject collider2;
-	bool isFall = false;
-	bool isUp = false;
-	// Use this for initialization
+	//Bug
+	Animator Bug;
+	public GameObject obstacleBug_Up;
+	bool BugUp = false;
+
 	void Start () {
-		up = collider2.GetComponent<Animator>();
+		Cystal = obstacleCystal_UP.GetComponent<Animator>();
+		Bug = obstacleBug_Up.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -24,12 +26,21 @@ public class fallAnim : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.tag == "obstacleUp")
+		if (col.gameObject.name == "obstacleCystal_Collider")
 		{
-			isUp = true;
-			if (isUp)
+			CystalUp = true;
+			if (CystalUp)
 			{
-				up.SetBool("up", true);
+				Cystal.SetBool("up", true);
+			}
+		}
+
+		if (col.gameObject.name == "obstacleBug_Collider")
+		{
+			BugUp = true;
+			if (BugUp)
+			{
+				Bug.SetBool("up", true);
 			}
 		}
 
