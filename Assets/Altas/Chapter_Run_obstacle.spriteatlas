@@ -58,10 +58,10 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 33df7579e30b44144b0fe629656137c7, type: 3}
   - {fileID: 21300000, guid: 2fb79cc93292ce54a9385497ae06694d, type: 3}
   - {fileID: 21300000, guid: 7bf26e3b0ea22594583c4481839e620d, type: 3}
-  - {fileID: 21300000, guid: fd8076fe77e86f24491a6bcd2a3a8c03, type: 3}
   - {fileID: 21300000, guid: 3fbb1185a792adb43a57020033b859f3, type: 3}
   - {fileID: 21300000, guid: db06cdf1b3645b94b95b41a5716307be, type: 3}
   - {fileID: 21300000, guid: 30a9ef7a724933e4db66d13c5e44112b, type: 3}
+  - {fileID: 21300000, guid: fd8076fe77e86f24491a6bcd2a3a8c03, type: 3}
   - {fileID: 21300000, guid: d442ff8dd0901ea4991d99de68c72075, type: 3}
   - {fileID: 21300000, guid: 7908b1d2b69f71b4a8e2c86c9bd9aaa2, type: 3}
   - {fileID: 21300000, guid: 087d4c2936f405f419b7bcab211df8e9, type: 3}
@@ -82,10 +82,10 @@ SpriteAtlas:
   - "\u4E0A\u9762\u969C\u7919\u726902"
   - "\u4E0A\u9762\u969C\u7919\u726901"
   - runBg_light
-  - "\u524D\u666F\u6C34\u667601"
   - "\u4E3B\u89D2\u689D"
   - "\u8DD1\u9177\u689D\u6846"
   - "\u53CD\u6D3E\u689D"
+  - "\u524D\u666F\u6C34\u667601"
   - "\u524D\u666F\u6C34\u667604"
   - "\u524D\u666F\u6C34\u667605"
   - "\u524D\u666F\u6C34\u667603"

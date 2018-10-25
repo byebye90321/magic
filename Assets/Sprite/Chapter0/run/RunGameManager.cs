@@ -12,22 +12,20 @@ public enum GameState
 }
 
 public class RunGameManager : MonoBehaviour {
-	
-	//暫停物件
-	public GameObject pauseMenu;
-	public GameObject black_bgImage;
-	public Button Puase;
 
 	public static RunGameManager Instance;
 	public static GameState gameState;
-	
+	//暫停物件
+	public GameObject pauseMenu;
+	public GameObject black_bgImage;
+	public Button Puase;	
 	float StartTime = 1;
 
 	//FADE淡出
 	public GameObject winFade;
 	Animator fade;
 	public SkeletonAnimation fadeAni;
-	public GameObject fadeObj;
+	public GameObject lose_Fade;
 
 	//倒數
 	public Text countdown;
@@ -46,15 +44,10 @@ public class RunGameManager : MonoBehaviour {
 		Puase.interactable = false;
 		Instance = this;
 		fade = winFade.GetComponent<Animator>();
-		fadeObj.SetActive(false);
-		/*maskPanel.SetActive(false);
-		blackPanel.SetActive(false);*/
-		//StartCoroutine("teach");
-		Application.targetFrameRate = 100;
+		lose_Fade.SetActive(false);
+		Application.targetFrameRate = 100;  //幀數
 		InvokeRepeating("timer", 1, 1);
 	}
-	
-	
 
 	void timer()
 	{
@@ -109,8 +102,7 @@ public class RunGameManager : MonoBehaviour {
 
 	public void Reset()
 	{
-		StartCoroutine("WaitForAudio");
-		
+		StartCoroutine("WaitForAudio");	
 		gameState = GameState.Running;
 		Time.timeScale = 1;
 	}
@@ -125,13 +117,11 @@ public class RunGameManager : MonoBehaviour {
 	{
 		gameState = GameState.Win;
 		StartCoroutine("Win");
-	
 	}
 
 	IEnumerator GameOver()
 	{
-		//yield return new WaitForSeconds(0.1f);
-		fadeObj.SetActive(true);
+		lose_Fade.SetActive(true);
 		canvas.GetComponent<Canvas>().enabled = false;
 		fadeAni.state.SetAnimation(0, "animation", false);
 		yield return new WaitForSeconds(2f);
