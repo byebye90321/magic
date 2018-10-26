@@ -8,13 +8,20 @@ using Spine;
 
 public enum GameState
 {
-	Start, Pause, Running, Dead,  Win
+	Teach, Start, Pause, Running, Dead,  Win
 }
 
 public class RunGameManager : MonoBehaviour {
 
 	public static RunGameManager Instance;
 	public static GameState gameState;
+	public string chapterName;
+
+	//教學物件
+	public GameObject targetText;
+	public GameObject Arrow;
+
+
 	//暫停物件
 	public GameObject pauseMenu;
 	public GameObject black_bgImage;
@@ -29,7 +36,7 @@ public class RunGameManager : MonoBehaviour {
 
 	//倒數
 	public Text countdown;
-	int time_int = 3;
+	int time_int = 4;
 
 	public GameObject warning;
 	public Canvas canvas;
@@ -39,14 +46,25 @@ public class RunGameManager : MonoBehaviour {
 	public AudioClip countSound;
 
 	void Start () {
-		Time.timeScale = 1f;
+
+		StartCoroutine("Target");
 		gameState = GameState.Start;	
 		Puase.interactable = false;
 		Instance = this;
 		fade = winFade.GetComponent<Animator>();
 		lose_Fade.SetActive(false);
 		Application.targetFrameRate = 100;  //幀數
+		
+	}
+
+	IEnumerator Target() {
+		black_bgImage.SetActive(true);
+		targetText.SetActive(true);
+		yield return new WaitForSeconds(2f);
+		black_bgImage.SetActive(false);
+		targetText.SetActive(false);
 		InvokeRepeating("timer", 1, 1);
+		gameState = GameState.Start;
 	}
 
 	void timer()
@@ -67,25 +85,20 @@ public class RunGameManager : MonoBehaviour {
 		}
 	}
 
-
-
 	void StartGame()
 	{
 		StartTime -= 1;
-		//counter.text = "" + StartTime;
 		if (StartTime == 0)
 		{
 			gameState = GameState.Running;
 			Puase.interactable = true;
 			CancelInvoke();
-			//RunningBGM();
 		}
 	}
 
 	public void pause()
 	{
 		black_bgImage.SetActive(true);
-		//warning.SetActive(false);
 		Time.timeScale = 0f;
 		pauseMenu.SetActive(true);
 		gameState = GameState.Pause;
@@ -96,7 +109,6 @@ public class RunGameManager : MonoBehaviour {
 		Time.timeScale = 1f;
 		gameState = GameState.Running;
 		pauseMenu.SetActive(false);
-		//warning.SetActive(true);
 		black_bgImage.SetActive(false);
 	}
 

@@ -5,10 +5,16 @@ using Spine;
 public class RG_playerController : MonoBehaviour
 {
 	public static RG_playerController Player;
+	public RunGameManager runGameManager;
 
 	Rigidbody2D rigid2D;
 	public GameObject hurt;
 
+	//---------------------------Teach---------------------------
+	public bool Up = false;
+	public bool Down = false;
+	public GameObject teachObj;
+	public Animator teachAnim; 
 	//-----------------------ground check------------------------
 	public LayerMask whatIsGround;
 	public bool grounded = false;
@@ -33,11 +39,10 @@ public class RG_playerController : MonoBehaviour
 	public float VecityHurt;
 	public float RecoverySpeed;
 	public GameObject falsh;
-
-	//--------------音效
+	//---------------------------音效-----------------------------
 	public AudioSource audio;
 	public AudioClip hurtSound;
-	//--------------animator
+	//-------------------------animator---------------------------
 	public Animator sister;
 	public Animator bother;
 	public SkeletonAnimation skeletonAnimation_S;
@@ -51,21 +56,33 @@ public class RG_playerController : MonoBehaviour
 		VecitySpeed = speed;
 	}
 
-	void Update()
-	{	
+	//---------------------------------Jump----------------------------------
+	private void FixedUpdate()
+	{
 		if (RunGameManager.gameState == GameState.Start)
 		{
-			skeletonAnimation_S.state.TimeScale = 0;	
+			skeletonAnimation_S.state.TimeScale = 0;
 			skeletonAnimation_B.state.TimeScale = 0;
 
 		}
 		else if (RunGameManager.gameState == GameState.Running)
 		{
-			skeletonAnimation_S.state.TimeScale = 1;
-			skeletonAnimation_B.state.TimeScale = 1;
+			if (Up==true || Down==true)
+			{
+				skeletonAnimation_S.state.TimeScale = 0.1f;
+				skeletonAnimation_B.state.TimeScale = 0.1f;
+			}
+			else
+			{
+				skeletonAnimation_S.state.TimeScale = 1;
+				skeletonAnimation_B.state.TimeScale = 1;
+			}
 			//--------------jump---------------------
 			Player.transform.position = new Vector3(Player.transform.position.x + VecitySpeed, Player.transform.position.y, 10);
 			grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+
+			
+
 			if (Input.GetMouseButtonUp(0))
 			{
 				pointB = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
@@ -97,21 +114,20 @@ public class RG_playerController : MonoBehaviour
 				}
 				rigid2D.velocity = new Vector2(Time.deltaTime * VecitySpeed, rigid2D.velocity.y);
 			}
-			
+
 			rigid2D.velocity = new Vector2(Time.deltaTime * VecitySpeed, rigid2D.velocity.y);
-			
+
 		}
 
-	//------------------------------------Dead------------------------------------------ 
+		//------------------------------------Dead------------------------------------------ 
 		else if (RunGameManager.gameState == GameState.Dead)
 		{
 			skeletonAnimation_S.loop = false;
 			skeletonAnimation_B.loop = false;
-			/*skeletonAnimation.AnimationName = "death";*/
 			sister.SetTrigger("death");
 			bother.SetTrigger("death");
 		}
-	//------------------------------------Win------------------------------------------- 
+		//------------------------------------Win------------------------------------------- 
 		else if (RunGameManager.gameState == GameState.Win)
 		{
 			skeletonAnimation_S.state.TimeScale = 0;
@@ -126,12 +142,6 @@ public class RG_playerController : MonoBehaviour
 		{
 			Time.timeScale = 1;
 		}
-	
-	}
-
-	//---------------------------------Jump----------------------------------
-	private void FixedUpdate()
-	{
 		if (Touch)
 		{
 			if (grounded)
@@ -145,24 +155,36 @@ public class RG_playerController : MonoBehaviour
 					sister.SetTrigger("jump");
 					bother.SetTrigger("jump");
 					rigid2D.velocity = new Vector2(0, jumpForce);
+					if (Up == true)
+					{
+						speed = 0.15f;
+						VecitySpeed = 0.15f;
+						runGameManager.black_bgImage.SetActive(false);
+						teachObj.SetActive(false);
+						Up = false;
+
+					}
 				}
 				else if (offset.y < 0 && sliding==true)
 				{
 					//Debug.Log("down");
 					sister.SetTrigger("sliding");
 					bother.SetTrigger("sliding");
-					Sliding();
+					StartCoroutine("Sliding");
+					if (Down == true)
+					{
+						speed = 0.15f;
+						VecitySpeed = 0.15f;
+						runGameManager.black_bgImage.SetActive(false);
+						teachObj.SetActive(false);
+						Down = false;
+					}
 				}
-				
 			}
 		}
 	}
-	public void Sliding()
-	{
-		VecitySpeed += 0.03f;
-		StartCoroutine("wait");
-	}
-	IEnumerator wait()
+
+	IEnumerator Sliding()
 	{
 		sliding = false;
 		yield return new WaitForSeconds(0.8f);
@@ -191,11 +213,50 @@ public class RG_playerController : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-
 		if (col.tag == "EndPoint")
 		{
 			VecitySpeed = 0.07f;
 			speed = 0.07f;
+		}
+
+		if (col.gameObject.name == "TeachUp")
+		{
+			speed = 0.01f;
+			VecitySpeed = 0.01f;
+			Up = true;
+			runGameManager.black_bgImage.SetActive(true);
+			teachObj.SetActive(true);
+		}
+
+		if (col.gameObject.name == "TeachDown")
+		{
+			speed = 0.01f;
+			VecitySpeed = 0.01f;
+			runGameManager.black_bgImage.SetActive(true);
+			teachObj.SetActive(true);
+			teachAnim.SetBool("Down", true);
+			Down = true;
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D col)
+	{
+		if (col.gameObject.name == "TeachUp")
+		{
+			speed = 0.15f;
+			VecitySpeed = 0.15f;
+			Up = false;
+			runGameManager.black_bgImage.SetActive(false);
+			teachObj.SetActive(false);
+		}
+
+		if (col.gameObject.name == "TeachDown")
+		{
+			speed = 0.15f;
+			VecitySpeed = 0.15f;
+			Down = false;
+			runGameManager.black_bgImage.SetActive(false);
+			teachObj.SetActive(false);
 		}
 	}
 }

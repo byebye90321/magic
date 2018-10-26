@@ -11,8 +11,6 @@ public class menuController : MonoBehaviour {
 
 	void Start () {
 
-		//setMenu.SetActive(false);
-
 	}
 	
 	void Update () {
@@ -22,7 +20,6 @@ public class menuController : MonoBehaviour {
 	public void SetOpen()
 	{
 		setMenu.SetActive(true);
-		Menu_Button.SetActive(false);
 		blackPanel.SetActive(true);
 	}
 

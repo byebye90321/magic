@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class moster : MonoBehaviour {
 	public static moster Moster;
-
+	public RG_playerController playerController;
 	Rigidbody2D rigi;
 	public float speed;
 	public GameObject player;
@@ -29,21 +29,24 @@ public class moster : MonoBehaviour {
 		{
 			Moster.transform.position = new Vector3(Moster.transform.position.x + speed, Moster.transform.position.y, 10);
 
-			if (!isStop)
+			if (playerController.Up == true || playerController.Down)
+			{
+				speed = 0.01f;
+			}else if (!isStop)
 			{
 				if (Mathf.Abs(player.transform.position.x - Moster.transform.position.x) > 15f)
 				{
-					speed = Random.Range(0.18f, 0.19f);
+					speed = Random.Range(0.16f, 0.17f);
 					//speed = 0.18f;
 				}
 				else if (Mathf.Abs(player.transform.position.x - Moster.transform.position.x) < 15f && Mathf.Abs(player.transform.position.x - Moster.transform.position.x) > 5f)
 				{
 					//speed = 0.155f;
-					speed = Random.Range(0.14f, 0.17f);
+					speed = Random.Range(0.14f, 0.16f);
 				}
 				else if (Mathf.Abs(player.transform.position.x - Moster.transform.position.x) < 5f)
 				{
-					speed = 0.15f;
+					speed = 0.14f;
 					//speed = Random.Range(0.15f, 0.155f);
 				}
 			}
@@ -55,11 +58,6 @@ public class moster : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		/*if (col.tag == "obstacle")
-		{
-			Destroy(col.gameObject);
-		}*/
-
 		if (col.gameObject.tag == "MosterStop")
 		{
 			isStop = true;
