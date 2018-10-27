@@ -147,9 +147,9 @@ public class Draw_sister_forest : MonoBehaviour
 				GameObject.Find("ps1").SetActive(false);
 			}
 			mouseEffect.SetActive(false);
-			exampleGestureHandler.effectA.SetActive(false);
+			/*exampleGestureHandler.effectA.SetActive(false);
 			exampleGestureHandler.effectB.SetActive(false);
-			exampleGestureHandler.effectC.SetActive(false);
+			exampleGestureHandler.effectC.SetActive(false);*/
 		}
 	}
 

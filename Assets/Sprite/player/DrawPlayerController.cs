@@ -146,7 +146,7 @@ public class DrawPlayerController : MonoBehaviour {
 			drawEnemyController.skeletonAnimation_E1.state.AddAnimation(0, "idle", true, 0);
 			drawEnemyController.skeletonAnimation_E2.state.SetAnimation(0, "death", false);
 			drawEnemyController.skeletonAnimation_E2.state.AddAnimation(0, "idle", true, 0);
-			exampleGestureHandler.effectB.SetActive(false);
+			//exampleGestureHandler.effectB.SetActive(false);
 
 		}
 	}
