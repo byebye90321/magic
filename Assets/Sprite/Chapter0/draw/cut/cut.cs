@@ -1,20 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Spine.Unity;
+using Spine;
 
 public class cut : MonoBehaviour
 {
-
+	public GameObject player;
     public GameObject obj1, obj2;    //分开后的两边水果
     public GameObject[] wz;          //几种污渍背景
 
     private BoxCollider2D col;
     private Vector2[] vec = { Vector2.left, Vector2.right };   //切后的半截往两个方向飞出
-    //private GameObject scores;     //放置scoreManager.cs和healthManager.cs脚本的游戏对象
+															   //private GameObject scores;     //放置scoreManager.cs和healthManager.cs脚本的游戏对象
+
+	public SkeletonAnimation enemy;
 
     void Start()
     {
         col = GetComponent<BoxCollider2D>();
-        //scores = GameObject.Find("score1");
     }
 
     private void CreateHalf(GameObject obj, int index)       //创建半个水果
@@ -38,22 +41,36 @@ public class cut : MonoBehaviour
         {
             if (col.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))                //鼠标在当前水果2Dcollider内
             {
-                /*if (name == "jpg0(Clone)")                //金苹果+20分
-                    scores.SendMessage("setScore", 20);
-                else if (name != "cs(Clone)")              //非仓鼠+1分
-                    scores.SendMessage("setScore", 1);
-                else                                     //切开仓鼠扣血
-                    scores.SendMessage("cutOne");*/
                 CreateHalf(obj1, 0);
                 CreateHalf(obj2, 1);
                 Createwz();
-                Destroy(this.gameObject);
-            }
+				//Destroy(this.gameObject);
+				StartCoroutine("Death");
+				
+			}
         }
-        else if (this.transform.position.y <= -6f)         //水果掉落到范围外扣分自动销毁
+        /*else if (this.transform.position.y <= -6f)         //水果掉落到范围外扣分自动销毁
         {
-            //scores.SendMessage("setScore", -1);
             Destroy(this.gameObject);
-        }
+        }*/
+
     }
+
+	IEnumerator Death() {
+		enemy.state.SetAnimation(0, "death", false);
+
+		yield return new WaitForSeconds(0.7f);
+		Destroy(this.gameObject);
+	}
+
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.gameObject.name == "Player")
+		{
+			CreateHalf(obj1, 0);
+			CreateHalf(obj2, 1);
+			Createwz();
+			Destroy(this.gameObject);
+		}
+	}
 }

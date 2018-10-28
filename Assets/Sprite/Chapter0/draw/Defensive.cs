@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Defensive : MonoBehaviour
 {
-	public static Defensive defensive;
+	/*public static Defensive defensive;
 	private DrawEnemyController drawEnemyController;
 	public GameObject Atk;
 	private Vector3 player;
@@ -49,5 +49,5 @@ public class Defensive : MonoBehaviour
 	   yield return new WaitForSeconds(2f);
 		
 	}
-
+	*/
 }

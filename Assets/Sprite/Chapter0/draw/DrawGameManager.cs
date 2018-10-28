@@ -12,57 +12,32 @@ public class DrawGameManager : MonoBehaviour {
 		/*Start, Pause, playerRound, playerAtt, monsterRound, monsterAtt, Dead,  Win*/
 		Start, Pause, Game, Dead, Win
 	}
-	//暫停物件
+
+	public DG_playerController playerController;
+	public DG_EnemyController enemyController;
+	//-----------------暫停物件-------------------
 	public Button Puase;
 	public GameObject pauseMenu;
 	public GameObject black_bgImage;
-	
-	//血量
-	public HeartSystem heartSystem;
-	public HeartSystemMonster heartSystemMonster;
+
+	//------------------平衡條---------------------
+	public Slider balanceSlider;
+	public Image sliderimage;
+	public float balanceValue;
+	public float spendTime;
+	float r1 = 0.7372549f, g1 = 0.2078431f, b1 = 0.5568628f;  //原平衡條桃色
+	float r2 = 0.7372549f, g2 = 0.2078431f, b2 = 0.3071967f;  //新
 
 	public static DrawGameManager Instance;
 	//public static DrawState drawState;
 	public DrawState drawState = DrawState.Start;
 
-	//控制玩家操作及操作窗口是否出现
-	public bool isWaitForPlayer = true;
-	//控制怪物操作
-	public bool isEnemyAction = false;
-	//获取玩家及敌人脚本的引用 
-	private DrawPlayerController drawPlayerController;
-	private DrawEnemyController drawEnemyController;
-
-	public Text roundText;
 	float StartTime = 1;
-	//public GameObject winFade;
-	//Animator fade;
-
-	//Mask物件
-	/*public GameObject maskPanel;
-	public GameObject blackPanel;
-	public GameObject maskPoint;
-	public GameObject TeachPanel;
-	public Image TeachImage;
-	public int maskindex = 0;
-	public Text hintText;
-	public Animator mask;*/
-	//----------------------二版------------
-	public GameObject MaskCanvas;
-	public GameObject MASKPANEL;
-	public Image maskImage;
-	public GameObject MASKALL;
-	public Sprite mask1;
-	public Sprite mask2;
-	public Sprite mask3;
-	public Sprite mask4;
-	public Text hintText;
-	public int maskindex = 0;
 
 	//對話
 	public GameObject textPanel;
 	public Text text;
-	public GameObject Player;
+	//public GameObject Player;
 
 	//FADE淡出
 	public GameObject winFade;
@@ -78,148 +53,56 @@ public class DrawGameManager : MonoBehaviour {
 		drawState = DrawState.Start;
 		Puase.interactable = false;
 		Instance = this;
-		//InvokeRepeating("GameRound", 1, 1);
+		InvokeRepeating("GameRound", 1, 1);
 		fade = winFade.GetComponent<Animator>();
-		StartCoroutine("teach");
 	}
 
-	public void NextTeach()
-	{
-		maskindex += 1;
-	}
+	void FixedUpdate () {
 
-	void Update () {
-		if (maskindex == 0)
-		{
-			hintText.enabled = true;
-			hintText.text = "畫符關卡介紹";
-			/*maskPanel.SetActive(true);
-			blackPanel.SetActive(true);
-			maskPoint.SetActive(false);
-			TeachPanel.SetActive(false);*/
-			MASKALL.SetActive(true);
-			
-
-		}
-		else if (maskindex == 1)
-		{
-			/*maskPoint.SetActive(true);
-			TeachPanel.SetActive(true);*/
-			hintText.text = "畫符關卡採回合制\n先讓對方血量歸零者即獲勝";
-			MASKALL.SetActive(false);
-			MASKPANEL.SetActive(true);
-		}
-		else if (maskindex == 2)
-		{
-			hintText.text = "關卡資訊在畫面上方";
-			//mask.SetInteger("maskindex", 1);
-			maskImage.sprite = mask2;
-		}
-		else if (maskindex == 3)
-		{
-			hintText.text = "現有卡牌在下方\n在遊戲過程中可以透過觸發事件獲得不同卡牌";
-			//mask.SetInteger("maskindex", 2);
-			maskImage.sprite = mask3;
-		}
-		else if (maskindex == 4)
-		{
-			hintText.text = "累積一定回合能量卡牌變亮才可以使用";
-		}
-		else if (maskindex == 5)
-		{
-			hintText.text = "畫出卡牌上的圖案即可發揮卡牌力量進行攻擊";
-		}
-		else if (maskindex == 6)
-		{
-			hintText.text = "長按卡牌可以看到卡牌的所有資訊";
-		}
-		else if (maskindex == 7)
-		{
-			hintText.text = "接著來實際畫符看看吧！\n請在畫面中央畫出「M」圖形";
-			//maskPoint.SetActive(false);
-			
-
-		}
-		else if (maskindex == 8)
-		{
-			/*blackPanel.SetActive(false);
-			maskPanel.SetActive(false);*/
-			MASKPANEL.SetActive(false);
-			MaskCanvas.SetActive(false);
-
-		}
-		else if (maskindex == 10)
-		{
-			/*blackPanel.SetActive(true);
-			maskPanel.SetActive(true);
-			maskPoint.SetActive(true);
-			TeachPanel.SetActive(false);*/
-			MaskCanvas.SetActive(true);
-			MASKALL.SetActive(true);
-			hintText.text = "接下來必須在限時之內點擊掉怪物攻擊\n否則將受到傷害";		
-		}
-
-		else if (maskindex == 11)
-		{
-			/*blackPanel.SetActive(false);
-			maskPanel.SetActive(false);
-			maskPoint.SetActive(false);
-			TeachPanel.SetActive(false);*/
-			MaskCanvas.SetActive(false);
-		}
-
-		if (DrawEnemyController.end == true) 
+		/*if (DrawEnemyController.end == true) 
 		{
 			textPanel.SetActive(true);
 			Puase.interactable = false;
 			text.text = "糟了！他們好像太厲害了，我們還是先逃吧！那邊有門！";
 			StartCoroutine("run");	
-		}
-		if (isRun == true)
-		{
-			Player.transform.position = new Vector3(Player.transform.position.x + 0.07f, Player.transform.position.y, 1);
-			if (Player.transform.position.x > 7f) {
-				Instance.win();
-			}
-		}
+		}*/
 
 		if (drawState == DrawState.Game)
 		{
-			//如果任意一方生命值为0，则游戏结束  
-			if (heartSystem.curHealth==0)
+			//----------------------平衡條----------------------------
+			balanceValue -= Time.deltaTime * spendTime;
+			balanceSlider.value = balanceValue;
+
+			if (balanceSlider.value == 0)
+			{
+				balanceValue = 0;
+				Debug.Log("DEATH");
+			}
+			else if (balanceSlider.value > 100)
+			{
+				balanceValue = 100;
+			}
+			else if (balanceSlider.value < 10)
+			{
+				sliderimage.color = Color.Lerp(new Color(r2, g2, b2), new Color(r1, g1, b1), balanceSlider.value / 10);  //從G變R
+			}
+
+
+			if (balanceSlider.value == 0 || playerController.curHealth ==0)
 			{
 				Debug.Log("战斗失败");
 				drawState =DrawState.Dead;
 			}
-			if (heartSystemMonster.curHealth==0)
+			if (enemyController.curHealth==0)
 			{
 				Debug.Log("战斗胜利");
 				drawState = DrawState.Win;
 			}
 
-			if (isWaitForPlayer == true)
-			{
-				roundText.text = "玩家回合";
-			}
-			else {
-				roundText.text = "敵方回合";
-			}
 		}
 
 	}
 
-	IEnumerator teach()
-	{
-		while (maskindex < 7)
-		{
-			yield return null;
-		}
-		if (maskindex == 7)
-		{
-			//InvokeRepeating("timer", 1, 1);
-			InvokeRepeating("GameRound", 1, 1);
-		}
-	}
 
 	public void GameRound() {
 		StartTime -= 1;
@@ -238,7 +121,7 @@ public class DrawGameManager : MonoBehaviour {
 		yield return new WaitForSeconds(2);
 		textPanel.SetActive(false);
 		isRun = true;
-		DrawEnemyController.end = false;
+		//DrawEnemyController.end = false;
 		
 	}
 
