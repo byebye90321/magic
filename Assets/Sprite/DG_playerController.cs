@@ -10,6 +10,7 @@ using UnityStandardAssets.CrossPlatformInput;
 public class DG_playerController : MonoBehaviour
 {
 
+	public DG_GameManager dg_GameManager;
 	//------------playerControl----------------------
 	public Rigidbody2D rigid2D;
 	public Transform graphics;
@@ -24,7 +25,7 @@ public class DG_playerController : MonoBehaviour
 	float groundRadius = 0.1f;
 	public bool grounded = false;
 	public float jumpForce = 70f;
-	bool jumping = false;
+	public bool jumping = false;
 
 	//--------------SpineAnimation----------------
 	public Animator animator_S;
@@ -73,6 +74,8 @@ public class DG_playerController : MonoBehaviour
 		{
 			if (CrossPlatformInputManager.GetButtonDown("Jump"))
 			{
+				
+				dg_GameManager.TeachJump = true;
 				jumping = true;
 				rigid2D.velocity = new Vector2(0, jumpForce);
 				animator_S.SetBool("isJump", jumping);
@@ -90,10 +93,12 @@ public class DG_playerController : MonoBehaviour
 		if (moveVec.x > 0)
 		{
 			graphics.localRotation = Quaternion.Euler(0, 0, 0);
+			dg_GameManager.TeachMove = true;
 		}
 		else if (moveVec.x < 0)
 		{
 			graphics.localRotation = Quaternion.Euler(0, 180, 0);
+			dg_GameManager.TeachMove = true;
 		}
 
 		
@@ -107,6 +112,7 @@ public class DG_playerController : MonoBehaviour
 			//animator_B.SetBool("fall", true);
 			animator_S.SetBool("isJump", jumping);
 			animator_B.SetBool("isJump", false);
+			
 		}
 		jumping = false;
 		  //test版
@@ -114,9 +120,9 @@ public class DG_playerController : MonoBehaviour
 
 
 	//---------------------Damage-----------------------
-	void OnTriggerEnter2D(Collider2D col)  //玩家受到怪物攻擊
+	void OnTriggerEnter2D(Collider2D col)  
 	{
-		if (col.tag == "smallEnemy")
+		if (col.tag == "smallEnemy") //玩家受到怪物攻擊
 		{
 			TakeDamage(5);
 		}
@@ -124,6 +130,17 @@ public class DG_playerController : MonoBehaviour
 		if (col.tag == "BossEnemy")
 		{
 			TakeDamage(15);
+		}
+
+		
+	}
+
+	void OnTriggerExit2D(Collider2D col)
+	{
+		if (col.gameObject.name == "Teach_move")
+		{
+
+			dg_GameManager.count = 3;
 		}
 	}
 

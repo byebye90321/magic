@@ -14,10 +14,9 @@ public enum DrawState
 }
 
 public class DG_GameManager : MonoBehaviour {
-	
 
-	public DG_playerController playerController;
-	public DG_EnemyController enemyController;
+	public DG_playerController dg_playerController;
+	public DG_EnemyController dg_enemyController;
 	//-----------------暫停物件-------------------
 	public Button Puase;
 	public GameObject pauseMenu;
@@ -35,7 +34,7 @@ public class DG_GameManager : MonoBehaviour {
 	public static DrawState drawState;
 	//public DrawState drawState = DrawState.Game;
 
-	float StartTime = 1;
+	float StartTime = 2;
 
 	//對話
 	public GameObject textPanel;
@@ -53,10 +52,14 @@ public class DG_GameManager : MonoBehaviour {
 
 	//------------------教學暫停物件------------------
 	public Text teachText;
-	private int count = 1;
+	public int count = 1;
+	public GameObject finger;
 	public Image joystick; //image射線關閉
 	public Image jumpBtn; //image設限關閉
 	public GameObject healthBar;
+	public Canvas drawCanvas;
+	public bool TeachMove = false;
+	public bool TeachJump = false;
 
 
 	void Start () {
@@ -66,6 +69,12 @@ public class DG_GameManager : MonoBehaviour {
 		Instance = this;
 		//InvokeRepeating("StarGame", 1, 1);
 		fade = winFade.GetComponent<Animator>();
+
+		//---------------教學--------------
+		finger.SetActive(false);
+		joystick.raycastTarget = false;
+		jumpBtn.raycastTarget = false;
+		drawCanvas.GetComponent<Canvas>().enabled = false;
 	}
 
 	void FixedUpdate () {
@@ -81,14 +90,54 @@ public class DG_GameManager : MonoBehaviour {
 		{
 			if (count == 1)
 			{
-				//balanceSlider.transform.SetSiblingIndex(-1);
-				balanceSlider.transform.SetAsLastSibling();
+				teachText.text = "目標！使用魔法擊退敵人！";
+				teachText.fontSize = 36;
+				black_bgImage.SetActive(true);
+				//balanceSlider.transform.SetAsLastSibling();
 			}
 			else if (count == 2)
 			{
-				balanceSlider.transform.SetSiblingIndex(1);
-				healthBar.transform.SetAsLastSibling();
+				teachText.text = "使用移動鍵移動角色";
+				teachText.fontSize = 28;
+				joystick.raycastTarget = true;
+				black_bgImage.SetActive(false);
+				finger.SetActive(true);
+				if (TeachMove)
+				{
+					joystick.raycastTarget = false;
+					
+					jumpBtn.raycastTarget = true;
+					if(Input.GetMouseButtonUp(0))
+						count = 3;
+				}
+				//balanceSlider.transform.SetSiblingIndex(1);
+				//healthBar.transform.SetAsLastSibling();
 			}
+			else if (count == 3)
+			{
+				teachText.text = "Good！";
+				StartTime -= 1 * Time.deltaTime;
+				if (StartTime < 0) {
+					count = 4;
+				}
+				//InvokeRepeating("StarGame", 1, 1);		
+			}
+			else if (count == 4)
+			{
+				teachText.text = "使用跳鍵讓角色跳躍";
+				if (TeachJump)
+				{
+					next();
+				}
+			}
+			else if (count == 5)
+			{
+				teachText.text = "GREAT！";
+				dg_playerController.graphics.localRotation = Quaternion.Euler(0, 0, 0);
+				jumpBtn.raycastTarget = false;
+			}
+			Debug.Log(count);
+			
 		}
 		if (drawState == DrawState.Game)
 		{
@@ -110,12 +159,12 @@ public class DG_GameManager : MonoBehaviour {
 				sliderimage.color = Color.Lerp(new Color(r2, g2, b2), new Color(r1, g1, b1), balanceSlider.value / 10);  //從G變R
 			}
 
-			if (balanceSlider.value == 0 || playerController.curHealth ==0)
+			if (balanceSlider.value == 0 || dg_playerController.curHealth ==0)
 			{
 				Debug.Log("战斗失败");
 				drawState =DrawState.Dead;
 			}
-			if (enemyController.curHealth==0)
+			if (dg_enemyController.curHealth==0)
 			{
 				Debug.Log("战斗胜利");
 				drawState = DrawState.Win;
@@ -128,14 +177,18 @@ public class DG_GameManager : MonoBehaviour {
 	}
 
 	public void StarGame() {
-		StartTime -= 1;
-		if (StartTime == 0)
+		StartTime -= 1*Time.deltaTime;
+		if (StartTime < 0)
 		{
-			Puase.interactable = true;
+			count = 4;
 			CancelInvoke();
 		}
-		
-		Debug.Log("Game");
+		Debug.Log(StartTime);
+	}
+
+	IEnumerator wait()
+	{
+		yield return new WaitForSeconds(1);
 	}
 
 	IEnumerator run() {
@@ -145,7 +198,6 @@ public class DG_GameManager : MonoBehaviour {
 		textPanel.SetActive(false);
 		isRun = true;
 		//DrawEnemyController.end = false;
-		
 	}
 
 
