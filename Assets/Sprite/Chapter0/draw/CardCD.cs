@@ -3,12 +3,12 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 public class CardCD : MonoBehaviour
-, IPointerExitHandler
+/*, IPointerExitHandler
 , IPointerDownHandler
 , IPointerUpHandler
-, IEventSystemHandler
+, IEventSystemHandler*/
 {
-	public DrawPlayerController drawPlayerController;
+	/*public DrawPlayerController drawPlayerController;
 	public ExampleGestureHandler gesture;
 	private CardInfo cardInfo;
 	public CardData cardData; 
@@ -343,6 +343,6 @@ public class CardCD : MonoBehaviour
 		}
 
 
-	}
+	}*/
 }
 

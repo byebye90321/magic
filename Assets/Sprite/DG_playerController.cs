@@ -64,7 +64,6 @@ public class DG_playerController : MonoBehaviour
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
 
 		//-------------MOVE----------------------------
-
 		Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertiacl")) * speed;
 		rigid2D.velocity = new Vector2(moveVec.x, rigid2D.velocity.y);
 		animator_S.SetFloat("Speed", Mathf.Abs(moveVec.x));
@@ -77,15 +76,14 @@ public class DG_playerController : MonoBehaviour
 				jumping = true;
 				rigid2D.velocity = new Vector2(0, jumpForce);
 				animator_S.SetBool("isJump", jumping);
-				//animator_B.SetBool("isJump", jumping);
+				animator_B.SetBool("isJump", jumping); //test版
 			}
 			animator_S.SetBool("fall", false);
-			//animator_B.SetBool("fall", false);
+			//animator_B.SetBool("fall", false);  
 		}
-		else {
+		else
+		{
 			OnLanding();
-			animator_S.SetBool("isJump", jumping);
-			//animator_B.SetBool("isJump", jumping);
 		}
 
 		//--------------move----------------
@@ -107,22 +105,23 @@ public class DG_playerController : MonoBehaviour
 		{
 			animator_S.SetBool("fall", true);
 			//animator_B.SetBool("fall", true);
+			animator_S.SetBool("isJump", jumping);
+			animator_B.SetBool("isJump", false);
 		}
-		animator_S.SetFloat("velocity", rigid2D.velocity.y);
-		//animator_B.SetFloat("velocity", rigid2D.velocity.y);
 		jumping = false;
+		  //test版
 	}
 
 
 	//---------------------Damage-----------------------
-	void OnTriggerEnter2D(Collider2D col)  //玩家受到小怪攻擊
+	void OnTriggerEnter2D(Collider2D col)  //玩家受到怪物攻擊
 	{
-		if (col.tag == "monster")
+		if (col.tag == "smallEnemy")
 		{
 			TakeDamage(5);
 		}
 
-		if (col.tag == "BossMonster")
+		if (col.tag == "BossEnemy")
 		{
 			TakeDamage(15);
 		}

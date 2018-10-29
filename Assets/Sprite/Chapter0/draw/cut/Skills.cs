@@ -15,6 +15,7 @@ public class Skills : MonoBehaviour
 	private Button skillButton;
 
 	public bool attack;
+	public DG_GameManager GameManager;
 
 	/*public void UseSkill(string skillName)
 	{
@@ -28,29 +29,30 @@ public class Skills : MonoBehaviour
 	}*/
 	void Start()
 	{
-		// 获得技能按钮，然后绑定点击事件
-		//this.skillButton = this.GetComponent<Button>();
-		//skillButton.onClick.AddListener(() => this.UseSkill(skillName));
-		// 一开始冷却时满的，可以立即使用技能
-		// 如果不想让玩家一开始能立即使用技能，这里设置成别的小于技能冷却的值
 		currentCoolDown = 0;
 	}
 
 	void Update()
 	{
-		if (currentCoolDown < coolDown)
+		if (DG_GameManager.drawState == DrawState.Teach)
 		{
-			attack = false;
-			//Debug.Log(attack);
-			// 更新冷却
-			currentCoolDown += Time.deltaTime;
-			// 显示冷却动画
-			this.icon.fillAmount = 1 - currentCoolDown / coolDown;
-		}
 
-		if (currentCoolDown >= coolDown){
-			attack = true;
-			//Debug.Log(attack);
+		}
+		else if (DG_GameManager.drawState == DrawState.Game)
+		{
+			if (currentCoolDown < coolDown)
+			{
+				attack = false;
+				// 更新冷却
+				currentCoolDown += Time.deltaTime;
+				// 显示冷却动画
+				this.icon.fillAmount = 1 - currentCoolDown / coolDown;
+			}
+
+			if (currentCoolDown >= coolDown)
+			{
+				attack = true;
+			}
 		}
 	}
 }

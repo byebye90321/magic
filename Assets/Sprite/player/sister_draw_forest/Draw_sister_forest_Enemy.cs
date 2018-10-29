@@ -7,7 +7,7 @@ using Spine;
 public class Draw_sister_forest_Enemy : MonoBehaviour
 {
 
-	public static Draw_sister_forest_Enemy drawEnemy;
+	/*public static Draw_sister_forest_Enemy drawEnemy;
 
 	//--------------------------Animation-------------------------
 	public SkeletonAnimation skeletonAnimation_E1;
@@ -113,7 +113,7 @@ public class Draw_sister_forest_Enemy : MonoBehaviour
 		if (time_int == 0)
 		{
 			/*countdown.text = "0";
-			yield return new WaitForSeconds(1);*/
+			yield return new WaitForSeconds(1);
 			countdown.enabled = false;
 			if (defensiveCount == AtkCount)//全點掉完  
 			{
@@ -166,7 +166,7 @@ public class Draw_sister_forest_Enemy : MonoBehaviour
 					NEWatkpreft.transform.position = new Vector3(Random.Range(-3.0f, 4.0f), Random.Range(-2.5f, 4.0f), 0);
 					/*Debug.Log(NEWatkpreft.activeInHierarchy);
 					atkpreft = NEWatkpreft;
-					Debug.Log(atkpreft.activeInHierarchy);*/
+					Debug.Log(atkpreft.activeInHierarchy);*
 				}
 				CancelInvoke("AtkPoistion");
 
@@ -236,7 +236,7 @@ public class Draw_sister_forest_Enemy : MonoBehaviour
 		time_int = 3;
 		countdown.text = time_int + "";
 		/*Atk1.SetActive(false);
-		Atk2.SetActive(false);*/
+		Atk2.SetActive(false);
 		Attack = false;
 		Atk_int = 1;
 		drawPlayerController.index += 1;
@@ -258,7 +258,7 @@ public class Draw_sister_forest_Enemy : MonoBehaviour
 		{
 			Debug.Log("mosnterDead");
 		}
-	}
+	}*/
 }
 
 

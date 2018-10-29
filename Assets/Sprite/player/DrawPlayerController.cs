@@ -25,7 +25,7 @@ public class DrawPlayerController : MonoBehaviour {
 	public GameObject hurtTextObj;
 	public Text hurtText;
 	//--------------------------回合控制脚本----------------------
-	private DrawGameManager drawGameManager;
+	private DG_GameManager drawGameManager;
 
 	//获取敌人脚本的引用 
 	//private DrawEnemyController drawEnemyController;

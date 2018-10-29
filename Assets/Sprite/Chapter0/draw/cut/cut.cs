@@ -5,7 +5,6 @@ using Spine;
 
 public class cut : MonoBehaviour
 {
-	public GameObject player;
     public GameObject obj1, obj2;    //分开后的两边水果
     public GameObject[] wz;          //几种污渍背景
 
@@ -49,10 +48,6 @@ public class cut : MonoBehaviour
 				
 			}
         }
-        /*else if (this.transform.position.y <= -6f)         //水果掉落到范围外扣分自动销毁
-        {
-            Destroy(this.gameObject);
-        }*/
 
     }
 
@@ -67,10 +62,11 @@ public class cut : MonoBehaviour
 	{
 		if (col.gameObject.name == "Player")
 		{
-			CreateHalf(obj1, 0);
-			CreateHalf(obj2, 1);
-			Createwz();
-			Destroy(this.gameObject);
+			//CreateHalf(obj1, 0);
+			//CreateHalf(obj2, 1);
+			//Createwz();
+			//Destroy(this.gameObject);
+			StartCoroutine("Death");
 		}
 	}
 }

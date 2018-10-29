@@ -17,7 +17,7 @@ public class EndPoint : MonoBehaviour
 
 		if (col.gameObject.tag == "Player")
 		{
-			DrawGameManager.Instance.win();
+			DG_GameManager.Instance.win();
 		}
 	}
 

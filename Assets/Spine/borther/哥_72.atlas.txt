@@ -6,98 +6,105 @@ filter: Linear,Linear
 repeat: none
 右腳
   rotate: true
-  xy: 2, 2
+  xy: 3517, 950
   size: 144, 507
   orig: 146, 509
   offset: 1, 1
   index: -1
-左腳
+哥_滑行
   rotate: false
-  xy: 1444, 922
+  xy: 2, 738
+  size: 1815, 1292
+  orig: 2048, 2048
+  offset: 101, 286
+  index: -1
+左腳
+  rotate: true
+  xy: 2, 2
   size: 141, 504
   orig: 143, 506
   offset: 1, 1
   index: -1
 披風右
   rotate: false
-  xy: 2, 148
+  xy: 3517, 1096
   size: 517, 934
   orig: 519, 936
   offset: 1, 1
   index: -1
 披風左
-  rotate: false
-  xy: 2, 1084
+  rotate: true
+  xy: 2, 145
   size: 591, 959
   orig: 593, 961
   offset: 1, 1
   index: -1
 攻擊表情
   rotate: false
-  xy: 1444, 1428
+  xy: 1819, 1415
   size: 847, 615
   orig: 946, 714
   offset: 41, 45
   index: -1
 睜眼
   rotate: true
-  xy: 3991, 1760
+  xy: 4036, 1747
   size: 283, 53
   orig: 285, 55
   offset: 1, 1
   index: -1
 睜眼表情
   rotate: false
-  xy: 2293, 1428
+  xy: 1819, 798
   size: 847, 615
   orig: 946, 714
   offset: 41, 45
   index: -1
 脖子
   rotate: false
-  xy: 1587, 1237
+  xy: 3517, 759
   size: 283, 189
   orig: 285, 191
   offset: 1, 1
   index: -1
 蝴蝶翅膀上
   rotate: false
-  xy: 1587, 1122
+  xy: 3802, 835
   size: 125, 113
   orig: 127, 115
   offset: 1, 1
   index: -1
 蝴蝶翅膀下
   rotate: false
-  xy: 1444, 839
+  xy: 508, 39
   size: 93, 81
   orig: 95, 83
   offset: 1, 1
   index: -1
 被打表情
   rotate: false
-  xy: 3142, 1428
+  xy: 2668, 1415
   size: 847, 615
   orig: 946, 714
   offset: 41, 45
   index: -1
 閉眼
-  rotate: true
-  xy: 521, 833
+  rotate: false
+  xy: 508, 122
   size: 249, 21
   orig: 251, 23
   offset: 1, 1
   index: -1
 閉眼表情
   rotate: false
-  xy: 595, 1428
+  xy: 2668, 798
   size: 847, 615
   orig: 946, 714
   offset: 41, 45
   index: -1
 頭
   rotate: false
-  xy: 595, 811
+  xy: 963, 121
   size: 847, 615
   orig: 849, 617
   offset: 1, 1

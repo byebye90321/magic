@@ -18,6 +18,8 @@ TagManager:
   - gameSound
   - Touch
   - MosterStop
+  - smallEnemy
+  - BossEnemy
   layers:
   - Default
   - TransparentFX

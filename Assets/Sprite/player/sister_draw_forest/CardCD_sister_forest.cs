@@ -3,12 +3,12 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 public class CardCD_sister_forest : MonoBehaviour
-, IPointerExitHandler
+/*, IPointerExitHandler
 , IPointerDownHandler
 , IPointerUpHandler
-, IEventSystemHandler
+, IEventSystemHandler*/
 {
-	public Draw_sister_forest drawPlayerController;
+	/*public Draw_sister_forest drawPlayerController;
 	public ExampleGestureHandler gesture;
 	private CardInfo cardInfo;
 	public CardData cardData; 
@@ -115,7 +115,7 @@ public class CardCD_sister_forest : MonoBehaviour
 			card3.SetActive(false);
 		}
 
-		/*//第四張卡
+		//第四張卡
 		if (card01Turn == true)
 		{
 			//cardCD4.cardInfo = cardData.card01;
@@ -123,7 +123,7 @@ public class CardCD_sister_forest : MonoBehaviour
 		}
 		else {
 			card4.SetActive(false);
-		}*/
+		}
 
 		cardImage.sprite = cardInfo.CardSprite;
 		
@@ -343,6 +343,6 @@ public class CardCD_sister_forest : MonoBehaviour
 		}
 
 
-	}
+	}*/
 }
 

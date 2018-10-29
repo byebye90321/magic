@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Defensive_sister_forest : MonoBehaviour{
 
-	public static Defensive_sister_forest defensive;
+	/*public static Defensive_sister_forest defensive;
 	private Draw_sister_forest_Enemy drawEnemyController;
 	public GameObject Atk;
 	private Vector3 player;
@@ -44,5 +44,5 @@ public class Defensive_sister_forest : MonoBehaviour{
 			Destroy(Atk);
 		}
 	   yield return new WaitForSeconds(2f);
-	}
+	}*/
 }

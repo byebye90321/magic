@@ -7,7 +7,7 @@ using Spine;
 public class Draw_sister_forest : MonoBehaviour
 {
 
-	public static Draw_sister_forest drawPlayerController;
+	/*public static Draw_sister_forest drawPlayerController;
 	public ExampleGestureHandler exampleGestureHandler;
 	//--------------------------畫符，滑鼠-------------------------
 	public GameObject Gesture;
@@ -149,7 +149,7 @@ public class Draw_sister_forest : MonoBehaviour
 			mouseEffect.SetActive(false);
 			/*exampleGestureHandler.effectA.SetActive(false);
 			exampleGestureHandler.effectB.SetActive(false);
-			exampleGestureHandler.effectC.SetActive(false);*/
+			exampleGestureHandler.effectC.SetActive(false);
 		}
 	}
 
@@ -180,11 +180,11 @@ public class Draw_sister_forest : MonoBehaviour
 		{
 			Debug.Log("playerDead");
 			/*skeletonAnimation_S.state.SetAnimation(0, "death", false);
-			skeletonAnimation_B.state.SetAnimation(0, "death", false);*/
+			skeletonAnimation_B.state.SetAnimation(0, "death", false);
 		}
 	}
 
-
+*/
 
 
 }
