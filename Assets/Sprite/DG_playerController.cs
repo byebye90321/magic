@@ -125,8 +125,8 @@ public class DG_playerController : MonoBehaviour
 		if (col.tag == "smallEnemy") //玩家受到怪物攻擊
 		{
 			TakeDamage(5);
-			animator_S.SetLayerWeight(1, 1f);
-			StartCoroutine("Beaten");
+			animator_S.SetTrigger("beaten");
+			animator_B.SetTrigger("beaten");
 		}
 
 		if (col.tag == "BossEnemy")
@@ -135,11 +135,7 @@ public class DG_playerController : MonoBehaviour
 		}
 	}
 
-	IEnumerator Beaten()
-	{
-		yield return new WaitForSeconds(1);
-		animator_S.SetLayerWeight(1, 0f);
-	}
+
 
 	void OnTriggerExit2D(Collider2D col)
 	{

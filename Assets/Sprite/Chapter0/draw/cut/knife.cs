@@ -16,6 +16,7 @@ public class knife : MonoBehaviour
 	Rigidbody2D rb;
 	Camera cam;
 	//CircleCollider2D circleCollider;
+	public int deathCount;
 
 	public LayerMask layerMask;
 
@@ -81,6 +82,14 @@ public class knife : MonoBehaviour
 		currentBladeTrail.transform.SetParent(null);
 		Destroy(currentBladeTrail, 2f);
 		//circleCollider.enabled = false;
+	}
+
+	void OnTriggerExit2D(Collider2D col)
+	{
+		if (col.tag == "smallEnemy")
+		{
+			deathCount += 1;
+		}
 	}
 
 }

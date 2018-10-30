@@ -17,6 +17,7 @@ public class DG_GameManager : MonoBehaviour {
 
 	public DG_playerController dg_playerController;
 	public DG_EnemyController dg_enemyController;
+	public knife knife;
 	//-----------------暫停物件-------------------
 	public Button Puase;
 	public GameObject pauseMenu;
@@ -92,6 +93,7 @@ public class DG_GameManager : MonoBehaviour {
 
 	void FixedUpdate () {
 
+		Debug.Log(drawState);
 		/*if (DrawEnemyController.end == true) 
 		{
 			textPanel.SetActive(true);
@@ -138,6 +140,7 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count1()
 	{
+		drawState = DrawState.Teach;
 		teachText.text = "目標！使用魔法擊退敵人！";
 		teachText.fontSize = 34;
 		black_bgImage.SetActive(true);
@@ -163,6 +166,7 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count3()
 	{
+		drawState = DrawState.Game;
 		HitOpen.SetTrigger("HitOpen");
 		fingerObj.SetActive(true);
 		maskObj.SetActive(true);
@@ -183,6 +187,7 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count4()
 	{
+		drawState = DrawState.Teach;
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "Good！";
 		yield return new WaitForSeconds(2);
@@ -191,6 +196,7 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count5()
 	{
+		drawState = DrawState.Game;
 		fingerObj.SetActive(true);
 		maskObj.SetActive(true);
 		mask.uvRect = new Rect(-0.75f, 0.34f, 1.5f, 1.5f);
@@ -205,9 +211,9 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count6()
 	{
+		drawState = DrawState.Teach;
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "GREAT！";
-		dg_playerController.graphics.localRotation = Quaternion.Euler(0, 0, 0);
 		jumpBtn.raycastTarget = false;
 		yield return new WaitForSeconds(2);
 		HitObj.SetActive(false);
@@ -216,14 +222,35 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count7()
 	{
-		enemy.SetActive(true);
-		yield return new WaitForSeconds(2);
 		HitObj.SetActive(true);
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "小怪物來襲！";
-		yield return new WaitForSeconds(1.5f);
-		HitObj.SetActive(false);
+		enemy.SetActive(true);
+		dg_playerController.graphics.localRotation = Quaternion.Euler(0, 0, 0);
+		yield return new WaitForSeconds(2f);
+		teachText.text = "被怪物觸碰到會損失血量，請小心";
+		yield return new WaitForSeconds(2f);
 		enemyAnim.SetTrigger("Atk");
+		StartCoroutine("count8");
+	}
+
+	IEnumerator count8()
+	{
+		yield return new WaitForSeconds(2f);
+		drawState = DrawState.Game;
+		drawCanvas.GetComponent<Canvas>().enabled = true;
+		HitObj.SetActive(true);
+		teachText.text = "現在準備反擊！";
+		HitOpen.SetTrigger("HitOpen");
+		yield return new WaitForSeconds(2f);
+		teachText.text = "在場景上畫出線條，消滅小怪物";
+		fingerObj.SetActive(true);
+		fingerAnim.SetInteger("finger", 2);
+		yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
+		fingerObj.SetActive(false);
+		yield return new WaitUntil(() => knife.deathCount ==2);
+		teachText.text = "消滅成功！Perfect！";
+		drawState = DrawState.Teach;
 	}
 
 
