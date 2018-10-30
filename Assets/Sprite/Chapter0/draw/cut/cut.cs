@@ -60,13 +60,13 @@ public class cut : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.gameObject.name == "Player")
+		/*if (col.gameObject.name == "Player")
 		{
 			//CreateHalf(obj1, 0);
 			//CreateHalf(obj2, 1);
 			//Createwz();
 			//Destroy(this.gameObject);
 			StartCoroutine("Death");
-		}
+		}*/
 	}
 }

@@ -60,6 +60,14 @@ public class DG_GameManager : MonoBehaviour {
 	public Canvas drawCanvas;
 	public bool TeachMove = false;
 	public bool TeachJump = false;
+	public RawImage mask;
+	public GameObject maskObj;
+	public Animator HitOpen;
+	public GameObject HitObj;
+	public Animator fingerAnim;
+	public GameObject fingerObj;
+	public Animator enemyAnim;
+	public GameObject enemy;
 
 
 	void Start () {
@@ -77,6 +85,11 @@ public class DG_GameManager : MonoBehaviour {
 		drawCanvas.GetComponent<Canvas>().enabled = false;
 	}
 
+	void Awake()
+	{
+		StartCoroutine("count1");
+	}
+
 	void FixedUpdate () {
 
 		/*if (DrawEnemyController.end == true) 
@@ -86,59 +99,10 @@ public class DG_GameManager : MonoBehaviour {
 			text.text = "糟了！他們好像太厲害了，我們還是先逃吧！那邊有門！";
 			StartCoroutine("run");	
 		}*/
-		if (drawState == DrawState.Teach) //平衡條不扣
+		/*if (drawState == DrawState.Teach) //平衡條不扣
 		{
-			if (count == 1)
-			{
-				teachText.text = "目標！使用魔法擊退敵人！";
-				teachText.fontSize = 36;
-				black_bgImage.SetActive(true);
-				//balanceSlider.transform.SetAsLastSibling();
-			}
-			else if (count == 2)
-			{
-				teachText.text = "使用移動鍵移動角色";
-				teachText.fontSize = 28;
-				joystick.raycastTarget = true;
-				black_bgImage.SetActive(false);
-				finger.SetActive(true);
-				if (TeachMove)
-				{
-					joystick.raycastTarget = false;
-					
-					jumpBtn.raycastTarget = true;
-					if(Input.GetMouseButtonUp(0))
-						count = 3;
-				}
-				//balanceSlider.transform.SetSiblingIndex(1);
-				//healthBar.transform.SetAsLastSibling();
-			}
-			else if (count == 3)
-			{
-				teachText.text = "Good！";
-				StartTime -= 1 * Time.deltaTime;
-				if (StartTime < 0) {
-					count = 4;
-				}
-				//InvokeRepeating("StarGame", 1, 1);		
-			}
-			else if (count == 4)
-			{
-				teachText.text = "使用跳鍵讓角色跳躍";
-				if (TeachJump)
-				{
-					next();
-				}
-			}
-			else if (count == 5)
-			{
-				teachText.text = "GREAT！";
-				dg_playerController.graphics.localRotation = Quaternion.Euler(0, 0, 0);
-				jumpBtn.raycastTarget = false;
-			}
-			Debug.Log(count);
-			
-		}
+
+		}*/
 		if (drawState == DrawState.Game)
 		{
 			//----------------------平衡條----------------------------
@@ -172,9 +136,96 @@ public class DG_GameManager : MonoBehaviour {
 		}
 	}
 
-	public void next() {
-		count += 1;
+	IEnumerator count1()
+	{
+		teachText.text = "目標！使用魔法擊退敵人！";
+		teachText.fontSize = 34;
+		black_bgImage.SetActive(true);
+		yield return new WaitForSeconds(2);
+		StartCoroutine("count2");
 	}
+
+	IEnumerator count2()
+	{
+		HitOpen.SetTrigger("HitOpen");
+		teachText.fontSize = 28;
+		teachText.text = "上方的平衡條會隨挑戰時間流逝";
+		balanceSlider.transform.SetAsLastSibling();
+		yield return new WaitForSeconds(2);
+		teachText.text = "當數值歸零，則挑戰失敗！";
+		yield return new WaitForSeconds(2);
+		teachText.text = "接下來嘗試看看移動吧！";
+		balanceSlider.transform.SetAsFirstSibling();
+		yield return new WaitForSeconds(2);
+		StartCoroutine("count3");
+	}
+
+
+	IEnumerator count3()
+	{
+		HitOpen.SetTrigger("HitOpen");
+		fingerObj.SetActive(true);
+		maskObj.SetActive(true);
+		mask.uvRect = new Rect(0.33f, 0.26f, 1.5f, 1.5f);
+		teachText.text = "使用移動鍵移動角色";
+		teachText.fontSize = 28;
+		joystick.raycastTarget = true;
+		black_bgImage.SetActive(false);
+		finger.SetActive(true);
+		yield return new WaitUntil(() => TeachMove);
+		maskObj.SetActive(false);
+		joystick.raycastTarget = false;
+		jumpBtn.raycastTarget = true;
+		fingerObj.SetActive(false);
+		yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
+		StartCoroutine("count4");
+	}
+
+	IEnumerator count4()
+	{
+		HitOpen.SetTrigger("HitOpen");
+		teachText.text = "Good！";
+		yield return new WaitForSeconds(2);
+		StartCoroutine("count5");
+	}
+
+	IEnumerator count5()
+	{
+		fingerObj.SetActive(true);
+		maskObj.SetActive(true);
+		mask.uvRect = new Rect(-0.75f, 0.34f, 1.5f, 1.5f);
+		fingerAnim.SetInteger("finger", 1);
+		HitOpen.SetTrigger("HitOpen");
+		teachText.text = "點擊跳鍵讓角色跳躍";
+		yield return new WaitUntil(() => TeachJump);
+		maskObj.SetActive(false);
+		fingerObj.SetActive(false);
+		StartCoroutine("count6");
+	}
+
+	IEnumerator count6()
+	{
+		HitOpen.SetTrigger("HitOpen");
+		teachText.text = "GREAT！";
+		dg_playerController.graphics.localRotation = Quaternion.Euler(0, 0, 0);
+		jumpBtn.raycastTarget = false;
+		yield return new WaitForSeconds(2);
+		HitObj.SetActive(false);
+		StartCoroutine("count7");
+	}
+
+	IEnumerator count7()
+	{
+		enemy.SetActive(true);
+		yield return new WaitForSeconds(2);
+		HitObj.SetActive(true);
+		HitOpen.SetTrigger("HitOpen");
+		teachText.text = "小怪物來襲！";
+		yield return new WaitForSeconds(1.5f);
+		HitObj.SetActive(false);
+		enemyAnim.SetTrigger("Atk");
+	}
+
 
 	public void StarGame() {
 		StartTime -= 1*Time.deltaTime;
@@ -186,10 +237,6 @@ public class DG_GameManager : MonoBehaviour {
 		Debug.Log(StartTime);
 	}
 
-	IEnumerator wait()
-	{
-		yield return new WaitForSeconds(1);
-	}
 
 	IEnumerator run() {
 		audio.clip = runSound;

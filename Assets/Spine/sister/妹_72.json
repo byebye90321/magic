@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "yEh4sfMxNaN/iQ4tz6fxulwHTTo", "spine": "3.6.53", "width": 2048, "height": 1581.18 },
+"skeleton": { "hash": "qlHLfrSfcLYx3eoUacVZ3dhLZ4A", "spine": "3.6.53", "width": 2394.82, "height": 1603.36 },
 "bones": [
 	{ "name": "root", "x": 0.01, "y": 0.06 },
 	{ "name": "hip", "parent": "root", "x": 17, "y": 568.56 },
@@ -69,7 +69,7 @@
 		},
 		"妹_72": {
 			"妹_": { "color": "753030ac", "x": -145.03, "y": 724, "width": 997, "height": 1520 },
-			"妹_滑行": { "y": 413.88, "width": 2048, "height": 1024 }
+			"妹_滑行": { "x": 34.26, "y": 480.94, "scaleX": 1.168, "scaleY": 1.168, "rotation": -0.16, "width": 2048, "height": 1024 }
 		},
 		"左大腿": {
 			"左大腿": { "x": 106.71, "y": 3.73, "rotation": 91.64, "width": 98, "height": 229 },
