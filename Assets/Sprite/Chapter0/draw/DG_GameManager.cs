@@ -98,7 +98,7 @@ public class DG_GameManager : MonoBehaviour {
 		{
 			textPanel.SetActive(true);
 			Puase.interactable = false;
-			text.text = "糟了！他們好像太厲害了，我們還是先逃吧！那邊有門！";
+			text.text = "糟了！他們好像太厲害了，我們還是先逃吧！那邊有門！";  "趁他們暈的時候趕快從後面的門逃"
 			StartCoroutine("run");	
 		}*/
 		/*if (drawState == DrawState.Teach) //平衡條不扣
@@ -252,7 +252,6 @@ public class DG_GameManager : MonoBehaviour {
 		teachText.text = "消滅成功！Perfect！";
 		drawState = DrawState.Teach;
 	}
-
 
 	public void StarGame() {
 		StartTime -= 1*Time.deltaTime;
