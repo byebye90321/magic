@@ -303,8 +303,10 @@ MonoBehaviour:
   textResult: {fileID: 1235186461}
   referenceRoot: {fileID: 1262337813}
   enemyController: {fileID: 228383963}
+  playerController: {fileID: 462784794}
   skill1: {fileID: 312836678}
   skillAtk1: 15
+  isAtk: 0
 --- !u!114 &10663016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1722,13 +1724,14 @@ GameObject:
   - component: {fileID: 228383961}
   - component: {fileID: 228383963}
   - component: {fileID: 228383962}
+  - component: {fileID: 228383964}
   m_Layer: 0
   m_Name: BossEnemy
   m_TagString: BossEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &228383960
 Transform:
   m_ObjectHideFlags: 0
@@ -1736,7 +1739,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 228383959}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3, y: -4.58, z: 1}
+  m_LocalPosition: {x: 12.99, y: -4.58, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 863012552}
@@ -1804,6 +1807,24 @@ MonoBehaviour:
   wz: []
   enemy1: {fileID: 863012549}
   enemy2: {fileID: 858368490}
+--- !u!95 &228383964
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 228383959}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a4b88a049fdf98446858841bd25143c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &235315402
 GameObject:
   m_ObjectHideFlags: 0
@@ -3242,7 +3263,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1426491716}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3389,6 +3410,7 @@ MonoBehaviour:
   curHealth: 100
   maxHealth: 100
   playerHealth: {fileID: 1808597688}
+  falsh: {fileID: 1318956985}
 --- !u!114 &462784795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3642,7 +3664,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1426491716}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 19.659}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5495,8 +5517,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1318956986}
+  m_Children: []
   m_Father: {fileID: 1426491716}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7962,7 +7983,7 @@ RectTransform:
   m_Children:
   - {fileID: 291303508}
   m_Father: {fileID: 1426491716}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -9644,13 +9665,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 791314440}
-  m_RootOrder: 0
+  m_Father: {fileID: 1426491716}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.12005615, y: 0.11999512}
-  m_SizeDelta: {x: 0, y: -0.000061035156}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1318956988
 MonoBehaviour:
@@ -9901,7 +9922,7 @@ RectTransform:
   m_Children:
   - {fileID: 1934878712}
   m_Father: {fileID: 1426491716}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 19.659}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10465,7 +10486,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dg_playerController: {fileID: 462784794}
   dg_enemyController: {fileID: 228383963}
-  knife: {fileID: 731472177}
+  Knife: {fileID: 731472177}
+  cut1: {fileID: 1916129300}
+  cut2: {fileID: 1756818930}
+  geature: {fileID: 10663015}
   Puase: {fileID: 596298946}
   pauseMenu: {fileID: 2101011694}
   black_bgImage: {fileID: 791314439}
@@ -10480,7 +10504,6 @@ MonoBehaviour:
   audio: {fileID: 1324136046}
   runSound: {fileID: 8300000, guid: a8336f443ce8ff949997dc8003fa1b16, type: 3}
   teachText: {fileID: 291303510}
-  count: 1
   finger: {fileID: 1326159897}
   joystick: {fileID: 1355230451}
   jumpBtn: {fileID: 1925551914}
@@ -10496,6 +10519,7 @@ MonoBehaviour:
   fingerObj: {fileID: 1326159897}
   enemyAnim: {fileID: 1615004088}
   enemy: {fileID: 1615004087}
+  BossEnemy: {fileID: 228383959}
 --- !u!4 &1399051285
 Transform:
   m_ObjectHideFlags: 0
@@ -10681,6 +10705,7 @@ RectTransform:
   - {fileID: 2101011699}
   - {fileID: 1512297949}
   - {fileID: 791314440}
+  - {fileID: 1318956986}
   - {fileID: 479052709}
   - {fileID: 450284058}
   - {fileID: 1326159898}
@@ -12762,7 +12787,6 @@ MonoBehaviour:
   obj2: {fileID: 1243852364850532, guid: 3f360d484a927284aa17aace94eda240, type: 2}
   wz: []
   enemy: {fileID: 1756818926}
-  deathCount: 0
 --- !u!50 &1756818931
 Rigidbody2D:
   serializedVersion: 4
@@ -13804,7 +13828,6 @@ MonoBehaviour:
   obj2: {fileID: 1243852364850532, guid: 3f360d484a927284aa17aace94eda240, type: 2}
   wz: []
   enemy: {fileID: 1916129296}
-  deathCount: 0
 --- !u!50 &1916129301
 Rigidbody2D:
   serializedVersion: 4

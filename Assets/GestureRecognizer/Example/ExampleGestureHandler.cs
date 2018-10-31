@@ -34,9 +34,10 @@ public class ExampleGestureHandler : MonoBehaviour
 	//----------------2版------------------
 	
 	public DG_EnemyController enemyController;
+	public DG_playerController playerController;
 	public Skills skill1;
 	public int skillAtk1;
-
+	public bool isAtk=false;
 	void Start()
 	{
 		references = referenceRoot.GetComponentsInChildren<GesturePatternDraw>();
@@ -67,10 +68,13 @@ public class ExampleGestureHandler : MonoBehaviour
 		{
 			if (result.gesture.id == "M")
 			{
+				isAtk = true;
 				Debug.Log("攻擊");
+				playerController.Attack();
 				textResult.text = result.gesture.id + "\n" + Mathf.RoundToInt(result.score.score * 100) + "%";
 				skill1.currentCoolDown = 0;
 				enemyController.Skill1();
+				StartCoroutine("close");
 			}
 			else {
 
@@ -93,4 +97,9 @@ public class ExampleGestureHandler : MonoBehaviour
 		}
 	}
 
+	IEnumerator close()
+	{
+		yield return new WaitForSeconds(1);
+		isAtk = false;
+	}
 }

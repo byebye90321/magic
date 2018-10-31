@@ -17,7 +17,10 @@ public class DG_GameManager : MonoBehaviour {
 
 	public DG_playerController dg_playerController;
 	public DG_EnemyController dg_enemyController;
-	public knife knife;
+	public knife Knife;
+	public cut cut1;
+	public cut cut2;
+	public ExampleGestureHandler geature;
 	//-----------------暫停物件-------------------
 	public Button Puase;
 	public GameObject pauseMenu;
@@ -53,7 +56,6 @@ public class DG_GameManager : MonoBehaviour {
 
 	//------------------教學暫停物件------------------
 	public Text teachText;
-	public int count = 1;
 	public GameObject finger;
 	public Image joystick; //image射線關閉
 	public Image jumpBtn; //image設限關閉
@@ -69,6 +71,7 @@ public class DG_GameManager : MonoBehaviour {
 	public GameObject fingerObj;
 	public Animator enemyAnim;
 	public GameObject enemy;
+	public GameObject BossEnemy;
 
 
 	void Start () {
@@ -88,7 +91,7 @@ public class DG_GameManager : MonoBehaviour {
 
 	void Awake()
 	{
-		StartCoroutine("count1");
+		StartCoroutine("count7");
 	}
 
 	void FixedUpdate () {
@@ -166,7 +169,7 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count3()
 	{
-		drawState = DrawState.Game;
+		//drawState = DrawState.Game;
 		HitOpen.SetTrigger("HitOpen");
 		fingerObj.SetActive(true);
 		maskObj.SetActive(true);
@@ -179,7 +182,6 @@ public class DG_GameManager : MonoBehaviour {
 		yield return new WaitUntil(() => TeachMove);
 		maskObj.SetActive(false);
 		joystick.raycastTarget = false;
-		jumpBtn.raycastTarget = true;
 		fingerObj.SetActive(false);
 		yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
 		StartCoroutine("count4");
@@ -196,12 +198,13 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count5()
 	{
-		drawState = DrawState.Game;
+		//drawState = DrawState.Game;
 		fingerObj.SetActive(true);
 		maskObj.SetActive(true);
 		mask.uvRect = new Rect(-0.75f, 0.34f, 1.5f, 1.5f);
 		fingerAnim.SetInteger("finger", 1);
 		HitOpen.SetTrigger("HitOpen");
+		jumpBtn.raycastTarget = true;
 		teachText.text = "點擊跳鍵讓角色跳躍";
 		yield return new WaitUntil(() => TeachJump);
 		maskObj.SetActive(false);
@@ -211,7 +214,7 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count6()
 	{
-		drawState = DrawState.Teach;
+		//drawState = DrawState.Teach;
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "GREAT！";
 		jumpBtn.raycastTarget = false;
@@ -225,6 +228,8 @@ public class DG_GameManager : MonoBehaviour {
 		HitObj.SetActive(true);
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "小怪物來襲！";
+		cut1.GetComponent<cut>().enabled = false;
+		cut2.GetComponent<cut>().enabled = false;
 		enemy.SetActive(true);
 		dg_playerController.graphics.localRotation = Quaternion.Euler(0, 0, 0);
 		yield return new WaitForSeconds(2f);
@@ -237,27 +242,72 @@ public class DG_GameManager : MonoBehaviour {
 	IEnumerator count8()
 	{
 		yield return new WaitForSeconds(2f);
-		drawState = DrawState.Game;
-		drawCanvas.GetComponent<Canvas>().enabled = true;
+		//drawState = DrawState.Game;	
 		HitObj.SetActive(true);
 		teachText.text = "現在準備反擊！";
 		HitOpen.SetTrigger("HitOpen");
 		yield return new WaitForSeconds(2f);
 		teachText.text = "在場景上畫出線條，消滅小怪物";
+		cut1.GetComponent<cut>().enabled = true;
+		cut2.GetComponent<cut>().enabled = true;
 		fingerObj.SetActive(true);
 		fingerAnim.SetInteger("finger", 2);
+		drawCanvas.GetComponent<Canvas>().enabled = true;
 		yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
 		fingerObj.SetActive(false);
-		yield return new WaitUntil(() => knife.deathCount ==2);
+		yield return new WaitUntil(() => Knife.deathCount >= 2);
 		teachText.text = "消滅成功！Perfect！";
-		drawState = DrawState.Teach;
+		//drawState = DrawState.Teach;
+		yield return new WaitForSeconds(3f);
+		StartCoroutine("count9");
+	}
+
+	IEnumerator count9()
+	{
+		HitOpen.SetTrigger("HitOpen");
+		teachText.text = "警告！小BOSS即將來襲！！！";
+		yield return new WaitForSeconds(1f);
+		BossEnemy.SetActive(true);
+		yield return new WaitForSeconds(2f);
+		HitOpen.SetTrigger("HitOpen");
+		teachText.text = "連續攻擊小BOSS";
+		yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
+		HitOpen.SetTrigger("HitOpen");
+		teachText.text = "繼續攻擊";
+		yield return new WaitUntil(() => dg_enemyController.curHealth<=80);
+		drawCanvas.GetComponent<Canvas>().enabled = false;
+		HitOpen.SetTrigger("HitOpen");
+		teachText.text = "看來我們該使用其他方法才能加快攻擊";
+		yield return new WaitForSeconds(3f);
+		StartCoroutine("count10");
+	}
+
+	IEnumerator count10()
+	{
+		maskObj.SetActive(true);
+		mask.uvRect = new Rect(-0.21f, 0.34f, 2.5f, 2.5f);
+		HitOpen.SetTrigger("HitOpen");
+		teachText.text = "下方為已蒐集到技能";
+		yield return new WaitForSeconds(2f);
+		drawState = DrawState.Game;
+		HitOpen.SetTrigger("HitOpen");
+		teachText.text = "等待技能冷卻完畢即可使用";
+		yield return new WaitForSeconds(5f);    //M技能時間 
+		maskObj.SetActive(false);
+		HitOpen.SetTrigger("HitOpen");
+		teachText.text = "使用M技能\n在螢幕中央一筆畫出M字形";
+		drawCanvas.GetComponent<Canvas>().enabled = true;
+		yield return new WaitUntil(() => geature.isAtk ==true);
+		teachText.text = "讚喔";
+
+
 	}
 
 	public void StarGame() {
 		StartTime -= 1*Time.deltaTime;
 		if (StartTime < 0)
 		{
-			count = 4;
+			
 			CancelInvoke();
 		}
 		Debug.Log(StartTime);

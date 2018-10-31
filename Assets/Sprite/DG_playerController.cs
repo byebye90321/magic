@@ -37,6 +37,7 @@ public class DG_playerController : MonoBehaviour
 	public Slider playerHealth;
 	bool isDead;
 	bool damaged;
+	public GameObject falsh;
 
 	void Start()
 	{
@@ -127,6 +128,7 @@ public class DG_playerController : MonoBehaviour
 			TakeDamage(5);
 			animator_S.SetTrigger("beaten");
 			animator_B.SetTrigger("beaten");
+			StartCoroutine("beaten");
 		}
 
 		if (col.tag == "BossEnemy")
@@ -135,16 +137,23 @@ public class DG_playerController : MonoBehaviour
 		}
 	}
 
-
-
-	void OnTriggerExit2D(Collider2D col)
+	IEnumerator beaten()
 	{
-		if (col.gameObject.name == "Teach_move")
+		for (int i = 0; i < 2; i++)
 		{
-
-			dg_GameManager.count = 3;
+			falsh.SetActive(true);
+			yield return new WaitForSeconds(0.1f);
+			falsh.SetActive(false);
+			yield return new WaitForSeconds(0.1f);
 		}
 	}
+
+	public void Attack()
+	{
+		animator_S.SetTrigger("attack");
+		animator_B.SetTrigger("attack");
+	}
+
 
 	public void TakeDamage(int amount)
 	{

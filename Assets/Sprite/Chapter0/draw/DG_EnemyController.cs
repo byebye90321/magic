@@ -37,6 +37,8 @@ public class DG_EnemyController : MonoBehaviour{
 	void Start()
 	{
 		col = GetComponent<BoxCollider2D>();
+		enemy1.state.SetAnimation(0, "idle", true);
+		enemy2.state.SetAnimation(0, "idle", true);
 	}
 	
 	void Update()
@@ -126,6 +128,10 @@ public class DG_EnemyController : MonoBehaviour{
 		if (col.gameObject.name == "Blade")
 		{
 			TakeDamage(1);
+			enemy1.state.SetAnimation(0, "death", false);
+			enemy1.state.AddAnimation(0, "idle", true, 0f);
+			enemy2.state.SetAnimation(0, "death", false);
+			enemy2.state.AddAnimation(0, "idle", true, 0f);
 		}
 	}
 }
