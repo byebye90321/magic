@@ -58,6 +58,8 @@ public class DG_playerController : MonoBehaviour
 				playerHealth.value = curHealth;
 			}
 		}
+
+		
 	}
 
 	public void FixedUpdate()
@@ -102,7 +104,12 @@ public class DG_playerController : MonoBehaviour
 			dg_GameManager.TeachMove = true;
 		}
 
-		
+		if (dg_GameManager.isRun == true)
+		{
+			rigid2D.transform.position = new Vector3(rigid2D.transform.position.x + 0.05f, rigid2D.transform.position.y, 10);
+			animator_S.SetBool("run", true);
+			animator_B.SetBool("run", true);
+		}
 	}
 
 	public void OnLanding() {
@@ -134,6 +141,11 @@ public class DG_playerController : MonoBehaviour
 		if (col.tag == "BossEnemy")
 		{
 			TakeDamage(15);
+		}
+
+		if (col.tag == "EndPoint")
+		{
+			dg_GameManager.win();
 		}
 	}
 

@@ -72,6 +72,8 @@ public class DG_GameManager : MonoBehaviour {
 	public Animator enemyAnim;
 	public GameObject enemy;
 	public GameObject BossEnemy;
+	private bool end;
+	public GameObject wall;
 
 
 	void Start () {
@@ -97,13 +99,13 @@ public class DG_GameManager : MonoBehaviour {
 	void FixedUpdate () {
 
 		Debug.Log(drawState);
-		/*if (DrawEnemyController.end == true) 
+		if (end) 
 		{
 			textPanel.SetActive(true);
 			Puase.interactable = false;
-			text.text = "糟了！他們好像太厲害了，我們還是先逃吧！那邊有門！";  "趁他們暈的時候趕快從後面的門逃"
+			text.text = "趁他們暈的時候，我們趕快從後面的門逃吧！";
 			StartCoroutine("run");	
-		}*/
+		}
 		/*if (drawState == DrawState.Teach) //平衡條不扣
 		{
 
@@ -138,6 +140,7 @@ public class DG_GameManager : MonoBehaviour {
 				Debug.Log("战斗胜利");
 				drawState = DrawState.Win;
 			}
+
 		}
 	}
 
@@ -274,7 +277,7 @@ public class DG_GameManager : MonoBehaviour {
 		yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "繼續攻擊";
-		yield return new WaitUntil(() => dg_enemyController.curHealth<=80);
+		yield return new WaitUntil(() => dg_enemyController.curHealth<=80);  //BUG
 		drawCanvas.GetComponent<Canvas>().enabled = false;
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "看來我們該使用其他方法才能加快攻擊";
@@ -298,16 +301,18 @@ public class DG_GameManager : MonoBehaviour {
 		teachText.text = "使用M技能\n在螢幕中央一筆畫出M字形";
 		drawCanvas.GetComponent<Canvas>().enabled = true;
 		yield return new WaitUntil(() => geature.isAtk ==true);
-		teachText.text = "讚喔";
-
-
+		HitOpen.SetTrigger("HitOpen");
+		teachText.text = "Excellent！";
+		yield return new WaitForSeconds(2f);
+		wall.SetActive(false);
+		HitObj.SetActive(false);
+		end = true;
 	}
 
 	public void StarGame() {
 		StartTime -= 1*Time.deltaTime;
 		if (StartTime < 0)
-		{
-			
+		{		
 			CancelInvoke();
 		}
 		Debug.Log(StartTime);
@@ -315,12 +320,14 @@ public class DG_GameManager : MonoBehaviour {
 
 
 	IEnumerator run() {
+		
 		audio.clip = runSound;
 		audio.Play();
 		yield return new WaitForSeconds(2);
 		textPanel.SetActive(false);
 		isRun = true;
-		//DrawEnemyController.end = false;
+		end = false;
+		//dg_playerController.animator_S.SetBool("run", true);
 	}
 
 

@@ -45,17 +45,17 @@ public class DG_EnemyController : MonoBehaviour{
 	{
 
 		//-----------------CUT------------------------
-		if (Input.GetMouseButton(0))
+		/*if (Input.GetMouseButton(0))
 		{
 			if (col.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))                //鼠标在当前水果2Dcollider内
 			{	
 				//StartCoroutine("testWait");
-				/*CreateHalf(obj1, 0);
-				CreateHalf(obj2, 1);
-				Createwz();*/
+				//CreateHalf(obj1, 0);
+				//CreateHalf(obj2, 1);
+				//Createwz();
 				//Destroy(this.gameObject);
 			}
-		}
+		}*/
 
 		//------------------health----------------------
 		if (damaged)
