@@ -38,19 +38,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Character.unity
     guid: 4331bc0aa6a05414a8b40f6faa79d1e0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Loading.unity
     guid: 194d299b4081be842b18ee23850cf945
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/sister_forest.unity
     guid: 58b7adec59e633749a65c3471155e943
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DrawGame_sister_forest.unity
     guid: 6c798669e4de7a1469352eaf59d6fa04
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Settle.unity
     guid: 254e4e2d837060b45bd8574010a387d6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tree.unity
     guid: dbb30a7a17778c8489298388ee1b6790
   m_configObjects: {}

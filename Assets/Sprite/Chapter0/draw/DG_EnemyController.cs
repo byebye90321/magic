@@ -75,10 +75,10 @@ public class DG_EnemyController : MonoBehaviour{
 	public void Skill1()
 	{
 		TakeDamage(gesture.skillAtk1);
-		enemy1.state.SetAnimation(0, "death", false);
-		enemy1.state.AddAnimation(0, "idle", true, 0f);
-		enemy2.state.SetAnimation(0, "death", false);
-		enemy2.state.AddAnimation(0, "idle", true, 0f);
+		enemy1.state.SetAnimation(0, "stun", true);
+		//enemy1.state.AddAnimation(0, "idle", true, 0f);
+		enemy2.state.SetAnimation(0, "stun", true);
+		//enemy2.state.AddAnimation(0, "idle", true, 0f);
 	}
 
 	public void TakeDamage(int amount)

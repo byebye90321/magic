@@ -5,8 +5,8 @@ format: RGBA8888
 filter: Linear,Linear
 repeat: none
 中刺
-  rotate: false
-  xy: 3782, 1800
+  rotate: true
+  xy: 2735, 1396
   size: 266, 232
   orig: 268, 234
   offset: 1, 1
@@ -19,8 +19,8 @@ repeat: none
   offset: 107, 31
   index: -1
 右刺
-  rotate: true
-  xy: 1900, 772
+  rotate: false
+  xy: 2969, 1441
   size: 329, 68
   orig: 331, 70
   offset: 1, 1
@@ -47,8 +47,8 @@ repeat: none
   offset: 1, 1
   index: -1
 左刺
-  rotate: false
-  xy: 2735, 1424
+  rotate: true
+  xy: 2131, 1236
   size: 79, 238
   orig: 81, 240
   offset: 1, 1
@@ -75,11 +75,18 @@ repeat: none
   offset: 1, 1
   index: -1
 攻眼
-  rotate: true
-  xy: 1970, 821
+  rotate: false
+  xy: 2131, 1317
   size: 291, 103
   orig: 483, 202
   offset: 101, 39
+  index: -1
+暈團
+  rotate: false
+  xy: 3782, 1645
+  size: 284, 387
+  orig: 317, 424
+  offset: 0, 26
   index: -1
 暈眼
   rotate: true
@@ -117,8 +124,8 @@ repeat: none
   offset: 71, 77
   index: -1
 閉眼
-  rotate: true
-  xy: 2075, 808
+  rotate: false
+  xy: 2424, 1354
   size: 304, 66
   orig: 483, 202
   offset: 97, 57

@@ -74,7 +74,7 @@ public class DG_GameManager : MonoBehaviour {
 	public GameObject BossEnemy;
 	private bool end;
 	public GameObject wall;
-
+	public GameObject blade;
 
 	void Start () {
 		Time.timeScale = 1f;
@@ -93,7 +93,7 @@ public class DG_GameManager : MonoBehaviour {
 
 	void Awake()
 	{
-		StartCoroutine("count7");
+		StartCoroutine("count1");
 	}
 
 	void FixedUpdate () {
@@ -260,8 +260,10 @@ public class DG_GameManager : MonoBehaviour {
 		fingerObj.SetActive(false);
 		yield return new WaitUntil(() => Knife.deathCount >= 2);
 		teachText.text = "消滅成功！Perfect！";
+		drawCanvas.GetComponent<Canvas>().enabled = false;
+		blade.transform.position = new Vector2(0,0);
 		//drawState = DrawState.Teach;
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(2f);
 		StartCoroutine("count9");
 	}
 
@@ -272,9 +274,13 @@ public class DG_GameManager : MonoBehaviour {
 		yield return new WaitForSeconds(1f);
 		BossEnemy.SetActive(true);
 		yield return new WaitForSeconds(2f);
+		drawCanvas.GetComponent<Canvas>().enabled = true;
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "連續攻擊小BOSS";
-		yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
+		fingerObj.SetActive(true);
+		fingerAnim.SetInteger("finger", 3);
+		yield return new WaitUntil(() => Input.GetMouseButton(0));
+		fingerObj.SetActive(false);
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "繼續攻擊";
 		yield return new WaitUntil(() => dg_enemyController.curHealth<=80);  //BUG
