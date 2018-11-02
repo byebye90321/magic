@@ -84,12 +84,14 @@ public class knife : MonoBehaviour
 		//circleCollider.enabled = false;
 	}
 
-	void OnTriggerExit2D(Collider2D col)
+	/*void OnTriggerExit2D(Collider2D col)
 	{
 		if (col.tag == "smallEnemy")
 		{
 			deathCount += 1;
+			Debug.Log(deathCount);
+			col.enabled = false;
 		}
-	}
+	}*/
 
 }

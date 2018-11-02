@@ -17,7 +17,6 @@ public class DG_GameManager : MonoBehaviour {
 
 	public DG_playerController dg_playerController;
 	public DG_EnemyController dg_enemyController;
-	public knife Knife;
 	public cut cut1;
 	public cut cut2;
 	public ExampleGestureHandler geature;
@@ -72,6 +71,7 @@ public class DG_GameManager : MonoBehaviour {
 	public Animator enemyAnim;
 	public GameObject enemy;
 	public GameObject BossEnemy;
+	public BoxCollider2D BossCollider;
 	private bool end;
 	public GameObject wall;
 	public GameObject blade;
@@ -89,6 +89,7 @@ public class DG_GameManager : MonoBehaviour {
 		joystick.raycastTarget = false;
 		jumpBtn.raycastTarget = false;
 		drawCanvas.GetComponent<Canvas>().enabled = false;
+		
 	}
 
 	void Awake()
@@ -258,7 +259,7 @@ public class DG_GameManager : MonoBehaviour {
 		drawCanvas.GetComponent<Canvas>().enabled = true;
 		yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
 		fingerObj.SetActive(false);
-		yield return new WaitUntil(() => Knife.deathCount >= 2);
+		yield return new WaitUntil(() => cut.isDeath >=2);
 		teachText.text = "消滅成功！Perfect！";
 		drawCanvas.GetComponent<Canvas>().enabled = false;
 		blade.transform.position = new Vector2(0,0);
@@ -309,6 +310,7 @@ public class DG_GameManager : MonoBehaviour {
 		yield return new WaitUntil(() => geature.isAtk ==true);
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "Excellent！";
+		BossCollider.GetComponent<BoxCollider2D>().enabled = false;
 		yield return new WaitForSeconds(2f);
 		wall.SetActive(false);
 		HitObj.SetActive(false);

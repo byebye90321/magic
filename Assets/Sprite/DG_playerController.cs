@@ -35,7 +35,7 @@ public class DG_playerController : MonoBehaviour
 	public int curHealth = 100;
 	public int maxHealth = 100;
 	public Slider playerHealth;
-	public GameObject healthObj;
+	public Transform healthObj;
 	bool isDead;
 	bool damaged;
 	public GameObject falsh;
@@ -97,11 +97,13 @@ public class DG_playerController : MonoBehaviour
 		if (moveVec.x > 0)
 		{
 			graphics.localRotation = Quaternion.Euler(0, 0, 0);
+			healthObj.localRotation = Quaternion.Euler(0, 0, 0);
 			dg_GameManager.TeachMove = true;
 		}
 		else if (moveVec.x < 0)
 		{
 			graphics.localRotation = Quaternion.Euler(0, 180, 0);
+			healthObj.localRotation = Quaternion.Euler(0, 180, 0);
 			//healthObj.transform.rotation = Quaternion.Euler(0, 0, 0);
 			dg_GameManager.TeachMove = true;
 		}

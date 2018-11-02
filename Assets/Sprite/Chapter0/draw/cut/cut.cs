@@ -12,7 +12,7 @@ public class cut : MonoBehaviour
     private Vector2[] vec = { Vector2.left, Vector2.right };   //切后的半截往两个方向飞出
 															   //private GameObject scores;     //放置scoreManager.cs和healthManager.cs脚本的游戏对象
 	public SkeletonAnimation enemy;
-
+	public static int isDeath;
 	void Start()
     {
         col = GetComponent<BoxCollider2D>();
@@ -42,8 +42,9 @@ public class cut : MonoBehaviour
                 CreateHalf(obj1, 0);
                 CreateHalf(obj2, 1);
                 Createwz();
-				//Destroy(this.gameObject);
+				//Destroy(this.gameObject);				
 				StartCoroutine("Death");
+
 				
 			}
         }
@@ -52,8 +53,9 @@ public class cut : MonoBehaviour
 
 	IEnumerator Death() {
 		enemy.state.SetAnimation(0, "death", false);
-
 		yield return new WaitForSeconds(0.7f);
+		isDeath += 1;
+		Debug.Log(isDeath);
 		Destroy(this.gameObject);
 	}
 
