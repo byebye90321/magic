@@ -45,8 +45,6 @@ public class knife : MonoBehaviour
 		{
 			UpdateCut();
 		}
-        
-
     }
 
 	void UpdateCut()
@@ -73,17 +71,12 @@ public class knife : MonoBehaviour
 		currentBladeTrail = Instantiate(bladeTrailPrefab, transform);
 		previousPosition = cam.ScreenToWorldPoint(Input.mousePosition);
 		circleCollider.enabled = false;*/
-        if (drawCanvas.isActiveAndEnabled)
-        {
-            isCutting = true;
-            rb.position = cam.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = rb.position;
-            currentBladeTrail = Instantiate(bladeTrailPrefab, transform);
-        }
-        else 
-        {
-            blade.SetActive(false);
-        }
+
+        isCutting = true;
+        rb.position = cam.ScreenToWorldPoint(Input.mousePosition);
+        transform.position = rb.position;
+        currentBladeTrail = Instantiate(bladeTrailPrefab, transform);
+
     }
 
 	public void StopCutting()

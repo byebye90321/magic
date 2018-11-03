@@ -10,7 +10,7 @@ public class BookInteract : MonoBehaviour
 	AsyncOperation ToNEXT;
 
 	public Animator book;
-	public Animator Image;
+	public Animator bookImage;
 	public GameObject fadeIn;
 
 	public Button touchBtn1;
@@ -28,11 +28,12 @@ public class BookInteract : MonoBehaviour
     public GameObject fingerObj;
 
 	public GameObject Bookintercat;
-	public GameObject card;
+	public GameObject skill;
 
 	public AudioSource audio;
 	public AudioClip kiss;
 	public AudioClip sword;
+
 
 	public void Start()
 	{	
@@ -52,6 +53,7 @@ public class BookInteract : MonoBehaviour
 		Leftinteract.SetActive(true);
 		touchBtn1.interactable = false;
 		ClickParticleL.SetActive(false);
+		fingerObj.SetActive(false);
 		StartCoroutine("wait1");
 	}
 
@@ -61,6 +63,7 @@ public class BookInteract : MonoBehaviour
 		onBookImage.SetActive(false);
 		Rightinteract.SetActive(true);
 		ClickParticleR.SetActive(false);
+		fingerObj.SetActive(false);
 		StartCoroutine("wait2");
 	}
 
@@ -69,6 +72,7 @@ public class BookInteract : MonoBehaviour
 		yield return new WaitForSeconds(3);
 		touchBtn1.interactable = true;
 		ClickParticleL.SetActive(true);
+		fingerObj.SetActive(true);
 	}
 
 	IEnumerator wait1()
@@ -79,11 +83,13 @@ public class BookInteract : MonoBehaviour
 		touchBtn1.interactable = true;
 		touchPanel2.SetActive(true);
 		onBookImage.SetActive(true);
-		Image.SetInteger("index", 1);
+		bookImage.SetInteger("index", 1);
 		book.SetInteger("index", 1);
 		yield return new WaitForSeconds(3);
 		ClickParticleR.SetActive(true);
 		touchBtn2.interactable = true;
+		fingerObj.SetActive(true);
+		fingerAnim.SetInteger("finger", 1);
 	}
 
 	IEnumerator wait2()
@@ -92,7 +98,7 @@ public class BookInteract : MonoBehaviour
 		yield return new WaitForSeconds(2);
 		book.SetInteger("index", 2);
 		Bookintercat.SetActive(false);
-		card.SetActive(true);
+		skill.SetActive(true);
 	}
 
 	IEnumerator FADE() {

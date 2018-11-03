@@ -64,14 +64,14 @@ public class DG_GameManager : MonoBehaviour {
 	public bool TeachJump = false;
 	public RawImage mask;
 	public GameObject maskObj;
-	public Animator HitOpen;
+	private Animator HitOpen;
 	public GameObject HitObj;
-	public Animator fingerAnim;
+	private Animator fingerAnim;
 	public GameObject fingerObj;
-	public Animator enemyAnim;
+	private Animator enemyAnim;
 	public GameObject enemy;
 	public GameObject BossEnemy;
-	public BoxCollider2D BossCollider;
+	//public BoxCollider2D BossCollider;
 	private bool end;
 	public GameObject wall;
 	public GameObject blade;
@@ -89,12 +89,16 @@ public class DG_GameManager : MonoBehaviour {
 		joystick.raycastTarget = false;
 		jumpBtn.raycastTarget = false;
 		drawCanvas.GetComponent<Canvas>().enabled = false;
-		
+		HitOpen = HitObj.GetComponent<Animator>();
+		fingerAnim = fingerObj.GetComponent<Animator>();
+		enemyAnim = enemy.GetComponent<Animator>();
+
+
 	}
 
 	void Awake()
 	{
-		StartCoroutine("count7");
+		StartCoroutine("count1");
 	}
 
 	void FixedUpdate () {
@@ -150,7 +154,9 @@ public class DG_GameManager : MonoBehaviour {
 		drawState = DrawState.Teach;
 		teachText.text = "目標！使用魔法擊退敵人！";
 		teachText.fontSize = 34;
-		black_bgImage.SetActive(true);
+		maskObj.SetActive(true);
+		mask.uvRect = new Rect(1.15f, 0.26f, 1.5f, 1.5f);
+		//black_bgImage.SetActive(true);
 		yield return new WaitForSeconds(2);
 		StartCoroutine("count2");
 	}
@@ -176,12 +182,12 @@ public class DG_GameManager : MonoBehaviour {
 		//drawState = DrawState.Game;
 		HitOpen.SetTrigger("HitOpen");
 		fingerObj.SetActive(true);
-		maskObj.SetActive(true);
+		//maskObj.SetActive(true);
 		mask.uvRect = new Rect(0.33f, 0.26f, 1.5f, 1.5f);
 		teachText.text = "使用移動鍵移動角色";
 		teachText.fontSize = 28;
 		joystick.raycastTarget = true;
-		black_bgImage.SetActive(false);
+		//black_bgImage.SetActive(false);
 		finger.SetActive(true);
 		yield return new WaitUntil(() => TeachMove);
 		maskObj.SetActive(false);
@@ -288,13 +294,15 @@ public class DG_GameManager : MonoBehaviour {
 		drawCanvas.GetComponent<Canvas>().enabled = false;
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "看來我們該使用其他方法才能加快攻擊";
+		maskObj.SetActive(true);
+		mask.uvRect = new Rect(1.15f, 0.26f, 1.5f, 1.5f);
 		yield return new WaitForSeconds(3f);
 		StartCoroutine("count10");
 	}
 
 	IEnumerator count10()
 	{
-		maskObj.SetActive(true);
+		//maskObj.SetActive(true);
 		mask.uvRect = new Rect(-0.21f, 0.34f, 2.5f, 2.5f);
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "下方為已蒐集到技能";
@@ -306,11 +314,14 @@ public class DG_GameManager : MonoBehaviour {
 		maskObj.SetActive(false);
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "使用M技能\n在螢幕中央一筆畫出M字形";
+		fingerObj.SetActive(true);
+		fingerAnim.SetInteger("finger", 4);
 		drawCanvas.GetComponent<Canvas>().enabled = true;
 		yield return new WaitUntil(() => geature.isAtk ==true);
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "Excellent！";
-		BossCollider.GetComponent<BoxCollider2D>().enabled = false;
+		fingerObj.SetActive(false);
+		//BossCollider.GetComponent<BoxCollider2D>().enabled = false;
 		yield return new WaitForSeconds(2f);
 		wall.SetActive(false);
 		HitObj.SetActive(false);
@@ -343,7 +354,7 @@ public class DG_GameManager : MonoBehaviour {
 	{
 		black_bgImage.SetActive(true);
 		pauseMenu.SetActive(true);
-		drawState = DrawState.Pause;
+		//drawState = DrawState.Pause;
 		Time.timeScale = 0f;
 		Debug.Log("PAUSE");
 	}
@@ -351,7 +362,7 @@ public class DG_GameManager : MonoBehaviour {
 	public void gamecontinue()
 	{
 		Time.timeScale = 1f;
-		drawState = DrawState.Game;
+		//drawState = DrawState.Game;
 		pauseMenu.SetActive(false);
 		black_bgImage.SetActive(false);
 		Debug.Log("gamecontinue");

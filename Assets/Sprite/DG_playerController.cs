@@ -135,7 +135,7 @@ public class DG_playerController : MonoBehaviour
 	{
 		if (col.tag == "smallEnemy") //玩家受到怪物攻擊
 		{
-			TakeDamage(5);
+			TakeDamage(10);
 			animator_S.SetTrigger("beaten");
 			animator_B.SetTrigger("beaten");
 			StartCoroutine("beaten");
