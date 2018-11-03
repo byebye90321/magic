@@ -1799,6 +1799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gesture: {fileID: 10663015}
+  drawCanvas: {fileID: 193435398}
   curHealth: 100
   maxHealth: 100
   healthSlider: {fileID: 1738047371}
@@ -5586,8 +5587,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571d5b4c17ff54541a99dc22190d4236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drawCanvas: {fileID: 193435398}
   bladeTrailPrefab: {fileID: 1125585046511690, guid: ebad3fc44d8e2024789770303964b3be,
     type: 2}
+  blade: {fileID: 731472174}
   minCuttingVelocity: 0.001
   deathCount: 0
   layerMask:
@@ -11183,7 +11186,6 @@ MonoBehaviour:
   finger: {fileID: 1326159897}
   joystick: {fileID: 1355230451}
   jumpBtn: {fileID: 1925551914}
-  healthBar: {fileID: 0}
   drawCanvas: {fileID: 193435398}
   TeachMove: 0
   TeachJump: 0
@@ -13726,7 +13728,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.25, y: 3.31}
+  m_Size: {x: 5.55, y: 6.26}
   m_EdgeRadius: 0
 --- !u!1 &1758643655
 GameObject:
@@ -14030,6 +14032,18 @@ Prefab:
     - target: {fileID: 22400000, guid: 9529ecc3d479da5499993355e6c2cb4f, type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 9529ecc3d479da5499993355e6c2cb4f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1286375551895734, guid: 9529ecc3d479da5499993355e6c2cb4f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717528043018892, guid: 9529ecc3d479da5499993355e6c2cb4f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9529ecc3d479da5499993355e6c2cb4f, type: 2}
@@ -14505,7 +14519,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.93, y: 3.09}
+  m_Size: {x: 4.93, y: 5.3}
   m_EdgeRadius: 0
 --- !u!114 &1925551914 stripped
 MonoBehaviour:

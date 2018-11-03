@@ -104,7 +104,6 @@ public class DG_playerController : MonoBehaviour
 		{
 			graphics.localRotation = Quaternion.Euler(0, 180, 0);
 			healthObj.localRotation = Quaternion.Euler(0, 180, 0);
-			//healthObj.transform.rotation = Quaternion.Euler(0, 0, 0);
 			dg_GameManager.TeachMove = true;
 		}
 

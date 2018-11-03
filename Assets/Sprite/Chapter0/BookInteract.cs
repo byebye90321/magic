@@ -24,6 +24,9 @@ public class BookInteract : MonoBehaviour
 	public GameObject ClickParticleL;
 	public GameObject ClickParticleR;
 
+    private Animator fingerAnim;
+    public GameObject fingerObj;
+
 	public GameObject Bookintercat;
 	public GameObject card;
 
@@ -32,9 +35,10 @@ public class BookInteract : MonoBehaviour
 	public AudioClip sword;
 
 	public void Start()
-	{
-		ToNEXT = SceneManager.LoadSceneAsync("Chapter0_3movie");
-		ToNEXT.allowSceneActivation = false;
+	{	
+        fingerAnim = fingerObj.GetComponent<Animator>();
+        ToNEXT = SceneManager.LoadSceneAsync("Chapter0_3movie");
+        ToNEXT.allowSceneActivation = false;
 		StartCoroutine("wait");
 		touchBtn1.interactable = false;
 		touchBtn2.interactable = false;

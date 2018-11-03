@@ -7,6 +7,7 @@ using Spine;
 public class DG_EnemyController : MonoBehaviour{
 
 	public ExampleGestureHandler gesture;
+    public Canvas drawCanvas;
 
 	//--------------------Health-------------------
 	public int curHealth = 100;
@@ -125,7 +126,7 @@ public class DG_EnemyController : MonoBehaviour{
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.gameObject.name == "Blade")
+		if (col.gameObject.name == "Blade" && drawCanvas.isActiveAndEnabled)
 		{
 			TakeDamage(1);
 			enemy1.state.SetAnimation(0, "death", false);

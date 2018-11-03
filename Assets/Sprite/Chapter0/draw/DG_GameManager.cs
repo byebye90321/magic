@@ -58,7 +58,7 @@ public class DG_GameManager : MonoBehaviour {
 	public GameObject finger;
 	public Image joystick; //image射線關閉
 	public Image jumpBtn; //image設限關閉
-	public GameObject healthBar;
+	//public GameObject healthBar;
 	public Canvas drawCanvas;
 	public bool TeachMove = false;
 	public bool TeachJump = false;
@@ -94,7 +94,7 @@ public class DG_GameManager : MonoBehaviour {
 
 	void Awake()
 	{
-		StartCoroutine("count1");
+		StartCoroutine("count7");
 	}
 
 	void FixedUpdate () {

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class knife : MonoBehaviour
 {
+    public Canvas drawCanvas;
 	public GameObject bladeTrailPrefab;
+    public GameObject blade;
 	public float minCuttingVelocity = .001f;
 
 	bool isCutting = false;
@@ -24,16 +26,17 @@ public class knife : MonoBehaviour
 	{
 		cam = Camera.main;
 		rb = GetComponent<Rigidbody2D>();
-		//circleCollider = GetComponent<CircleCollider2D>();
-	}
+        //circleCollider = GetComponent<CircleCollider2D>();
+        //currentBladeTrail = Instantiate(bladeTrailPrefab,transform);
+    }
 
 	void Update()
 	{
-		/*if (Input.GetMouseButtonDown(0))
+		/*if (Input.GetMouseButtonDown(0) && drawCanvas.isActiveAndEnabled)
 		{
 			StartCutting();
 		}
-		else if (Input.GetMouseButtonUp(0))
+		else if (Input.GetMouseButtonUp(0) || !drawCanvas.isActiveAndEnabled)
 		{
 			StopCutting();
 		}*/
@@ -42,8 +45,9 @@ public class knife : MonoBehaviour
 		{
 			UpdateCut();
 		}
+        
 
-	}
+    }
 
 	void UpdateCut()
 	{
@@ -65,16 +69,22 @@ public class knife : MonoBehaviour
 
 	public void StartCutting()
 	{
-		/*isCutting = true;
+        /*isCutting = true;
 		currentBladeTrail = Instantiate(bladeTrailPrefab, transform);
 		previousPosition = cam.ScreenToWorldPoint(Input.mousePosition);
 		circleCollider.enabled = false;*/
-
-		isCutting = true;
-		rb.position = cam.ScreenToWorldPoint(Input.mousePosition);
-		transform.position = rb.position;
-		currentBladeTrail = Instantiate(bladeTrailPrefab, transform);
-	}
+        if (drawCanvas.isActiveAndEnabled)
+        {
+            isCutting = true;
+            rb.position = cam.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = rb.position;
+            currentBladeTrail = Instantiate(bladeTrailPrefab, transform);
+        }
+        else 
+        {
+            blade.SetActive(false);
+        }
+    }
 
 	public void StopCutting()
 	{
@@ -84,14 +94,5 @@ public class knife : MonoBehaviour
 		//circleCollider.enabled = false;
 	}
 
-	/*void OnTriggerExit2D(Collider2D col)
-	{
-		if (col.tag == "smallEnemy")
-		{
-			deathCount += 1;
-			Debug.Log(deathCount);
-			col.enabled = false;
-		}
-	}*/
 
 }
