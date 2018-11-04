@@ -9,9 +9,6 @@ public static class StaticObject
 	public static float bgmVolume = 1f;
 	public static float sfxVolume = 1f;
 
-	//------------------畫面品質---------------------
-	public static int graphic = 1;
-
 	//--------------圖鑑-魔法日報解鎖-----------------
 	public static int Paper1 = 0;
 	public static int Paper2 = 0;
@@ -21,6 +18,9 @@ public static class StaticObject
 	public static int Paper6 = 0;
 	public static int Paper7 = 0;
 	public static int Paper8 = 0;
+
+	//-----------------平衡條-----------------------
+	public static float balanceSlider;
 
 	//------------------卡牌------------------------
 	//第一張

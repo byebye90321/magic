@@ -21,6 +21,8 @@ public class knife : MonoBehaviour
 	public int deathCount;
 
 	public LayerMask layerMask;
+	public AudioSource audio;
+	public AudioClip Sound;
 
 	void Start()
 	{
@@ -67,12 +69,12 @@ public class knife : MonoBehaviour
 
 	public void StartCutting()
 	{
-        /*isCutting = true;
+		/*isCutting = true;
 		currentBladeTrail = Instantiate(bladeTrailPrefab, transform);
 		previousPosition = cam.ScreenToWorldPoint(Input.mousePosition);
 		circleCollider.enabled = false;*/
-
-        isCutting = true;
+		audio.PlayOneShot(Sound);
+		isCutting = true;
         rb.position = cam.ScreenToWorldPoint(Input.mousePosition);
         transform.position = rb.position;
         currentBladeTrail = Instantiate(bladeTrailPrefab, transform);

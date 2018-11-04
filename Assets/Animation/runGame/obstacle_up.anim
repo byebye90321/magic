@@ -168,7 +168,7 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_Events:
   - time: 0.13333334
-    functionName: CrystalSound
+    functionName: SoundPlay
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

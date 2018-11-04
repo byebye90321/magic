@@ -32,6 +32,7 @@ public class DG_GameManager : MonoBehaviour {
 	public float spendTime;
 	float r1 = 0.7372549f, g1 = 0.2078431f, b1 = 0.5568628f;  //原平衡條桃色
 	float r2 = 0.7372549f, g2 = 0.2078431f, b2 = 0.3071967f;  //新
+	public Text balanceText;
 
 	public static DG_GameManager Instance;
 	public static DrawState drawState;
@@ -71,10 +72,12 @@ public class DG_GameManager : MonoBehaviour {
 	private Animator enemyAnim;
 	public GameObject enemy;
 	public GameObject BossEnemy;
-	//public BoxCollider2D BossCollider;
+	public BoxCollider2D BossCollider;
 	private bool end;
 	public GameObject wall;
 	public GameObject blade;
+	//--------------------Patticle System----------------------
+
 
 	void Start () {
 		Time.timeScale = 1f;
@@ -98,7 +101,7 @@ public class DG_GameManager : MonoBehaviour {
 
 	void Awake()
 	{
-		StartCoroutine("count1");
+		StartCoroutine("count7");
 	}
 
 	void FixedUpdate () {
@@ -120,7 +123,7 @@ public class DG_GameManager : MonoBehaviour {
 			//----------------------平衡條----------------------------
 			balanceValue -= Time.deltaTime * spendTime;
 			balanceSlider.value = balanceValue;
-
+			balanceText.text = Mathf.Floor(balanceValue).ToString("0");
 			if (balanceSlider.value == 0)
 			{
 				balanceValue = 0;
@@ -151,12 +154,11 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count1()
 	{
-		drawState = DrawState.Teach;
+		drawState = DrawState.Game;
 		teachText.text = "目標！使用魔法擊退敵人！";
 		teachText.fontSize = 34;
 		maskObj.SetActive(true);
 		mask.uvRect = new Rect(1.15f, 0.26f, 1.5f, 1.5f);
-		//black_bgImage.SetActive(true);
 		yield return new WaitForSeconds(2);
 		StartCoroutine("count2");
 	}
@@ -179,15 +181,13 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count3()
 	{
-		//drawState = DrawState.Game;
+
 		HitOpen.SetTrigger("HitOpen");
 		fingerObj.SetActive(true);
-		//maskObj.SetActive(true);
 		mask.uvRect = new Rect(0.33f, 0.26f, 1.5f, 1.5f);
 		teachText.text = "使用移動鍵移動角色";
 		teachText.fontSize = 28;
 		joystick.raycastTarget = true;
-		//black_bgImage.SetActive(false);
 		finger.SetActive(true);
 		yield return new WaitUntil(() => TeachMove);
 		maskObj.SetActive(false);
@@ -199,7 +199,7 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count4()
 	{
-		drawState = DrawState.Teach;
+
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "Good！";
 		yield return new WaitForSeconds(2);
@@ -208,7 +208,7 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count5()
 	{
-		//drawState = DrawState.Game;
+
 		fingerObj.SetActive(true);
 		maskObj.SetActive(true);
 		mask.uvRect = new Rect(-0.75f, 0.34f, 1.5f, 1.5f);
@@ -224,7 +224,7 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count6()
 	{
-		//drawState = DrawState.Teach;
+
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "GREAT！";
 		jumpBtn.raycastTarget = false;
@@ -236,14 +236,13 @@ public class DG_GameManager : MonoBehaviour {
 	IEnumerator count7()
 	{
 		HitObj.SetActive(true);
-		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "小怪物來襲！";
 		cut1.GetComponent<cut>().enabled = false;
 		cut2.GetComponent<cut>().enabled = false;
 		enemy.SetActive(true);
 		dg_playerController.graphics.localRotation = Quaternion.Euler(0, 0, 0);
 		yield return new WaitForSeconds(2f);
-		teachText.text = "被怪物觸碰到會損失血量，請小心";
+		teachText.text = "被怪物觸碰到會損失血量，請注意";
 		yield return new WaitForSeconds(2f);
 		enemyAnim.SetTrigger("Atk");
 		StartCoroutine("count8");
@@ -252,7 +251,6 @@ public class DG_GameManager : MonoBehaviour {
 	IEnumerator count8()
 	{
 		yield return new WaitForSeconds(2f);
-		//drawState = DrawState.Game;	
 		HitObj.SetActive(true);
 		teachText.text = "現在準備反擊！";
 		HitOpen.SetTrigger("HitOpen");
@@ -269,7 +267,6 @@ public class DG_GameManager : MonoBehaviour {
 		teachText.text = "消滅成功！Perfect！";
 		drawCanvas.GetComponent<Canvas>().enabled = false;
 		blade.transform.position = new Vector2(0,0);
-		//drawState = DrawState.Teach;
 		yield return new WaitForSeconds(2f);
 		StartCoroutine("count9");
 	}
@@ -280,6 +277,18 @@ public class DG_GameManager : MonoBehaviour {
 		teachText.text = "警告！小BOSS即將來襲！！！";
 		yield return new WaitForSeconds(1f);
 		BossEnemy.SetActive(true);
+		yield return new WaitForSeconds(2f);
+		HitOpen.SetTrigger("HitOpen");
+		teachText.text = "小BOSS與剛剛的小怪不同";
+		yield return new WaitForSeconds(2f);
+		teachText.text = "小BOSS的攻擊方式為巨大傷害的技能攻擊";
+		yield return new WaitForSeconds(2f);
+		HitOpen.SetTrigger("HitOpen");
+		teachText.text = "攻擊即將來襲，請注意";
+		yield return new WaitForSeconds(2f);
+		dg_enemyController.Atk();
+		yield return new WaitForSeconds(2f);
+		teachText.text = "接下來輪到我們使出攻擊！";
 		yield return new WaitForSeconds(2f);
 		drawCanvas.GetComponent<Canvas>().enabled = true;
 		HitOpen.SetTrigger("HitOpen");
@@ -302,7 +311,6 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count10()
 	{
-		//maskObj.SetActive(true);
 		mask.uvRect = new Rect(-0.21f, 0.34f, 2.5f, 2.5f);
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "下方為已蒐集到技能";
@@ -321,7 +329,7 @@ public class DG_GameManager : MonoBehaviour {
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "Excellent！";
 		fingerObj.SetActive(false);
-		//BossCollider.GetComponent<BoxCollider2D>().enabled = false;
+		BossCollider.GetComponent<BoxCollider2D>().enabled = false;
 		yield return new WaitForSeconds(2f);
 		wall.SetActive(false);
 		HitObj.SetActive(false);
@@ -403,6 +411,8 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator Win()
 	{
+		//StaticObject.blanaceSlider = balanceValue;
+		PlayerPrefs.SetFloat("StaticObject.balanceSlider", balanceValue);
 		yield return new WaitForSeconds(0.1f);
 		winFade.SetActive(true);
 		fade.SetBool("FadeOut", true);

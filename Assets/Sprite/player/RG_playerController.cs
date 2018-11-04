@@ -14,7 +14,8 @@ public class RG_playerController : MonoBehaviour
 	public bool Up = false;
 	public bool Down = false;
 	public GameObject teachObj;
-	public Animator teachAnim; 
+	public Animator teachAnim;
+	bool end = false;
 	//-----------------------ground check------------------------
 	public LayerMask whatIsGround;
 	public bool grounded = false;
@@ -47,6 +48,10 @@ public class RG_playerController : MonoBehaviour
 	public Animator bother;
 	public SkeletonAnimation skeletonAnimation_S;
 	public SkeletonAnimation skeletonAnimation_B;
+	//------------------------Particle System-------------------
+	public GameObject SlidingParticle;
+
+
 	void Start()
 	{
 		Player = this;
@@ -81,23 +86,24 @@ public class RG_playerController : MonoBehaviour
 			Player.transform.position = new Vector3(Player.transform.position.x + VecitySpeed, Player.transform.position.y, 10);
 			grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
 
-			
 
-			if (Input.GetMouseButtonUp(0))
+			if (!end)
 			{
-				pointB = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-				Touch = true;
-			}
-			else
-			{
-				Touch = false;
-			}
+				if (Input.GetMouseButtonUp(0))
+				{
+					pointB = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+					Touch = true;
+				}
+				else
+				{
+					Touch = false;
+				}
 
-			if (Input.GetMouseButtonDown(0))
-			{
-				pointA = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+				if (Input.GetMouseButtonDown(0))
+				{
+					pointA = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+				}
 			}
-
 
 			if (VecitySpeed < speed)
 			{
@@ -170,6 +176,7 @@ public class RG_playerController : MonoBehaviour
 					//Debug.Log("down");
 					sister.SetTrigger("sliding");
 					bother.SetTrigger("sliding");
+					SlidingParticle.SetActive(true);
 					StartCoroutine("Sliding");
 					if (Down == true)
 					{
@@ -188,6 +195,7 @@ public class RG_playerController : MonoBehaviour
 	{
 		sliding = false;
 		yield return new WaitForSeconds(0.8f);
+		SlidingParticle.SetActive(false);
 		VecitySpeed = 0.15f;
 		sister.SetTrigger("run");
 		bother.SetTrigger("run");
@@ -213,10 +221,16 @@ public class RG_playerController : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.tag == "EndPoint")
+		if (col.gameObject.name == "Fade1")
 		{
 			VecitySpeed = 0.07f;
 			speed = 0.07f;
+			end = true;
+		}
+
+		if (col.gameObject.name == "Fade2_End")
+		{
+			RunGameManager.Instance.win();
 		}
 
 		if (col.gameObject.name == "TeachUp")

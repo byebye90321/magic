@@ -15,7 +15,6 @@ public class Skills : MonoBehaviour
 	private Button skillButton;
 
 	public bool attack;
-	public DG_GameManager GameManager;
 
 	/*public void UseSkill(string skillName)
 	{
@@ -34,11 +33,7 @@ public class Skills : MonoBehaviour
 
 	void Update()
 	{
-		if (DG_GameManager.drawState == DrawState.Teach)
-		{
-
-		}
-		else if (DG_GameManager.drawState == DrawState.Game)
+		if (DG_GameManager.drawState == DrawState.Game)
 		{
 			if (currentCoolDown < coolDown)
 			{

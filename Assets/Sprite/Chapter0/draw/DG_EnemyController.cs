@@ -17,6 +17,9 @@ public class DG_EnemyController : MonoBehaviour{
 	bool isDead;
 	bool damaged;
 
+	public GameObject damageTextObj;
+	private Text damageText;
+
 	//---------------------CUT--------------------
 	public GameObject obj1, obj2;    //分开后的两边水果
 	public GameObject[] wz;          //几种污渍背景
@@ -35,29 +38,20 @@ public class DG_EnemyController : MonoBehaviour{
 	//結束
 	public static bool end = false;*/
 
+	//-------------Particle System-----------------
+	public GameObject AtkParticle;
+	public GameObject G1_BeatenParticle; //被G1攻擊特效
+
 	void Start()
 	{
 		col = GetComponent<BoxCollider2D>();
 		enemy1.state.SetAnimation(0, "idle", true);
 		enemy2.state.SetAnimation(0, "idle", true);
+		damageText = damageTextObj.GetComponent<Text>();
 	}
 	
 	void Update()
 	{
-
-		//-----------------CUT------------------------
-		/*if (Input.GetMouseButton(0))
-		{
-			if (col.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))                //鼠标在当前水果2Dcollider内
-			{	
-				//StartCoroutine("testWait");
-				//CreateHalf(obj1, 0);
-				//CreateHalf(obj2, 1);
-				//Createwz();
-				//Destroy(this.gameObject);
-			}
-		}*/
-
 		//------------------health----------------------
 		if (damaged)
 		{
@@ -73,13 +67,31 @@ public class DG_EnemyController : MonoBehaviour{
 	}
 
 	//-------------------------Attack--------------------------
-	public void Skill1()
+	IEnumerator Skill1()  //被技能1攻擊
 	{
+		yield return new WaitForSeconds(.3f);
 		TakeDamage(gesture.skillAtk1);
 		enemy1.state.SetAnimation(0, "stun", true);
-		//enemy1.state.AddAnimation(0, "idle", true, 0f);
 		enemy2.state.SetAnimation(0, "stun", true);
-		//enemy2.state.AddAnimation(0, "idle", true, 0f);
+		damageTextObj.SetActive(true);
+		damageText.text = "-" + gesture.skillAtk1;
+		StartCoroutine("wait");
+	}
+
+	public void Atk()
+	{
+		enemy1.state.SetAnimation(0, "hit", false);
+		enemy1.state.AddAnimation(0, "idle", true, 0f);
+		enemy2.state.SetAnimation(0, "hit", false);
+		enemy2.state.AddAnimation(0, "idle", true, 0f);
+		AtkParticle.SetActive(true);
+		StartCoroutine("wait");
+	}
+
+	public void G1_Beaten()
+	{
+		G1_BeatenParticle.SetActive(true);
+		StartCoroutine("wait");
 	}
 
 	public void TakeDamage(int amount)
@@ -99,8 +111,6 @@ public class DG_EnemyController : MonoBehaviour{
 	IEnumerator Death()
 	{
 		isDead = true;
-		enemy1.state.SetAnimation(0, "death", false);
-		enemy2.state.SetAnimation(0, "death", false);
 		yield return new WaitForSeconds(0.7f);
 		healthSlider.SetActive(false);
 		Destroy(this.gameObject);
@@ -129,11 +139,22 @@ public class DG_EnemyController : MonoBehaviour{
 		if (col.gameObject.name == "Blade" && drawCanvas.isActiveAndEnabled)
 		{
 			TakeDamage(1);
+			damageTextObj.SetActive(true);
+			damageText.text = "-" + 1;
 			enemy1.state.SetAnimation(0, "death", false);
 			enemy1.state.AddAnimation(0, "idle", true, 0f);
 			enemy2.state.SetAnimation(0, "death", false);
 			enemy2.state.AddAnimation(0, "idle", true, 0f);
+			StartCoroutine("wait");
 		}
+	}
+
+	IEnumerator wait()
+	{
+		yield return new WaitForSeconds(1f);
+		damageTextObj.SetActive(false);
+		G1_BeatenParticle.SetActive(false);
+		AtkParticle.SetActive(false);
 	}
 }
 

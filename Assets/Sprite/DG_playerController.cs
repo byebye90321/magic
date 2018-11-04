@@ -34,32 +34,42 @@ public class DG_playerController : MonoBehaviour
 	//--------------------Health-------------------
 	public int curHealth = 100;
 	public int maxHealth = 100;
-	public Slider playerHealth;
-	public Transform healthObj;
+	public GameObject playerHealth;
+	public Slider HealthSlider;
+	private Transform healthCanvas;
 	bool isDead;
 	bool damaged;
 	public GameObject falsh;
+	public GameObject damageTextObj;
+	//private Animator damageAnim;
+	private Text damageText;
+
+	//------------------Enemy-----------------------
+	public int enemyAtk;
+	public int BossAtk;
 
 	void Start()
 	{
 		rigid2D.velocity = new Vector2(0, 0f);
 		Active.interactable = false;
+		healthCanvas = playerHealth.GetComponent<Transform>();
+		//damageAnim = damageTextObj.GetComponent<Animator>();
+		damageText = damageTextObj.GetComponent<Text>();
 	}
 
 	public void Update() {
 		//----------health------------
 		if (damaged)
 		{
-			if (curHealth < playerHealth.value)
+			if (curHealth < HealthSlider.value)
 			{
-				playerHealth.value -= 1;
+				HealthSlider.value -= 1;
 			}
-			else if (curHealth == playerHealth.value)
+			else if (curHealth == HealthSlider.value)
 			{
-				playerHealth.value = curHealth;
+				HealthSlider.value = curHealth;
 			}
 		}
-
 		
 	}
 
@@ -97,13 +107,13 @@ public class DG_playerController : MonoBehaviour
 		if (moveVec.x > 0)
 		{
 			graphics.localRotation = Quaternion.Euler(0, 0, 0);
-			healthObj.localRotation = Quaternion.Euler(0, 0, 0);
+			healthCanvas.localRotation = Quaternion.Euler(0, 0, 0);
 			dg_GameManager.TeachMove = true;
 		}
 		else if (moveVec.x < 0)
 		{
 			graphics.localRotation = Quaternion.Euler(0, 180, 0);
-			healthObj.localRotation = Quaternion.Euler(0, 180, 0);
+			healthCanvas.localRotation = Quaternion.Euler(0, 180, 0);
 			dg_GameManager.TeachMove = true;
 		}
 
@@ -133,17 +143,25 @@ public class DG_playerController : MonoBehaviour
 	//---------------------Damage-----------------------
 	void OnTriggerEnter2D(Collider2D col)  
 	{
-		if (col.tag == "smallEnemy") //玩家受到怪物攻擊
+		if (col.tag == "smallEnemy") //玩家受到小怪物攻擊
 		{
-			TakeDamage(10);
+			TakeDamage(enemyAtk);
 			animator_S.SetTrigger("beaten");
 			animator_B.SetTrigger("beaten");
+			damageTextObj.SetActive(true);
+			damageText.text = "-" + enemyAtk;
+			//damageAnim.SetTrigger("hurtText");
 			StartCoroutine("beaten");
 		}
 
-		if (col.tag == "BossEnemy")
+		if (col.gameObject.name == "AtkParticle") //玩家受到小BOSS攻擊
 		{
-			TakeDamage(15);
+			/*TakeDamage(BossAtk);
+			animator_S.SetTrigger("beaten");
+			animator_B.SetTrigger("beaten");
+			damageTextObj.SetActive(true);
+			damageText.text = "-" + BossAtk;*/
+			Debug.Log("123");
 		}
 
 		if (col.tag == "EndPoint")
@@ -161,6 +179,8 @@ public class DG_playerController : MonoBehaviour
 			falsh.SetActive(false);
 			yield return new WaitForSeconds(0.1f);
 		}
+		yield return new WaitForSeconds(0.1f);
+		damageTextObj.SetActive(false);
 	}
 
 	public void Attack()

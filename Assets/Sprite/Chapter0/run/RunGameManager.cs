@@ -17,6 +17,10 @@ public class RunGameManager : MonoBehaviour {
 	public static GameState gameState;
 	public string chapterName;
 
+	private float balanceValue;
+	public Slider balanceSlider;
+	public Text balanceText;
+
 	//教學物件
 	public GameObject targetText;
 	public GameObject Arrow;
@@ -41,6 +45,9 @@ public class RunGameManager : MonoBehaviour {
 	public GameObject warning;
 	public Canvas canvas;
 
+	//結算
+	public GameObject winObj;
+
 	//--------------音效
 	public AudioSource audio;
 	public AudioClip countSound;
@@ -54,13 +61,17 @@ public class RunGameManager : MonoBehaviour {
 		fade = winFade.GetComponent<Animator>();
 		lose_Fade.SetActive(false);
 		Application.targetFrameRate = 100;  //幀數
-		
+		balanceValue = PlayerPrefs.GetFloat("StaticObject.blanaceSlider");
+		balanceSlider.value = balanceValue;
+		balanceText.text = Mathf.Floor(balanceValue).ToString("0");
+		Debug.Log(balanceValue);
+
 	}
 
 	IEnumerator Target() {
 		black_bgImage.SetActive(true);
 		targetText.SetActive(true);
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(3f);
 		black_bgImage.SetActive(false);
 		targetText.SetActive(false);
 		InvokeRepeating("timer", 1, 1);
@@ -127,7 +138,7 @@ public class RunGameManager : MonoBehaviour {
 
 	public void win()
 	{
-		gameState = GameState.Win;
+		gameState = GameState.Win;	
 		StartCoroutine("Win");
 	}
 
@@ -142,8 +153,10 @@ public class RunGameManager : MonoBehaviour {
 
 	IEnumerator Win()
 	{
+		winObj.SetActive(true);
+		yield return new WaitForSeconds(4f);
 		winFade.SetActive(true);
-		fade.SetBool("FadeOut", true);	
+		fade.SetBool("FadeOut", true);
 		yield return new WaitForSeconds(1.5f);
 		SceneManager.LoadScene("Chapter0_5movie");  //接下一關
 	}
