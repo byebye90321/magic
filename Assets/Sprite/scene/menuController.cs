@@ -9,9 +9,7 @@ public class menuController : MonoBehaviour {
 	public GameObject Menu_Button;
 	public GameObject blackPanel;
 
-	void Start () {
-
-	}
+	
 	
 	void Update () {
 		

@@ -41,19 +41,24 @@ public class DG_playerController : MonoBehaviour
 	bool damaged;
 	public GameObject falsh;
 	public GameObject damageTextObj;
-	//private Animator damageAnim;
 	private Text damageText;
 
 	//------------------Enemy-----------------------
 	public int enemyAtk;
 	public int BossAtk;
+	//-----------------Particle System---------------
+	//public GameObject G1_Skill;
+	public GameObject W1_beaten;
+	//------------------Audio--------------------
+	public AudioSource audio;
+	public AudioClip AtkSound;
+
 
 	void Start()
 	{
 		rigid2D.velocity = new Vector2(0, 0f);
 		Active.interactable = false;
 		healthCanvas = playerHealth.GetComponent<Transform>();
-		//damageAnim = damageTextObj.GetComponent<Animator>();
 		damageText = damageTextObj.GetComponent<Text>();
 	}
 
@@ -119,7 +124,7 @@ public class DG_playerController : MonoBehaviour
 
 		if (dg_GameManager.isRun == true)
 		{
-			rigid2D.transform.position = new Vector3(rigid2D.transform.position.x + 0.05f, rigid2D.transform.position.y, 10);
+			rigid2D.transform.position = new Vector3(rigid2D.transform.position.x + 0.06f, rigid2D.transform.position.y, 10);
 			animator_S.SetBool("run", true);
 			animator_B.SetBool("run", true);
 		}
@@ -150,18 +155,15 @@ public class DG_playerController : MonoBehaviour
 			animator_B.SetTrigger("beaten");
 			damageTextObj.SetActive(true);
 			damageText.text = "-" + enemyAtk;
-			//damageAnim.SetTrigger("hurtText");
-			StartCoroutine("beaten");
+			StartCoroutine("smallbeaten");
 		}
 
 		if (col.gameObject.name == "AtkParticle") //玩家受到小BOSS攻擊
 		{
-			/*TakeDamage(BossAtk);
-			animator_S.SetTrigger("beaten");
-			animator_B.SetTrigger("beaten");
-			damageTextObj.SetActive(true);
-			damageText.text = "-" + BossAtk;*/
-			Debug.Log("123");
+			TakeDamage(BossAtk);
+			W1_beaten.SetActive(true);
+			damageText.text = "-" + BossAtk;
+			StartCoroutine("Bossbeaten");
 		}
 
 		if (col.tag == "EndPoint")
@@ -170,7 +172,7 @@ public class DG_playerController : MonoBehaviour
 		}
 	}
 
-	IEnumerator beaten()
+	IEnumerator smallbeaten()
 	{
 		for (int i = 0; i < 2; i++)
 		{
@@ -179,7 +181,25 @@ public class DG_playerController : MonoBehaviour
 			falsh.SetActive(false);
 			yield return new WaitForSeconds(0.1f);
 		}
-		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(.5f);
+		damageTextObj.SetActive(false);
+	}
+
+	IEnumerator Bossbeaten()
+	{
+		yield return new WaitForSeconds(0.4f);
+		animator_S.SetTrigger("beaten");
+		animator_B.SetTrigger("beaten");
+		damageTextObj.SetActive(true);
+		for (int i = 0; i < 2; i++)
+		{
+			falsh.SetActive(true);
+			yield return new WaitForSeconds(0.1f);
+			falsh.SetActive(false);
+			yield return new WaitForSeconds(0.1f);
+		}	
+		yield return new WaitForSeconds(.2f);
+		W1_beaten.SetActive(false);
 		damageTextObj.SetActive(false);
 	}
 
@@ -187,6 +207,7 @@ public class DG_playerController : MonoBehaviour
 	{
 		animator_S.SetTrigger("attack");
 		animator_B.SetTrigger("attack");
+		audio.PlayOneShot(AtkSound);
 	}
 
 

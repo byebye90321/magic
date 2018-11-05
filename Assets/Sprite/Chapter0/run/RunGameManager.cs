@@ -17,7 +17,7 @@ public class RunGameManager : MonoBehaviour {
 	public static GameState gameState;
 	public string chapterName;
 
-	private float balanceValue;
+	public float balanceValue;
 	public Slider balanceSlider;
 	public Text balanceText;
 
@@ -47,6 +47,8 @@ public class RunGameManager : MonoBehaviour {
 
 	//結算
 	public GameObject winObj;
+	private float addInt;
+	public Text addText;
 
 	//--------------音效
 	public AudioSource audio;
@@ -61,10 +63,30 @@ public class RunGameManager : MonoBehaviour {
 		fade = winFade.GetComponent<Animator>();
 		lose_Fade.SetActive(false);
 		Application.targetFrameRate = 100;  //幀數
-		balanceValue = PlayerPrefs.GetFloat("StaticObject.blanaceSlider");
+		balanceValue = PlayerPrefs.GetFloat("StaticObject.balanceSlider");
 		balanceSlider.value = balanceValue;
 		balanceText.text = Mathf.Floor(balanceValue).ToString("0");
 		Debug.Log(balanceValue);
+
+	}
+
+	public void Update()
+	{
+		if (gameState == GameState.Win)
+		{
+			if (balanceSlider.value >= 100 || balanceValue >=100)
+			{
+				balanceValue = 100;
+				balanceSlider.value = balanceValue;
+				balanceText.text = Mathf.Floor(balanceValue).ToString("0");
+			}
+			else if(balanceSlider.value < 100)
+			{
+				balanceValue += 20f;
+				balanceSlider.value = balanceValue;
+				balanceText.text = Mathf.Floor(balanceValue).ToString("0");
+			}
+		}
 
 	}
 
@@ -154,10 +176,16 @@ public class RunGameManager : MonoBehaviour {
 	IEnumerator Win()
 	{
 		winObj.SetActive(true);
+		addInt = 100 - Mathf.Floor(balanceValue);
+		addText.text = "+" + addInt;
 		yield return new WaitForSeconds(4f);
 		winFade.SetActive(true);
 		fade.SetBool("FadeOut", true);
+		StaticObject.balanceSlider = balanceValue;
+		PlayerPrefs.SetFloat("StaticObject.balanceSlider", balanceValue);
+		Debug.Log(StaticObject.balanceSlider);
 		yield return new WaitForSeconds(1.5f);
+		
 		SceneManager.LoadScene("Chapter0_5movie");  //接下一關
 	}
 

@@ -53,12 +53,13 @@ public class DG_GameManager : MonoBehaviour {
 	//--------------音效
 	public AudioSource audio;
 	public AudioClip runSound;
+	public AudioClip warningSound;
 
 	//------------------教學暫停物件------------------
 	public Text teachText;
 	public GameObject finger;
 	public Image joystick; //image射線關閉
-	public Image jumpBtn; //image設限關閉
+	public Image jumpBtn; //image射線關閉
 	//public GameObject healthBar;
 	public Canvas drawCanvas;
 	public bool TeachMove = false;
@@ -76,6 +77,8 @@ public class DG_GameManager : MonoBehaviour {
 	private bool end;
 	public GameObject wall;
 	public GameObject blade;
+	public GameObject warningRedImage;
+	public GameObject warningExclamation;
 	//--------------------Patticle System----------------------
 
 
@@ -101,7 +104,7 @@ public class DG_GameManager : MonoBehaviour {
 
 	void Awake()
 	{
-		StartCoroutine("count7");
+		StartCoroutine("count1");
 	}
 
 	void FixedUpdate () {
@@ -167,12 +170,14 @@ public class DG_GameManager : MonoBehaviour {
 	{
 		HitOpen.SetTrigger("HitOpen");
 		teachText.fontSize = 28;
-		teachText.text = "上方的平衡條會隨挑戰時間流逝";
 		balanceSlider.transform.SetAsLastSibling();
-		yield return new WaitForSeconds(2);
-		teachText.text = "當數值歸零，則挑戰失敗！";
-		yield return new WaitForSeconds(2);
-		teachText.text = "接下來嘗試看看移動吧！";
+		teachText.text = "上方的平衡條代表世界的平衡值";
+		yield return new WaitForSeconds(2.5f);
+		teachText.text = "數值會隨時間流逝";
+		yield return new WaitForSeconds(2.5f);
+		teachText.text = "若數值歸零，則必須重新遊玩！";
+		yield return new WaitForSeconds(2.5f);
+		teachText.text = "接下來，來嘗試看看移動吧";
 		balanceSlider.transform.SetAsFirstSibling();
 		yield return new WaitForSeconds(2);
 		StartCoroutine("count3");
@@ -273,20 +278,29 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count9()
 	{
+		HitObj.SetActive(false);
+		warningRedImage.SetActive(true);
+		for (int i = 0; i < 3; i++)
+		{
+			audio.PlayOneShot(warningSound);
+			warningExclamation.SetActive(true);
+			yield return new WaitForSeconds(0.3f);
+			warningExclamation.SetActive(false);
+			yield return new WaitForSeconds(0.3f);	
+		}
+		HitObj.SetActive(true);
 		HitOpen.SetTrigger("HitOpen");
-		teachText.text = "警告！小BOSS即將來襲！！！";
+		teachText.text = "警告！小BOSS即將來襲！！！";	
 		yield return new WaitForSeconds(1f);
 		BossEnemy.SetActive(true);
 		yield return new WaitForSeconds(2f);
 		HitOpen.SetTrigger("HitOpen");
-		teachText.text = "小BOSS與剛剛的小怪不同";
-		yield return new WaitForSeconds(2f);
-		teachText.text = "小BOSS的攻擊方式為巨大傷害的技能攻擊";
-		yield return new WaitForSeconds(2f);
+		teachText.text = "小BOSS會使用技能造成巨大傷害";
+		yield return new WaitForSeconds(3f);
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "攻擊即將來襲，請注意";
 		yield return new WaitForSeconds(2f);
-		dg_enemyController.Atk();
+		dg_enemyController.W1_Particle();
 		yield return new WaitForSeconds(2f);
 		teachText.text = "接下來輪到我們使出攻擊！";
 		yield return new WaitForSeconds(2f);
@@ -302,7 +316,7 @@ public class DG_GameManager : MonoBehaviour {
 		yield return new WaitUntil(() => dg_enemyController.curHealth<=80);  //BUG
 		drawCanvas.GetComponent<Canvas>().enabled = false;
 		HitOpen.SetTrigger("HitOpen");
-		teachText.text = "看來我們該使用其他方法才能加快攻擊";
+		teachText.text = "看來我們得使用其他方法才能加快攻擊";
 		maskObj.SetActive(true);
 		mask.uvRect = new Rect(1.15f, 0.26f, 1.5f, 1.5f);
 		yield return new WaitForSeconds(3f);
@@ -312,7 +326,7 @@ public class DG_GameManager : MonoBehaviour {
 	IEnumerator count10()
 	{
 		mask.uvRect = new Rect(-0.21f, 0.34f, 2.5f, 2.5f);
-		HitOpen.SetTrigger("HitOpen");
+		//HitOpen.SetTrigger("HitOpen");
 		teachText.text = "下方為已蒐集到技能";
 		yield return new WaitForSeconds(2f);
 		drawState = DrawState.Game;
@@ -328,6 +342,7 @@ public class DG_GameManager : MonoBehaviour {
 		yield return new WaitUntil(() => geature.isAtk ==true);
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "Excellent！";
+		warningRedImage.SetActive(false);
 		fingerObj.SetActive(false);
 		BossCollider.GetComponent<BoxCollider2D>().enabled = false;
 		yield return new WaitForSeconds(2f);

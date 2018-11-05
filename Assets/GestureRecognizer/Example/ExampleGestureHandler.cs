@@ -38,7 +38,9 @@ public class ExampleGestureHandler : MonoBehaviour
 	public Skills skill1;
 	public int skillAtk1;
 	public bool isAtk=false;
-	public GameObject skillParticle1;
+	//----------Particle System--------------
+	public GameObject G1_Particle;
+	public GameObject G1_beaten;
 
 	void Start()
 	{
@@ -76,7 +78,8 @@ public class ExampleGestureHandler : MonoBehaviour
 				textResult.text = result.gesture.id + "\n" + Mathf.RoundToInt(result.score.score * 100) + "%";
 				skill1.currentCoolDown = 0;
 				enemyController.StartCoroutine("Skill1");
-				skillParticle1.SetActive(true);
+				G1_Particle.SetActive(true);
+				G1_beaten.SetActive(true);
 				StartCoroutine("close");
 			}
 			else {
@@ -102,8 +105,9 @@ public class ExampleGestureHandler : MonoBehaviour
 
 	IEnumerator close()
 	{
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(1f);
 		isAtk = false;
-		skillParticle1.SetActive(false);
+		G1_Particle.SetActive(false);
+		G1_beaten.SetActive(false);
 	}
 }

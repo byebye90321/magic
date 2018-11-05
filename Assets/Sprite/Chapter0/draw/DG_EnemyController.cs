@@ -31,12 +31,8 @@ public class DG_EnemyController : MonoBehaviour{
 	public SkeletonAnimation enemy2;
 
 	//--------------音效
-	/*public AudioSource audio;
-	public AudioSource countAudio;
-	public AudioClip countSound;
-	public AudioClip atkSound;
-	//結束
-	public static bool end = false;*/
+	public AudioSource audio;
+	public AudioClip AtkSound;
 
 	//-------------Particle System-----------------
 	public GameObject AtkParticle;
@@ -78,12 +74,13 @@ public class DG_EnemyController : MonoBehaviour{
 		StartCoroutine("wait");
 	}
 
-	public void Atk()
+	public void W1_Particle()
 	{
 		enemy1.state.SetAnimation(0, "hit", false);
 		enemy1.state.AddAnimation(0, "idle", true, 0f);
 		enemy2.state.SetAnimation(0, "hit", false);
 		enemy2.state.AddAnimation(0, "idle", true, 0f);
+		audio.PlayOneShot(AtkSound);
 		AtkParticle.SetActive(true);
 		StartCoroutine("wait");
 	}

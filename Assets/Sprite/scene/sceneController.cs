@@ -1,8 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class sceneController : MonoBehaviour {
+
+	public string name;
+	AsyncOperation ToGame;
+
+	public void Start()
+	{
+		if (name == "main")
+		{
+			ToGame = SceneManager.LoadSceneAsync("Chapter0_1movie");
+			ToGame.allowSceneActivation = false;
+		}
+		
+	}
 
 	public void ToContinueGame()
 	{
@@ -11,7 +25,8 @@ public class sceneController : MonoBehaviour {
 
 	public void ToNewGame()
 	{
-		Application.LoadLevel("Chapter0_1movie");
+		ToGame.allowSceneActivation = true;
+		//Application.LoadLevel("Chapter0_1movie");
 	}
 
 	public void ToCollect()

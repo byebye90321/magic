@@ -34,6 +34,8 @@ public class BookInteract : MonoBehaviour
 	public AudioClip kiss;
 	public AudioClip sword;
 
+	public GameObject blackImage;
+
 
 	public void Start()
 	{	
@@ -98,6 +100,7 @@ public class BookInteract : MonoBehaviour
 		yield return new WaitForSeconds(2);
 		book.SetInteger("index", 2);
 		Bookintercat.SetActive(false);
+		blackImage.SetActive(true);
 		skill.SetActive(true);
 	}
 
