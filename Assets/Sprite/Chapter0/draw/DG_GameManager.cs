@@ -313,7 +313,7 @@ public class DG_GameManager : MonoBehaviour {
 		fingerObj.SetActive(false);
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "繼續攻擊";
-		yield return new WaitUntil(() => dg_enemyController.curHealth<=80);  //BUG
+		yield return new WaitUntil(() => dg_enemyController.curHealth<=90);  //BUG
 		drawCanvas.GetComponent<Canvas>().enabled = false;
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "看來我們得使用其他方法才能加快攻擊";

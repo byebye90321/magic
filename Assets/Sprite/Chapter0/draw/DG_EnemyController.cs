@@ -148,8 +148,9 @@ public class DG_EnemyController : MonoBehaviour{
 
 	IEnumerator wait()
 	{
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(.5f);
 		damageTextObj.SetActive(false);
+		yield return new WaitForSeconds(.5f);
 		G1_BeatenParticle.SetActive(false);
 		AtkParticle.SetActive(false);
 	}

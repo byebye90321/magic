@@ -4053,7 +4053,7 @@ MonoBehaviour:
   BossAtk: 30
   W1_beaten: {fileID: 484646014}
   audio: {fileID: 462784795}
-  AtkSound: {fileID: 8300000, guid: 3bd5e7f17de553b4d9f6484d2485c1ec, type: 3}
+  AtkSound: {fileID: 8300000, guid: 2e4ad0293bc47ec4da93e3dd0c99d87a, type: 3}
 --- !u!82 &462784795
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11822,6 +11822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f989084b467b4b409a39a03228013ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 
 --- !u!1 &839954383
 GameObject:
   m_ObjectHideFlags: 0
