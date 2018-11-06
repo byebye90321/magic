@@ -39,12 +39,12 @@ public class moster : MonoBehaviour {
 					speed = Random.Range(0.17f, 0.18f);
 					//speed = 0.18f;
 				}
-				else if (Mathf.Abs(player.transform.position.x - Moster.transform.position.x) < 15f && Mathf.Abs(player.transform.position.x - Moster.transform.position.x) > 5f)
+				else if (Mathf.Abs(player.transform.position.x - Moster.transform.position.x) < 15f && Mathf.Abs(player.transform.position.x - Moster.transform.position.x) > 4f)
 				{
 					//speed = 0.155f;
-					speed = Random.Range(0.145f, 0.16f);
+					speed = Random.Range(0.15f, 0.16f);
 				}
-				else if (Mathf.Abs(player.transform.position.x - Moster.transform.position.x) < 5f)
+				else if (Mathf.Abs(player.transform.position.x - Moster.transform.position.x) < 4f)
 				{
 					speed = 0.14f;
 					//speed = Random.Range(0.15f, 0.155f);

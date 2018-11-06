@@ -79,7 +79,7 @@ public class DG_GameManager : MonoBehaviour {
 	public GameObject blade;
 	public GameObject warningRedImage;
 	public GameObject warningExclamation;
-	//--------------------Patticle System----------------------
+	public GameObject arrow;
 
 
 	void Start () {
@@ -170,7 +170,8 @@ public class DG_GameManager : MonoBehaviour {
 	{
 		HitOpen.SetTrigger("HitOpen");
 		teachText.fontSize = 28;
-		balanceSlider.transform.SetAsLastSibling();
+		//balanceSlider.transform.SetAsLastSibling();
+		balanceSlider.transform.SetSiblingIndex(3);
 		teachText.text = "上方的平衡條代表世界的平衡值";
 		yield return new WaitForSeconds(2.5f);
 		teachText.text = "數值會隨時間流逝";
@@ -246,6 +247,7 @@ public class DG_GameManager : MonoBehaviour {
 		cut2.GetComponent<cut>().enabled = false;
 		enemy.SetActive(true);
 		dg_playerController.graphics.localRotation = Quaternion.Euler(0, 0, 0);
+		dg_playerController.healthCanvas.localRotation = Quaternion.Euler(0, 0, 0);
 		yield return new WaitForSeconds(2f);
 		teachText.text = "被怪物觸碰到會損失血量，請注意";
 		yield return new WaitForSeconds(2f);
@@ -344,11 +346,13 @@ public class DG_GameManager : MonoBehaviour {
 		teachText.text = "Excellent！";
 		warningRedImage.SetActive(false);
 		fingerObj.SetActive(false);
+		drawCanvas.GetComponent<Canvas>().enabled = false;
 		BossCollider.GetComponent<BoxCollider2D>().enabled = false;
 		yield return new WaitForSeconds(2f);
 		wall.SetActive(false);
 		HitObj.SetActive(false);
 		end = true;
+		arrow.SetActive(true);
 	}
 
 	public void StarGame() {
@@ -363,13 +367,15 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator run() {
 		
-		audio.clip = runSound;
-		audio.Play();
-		yield return new WaitForSeconds(2);
+		//audio.clip = runSound;
+		//audio.Play();
+		yield return new WaitForSeconds(3);
 		textPanel.SetActive(false);
-		isRun = true;
+		//isRun = true;
 		end = false;
 		//dg_playerController.animator_S.SetBool("run", true);
+		joystick.raycastTarget = true;
+		jumpBtn.raycastTarget = true;
 	}
 
 
