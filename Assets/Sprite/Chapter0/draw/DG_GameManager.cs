@@ -31,7 +31,7 @@ public class DG_GameManager : MonoBehaviour {
 	public float balanceValue;
 	public float spendTime;
 	float r1 = 0.7372549f, g1 = 0.2078431f, b1 = 0.5568628f;  //原平衡條桃色
-	float r2 = 0.7372549f, g2 = 0.2078431f, b2 = 0.3071967f;  //新
+	float r2 = 0.7372549f, g2 = 0.2078431f, b2 = 0.3071967f;  //殘血後平衡條色
 	public Text balanceText;
 
 	public static DG_GameManager Instance;
@@ -40,17 +40,16 @@ public class DG_GameManager : MonoBehaviour {
 
 	float StartTime = 2;
 
-	//對話
+	//-------------------對話----------------------
 	public GameObject textPanel;
 	public Text text;
-	//public GameObject Player;
 
-	//FADE淡出
+	//------------------FADE淡出-------------------
 	public GameObject winFade;
 	Animator fade;
 	public bool isRun = false;
 
-	//--------------音效
+	//--------------------音效---------------------
 	public AudioSource audio;
 	public AudioClip runSound;
 	public AudioClip warningSound;
@@ -98,8 +97,6 @@ public class DG_GameManager : MonoBehaviour {
 		HitOpen = HitObj.GetComponent<Animator>();
 		fingerAnim = fingerObj.GetComponent<Animator>();
 		enemyAnim = enemy.GetComponent<Animator>();
-
-
 	}
 
 	void Awake()
@@ -117,10 +114,7 @@ public class DG_GameManager : MonoBehaviour {
 			text.text = "趁他們暈的時候，我們趕快從後面的門逃吧！";
 			StartCoroutine("run");	
 		}
-		/*if (drawState == DrawState.Teach) //平衡條不扣
-		{
 
-		}*/
 		if (drawState == DrawState.Game)
 		{
 			//----------------------平衡條----------------------------
@@ -136,10 +130,10 @@ public class DG_GameManager : MonoBehaviour {
 			{
 				balanceValue = 100;
 			}
-			else if (balanceSlider.value < 10)
+			/*else if (balanceSlider.value < 10)  //殘血變色
 			{
 				sliderimage.color = Color.Lerp(new Color(r2, g2, b2), new Color(r1, g1, b1), balanceSlider.value / 10);  //從G變R
-			}
+			}*/
 
 			if (balanceSlider.value == 0 || dg_playerController.curHealth ==0)
 			{

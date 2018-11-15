@@ -9,21 +9,20 @@ public class BookInteract : MonoBehaviour
 {
 	AsyncOperation ToNEXT;
 
-	public Animator book;
-	public Animator bookImage;
-	public GameObject fadeIn;
+	public Animator book;  //書本底圖動畫
+	public Animator bookImage;  //圖案漸入動畫
+	public GameObject fadeIn;  //白色淡入
 
-	public Button touchBtn1;
-	public Button touchBtn2;
 	public GameObject touchPanel1;
 	public GameObject touchPanel2;
-	public GameObject onBookImage;
-	public GameObject Leftinteract;
-	public GameObject Rightinteract;
 
+	public GameObject onBookImage;  //點擊後動畫
+	public GameObject SonwInteract;
+	public GameObject RedInteract;
+
+	//點擊/提示特效
 	public GameObject ClickParticleL;
 	public GameObject ClickParticleR;
-
     private Animator fingerAnim;
     public GameObject fingerObj;
 
@@ -38,13 +37,12 @@ public class BookInteract : MonoBehaviour
 
 
 	public void Start()
-	{	
-        fingerAnim = fingerObj.GetComponent<Animator>();
-        ToNEXT = SceneManager.LoadSceneAsync("Chapter0_3movie");
+	{
+		fingerAnim = fingerObj.GetComponent<Animator>();
+        ToNEXT = SceneManager.LoadSceneAsync("Chapter0_3movie"); //預載場景
         ToNEXT.allowSceneActivation = false;
-		StartCoroutine("wait");
-		touchBtn1.interactable = false;
-		touchBtn2.interactable = false;
+		StartCoroutine("Startwait");
+		touchPanel1.SetActive(false);
 		StartCoroutine("FADE");
 	}
 
@@ -52,8 +50,7 @@ public class BookInteract : MonoBehaviour
 	{
 		audio.PlayOneShot(kiss);
 		onBookImage.SetActive(false);
-		Leftinteract.SetActive(true);
-		touchBtn1.interactable = false;
+		SonwInteract.SetActive(true);
 		ClickParticleL.SetActive(false);
 		fingerObj.SetActive(false);
 		StartCoroutine("wait1");
@@ -63,17 +60,16 @@ public class BookInteract : MonoBehaviour
 	{
 		audio.PlayOneShot(sword);
 		onBookImage.SetActive(false);
-		Rightinteract.SetActive(true);
+		RedInteract.SetActive(true);
 		ClickParticleR.SetActive(false);
 		fingerObj.SetActive(false);
 		StartCoroutine("wait2");
 	}
 
-	IEnumerator wait()
+	IEnumerator Startwait()
 	{
 		yield return new WaitForSeconds(3);
-		touchBtn1.interactable = true;
-		ClickParticleL.SetActive(true);
+		touchPanel1.SetActive(true);
 		fingerObj.SetActive(true);
 	}
 
@@ -81,15 +77,12 @@ public class BookInteract : MonoBehaviour
 	{
 		touchPanel1.SetActive(false);
 		yield return new WaitForSeconds(2);
-		Leftinteract.SetActive(false);
-		touchBtn1.interactable = true;
-		touchPanel2.SetActive(true);
+		SonwInteract.SetActive(false);
 		onBookImage.SetActive(true);
 		bookImage.SetInteger("index", 1);
 		book.SetInteger("index", 1);
 		yield return new WaitForSeconds(3);
-		ClickParticleR.SetActive(true);
-		touchBtn2.interactable = true;
+		touchPanel2.SetActive(true);
 		fingerObj.SetActive(true);
 		fingerAnim.SetInteger("finger", 1);
 	}
