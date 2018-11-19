@@ -19228,8 +19228,9 @@ GameObject:
   - component: {fileID: 1135344176}
   - component: {fileID: 1135344178}
   - component: {fileID: 1135344177}
+  - component: {fileID: 1135344179}
   m_Layer: 5
-  m_Name: NextText
+  m_Name: NextFlashText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19250,8 +19251,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 50}
+  m_AnchoredPosition: {x: -15, y: 18.1}
+  m_SizeDelta: {x: 222.4, y: 50}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1135344177
 MonoBehaviour:
@@ -19292,6 +19293,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1135344175}
+--- !u!95 &1135344179
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1135344175}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 36619791e83f38b49a13e93b649a07ac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1156665050
 GameObject:
   m_ObjectHideFlags: 0
@@ -21339,6 +21358,7 @@ MonoBehaviour:
   TouchNextImage: {fileID: 1692413129}
   TouchNext: 0
   joystickCanvas: {fileID: 384325988}
+  NextFlashText: {fileID: 1135344175}
 --- !u!4 &1399051285
 Transform:
   m_ObjectHideFlags: 0
