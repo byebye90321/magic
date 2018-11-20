@@ -79,6 +79,7 @@ public class DialogsScript : MonoBehaviour
 	public static bool GameEnd;
 	public Text whotalk;
 	public float typeSpeed;
+
 	//------------------------過場黑幕---------------------------
 	public GameObject FadeOut;
 	public GameObject FadeIn;
@@ -121,6 +122,13 @@ public class DialogsScript : MonoBehaviour
 		PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);
 		StaticObject.book = 1;
 		PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);
+
+		whotalk.text = "緹緹";
+		currentLine = 1;
+		endAtLine = 6;
+		characterImage.sprite = sister;
+		StartCoroutine("fadeIn");
+
 		if (GameEnd == false)  //初始
 		{
 			whotalk.text = "緹緹";
@@ -128,8 +136,8 @@ public class DialogsScript : MonoBehaviour
 			endAtLine = 6;
 			characterImage.sprite = sister;
 			StartCoroutine("fadeIn");
-			isDraw = SceneManager.LoadSceneAsync("DrawGame_sister_forest");
-			isDraw.allowSceneActivation = false;
+			//isDraw = SceneManager.LoadSceneAsync("DrawGame_sister_forest");
+			//isDraw.allowSceneActivation = false;
 		}
 		else if(GameEnd == true){  //畫符完
 			whotalk.text = "緹緹";
@@ -208,6 +216,16 @@ public class DialogsScript : MonoBehaviour
 
 
 	void Update() {
+
+		if (currentLine == 1)
+		{
+			if (isTyping == false)
+			{
+				//theText.text = testText.text;
+				theText.text = "這是<color=#00ffffff>哪裡?</color>";
+			}
+		}
+
 
 		if (!isActive)
 			return;

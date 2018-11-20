@@ -2,6 +2,9 @@
 using System.Collections;
 using Spine.Unity;
 using Spine;
+using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
+
 public class RG_playerController : MonoBehaviour
 {
 	public static RG_playerController Player;
@@ -13,24 +16,27 @@ public class RG_playerController : MonoBehaviour
 	//---------------------------Teach---------------------------
 	public bool Up = false;
 	public bool Down = false;
-	public GameObject teachObj;
-	public Animator teachAnim;
+	//public GameObject teachObj;
+	//public Animator teachAnim;
 	bool end = false;
 	//-----------------------ground check------------------------
 	public LayerMask whatIsGround;
 	public bool grounded = false;
 	public Transform groundCheck;
-	float groundRadius = 0.1f;
+	float groundRadius = 0.05f;
 	//-----------------------Player Control----------------------
 	//jump
 	public float jumpForce = 70f;
+	public bool jumping = false;
 	//slide
-	public bool sliding = true;
+	public bool sliding = false;
 	//up&down
-	private Vector2 pointA;
+	/*private Vector2 pointA;
 	private Vector2 pointB;
-	public bool Touch;
+	public bool Touch;*/
 
+	public Button jumpBtn;
+	public Button slideBtn;
 	//--------------------------velocity-------------------------
 	public float speed;
 	public float hurtSpeed;
@@ -52,6 +58,7 @@ public class RG_playerController : MonoBehaviour
 	public GameObject SlidingParticle;
 
 
+
 	void Start()
 	{
 		Player = this;
@@ -59,6 +66,8 @@ public class RG_playerController : MonoBehaviour
 		rigid2D.AddForce(new Vector2(0, 0));
 		rigid2D.velocity = new Vector2(0, 0f);
 		VecitySpeed = speed;
+		jumpBtn.interactable = false;
+		slideBtn.interactable = false;
 	}
 
 	//---------------------------------Jump----------------------------------
@@ -85,11 +94,47 @@ public class RG_playerController : MonoBehaviour
 			//--------------jump---------------------
 			Player.transform.position = new Vector3(Player.transform.position.x + VecitySpeed, Player.transform.position.y, 10);
 			grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+			//rigid2D.velocity = new Vector2(rigid2D.velocity.x + VecitySpeed, rigid2D.velocity.y);
+			//-----------------------------------3版-------------------------------------
+			if (grounded)
+			{
+				if (CrossPlatformInputManager.GetButtonDown("Jump"))
+				{
+					rigid2D.velocity = new Vector2(0, jumpForce);
+					sister.SetTrigger("jump");
+					bother.SetTrigger("jump");
+					if (Up == true)
+					{
+						speed = 0.12f;
+						VecitySpeed = 0.12f;
+						runGameManager.maskObj.SetActive(false);
+						runGameManager.targetText.SetActive(false);
+						//teachObj.SetActive(false);
+						Up = false;
+					}
+				}
+				else if (CrossPlatformInputManager.GetButtonDown("Slide"))
+				{
+					sister.SetTrigger("sliding");
+					bother.SetTrigger("sliding");
+					SlidingParticle.SetActive(true);
+					StartCoroutine("Sliding");
+					if (Down == true)
+					{
+						speed = 0.12f;
+						VecitySpeed = 0.12f;
+						runGameManager.maskObj.SetActive(false);
+						runGameManager.targetText.SetActive(false);
+						//teachObj.SetActive(false);
+						Down = false;
+					}
+				}
+			}
 
-
+			//-----------------------------------2版-------------------------------------------
 			if (!end)
 			{
-				if (Input.GetMouseButtonUp(0))
+				/*if (Input.GetMouseButtonUp(0))
 				{
 					pointB = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
 					Touch = true;
@@ -102,7 +147,7 @@ public class RG_playerController : MonoBehaviour
 				if (Input.GetMouseButtonDown(0))
 				{
 					pointA = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-				}
+				}*/
 			}
 
 			if (VecitySpeed < speed)
@@ -148,12 +193,15 @@ public class RG_playerController : MonoBehaviour
 		{
 			Time.timeScale = 1;
 		}
-		if (Touch)
+
+
+		
+
+		/*if (Touch)
 		{
 			if (grounded)
 			{
-				/*Debug.Log(pointA);
-				Debug.Log(pointB);*/
+				
 				Vector2 offset = pointB - pointA;
 				if (offset.y > 0 && sliding == true)
 				{
@@ -188,23 +236,24 @@ public class RG_playerController : MonoBehaviour
 					}
 				}
 			}
-		}
+		}*/
 	}
+
 
 	IEnumerator Sliding()
 	{
-		sliding = false;
 		yield return new WaitForSeconds(0.8f);
 		SlidingParticle.SetActive(false);
-		VecitySpeed = 0.15f;
+		VecitySpeed = 0.12f;
 		sister.SetTrigger("run");
 		bother.SetTrigger("run");
-		sliding = true;
 	}
 
 	public void Hurt()
 	{
-		VecitySpeed -= VecityHurt;	
+		VecitySpeed -= VecityHurt;
+		runGameManager.HealthSlider.value -= 1;
+		runGameManager.damageTextObj.SetActive(true);
 		StartCoroutine("HurtDelay");
 	}
 	IEnumerator HurtDelay()
@@ -214,7 +263,9 @@ public class RG_playerController : MonoBehaviour
 			yield return new WaitForSeconds(0.1f);
 			falsh.SetActive(false);
 			yield return new WaitForSeconds(0.1f);
-		}	
+		}
+		yield return new WaitForSeconds(0.2f);
+		runGameManager.damageTextObj.SetActive(false);
 	}
 
 	
@@ -238,18 +289,27 @@ public class RG_playerController : MonoBehaviour
 			speed = 0.01f;
 			VecitySpeed = 0.01f;
 			Up = true;
-			runGameManager.black_bgImage.SetActive(true);
-			teachObj.SetActive(true);
+			jumpBtn.interactable = true;
+			runGameManager.targetText.SetActive(true);
+			runGameManager.teachText.text = "遇到下方障礙物，按跳躍鍵";
+			runGameManager.maskObj.SetActive(true);
+			runGameManager.mask.uvRect = new Rect(0.38f, 0.3f, 1.5f, 1.5f);
+			//teachObj.SetActive(true);
 		}
 
 		if (col.gameObject.name == "TeachDown")
 		{
 			speed = 0.01f;
 			VecitySpeed = 0.01f;
-			runGameManager.black_bgImage.SetActive(true);
-			teachObj.SetActive(true);
-			teachAnim.SetBool("Down", true);
 			Down = true;
+			slideBtn.interactable = true;
+			runGameManager.targetText.SetActive(true);
+			runGameManager.teachText.text = "遇到下方障礙物，按下滑鍵";
+			runGameManager.maskObj.SetActive(true);
+			runGameManager.mask.uvRect = new Rect(-0.87f, 0.3f, 1.5f, 1.5f);
+			//teachObj.SetActive(true);
+			//teachAnim.SetBool("Down", true);
+			
 		}
 	}
 
@@ -257,20 +317,22 @@ public class RG_playerController : MonoBehaviour
 	{
 		if (col.gameObject.name == "TeachUp")
 		{
-			speed = 0.15f;
-			VecitySpeed = 0.15f;
+			speed = 0.12f;
+			VecitySpeed = 0.12f;
 			Up = false;
-			runGameManager.black_bgImage.SetActive(false);
-			teachObj.SetActive(false);
+			runGameManager.maskObj.SetActive(false);
+			runGameManager.targetText.SetActive(false);
+			//teachObj.SetActive(false);
 		}
 
 		if (col.gameObject.name == "TeachDown")
 		{
-			speed = 0.15f;
-			VecitySpeed = 0.15f;
+			speed = 0.12f;
+			VecitySpeed = 0.12f;
 			Down = false;
-			runGameManager.black_bgImage.SetActive(false);
-			teachObj.SetActive(false);
+			runGameManager.maskObj.SetActive(false);
+			runGameManager.targetText.SetActive(false);
+			//teachObj.SetActive(false);
 		}
 	}
 }

@@ -8,7 +8,7 @@ using Spine;
 
 public enum GameState
 {
-	Teach, Start, Pause, Running, Dead,  Win
+	Start, Pause, Running, Dead,  Win
 }
 
 public class RunGameManager : MonoBehaviour {
@@ -17,9 +17,17 @@ public class RunGameManager : MonoBehaviour {
 	public static GameState gameState;
 	public string chapterName;
 
+	//-----------------------平衡條 & 血條-----------------------
 	public float balanceValue;
 	public Slider balanceSlider;
 	public Text balanceText;
+
+	public float playerHealth;
+	public Slider HealthSlider;
+	public GameObject damageTextObj;
+
+	//--------------------------距離條----------------------
+	public GameObject distance;
 
 	//教學物件
 	public GameObject targetText;
@@ -54,20 +62,28 @@ public class RunGameManager : MonoBehaviour {
 	public AudioSource audio;
 	public AudioClip countSound;
 
-	void Start () {
+	//---------------教學Next物件---------------
+	public GameObject TouchNextImage;
+	private int count = 0;
+	public GameObject maskObj;
+	public RawImage mask;
+	public Text teachText;
+	public GameObject NextFlashText;
 
-		StartCoroutine("Target");
-		gameState = GameState.Start;	
+	void Start () {
 		Puase.interactable = false;
 		Instance = this;
 		fade = winFade.GetComponent<Animator>();
 		lose_Fade.SetActive(false);
 		Application.targetFrameRate = 100;  //幀數
 		balanceValue = PlayerPrefs.GetFloat("StaticObject.balanceSlider");
+		playerHealth = PlayerPrefs.GetFloat("StaticObject.playerHealth");
+		HealthSlider.value = playerHealth;
 		balanceSlider.value = balanceValue;
 		balanceText.text = Mathf.Floor(balanceValue).ToString("0");
 		Debug.Log(balanceValue);
-
+		Debug.Log(playerHealth);
+		StartCoroutine("Target");
 	}
 
 	public void Update()
@@ -82,7 +98,7 @@ public class RunGameManager : MonoBehaviour {
 			}
 			else if(balanceSlider.value < 100)
 			{
-				balanceValue += 20f;
+				balanceValue += 100f;
 				balanceSlider.value = balanceValue;
 				balanceText.text = Mathf.Floor(balanceValue).ToString("0");
 			}
@@ -91,13 +107,33 @@ public class RunGameManager : MonoBehaviour {
 	}
 
 	IEnumerator Target() {
-		black_bgImage.SetActive(true);
+		gameState = GameState.Start;
+		maskObj.SetActive(true);
+		mask.uvRect = new Rect(0.79f, 0.26f, 1.5f, 1.5f);
 		targetText.SetActive(true);
-		yield return new WaitForSeconds(3f);
-		black_bgImage.SetActive(false);
+		NextFlashText.SetActive(true);
+		teachText.text = "目標！逃離地下道抵達終點";
+		yield return new WaitUntil(() => count == 1);
+		teachText.text = "上方為你與怪物的距離條";
+		distance.transform.SetSiblingIndex(6);
+		yield return new WaitUntil(() => count == 2);
+		teachText.text = "若觸碰到後方怪物即挑戰失敗，請注意";
+		yield return new WaitUntil(() => count == 3);
+		teachText.text = "挑戰即將開始";
+		yield return new WaitUntil(() => count == 4);
+		NextFlashText.SetActive(false);
+		distance.transform.SetAsFirstSibling();
+		//mask.uvRect = new Rect(0.38f, 0.3f, 1.5f, 1.5f);
+		maskObj.SetActive(false);
 		targetText.SetActive(false);
+		TouchNextImage.SetActive(false);
 		InvokeRepeating("timer", 1, 1);
 		gameState = GameState.Start;
+	}
+
+	public void Next()
+	{
+		count += 1;
 	}
 
 	void timer()
@@ -182,8 +218,11 @@ public class RunGameManager : MonoBehaviour {
 		winFade.SetActive(true);
 		fade.SetBool("FadeOut", true);
 		StaticObject.balanceSlider = balanceValue;
+		StaticObject.playerHealth = HealthSlider.value;
 		PlayerPrefs.SetFloat("StaticObject.balanceSlider", balanceValue);
+		PlayerPrefs.SetFloat("StaticObject.playerHealth", HealthSlider.value);
 		Debug.Log(StaticObject.balanceSlider);
+		Debug.Log(StaticObject.playerHealth);
 		yield return new WaitForSeconds(1.5f);
 		
 		SceneManager.LoadScene("Chapter0_5movie");  //接下一關

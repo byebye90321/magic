@@ -19,8 +19,9 @@ public static class StaticObject
 	public static int Paper7 = 0;
 	public static int Paper8 = 0;
 
-	//-----------------平衡條-----------------------
+	//-----------------平衡條 & 血量-----------------------
 	public static float balanceSlider;
+	public static float playerHealth;
 
 	//------------------卡牌------------------------
 	//第一張

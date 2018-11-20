@@ -1027,7 +1027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: f34b4020347e0904087da638989e06d8, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 97721a577cea14149a92d60119969c66, type: 2}
   initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
@@ -1061,7 +1061,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 775a13177edd36942b24a5d101710848, type: 2}
+  - {fileID: 2100000, guid: 9b9a7b32d4d1274409ee77da5183d2d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1172,7 +1172,8 @@ MonoBehaviour:
   currentLine: 0
   endAtLine: 0
   whotalk: {fileID: 103176477}
-  typeSpeed: 0.05
+  typeSpeed: 0.1
+  testText: {fileID: 0}
   FadeOut: {fileID: 1368669327}
   FadeIn: {fileID: 252434823}
   he: {fileID: 1927949615826450, guid: e78aa423a06b2d14f849dc431a7f4ad3, type: 2}
@@ -1691,9 +1692,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b82326824b540440a18c90b8f8b4da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graphic: {fileID: 476634604}
-  high: {fileID: 2135821158}
-  low: {fileID: 1624442797}
 --- !u!1 &165619562
 GameObject:
   m_ObjectHideFlags: 0
@@ -32791,7 +32789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -40798,8 +40796,7 @@ MonoBehaviour:
   yMax: 20
   xMin: 0
   yMin: 0
-  target: {fileID: 128486886}
-  smoothSpeed: 0.125
+  offset: 0
 --- !u!114 &1940046971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40826,6 +40823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f989084b467b4b409a39a03228013ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 
 --- !u!1 &1949692654
 GameObject:
   m_ObjectHideFlags: 0
@@ -41305,7 +41303,7 @@ SpriteRenderer:
   m_Size: {x: 2.7, y: 2.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &2024788503
 Transform:

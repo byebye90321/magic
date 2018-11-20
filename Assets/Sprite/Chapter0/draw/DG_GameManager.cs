@@ -80,7 +80,6 @@ public class DG_GameManager : MonoBehaviour {
 	public GameObject arrow;
 	//---------------------------------3版-------------------
 	public GameObject TouchNextImage;
-	public bool TouchNext = false;
 	private int count = 0;
 	public GameObject joystickCanvas;
 	public GameObject NextFlashText;
@@ -156,7 +155,6 @@ public class DG_GameManager : MonoBehaviour {
 
 	public void Next() {
 		count += 1;
-		Debug.Log(count);
 	}
 
 
@@ -165,7 +163,6 @@ public class DG_GameManager : MonoBehaviour {
 		teachText.text = "目標！使用魔法擊退敵人！";
 		teachText.fontSize = 34;
 		maskObj.SetActive(true);
-		Debug.Log("0");
 		yield return new WaitUntil(() => count == 1);
 		StartCoroutine("count2");
 	}
@@ -246,14 +243,14 @@ public class DG_GameManager : MonoBehaviour {
 		BossEnemy.SetActive(true);
 		TouchNextImage.SetActive(true);
 		NextFlashText.SetActive(true);
-		yield return new WaitUntil(() => count == 8);
+		yield return new WaitUntil(() => count == 7);
 		HitOpen.SetTrigger("HitOpen");
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "小BOSS會使用技能造成巨大傷害";
-		yield return new WaitUntil(() => count == 9);
+		yield return new WaitUntil(() => count == 8);
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "攻擊即將來襲，請注意";
-		yield return new WaitUntil(() => count == 10);
+		yield return new WaitUntil(() => count == 9);
 		TouchNextImage.SetActive(false);
 		NextFlashText.SetActive(false);
 		dg_enemyController.W1_Particle();
@@ -262,7 +259,7 @@ public class DG_GameManager : MonoBehaviour {
 		teachText.text = "接下來輪到我們使出攻擊！";
 		TouchNextImage.SetActive(true);
 		NextFlashText.SetActive(true);
-		yield return new WaitUntil(() => count == 11);
+		yield return new WaitUntil(() => count == 10);
 		TouchNextImage.SetActive(false);
 		NextFlashText.SetActive(false);
 		drawCanvas.GetComponent<Canvas>().enabled = true;
@@ -282,7 +279,7 @@ public class DG_GameManager : MonoBehaviour {
 		mask.uvRect = new Rect(1.15f, 0.26f, 1.5f, 1.5f);
 		TouchNextImage.SetActive(true);
 		NextFlashText.SetActive(true);
-		yield return new WaitUntil(() => count == 12);
+		yield return new WaitUntil(() => count == 11);
 		TouchNextImage.SetActive(false);
 		NextFlashText.SetActive(false);
 		StartCoroutine("count5");
@@ -295,7 +292,7 @@ public class DG_GameManager : MonoBehaviour {
 		teachText.text = "下方為已蒐集到技能";
 		TouchNextImage.SetActive(true);
 		NextFlashText.SetActive(true);
-		yield return new WaitUntil(() => count == 13);
+		yield return new WaitUntil(() => count == 12);
 		TouchNextImage.SetActive(false);
 		NextFlashText.SetActive(false);
 		maskObj.SetActive(false);
@@ -310,16 +307,14 @@ public class DG_GameManager : MonoBehaviour {
 		fingerObj.SetActive(false);
 		drawCanvas.GetComponent<Canvas>().enabled = false;
 		BossCollider.GetComponent<BoxCollider2D>().enabled = false;
-		yield return new WaitForSeconds(1f);
-		maskObj.SetActive(true);
+		yield return new WaitForSeconds(2f);
 		HitOpen.SetTrigger("HitOpen");
-		teachText.text = "技能使用完畢，須等待冷卻時間才可繼續使用";
+		teachText.text = "技能須等待冷卻時間才可繼續使用";
 		TouchNextImage.SetActive(true);
 		NextFlashText.SetActive(true);
-		yield return new WaitUntil(() => count == 14);
+		yield return new WaitUntil(() => count == 13);
 		TouchNextImage.SetActive(false);
 		NextFlashText.SetActive(false);
-		maskObj.SetActive(false);
 
 
 		textPanel.SetActive(true);
@@ -327,7 +322,7 @@ public class DG_GameManager : MonoBehaviour {
 		text.text = "趁他們暈的時候，我們趕快從後面的門逃吧！";
 		TouchNextImage.SetActive(true);
 		NextFlashText.SetActive(true);
-		yield return new WaitUntil(() => count == 15);
+		yield return new WaitUntil(() => count == 14);
 		TouchNextImage.SetActive(false);
 		textPanel.SetActive(false);
 		NextFlashText.SetActive(false);
@@ -358,174 +353,6 @@ public class DG_GameManager : MonoBehaviour {
 		fingerObj.SetActive(false);
 	}
 
-	IEnumerator count31()
-	{
-
-		HitOpen.SetTrigger("HitOpen");
-		fingerObj.SetActive(true);
-		mask.uvRect = new Rect(0.33f, 0.26f, 1.5f, 1.5f);
-		teachText.text = "使用移動鍵移動角色";
-		teachText.fontSize = 28;
-		joystick.raycastTarget = true;
-		finger.SetActive(true);
-		yield return new WaitUntil(() => TeachMove);
-		maskObj.SetActive(false);
-		joystick.raycastTarget = false;
-		fingerObj.SetActive(false);
-		yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
-		StartCoroutine("count4");
-	}
-
-	IEnumerator count41()
-	{
-
-		HitOpen.SetTrigger("HitOpen");
-		teachText.text = "Good！";
-		yield return new WaitForSeconds(2);
-		StartCoroutine("count5");
-	}
-
-	IEnumerator count51()
-	{
-
-		fingerObj.SetActive(true);
-		maskObj.SetActive(true);
-		mask.uvRect = new Rect(-0.75f, 0.34f, 1.5f, 1.5f);
-		fingerAnim.SetInteger("finger", 1);
-		HitOpen.SetTrigger("HitOpen");
-		jumpBtn.raycastTarget = true;
-		teachText.text = "點擊跳鍵讓角色跳躍";
-		yield return new WaitUntil(() => TeachJump);
-		maskObj.SetActive(false);
-		fingerObj.SetActive(false);
-		StartCoroutine("count6");
-	}
-
-	IEnumerator count61()
-	{
-
-		HitOpen.SetTrigger("HitOpen");
-		teachText.text = "GREAT！";
-		jumpBtn.raycastTarget = false;
-		yield return new WaitForSeconds(2);
-		HitObj.SetActive(false);
-		StartCoroutine("count7");
-	}
-
-	IEnumerator count7()
-	{
-		HitObj.SetActive(true);
-		teachText.text = "小怪物來襲！";
-		cut1.GetComponent<cut>().enabled = false;
-		cut2.GetComponent<cut>().enabled = false;
-		enemy.SetActive(true);
-		dg_playerController.graphics.localRotation = Quaternion.Euler(0, 0, 0);
-		dg_playerController.healthCanvas.localRotation = Quaternion.Euler(0, 0, 0);
-		yield return new WaitForSeconds(2f);
-		teachText.text = "被怪物觸碰到會損失血量，請注意";
-		yield return new WaitForSeconds(2f);
-		enemyAnim.SetTrigger("Atk");
-		StartCoroutine("count8");
-	}
-
-	IEnumerator count8()
-	{
-		yield return new WaitForSeconds(2f);
-		HitObj.SetActive(true);
-		teachText.text = "現在準備反擊！";
-		HitOpen.SetTrigger("HitOpen");
-		yield return new WaitForSeconds(2f);
-		teachText.text = "在場景上畫出線條，消滅小怪物";
-		cut1.GetComponent<cut>().enabled = true;
-		cut2.GetComponent<cut>().enabled = true;
-		fingerObj.SetActive(true);
-		fingerAnim.SetInteger("finger", 2);
-		drawCanvas.GetComponent<Canvas>().enabled = true;
-		yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
-		fingerObj.SetActive(false);
-		yield return new WaitUntil(() => cut.isDeath >=2);
-		teachText.text = "消滅成功！Perfect！";
-		drawCanvas.GetComponent<Canvas>().enabled = false;
-		blade.transform.position = new Vector2(0,0);
-		yield return new WaitForSeconds(2f);
-		StartCoroutine("count9");
-	}
-
-	IEnumerator count9()
-	{
-		HitObj.SetActive(false);
-		warningRedImage.SetActive(true);
-		for (int i = 0; i < 3; i++)
-		{
-			audio.PlayOneShot(warningSound);
-			warningExclamation.SetActive(true);
-			yield return new WaitForSeconds(0.3f);
-			warningExclamation.SetActive(false);
-			yield return new WaitForSeconds(0.3f);	
-		}
-		HitObj.SetActive(true);
-		HitOpen.SetTrigger("HitOpen");
-		teachText.text = "警告！小BOSS即將來襲！！！";	
-		yield return new WaitForSeconds(1f);
-		BossEnemy.SetActive(true);
-		yield return new WaitForSeconds(2f);
-		HitOpen.SetTrigger("HitOpen");
-		teachText.text = "小BOSS會使用技能造成巨大傷害";
-		yield return new WaitForSeconds(3f);
-		HitOpen.SetTrigger("HitOpen");
-		teachText.text = "攻擊即將來襲，請注意";
-		yield return new WaitForSeconds(2f);
-		dg_enemyController.W1_Particle();
-		yield return new WaitForSeconds(2f);
-		teachText.text = "接下來輪到我們使出攻擊！";
-		yield return new WaitForSeconds(1f);
-		drawCanvas.GetComponent<Canvas>().enabled = true;
-		HitOpen.SetTrigger("HitOpen");
-		teachText.text = "連續攻擊小BOSS";
-		fingerObj.SetActive(true);
-		fingerAnim.SetInteger("finger", 3);
-		yield return new WaitUntil(() => Input.GetMouseButton(0));
-		fingerObj.SetActive(false);
-		HitOpen.SetTrigger("HitOpen");
-		teachText.text = "繼續攻擊";
-		yield return new WaitUntil(() => dg_enemyController.curHealth<=90);  //BUG
-		drawCanvas.GetComponent<Canvas>().enabled = false;
-		HitOpen.SetTrigger("HitOpen");
-		teachText.text = "看來我們得使用其他方法才能加快攻擊";
-		maskObj.SetActive(true);
-		mask.uvRect = new Rect(1.15f, 0.26f, 1.5f, 1.5f);
-		yield return new WaitForSeconds(3f);
-		StartCoroutine("count10");
-	}
-
-	IEnumerator count10()
-	{
-		mask.uvRect = new Rect(-0.21f, 0.34f, 2.5f, 2.5f);
-		//HitOpen.SetTrigger("HitOpen");
-		teachText.text = "下方為已蒐集到技能";
-		yield return new WaitForSeconds(2f);
-		drawState = DrawState.Game;
-		HitOpen.SetTrigger("HitOpen");
-		teachText.text = "等待技能冷卻完畢即可使用";
-		yield return new WaitForSeconds(5f);    //M技能時間 
-		maskObj.SetActive(false);
-		HitOpen.SetTrigger("HitOpen");
-		teachText.text = "使用M技能\n在螢幕中央一筆畫出M字形";
-		fingerObj.SetActive(true);
-		fingerAnim.SetInteger("finger", 4);
-		drawCanvas.GetComponent<Canvas>().enabled = true;
-		yield return new WaitUntil(() => geature.isAtk ==true);
-		HitOpen.SetTrigger("HitOpen");
-		teachText.text = "Excellent！";
-		warningRedImage.SetActive(false);
-		fingerObj.SetActive(false);
-		drawCanvas.GetComponent<Canvas>().enabled = false;
-		BossCollider.GetComponent<BoxCollider2D>().enabled = false;
-		yield return new WaitForSeconds(2f);
-		HitObj.SetActive(false);
-		end = true;
-		arrow.SetActive(true);
-	}
 
 	public void StarGame() {
 		StartTime -= 1*Time.deltaTime;
@@ -606,6 +433,7 @@ public class DG_GameManager : MonoBehaviour {
 	{
 		//StaticObject.blanaceSlider = balanceValue;
 		PlayerPrefs.SetFloat("StaticObject.balanceSlider", balanceValue);
+		PlayerPrefs.SetFloat("StaticObject.playerHealth", dg_playerController.HealthSlider.value);
 		yield return new WaitForSeconds(0.1f);
 		winFade.SetActive(true);
 		fade.SetBool("FadeOut", true);
