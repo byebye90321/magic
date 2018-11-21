@@ -222,7 +222,7 @@ public class DialogsScript : MonoBehaviour
 			if (isTyping == false)
 			{
 				//theText.text = testText.text;
-				theText.text = "這是<color=#00ffffff>哪裡?</color>";
+				//theText.text = "這是<color=#00ffffff>哪裡?</color>";
 			}
 		}
 
@@ -607,6 +607,7 @@ IEnumerator interactOver() {
 		while (isTyping && !cancelTyping && (letter < lineOfText.Length - 1))
 		{
 			theText.text += lineOfText[letter];
+            //bool 判斷<color> </color>
 			letter += 1;
 			yield return new WaitForSeconds(typeSpeed);
 		}

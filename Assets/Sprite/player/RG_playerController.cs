@@ -93,12 +93,15 @@ public class RG_playerController : MonoBehaviour
 			}
 			//--------------jump---------------------
 			Player.transform.position = new Vector3(Player.transform.position.x + VecitySpeed, Player.transform.position.y, 10);
-			grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+            var hitObject = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+            grounded = hitObject;
+            
 			//rigid2D.velocity = new Vector2(rigid2D.velocity.x + VecitySpeed, rigid2D.velocity.y);
 			//-----------------------------------3版-------------------------------------
 			if (grounded)
 			{
-				if (CrossPlatformInputManager.GetButtonDown("Jump"))
+                Debug.Log(hitObject.name);
+                if (CrossPlatformInputManager.GetButtonDown("Jump"))
 				{
 					rigid2D.velocity = new Vector2(0, jumpForce);
 					sister.SetTrigger("jump");
