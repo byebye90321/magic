@@ -100,7 +100,7 @@ public class RG_playerController : MonoBehaviour
 			//-----------------------------------3版-------------------------------------
 			if (grounded)
 			{
-                Debug.Log(hitObject.name);
+                //Debug.Log(hitObject.name);
                 if (CrossPlatformInputManager.GetButtonDown("Jump"))
 				{
 					rigid2D.velocity = new Vector2(0, jumpForce);
@@ -297,7 +297,6 @@ public class RG_playerController : MonoBehaviour
 			runGameManager.teachText.text = "遇到下方障礙物，按跳躍鍵";
 			runGameManager.maskObj.SetActive(true);
 			runGameManager.mask.uvRect = new Rect(0.38f, 0.3f, 1.5f, 1.5f);
-			//teachObj.SetActive(true);
 		}
 
 		if (col.gameObject.name == "TeachDown")
@@ -310,9 +309,6 @@ public class RG_playerController : MonoBehaviour
 			runGameManager.teachText.text = "遇到下方障礙物，按下滑鍵";
 			runGameManager.maskObj.SetActive(true);
 			runGameManager.mask.uvRect = new Rect(-0.87f, 0.3f, 1.5f, 1.5f);
-			//teachObj.SetActive(true);
-			//teachAnim.SetBool("Down", true);
-			
 		}
 	}
 
@@ -325,7 +321,6 @@ public class RG_playerController : MonoBehaviour
 			Up = false;
 			runGameManager.maskObj.SetActive(false);
 			runGameManager.targetText.SetActive(false);
-			//teachObj.SetActive(false);
 		}
 
 		if (col.gameObject.name == "TeachDown")
@@ -335,7 +330,6 @@ public class RG_playerController : MonoBehaviour
 			Down = false;
 			runGameManager.maskObj.SetActive(false);
 			runGameManager.targetText.SetActive(false);
-			//teachObj.SetActive(false);
 		}
 	}
 }

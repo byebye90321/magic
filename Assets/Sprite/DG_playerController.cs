@@ -86,8 +86,10 @@ public class DG_playerController : MonoBehaviour
 		//-------------MOVE----------------------------
 		Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertiacl")) * speed;
 		rigid2D.velocity = new Vector2(moveVec.x, rigid2D.velocity.y);
-		animator_S.SetFloat("Speed", Mathf.Abs(moveVec.x));
-		animator_B.SetFloat("Speed", Mathf.Abs(moveVec.x));
+		//animator_S.SetFloat("Speed", Mathf.Abs(moveVec.x));
+		//animator_B.SetFloat("Speed", Mathf.Abs(moveVec.x));
+		animator_S.SetFloat("run", Mathf.Abs(moveVec.x));
+		animator_B.SetFloat("run", Mathf.Abs(moveVec.x));
 
 		if (grounded)
 		{
@@ -121,6 +123,7 @@ public class DG_playerController : MonoBehaviour
 			healthCanvas.localRotation = Quaternion.Euler(0, 180, 0);
 			dg_GameManager.TeachMove = true;
 		}
+
 
 		/*if (dg_GameManager.isRun == true)
 		{

@@ -13,6 +13,7 @@ public class cut : MonoBehaviour
 															   //private GameObject scores;     //放置scoreManager.cs和healthManager.cs脚本的游戏对象
 	public SkeletonAnimation enemy;
 	public static int isDeath;
+	public GameObject DeathEffect;
 	void Start()
     {
         col = GetComponent<BoxCollider2D>();
@@ -39,13 +40,11 @@ public class cut : MonoBehaviour
         {
             if (col.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))                //鼠标在当前水果2Dcollider内
             {
-                CreateHalf(obj1, 0);
-                CreateHalf(obj2, 1);
-                Createwz();
+                //CreateHalf(obj1, 0);
+                //CreateHalf(obj2, 1);
+                //Createwz();
 				//Destroy(this.gameObject);				
 				StartCoroutine("Death");
-
-				
 			}
         }
 
@@ -53,9 +52,9 @@ public class cut : MonoBehaviour
 
 	IEnumerator Death() {
 		enemy.state.SetAnimation(0, "death", false);
+		DeathEffect.SetActive(true);
 		yield return new WaitForSeconds(0.7f);
 		isDeath += 1;
-		Debug.Log(isDeath);
 		Destroy(this.gameObject);
 	}
 

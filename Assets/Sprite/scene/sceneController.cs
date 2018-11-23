@@ -20,7 +20,7 @@ public class sceneController : MonoBehaviour {
 
 	public void ToContinueGame()
 	{
-		//Application.LoadLevel("Chapter0_1movie");
+		Application.LoadLevel("ChooseChapter");
 	}
 
 	public void ToNewGame()
