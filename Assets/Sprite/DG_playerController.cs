@@ -9,7 +9,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class DG_playerController : MonoBehaviour
 {
-
+	public string ChapterName;
 	public DG_GameManager dg_GameManager;
 	//------------playerControl----------------------
 	public Rigidbody2D rigid2D;
@@ -56,10 +56,13 @@ public class DG_playerController : MonoBehaviour
 
 	void Start()
 	{
-		rigid2D.velocity = new Vector2(0, 0f);
-		Active.interactable = false;
+		rigid2D.velocity = new Vector2(0, 0f);		
 		healthCanvas = playerHealth.GetComponent<Transform>();
 		damageText = damageTextObj.GetComponent<Text>();
+		if (ChapterName == "0")
+		{
+			Active.interactable = false;
+		}
 	}
 
 	public void Update() {
@@ -86,21 +89,39 @@ public class DG_playerController : MonoBehaviour
 		//-------------MOVE----------------------------
 		Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertiacl")) * speed;
 		rigid2D.velocity = new Vector2(moveVec.x, rigid2D.velocity.y);
-		//animator_S.SetFloat("Speed", Mathf.Abs(moveVec.x));
-		//animator_B.SetFloat("Speed", Mathf.Abs(moveVec.x));
-		animator_S.SetFloat("run", Mathf.Abs(moveVec.x));
-		animator_B.SetFloat("run", Mathf.Abs(moveVec.x));
+
+		if (ChapterName == "0")
+		{
+			animator_S.SetFloat("run", Mathf.Abs(moveVec.x));
+			animator_B.SetFloat("run", Mathf.Abs(moveVec.x));
+		}
+		else if (ChapterName == "1")
+		{
+			animator_S.SetFloat("Speed", Mathf.Abs(moveVec.x));
+		}
+
+
 
 		if (grounded)
 		{
+			Debug.Log("22");
 			if (CrossPlatformInputManager.GetButtonDown("Jump"))
 			{
-				
-				dg_GameManager.TeachJump = true;
-				jumping = true;
-				rigid2D.velocity = new Vector2(0, jumpForce);
-				animator_S.SetBool("isJump", jumping);
-				animator_B.SetBool("isJump", jumping); //test版
+				if (ChapterName == "0")
+				{
+					Debug.Log("0000");
+					dg_GameManager.TeachJump = true;
+					jumping = true;
+					rigid2D.velocity = new Vector2(0, jumpForce);
+					animator_S.SetBool("isJump", jumping);
+					animator_B.SetBool("isJump", jumping); //test版
+				} else if (ChapterName == "1")
+				{
+					Debug.Log("1111");
+					jumping = true;
+					rigid2D.velocity = new Vector2(0, jumpForce);
+					animator_S.SetBool("isJump", jumping);
+				}
 			}
 			animator_S.SetBool("fall", false);
 			//animator_B.SetBool("fall", false);  
@@ -137,10 +158,18 @@ public class DG_playerController : MonoBehaviour
 
 		if (rigid2D.velocity.y < 0)
 		{
-			animator_S.SetBool("fall", true);
-			//animator_B.SetBool("fall", true);
-			animator_S.SetBool("isJump", jumping);
-			animator_B.SetBool("isJump", false);
+			if (ChapterName == "0")
+			{
+				animator_S.SetBool("fall", true);
+				//animator_B.SetBool("fall", true);
+				animator_S.SetBool("isJump", jumping);
+				animator_B.SetBool("isJump", false);
+			}
+			else if (ChapterName == "1")
+			{
+				animator_S.SetBool("fall", true);
+				animator_S.SetBool("isJump", jumping);
+			}
 			
 		}
 		jumping = false;

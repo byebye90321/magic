@@ -3985,6 +3985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3364de819ccf04446a5ac9dd5c735352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChapterName: 0
   dg_GameManager: {fileID: 1399051284}
   rigid2D: {fileID: 462784792}
   graphics: {fileID: 462784791}
@@ -30664,6 +30665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66d9bba702b60143b948cbaef553a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChapterName: 0
   dg_playerController: {fileID: 462784794}
   dg_enemyController: {fileID: 228383963}
   cut1: {fileID: 1916129300}

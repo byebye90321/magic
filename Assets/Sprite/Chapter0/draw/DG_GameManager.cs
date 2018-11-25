@@ -15,6 +15,7 @@ public enum DrawState
 
 public class DG_GameManager : MonoBehaviour {
 
+	public string ChapterName;
 	public DG_playerController dg_playerController;
 	public DG_EnemyController dg_enemyController;
 	public cut cut1;
@@ -86,38 +87,37 @@ public class DG_GameManager : MonoBehaviour {
 
 
 	void Start () {
-		Time.timeScale = 1f;
-		drawState = DrawState.Game;
-		Instance = this;
-		//InvokeRepeating("StarGame", 1, 1);
-		fade = winFade.GetComponent<Animator>();
 
-		//---------------教學--------------
-		finger.SetActive(false);
+		if (ChapterName == "0")  //序章初始
+		{
+			Time.timeScale = 1f;
+			drawState = DrawState.Game;
+			Instance = this;
+			//InvokeRepeating("StarGame", 1, 1);
+			fade = winFade.GetComponent<Animator>();
 
-		//-----------虛擬搖桿-----------
-		joystick.raycastTarget = false;
-		jumpBtn.raycastTarget = false;
-		joystick.color = new Color(255, 255, 255, 0);
-		joystickOutline.color = new Color(255, 255, 255, 0);
-		jumpBtn.color = new Color(255, 255, 255, 0);
+			//---------------教學--------------
+			finger.SetActive(false);
 
-		drawCanvas.GetComponent<Canvas>().enabled = false;
-		HitOpen = HitObj.GetComponent<Animator>();
-		fingerAnim = fingerObj.GetComponent<Animator>();
-		enemyAnim = enemy.GetComponent<Animator>();
-	}
+			//-----------虛擬搖桿-----------
+			joystick.raycastTarget = false;
+			jumpBtn.raycastTarget = false;
+			joystick.color = new Color(255, 255, 255, 0);
+			joystickOutline.color = new Color(255, 255, 255, 0);
+			jumpBtn.color = new Color(255, 255, 255, 0);
 
-	void Awake()
-	{
-		mask.uvRect = new Rect(1.15f, 0.26f, 1.5f, 1.5f);
-		//joystickCanvas.SetActive(false);
-		StartCoroutine("count1");
+			drawCanvas.GetComponent<Canvas>().enabled = false;
+			HitOpen = HitObj.GetComponent<Animator>();
+			fingerAnim = fingerObj.GetComponent<Animator>();
+			enemyAnim = enemy.GetComponent<Animator>();
+			mask.uvRect = new Rect(1.15f, 0.26f, 1.5f, 1.5f);
+			//joystickCanvas.SetActive(false);
+			StartCoroutine("count1");
+		}
 	}
 
 	void FixedUpdate () {
 
-		Debug.Log(drawState);
 
 		if (drawState == DrawState.Game)
 		{
