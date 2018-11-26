@@ -1174,7 +1174,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 952659013}
-        m_MethodName: ToMenu
+        m_MethodName: sisterGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

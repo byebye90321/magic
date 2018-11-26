@@ -78,7 +78,6 @@ public class DG_playerController : MonoBehaviour
 				HealthSlider.value = curHealth;
 			}
 		}
-		
 	}
 
 	public void FixedUpdate()
@@ -104,7 +103,6 @@ public class DG_playerController : MonoBehaviour
 
 		if (grounded)
 		{
-			Debug.Log("22");
 			if (CrossPlatformInputManager.GetButtonDown("Jump"))
 			{
 				if (ChapterName == "0")

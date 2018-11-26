@@ -317,7 +317,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &49556429
 Transform:
   m_ObjectHideFlags: 0
@@ -1173,7 +1173,6 @@ MonoBehaviour:
   endAtLine: 0
   whotalk: {fileID: 103176477}
   typeSpeed: 0.1
-  testText: {fileID: 0}
   FadeOut: {fileID: 1368669327}
   FadeIn: {fileID: 252434823}
   he: {fileID: 1927949615826450, guid: e78aa423a06b2d14f849dc431a7f4ad3, type: 2}
@@ -1595,7 +1594,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 139663265}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -1859,7 +1858,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 200866081}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -11735,7 +11734,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 405079615}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1013627134}
@@ -12266,6 +12265,34 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 490627928}
+--- !u!1 &526514868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 526514869}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &526514869
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 526514868}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.05, y: -2.51, z: 10}
+  m_LocalScale: {x: 0.15675834, y: 0.15675834, z: 0.15675834}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &536309521
 GameObject:
   m_ObjectHideFlags: 0
@@ -33822,8 +33849,8 @@ MonoBehaviour:
   backgrounds:
   - {fileID: 1883998543}
   - {fileID: 1890819369}
-  parallaxScale: 1
-  parallaxReductionFactor: 2
+  parallaxScale: 2
+  parallaxReductionFactor: 10
   smoothing: 1.5
 --- !u!1 &1456507249
 GameObject:
@@ -39946,7 +39973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1811668828
 Transform:
   m_ObjectHideFlags: 0
@@ -40426,7 +40453,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1860920665}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ba5fdcc6889a3343a454fcb52a875d6, type: 3}
   m_Name: 
@@ -40552,7 +40579,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1883998542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 3.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1783267338}
@@ -40791,12 +40818,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188ad0ee97bb2b34a8026da92323fdbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerobj: {fileID: 128486880}
+  camera: {fileID: 1940046968}
   xMax: 43.5
   yMax: 20
   xMin: 0
   yMin: 0
-  offset: 0
+  target: {fileID: 128486886}
+  smoothSpeed: 0.125
+  offest: {x: 1.3, y: 3.5, z: -10}
+  count: 0
 --- !u!114 &1940046971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41410,7 +41440,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2081546793}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 24.3, y: 0.34, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
@@ -42104,7 +42134,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: -1, y: 1, z: 0}
-    m_Scale: {x: 35.37, y: 3.25, z: 1}
+    m_Scale: {x: 35.37, y: 3.25, z: 0}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0

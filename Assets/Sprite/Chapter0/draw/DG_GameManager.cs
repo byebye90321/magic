@@ -8,8 +8,6 @@ using Spine;
 
 public enum DrawState
 {
-	/*Start, Pause, playerRound, playerAtt, monsterRound, monsterAtt, Dead,  Win*/
-	/*Start, Pause, Game, Dead, Win*/
 	Teach, Pause, Game, Dead, Win
 }
 
@@ -62,7 +60,9 @@ public class DG_GameManager : MonoBehaviour {
 	public Image joystickOutline; //外框區
 	public Image jumpBtn; //image射線關閉，跳躍鍵
 	public Canvas drawCanvas;
+	[HideInInspector]
 	public bool TeachMove = false;
+	[HideInInspector]
 	public bool TeachJump = false;
 	public RawImage mask;
 	public GameObject maskObj;
@@ -414,7 +414,6 @@ public class DG_GameManager : MonoBehaviour {
 	{
 		drawState = DrawState.Win;
 		StartCoroutine("Win");
-	
 	}
 
 	IEnumerator GameOver()
@@ -431,7 +430,6 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator Win()
 	{
-		//StaticObject.blanaceSlider = balanceValue;
 		PlayerPrefs.SetFloat("StaticObject.balanceSlider", balanceValue);
 		PlayerPrefs.SetFloat("StaticObject.playerHealth", dg_playerController.HealthSlider.value);
 		yield return new WaitForSeconds(0.1f);

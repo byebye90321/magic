@@ -32,17 +32,16 @@ public class CameraFollow : MonoBehaviour {
 
 	void FixedUpdate(){
 
-		if (target.position.x > 3 &&count==0) //放大鏡頭
+		/*if (target.position.x > 3 &&count==0) //放大鏡頭
 		{
-			StartCoroutine(ZoomCamera(5, 2, 5, 100));
-		}
+			StartCoroutine(ZoomCamera(5, 2, 3, 100));
+		}*/
 
 		//transform.position = playerobj.transform.position;
 		//transform.position = new Vector3(Mathf.Clamp(playerobj.transform.position.x + offset, xMin,xMax),Mathf.Clamp(playerobj.transform.position.y,yMin,yMax));
 
 
 		Vector3 newPosition = target.position + offest;
-		//transform.position = new Vector2(Mathf.Clamp(transform.position.x, xMin, xMax), Mathf.Clamp(transform.position.y, yMin, yMax));
 		transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
 
 		if (transform.position.x < 0)
