@@ -541,7 +541,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2076825951
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 1
 --- !u!33 &68309499
 MeshFilter:
@@ -2099,7 +2099,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1240888473
-  m_SortingLayer: 12
+  m_SortingLayer: 13
   m_SortingOrder: 0
 --- !u!33 &265393111
 MeshFilter:
@@ -5015,7 +5015,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2076825951
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
 --- !u!33 &623244628
 MeshFilter:
@@ -5094,7 +5094,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1262026175
-  m_SortingLayer: 9
+  m_SortingLayer: 10
   m_SortingOrder: 1
   m_RenderMode: 0
   m_SortMode: 0
@@ -9900,12 +9900,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188ad0ee97bb2b34a8026da92323fdbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerobj: {fileID: 1130164046}
+  camera: {fileID: 0}
   xMax: 157
   yMax: 0
   xMin: 0
   yMin: 0
-  offset: 3
+  target: {fileID: 0}
+  smoothSpeed: 0.125
+  offest: {x: 0, y: 0, z: 0}
+  count: 0
 --- !u!114 &644016964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13268,7 +13271,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1262026175
-  m_SortingLayer: 9
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -17928,8 +17931,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -4.3}
-  m_SizeDelta: {x: 72, y: 60}
+  m_AnchoredPosition: {x: 0, y: -1}
+  m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1280156725
 MonoBehaviour:
@@ -17950,7 +17953,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 88fedcfd6f3ead644971c82208214bd6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5f0940394d4c41744871b619478157f6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18358,8 +18361,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 12}
-  m_SizeDelta: {x: 72, y: 64}
+  m_AnchoredPosition: {x: 0, y: 5.3}
+  m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1335164724
 MonoBehaviour:
@@ -18380,7 +18383,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 1e8eb5275e218e245ae1fef6e5e59887, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a75d77bc4ff62b14695d0111e72da77f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
