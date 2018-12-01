@@ -81,11 +81,11 @@ TagManager:
   - name: player
     uniqueID: 2076825951
     locked: 0
-  - name: bg_front
-    uniqueID: 3644845839
-    locked: 0
   - name: Effect
     uniqueID: 1262026175
+    locked: 0
+  - name: bg_front
+    uniqueID: 3644845839
     locked: 0
   - name: monsterAtk
     uniqueID: 2067886535

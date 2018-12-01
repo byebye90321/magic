@@ -8,6 +8,7 @@ using System.Linq;
 public class ExampleGestureHandler : MonoBehaviour
 {
 	//public static ExampleGestureHandler gesture;
+	public string ChapterName;
 	public Text textResult;
 	public Transform referenceRoot;
 	GesturePatternDraw[] references;
@@ -34,7 +35,8 @@ public class ExampleGestureHandler : MonoBehaviour
 	//----------------2版------------------
 	
 	public DG_EnemyController enemyController;
-	public DG_playerController playerController;
+	public DG_playerController DG_playerController;
+	//public PlayerController playerController;
 	public Skills skill1;
 	public int skillAtk1;
 	public bool isAtk=false;
@@ -72,12 +74,15 @@ public class ExampleGestureHandler : MonoBehaviour
 		{
 			if (result.gesture.id == "M")
 			{
+				if (ChapterName == "0")
+				{
+					enemyController.StartCoroutine("Skill1");
+				}
 				isAtk = true;
 				Debug.Log("攻擊");
-				playerController.Attack();
+				DG_playerController.Attack();
 				textResult.text = result.gesture.id + "\n" + Mathf.RoundToInt(result.score.score * 100) + "%";
 				skill1.currentCoolDown = 0;
-				enemyController.StartCoroutine("Skill1");
 				G1_Particle.SetActive(true);
 				G1_beaten.SetActive(true);
 				StartCoroutine("close");

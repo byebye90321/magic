@@ -16,16 +16,6 @@ public class Skills : MonoBehaviour
 
 	public bool attack;
 
-	/*public void UseSkill(string skillName)
-	{
-		if (currentCoolDown >= coolDown)
-		{
-			// 使用技能，这里只是简单的打印了。
-			Debug.LogFormat("使用 【{0}】", skillName);
-			// 重置冷却时间
-			currentCoolDown = 0;
-		}
-	}*/
 	void Start()
 	{
 		currentCoolDown = 0;
@@ -33,7 +23,7 @@ public class Skills : MonoBehaviour
 
 	void Update()
 	{
-		if (DG_GameManager.drawState == DrawState.Game)
+		if (DG_GameManager.drawState == DrawState.Game || GameManager.chapterState == ChapterState.Game)
 		{
 			if (currentCoolDown < coolDown)
 			{

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class CameraFollow : MonoBehaviour {
 
+	public string ChapterName;
 	//public GameObject playerobj;
 	public Camera camera;
 	[SerializeField]
@@ -40,13 +41,20 @@ public class CameraFollow : MonoBehaviour {
 		//transform.position = playerobj.transform.position;
 		//transform.position = new Vector3(Mathf.Clamp(playerobj.transform.position.x + offset, xMin,xMax),Mathf.Clamp(playerobj.transform.position.y,yMin,yMax));
 
-
-		Vector3 newPosition = target.position + offest;
-		transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
-
-		if (transform.position.x < 0)
+		if (ChapterName == "0")
 		{
-			transform.position = new Vector2(Mathf.Clamp(transform.position.x, xMin, xMax), transform.position.y);
+			transform.position = target.position;
+			transform.position = new Vector3(Mathf.Clamp(target.position.x+3f, xMin,xMax),Mathf.Clamp(target.position.y,yMin,yMax));
+		}
+		if (ChapterName == "1")
+		{
+			Vector3 newPosition = target.position + offest;
+			transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
+
+			if (transform.position.x < 0)
+			{
+				transform.position = new Vector2(Mathf.Clamp(transform.position.x, xMin, xMax), transform.position.y);
+			}
 		}
 	}
 

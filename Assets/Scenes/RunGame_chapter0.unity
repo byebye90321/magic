@@ -5094,7 +5094,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1262026175
-  m_SortingLayer: 10
+  m_SortingLayer: 9
   m_SortingOrder: 1
   m_RenderMode: 0
   m_SortMode: 0
@@ -9900,12 +9900,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188ad0ee97bb2b34a8026da92323fdbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChapterName: 0
   camera: {fileID: 0}
   xMax: 157
   yMax: 0
   xMin: 0
   yMin: 0
-  target: {fileID: 0}
+  target: {fileID: 1069018175}
   smoothSpeed: 0.125
   offest: {x: 0, y: 0, z: 0}
   count: 0
@@ -13271,7 +13272,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1262026175
-  m_SortingLayer: 10
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0

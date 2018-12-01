@@ -439,10 +439,4 @@ public class DG_GameManager : MonoBehaviour {
 		SceneManager.LoadScene("RunGame_chapter0");  //接下一關
 	}
 
-	IEnumerator WaitForAudio()
-	{
-		yield return new WaitForSeconds(0);
-		SceneManager.LoadScene(Application.loadedLevel);
-	}
-
 }

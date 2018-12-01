@@ -180,12 +180,12 @@
      <Compile Include="Assets\Sprite\Chapter0\run\fallAnim.cs" />
      <Compile Include="Assets\Sprite\Chapter0\run\moster.cs" />
      <Compile Include="Assets\Sprite\Chapter0\run\RunGameManager.cs" />
-     <Compile Include="Assets\Sprite\DG_playerController.cs" />
      <Compile Include="Assets\Sprite\drawEffect.cs" />
      <Compile Include="Assets\Sprite\End\EndPoint.cs" />
      <Compile Include="Assets\Sprite\End\Settle.cs" />
      <Compile Include="Assets\Sprite\End\tree.cs" />
      <Compile Include="Assets\Sprite\FpsTest.cs" />
+     <Compile Include="Assets\Sprite\player\DG_playerController.cs" />
      <Compile Include="Assets\Sprite\player\DialogsScript.cs" />
      <Compile Include="Assets\Sprite\player\DrawPlayerController.cs" />
      <Compile Include="Assets\Sprite\player\GameManager.cs" />

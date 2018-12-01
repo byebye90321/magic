@@ -12,7 +12,7 @@ public class ToSisGame : MonoBehaviour {
 	public Slider loadingBar;
 
 	public void Start() {
-		ToGame = SceneManager.LoadSceneAsync("sister_forest");
+		ToGame = SceneManager.LoadSceneAsync("Sister_chapter1");
 		ToGame.allowSceneActivation = false;
 	}
 
