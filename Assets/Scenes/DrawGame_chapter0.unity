@@ -4012,7 +4012,9 @@ MonoBehaviour:
   enemyAtk: 10
   BossAtk: 30
   tastPanel: {fileID: 0}
-  pointParticle: {fileID: 0}
+  NPC1Point: {fileID: 0}
+  Bobby: {fileID: 0}
+  drawCanvas: {fileID: 0}
   W1_beaten: {fileID: 484646014}
   audio: {fileID: 462784795}
   AtkSound: {fileID: 8300000, guid: 2e4ad0293bc47ec4da93e3dd0c99d87a, type: 3}
@@ -38261,6 +38263,32 @@ Prefab:
     - target: {fileID: 22400000, guid: 9529ecc3d479da5499993355e6c2cb4f, type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114585560798732012, guid: 9529ecc3d479da5499993355e6c2cb4f,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 789d02bb7b1be5f4b8ed4b3daf777afa,
+        type: 3}
+    - target: {fileID: 224844366281614792, guid: 9529ecc3d479da5499993355e6c2cb4f,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -123.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844366281614792, guid: 9529ecc3d479da5499993355e6c2cb4f,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 27.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844366281614792, guid: 9529ecc3d479da5499993355e6c2cb4f,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 161.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844366281614792, guid: 9529ecc3d479da5499993355e6c2cb4f,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 161.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9529ecc3d479da5499993355e6c2cb4f, type: 2}

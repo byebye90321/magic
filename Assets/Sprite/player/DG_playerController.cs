@@ -10,8 +10,8 @@ using UnityStandardAssets.CrossPlatformInput;
 public class DG_playerController : MonoBehaviour
 {
 	public string ChapterName;
-	public DG_GameManager dg_GameManager;
-	public GameManager gameManager;
+	public DG_GameManager dg_GameManager; //序章
+	public GameManager gameManager; //正章
 	//------------playerControl----------------------
 	public Rigidbody2D rigid2D;
 	public Transform graphics;
@@ -47,9 +47,15 @@ public class DG_playerController : MonoBehaviour
 	//------------------Enemy-----------------------
 	public int enemyAtk;
 	public int BossAtk;
-	//--------------------NPC------------------------
+	//----------------NPC Tast------------------------
 	public GameObject tastPanel;
-	public GameObject pointParticle;
+	public GameObject NPC1Point;
+	private bool isTasting = false;
+
+	public GameObject Bobby;
+	private BoxCollider2D BobbyCollider;
+	//------------------draw-------------------------
+	public Canvas drawCanvas;
 	//-----------------Particle System---------------
 	//public GameObject G1_Skill;
 	public GameObject W1_beaten;
@@ -64,7 +70,11 @@ public class DG_playerController : MonoBehaviour
 		healthCanvas = playerHealth.GetComponent<Transform>();
 		damageText = damageTextObj.GetComponent<Text>();
 		Active.interactable = false;
-		
+
+		if (ChapterName == "1")
+		{
+			BobbyCollider = Bobby.GetComponent<BoxCollider2D>();
+		}
 	}
 
 	public void Update() {
@@ -79,7 +89,7 @@ public class DG_playerController : MonoBehaviour
 			{
 				HealthSlider.value = curHealth;
 			}
-		}
+		}	
 	}
 
 	public void FixedUpdate()
@@ -105,7 +115,6 @@ public class DG_playerController : MonoBehaviour
 					rigid2D.velocity = new Vector2(0, jumpForce);
 					animator_S.SetBool("isJump", jumping);
 				}
-
 			}
 			animator_S.SetBool("fall", false);
 			//animator_B.SetBool("fall", false);  
@@ -150,16 +159,49 @@ public class DG_playerController : MonoBehaviour
 		}
 
 		//----------------------NPC tast-------------------------
-
-		if (Active.interactable == true&& CrossPlatformInputManager.GetButtonDown("Active"))
+		if (Input.GetMouseButtonDown(0))
 		{
-			tastPanel.SetActive(true);
-		}
+			Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
 
+			if (hit.collider == null)
+			{
+				Debug.Log("null");
+				//Debug.Log(hit.collider.name);
+			}else if (hit.collider.name == "NPC_Bobby")
+			{
+				if (Mathf.Abs(rigid2D.transform.position.x - Bobby.transform.position.x) < 2 && NPC1Point.activeInHierarchy== true && isTasting == false)
+				{
+					isTasting = true;
+					Tast();
+				}
+			}
+		}
 	}
 
-	public void OnLanding() {
 
+	public void Tast()
+	{
+		Debug.Log(Mathf.Abs(rigid2D.transform.position.x - Bobby.transform.position.x));
+		tastPanel.SetActive(true);
+	}
+
+	public void Tast_Yes()
+	{
+		isTasting = false;
+		tastPanel.SetActive(false);
+		BobbyCollider.enabled = false;
+	}
+
+	public void Tast_NO()
+	{
+		isTasting = false;
+		tastPanel.SetActive(false);
+		drawCanvas.enabled = true;
+	}
+
+	public void OnLanding()
+	{
 		if (rigid2D.velocity.y < 0)
 		{
 			if (ChapterName == "0")
@@ -173,19 +215,16 @@ public class DG_playerController : MonoBehaviour
 			{
 				animator_S.SetBool("fall", true);
 				animator_S.SetBool("isJump", jumping);
-			}
-
-			
+			}			
 		}
 		jumping = false;
-
 	}
 
 
 	//---------------------Damage-----------------------
 	void OnTriggerEnter2D(Collider2D col)  
 	{
-		if (col.tag == "smallEnemy") //玩家受到小怪物攻擊
+		if (col.tag == "smallEnemy") //序章-玩家受到小怪物攻擊
 		{
 			TakeDamage(enemyAtk);
 			animator_S.SetTrigger("beaten");
@@ -195,7 +234,7 @@ public class DG_playerController : MonoBehaviour
 			StartCoroutine("smallbeaten");
 		}
 
-		if (col.gameObject.name == "AtkParticle") //玩家受到小BOSS攻擊
+		if (col.gameObject.name == "AtkParticle") //序章-玩家受到小BOSS攻擊
 		{
 			TakeDamage(BossAtk);
 			W1_beaten.SetActive(true);
@@ -210,8 +249,7 @@ public class DG_playerController : MonoBehaviour
 
 		if (col.gameObject.name == "NPC_Bobby") //觸碰到NPC波比
 		{
-			Active.interactable = true;
-			pointParticle.SetActive(true);
+			NPC1Point.SetActive(true);
 		}
 	}
 
@@ -219,8 +257,7 @@ public class DG_playerController : MonoBehaviour
 	{
 		if (col.gameObject.name == "NPC_Bobby") //離開NPC波比
 		{
-			Active.interactable = false;
-			pointParticle.SetActive(false);
+			NPC1Point.SetActive(false);
 		}
 	}
 

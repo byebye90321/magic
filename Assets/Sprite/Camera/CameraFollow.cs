@@ -51,10 +51,15 @@ public class CameraFollow : MonoBehaviour {
 			Vector3 newPosition = target.position + offest;
 			transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
 
-			if (transform.position.x < 0)
+			if (transform.position.x < xMin)
 			{
 				transform.position = new Vector2(Mathf.Clamp(transform.position.x, xMin, xMax), transform.position.y);
 			}
+			if (transform.position.y >= yMax)
+			{
+				transform.position = new Vector2(transform.position.x, Mathf.Clamp(target.position.y, yMin, yMax));
+			}
+			offest.y = 2.3f - ((transform.position.y / (yMax - yMin)) * 2.3f);
 		}
 	}
 

@@ -296,7 +296,7 @@ public class RG_playerController : MonoBehaviour
 			runGameManager.targetText.SetActive(true);
 			runGameManager.teachText.text = "遇到下方障礙物，按跳躍鍵";
 			runGameManager.maskObj.SetActive(true);
-			runGameManager.mask.uvRect = new Rect(0.38f, 0.3f, 1.5f, 1.5f);
+			runGameManager.mask.uvRect = new Rect(-0.87f, 0.3f, 1.5f, 1.5f);
 		}
 
 		if (col.gameObject.name == "TeachDown")
@@ -307,8 +307,8 @@ public class RG_playerController : MonoBehaviour
 			slideBtn.interactable = true;
 			runGameManager.targetText.SetActive(true);
 			runGameManager.teachText.text = "遇到下方障礙物，按下滑鍵";
-			runGameManager.maskObj.SetActive(true);
-			runGameManager.mask.uvRect = new Rect(-0.87f, 0.3f, 1.5f, 1.5f);
+			runGameManager.maskObj.SetActive(true);	
+			runGameManager.mask.uvRect = new Rect(0.38f, 0.3f, 1.5f, 1.5f);
 		}
 	}
 

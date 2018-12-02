@@ -187,6 +187,7 @@
      <Compile Include="Assets\Sprite\FpsTest.cs" />
      <Compile Include="Assets\Sprite\player\DG_playerController.cs" />
      <Compile Include="Assets\Sprite\player\DialogsScript.cs" />
+     <Compile Include="Assets\Sprite\player\DialogsScript1.cs" />
      <Compile Include="Assets\Sprite\player\DrawPlayerController.cs" />
      <Compile Include="Assets\Sprite\player\GameManager.cs" />
      <Compile Include="Assets\Sprite\player\Hurt.cs" />
