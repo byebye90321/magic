@@ -80,12 +80,11 @@ public class DialogsScript1 : MonoBehaviour
 		StaticObject.book = 1;
 		PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);
 
-		/*whotalk.text = "緹緹";
+		whotalk.text = "緹緹";
 		currentLine = 1;
-		endAtLine = 6;
+		endAtLine = 3;
 		characterImage.sprite = sister;
-		StartCoroutine("fadeIn");*/
-		isActive = false;
+		StartCoroutine("fadeIn");
 
 		if (currentLine > endAtLine)
 		{
@@ -131,37 +130,32 @@ public class DialogsScript1 : MonoBehaviour
 
 	void Update() {
 
-		/*if (currentLine == 1)
+		if (currentLine == 1)
 		{
 			if (isTyping == false)
 			{
 				//theText.text = testText.text;
-				theText.text = "這是<color=#00ffffff>哪裡?</color>看起來好痛啊！我要不是應該去幫助他咧?";
+				//theText.text = "這是<color=#00ffffff>哪裡?</color>看起來好痛啊！我要不是應該去幫助他咧?";
 			}
-		}*/ //要打開的
+		}
 
 		if (!isActive)
 			return;
 
-		if (currentLine == 2)
+		if (currentLine == 4)
 		{
 			whotalk.text = "魔法書籍";
 			characterImage.sprite = book;
-		}
-		if (currentLine == 3)
-		{
-			whotalk.text = "緹緹";
-			characterImage.sprite = sister;
 		}
 		if (currentLine == 5)
 		{
-			whotalk.text = "魔法書籍";
-			characterImage.sprite = book;
-		}
-		if (currentLine == 6)
-		{
 			whotalk.text = "緹緹";
 			characterImage.sprite = sister;
+		}
+		if (currentLine == 9)
+		{
+			whotalk.text = "魔法書籍";
+			characterImage.sprite = book;
 		}
 
 		if (Input.GetMouseButtonDown(0))

@@ -5989,7 +5989,7 @@ MonoBehaviour:
   book: {fileID: 21300000, guid: f97c0ff6218489d46aaeec7a1c9f3a9e, type: 3}
   textBox: {fileID: 457594638}
   theText: {fileID: 1156665051}
-  textFile: {fileID: 4900000, guid: ad018adfc67ea8c40b30b65b9fe24a04, type: 3}
+  textFile: {fileID: 4900000, guid: 2a88dd018c097164c925e84dc8a87e36, type: 3}
   textLines: []
   currentLine: 0
   endAtLine: 0
