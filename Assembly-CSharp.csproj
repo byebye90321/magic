@@ -199,6 +199,7 @@
      <Compile Include="Assets\Sprite\player\sister_draw_forest\Draw_sister_forest_Enemy.cs" />
      <Compile Include="Assets\Sprite\player\sister_draw_forest\Draw_sister_GM.cs" />
      <Compile Include="Assets\Sprite\scene\CharacterToggle.cs" />
+     <Compile Include="Assets\Sprite\scene\FloorMove.cs" />
      <Compile Include="Assets\Sprite\scene\LoadingToMain.cs" />
      <Compile Include="Assets\Sprite\scene\menuController.cs" />
      <Compile Include="Assets\Sprite\scene\sceneController.cs" />

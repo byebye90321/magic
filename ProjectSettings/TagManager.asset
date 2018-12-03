@@ -20,6 +20,8 @@ TagManager:
   - MosterStop
   - smallEnemy
   - BossEnemy
+  - vine
+  - heart
   layers:
   - Default
   - TransparentFX
@@ -60,9 +62,6 @@ TagManager:
   - name: bg
     uniqueID: 3367414219
     locked: 0
-  - name: lineEffect
-    uniqueID: 3192575599
-    locked: 0
   - name: bg2
     uniqueID: 2764434993
     locked: 0
@@ -71,6 +70,9 @@ TagManager:
     locked: 0
   - name: floor
     uniqueID: 74829367
+    locked: 0
+  - name: Blood
+    uniqueID: 1881793337
     locked: 0
   - name: monster
     uniqueID: 2505807791

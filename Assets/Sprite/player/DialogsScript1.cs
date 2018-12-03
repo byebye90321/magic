@@ -11,7 +11,7 @@ using UnityEngine.Audio;
 public class DialogsScript1 : MonoBehaviour
 {
 	//------------------------引用程式----------------------------
-
+	public DG_playerController playerController;
 	//-------------------------魔法日報---------------------------
 
 	//--------------------------互動-----------------------------
@@ -29,7 +29,6 @@ public class DialogsScript1 : MonoBehaviour
 	//----------------------------選擇---------------------------
 
 	//----------------------------對話---------------------------
-	private int count = 0;
 	public GameObject textBox;
 
 	public Text theText;
@@ -81,20 +80,12 @@ public class DialogsScript1 : MonoBehaviour
 		StaticObject.book = 1;
 		PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);
 
-		whotalk.text = "緹緹";
+		/*whotalk.text = "緹緹";
 		currentLine = 1;
 		endAtLine = 6;
 		characterImage.sprite = sister;
-		StartCoroutine("fadeIn");
-
-		if (GameEnd == false)  //初始
-		{
-			whotalk.text = "緹緹";
-			currentLine = 1;
-			endAtLine = 6;
-			characterImage.sprite = sister;
-			StartCoroutine("fadeIn");
-		}
+		StartCoroutine("fadeIn");*/
+		isActive = false;
 
 		if (currentLine > endAtLine)
 		{
@@ -134,20 +125,20 @@ public class DialogsScript1 : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		Debug.Log(count);
+		//Debug.Log(currentLine);
 	}
 
 
 	void Update() {
 
-		if (currentLine == 1)
+		/*if (currentLine == 1)
 		{
 			if (isTyping == false)
 			{
 				//theText.text = testText.text;
 				theText.text = "這是<color=#00ffffff>哪裡?</color>看起來好痛啊！我要不是應該去幫助他咧?";
 			}
-		}
+		}*/ //要打開的
 
 		if (!isActive)
 			return;
@@ -201,10 +192,10 @@ public class DialogsScript1 : MonoBehaviour
 		EnableTextBox();
 	}
 
-	public void OnTouch(BaseEventData bData)
+	/*public void OnTouch(BaseEventData bData)
 	{
 		count++;
-	}
+	}*/
 
 	//----------------------------選擇----------------------------
 
@@ -234,7 +225,7 @@ public class DialogsScript1 : MonoBehaviour
 	}
 	public void EnableTextBox()
 	{
-		//TouchPanel.SetActive(false);
+		playerController.drawCanvas.enabled = false;		
 		isActive = true;
 		textBox.SetActive(true);
 		StartCoroutine(TextScroll(textLines[currentLine]));
@@ -242,7 +233,7 @@ public class DialogsScript1 : MonoBehaviour
 	public void DisableTextBox()
 	{
 		isActive = false;
-		//TouchPanel.SetActive(true);
+		playerController.drawCanvas.enabled = true;
 		textBox.SetActive(false);
 	}
 

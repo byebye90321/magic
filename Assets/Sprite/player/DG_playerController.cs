@@ -19,7 +19,9 @@ public class DG_playerController : MonoBehaviour
 	private bool touchStart = false;
 	private Vector2 pointA;
 	private Vector2 pointB;
-	public Button Active;
+	public GameObject ActiveBtn;
+	public GameObject ClimbBtn;
+	private Image ClimbImg;
 
 	public LayerMask whatIsGround;
 	public Transform groundCheck;
@@ -27,7 +29,8 @@ public class DG_playerController : MonoBehaviour
 	public bool grounded = false;
 	public float jumpForce = 12f;
 	public bool jumping = false;
-
+	public bool isClimb = false;
+	public bool isClimbBtn = false;
 	//--------------SpineAnimation----------------
 	public Animator animator_S;
 	public Animator animator_B;
@@ -40,17 +43,20 @@ public class DG_playerController : MonoBehaviour
 	public Transform healthCanvas;
 	bool isDead;
 	bool damaged;
+	bool addBlood;
 	public GameObject falsh;
-	public GameObject damageTextObj;
-	private Text damageText;
-
+	public GameObject healthTextObj;
+	private Text healthText;
+	public GameObject lineParticle;
 	//------------------Enemy-----------------------
 	public int enemyAtk;
 	public int BossAtk;
 	//----------------NPC Tast------------------------
-	public GameObject tastPanel;
-	public GameObject NPC1Point;
-	private bool isTasting = false;
+	public GameObject tastPanel; //任務面板
+	public GameObject NPC1Point; //任務1提示!特效
+	public bool isTasting = false; //是否可再開啟任務頁面
+	public GameObject otherTast; //右邊支線任務面板
+	private Animator otherTastAni;
 
 	public GameObject Bobby;
 	private BoxCollider2D BobbyCollider;
@@ -68,12 +74,13 @@ public class DG_playerController : MonoBehaviour
 	{
 		rigid2D.velocity = new Vector2(0, 0f);		
 		healthCanvas = playerHealth.GetComponent<Transform>();
-		damageText = damageTextObj.GetComponent<Text>();
-		Active.interactable = false;
+		healthText = healthTextObj.GetComponent<Text>();
 
 		if (ChapterName == "1")
 		{
 			BobbyCollider = Bobby.GetComponent<BoxCollider2D>();
+			otherTastAni = otherTast.GetComponent<Animator>();
+			ClimbImg = ClimbBtn.GetComponent<Image>();
 		}
 	}
 
@@ -89,7 +96,22 @@ public class DG_playerController : MonoBehaviour
 			{
 				HealthSlider.value = curHealth;
 			}
-		}	
+		}
+
+		if (ChapterName == "1")
+		{
+			if (HealthSlider.value < 100)
+			{
+				if (addBlood)
+				{
+					HealthSlider.value += 0.1f;
+				}
+			}
+			else
+			{
+				lineParticle.SetActive(false);
+			}
+		}
 	}
 
 	public void FixedUpdate()
@@ -158,6 +180,26 @@ public class DG_playerController : MonoBehaviour
 			}
 		}
 
+		//-----------------------Climb--------------------------
+
+		if (CrossPlatformInputManager.GetButtonDown("Climb"))
+		{
+			isClimbBtn = true;
+			animator_S.SetBool("climb",true);
+		}
+
+		if (isClimb && isClimbBtn)
+		{
+			rigid2D.MovePosition(rigid2D.position + Vector2.up * 2 * Time.deltaTime);
+			if (rigid2D.position.y >= 5)
+			{
+				rigid2D.position = new Vector2(11, 6);
+				animator_S.SetBool("climb", false);
+				isClimbBtn = false;
+				isClimb = false;
+			}
+		}
+
 		//----------------------NPC tast-------------------------
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -191,6 +233,7 @@ public class DG_playerController : MonoBehaviour
 		isTasting = false;
 		tastPanel.SetActive(false);
 		BobbyCollider.enabled = false;
+		otherTast.SetActive(true);
 	}
 
 	public void Tast_NO()
@@ -229,8 +272,8 @@ public class DG_playerController : MonoBehaviour
 			TakeDamage(enemyAtk);
 			animator_S.SetTrigger("beaten");
 			animator_B.SetTrigger("beaten");
-			damageTextObj.SetActive(true);
-			damageText.text = "-" + enemyAtk;
+			healthTextObj.SetActive(true);
+			healthText.text = "-" + enemyAtk;
 			StartCoroutine("smallbeaten");
 		}
 
@@ -238,13 +281,36 @@ public class DG_playerController : MonoBehaviour
 		{
 			TakeDamage(BossAtk);
 			W1_beaten.SetActive(true);
-			damageText.text = "-" + BossAtk;
+			healthText.text = "-" + BossAtk;
 			StartCoroutine("Bossbeaten");
 		}
 
 		if (col.tag == "EndPoint")
 		{
 			dg_GameManager.win();
+		}
+
+		if (HealthSlider.value < 100) {
+			if (col.gameObject.name == "BloodStation") //補血站
+			{
+				addBlood = true;
+				lineParticle.SetActive(true);
+			}
+
+			if (col.tag == "heart")
+			{
+				HealthSlider.value += 10;
+				healthTextObj.SetActive(true);
+				healthText.text = "+10";
+				StartCoroutine("wait1");
+				Destroy(col.gameObject);
+			}
+		}
+
+		if (col.tag == "vine") //進入藤蔓
+		{
+			isClimb = true;
+			ClimbImg.enabled = true;
 		}
 
 		if (col.gameObject.name == "NPC_Bobby") //觸碰到NPC波比
@@ -255,10 +321,29 @@ public class DG_playerController : MonoBehaviour
 
 	void OnTriggerExit2D(Collider2D col)
 	{
+		if (col.gameObject.name == "BloodStation") //補血站
+		{
+			addBlood = false;
+			lineParticle.SetActive(false);
+		}
+
+		if (col.tag == "vine") //離開藤蔓
+		{
+			isClimb = false;
+			ClimbImg.enabled = false;
+			ClimbBtn.transform.SetAsLastSibling();
+		}
+
 		if (col.gameObject.name == "NPC_Bobby") //離開NPC波比
 		{
 			NPC1Point.SetActive(false);
 		}
+	}
+
+	IEnumerator wait1()
+	{
+		yield return new WaitForSeconds(1f);
+		healthTextObj.SetActive(false);
 	}
 
 	IEnumerator smallbeaten()
@@ -271,7 +356,7 @@ public class DG_playerController : MonoBehaviour
 			yield return new WaitForSeconds(0.1f);
 		}
 		yield return new WaitForSeconds(.5f);
-		damageTextObj.SetActive(false);
+		healthTextObj.SetActive(false);
 	}
 
 	IEnumerator Bossbeaten()
@@ -279,7 +364,7 @@ public class DG_playerController : MonoBehaviour
 		yield return new WaitForSeconds(0.4f);
 		animator_S.SetTrigger("beaten");
 		animator_B.SetTrigger("beaten");
-		damageTextObj.SetActive(true);
+		healthTextObj.SetActive(true);
 		for (int i = 0; i < 2; i++)
 		{
 			falsh.SetActive(true);
@@ -289,7 +374,7 @@ public class DG_playerController : MonoBehaviour
 		}	
 		yield return new WaitForSeconds(.2f);
 		W1_beaten.SetActive(false);
-		damageTextObj.SetActive(false);
+		healthTextObj.SetActive(false);
 	}
 
 	public void Attack()

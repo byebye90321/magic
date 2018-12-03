@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class CameraFollow : MonoBehaviour {
 
 	public string ChapterName;
-	//public GameObject playerobj;
+	
 	public Camera camera;
 	[SerializeField]
 	private float xMax;
@@ -26,6 +26,7 @@ public class CameraFollow : MonoBehaviour {
 
 	//test
 	public int count = 0;
+	public DG_playerController playController;
 
 	void Start(){
 		
@@ -33,9 +34,14 @@ public class CameraFollow : MonoBehaviour {
 
 	void FixedUpdate(){
 
-		/*if (target.position.x > 3 &&count==0) //放大鏡頭
+		/*if (playController.isTasting && count == 0) //放大鏡頭
 		{
-			StartCoroutine(ZoomCamera(5, 2, 3, 100));
+			StartCoroutine(ZoomCamera(2.56f, 2, 0.1f, 50));
+		}
+		else if(!playController.isTasting && count == 1)
+		{
+			StartCoroutine(ZoomCamera(2, 2.56f, 0.1f, 50));
+			count = 0;
 		}*/
 
 		//transform.position = playerobj.transform.position;
@@ -60,6 +66,7 @@ public class CameraFollow : MonoBehaviour {
 				transform.position = new Vector2(transform.position.x, Mathf.Clamp(target.position.y, yMin, yMax));
 			}
 			offest.y = 2.3f - ((transform.position.y / (yMax - yMin)) * 2.3f);
+			//Camera.main.orthographicSize = 5-((transform.position.y / (yMax - yMin)) * 4f);
 		}
 	}
 
