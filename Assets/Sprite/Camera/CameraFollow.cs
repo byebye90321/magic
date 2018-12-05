@@ -67,6 +67,7 @@ public class CameraFollow : MonoBehaviour {
 			}
 			offest.y = 2.3f - ((transform.position.y / (yMax - yMin)) * 2.3f);
 			//Camera.main.orthographicSize = 5-((transform.position.y / (yMax - yMin)) * 4f);
+			transform.position = new Vector3(transform.position.x, transform.position.y, -8);
 		}
 	}
 

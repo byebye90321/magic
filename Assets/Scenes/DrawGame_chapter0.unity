@@ -4325,7 +4325,7 @@ MonoBehaviour:
   HealthSlider: {fileID: 629410945}
   healthCanvas: {fileID: 938117520}
   falsh: {fileID: 1318956985}
-  damageTextObj: {fileID: 657856755}
+  healthTextObj: {fileID: 657856755}
   lineParticle: {fileID: 0}
   enemyAtk: 10
   BossAtk: 30

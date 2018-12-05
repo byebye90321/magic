@@ -70,6 +70,10 @@ public class ExampleGestureHandler : MonoBehaviour
 		{
 			textResult.text = "?";
 		}*/
+
+		if (result == RecognitionResult.Empty)
+			return;
+
 		if (skill1.attack == true)  
 		{
 			if (result.gesture.id == "M")
