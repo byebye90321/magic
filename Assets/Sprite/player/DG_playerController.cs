@@ -69,6 +69,8 @@ public class DG_playerController : MonoBehaviour
 	public AudioSource audio;
 	public AudioClip AtkSound;
 
+	public Vector2 player;
+
 
 	void Start()
 	{
@@ -134,8 +136,13 @@ public class DG_playerController : MonoBehaviour
 				else if (ChapterName == "1")
 				{
 					jumping = true;
-					rigid2D.velocity = new Vector2(0, jumpForce);
+					//rigid2D.velocity = new Vector2(0, jumpForce);
 					animator_S.SetBool("isJump", jumping);
+					player.y += jumpForce * Time.deltaTime;
+					if (player.y < -rigid2D.gravityScale * Time.deltaTime * 3f)
+					{
+						player.y = -rigid2D.gravityScale * Time.deltaTime * 3f;
+					}
 				}
 			}
 			animator_S.SetBool("fall", false);
@@ -145,6 +152,8 @@ public class DG_playerController : MonoBehaviour
 		{
 			OnLanding();
 		}
+
+		
 
 		//-------------MOVE----------------------------
 		Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertiacl")) * speed;
@@ -180,6 +189,8 @@ public class DG_playerController : MonoBehaviour
 			}
 		}
 
+
+
 		//-----------------------Climb--------------------------
 
 		if (CrossPlatformInputManager.GetButtonDown("Climb"))
@@ -208,7 +219,7 @@ public class DG_playerController : MonoBehaviour
 
 			if (hit.collider == null)
 			{
-				Debug.Log("null");
+				//Debug.Log("null");
 				//Debug.Log(hit.collider.name);
 			}else if (hit.collider.name == "NPC_Bobby")
 			{
