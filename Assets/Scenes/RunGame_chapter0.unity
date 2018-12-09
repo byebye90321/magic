@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 97721a577cea14149a92d60119969c66, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 31312cbdce307264b8bb73aa33a695ae, type: 2}
   initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
@@ -523,7 +523,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 9b9a7b32d4d1274409ee77da5183d2d1, type: 2}
+  - {fileID: 2100000, guid: 7b73ad63ee551e54facdec700855238a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1590,7 +1590,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: -1530532303
+  m_SortingLayerID: 1262026175
   m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!1 &247233561
@@ -4097,7 +4097,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 550617995}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.64, y: -0.52, z: 0}
+  m_LocalPosition: {x: 2.37, y: -0.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 187357362}
@@ -5095,7 +5095,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1262026175
   m_SortingLayer: 9
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -9910,6 +9910,7 @@ MonoBehaviour:
   smoothSpeed: 0.125
   offest: {x: 0, y: 0, z: 0}
   count: 0
+  playController: {fileID: 0}
 --- !u!114 &644016964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18929,7 +18930,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -759122575
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 1
 --- !u!33 &1380133508
 MeshFilter:

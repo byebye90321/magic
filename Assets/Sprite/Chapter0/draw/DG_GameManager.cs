@@ -313,9 +313,7 @@ public class DG_GameManager : MonoBehaviour {
 		TouchNextImage.SetActive(true);
 		NextFlashText.SetActive(true);
 		yield return new WaitUntil(() => count == 13);
-		TouchNextImage.SetActive(false);
-		NextFlashText.SetActive(false);
-
+		HitObj.SetActive(false);
 
 		textPanel.SetActive(true);
 		Puase.interactable = false;
@@ -323,6 +321,7 @@ public class DG_GameManager : MonoBehaviour {
 		TouchNextImage.SetActive(true);
 		NextFlashText.SetActive(true);
 		yield return new WaitUntil(() => count == 14);
+		HitObj.SetActive(true);
 		TouchNextImage.SetActive(false);
 		textPanel.SetActive(false);
 		NextFlashText.SetActive(false);

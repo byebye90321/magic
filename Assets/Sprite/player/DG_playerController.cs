@@ -136,13 +136,9 @@ public class DG_playerController : MonoBehaviour
 				else if (ChapterName == "1")
 				{
 					jumping = true;
-					//rigid2D.velocity = new Vector2(0, jumpForce);
+					rigid2D.velocity = new Vector2(0, jumpForce);
 					animator_S.SetBool("isJump", jumping);
-					player.y += jumpForce * Time.deltaTime;
-					if (player.y < -rigid2D.gravityScale * Time.deltaTime * 3f)
-					{
-						player.y = -rigid2D.gravityScale * Time.deltaTime * 3f;
-					}
+
 				}
 			}
 			animator_S.SetBool("fall", false);
@@ -256,8 +252,10 @@ public class DG_playerController : MonoBehaviour
 
 	public void OnLanding()
 	{
-		if (rigid2D.velocity.y < 0)
+
+		if (rigid2D.velocity.y <= 0 || grounded)
 		{
+			Debug.Log(rigid2D.velocity.y);
 			if (ChapterName == "0")
 			{
 				animator_S.SetBool("fall", true);

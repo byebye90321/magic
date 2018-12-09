@@ -237,13 +237,13 @@
      <None Include="Assets\Spine\monster\bully02\Bully_02.atlas.txt" />
      <None Include="Assets\Spine\monster\bully01\惡霸01.atlas.txt" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\Shaders\Straight Alpha\Spine-Straight-Skeleton-Tint.shader" />
-     <None Include="Assets\Spine\sister\妹_72.atlas.txt" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\Shaders\Sprite\CGIncludes\SpriteLighting.cginc" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\SlotBlendModes\Spine-Skeleton-PMA-Screen.shader" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\Shaders\Sprite\SpriteUnlit.cginc" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\Shaders\Sprite\CGIncludes\SpriteUnlit.cginc" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\version.txt" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\Shaders\Sprite\SpritesPixelLit.shader" />
+     <None Include="Assets\Spine\sister\妹_72.atlas.txt" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\Shaders\Spine-Skeleton-Tint.shader" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\Shaders\Sprite\SpritesUnlit.shader" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Shaders\Utility\Hidden-Spine-Bones.shader" />
