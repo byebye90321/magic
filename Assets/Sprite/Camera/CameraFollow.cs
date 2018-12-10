@@ -47,12 +47,12 @@ public class CameraFollow : MonoBehaviour {
 		//transform.position = playerobj.transform.position;
 		//transform.position = new Vector3(Mathf.Clamp(playerobj.transform.position.x + offset, xMin,xMax),Mathf.Clamp(playerobj.transform.position.y,yMin,yMax));
 
-		if (ChapterName == "0")
+		if (ChapterName == "0")  //序章 跟隨
 		{
 			transform.position = target.position;
 			transform.position = new Vector3(Mathf.Clamp(target.position.x+3f, xMin,xMax),Mathf.Clamp(target.position.y,yMin,yMax));
 		}
-		if (ChapterName == "1")
+		if (ChapterName == "1") //正章
 		{
 			Vector3 newPosition = target.position + offest;
 			transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
@@ -61,13 +61,24 @@ public class CameraFollow : MonoBehaviour {
 			{
 				transform.position = new Vector2(Mathf.Clamp(transform.position.x, xMin, xMax), transform.position.y);
 			}
+
 			if (transform.position.y >= yMax)
 			{
 				transform.position = new Vector2(transform.position.x, Mathf.Clamp(target.position.y, yMin, yMax));
 			}
-			offest.y = 2.3f - ((transform.position.y / (yMax - yMin)) * 2.3f);
+			else if (transform.position.y >= yMax - 3)
+			{
+				smoothSpeed = ((transform.position.y / (yMax - yMin)) * 3);
+			}
+			else 
+			{
+				smoothSpeed = ((transform.position.y / (yMax - yMin)) * 2f);
+			}
+
+
+			offest.y = 2.3f - ((transform.position.y / (yMax - yMin)) * 2.3f); //offaet Y軸偏移
 			//Camera.main.orthographicSize = 5-((transform.position.y / (yMax - yMin)) * 4f);
-			transform.position = new Vector3(transform.position.x, transform.position.y, -8);
+			transform.position = new Vector3(transform.position.x, transform.position.y, -8);  //防止攝影機Z軸移動
 		}
 	}
 

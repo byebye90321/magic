@@ -53,7 +53,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CharacterController2D.cs" />
      <Compile Include="Assets\GestureRecognizer\Example\ExampleGestureHandler.cs" />
      <Compile Include="Assets\GestureRecognizer\Scripts\DrawDetector.cs" />
      <Compile Include="Assets\GestureRecognizer\Scripts\GestureData.cs" />
@@ -63,11 +62,6 @@
      <Compile Include="Assets\GestureRecognizer\Scripts\UILineRenderer.cs" />
      <Compile Include="Assets\Image\Chapter0\draw\health\HeartSystem.cs" />
      <Compile Include="Assets\Image\Chapter0\draw\health\HeartSystemMonster.cs" />
-     <Compile Include="Assets\MovingPlatform.cs" />
-     <Compile Include="Assets\MovingPlatformEditor.cs" />
-     <Compile Include="Assets\MovingPlatformPreview.cs" />
-     <Compile Include="Assets\PhysicsHelper.cs" />
-     <Compile Include="Assets\PlatformCatcher.cs" />
      <Compile Include="Assets\Spine\SpineAnamitionScript.cs" />
      <Compile Include="Assets\Spine\spine-csharp\Properties\AssemblyInfo.cs" />
      <Compile Include="Assets\Spine\spine-csharp\src\Animation.cs" />
@@ -191,6 +185,13 @@
      <Compile Include="Assets\Sprite\End\Settle.cs" />
      <Compile Include="Assets\Sprite\End\tree.cs" />
      <Compile Include="Assets\Sprite\FpsTest.cs" />
+     <Compile Include="Assets\Sprite\game kit\CharacterController2D.cs" />
+     <Compile Include="Assets\Sprite\game kit\MovingPlatform.cs" />
+     <Compile Include="Assets\Sprite\game kit\MovingPlatformEditor.cs" />
+     <Compile Include="Assets\Sprite\game kit\MovingPlatformPreview.cs" />
+     <Compile Include="Assets\Sprite\game kit\PhysicsHelper.cs" />
+     <Compile Include="Assets\Sprite\game kit\PlatformCatcher.cs" />
+     <Compile Include="Assets\Sprite\game kit\VisibleBubbleUp.cs" />
      <Compile Include="Assets\Sprite\player\DG_playerController.cs" />
      <Compile Include="Assets\Sprite\player\DialogsScript.cs" />
      <Compile Include="Assets\Sprite\player\DialogsScript1.cs" />
@@ -198,6 +199,7 @@
      <Compile Include="Assets\Sprite\player\GameManager.cs" />
      <Compile Include="Assets\Sprite\player\Hurt.cs" />
      <Compile Include="Assets\Sprite\player\move.cs" />
+     <Compile Include="Assets\Sprite\player\NPCTask.cs" />
      <Compile Include="Assets\Sprite\player\RG_playerController.cs" />
      <Compile Include="Assets\Sprite\player\sister_draw_forest\CardCD_sister_forest.cs" />
      <Compile Include="Assets\Sprite\player\sister_draw_forest\Defensive_sister_forest.cs" />
@@ -218,7 +220,6 @@
      <Compile Include="Assets\Sprite\UI\collectLock.cs" />
      <Compile Include="Assets\Sprite\UI\introduceManager.cs" />
      <Compile Include="Assets\Sprite\UI\Scroll.cs" />
-     <Compile Include="Assets\VisibleBubbleUp.cs" />
      <None Include="Assets\Spine\enemy\gigi\GIGI.atlas.txt" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Shaders\Utility\HiddenPass.shader" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\Shaders\Spine-Skeleton-Fill.shader" />
@@ -259,6 +260,7 @@
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\Shaders\Sprite\CameraNormalsTexture.shader" />
      <None Include="Assets\Spine\monster\bobby\Bobby.atlas.txt" />
      <None Include="Assets\Spine\borther\哥_72.atlas.txt" />
+     <None Include="Assets\Sprite\player\sister.txt" />
      <None Include="Assets\Spine\enemy\enemy1\反派_01.atlas.txt" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\Shaders\Sprite\CameraDepthTexture.shader" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\SlotBlendModes\Spine-Skeleton-PMA-Multiply.shader" />

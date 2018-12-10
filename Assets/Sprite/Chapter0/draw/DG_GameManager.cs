@@ -79,6 +79,7 @@ public class DG_GameManager : MonoBehaviour {
 	public GameObject warningRedImage;
 	public GameObject warningExclamation;
 	public GameObject arrow;
+	public GameObject notDrawImage;
 	//---------------------------------3版-------------------
 	public GameObject TouchNextImage;
 	private int count = 0;
@@ -293,6 +294,7 @@ public class DG_GameManager : MonoBehaviour {
 		TouchNextImage.SetActive(true);
 		NextFlashText.SetActive(true);
 		yield return new WaitUntil(() => count == 12);
+		notDrawImage.SetActive(true);
 		TouchNextImage.SetActive(false);
 		NextFlashText.SetActive(false);
 		maskObj.SetActive(false);
@@ -303,6 +305,7 @@ public class DG_GameManager : MonoBehaviour {
 		yield return new WaitUntil(() => geature.isAtk == true);
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "Excellent！";
+		notDrawImage.SetActive(false);
 		warningRedImage.SetActive(false);
 		fingerObj.SetActive(false);
 		drawCanvas.GetComponent<Canvas>().enabled = false;

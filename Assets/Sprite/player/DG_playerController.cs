@@ -51,15 +51,7 @@ public class DG_playerController : MonoBehaviour
 	//------------------Enemy-----------------------
 	public int enemyAtk;
 	public int BossAtk;
-	//----------------NPC Tast------------------------
-	public GameObject tastPanel; //任務面板
-	public GameObject NPC1Point; //任務1提示!特效
-	public bool isTasting = false; //是否可再開啟任務頁面
-	public GameObject otherTast; //右邊支線任務面板
-	private Animator otherTastAni;
 
-	public GameObject Bobby;
-	private BoxCollider2D BobbyCollider;
 	//------------------draw-------------------------
 	public Canvas drawCanvas;
 	//-----------------Particle System---------------
@@ -80,8 +72,6 @@ public class DG_playerController : MonoBehaviour
 
 		if (ChapterName == "1")
 		{
-			BobbyCollider = Bobby.GetComponent<BoxCollider2D>();
-			otherTastAni = otherTast.GetComponent<Animator>();
 			ClimbImg = ClimbBtn.GetComponent<Image>();
 		}
 	}
@@ -120,18 +110,25 @@ public class DG_playerController : MonoBehaviour
 	{
 		//-------------JUMP-----------------------------
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+		animator_S.SetBool("ground", grounded);
+		if (ChapterName == "0")
+		{
+			animator_B.SetBool("ground", grounded);
+		}
 
 		if (grounded)
 		{
+			jumping = false;
+			animator_S.SetBool("isJump", jumping);
 			if (CrossPlatformInputManager.GetButtonDown("Jump"))
 			{
 				if (ChapterName == "0")
 				{
 					dg_GameManager.TeachJump = true;
-					jumping = true;
+					//jumping = true;
 					rigid2D.velocity = new Vector2(0, jumpForce);
-					animator_S.SetBool("isJump", jumping);
-					animator_B.SetBool("isJump", jumping); //test版
+					//animator_S.SetBool("isJump", jumping);
+					//animator_B.SetBool("isJump", jumping); //test版
 				}
 				else if (ChapterName == "1")
 				{
@@ -141,12 +138,12 @@ public class DG_playerController : MonoBehaviour
 
 				}
 			}
-			animator_S.SetBool("fall", false);
+			//animator_S.SetBool("fall", false);
 			//animator_B.SetBool("fall", false);  
 		}
 		else
 		{
-			OnLanding();
+			//OnLanding();
 		}
 
 		
@@ -185,8 +182,6 @@ public class DG_playerController : MonoBehaviour
 			}
 		}
 
-
-
 		//-----------------------Climb--------------------------
 
 		if (CrossPlatformInputManager.GetButtonDown("Climb"))
@@ -206,51 +201,9 @@ public class DG_playerController : MonoBehaviour
 				isClimb = false;
 			}
 		}
-
-		//----------------------NPC tast-------------------------
-		if (Input.GetMouseButtonDown(0))
-		{
-			Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
-
-			if (hit.collider == null)
-			{
-				//Debug.Log("null");
-				//Debug.Log(hit.collider.name);
-			}else if (hit.collider.name == "NPC_Bobby")
-			{
-				if (Mathf.Abs(rigid2D.transform.position.x - Bobby.transform.position.x) < 2 && NPC1Point.activeInHierarchy== true && isTasting == false)
-				{
-					isTasting = true;
-					Tast();
-				}
-			}
-		}
 	}
 
-
-	public void Tast()
-	{
-		Debug.Log(Mathf.Abs(rigid2D.transform.position.x - Bobby.transform.position.x));
-		tastPanel.SetActive(true);
-	}
-
-	public void Tast_Yes()
-	{
-		isTasting = false;
-		tastPanel.SetActive(false);
-		BobbyCollider.enabled = false;
-		otherTast.SetActive(true);
-	}
-
-	public void Tast_NO()
-	{
-		isTasting = false;
-		tastPanel.SetActive(false);
-		drawCanvas.enabled = true;
-	}
-
-	public void OnLanding()
+	/*public void OnLanding()
 	{
 
 		if (rigid2D.velocity.y <= 0 || grounded)
@@ -270,7 +223,7 @@ public class DG_playerController : MonoBehaviour
 			}			
 		}
 		jumping = false;
-	}
+	}*/
 
 
 	//---------------------Damage-----------------------
@@ -321,11 +274,6 @@ public class DG_playerController : MonoBehaviour
 			isClimb = true;
 			ClimbImg.enabled = true;
 		}
-
-		if (col.gameObject.name == "NPC_Bobby") //觸碰到NPC波比
-		{
-			NPC1Point.SetActive(true);
-		}
 	}
 
 	void OnTriggerExit2D(Collider2D col)
@@ -341,11 +289,6 @@ public class DG_playerController : MonoBehaviour
 			isClimb = false;
 			ClimbImg.enabled = false;
 			ClimbBtn.transform.SetAsLastSibling();
-		}
-
-		if (col.gameObject.name == "NPC_Bobby") //離開NPC波比
-		{
-			NPC1Point.SetActive(false);
 		}
 	}
 
