@@ -26,7 +26,6 @@ public class NPCTask : MonoBehaviour {
 		{
 			BobbyCollider = Bobby.GetComponent<BoxCollider2D>();
 			taskAni = bookObj.GetComponent<Animator>();
-			taskAni.SetInteger("taskCount", 1);
 		}
 		
 	}
@@ -68,12 +67,22 @@ public class NPCTask : MonoBehaviour {
 		taskPanel.SetActive(false);
 		BobbyCollider.enabled = false;
 		taskAni.SetInteger("taskCount", 2); //任務1
+		//如果右方面板關閉，開啟
+		bookCount = 0;
+		taskAni.SetBool("isOpen", true);
 	}
 
 	public void Tast_NO()
 	{
 		isTasting = false;
 		taskPanel.SetActive(false);
+	}
+
+	public void bookFly()
+	{
+		bookObj.SetActive(true);
+		taskAni.SetInteger("taskCount", 1);
+		taskAni.SetBool("isOpen", true);
 	}
 
 	void OnTriggerEnter2D(Collider2D col)
@@ -94,13 +103,13 @@ public class NPCTask : MonoBehaviour {
 
 	public void BookBtn()
 	{
-		if (bookCount == 1)
+		if (bookCount == 1) //打開
 		{
 			bookCount = 0;
 			taskAni.SetBool("isOpen", true);
 			taskObj.SetActive(true);
 		}
-		else {
+		else {  //關閉
 			bookCount = 1;
 			taskAni.SetBool("isOpen", false);
 			taskObj.SetActive(false);

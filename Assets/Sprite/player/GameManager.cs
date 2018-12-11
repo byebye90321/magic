@@ -31,8 +31,8 @@ public class GameManager : MonoBehaviour {
 	public static ChapterState chapterState;
 
 	//-------------------血量----------------------
-	public float playerHealth;
-	public Slider HealthSlider;
+	//private float playerHealth;
+	//public Slider HealthSlider;
 	//-------------------對話----------------------
 	public GameObject textPanel;
 	public Text text;
@@ -50,12 +50,13 @@ public class GameManager : MonoBehaviour {
 		chapterState = ChapterState.Game;
 
 		balanceValue = PlayerPrefs.GetFloat("StaticObject.balanceSlider");
-		playerHealth = PlayerPrefs.GetFloat("StaticObject.playerHealth");
-		HealthSlider.value = playerHealth;
+		playerController.curHealth = PlayerPrefs.GetFloat("StaticObject.playerHealth");
+		playerController.HealthSlider.value = playerController.curHealth;
+		//HealthSlider.value = playerHealth;
 		balanceSlider.value = balanceValue;
 		balanceText.text = Mathf.Floor(balanceValue).ToString("0");
 		Debug.Log(balanceValue);
-		Debug.Log(playerHealth);
+		Debug.Log(playerController.curHealth);
 	}
 	
 	void FixedUpdate () {
@@ -85,11 +86,13 @@ public class GameManager : MonoBehaviour {
 				Debug.Log("战斗失败");
 				chapterState = ChapterState.Dead;
 			}
+
 			/*if (dg_enemyController.curHealth == 0)
 			{
 				Debug.Log("战斗胜利");
 				chapterState = ChapterState.Win;
 			}*/
+
 		}
 	}
 

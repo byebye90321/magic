@@ -12,6 +12,7 @@ public class DG_playerController : MonoBehaviour
 	public string ChapterName;
 	public DG_GameManager dg_GameManager; //序章
 	public GameManager gameManager; //正章
+	public DialogsScript1 dialogsScript1; //正章1對話
 	//------------playerControl----------------------
 	public Rigidbody2D rigid2D;
 	public Transform graphics;
@@ -36,8 +37,8 @@ public class DG_playerController : MonoBehaviour
 	public Animator animator_B;
 
 	//--------------------Health-------------------
-	public int curHealth = 100;
-	public int maxHealth = 100;
+	public float curHealth = 100f;
+	public float maxHealth = 100f;
 	public GameObject playerHealth;
 	public Slider HealthSlider;
 	public Transform healthCanvas;
@@ -77,6 +78,8 @@ public class DG_playerController : MonoBehaviour
 	}
 
 	public void Update() {
+
+		curHealth = HealthSlider.value;
 		//----------health------------
 		if (damaged)
 		{
@@ -102,6 +105,11 @@ public class DG_playerController : MonoBehaviour
 			else
 			{
 				lineParticle.SetActive(false);
+			}
+
+			if (curHealth >= 100 && !dialogsScript1.teachBlood)
+			{
+				dialogsScript1.BloodStation();
 			}
 		}
 	}
@@ -145,9 +153,7 @@ public class DG_playerController : MonoBehaviour
 		{
 			//OnLanding();
 		}
-
 		
-
 		//-------------MOVE----------------------------
 		Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertiacl")) * speed;
 		rigid2D.velocity = new Vector2(moveVec.x, rigid2D.velocity.y);
