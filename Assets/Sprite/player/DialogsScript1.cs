@@ -201,7 +201,7 @@ public class DialogsScript1 : MonoBehaviour
 		{
 			whotalk.text = "緹緹";
 			characterImageObj.transform.SetAsLastSibling();
-			otherImageObj.transform.SetAsFirstSibling();
+			otherImageObj.SetActive(false);
 			characterImage.sprite = sister_sad;
 		}
 
@@ -243,19 +243,22 @@ public class DialogsScript1 : MonoBehaviour
 
 	public void NPCAppear()
 	{
-		//TouchPanel.SetActive(false);
 		EnableTextBox();
 	}
 
-	/*public void OnTouch(BaseEventData bData)
+	void OnTriggerEnter2D(Collider2D col)
 	{
-		count++;
-	}*/
+		if (col.gameObject.name == "NPC_Bobby") //遇到波比對話
+		{
+			currentLine = 22;
+			endAtLine = 22;
+			NPCAppear();
+		}
+	}
+		//----------------------------選擇----------------------------
 
-	//----------------------------選擇----------------------------
-
-	//----------------------------對話----------------------------
-	private IEnumerator TextScroll(string lineOfText)
+		//----------------------------對話----------------------------
+		private IEnumerator TextScroll(string lineOfText)
 	{
 		int letter = 0;
 		theText.text = "";

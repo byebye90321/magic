@@ -58,7 +58,9 @@ public class NPCTask : MonoBehaviour {
 	public void BobbyTast()
 	{
 		Debug.Log(Mathf.Abs(rigid2D.transform.position.x - Bobby.transform.position.x));
-		taskPanel.SetActive(true);
+		
+		//要進行跟波比的對話，才會開起任務頁面
+		//taskPanel.SetActive(true);
 	}
 
 	public void Tast_Yes()
@@ -82,22 +84,6 @@ public class NPCTask : MonoBehaviour {
 		bookObj.SetActive(true);
 		taskAni.SetInteger("taskCount", 1);
 		taskAni.SetBool("isOpen", true);
-	}
-
-	void OnTriggerEnter2D(Collider2D col)
-	{
-		if (col.gameObject.name == "Player" ) //觸碰到玩家
-		{
-			NPCPoint.SetActive(true);
-		}
-	}
-
-	void OnTriggerExit2D(Collider2D col)
-	{
-		if (col.gameObject.name == "Player") //離開玩家
-		{
-			NPCPoint.SetActive(false);
-		}
 	}
 
 	public void BookBtn()

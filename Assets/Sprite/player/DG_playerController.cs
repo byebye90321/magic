@@ -56,6 +56,7 @@ public class DG_playerController : MonoBehaviour
 	//------------------draw-------------------------
 	public Canvas drawCanvas;
 	//-----------------Particle System---------------
+	public GameObject NPCPoint; //NPC驚嘆號
 	//public GameObject G1_Skill;
 	public GameObject W1_beaten;
 	//------------------Audio--------------------
@@ -253,7 +254,7 @@ public class DG_playerController : MonoBehaviour
 			StartCoroutine("Bossbeaten");
 		}
 
-		if (col.tag == "EndPoint")
+		if (col.tag == "EndPoint")  //序章-結束點
 		{
 			dg_GameManager.win();
 		}
@@ -265,7 +266,7 @@ public class DG_playerController : MonoBehaviour
 				lineParticle.SetActive(true);
 			}
 
-			if (col.tag == "heart")
+			if (col.tag == "heart")  //補血愛心
 			{
 				HealthSlider.value += 10;
 				healthTextObj.SetActive(true);
@@ -279,6 +280,11 @@ public class DG_playerController : MonoBehaviour
 		{
 			isClimb = true;
 			ClimbImg.enabled = true;
+		}
+
+		if (col.tag == "NPC") //觸碰到NPC
+		{
+			NPCPoint.SetActive(true);
 		}
 	}
 
@@ -295,6 +301,11 @@ public class DG_playerController : MonoBehaviour
 			isClimb = false;
 			ClimbImg.enabled = false;
 			ClimbBtn.transform.SetAsLastSibling();
+		}
+
+		if (col.tag == "NPC") //觸碰到NPC
+		{
+			NPCPoint.SetActive(false);
 		}
 	}
 

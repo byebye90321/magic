@@ -10637,7 +10637,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 462784790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.35, y: 8.87, z: 1}
+  m_LocalPosition: {x: -3.89, y: 2.09, z: 1}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1564279830}
@@ -10736,6 +10736,7 @@ MonoBehaviour:
   enemyAtk: 10
   BossAtk: 30
   drawCanvas: {fileID: 193435398}
+  NPCPoint: {fileID: 2010358393}
   W1_beaten: {fileID: 484646014}
   audio: {fileID: 462784795}
   AtkSound: {fileID: 0}
@@ -10849,8 +10850,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 462784794}
   npcTask: {fileID: 1915616825}
-  mouseEffect: {fileID: 0}
-  TouchPanel: {fileID: 0}
   characterImageObj: {fileID: 992288333}
   sister_angry: {fileID: 21300000, guid: 9db7bb72a5093d14d97465fe931bebf7, type: 3}
   sister_happy: {fileID: 21300000, guid: f5eabd1c19facbb4bbc43a5156a57896, type: 3}
@@ -25183,7 +25182,7 @@ GameObject:
   - component: {fileID: 826756589}
   m_Layer: 0
   m_Name: NPC_Bobby
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25200,7 +25199,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 15, y: 25.26}
+  m_Offset: {x: 30.5, y: 13.9}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -25211,7 +25210,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 54.01, y: 51.4}
+  m_Size: {x: 90.4, y: 96.22}
   m_EdgeRadius: 0
 --- !u!114 &826756590
 MonoBehaviour:
