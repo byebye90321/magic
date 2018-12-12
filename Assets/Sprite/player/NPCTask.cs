@@ -9,7 +9,7 @@ public class NPCTask : MonoBehaviour {
 	public Rigidbody2D rigid2D;
 	//----------------NPC Tast------------------------
 	public GameObject taskPanel; //任務面板
-	public GameObject NPC1Point; //任務1提示!特效
+	public GameObject NPCPoint; //任務1提示!特效
 	public bool isTasting = false; //是否可再開啟任務頁面
 	public GameObject taskObj; //右邊支線任務面板
 	public GameObject bookObj;
@@ -17,6 +17,7 @@ public class NPCTask : MonoBehaviour {
 	public Button bookBtn;
 	public int bookCount = 0;
 
+	//-------------------NPC---------------------
 	public GameObject Bobby;
 	private BoxCollider2D BobbyCollider;
 
@@ -26,8 +27,7 @@ public class NPCTask : MonoBehaviour {
 		{
 			BobbyCollider = Bobby.GetComponent<BoxCollider2D>();
 			taskAni = bookObj.GetComponent<Animator>();
-		}
-		
+		}	
 	}
 	
 	// Update is called once per frame
@@ -45,17 +45,17 @@ public class NPCTask : MonoBehaviour {
 			}
 			else if (hit.collider.name == "NPC_Bobby")
 			{
-				if (Mathf.Abs(rigid2D.transform.position.x - Bobby.transform.position.x) < 2 && NPC1Point.activeInHierarchy == true && isTasting == false)
+				if (Mathf.Abs(rigid2D.transform.position.x - Bobby.transform.position.x) < 2 && NPCPoint.activeInHierarchy == true && isTasting == false)
 				{
 					isTasting = true;
-					Tast();
+					BobbyTast();
 				}
 			}
 		}
-
 	}
 
-	public void Tast()
+	//任務1 Bobby
+	public void BobbyTast()
 	{
 		Debug.Log(Mathf.Abs(rigid2D.transform.position.x - Bobby.transform.position.x));
 		taskPanel.SetActive(true);
@@ -67,8 +67,7 @@ public class NPCTask : MonoBehaviour {
 		taskPanel.SetActive(false);
 		BobbyCollider.enabled = false;
 		taskAni.SetInteger("taskCount", 2); //任務1
-		//如果右方面板關閉，開啟
-		bookCount = 0;
+		bookCount = 0;  //如果右方面板關閉，強制開啟
 		taskAni.SetBool("isOpen", true);
 	}
 
@@ -87,17 +86,17 @@ public class NPCTask : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.gameObject.name == "NPC_Bobby") //觸碰到NPC波比
+		if (col.gameObject.name == "Player" ) //觸碰到玩家
 		{
-			NPC1Point.SetActive(true);
+			NPCPoint.SetActive(true);
 		}
 	}
 
 	void OnTriggerExit2D(Collider2D col)
 	{
-		if (col.gameObject.name == "NPC_Bobby") //離開NPC波比
+		if (col.gameObject.name == "Player") //離開玩家
 		{
-			NPC1Point.SetActive(false);
+			NPCPoint.SetActive(false);
 		}
 	}
 

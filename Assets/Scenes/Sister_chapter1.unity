@@ -7550,8 +7550,8 @@ Transform:
   - {fileID: 2056030792}
   - {fileID: 2687522}
   - {fileID: 705457131}
-  - {fileID: 1776449461}
   - {fileID: 266875176}
+  - {fileID: 1776449461}
   - {fileID: 726674410}
   - {fileID: 722069636}
   - {fileID: 1640551681}
@@ -8352,7 +8352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &266875176
 Transform:
   m_ObjectHideFlags: 0
@@ -8364,7 +8364,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 220315413}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &266875177
 Rigidbody2D:
@@ -10637,7 +10637,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 462784790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.67, y: 2.37, z: 1}
+  m_LocalPosition: {x: 4.35, y: 8.87, z: 1}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1564279830}
@@ -10848,7 +10848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 462784794}
-  npcTask: {fileID: 462784797}
+  npcTask: {fileID: 1915616825}
   mouseEffect: {fileID: 0}
   TouchPanel: {fileID: 0}
   characterImageObj: {fileID: 992288333}
@@ -10880,7 +10880,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 462784790}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 536a2f22ade794640b616e142f42dff0, type: 3}
   m_Name: 
@@ -10888,13 +10888,13 @@ MonoBehaviour:
   ChapterName: 1
   rigid2D: {fileID: 462784792}
   taskPanel: {fileID: 1644511067}
-  NPC1Point: {fileID: 2096910105}
+  NPCPoint: {fileID: 0}
   isTasting: 0
   taskObj: {fileID: 599926963}
   bookObj: {fileID: 1014566557}
   bookBtn: {fileID: 1014566562}
   bookCount: 0
-  Bobby: {fileID: 826756588}
+  Bobby: {fileID: 0}
 --- !u!1 &463644359
 GameObject:
   m_ObjectHideFlags: 0
@@ -23643,7 +23643,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 462784797}
+      - m_Target: {fileID: 1915616825}
         m_MethodName: Tast_Yes
         m_Mode: 1
         m_Arguments:
@@ -25531,7 +25531,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 462784797}
+      - m_Target: {fileID: 1915616825}
         m_MethodName: Tast_NO
         m_Mode: 1
         m_Arguments:
@@ -64699,7 +64699,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 220315413}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1776449462
 SpriteRenderer:
@@ -65482,6 +65482,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1915616824}
+  - component: {fileID: 1915616825}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -65503,6 +65504,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1915616825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1915616823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536a2f22ade794640b616e142f42dff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChapterName: 1
+  rigid2D: {fileID: 462784792}
+  taskPanel: {fileID: 1644511067}
+  NPCPoint: {fileID: 2010358393}
+  isTasting: 0
+  taskObj: {fileID: 599926963}
+  bookObj: {fileID: 1014566557}
+  bookBtn: {fileID: 1014566562}
+  bookCount: 0
+  Bobby: {fileID: 826756588}
 --- !u!1 &1916129295
 GameObject:
   m_ObjectHideFlags: 0
@@ -66623,6 +66645,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2010358393 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1238316730229268, guid: d6d491fddc30b464c92cab57f45955ba,
+    type: 2}
+  m_PrefabInternal: {fileID: 1210502473}
 --- !u!1 &2026904042
 GameObject:
   m_ObjectHideFlags: 0
@@ -72195,11 +72222,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.67, y: 0.1}
   m_EdgeRadius: 0
---- !u!1 &2096910105 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1238316730229268, guid: d6d491fddc30b464c92cab57f45955ba,
-    type: 2}
-  m_PrefabInternal: {fileID: 1210502473}
 --- !u!4 &2096910106 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4647749588377352, guid: d6d491fddc30b464c92cab57f45955ba,

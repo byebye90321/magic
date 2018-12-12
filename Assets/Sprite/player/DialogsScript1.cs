@@ -16,8 +16,6 @@ public class DialogsScript1 : MonoBehaviour
 	//-------------------------魔法日報---------------------------
 
 	//--------------------------互動-----------------------------
-	public GameObject mouseEffect;
-	public GameObject TouchPanel;
 	//--------------------------障礙物----------------------------
 
 	//---------------------------頭貼----------------------------
@@ -196,15 +194,16 @@ public class DialogsScript1 : MonoBehaviour
 		{
 			npcTask.bookFly();
 			DisableTextBox();
-		}
-
-		if (currentLine == 19)  //書本飛翔
-		{
-			npcTask.bookFly();
-			DisableTextBox();
 			StartCoroutine("BloodFlyAfter");
 		}
 
+		if (currentLine == 22)
+		{
+			whotalk.text = "緹緹";
+			characterImageObj.transform.SetAsLastSibling();
+			otherImageObj.transform.SetAsFirstSibling();
+			characterImage.sprite = sister_sad;
+		}
 
 		if (Input.GetMouseButtonDown(0))
 		{
