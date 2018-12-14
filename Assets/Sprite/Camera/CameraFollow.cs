@@ -24,9 +24,11 @@ public class CameraFollow : MonoBehaviour {
 
 	Vector3 velocity;
 
-	//test
-	public int count = 0;
-	public DG_playerController playController;
+	//放大鏡頭變數
+	public int scaleCount = 0;
+	//移轉鏡頭變數
+	public bool isFollowTarget = true;
+	public int moveCount = 0;
 
 	void Start(){
 		
@@ -34,11 +36,11 @@ public class CameraFollow : MonoBehaviour {
 
 	void FixedUpdate(){
 
-		/*if (playController.isTasting && count == 0) //放大鏡頭
+		/*if (playController.isTasting && scaleCount == 0) //放大鏡頭
 		{
 			StartCoroutine(ZoomCamera(2.56f, 2, 0.1f, 50));
 		}
-		else if(!playController.isTasting && count == 1)
+		else if(!playController.isTasting && scaleCount == 1)
 		{
 			StartCoroutine(ZoomCamera(2, 2.56f, 0.1f, 50));
 			count = 0;
@@ -54,8 +56,21 @@ public class CameraFollow : MonoBehaviour {
 		}
 		if (ChapterName == "1") //正章
 		{
-			Vector3 newPosition = target.position + offest;
-			transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
+			if (isFollowTarget) //正常跟隨玩家狀況
+			{
+				Vector3 newPosition = target.position + offest;
+				transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
+			}
+			else 
+			{
+				if (moveCount == 1)
+				{
+					Vector3 newPosition = new Vector3(17, 2, -8);
+					transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
+				}
+			}
+
+			//transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
 			//transform.position = new Vector3(Mathf.Clamp(target.position.x, xMin, xMax), Mathf.Clamp(target.position.y, yMin, yMax),-8);
 
 			if (transform.position.x < xMin)
@@ -87,7 +102,7 @@ public class CameraFollow : MonoBehaviour {
 
 	IEnumerator ZoomCamera(float from, float to, float time, float steps)  //放大鏡頭
 	{
-		count = 1;
+		scaleCount = 1;
 		float f = 0;
 
 		while (f <= 1)
@@ -99,4 +114,6 @@ public class CameraFollow : MonoBehaviour {
 			yield return new WaitForSeconds(time / steps);
 		}
 	}
+
+	
 }

@@ -32,6 +32,7 @@ public class DG_playerController : MonoBehaviour
 	public bool jumping = false;
 	public bool isClimb = false;
 	public bool isClimbBtn = false;
+	private bool vine1 = false;
 	//--------------SpineAnimation----------------
 	public Animator animator_S;
 	public Animator animator_B;
@@ -108,7 +109,7 @@ public class DG_playerController : MonoBehaviour
 				lineParticle.SetActive(false);
 			}
 
-			if (curHealth >= 100 && !dialogsScript1.teachBlood)
+			if (curHealth >= 10 && !dialogsScript1.teachBlood) //補血站教學
 			{
 				dialogsScript1.BloodStation();
 			}
@@ -200,38 +201,17 @@ public class DG_playerController : MonoBehaviour
 		if (isClimb && isClimbBtn)
 		{
 			rigid2D.MovePosition(rigid2D.position + Vector2.up * 2 * Time.deltaTime);
-			if (rigid2D.position.y >= 5)
+
+			if (vine1==true && rigid2D.position.y >= 5)
 			{
-				rigid2D.position = new Vector2(11, 6);
+				rigid2D.position = new Vector2(11, 7);
 				animator_S.SetBool("climb", false);
 				isClimbBtn = false;
 				isClimb = false;
+				vine1 = false;
 			}
 		}
 	}
-
-	/*public void OnLanding()
-	{
-
-		if (rigid2D.velocity.y <= 0 || grounded)
-		{
-			Debug.Log(rigid2D.velocity.y);
-			if (ChapterName == "0")
-			{
-				animator_S.SetBool("fall", true);
-				//animator_B.SetBool("fall", true);
-				animator_S.SetBool("isJump", jumping);
-				animator_B.SetBool("isJump", false);
-			}
-			else if (ChapterName == "1")
-			{
-				animator_S.SetBool("fall", true);
-				animator_S.SetBool("isJump", jumping);
-			}			
-		}
-		jumping = false;
-	}*/
-
 
 	//---------------------Damage-----------------------
 	void OnTriggerEnter2D(Collider2D col)  
@@ -276,10 +256,11 @@ public class DG_playerController : MonoBehaviour
 			}
 		}
 
-		if (col.tag == "vine") //進入藤蔓
+		if (col.gameObject.name == "vine1") //進入藤蔓1
 		{
-			isClimb = true;
-			ClimbImg.enabled = true;
+			isClimb = true;  //是否可以爬
+			ClimbImg.enabled = true;  //開啟爬鍵
+			vine1 = true; //遇到vine1的藤蔓
 		}
 
 		if (col.tag == "NPC") //觸碰到NPC
@@ -296,11 +277,12 @@ public class DG_playerController : MonoBehaviour
 			lineParticle.SetActive(false);
 		}
 
-		if (col.tag == "vine") //離開藤蔓
+		if (col.gameObject.name == "vine1") //離開藤蔓1
 		{
 			isClimb = false;
 			ClimbImg.enabled = false;
 			ClimbBtn.transform.SetAsLastSibling();
+			vine1 = false;
 		}
 
 		if (col.tag == "NPC") //觸碰到NPC

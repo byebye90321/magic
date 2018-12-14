@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class NPCTask : MonoBehaviour {
 
 	public string ChapterName;
+	public DialogsScript1 dialogsScript1;
+	//------------------player位置-------------------
 	public Rigidbody2D rigid2D;
 	//----------------NPC Tast------------------------
 	public GameObject taskPanel; //任務面板
@@ -16,6 +18,7 @@ public class NPCTask : MonoBehaviour {
 	private Animator taskAni;
 	public Button bookBtn;
 	public int bookCount = 0;
+	public bool BobbyTask; //判斷跟誰接任務
 
 	//-------------------NPC---------------------
 	public GameObject Bobby;
@@ -48,6 +51,7 @@ public class NPCTask : MonoBehaviour {
 				if (Mathf.Abs(rigid2D.transform.position.x - Bobby.transform.position.x) < 2 && NPCPoint.activeInHierarchy == true && isTasting == false)
 				{
 					isTasting = true;
+					BobbyTask = true;
 					BobbyTast();
 				}
 			}
@@ -58,12 +62,14 @@ public class NPCTask : MonoBehaviour {
 	public void BobbyTast()
 	{
 		Debug.Log(Mathf.Abs(rigid2D.transform.position.x - Bobby.transform.position.x));
-		
-		//要進行跟波比的對話，才會開起任務頁面
+
+		dialogsScript1.currentLine = 24;
+		dialogsScript1.endAtLine = 32;
+		dialogsScript1.NPCAppear();
 		//taskPanel.SetActive(true);
 	}
 
-	public void Tast_Yes()
+	public void Task_Yes()
 	{
 		isTasting = false;
 		taskPanel.SetActive(false);
@@ -71,12 +77,26 @@ public class NPCTask : MonoBehaviour {
 		taskAni.SetInteger("taskCount", 2); //任務1
 		bookCount = 0;  //如果右方面板關閉，強制開啟
 		taskAni.SetBool("isOpen", true);
+		if (BobbyTask == true)
+		{
+			dialogsScript1.currentLine = 33;
+			dialogsScript1.endAtLine = 35;
+			dialogsScript1.NPCAppear();
+			BobbyTask = false;
+		}
 	}
 
-	public void Tast_NO()
+	public void Task_NO()
 	{
 		isTasting = false;
 		taskPanel.SetActive(false);
+		if (BobbyTask == true)
+		{
+			dialogsScript1.currentLine = 36;
+			dialogsScript1.endAtLine = 36;
+			dialogsScript1.NPCAppear();
+			BobbyTask = false;
+		}
 	}
 
 	public void bookFly()

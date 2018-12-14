@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
 	public DG_playerController playerController; //玩家腳本
 	public ExampleGestureHandler geature; //畫符腳本
 	//-----------------暫停物件-------------------
-	public Button Puase;
+	public Button Pause;
 	public GameObject pauseMenu;
 	public GameObject black_bgImage;
 
@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour {
 
 	void Start () {
 		chapterState = ChapterState.Game;
-
 		balanceValue = PlayerPrefs.GetFloat("StaticObject.balanceSlider");
 		playerController.curHealth = PlayerPrefs.GetFloat("StaticObject.playerHealth");
 		playerController.HealthSlider.value = playerController.curHealth;

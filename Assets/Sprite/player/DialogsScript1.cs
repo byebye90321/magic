@@ -11,10 +11,10 @@ using UnityEngine.Audio;
 public class DialogsScript1 : MonoBehaviour
 {
 	//------------------------引用程式----------------------------
+	public CameraFollow cameraFollow;
 	public DG_playerController playerController;
+	public GameManager gameManager;
 	public NPCTask npcTask;
-	//-------------------------魔法日報---------------------------
-
 	//--------------------------互動-----------------------------
 	//--------------------------障礙物----------------------------
 
@@ -30,7 +30,7 @@ public class DialogsScript1 : MonoBehaviour
 	public GameObject otherImageObj; //右邊角色對話框
 	private Image otherImage;
 	public Sprite book;
-	
+
 
 	//----------------------------選擇---------------------------
 
@@ -66,9 +66,10 @@ public class DialogsScript1 : MonoBehaviour
 	public GameObject he;
 	public GameObject be;*/
 
-	//-----------------------教學物件變數-------------------------
-	public bool teachBlood=false;
-
+	//-----------------------教學、互動物件變數-------------------------
+	public bool teachBlood = false;
+	public GameObject DialogsPanelObj;
+	private Animator DialogsPanelAni;
 	//----------------audio----------------------
 	public AudioSource audio;
 	public AudioMixerSnapshot usually;
@@ -82,11 +83,12 @@ public class DialogsScript1 : MonoBehaviour
 		fadeOut = FadeOut.GetComponent<Animator>();
 		characterImage = characterImageObj.GetComponent<Image>();
 		otherImage = otherImageObj.GetComponent<Image>();
+		DialogsPanelAni = DialogsPanelObj.GetComponent<Animator>();
 		StaticObject.sister = 1; //魔法日報解鎖
 		PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);
 		StaticObject.book = 1; //魔法日報解鎖
 		PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);
-
+		
 		currentLine = 1;
 		endAtLine = 9;
 		StartCoroutine("fadeIn");
@@ -142,14 +144,14 @@ public class DialogsScript1 : MonoBehaviour
 		if (!isActive)
 			return;
 
-		if (currentLine == 1 || currentLine == 2|| currentLine == 8 || currentLine == 15)
+		if (currentLine == 1 || currentLine == 2 || currentLine == 8 || currentLine == 15 ||currentLine ==38 || currentLine == 40)
 		{
 			whotalk.text = "緹緹";
 			characterImageObj.transform.SetAsLastSibling();
 			otherImageObj.transform.SetAsFirstSibling();
 			characterImage.sprite = sister_opps;
 		}
-		if (currentLine == 3|| currentLine == 12)
+		if (currentLine == 3 || currentLine == 12)
 		{
 			whotalk.text = "緹緹";
 			characterImageObj.transform.SetAsLastSibling();
@@ -164,7 +166,7 @@ public class DialogsScript1 : MonoBehaviour
 			otherImageObj.SetActive(true);
 			otherImage.sprite = book;
 		}
-		if (currentLine == 5|| currentLine == 6|| currentLine == 7|| currentLine == 20)
+		if (currentLine == 5 || currentLine == 6 || currentLine == 7 || currentLine == 20)
 		{
 			whotalk.text = "緹緹";
 			characterImageObj.transform.SetAsLastSibling();
@@ -205,6 +207,84 @@ public class DialogsScript1 : MonoBehaviour
 			characterImage.sprite = sister_sad;
 		}
 
+		if (currentLine == 24 || currentLine == 26)
+		{
+			whotalk.text = "緹緹";
+			characterImageObj.transform.SetAsLastSibling();
+			otherImageObj.transform.SetAsFirstSibling();
+			characterImage.sprite = sister_opps;
+		}
+
+		if (currentLine == 25 || currentLine == 27 || currentLine == 31)
+		{
+			whotalk.text = "波比";
+			characterImageObj.transform.SetAsFirstSibling();
+			otherImageObj.transform.SetAsLastSibling();
+			otherImageObj.SetActive(true);
+			otherImage.sprite = book; //-------------------------要替換成bobby_cry頭貼
+		}
+
+		if (currentLine == 29 || currentLine == 33)
+		{
+			whotalk.text = "緹緹";
+			characterImageObj.transform.SetAsLastSibling();
+			otherImageObj.transform.SetAsFirstSibling();
+			characterImage.sprite = sister_angry;
+		}
+
+		if (currentLine == 32)
+		{
+			npcTask.taskPanel.SetActive(true);
+			DisableTextBox();
+		}
+
+		if (currentLine == 34)
+		{
+			whotalk.text = "波比";
+			characterImageObj.transform.SetAsFirstSibling();
+			otherImageObj.transform.SetAsLastSibling();
+			otherImage.sprite = book; //-------------------------要替換成bobby_cry頭貼
+			if (isTyping == false)
+			{
+				theText.text = "嘰嘰喳喳佔領了一些地方，<color=#FF8888>形石</color>或許在牠們身上，路上小心...";
+			}
+		}
+
+		if (currentLine == 35)
+		{
+			cameraFollow.isFollowTarget = false;
+			DisableTextBox();
+		}
+
+		if (currentLine == 36)
+		{
+			whotalk.text = "緹緹";
+			characterImageObj.transform.SetAsLastSibling();
+			otherImageObj.transform.SetAsFirstSibling();
+			characterImage.sprite = sister_sad;
+		}
+
+		if (currentLine == 39)
+		{
+			DialogsPanelObj.SetActive(true);
+		}
+
+		if (currentLine == 41)
+		{
+			whotalk.text = "緹緹";
+			characterImageObj.transform.SetAsLastSibling();
+			otherImageObj.transform.SetAsFirstSibling();
+			characterImage.sprite = sister_smile;
+		}
+
+		if (currentLine == 42)
+		{
+			DialogsPanelAni.SetTrigger("close");
+			DisableTextBox();
+		}
+
+
+		
 		if (Input.GetMouseButtonDown(0))
 		{
 			if (!isTyping)
@@ -254,10 +334,17 @@ public class DialogsScript1 : MonoBehaviour
 			endAtLine = 22;
 			NPCAppear();
 		}
-	}
-		//----------------------------選擇----------------------------
 
-		//----------------------------對話----------------------------
+		if (col.gameObject.name == "mark") //遇到路標對話
+		{
+			currentLine = 38;
+			endAtLine = 42;
+			NPCAppear();
+		}
+	}
+	//----------------------------選擇----------------------------
+
+	//----------------------------對話----------------------------
 		private IEnumerator TextScroll(string lineOfText)
 	{
 		int letter = 0;
@@ -286,6 +373,8 @@ public class DialogsScript1 : MonoBehaviour
 		playerController.drawCanvas.enabled = false;		
 		isActive = true;
 		textBox.SetActive(true);
+		gameManager.Pause.interactable = false;
+		npcTask.bookBtn.interactable = false;
 		StartCoroutine(TextScroll(textLines[currentLine]));
 	}
 	public void DisableTextBox()
@@ -293,6 +382,8 @@ public class DialogsScript1 : MonoBehaviour
 		isActive = false;
 		playerController.drawCanvas.enabled = true;
 		textBox.SetActive(false);
+		gameManager.Pause.interactable = true;
+		npcTask.bookBtn.interactable = true;
 	}
 
 }
