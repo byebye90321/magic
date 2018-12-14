@@ -66,7 +66,6 @@ public class NPCTask : MonoBehaviour {
 		dialogsScript1.currentLine = 24;
 		dialogsScript1.endAtLine = 32;
 		dialogsScript1.NPCAppear();
-		//taskPanel.SetActive(true);
 	}
 
 	public void Task_Yes()
@@ -106,7 +105,7 @@ public class NPCTask : MonoBehaviour {
 		taskAni.SetBool("isOpen", true);
 	}
 
-	public void BookBtn()
+	public void BookBtn()  
 	{
 		if (bookCount == 1) //打開
 		{

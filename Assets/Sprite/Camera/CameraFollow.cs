@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class CameraFollow : MonoBehaviour {
 
 	public string ChapterName;
-	
+	public GameManager gameManager;
 	public Camera camera;
 	[SerializeField]
 	private float xMax;
@@ -60,13 +60,16 @@ public class CameraFollow : MonoBehaviour {
 			{
 				Vector3 newPosition = target.position + offest;
 				transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
+				Debug.Log("000");
 			}
 			else 
 			{
 				if (moveCount == 1)
 				{
-					Vector3 newPosition = new Vector3(17, 2, -8);
+					Vector3 newPosition = new Vector3(17, 3, -8);
 					transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
+					StartCoroutine(gameManager.floorOpen());
+					Debug.Log("111");
 				}
 			}
 

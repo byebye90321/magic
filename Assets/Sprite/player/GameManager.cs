@@ -28,11 +28,14 @@ public class GameManager : MonoBehaviour {
 	public Text balanceText;
 
 	public static DG_GameManager Instance;
+	public CameraFollow cameraFollow;
 	public static ChapterState chapterState;
 
 	//-------------------血量----------------------
 	//private float playerHealth;
 	//public Slider HealthSlider;
+	//----------------平台物件開關------------------
+	public GameObject AirFloor;
 	//-------------------對話----------------------
 	public GameObject textPanel;
 	public Text text;
@@ -51,6 +54,7 @@ public class GameManager : MonoBehaviour {
 		balanceValue = PlayerPrefs.GetFloat("StaticObject.balanceSlider");
 		playerController.curHealth = PlayerPrefs.GetFloat("StaticObject.playerHealth");
 		playerController.HealthSlider.value = playerController.curHealth;
+		AirFloor.SetActive(false);
 		//HealthSlider.value = playerHealth;
 		balanceSlider.value = balanceValue;
 		balanceText.text = Mathf.Floor(balanceValue).ToString("0");
@@ -93,6 +97,20 @@ public class GameManager : MonoBehaviour {
 			}*/
 
 		}
+	}
+
+	public IEnumerator floorOpen()
+	{
+		if (cameraFollow.transform.position.y <= 3.1)
+		{
+			cameraFollow.moveCount = 0;
+			yield return new WaitForSeconds(0.5f);
+			AirFloor.SetActive(true);
+			yield return new WaitForSeconds(3);
+			cameraFollow.isFollowTarget = true;
+		}
+
+		
 	}
 
 	public void pause()

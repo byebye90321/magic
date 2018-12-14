@@ -252,7 +252,8 @@ public class DialogsScript1 : MonoBehaviour
 
 		if (currentLine == 35)
 		{
-			cameraFollow.isFollowTarget = false;
+			cameraFollow.isFollowTarget = false;  //準備開啟平台
+			cameraFollow.moveCount = 1;
 			DisableTextBox();
 		}
 
