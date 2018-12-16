@@ -17,10 +17,8 @@ public class DG_playerController : MonoBehaviour
 	public Rigidbody2D rigid2D;
 	public Transform graphics;
 	public float speed = 3.0f;
-	private bool touchStart = false;
-	private Vector2 pointA;
-	private Vector2 pointB;
-	public GameObject ActiveBtn;
+	public GameObject PickUpBtn;
+	private Image PickUpImg;
 	public GameObject ClimbBtn;
 	private Image ClimbImg;
 
@@ -29,10 +27,25 @@ public class DG_playerController : MonoBehaviour
 	float groundRadius = 0.1f;
 	public bool grounded = false;
 	public float jumpForce = 12f;
-	public bool jumping = false;
-	public bool isClimb = false;
-	public bool isClimbBtn = false;
+	public bool jumping = false; //是否可跳
+	public bool isActive = true;  //是否可移動、跳躍
+	public bool isClimb = false;  //是否可攀爬
+	public bool isClimbBtn = false;  //爬鍵是否開啟
+	public bool isPickUp = false;  //是否可拾取
+	//藤蔓
 	private bool vine1 = false;
+	private bool vine2 = false;
+	//拾取物件	
+	public  GameObject stoneObj1;
+	private bool stone1 = false;
+	public  GameObject stoneObj2;
+	private bool stone2 = false;
+	public  GameObject stoneObj3;
+	private bool stone3 = false;
+	public  GameObject stoneObj4;
+	private bool stone4 = false;
+	public  GameObject stoneObj5;
+	private bool stone5 = false;
 	//--------------SpineAnimation----------------
 	public Animator animator_S;
 	public Animator animator_B;
@@ -76,6 +89,7 @@ public class DG_playerController : MonoBehaviour
 		if (ChapterName == "1")
 		{
 			ClimbImg = ClimbBtn.GetComponent<Image>();
+			PickUpImg = PickUpBtn.GetComponent<Image>();
 		}
 	}
 
@@ -109,7 +123,7 @@ public class DG_playerController : MonoBehaviour
 				lineParticle.SetActive(false);
 			}
 
-			if (curHealth >= 10 && !dialogsScript1.teachBlood) //補血站教學
+			if (curHealth >= 100 && !dialogsScript1.teachBlood) //補血站教學
 			{
 				dialogsScript1.BloodStation();
 			}
@@ -119,77 +133,80 @@ public class DG_playerController : MonoBehaviour
 	public void FixedUpdate()
 	{
 		//-------------JUMP-----------------------------
-		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
-		animator_S.SetBool("ground", grounded);
-		if (ChapterName == "0")
+		if (isActive)
 		{
-			animator_B.SetBool("ground", grounded);
-		}
-
-		if (grounded)
-		{
-			jumping = false;
-			animator_S.SetBool("isJump", jumping);
-			if (CrossPlatformInputManager.GetButtonDown("Jump"))
+			grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+			animator_S.SetBool("ground", grounded);
+			if (ChapterName == "0")
 			{
+				animator_B.SetBool("ground", grounded);
+			}
+
+			if (grounded)
+			{
+				jumping = false;
+				animator_S.SetBool("isJump", jumping);
+				if (CrossPlatformInputManager.GetButtonDown("Jump"))
+				{
+					if (ChapterName == "0")
+					{
+						dg_GameManager.TeachJump = true;
+						//jumping = true;
+						rigid2D.velocity = new Vector2(0, jumpForce);
+						//animator_S.SetBool("isJump", jumping);
+						//animator_B.SetBool("isJump", jumping); //test版
+					}
+					else if (ChapterName == "1")
+					{
+						jumping = true;
+						rigid2D.velocity = new Vector2(0, jumpForce);
+						animator_S.SetBool("isJump", jumping);
+
+					}
+				}
+				//animator_S.SetBool("fall", false);
+				//animator_B.SetBool("fall", false);  
+			}
+			else
+			{
+				//OnLanding();
+			}
+
+			//-------------MOVE----------------------------
+
+			Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertiacl")) * speed;
+			rigid2D.velocity = new Vector2(moveVec.x, rigid2D.velocity.y);
+
+			if (ChapterName == "0")
+			{
+				animator_S.SetFloat("run", Mathf.Abs(moveVec.x));
+				animator_B.SetFloat("run", Mathf.Abs(moveVec.x));
+			}
+			else if (ChapterName == "1")
+			{
+				animator_S.SetFloat("Speed", Mathf.Abs(moveVec.x));
+			}
+
+
+			if (moveVec.x > 0)
+			{
+				graphics.localRotation = Quaternion.Euler(0, 0, 0);
+				healthCanvas.localRotation = Quaternion.Euler(0, 0, 0);
 				if (ChapterName == "0")
 				{
-					dg_GameManager.TeachJump = true;
-					//jumping = true;
-					rigid2D.velocity = new Vector2(0, jumpForce);
-					//animator_S.SetBool("isJump", jumping);
-					//animator_B.SetBool("isJump", jumping); //test版
+					dg_GameManager.TeachMove = true;
 				}
-				else if (ChapterName == "1")
+			}
+			else if (moveVec.x < 0)
+			{
+				graphics.localRotation = Quaternion.Euler(0, 180, 0);
+				healthCanvas.localRotation = Quaternion.Euler(0, 180, 0);
+				if (ChapterName == "0")
 				{
-					jumping = true;
-					rigid2D.velocity = new Vector2(0, jumpForce);
-					animator_S.SetBool("isJump", jumping);
-
+					dg_GameManager.TeachMove = true;
 				}
 			}
-			//animator_S.SetBool("fall", false);
-			//animator_B.SetBool("fall", false);  
 		}
-		else
-		{
-			//OnLanding();
-		}
-		
-		//-------------MOVE----------------------------
-		Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertiacl")) * speed;
-		rigid2D.velocity = new Vector2(moveVec.x, rigid2D.velocity.y);
-
-		if (ChapterName == "0")
-		{
-			animator_S.SetFloat("run", Mathf.Abs(moveVec.x));
-			animator_B.SetFloat("run", Mathf.Abs(moveVec.x));
-		}
-		else if (ChapterName == "1")
-		{
-			animator_S.SetFloat("Speed", Mathf.Abs(moveVec.x));
-		}
-
-
-		if (moveVec.x > 0)
-		{
-			graphics.localRotation = Quaternion.Euler(0, 0, 0);
-			healthCanvas.localRotation = Quaternion.Euler(0, 0, 0);
-			if (ChapterName == "0")
-			{
-				dg_GameManager.TeachMove = true;
-			}
-		}
-		else if (moveVec.x < 0)
-		{
-			graphics.localRotation = Quaternion.Euler(0, 180, 0);
-			healthCanvas.localRotation = Quaternion.Euler(0, 180, 0);
-			if (ChapterName == "0")
-			{
-				dg_GameManager.TeachMove = true;
-			}
-		}
-
 		//-----------------------Climb--------------------------
 
 		if (CrossPlatformInputManager.GetButtonDown("Climb"))
@@ -202,14 +219,51 @@ public class DG_playerController : MonoBehaviour
 		{
 			rigid2D.MovePosition(rigid2D.position + Vector2.up * 2 * Time.deltaTime);
 
-			if (vine1==true && rigid2D.position.y >= 5)
+			if (vine1==true && rigid2D.position.y >= 5)  //藤蔓1
 			{
 				rigid2D.position = new Vector2(11, 7);
 				animator_S.SetBool("climb", false);
 				isClimbBtn = false;
 				isClimb = false;
 				vine1 = false;
+			}else if (vine2 == true && rigid2D.position.y >= 8)  //藤蔓1
+			{
+				rigid2D.position = new Vector2(23, 9.2f);
+				animator_S.SetBool("climb", false);
+				isClimbBtn = false;
+				isClimb = false;
+				vine2 = false;
 			}
+		}
+
+		//----------------------Pick Up--------------------------
+		if (CrossPlatformInputManager.GetButtonDown("PickUp"))
+		{
+			animator_S.SetTrigger("pickUp");
+
+			if (stone1)
+			{
+				stoneObj1.SetActive(false);
+			}
+			if (stone2)
+			{
+				stoneObj2.SetActive(false);
+			}
+			if (stone3)
+			{
+				stoneObj3.SetActive(false);
+			}
+			if (stone4)
+			{
+				stoneObj4.SetActive(false);
+			}
+			if (stone5)
+			{
+				stoneObj5.SetActive(false);
+			}
+			isActive = false;
+			StartCoroutine("MoveWait");
+			PickUpImg.enabled = false;
 		}
 	}
 
@@ -261,11 +315,42 @@ public class DG_playerController : MonoBehaviour
 			isClimb = true;  //是否可以爬
 			ClimbImg.enabled = true;  //開啟爬鍵
 			vine1 = true; //遇到vine1的藤蔓
+			ClimbBtn.transform.SetAsLastSibling();
+		}
+
+		if (col.gameObject.name == "vine2") //進入藤蔓1
+		{
+			isClimb = true;  //是否可以爬
+			ClimbImg.enabled = true;  //開啟爬鍵
+			vine2 = true; //遇到vine1的藤蔓
+			ClimbBtn.transform.SetAsLastSibling();
 		}
 
 		if (col.tag == "NPC") //觸碰到NPC
 		{
 			NPCPoint.SetActive(true);
+		}
+
+		if (col.tag == "pickUpObj") //拾取物件
+		{
+			PickUpImg.enabled = true;  //開啟拾取鍵
+			PickUpBtn.transform.SetAsLastSibling();
+			if (col.gameObject.name == "stone1") //形石
+			{
+				stone1 = true;
+			}else if(col.gameObject.name == "stone2")
+			{
+				stone2 = true;
+			}else if (col.gameObject.name == "stone3")
+			{
+				stone3 = true;
+			}else if (col.gameObject.name == "stone4")
+			{
+				stone4 = true;
+			}else if (col.gameObject.name == "stone5")
+			{
+				stone5 = true;
+			}
 		}
 	}
 
@@ -281,14 +366,51 @@ public class DG_playerController : MonoBehaviour
 		{
 			isClimb = false;
 			ClimbImg.enabled = false;
-			ClimbBtn.transform.SetAsLastSibling();
 			vine1 = false;
+		}
+		if (col.gameObject.name == "vine2") //離開藤蔓1
+		{
+			isClimb = false;
+			ClimbImg.enabled = false;
+			vine2 = false;
 		}
 
 		if (col.tag == "NPC") //觸碰到NPC
 		{
 			NPCPoint.SetActive(false);
 		}
+
+		if (col.tag == "pickUpObj") //離開拾取物件
+		{
+			PickUpImg.enabled = false;  
+		}
+
+		if (col.gameObject.name == "stone1")  //形石
+		{
+			stone1 = false;
+		}
+		else if (col.gameObject.name == "stone2")
+		{
+			stone2 = false;
+		}
+		else if (col.gameObject.name == "stone3")
+		{
+			stone3 = false;
+		}
+		else if (col.gameObject.name == "stone4")
+		{
+			stone4 = false;
+		}
+		else if (col.gameObject.name == "stone5")
+		{
+			stone5 = false;
+		}
+	}
+
+	IEnumerator MoveWait()
+	{
+		yield return new WaitForSeconds(2f);
+		isActive = true;
 	}
 
 	IEnumerator wait1()

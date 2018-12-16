@@ -84,6 +84,19 @@
      <Compile Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\Timeline\SpineSkeletonFlip\Editor\SpineSkeletonFlipDrawer.cs" />
      <Compile Include="Assets\Spine\spine-unity\Assets\spine-unity\SkeletonUtility\Editor\SkeletonUtilityBoneInspector.cs" />
      <Compile Include="Assets\Spine\spine-unity\Assets\spine-unity\SkeletonUtility\Editor\SkeletonUtilityInspector.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Editor\AccordionElementEditor.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Editor\BezierLineRendererEditor.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Editor\BoxSliderEditor.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Editor\CanvasGroupActivator.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Editor\CUIBezierCurveEditor.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Editor\CUIGraphicEditor.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Editor\CUIImageEditor.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Editor\CUITextEditor.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Editor\NonDrawingGraphicEditor.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Editor\ReadOnlyDrawer.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Editor\TextPicEditor.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Editor\uGUITools.cs" />
+     <Compile Include="Assets\unity-ui-extensions\Editor\UIExtensionsMenuOptions.cs" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Editor\Resources\SpineAssetDatabaseMarker.txt" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/USERTY/Desktop/magic/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

@@ -23,6 +23,7 @@ TagManager:
   - vine
   - heart
   - NPC
+  - pickUpObj
   layers:
   - Default
   - TransparentFX
@@ -66,11 +67,11 @@ TagManager:
   - name: bg2
     uniqueID: 2764434993
     locked: 0
-  - name: obstacle
-    uniqueID: 3535844721
-    locked: 0
   - name: floor
     uniqueID: 74829367
+    locked: 0
+  - name: obstacle
+    uniqueID: 3535844721
     locked: 0
   - name: Blood
     uniqueID: 1881793337

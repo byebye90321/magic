@@ -46,8 +46,6 @@ public class CameraFollow : MonoBehaviour {
 			count = 0;
 		}*/
 
-		//transform.position = playerobj.transform.position;
-		//transform.position = new Vector3(Mathf.Clamp(playerobj.transform.position.x + offset, xMin,xMax),Mathf.Clamp(playerobj.transform.position.y,yMin,yMax));
 
 		if (ChapterName == "0")  //序章 跟隨
 		{
@@ -60,16 +58,14 @@ public class CameraFollow : MonoBehaviour {
 			{
 				Vector3 newPosition = target.position + offest;
 				transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
-				Debug.Log("000");
 			}
 			else 
 			{
-				if (moveCount == 1)
+				if (moveCount == 1)  //形石平台移動
 				{
 					Vector3 newPosition = new Vector3(17, 3, -8);
 					transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
 					StartCoroutine(gameManager.floorOpen());
-					Debug.Log("111");
 				}
 			}
 
@@ -83,19 +79,8 @@ public class CameraFollow : MonoBehaviour {
 
 			if (transform.position.y >= yMax)
 			{
-				//transform.position = new Vector3(transform.position.x, Mathf.Clamp(target.position.y, yMin, yMax),-8);
 				transform.position = new Vector3(transform.position.x,yMax,-8);
 			}
-			else if (transform.position.y >= yMax - 3)
-			{
-				//smoothSpeed = ((transform.position.y / (yMax - yMin)) * 4);
-				
-			}
-			else 
-			{
-				smoothSpeed = ((transform.position.y / (yMax - yMin)) * 1f);
-			}
-
 
 			offest.y = 2.6f - ((transform.position.y / (yMax - yMin)) * 2.3f); //offest Y軸偏移
 			//Camera.main.orthographicSize = 5-((transform.position.y / (yMax - yMin)) * 4f);

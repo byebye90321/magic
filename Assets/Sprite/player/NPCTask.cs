@@ -11,7 +11,8 @@ public class NPCTask : MonoBehaviour {
 	public Rigidbody2D rigid2D;
 	//----------------NPC Tast------------------------
 	public GameObject taskPanel; //任務面板
-	public GameObject NPCPoint; //任務1提示!特效
+	public GameObject BobbyPoint; //任務1提示!特效
+	public GameObject StonePoint; //任務1提示!特效
 	public bool isTasting = false; //是否可再開啟任務頁面
 	public GameObject taskObj; //右邊支線任務面板
 	public GameObject bookObj;
@@ -23,12 +24,27 @@ public class NPCTask : MonoBehaviour {
 	//-------------------NPC---------------------
 	public GameObject Bobby;
 	private BoxCollider2D BobbyCollider;
+	public GameObject Stone;
+	private BoxCollider2D StoneCollider;
+	//-------------------機關---------------------
+	public GameObject StoneCanvas;
+	public drag slot1;
+	public drag slot2;
+	public drag slot3;
+	public drag slot4;
+	public drag slot5;
+	public GameObject StoneParticle1;
+	public GameObject StoneParticle2;
+	public GameObject StoneParticle3;
+	public GameObject StoneParticle4;
+	public GameObject StoneParticle5;
 
 	// Use this for initialization
 	void Start () {
 		if (ChapterName == "1")
 		{
 			BobbyCollider = Bobby.GetComponent<BoxCollider2D>();
+			StoneCollider = Stone.GetComponent<BoxCollider2D>();
 			taskAni = bookObj.GetComponent<Animator>();
 		}	
 	}
@@ -48,13 +64,30 @@ public class NPCTask : MonoBehaviour {
 			}
 			else if (hit.collider.name == "NPC_Bobby")
 			{
-				if (Mathf.Abs(rigid2D.transform.position.x - Bobby.transform.position.x) < 2 && NPCPoint.activeInHierarchy == true && isTasting == false)
+				if (Mathf.Abs(rigid2D.transform.position.x - Bobby.transform.position.x) < 2 && BobbyPoint.activeInHierarchy == true && isTasting == false)
 				{
 					isTasting = true;
 					BobbyTask = true;
 					BobbyTast();
 				}
 			}
+			else if (hit.collider.name == "Stone")
+			{
+				if (Mathf.Abs(rigid2D.transform.position.x - Stone.transform.position.x) < 2 && StonePoint.activeInHierarchy == true && isTasting == false)
+				{
+					StoneCanvas.SetActive(true);
+				}
+			}
+		}
+		//-------------------------森林機關-----------------------
+		if (slot1.isRight && slot2.isRight && slot3.isRight && slot4.isRight && slot5.isRight) //完成的時候
+		{
+			StoneParticle1.SetActive(true);
+			StoneParticle2.SetActive(true);
+			StoneParticle3.SetActive(true);
+			StoneParticle4.SetActive(true);
+			StoneParticle5.SetActive(true);
+			StartCoroutine("waitClose");
 		}
 	}
 
@@ -118,5 +151,17 @@ public class NPCTask : MonoBehaviour {
 			taskAni.SetBool("isOpen", false);
 			taskObj.SetActive(false);
 		}
+	}
+
+	IEnumerator waitClose()
+	{
+		yield return new WaitForSeconds(3);
+		StoneCanvas.SetActive(false);
+		StoneCollider.enabled = false;
+	}
+
+	public void Close()
+	{
+		StoneCanvas.SetActive(false);
 	}
 }

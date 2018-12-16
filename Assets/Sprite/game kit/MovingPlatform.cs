@@ -58,7 +58,7 @@ namespace Gamekit2D
             m_Rigidbody2D.isKinematic = true;
 
             if (platformCatcher == null)
-                platformCatcher = GetComponent<PlatformCatcher> ();
+                platformCatcher = GetComponent<PlatformCatcher>();
         }
 
         private void Start()
@@ -222,5 +222,5 @@ namespace Gamekit2D
                 m_VeryFirstStart = false;
             }
         }
-    }
+	}
 }
