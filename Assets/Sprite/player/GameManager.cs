@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour {
 	//public Slider HealthSlider;
 	//----------------平台物件開關------------------
 	public GameObject AirFloor;
+	public GameObject vine2;
 	//-------------------對話----------------------
 	public GameObject textPanel;
 	public Text text;
@@ -99,6 +100,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	//-----------------------------camera相關
 	public IEnumerator floorOpen()
 	{
 		if (cameraFollow.transform.position.y <= 3.1)
@@ -109,8 +111,18 @@ public class GameManager : MonoBehaviour {
 			yield return new WaitForSeconds(3);
 			cameraFollow.isFollowTarget = true;
 		}
+	}
 
-		
+	public IEnumerator vineOpen()
+	{
+		if (cameraFollow.transform.position.y >= 5.9)
+		{
+			cameraFollow.moveCount = 0;
+			yield return new WaitForSeconds(0.5f);
+			vine2.SetActive(true);
+			yield return new WaitForSeconds(3);
+			cameraFollow.isFollowTarget = true;
+		}
 	}
 
 	public void pause()

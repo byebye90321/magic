@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class NPCTask : MonoBehaviour {
 
 	public string ChapterName;
+	public DG_playerController playerController;
 	public DialogsScript1 dialogsScript1;
+	public CameraFollow cameraFollow;
 	//------------------player位置-------------------
 	public Rigidbody2D rigid2D;
 	//----------------NPC Tast------------------------
@@ -71,7 +73,7 @@ public class NPCTask : MonoBehaviour {
 					BobbyTast();
 				}
 			}
-			else if (hit.collider.name == "Stone")
+			else if (hit.collider.name == "Stone" && !playerController.stoneObj1.activeInHierarchy && !playerController.stoneObj2.activeInHierarchy && !playerController.stoneObj3.activeInHierarchy && !playerController.stoneObj4.activeInHierarchy && !playerController.stoneObj5.activeInHierarchy)
 			{
 				if (Mathf.Abs(rigid2D.transform.position.x - Stone.transform.position.x) < 2 && StonePoint.activeInHierarchy == true && isTasting == false)
 				{
@@ -158,6 +160,10 @@ public class NPCTask : MonoBehaviour {
 		yield return new WaitForSeconds(3);
 		StoneCanvas.SetActive(false);
 		StoneCollider.enabled = false;
+		yield return new WaitForSeconds(1);
+		cameraFollow.isFollowTarget = false;
+		cameraFollow.moveCount = 2;
+		slot1.isRight = false;
 	}
 
 	public void Close()

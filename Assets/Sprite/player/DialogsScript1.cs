@@ -267,7 +267,7 @@ public class DialogsScript1 : MonoBehaviour
 
 		if (currentLine == 39)
 		{
-			DialogsPanelObj.SetActive(true);
+			DialogsPanelAni.SetBool("isOpen", true);
 		}
 
 		if (currentLine == 41)
@@ -280,7 +280,7 @@ public class DialogsScript1 : MonoBehaviour
 
 		if (currentLine == 42)
 		{
-			DialogsPanelAni.SetTrigger("close");
+			DialogsPanelAni.SetBool("isOpen", false);
 			DisableTextBox();
 		}
 
