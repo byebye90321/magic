@@ -74,6 +74,17 @@ public class CameraFollow : MonoBehaviour {
 					transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
 					StartCoroutine(gameManager.vineOpen());
 				}
+
+				if (moveCount == 3)  //歪斜天平
+				{
+					Vector3 newPosition = new Vector3(47, 4, -8);
+					transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
+				}
+				if (moveCount == 4)  //發現雕像
+				{
+					Vector3 newPosition = new Vector3(60, 2, -8);
+					transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
+				}
 			}
 
 			//transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
@@ -89,7 +100,7 @@ public class CameraFollow : MonoBehaviour {
 				transform.position = new Vector3(transform.position.x,yMax,-8);
 			}
 
-			offest.y = 2.6f - ((transform.position.y / (yMax - yMin)) * 2.3f); //offest Y軸偏移
+			offest.y = 2f - ((transform.position.y / (yMax - yMin)) * 2f); //offest Y軸偏移
 			//Camera.main.orthographicSize = 5-((transform.position.y / (yMax - yMin)) * 4f);
 			transform.position = new Vector3(transform.position.x, transform.position.y, -8);
 		}

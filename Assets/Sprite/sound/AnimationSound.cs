@@ -16,6 +16,4 @@ public class AnimationSound : MonoBehaviour {
 			audio.PlayOneShot(Sound);
 		}
 	}
-
-
 }

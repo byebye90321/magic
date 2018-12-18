@@ -71,6 +71,7 @@ public class DG_playerController : MonoBehaviour
 	public Canvas drawCanvas;
 	//-----------------Particle System---------------
 	public GameObject NPCPoint; //NPC驚嘆號
+
 	//public GameObject G1_Skill;
 	public GameObject W1_beaten;
 	//------------------Audio--------------------

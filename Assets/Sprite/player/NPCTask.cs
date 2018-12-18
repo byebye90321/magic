@@ -13,8 +13,9 @@ public class NPCTask : MonoBehaviour {
 	public Rigidbody2D rigid2D;
 	//----------------NPC Tast------------------------
 	public GameObject taskPanel; //任務面板
-	public GameObject BobbyPoint; //任務1提示!特效
-	public GameObject StonePoint; //任務1提示!特效
+	public GameObject BobbyPoint; //波比提示!特效
+	public GameObject StonePoint; //石陣提示!特效
+	public GameObject StatuePoint; //石陣提示!特效
 	public bool isTasting = false; //是否可再開啟任務頁面
 	public GameObject taskObj; //右邊支線任務面板
 	public GameObject bookObj;
@@ -22,12 +23,17 @@ public class NPCTask : MonoBehaviour {
 	public Button bookBtn;
 	public int bookCount = 0;
 	public bool BobbyTask; //判斷跟誰接任務
+	public bool StatueTask; //判斷跟誰接任務
 
 	//-------------------NPC---------------------
 	public GameObject Bobby;
-	private BoxCollider2D BobbyCollider;
+	[SerializeField]
+	public BoxCollider2D BobbyCollider;
 	public GameObject Stone;
 	private BoxCollider2D StoneCollider;
+	public GameObject Statue;
+	[SerializeField]
+	public BoxCollider2D StatueCollider;
 	//-------------------機關---------------------
 	public GameObject StoneCanvas;
 	public drag slot1;
@@ -47,6 +53,7 @@ public class NPCTask : MonoBehaviour {
 		{
 			BobbyCollider = Bobby.GetComponent<BoxCollider2D>();
 			StoneCollider = Stone.GetComponent<BoxCollider2D>();
+			StatueCollider = Statue.GetComponent<BoxCollider2D>();
 			taskAni = bookObj.GetComponent<Animator>();
 		}	
 	}
@@ -80,6 +87,15 @@ public class NPCTask : MonoBehaviour {
 					StoneCanvas.SetActive(true);
 				}
 			}
+			else if (hit.collider.name == "NPC_Statue")
+			{
+				if (Mathf.Abs(rigid2D.transform.position.x - Statue.transform.position.x) < 2 && StatuePoint.activeInHierarchy == true && isTasting == false)
+				{
+					isTasting = true;
+					StatueTask = true;
+					StatueTast();
+				}
+			}
 		}
 		//-------------------------森林機關-----------------------
 		if (slot1.isRight && slot2.isRight && slot3.isRight && slot4.isRight && slot5.isRight) //完成的時候
@@ -107,16 +123,25 @@ public class NPCTask : MonoBehaviour {
 	{
 		isTasting = false;
 		taskPanel.SetActive(false);
-		BobbyCollider.enabled = false;
-		taskAni.SetInteger("taskCount", 2); //任務1
 		bookCount = 0;  //如果右方面板關閉，強制開啟
 		taskAni.SetBool("isOpen", true);
 		if (BobbyTask == true)
 		{
+			BobbyCollider.enabled = false;
+			taskAni.SetInteger("taskCount", 2); //任務1
 			dialogsScript1.currentLine = 33;
 			dialogsScript1.endAtLine = 35;
 			dialogsScript1.NPCAppear();
 			BobbyTask = false;
+		}
+		if (StatueTask == true)
+		{
+			StatueCollider.enabled = false;
+			//taskAni.SetInteger("taskCount", 3); //任務1
+			dialogsScript1.currentLine = 51;
+			dialogsScript1.endAtLine = 51;
+			dialogsScript1.NPCAppear();
+			StatueTask = false;
 		}
 	}
 
@@ -126,12 +151,29 @@ public class NPCTask : MonoBehaviour {
 		taskPanel.SetActive(false);
 		if (BobbyTask == true)
 		{
+			BobbyCollider.enabled = false;
 			dialogsScript1.currentLine = 36;
-			dialogsScript1.endAtLine = 36;
+			dialogsScript1.endAtLine = 37;
 			dialogsScript1.NPCAppear();
 			BobbyTask = false;
 		}
+		if (StatueTask == true)
+		{
+			StatueCollider.enabled = false;
+			dialogsScript1.currentLine = 52;
+			dialogsScript1.endAtLine = 53;
+			dialogsScript1.NPCAppear();
+			StatueTask = false;
+		}
 	}
+
+	//任務2 Statue
+	public void StatueTast()
+	{
+		Debug.Log(Mathf.Abs(rigid2D.transform.position.x - Statue.transform.position.x));
+		taskPanel.SetActive(true);
+	}
+
 
 	public void bookFly()
 	{
@@ -155,7 +197,7 @@ public class NPCTask : MonoBehaviour {
 		}
 	}
 
-	IEnumerator waitClose()
+	IEnumerator waitClose()  //關閉石陣機關
 	{
 		yield return new WaitForSeconds(3);
 		StoneCanvas.SetActive(false);
@@ -163,7 +205,7 @@ public class NPCTask : MonoBehaviour {
 		yield return new WaitForSeconds(1);
 		cameraFollow.isFollowTarget = false;
 		cameraFollow.moveCount = 2;
-		slot1.isRight = false;
+		slot1.isRight = false;  //防止循環
 	}
 
 	public void Close()

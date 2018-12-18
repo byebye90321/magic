@@ -15,9 +15,9 @@ public class DialogsScript1 : MonoBehaviour
 	public DG_playerController playerController;
 	public GameManager gameManager;
 	public NPCTask npcTask;
-	//--------------------------互動-----------------------------
-	//--------------------------障礙物----------------------------
-
+	//--------------------------互動對話-----------------------------
+	public GameObject vine2text;
+	private int bobbyCount = 1;
 	//---------------------------頭貼----------------------------
 	public GameObject characterImageObj; //左邊主角對話框
 	private Image characterImage;
@@ -30,6 +30,8 @@ public class DialogsScript1 : MonoBehaviour
 	public GameObject otherImageObj; //右邊角色對話框
 	private Image otherImage;
 	public Sprite book;
+	public Sprite bobby_normal;
+	public Sprite bobby_cry;
 
 
 	//----------------------------選擇---------------------------
@@ -68,8 +70,13 @@ public class DialogsScript1 : MonoBehaviour
 
 	//-----------------------教學、互動物件變數-------------------------
 	public bool teachBlood = false;
-	public GameObject DialogsPanelObj;
-	private Animator DialogsPanelAni;
+	public GameObject markObj; //路標對話框
+	private Animator markAni;
+	private BoxCollider2D markCollider;
+	public GameObject statueObj; //雕像對話
+	private Animator statueAni;
+	private BoxCollider2D statueCollider;
+
 	//----------------audio----------------------
 	public AudioSource audio;
 	public AudioMixerSnapshot usually;
@@ -83,7 +90,10 @@ public class DialogsScript1 : MonoBehaviour
 		fadeOut = FadeOut.GetComponent<Animator>();
 		characterImage = characterImageObj.GetComponent<Image>();
 		otherImage = otherImageObj.GetComponent<Image>();
-		DialogsPanelAni = DialogsPanelObj.GetComponent<Animator>();
+		markAni = markObj.GetComponent<Animator>();
+		markCollider = markObj.GetComponent<BoxCollider2D>();
+		statueAni = statueObj.GetComponent<Animator>();
+		statueCollider = statueObj.GetComponent<BoxCollider2D>();
 		StaticObject.sister = 1; //魔法日報解鎖
 		PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);
 		StaticObject.book = 1; //魔法日報解鎖
@@ -184,7 +194,7 @@ public class DialogsScript1 : MonoBehaviour
 				theText.text = "(每個新場景前端會設立<color=#FF8888>補血站</color>，就在前方，站上去試試。)";
 			}
 		}
-		if (currentLine == 11)
+		if (currentLine == 11 || currentLine == 43)
 		{
 			whotalk.text = "緹緹";
 			characterImageObj.transform.SetAsLastSibling();
@@ -221,7 +231,7 @@ public class DialogsScript1 : MonoBehaviour
 			characterImageObj.transform.SetAsFirstSibling();
 			otherImageObj.transform.SetAsLastSibling();
 			otherImageObj.SetActive(true);
-			otherImage.sprite = book; //-------------------------要替換成bobby_cry頭貼
+			otherImage.sprite = bobby_cry; //-------------------------要替換成bobby_cry頭貼
 		}
 
 		if (currentLine == 29 || currentLine == 33)
@@ -243,7 +253,6 @@ public class DialogsScript1 : MonoBehaviour
 			whotalk.text = "波比";
 			characterImageObj.transform.SetAsFirstSibling();
 			otherImageObj.transform.SetAsLastSibling();
-			otherImage.sprite = book; //-------------------------要替換成bobby_cry頭貼
 			if (isTyping == false)
 			{
 				theText.text = "嘰嘰喳喳佔領了一些地方，<color=#FF8888>形石</color>或許在牠們身上，路上小心...";
@@ -265,9 +274,20 @@ public class DialogsScript1 : MonoBehaviour
 			characterImage.sprite = sister_sad;
 		}
 
+		if (currentLine == 37)
+		{
+			npcTask.BobbyCollider.enabled = true;
+			DisableTextBox();
+		}
+
+		if (currentLine == 38)
+		{
+			otherImageObj.SetActive(false);
+		}
+
 		if (currentLine == 39)
 		{
-			DialogsPanelAni.SetBool("isOpen", true);
+			markAni.SetBool("isOpen", true);
 		}
 
 		if (currentLine == 41)
@@ -280,12 +300,27 @@ public class DialogsScript1 : MonoBehaviour
 
 		if (currentLine == 42)
 		{
-			DialogsPanelAni.SetBool("isOpen", false);
+			//DialogsPanelAni.SetBool("isOpen", false);
+			markCollider.enabled = false;
 			DisableTextBox();
 		}
 
+		if (currentLine == 46)
+		{
+			cameraFollow.moveCount = 4;
+		}
 
-		
+		if (currentLine == 47)
+		{
+			DisableTextBox();
+		}
+
+		if (currentLine == 53)
+		{
+			npcTask.StatueCollider.enabled = true;
+			DisableTextBox();
+		}
+
 		if (Input.GetMouseButtonDown(0))
 		{
 			if (!isTyping)
@@ -322,6 +357,25 @@ public class DialogsScript1 : MonoBehaviour
 		NPCAppear();	
 	}
 
+	IEnumerator cameraToBalance()
+	{
+		cameraFollow.isFollowTarget = false;
+		cameraFollow.moveCount = 3;
+		yield return new WaitForSeconds(2);
+		currentLine = 45;
+		endAtLine = 47;
+		NPCAppear();
+		yield return new WaitUntil(()=>currentLine == 47);
+		cameraFollow.moveCount = 0;
+		cameraFollow.isFollowTarget = true;
+	}
+
+	IEnumerator openTask()
+	{
+		yield return new WaitForSeconds(5);
+
+	}
+
 	public void NPCAppear()
 	{
 		EnableTextBox();
@@ -329,8 +383,9 @@ public class DialogsScript1 : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.gameObject.name == "NPC_Bobby") //遇到波比對話
+		if (col.gameObject.name == "NPC_Bobby" &&bobbyCount == 1) //遇到波比對話
 		{
+			bobbyCount = 0;
 			currentLine = 22;
 			endAtLine = 22;
 			NPCAppear();
@@ -342,6 +397,27 @@ public class DialogsScript1 : MonoBehaviour
 			endAtLine = 42;
 			NPCAppear();
 		}
+
+		if (col.gameObject.name == "vin2text") //藤蔓對話
+		{
+			currentLine = 43;
+			endAtLine = 43;
+			NPCAppear();
+			Destroy(col.gameObject);
+		}
+
+		if (col.gameObject.name == "balanceText") //看見天平對話
+		{
+			StartCoroutine("cameraToBalance");
+			Destroy(col.gameObject);
+		}
+
+		if (col.gameObject.name == "NPC_Statue") //雕像對話
+		{
+			statueAni.SetBool("isOpen1", true);
+			StartCoroutine("openTask");
+		}
+
 	}
 	//----------------------------選擇----------------------------
 

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
 
 	public string ChapterName; //關卡名稱
 	public DG_playerController playerController; //玩家腳本
+	public DialogsScript1 dialogsScript1;
 	public ExampleGestureHandler geature; //畫符腳本
 	//-----------------暫停物件-------------------
 	public Button Pause;
@@ -96,11 +97,10 @@ public class GameManager : MonoBehaviour {
 				Debug.Log("战斗胜利");
 				chapterState = ChapterState.Win;
 			}*/
-
 		}
 	}
 
-	//-----------------------------camera相關
+	//-----------------------------Camera移轉鏡頭相關--------------------
 	public IEnumerator floorOpen()
 	{
 		if (cameraFollow.transform.position.y <= 3.1)
@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour {
 			cameraFollow.moveCount = 0;
 			yield return new WaitForSeconds(0.5f);
 			AirFloor.SetActive(true);
-			yield return new WaitForSeconds(3);
+			yield return new WaitForSeconds(2);
 			cameraFollow.isFollowTarget = true;
 		}
 	}
@@ -122,6 +122,8 @@ public class GameManager : MonoBehaviour {
 			vine2.SetActive(true);
 			yield return new WaitForSeconds(3);
 			cameraFollow.isFollowTarget = true;
+			dialogsScript1.vine2text.SetActive(true);
+			Debug.Log("dddd");
 		}
 	}
 
