@@ -46,6 +46,12 @@ public class DG_playerController : MonoBehaviour
 	private bool stone4 = false;
 	public  GameObject stoneObj5;
 	private bool stone5 = false;
+	public GameObject redFairy;
+	private bool isRed;
+	private BoxCollider2D redFairyCollider;
+	public GameObject blueFairy;
+	private bool isBlue;
+	private BoxCollider2D blueFairyCollider;
 	//--------------SpineAnimation----------------
 	public Animator animator_S;
 	public Animator animator_B;
@@ -71,7 +77,8 @@ public class DG_playerController : MonoBehaviour
 	public Canvas drawCanvas;
 	//-----------------Particle System---------------
 	public GameObject NPCPoint; //NPC驚嘆號
-
+	public GameObject redFairyParticle;
+	public GameObject blueFairyParticle;
 	//public GameObject G1_Skill;
 	public GameObject W1_beaten;
 	//------------------Audio--------------------
@@ -91,6 +98,9 @@ public class DG_playerController : MonoBehaviour
 		{
 			ClimbImg = ClimbBtn.GetComponent<Image>();
 			PickUpImg = PickUpBtn.GetComponent<Image>();
+			redFairyCollider = redFairy.GetComponent<BoxCollider2D>();
+			blueFairyCollider = blueFairy.GetComponent<BoxCollider2D>();
+
 		}
 	}
 
@@ -262,6 +272,16 @@ public class DG_playerController : MonoBehaviour
 			{
 				stoneObj5.SetActive(false);
 			}
+			if (isRed)
+			{
+				redFairy.SetActive(false);
+				blueFairyCollider.enabled = false;
+			}
+			else if (isBlue)
+			{
+				blueFairy.SetActive(false);
+				redFairyCollider.enabled = false;
+			}
 			isActive = false;
 			StartCoroutine("MoveWait");
 			PickUpImg.enabled = false;
@@ -353,6 +373,16 @@ public class DG_playerController : MonoBehaviour
 				stone5 = true;
 			}
 		}
+
+		if (col.gameObject.name=="redFairy") //觸碰到紅精靈
+		{
+			redFairyParticle.SetActive(true);
+			isRed = true;
+		}else if (col.gameObject.name == "blueFairy") //觸碰到藍精靈
+		{
+			blueFairyParticle.SetActive(true);
+			isBlue = true;
+		}
 	}
 
 	void OnTriggerExit2D(Collider2D col)
@@ -405,6 +435,17 @@ public class DG_playerController : MonoBehaviour
 		else if (col.gameObject.name == "stone5")
 		{
 			stone5 = false;
+		}
+
+		if (col.gameObject.name == "redFairy") //離開到紅精靈
+		{
+			redFairyParticle.SetActive(false);
+			isRed = false;
+		}
+		else if (col.gameObject.name == "blueFairy") //離開到藍精靈
+		{
+			blueFairyParticle.SetActive(false);
+			isBlue = false;
 		}
 	}
 

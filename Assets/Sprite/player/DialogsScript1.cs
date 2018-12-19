@@ -217,7 +217,7 @@ public class DialogsScript1 : MonoBehaviour
 			characterImage.sprite = sister_sad;
 		}
 
-		if (currentLine == 24 || currentLine == 26)
+		if (currentLine == 24 || currentLine == 26 || currentLine == 52)
 		{
 			whotalk.text = "緹緹";
 			characterImageObj.transform.SetAsLastSibling();
@@ -234,7 +234,7 @@ public class DialogsScript1 : MonoBehaviour
 			otherImage.sprite = bobby_cry; //-------------------------要替換成bobby_cry頭貼
 		}
 
-		if (currentLine == 29 || currentLine == 33)
+		if (currentLine == 29 || currentLine == 33 || currentLine ==51)
 		{
 			whotalk.text = "緹緹";
 			characterImageObj.transform.SetAsLastSibling();
@@ -314,7 +314,6 @@ public class DialogsScript1 : MonoBehaviour
 		{
 			DisableTextBox();
 		}
-
 		if (currentLine == 53)
 		{
 			npcTask.StatueCollider.enabled = true;
@@ -357,9 +356,9 @@ public class DialogsScript1 : MonoBehaviour
 		NPCAppear();	
 	}
 
-	IEnumerator cameraToBalance()
+	IEnumerator cameraToBalance()  
 	{
-		cameraFollow.isFollowTarget = false;
+		cameraFollow.isFollowTarget = false; //看向歪斜天平
 		cameraFollow.moveCount = 3;
 		yield return new WaitForSeconds(2);
 		currentLine = 45;

@@ -13,6 +13,8 @@ public class NPCTask : MonoBehaviour {
 	public Rigidbody2D rigid2D;
 	//----------------NPC Tast------------------------
 	public GameObject taskPanel; //任務面板
+	public Text taskTitleText;
+	public Text taskContentText;
 	public GameObject BobbyPoint; //波比提示!特效
 	public GameObject StonePoint; //石陣提示!特效
 	public GameObject StatuePoint; //石陣提示!特效
@@ -27,12 +29,12 @@ public class NPCTask : MonoBehaviour {
 
 	//-------------------NPC---------------------
 	public GameObject Bobby;
-	[SerializeField]
+	[HideInInspector]
 	public BoxCollider2D BobbyCollider;
 	public GameObject Stone;
 	private BoxCollider2D StoneCollider;
 	public GameObject Statue;
-	[SerializeField]
+	[HideInInspector]
 	public BoxCollider2D StatueCollider;
 	//-------------------機關---------------------
 	public GameObject StoneCanvas;
@@ -137,7 +139,7 @@ public class NPCTask : MonoBehaviour {
 		if (StatueTask == true)
 		{
 			StatueCollider.enabled = false;
-			//taskAni.SetInteger("taskCount", 3); //任務1
+			taskAni.SetInteger("taskCount", 3); //任務2
 			dialogsScript1.currentLine = 51;
 			dialogsScript1.endAtLine = 51;
 			dialogsScript1.NPCAppear();
@@ -172,6 +174,8 @@ public class NPCTask : MonoBehaviour {
 	{
 		Debug.Log(Mathf.Abs(rigid2D.transform.position.x - Statue.transform.position.x));
 		taskPanel.SetActive(true);
+		taskTitleText.text = "雕像平衡";
+		taskContentText.text = "恢復平衡需要一種重物，我想<color=#ef6c00>紅精靈</color>再適合不過了!牠們就棲息在<color=#ef6c00>荊棘樹幹的樹洞</color>中，幫我抓一隻回來吧!";
 	}
 
 

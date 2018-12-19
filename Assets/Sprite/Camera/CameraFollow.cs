@@ -68,7 +68,7 @@ public class CameraFollow : MonoBehaviour {
 					StartCoroutine(gameManager.floorOpen());
 				}
 
-				if (moveCount == 2)  //行時機關解完，長藤蔓
+				if (moveCount == 2)  //形石機關解完，長藤蔓
 				{
 					Vector3 newPosition = new Vector3(23, 6, -8);
 					transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
