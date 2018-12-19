@@ -230,14 +230,18 @@ public class DG_playerController : MonoBehaviour
 		{
 			rigid2D.MovePosition(rigid2D.position + Vector2.up * 2 * Time.deltaTime);
 
-			if (vine1==true && rigid2D.position.y >= 5)  //藤蔓1
-			{
-				rigid2D.position = new Vector2(11, 7);
-				animator_S.SetBool("climb", false);
-				isClimbBtn = false;
-				isClimb = false;
-				vine1 = false;
-			}else if (vine2 == true && rigid2D.position.y >= 8)  //藤蔓1
+            if (vine1 == true)  //藤蔓1
+            {
+                rigid2D.position = new Vector2(10.3f, rigid2D.position.y);
+                if (rigid2D.position.y >= 5)
+                {
+                    rigid2D.position = new Vector2(11, 7);
+                    animator_S.SetBool("climb", false);
+                    isClimbBtn = false;
+                    isClimb = false;
+                    vine1 = false;
+                }
+			}else if (vine2 == true && rigid2D.position.y >= 8)  //藤蔓2
 			{
 				rigid2D.position = new Vector2(23, 9.2f);
 				animator_S.SetBool("climb", false);
@@ -451,7 +455,7 @@ public class DG_playerController : MonoBehaviour
 
 	IEnumerator MoveWait()
 	{
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(1f);
 		isActive = true;
 	}
 
