@@ -19,12 +19,14 @@ public class Skills : MonoBehaviour
 	void Start()
 	{
 		currentCoolDown = 0;
+		
 	}
 
 	void Update()
 	{
 		if (DG_GameManager.drawState == DrawState.Game || GameManager.chapterState == ChapterState.Game)
 		{
+			Debug.Log(ChapterState.Game);
 			if (currentCoolDown < coolDown)
 			{
 				attack = false;

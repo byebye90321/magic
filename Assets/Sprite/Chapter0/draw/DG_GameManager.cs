@@ -302,7 +302,7 @@ public class DG_GameManager : MonoBehaviour {
 		fingerObj.SetActive(true);
 		fingerAnim.SetInteger("finger", 2);
 		drawCanvas.GetComponent<Canvas>().enabled = true;
-		yield return new WaitUntil(() => geature.isAtk == true);
+		yield return new WaitUntil(() => geature.isAtk0 == true);
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "Excellent！";
 		notDrawImage.SetActive(false);

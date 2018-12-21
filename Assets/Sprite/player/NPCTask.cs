@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class NPCTask : MonoBehaviour {
 
 	public string ChapterName;
+	public GameManager gameManager;
 	public DG_playerController playerController;
 	public DialogsScript1 dialogsScript1;
 	public CameraFollow cameraFollow;
@@ -36,6 +37,7 @@ public class NPCTask : MonoBehaviour {
 	public GameObject Statue;
 	[HideInInspector]
 	public BoxCollider2D StatueCollider;
+	private Animator statueAni;
 	//-------------------機關---------------------
 	public GameObject StoneCanvas;
 	public drag slot1;
@@ -48,6 +50,7 @@ public class NPCTask : MonoBehaviour {
 	public GameObject StoneParticle3;
 	public GameObject StoneParticle4;
 	public GameObject StoneParticle5;
+	public GameObject Fairy;
 
 	// Use this for initialization
 	void Start () {
@@ -57,6 +60,7 @@ public class NPCTask : MonoBehaviour {
 			StoneCollider = Stone.GetComponent<BoxCollider2D>();
 			StatueCollider = Statue.GetComponent<BoxCollider2D>();
 			taskAni = bookObj.GetComponent<Animator>();
+			statueAni = Statue.GetComponent<Animator>();
 		}	
 	}
 	
@@ -94,8 +98,16 @@ public class NPCTask : MonoBehaviour {
 				if (Mathf.Abs(rigid2D.transform.position.x - Statue.transform.position.x) < 2 && StatuePoint.activeInHierarchy == true && isTasting == false)
 				{
 					isTasting = true;
-					StatueTask = true;
-					StatueTast();
+					if (playerController.isRed || playerController.isBlue)  //完成任務
+					{
+						StatueTaskFinish();
+					}
+					else  //接任務
+					{
+						StatueTask = true;
+						statueAni.SetBool("isOpen1", true);
+						//StatueTast();
+					}
 				}
 			}
 		}
@@ -143,6 +155,8 @@ public class NPCTask : MonoBehaviour {
 			dialogsScript1.currentLine = 51;
 			dialogsScript1.endAtLine = 51;
 			dialogsScript1.NPCAppear();
+			statueAni.SetBool("isOpen1", false);
+			Fairy.SetActive(true);
 			StatueTask = false;
 		}
 	}
@@ -165,6 +179,7 @@ public class NPCTask : MonoBehaviour {
 			dialogsScript1.currentLine = 52;
 			dialogsScript1.endAtLine = 53;
 			dialogsScript1.NPCAppear();
+			statueAni.SetBool("isOpen1", false);
 			StatueTask = false;
 		}
 	}
@@ -176,6 +191,26 @@ public class NPCTask : MonoBehaviour {
 		taskPanel.SetActive(true);
 		taskTitleText.text = "雕像平衡";
 		taskContentText.text = "恢復平衡需要一種重物，我想<color=#ef6c00>紅精靈</color>再適合不過了!牠們就棲息在<color=#ef6c00>荊棘樹幹的樹洞</color>中，幫我抓一隻回來吧!";
+	}
+
+	//任務2完成，獲得技能2
+	public void StatueTaskFinish()
+	{
+		if (playerController.isRed)
+		{
+			statueAni.SetBool("win", true);
+			StaticObject.G2 = 1;
+			gameManager.G2.SetActive(true);
+			PlayerPrefs.SetInt("StaticObject.G2", StaticObject.G2);
+			Debug.Log(StaticObject.G2);
+		}
+		else
+		{
+			statueAni.SetBool("lose", true);
+			StaticObject.B2 = 1;
+			gameManager.B2.SetActive(true);
+			PlayerPrefs.SetInt("StaticObject.B2", StaticObject.B2);
+		}
 	}
 
 

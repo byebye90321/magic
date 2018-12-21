@@ -37,12 +37,20 @@ public class ExampleGestureHandler : MonoBehaviour
 	public DG_EnemyController enemyController;
 	public DG_playerController DG_playerController;
 	//public PlayerController playerController;
-	public Skills skill1;
+	public Skills skill0;
+	public int skillAtk0;
+	public bool isAtk0=false;
+	public Skills skillG1;
+	public Skills skillB1;
 	public int skillAtk1;
-	public bool isAtk=false;
+	public bool isAtk1 = false;
+	public Skills skillG2;
+	public Skills skillB2;
+	public int skillAtk2;
+	public bool isAtk2 = false;
 	//----------Particle System--------------
-	public GameObject G1_Particle;
-	public GameObject G1_beaten;
+	public GameObject G0_Particle;
+	public GameObject G0_beaten;
 
 	void Start()
 	{
@@ -74,7 +82,8 @@ public class ExampleGestureHandler : MonoBehaviour
 		if (result == RecognitionResult.Empty)
 			return;
 
-		if (skill1.attack == true)  
+		//技能0
+		if (skill0.attack == true)  
 		{
 			if (result.gesture.id == "M")
 			{
@@ -82,17 +91,61 @@ public class ExampleGestureHandler : MonoBehaviour
 				{
 					enemyController.StartCoroutine("Skill1");
 				}
-				isAtk = true;
+				isAtk0 = true;
 				Debug.Log("攻擊");
 				DG_playerController.Attack();
 				textResult.text = result.gesture.id + "\n" + Mathf.RoundToInt(result.score.score * 100) + "%";
-				skill1.currentCoolDown = 0;
-				G1_Particle.SetActive(true);
-				G1_beaten.SetActive(true);
+				skill0.currentCoolDown = 0;
+				G0_Particle.SetActive(true);
+				G0_beaten.SetActive(true);
 				StartCoroutine("close");
 			}
 			else {
 
+			}
+		}
+
+		//技能1
+		if (skillG1.attack == true)
+		{
+			if (result.gesture.id == "M")
+			{
+				if (ChapterName == "0")
+				{
+					enemyController.StartCoroutine("Skill1");
+				}
+				isAtk1 = true;
+				Debug.Log("攻擊");
+				DG_playerController.Attack();
+				textResult.text = result.gesture.id + "\n" + Mathf.RoundToInt(result.score.score * 100) + "%";
+				skillG2.currentCoolDown = 0;
+				//G0_Particle.SetActive(true);
+				//G0_beaten.SetActive(true);
+				StartCoroutine("close");
+			}
+			else
+			{
+			}
+		}
+		else if(skillB2.attack == true)
+		{
+			if (result.gesture.id == "M")
+			{
+				if (ChapterName == "0")
+				{
+					enemyController.StartCoroutine("Skill1");
+				}
+				isAtk2 = true;
+				Debug.Log("攻擊");
+				DG_playerController.Attack();
+				textResult.text = result.gesture.id + "\n" + Mathf.RoundToInt(result.score.score * 100) + "%";
+				skillB2.currentCoolDown = 0;
+				//G0_Particle.SetActive(true);
+				//G0_beaten.SetActive(true);
+				StartCoroutine("close");
+			}
+			else
+			{
 			}
 		}
 	}
@@ -115,8 +168,8 @@ public class ExampleGestureHandler : MonoBehaviour
 	IEnumerator close()
 	{
 		yield return new WaitForSeconds(1f);
-		isAtk = false;
-		G1_Particle.SetActive(false);
-		G1_beaten.SetActive(false);
+		isAtk1 = false;
+		G0_Particle.SetActive(false);
+		G0_beaten.SetActive(false);
 	}
 }

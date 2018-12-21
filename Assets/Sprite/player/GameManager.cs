@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
 	public DG_playerController playerController; //玩家腳本
 	public DialogsScript1 dialogsScript1;
 	public ExampleGestureHandler geature; //畫符腳本
+
 	//-----------------暫停物件-------------------
 	public Button Pause;
 	public GameObject pauseMenu;
@@ -31,10 +32,12 @@ public class GameManager : MonoBehaviour {
 	public static DG_GameManager Instance;
 	public CameraFollow cameraFollow;
 	public static ChapterState chapterState;
+	//------------------skill---------------------
+	public GameObject G1;
+	public GameObject B1;
+	public GameObject G2;
+	public GameObject B2;
 
-	//-------------------血量----------------------
-	//private float playerHealth;
-	//public Slider HealthSlider;
 	//----------------平台物件開關------------------
 	public GameObject AirFloor;
 	public GameObject vine2;
@@ -53,8 +56,8 @@ public class GameManager : MonoBehaviour {
 
 	void Start () {
 		chapterState = ChapterState.Game;
-		balanceValue = PlayerPrefs.GetFloat("StaticObject.balanceSlider");
-		playerController.curHealth = PlayerPrefs.GetFloat("StaticObject.playerHealth");
+		//balanceValue = PlayerPrefs.GetFloat("StaticObject.balanceSlider");
+		//playerController.curHealth = PlayerPrefs.GetFloat("StaticObject.playerHealth");
 		playerController.HealthSlider.value = playerController.curHealth;
 		AirFloor.SetActive(false);
 		//HealthSlider.value = playerHealth;
@@ -62,6 +65,8 @@ public class GameManager : MonoBehaviour {
 		balanceText.text = Mathf.Floor(balanceValue).ToString("0");
 		Debug.Log(balanceValue);
 		Debug.Log(playerController.curHealth);
+		PlayerPrefs.GetInt("StaticObject.G2", StaticObject.G2);
+		Debug.Log("StaticObject.G2：" + StaticObject.G2);
 	}
 	
 	void FixedUpdate () {
@@ -103,7 +108,7 @@ public class GameManager : MonoBehaviour {
 	//-----------------------------Camera移轉鏡頭相關--------------------
 	public IEnumerator floorOpen()
 	{
-		if (cameraFollow.transform.position.y <= 3.1)
+		if (cameraFollow.transform.position.y <= 3.6)
 		{
 			cameraFollow.moveCount = 0;
 			yield return new WaitForSeconds(0.5f);
@@ -115,7 +120,7 @@ public class GameManager : MonoBehaviour {
 
 	public IEnumerator vineOpen()
 	{
-		if (cameraFollow.transform.position.y >= 5.9)
+		if (cameraFollow.transform.position.y >= 4.6f)
 		{
 			cameraFollow.moveCount = 0;
 			yield return new WaitForSeconds(0.5f);

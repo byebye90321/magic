@@ -12,6 +12,7 @@ public class DG_playerController : MonoBehaviour
 	public string ChapterName;
 	public DG_GameManager dg_GameManager; //序章
 	public GameManager gameManager; //正章
+	public NPCTask npcTask;
 	public DialogsScript1 dialogsScript1; //正章1對話
 	//------------playerControl----------------------
 	public Rigidbody2D rigid2D;
@@ -32,25 +33,27 @@ public class DG_playerController : MonoBehaviour
 	public bool isClimb = false;  //是否可攀爬
 	public bool isClimbBtn = false;  //爬鍵是否開啟
 	public bool isPickUp = false;  //是否可拾取
-	//藤蔓
+								   //藤蔓
 	private bool vine1 = false;
 	private bool vine2 = false;
 	//拾取物件	
-	public  GameObject stoneObj1;
+	public GameObject stoneObj1;
 	private bool stone1 = false;
-	public  GameObject stoneObj2;
+	public GameObject stoneObj2;
 	private bool stone2 = false;
-	public  GameObject stoneObj3;
+	public GameObject stoneObj3;
 	private bool stone3 = false;
-	public  GameObject stoneObj4;
+	public GameObject stoneObj4;
 	private bool stone4 = false;
-	public  GameObject stoneObj5;
+	public GameObject stoneObj5;
 	private bool stone5 = false;
 	public GameObject redFairy;
-	private bool isRed;
+	[HideInInspector]
+	public bool isRed;
 	private BoxCollider2D redFairyCollider;
 	public GameObject blueFairy;
-	private bool isBlue;
+	[HideInInspector]
+	public bool isBlue;
 	private BoxCollider2D blueFairyCollider;
 	//--------------SpineAnimation----------------
 	public Animator animator_S;
@@ -232,22 +235,26 @@ public class DG_playerController : MonoBehaviour
 
             if (vine1 == true)  //藤蔓1
             {
-                rigid2D.position = new Vector2(10.3f, rigid2D.position.y);
+                //rigid2D.position = new Vector2(4.1f, rigid2D.position.y);
                 if (rigid2D.position.y >= 5)
                 {
-                    rigid2D.position = new Vector2(11, 7);
+                    rigid2D.position = new Vector2(4.7f, 6);
                     animator_S.SetBool("climb", false);
                     isClimbBtn = false;
                     isClimb = false;
                     vine1 = false;
                 }
-			}else if (vine2 == true && rigid2D.position.y >= 8)  //藤蔓2
+			}else if (vine2 == true)  //藤蔓2
 			{
-				rigid2D.position = new Vector2(23, 9.2f);
-				animator_S.SetBool("climb", false);
-				isClimbBtn = false;
-				isClimb = false;
-				vine2 = false;
+				//rigid2D.position = new Vector2(13.2f, rigid2D.position.y);
+				if (rigid2D.position.y >= 6.5f)
+				{
+					rigid2D.position = new Vector2(14, 7.5f);
+					animator_S.SetBool("climb", false);
+					isClimbBtn = false;
+					isClimb = false;
+					vine2 = false;
+				}
 			}
 		}
 
@@ -276,15 +283,17 @@ public class DG_playerController : MonoBehaviour
 			{
 				stoneObj5.SetActive(false);
 			}
-			if (isRed)
+			if (isRed) //紅藍精靈
 			{
 				redFairy.SetActive(false);
 				blueFairyCollider.enabled = false;
+				npcTask.StatueCollider.enabled = true;
 			}
 			else if (isBlue)
 			{
 				blueFairy.SetActive(false);
 				redFairyCollider.enabled = false;
+				npcTask.StatueCollider.enabled = true;
 			}
 			isActive = false;
 			StartCoroutine("MoveWait");

@@ -73,8 +73,7 @@ public class DialogsScript1 : MonoBehaviour
 	public GameObject markObj; //路標對話框
 	private Animator markAni;
 	private BoxCollider2D markCollider;
-	public GameObject statueObj; //雕像對話
-	private Animator statueAni;
+	
 	private BoxCollider2D statueCollider;
 
 	//----------------audio----------------------
@@ -92,8 +91,7 @@ public class DialogsScript1 : MonoBehaviour
 		otherImage = otherImageObj.GetComponent<Image>();
 		markAni = markObj.GetComponent<Animator>();
 		markCollider = markObj.GetComponent<BoxCollider2D>();
-		statueAni = statueObj.GetComponent<Animator>();
-		statueCollider = statueObj.GetComponent<BoxCollider2D>();
+		
 		StaticObject.sister = 1; //魔法日報解鎖
 		PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);
 		StaticObject.book = 1; //魔法日報解鎖
@@ -369,12 +367,6 @@ public class DialogsScript1 : MonoBehaviour
 		cameraFollow.isFollowTarget = true;
 	}
 
-	IEnumerator openTask()
-	{
-		yield return new WaitForSeconds(5);
-
-	}
-
 	public void NPCAppear()
 	{
 		EnableTextBox();
@@ -410,13 +402,6 @@ public class DialogsScript1 : MonoBehaviour
 			StartCoroutine("cameraToBalance");
 			Destroy(col.gameObject);
 		}
-
-		if (col.gameObject.name == "NPC_Statue") //雕像對話
-		{
-			statueAni.SetBool("isOpen1", true);
-			StartCoroutine("openTask");
-		}
-
 	}
 	//----------------------------選擇----------------------------
 

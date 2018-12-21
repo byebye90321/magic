@@ -50,6 +50,20 @@ public static class StaticObject
 	//第四張
 	//public static bool card01 = false; //01,A,先知卡
 
+	//--------------------技能----------------------------
+	public static int G1 = 0;
+	public static int B1 = 0;
+	public static int G2 = 0;
+	public static int B2 = 0;
+	public static int G3 = 0;
+	public static int B3 = 0;
+	public static int G4 = 0;
+	public static int B4 = 0;
+	public static int G5 = 0;
+	public static int B5 = 0;
+	public static int G6 = 0;
+	public static int B6 = 0;
+
 	//-------------------結局(圖鑑)-----------------------
 	public static int s1 = 0;
 	public static int sHE1 = 0;

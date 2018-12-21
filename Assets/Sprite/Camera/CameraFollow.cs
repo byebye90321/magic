@@ -63,26 +63,26 @@ public class CameraFollow : MonoBehaviour {
 			{
 				if (moveCount == 1)  //形石平台移動
 				{
-					Vector3 newPosition = new Vector3(17, 3, -8);
+					Vector3 newPosition = new Vector3(8.5f, 3.5f, -8);
 					transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
 					StartCoroutine(gameManager.floorOpen());
 				}
 
 				if (moveCount == 2)  //形石機關解完，長藤蔓
 				{
-					Vector3 newPosition = new Vector3(23, 6, -8);
+					Vector3 newPosition = new Vector3(14, 4.7f, -8);
 					transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
 					StartCoroutine(gameManager.vineOpen());
 				}
 
 				if (moveCount == 3)  //歪斜天平
 				{
-					Vector3 newPosition = new Vector3(47, 4, -8);
+					Vector3 newPosition = new Vector3(29, 5, -8);
 					transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
 				}
 				if (moveCount == 4)  //發現雕像
 				{
-					Vector3 newPosition = new Vector3(60, 2, -8);
+					Vector3 newPosition = new Vector3(39, 3, -8);
 					transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
 				}
 			}
