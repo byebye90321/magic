@@ -100,7 +100,7 @@ public class NPCTask : MonoBehaviour {
 					isTasting = true;
 					if (playerController.isRed || playerController.isBlue)  //完成任務
 					{
-						StatueTaskFinish();
+						StartCoroutine("StatueTaskFinish");
 					}
 					else  //接任務
 					{
@@ -194,8 +194,27 @@ public class NPCTask : MonoBehaviour {
 	}
 
 	//任務2完成，獲得技能2
-	public void StatueTaskFinish()
+	public IEnumerator StatueTaskFinish()
 	{
+		if (playerController.isRed)
+		{
+			statueAni.SetBool("win", true);
+		}
+		else
+		{
+			statueAni.SetBool("lose", true);
+		}
+		yield return new WaitForSeconds(0.5f);
+		gameManager.achievementObj.SetActive(true);
+		gameManager.achievementText.text = "完成任務二";
+		yield return new WaitForSeconds(2f);
+		gameManager.achievementObj.SetActive(false);
+		yield return new WaitForSeconds(0.1f);
+		gameManager.achievementObj.SetActive(true);
+		gameManager.achievementText.text = "獲得技能二";
+		yield return new WaitForSeconds(0.5f);
+		gameManager.ParticleObj2.SetActive(true);
+		yield return new WaitForSeconds(0.5f);
 		if (playerController.isRed)
 		{
 			statueAni.SetBool("win", true);
@@ -211,6 +230,9 @@ public class NPCTask : MonoBehaviour {
 			gameManager.B2.SetActive(true);
 			PlayerPrefs.SetInt("StaticObject.B2", StaticObject.B2);
 		}
+		yield return new WaitForSeconds(1f);
+		gameManager.ParticleObj2.SetActive(false);
+		gameManager.achievementObj.SetActive(false);
 	}
 
 

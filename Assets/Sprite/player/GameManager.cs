@@ -38,6 +38,12 @@ public class GameManager : MonoBehaviour {
 	public GameObject G2;
 	public GameObject B2;
 
+	public GameObject ParticleObj2;
+	//------------------成就----------------------
+	public GameObject achievementObj;
+	private Animator achievementAni;
+	public Text achievementText;
+
 	//----------------平台物件開關------------------
 	public GameObject AirFloor;
 	public GameObject vine2;

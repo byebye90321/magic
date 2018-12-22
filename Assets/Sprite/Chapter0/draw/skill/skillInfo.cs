@@ -6,7 +6,9 @@ using UnityEngine;
 public class skillInfo : ScriptableObject
 {
 	public string id;
-	public Sprite SkillSprite;
+	public Sprite SkillSpritebg;
+	public Sprite SkillSpriteIcon;
+	public float coolDown;
 	public int Atk;
 	public bool isAtk = false;
 

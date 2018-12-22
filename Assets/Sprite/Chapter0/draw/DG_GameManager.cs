@@ -19,6 +19,7 @@ public class DG_GameManager : MonoBehaviour {
 	public cut cut1;
 	public cut cut2;
 	public ExampleGestureHandler geature;
+
 	//-----------------暫停物件-------------------
 	public Button Puase;
 	public GameObject pauseMenu;
@@ -302,7 +303,7 @@ public class DG_GameManager : MonoBehaviour {
 		fingerObj.SetActive(true);
 		fingerAnim.SetInteger("finger", 2);
 		drawCanvas.GetComponent<Canvas>().enabled = true;
-		yield return new WaitUntil(() => geature.isAtk0 == true);
+		yield return new WaitUntil(() => geature.skill0.currentCoolDown == 0);
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "Excellent！";
 		notDrawImage.SetActive(false);

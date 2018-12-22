@@ -66,11 +66,11 @@ public class DG_EnemyController : MonoBehaviour{
 	IEnumerator Skill1()  //被技能1攻擊
 	{
 		yield return new WaitForSeconds(.3f);
-		TakeDamage(gesture.skillAtk1);
+		TakeDamage(30);
 		enemy1.state.SetAnimation(0, "stun", true);
 		enemy2.state.SetAnimation(0, "stun", true);
 		damageTextObj.SetActive(true);
-		damageText.text = "-" + gesture.skillAtk1;
+		damageText.text = "-" + 30;
 		StartCoroutine("wait");
 	}
 

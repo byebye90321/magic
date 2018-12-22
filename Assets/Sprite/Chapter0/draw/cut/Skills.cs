@@ -3,12 +3,12 @@ using UnityEngine.UI;
 using System.Collections;
 public class Skills : MonoBehaviour
 {
+	public skillInfo skillInfo;
 	// 技能的图标
-	public Image icon;
+	public Image Skillbg;
+	public Image SkillIcon;
 	// 技能的冷却时间
-	public float coolDown;
-	// 技能名称，用于区分使用了哪个技能的
-	public string skillName;
+	private float coolDown;
 	// 保存当前技能的冷却时间
 	public float currentCoolDown;
 	// 技能的按钮
@@ -18,8 +18,12 @@ public class Skills : MonoBehaviour
 
 	void Start()
 	{
+		coolDown = skillInfo.coolDown;
+		attack = skillInfo.isAtk;
 		currentCoolDown = 0;
-		
+		SkillIcon.sprite = skillInfo.SkillSpriteIcon;
+		Skillbg.sprite = skillInfo.SkillSpritebg;
+
 	}
 
 	void Update()
@@ -33,7 +37,7 @@ public class Skills : MonoBehaviour
 				// 更新冷却
 				currentCoolDown += Time.deltaTime;
 				// 显示冷却动画
-				this.icon.fillAmount = 1 - currentCoolDown / coolDown;
+				this.Skillbg.fillAmount = 1 - currentCoolDown / coolDown;
 			}
 
 			if (currentCoolDown >= coolDown)
