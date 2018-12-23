@@ -85,6 +85,27 @@ public class CameraFollow : MonoBehaviour {
 					Vector3 newPosition = new Vector3(39, 3, -8);
 					transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
 				}
+				if (moveCount == 5)  //發現雕像上升平台
+				{
+					Vector3 newPosition = new Vector3(33, 5, -8);
+					transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
+					StartCoroutine(gameManager.floorOpen2());
+				}
+				if (moveCount == 6 && scaleCount == 0)  //進入小BOSS戰鬥
+				{
+					Vector3 newPosition = new Vector3(38.3f, 7.5f, -8);
+					transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
+					if (transform.position.x > 38f)
+					{
+						StartCoroutine(ZoomCamera(3, 2.5f, 0.1f, 50));
+					}
+				}
+
+				if (moveCount == 7 )  //進入小BOSS戰鬥
+				{
+					StartCoroutine(ZoomCamera(2.5f, 3, 0.1f, 50));
+					scaleCount = 0;
+				}
 			}
 
 			//transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);

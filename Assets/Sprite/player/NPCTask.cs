@@ -82,8 +82,15 @@ public class NPCTask : MonoBehaviour {
 				if (Mathf.Abs(rigid2D.transform.position.x - Bobby.transform.position.x) < 2 && BobbyPoint.activeInHierarchy == true && isTasting == false)
 				{
 					isTasting = true;
-					BobbyTask = true;
-					BobbyTast();
+					if (playerController.isRedFlower || playerController.isBlueFlower)  //完成任務
+					{
+						StartCoroutine("BobbyTaskFinish");
+					}
+					else  //接任務
+					{
+						BobbyTask = true;
+						BobbyTast();
+					}
 				}
 			}
 			else if (hit.collider.name == "Stone" && !playerController.stoneObj1.activeInHierarchy && !playerController.stoneObj2.activeInHierarchy && !playerController.stoneObj3.activeInHierarchy && !playerController.stoneObj4.activeInHierarchy && !playerController.stoneObj5.activeInHierarchy)
@@ -98,8 +105,9 @@ public class NPCTask : MonoBehaviour {
 				if (Mathf.Abs(rigid2D.transform.position.x - Statue.transform.position.x) < 2 && StatuePoint.activeInHierarchy == true && isTasting == false)
 				{
 					isTasting = true;
-					if (playerController.isRed || playerController.isBlue)  //完成任務
+					if (playerController.isRedFairy || playerController.isBlueFairy)  //完成任務
 					{
+						Debug.Log("456456");
 						StartCoroutine("StatueTaskFinish");
 					}
 					else  //接任務
@@ -196,7 +204,8 @@ public class NPCTask : MonoBehaviour {
 	//任務2完成，獲得技能2
 	public IEnumerator StatueTaskFinish()
 	{
-		if (playerController.isRed)
+		StatueCollider.enabled = false;
+		if (playerController.isRedFairy)
 		{
 			statueAni.SetBool("win", true);
 		}
@@ -215,13 +224,13 @@ public class NPCTask : MonoBehaviour {
 		yield return new WaitForSeconds(0.5f);
 		gameManager.ParticleObj2.SetActive(true);
 		yield return new WaitForSeconds(0.5f);
-		if (playerController.isRed)
+		if (playerController.isRedFairy)
 		{
 			statueAni.SetBool("win", true);
 			StaticObject.G2 = 1;
 			gameManager.G2.SetActive(true);
 			PlayerPrefs.SetInt("StaticObject.G2", StaticObject.G2);
-			Debug.Log(StaticObject.G2);
+			//Debug.Log(StaticObject.G2);
 		}
 		else
 		{
@@ -233,8 +242,57 @@ public class NPCTask : MonoBehaviour {
 		yield return new WaitForSeconds(1f);
 		gameManager.ParticleObj2.SetActive(false);
 		gameManager.achievementObj.SetActive(false);
+		yield return new WaitForSeconds(0.5f);
+		cameraFollow.isFollowTarget = false;
+		cameraFollow.moveCount = 5;
 	}
 
+	//任務1完成，獲得技能1
+	public IEnumerator BobbyTaskFinish()
+	{
+		BobbyCollider.enabled = false;
+		if (playerController.isRedFlower) //lose
+		{
+			dialogsScript1.currentLine = 68;
+			dialogsScript1.endAtLine = 69;
+			dialogsScript1.NPCAppear();
+			yield return new WaitUntil(() =>dialogsScript1.currentLine ==70);
+		}
+		else //win
+		{
+			dialogsScript1.currentLine = 63;
+			dialogsScript1.endAtLine = 67;
+			dialogsScript1.NPCAppear();
+			yield return new WaitUntil(() => dialogsScript1.currentLine == 67);
+		}
+		yield return new WaitForSeconds(0.5f);
+		gameManager.achievementObj.SetActive(true);
+		gameManager.achievementText.text = "完成任務一";
+		yield return new WaitForSeconds(2f);
+		gameManager.achievementObj.SetActive(false);
+		yield return new WaitForSeconds(0.1f);
+		gameManager.achievementObj.SetActive(true);
+		gameManager.achievementText.text = "獲得技能一";
+		yield return new WaitForSeconds(0.5f);
+		gameManager.ParticleObj1.SetActive(true);
+		yield return new WaitForSeconds(0.5f);
+		if (playerController.isBlueFairy)
+		{
+			StaticObject.G1 = 1;
+			gameManager.G1.SetActive(true);
+			PlayerPrefs.SetInt("StaticObject.G1", StaticObject.G1);
+		}
+		else
+		{
+			StaticObject.B1 = 1;
+			gameManager.B1.SetActive(true);
+			PlayerPrefs.SetInt("StaticObject.B1", StaticObject.B1);
+		}
+		yield return new WaitForSeconds(1f);
+		gameManager.ParticleObj1.SetActive(false);
+		gameManager.achievementObj.SetActive(false);
+
+	}
 
 	public void bookFly()
 	{

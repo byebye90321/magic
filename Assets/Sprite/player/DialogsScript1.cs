@@ -18,6 +18,7 @@ public class DialogsScript1 : MonoBehaviour
 	//--------------------------互動對話-----------------------------
 	public GameObject vine2text;
 	private int bobbyCount = 1;
+	
 	//---------------------------頭貼----------------------------
 	public GameObject characterImageObj; //左邊主角對話框
 	private Image characterImage;
@@ -75,12 +76,17 @@ public class DialogsScript1 : MonoBehaviour
 	private BoxCollider2D markCollider;
 	
 	private BoxCollider2D statueCollider;
-
+	//------------------Attack----------------------
+	public GameObject attackCollider;
+	private BoxCollider2D attackColliderCol;
+	public GameObject attackColliderBorder;
 	//----------------audio----------------------
 	public AudioSource audio;
 	public AudioMixerSnapshot usually;
 	//-----------------其他---------------------
 	public GameObject pause;
+	private Color talkNow = new Color(1, 1, 1, 1);
+	private Color untalkNow = new Color(.6f, .6f, .6f, 1);
 
 
 	void Start() {
@@ -91,7 +97,8 @@ public class DialogsScript1 : MonoBehaviour
 		otherImage = otherImageObj.GetComponent<Image>();
 		markAni = markObj.GetComponent<Animator>();
 		markCollider = markObj.GetComponent<BoxCollider2D>();
-		
+		attackColliderCol = attackCollider.GetComponent<BoxCollider2D>();
+
 		StaticObject.sister = 1; //魔法日報解鎖
 		PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);
 		StaticObject.book = 1; //魔法日報解鎖
@@ -155,38 +162,38 @@ public class DialogsScript1 : MonoBehaviour
 		if (currentLine == 1 || currentLine == 2 || currentLine == 8 || currentLine == 15 ||currentLine ==38 || currentLine == 40)
 		{
 			whotalk.text = "緹緹";
-			characterImageObj.transform.SetAsLastSibling();
-			otherImageObj.transform.SetAsFirstSibling();
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
 			characterImage.sprite = sister_opps;
 		}
 		if (currentLine == 3 || currentLine == 12)
 		{
 			whotalk.text = "緹緹";
-			characterImageObj.transform.SetAsLastSibling();
-			otherImageObj.transform.SetAsFirstSibling();
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
 			characterImage.sprite = sister_normal;
 		}
 		if (currentLine == 4 || currentLine == 13 || currentLine == 16 || currentLine == 17)
 		{
 			whotalk.text = "魔法書籍";
-			characterImageObj.transform.SetAsFirstSibling();
-			otherImageObj.transform.SetAsLastSibling();
+			characterImage.color = untalkNow;
+			otherImage.color = talkNow;
 			otherImageObj.SetActive(true);
 			otherImage.sprite = book;
 		}
-		if (currentLine == 5 || currentLine == 6 || currentLine == 7 || currentLine == 20)
+		if (currentLine == 5 || currentLine == 6 || currentLine == 7)
 		{
 			whotalk.text = "緹緹";
-			characterImageObj.transform.SetAsLastSibling();
-			otherImageObj.transform.SetAsFirstSibling();
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
 			characterImage.sprite = sister_angry;
 		}
 
 		if (currentLine == 9)
 		{
 			whotalk.text = "魔法書籍";
-			characterImageObj.transform.SetAsFirstSibling();
-			otherImageObj.transform.SetAsLastSibling();
+			characterImage.color = untalkNow;
+			otherImage.color = talkNow;
 			if (isTyping == false)
 			{
 				theText.text = "(每個新場景前端會設立<color=#FF8888>補血站</color>，就在前方，站上去試試。)";
@@ -195,8 +202,8 @@ public class DialogsScript1 : MonoBehaviour
 		if (currentLine == 11 || currentLine == 43)
 		{
 			whotalk.text = "緹緹";
-			characterImageObj.transform.SetAsLastSibling();
-			otherImageObj.transform.SetAsFirstSibling();
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
 			characterImage.sprite = sister_happy;
 		}
 
@@ -206,28 +213,33 @@ public class DialogsScript1 : MonoBehaviour
 			DisableTextBox();
 			StartCoroutine("BloodFlyAfter");
 		}
-
+		if (currentLine == 20)
+		{
+			whotalk.text = "緹緹";
+			characterImage.color = talkNow;
+			otherImageObj.SetActive(false);
+			characterImage.sprite = sister_angry;
+		}
 		if (currentLine == 22)
 		{
 			whotalk.text = "緹緹";
-			characterImageObj.transform.SetAsLastSibling();
-			otherImageObj.SetActive(false);
+			characterImage.color = talkNow;
 			characterImage.sprite = sister_sad;
 		}
 
 		if (currentLine == 24 || currentLine == 26 || currentLine == 52)
 		{
 			whotalk.text = "緹緹";
-			characterImageObj.transform.SetAsLastSibling();
-			otherImageObj.transform.SetAsFirstSibling();
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
 			characterImage.sprite = sister_opps;
 		}
 
 		if (currentLine == 25 || currentLine == 27 || currentLine == 31)
 		{
 			whotalk.text = "波比";
-			characterImageObj.transform.SetAsFirstSibling();
-			otherImageObj.transform.SetAsLastSibling();
+			characterImage.color = untalkNow;
+			otherImage.color = talkNow;
 			otherImageObj.SetActive(true);
 			otherImage.sprite = bobby_cry; //-------------------------要替換成bobby_cry頭貼
 		}
@@ -235,8 +247,8 @@ public class DialogsScript1 : MonoBehaviour
 		if (currentLine == 29 || currentLine == 33 || currentLine ==51)
 		{
 			whotalk.text = "緹緹";
-			characterImageObj.transform.SetAsLastSibling();
-			otherImageObj.transform.SetAsFirstSibling();
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
 			characterImage.sprite = sister_angry;
 		}
 
@@ -249,8 +261,8 @@ public class DialogsScript1 : MonoBehaviour
 		if (currentLine == 34)
 		{
 			whotalk.text = "波比";
-			characterImageObj.transform.SetAsFirstSibling();
-			otherImageObj.transform.SetAsLastSibling();
+			characterImage.color = untalkNow;
+			otherImage.color = talkNow;
 			if (isTyping == false)
 			{
 				theText.text = "嘰嘰喳喳佔領了一些地方，<color=#FF8888>形石</color>或許在牠們身上，路上小心...";
@@ -267,8 +279,8 @@ public class DialogsScript1 : MonoBehaviour
 		if (currentLine == 36)
 		{
 			whotalk.text = "緹緹";
-			characterImageObj.transform.SetAsLastSibling();
-			otherImageObj.transform.SetAsFirstSibling();
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
 			characterImage.sprite = sister_sad;
 		}
 
@@ -291,8 +303,8 @@ public class DialogsScript1 : MonoBehaviour
 		if (currentLine == 41)
 		{
 			whotalk.text = "緹緹";
-			characterImageObj.transform.SetAsLastSibling();
-			otherImageObj.transform.SetAsFirstSibling();
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
 			characterImage.sprite = sister_smile;
 		}
 
@@ -308,7 +320,7 @@ public class DialogsScript1 : MonoBehaviour
 			cameraFollow.moveCount = 4;
 		}
 
-		if (currentLine == 47)
+		if (currentLine == 47||currentLine==60 || currentLine == 62 || currentLine == 67 || currentLine == 69)
 		{
 			DisableTextBox();
 		}
@@ -348,7 +360,7 @@ public class DialogsScript1 : MonoBehaviour
 
 	IEnumerator BloodFlyAfter()
 	{
-		yield return new WaitForSeconds(3);
+		yield return new WaitForSeconds(1.5f);
 		currentLine = 20;
 		endAtLine = 20;
 		NPCAppear();	
@@ -365,6 +377,26 @@ public class DialogsScript1 : MonoBehaviour
 		yield return new WaitUntil(()=>currentLine == 47);
 		cameraFollow.moveCount = 0;
 		cameraFollow.isFollowTarget = true;
+	}
+
+	IEnumerator BeforeBossBattle()
+	{
+		yield return new WaitForSeconds(2);
+		currentLine = 57;
+		endAtLine = 60;
+		NPCAppear();
+		yield return new WaitUntil(() => currentLine == 60);
+		gameManager.teachHint.SetActive(true);
+		gameManager.attackRedImage.SetActive(true);
+	}
+
+	public IEnumerator AfterBossBattle()
+	{
+		currentLine = 61;
+		endAtLine = 62;
+		NPCAppear();
+		yield return new WaitUntil(() => currentLine == 62);
+
 	}
 
 	public void NPCAppear()
@@ -401,6 +433,16 @@ public class DialogsScript1 : MonoBehaviour
 		{
 			StartCoroutine("cameraToBalance");
 			Destroy(col.gameObject);
+		}
+
+		if (col.gameObject.name == "battleCollider") //進入小BOSS攻擊
+		{
+			cameraFollow.moveCount = 6;
+			cameraFollow.isFollowTarget = false;
+			attackColliderCol.enabled = false;
+			attackColliderBorder.SetActive(true); //開啟邊界
+			gameManager.drawGame.TransitionTo(10f);
+			StartCoroutine("BeforeBossBattle");
 		}
 	}
 	//----------------------------選擇----------------------------

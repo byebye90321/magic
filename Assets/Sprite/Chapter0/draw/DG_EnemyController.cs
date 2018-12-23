@@ -6,9 +6,10 @@ using Spine.Unity;
 using Spine;
 public class DG_EnemyController : MonoBehaviour{
 
+	public string ChapterName;
 	public ExampleGestureHandler gesture;
     public Canvas drawCanvas;
-
+	public GameManager gameManager;
 	//--------------------Health-------------------
 	public int curHealth = 100;
 	public int maxHealth = 100;
@@ -63,15 +64,15 @@ public class DG_EnemyController : MonoBehaviour{
 	}
 
 	//-------------------------Attack--------------------------
-	IEnumerator Skill1()  //被技能1攻擊
+	IEnumerator Skill0()  //序章 被技能0攻擊
 	{
 		yield return new WaitForSeconds(.3f);
-		TakeDamage(30);
+		TakeDamage(gesture.skill0.skillInfo.Atk);
 		enemy1.state.SetAnimation(0, "stun", true);
 		enemy2.state.SetAnimation(0, "stun", true);
 		damageTextObj.SetActive(true);
-		damageText.text = "-" + 30;
-		StartCoroutine("wait");
+		damageText.text = "-" + gesture.skill0.skillInfo.Atk;
+		StartCoroutine("wait");	
 	}
 
 	public void W1_Particle()
@@ -91,6 +92,18 @@ public class DG_EnemyController : MonoBehaviour{
 		StartCoroutine("wait");
 	}
 
+	IEnumerator SkillG2()  //序章 被技能G2攻擊
+	{
+		yield return new WaitForSeconds(.3f);
+		TakeDamage(gesture.skillG2.skillInfo.Atk);
+		enemy1.state.SetAnimation(0, "death", false);
+		enemy2.state.SetAnimation(0, "death", false);
+		damageTextObj.SetActive(true);
+		damageText.text = "-" + gesture.skillG2.skillInfo.Atk;
+		Debug.Log("123");
+		StartCoroutine("wait");
+	}
+
 	public void TakeDamage(int amount)
 	{
 		curHealth -= amount;
@@ -107,15 +120,21 @@ public class DG_EnemyController : MonoBehaviour{
 
 	IEnumerator Death()
 	{
+		enemy1.state.TimeScale = .3f;
+		enemy2.state.TimeScale = .3f;
 		isDead = true;
-		yield return new WaitForSeconds(0.7f);
+		yield return new WaitForSeconds(0.7f);	
 		healthSlider.SetActive(false);
-		Destroy(this.gameObject);
+		yield return new WaitForSeconds(.8f);
+		enemy1.state.TimeScale = .1f;
+		enemy2.state.TimeScale = .1f;
+		StartCoroutine(gameManager.AttackWin());
+		//Destroy(this.gameObject);
+
 	}
 
-	
-	//------------------------Cut---------------------------
-	private void CreateHalf(GameObject obj, int index)       //创建半个水果
+		//------------------------Cut---------------------------
+		private void CreateHalf(GameObject obj, int index)       //创建半个水果
 	{
 		obj = Instantiate(obj, transform.position, Quaternion.AngleAxis(Random.Range(-30f, 30f), Vector3.back)) as GameObject;
 		Rigidbody2D rgd = obj.GetComponent<Rigidbody2D>();
@@ -143,6 +162,19 @@ public class DG_EnemyController : MonoBehaviour{
 			enemy2.state.SetAnimation(0, "death", false);
 			enemy2.state.AddAnimation(0, "idle", true, 0f);
 			StartCoroutine("wait");
+		}
+
+		if (col.gameObject.name == "G0_Particle")
+		{
+			gesture.G0_beaten.SetActive(true);
+			TakeDamage(gesture.skill0.skillInfo.Atk);
+			enemy1.state.SetAnimation(0, "death", false);
+			enemy1.state.AddAnimation(0, "idle", true, 0f);
+			enemy2.state.SetAnimation(0, "death", false);
+			enemy2.state.AddAnimation(0, "idle", true, 0f);
+			damageTextObj.SetActive(true);
+			StartCoroutine("wait");
+			damageText.text = "-" + gesture.skill0.skillInfo.Atk;
 		}
 	}
 

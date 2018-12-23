@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public enum ChapterState
 {
@@ -38,26 +39,38 @@ public class GameManager : MonoBehaviour {
 	public GameObject G2;
 	public GameObject B2;
 
+	public GameObject ParticleObj1;
 	public GameObject ParticleObj2;
 	//------------------成就----------------------
 	public GameObject achievementObj;
 	private Animator achievementAni;
 	public Text achievementText;
 
-	//----------------平台物件開關------------------
+	//----------------平台物件、互動物件------------------
 	public GameObject AirFloor;
 	public GameObject vine2;
+	public GameObject AirFloor2;
+
+	public GameObject Teleportation;
 	//-------------------對話----------------------
 	public GameObject textPanel;
 	public Text text;
 
+	//-------------------畫符物件-----------------
+	public GameObject attackRedImage;
+	public GameObject teachHint;
+	//-------------------角色---------------------
+	public GameObject smallBoss;
 	//------------------FADE淡出-------------------
 	public GameObject winFade;
 	Animator fade;
 	public bool isRun = false;
 
+	public GameObject FadeWhite;
 	//--------------------音效---------------------
 	public AudioSource audio;
+	public AudioMixerSnapshot usually;
+	public AudioMixerSnapshot drawGame;
 
 
 	void Start () {
@@ -72,7 +85,7 @@ public class GameManager : MonoBehaviour {
 		Debug.Log(balanceValue);
 		Debug.Log(playerController.curHealth);
 		PlayerPrefs.GetInt("StaticObject.G2", StaticObject.G2);
-		Debug.Log("StaticObject.G2：" + StaticObject.G2);
+		//Debug.Log("StaticObject.G2：" + StaticObject.G2);
 	}
 	
 	void FixedUpdate () {
@@ -136,6 +149,37 @@ public class GameManager : MonoBehaviour {
 			dialogsScript1.vine2text.SetActive(true);
 			Debug.Log("dddd");
 		}
+	}
+
+	public IEnumerator floorOpen2()
+	{
+		if (cameraFollow.transform.position.x < 33.1f)
+		{
+			cameraFollow.moveCount = 0;
+			yield return new WaitForSeconds(0.5f);
+			AirFloor2.SetActive(true);
+			yield return new WaitForSeconds(2);
+			cameraFollow.isFollowTarget = true;
+		}
+	}
+
+	public IEnumerator AttackWin()
+	{
+		usually.TransitionTo(10f);
+		teachHint.SetActive(false);
+		attackRedImage.SetActive(false);
+		cameraFollow.moveCount = 7;
+		yield return new WaitForSeconds(0.3f);
+		achievementObj.SetActive(true);
+		achievementText.text = "擊敗歪歪";
+		smallBoss.SetActive(false);
+		cameraFollow.moveCount = 0;
+		cameraFollow.isFollowTarget = true;
+		yield return new WaitForSeconds(2f);
+		achievementObj.SetActive(false);
+		dialogsScript1.attackColliderBorder.SetActive(false);
+		dialogsScript1.attackCollider.SetActive(false);
+		StartCoroutine(dialogsScript1.AfterBossBattle());
 	}
 
 	public void pause()

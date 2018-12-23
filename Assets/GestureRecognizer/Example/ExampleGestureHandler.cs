@@ -83,18 +83,17 @@ public class ExampleGestureHandler : MonoBehaviour
 			{
 				if (ChapterName == "0")
 				{
-					enemyController.StartCoroutine("Skill1");
+					enemyController.StartCoroutine("Skill0");
 				}
-				Debug.Log("攻擊");
+				Debug.Log("攻擊0");
 				DG_playerController.Attack();
 				textResult.text = result.gesture.id + "\n" + Mathf.RoundToInt(result.score.score * 100) + "%";
 				skill0.currentCoolDown = 0;
 				G0_Particle.SetActive(true);
-				G0_beaten.SetActive(true);
 				StartCoroutine("close0");
 			}
-			else {
-
+			else
+			{
 			}
 		}
 
@@ -107,7 +106,6 @@ public class ExampleGestureHandler : MonoBehaviour
 				DG_playerController.Attack();
 				skillG1.currentCoolDown = 0;
 				//G0_Particle.SetActive(true);
-				//G0_beaten.SetActive(true);
 				StartCoroutine("close1");
 			}
 			else
@@ -122,7 +120,6 @@ public class ExampleGestureHandler : MonoBehaviour
 				DG_playerController.Attack();
 				skillB1.currentCoolDown = 0;
 				//G0_Particle.SetActive(true);
-				//G0_beaten.SetActive(true);
 				StartCoroutine("close1");
 			}
 			else
@@ -135,16 +132,15 @@ public class ExampleGestureHandler : MonoBehaviour
 		{
 			if (result.gesture.id == "G2")
 			{
+				//enemyController.StartCoroutine("SkillG2");
 				Debug.Log("G2攻擊");
 				DG_playerController.Attack();
 				skillG2.currentCoolDown = 0;
 				//G0_Particle.SetActive(true);
-				//G0_beaten.SetActive(true);
 				StartCoroutine("close2");
 			}
 			else
 			{
-				Debug.Log("??");
 			}
 		}
 		else if (skillB2.attack == true)
@@ -155,7 +151,6 @@ public class ExampleGestureHandler : MonoBehaviour
 				DG_playerController.Attack();
 				skillB2.currentCoolDown = 0;
 				//G0_Particle.SetActive(true);
-				//G0_beaten.SetActive(true);
 				StartCoroutine("close2");
 			}
 			else

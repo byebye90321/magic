@@ -47,14 +47,26 @@ public class DG_playerController : MonoBehaviour
 	private bool stone4 = false;
 	public GameObject stoneObj5;
 	private bool stone5 = false;
+
 	public GameObject redFairy;
 	[HideInInspector]
-	public bool isRed;
+	public bool isRedFairy;
 	private BoxCollider2D redFairyCollider;
+
 	public GameObject blueFairy;
 	[HideInInspector]
-	public bool isBlue;
+	public bool isBlueFairy;
 	private BoxCollider2D blueFairyCollider;
+
+	public GameObject redFlower;
+	[HideInInspector]
+	public bool isRedFlower;
+	private BoxCollider2D redFlowerCollider;
+
+	public GameObject blueFlower;
+	[HideInInspector]
+	public bool isBlueFlower;
+	private BoxCollider2D blueFlowerCollider;
 	//--------------SpineAnimation----------------
 	public Animator animator_S;
 	public Animator animator_B;
@@ -75,6 +87,7 @@ public class DG_playerController : MonoBehaviour
 	//------------------Enemy-----------------------
 	public int enemyAtk;
 	public int BossAtk;
+	
 
 	//------------------draw-------------------------
 	public Canvas drawCanvas;
@@ -103,7 +116,7 @@ public class DG_playerController : MonoBehaviour
 			PickUpImg = PickUpBtn.GetComponent<Image>();
 			redFairyCollider = redFairy.GetComponent<BoxCollider2D>();
 			blueFairyCollider = blueFairy.GetComponent<BoxCollider2D>();
-
+			
 		}
 	}
 
@@ -283,17 +296,31 @@ public class DG_playerController : MonoBehaviour
 			{
 				stoneObj5.SetActive(false);
 			}
-			if (isRed) //紅藍精靈
+			if (isRedFairy) //紅藍精靈
 			{
 				redFairy.SetActive(false);
 				blueFairyCollider.enabled = false;
 				npcTask.StatueCollider.enabled = true;
 			}
-			else if (isBlue)
+			else if (isBlueFairy)
 			{
 				blueFairy.SetActive(false);
 				redFairyCollider.enabled = false;
 				npcTask.StatueCollider.enabled = true;
+			}
+			if (isRedFlower) //紅藍花
+			{
+				redFlower.SetActive(false);
+				blueFairyCollider.enabled = false;
+				gameManager.Teleportation.SetActive(true);
+				npcTask.BobbyCollider.enabled = true;
+			}
+			else if (isBlueFlower)
+			{
+				blueFlower.SetActive(false);
+				redFairyCollider.enabled = false;
+				gameManager.Teleportation.SetActive(true);
+				npcTask.BobbyCollider.enabled = true;
 			}
 			isActive = false;
 			StartCoroutine("MoveWait");
@@ -390,12 +417,27 @@ public class DG_playerController : MonoBehaviour
 		if (col.gameObject.name=="redFairy") //觸碰到紅精靈
 		{
 			redFairyParticle.SetActive(true);
-			isRed = true;
+			isRedFairy = true;
 		}else if (col.gameObject.name == "blueFairy") //觸碰到藍精靈
 		{
 			blueFairyParticle.SetActive(true);
-			isBlue = true;
+			isBlueFairy = true;
 		}
+
+		if (col.gameObject.name == "redFlower") //觸碰到紅花
+		{
+			isRedFlower = true;
+		}
+		else if (col.gameObject.name == "blueFlower") //觸碰到藍花
+		{
+			isBlueFlower = true;
+		}
+
+		if (col.gameObject.name == "Teleportation") //傳送陣
+		{
+			StartCoroutine("Teleportation");
+		}
+
 	}
 
 	void OnTriggerExit2D(Collider2D col)
@@ -453,12 +495,21 @@ public class DG_playerController : MonoBehaviour
 		if (col.gameObject.name == "redFairy") //離開到紅精靈
 		{
 			redFairyParticle.SetActive(false);
-			isRed = false;
+			isRedFairy = false;
 		}
 		else if (col.gameObject.name == "blueFairy") //離開到藍精靈
 		{
 			blueFairyParticle.SetActive(false);
-			isBlue = false;
+			isBlueFairy = false;
+		}
+
+		if (col.gameObject.name == "redFlower") //離開到紅花
+		{
+			isRedFlower = false;
+		}
+		else if (col.gameObject.name == "blueFlower") //離開到藍花
+		{
+			isBlueFlower = false;
 		}
 	}
 
@@ -503,6 +554,15 @@ public class DG_playerController : MonoBehaviour
 		yield return new WaitForSeconds(.2f);
 		W1_beaten.SetActive(false);
 		healthTextObj.SetActive(false);
+	}
+
+	IEnumerator Teleportation()
+	{
+		gameManager.FadeWhite.SetActive(true);
+		yield return new WaitForSeconds(0.5f);
+		rigid2D.position = new Vector2(.8f, 7.5f);
+		yield return new WaitForSeconds(1.5f);
+		gameManager.FadeWhite.SetActive(false);
 	}
 
 	public void Attack()
