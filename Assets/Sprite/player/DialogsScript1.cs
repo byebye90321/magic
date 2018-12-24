@@ -414,6 +414,14 @@ public class DialogsScript1 : MonoBehaviour
 		choose1.SetActive(true);
 	}
 
+	public IEnumerator AfterMonsterBattle()
+	{
+		currentLine = 83;
+		endAtLine = 89;
+		NPCAppear();
+		yield return new WaitUntil(() => currentLine == 89);
+	}
+
 	public void NPCAppear()
 	{
 		EnableTextBox();
@@ -473,9 +481,10 @@ public class DialogsScript1 : MonoBehaviour
 	//----------------------------選擇----------------------------
 	public void Choose1_save() //拯救
 	{
-		currentLine = 82;
-		endAtLine = 83;
+		currentLine = 81;
+		endAtLine = 81;
 		NPCAppear();
+		choose1.SetActive(false);
 		StartCoroutine("waitMonsterAttack");
 	}
 
@@ -484,6 +493,7 @@ public class DialogsScript1 : MonoBehaviour
 		currentLine = 94;
 		endAtLine = 95;
 		NPCAppear();
+		choose1.SetActive(false);
 		StartCoroutine("noMonsterAttack");
 	}
 

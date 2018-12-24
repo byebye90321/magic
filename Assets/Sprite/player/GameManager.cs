@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject teachHint;
 	//-------------------角色---------------------
 	public GameObject smallBoss;
+	public GameObject monster;
 	//------------------FADE淡出-------------------
 	public GameObject winFade;
 	Animator fade;
@@ -167,7 +168,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public IEnumerator AttackWin()
+	public IEnumerator BossAttackWin()
 	{
 		usually.TransitionTo(10f);
 		teachHint.SetActive(false);
@@ -184,6 +185,25 @@ public class GameManager : MonoBehaviour {
 		dialogsScript1.attackColliderBorder.SetActive(false);
 		dialogsScript1.attackCollider.SetActive(false);
 		StartCoroutine(dialogsScript1.AfterBossBattle());
+	}
+
+	public IEnumerator MonsterAttackWin()
+	{
+		usually.TransitionTo(10f);
+		teachHint.SetActive(false);
+		attackRedImage.SetActive(false);
+		cameraFollow.moveCount = 9;
+		yield return new WaitForSeconds(0.3f);
+		achievementObj.SetActive(true);
+		achievementText.text = "擊敗維吉維克";
+		monster.SetActive(false);
+		cameraFollow.moveCount = 0;
+		cameraFollow.isFollowTarget = true;
+		yield return new WaitForSeconds(2f);
+		achievementObj.SetActive(false);
+		dialogsScript1.attackColliderBorder.SetActive(false);
+		dialogsScript1.attackCollider.SetActive(false);
+		StartCoroutine(dialogsScript1.AfterMonsterBattle());
 	}
 
 	public void pause()

@@ -6,7 +6,7 @@ using Spine.Unity;
 using Spine;
 public class DG_EnemyController : MonoBehaviour{
 
-	public string ChapterName;
+	public string enemyName;
 	public ExampleGestureHandler gesture;
     public Canvas drawCanvas;
 	public GameManager gameManager;
@@ -120,16 +120,24 @@ public class DG_EnemyController : MonoBehaviour{
 
 	IEnumerator Death()
 	{
-		enemy1.state.TimeScale = .3f;
-		enemy2.state.TimeScale = .3f;
+		enemy1.state.TimeScale = .4f;
+		enemy2.state.TimeScale = .4f;
 		isDead = true;
 		yield return new WaitForSeconds(0.7f);	
 		healthSlider.SetActive(false);
 		yield return new WaitForSeconds(.8f);
 		enemy1.state.TimeScale = .1f;
 		enemy2.state.TimeScale = .1f;
-		StartCoroutine(gameManager.AttackWin());
-		//Destroy(this.gameObject);
+
+		if (enemyName == "BossEnemy")  //歪歪KQ
+		{
+			StartCoroutine(gameManager.BossAttackWin());
+		}
+		else if (enemyName == "MonsterEnemy") //維吉維克
+		{
+			StartCoroutine(gameManager.MonsterAttackWin());
+		}
+		
 
 	}
 
