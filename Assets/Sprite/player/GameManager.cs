@@ -52,6 +52,9 @@ public class GameManager : MonoBehaviour {
 	public GameObject AirFloor2;
 
 	public GameObject Teleportation;
+	public GameObject stoneDoorObj;
+	[HideInInspector]
+	public Animator stoneDoorAni;
 	//-------------------對話----------------------
 	public GameObject textPanel;
 	public Text text;
@@ -86,6 +89,7 @@ public class GameManager : MonoBehaviour {
 		Debug.Log(playerController.curHealth);
 		PlayerPrefs.GetInt("StaticObject.G2", StaticObject.G2);
 		//Debug.Log("StaticObject.G2：" + StaticObject.G2);
+		stoneDoorAni = stoneDoorObj.GetComponent<Animator>();
 	}
 	
 	void FixedUpdate () {

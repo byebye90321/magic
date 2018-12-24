@@ -18,7 +18,7 @@ public class DialogsScript1 : MonoBehaviour
 	//--------------------------互動對話-----------------------------
 	public GameObject vine2text;
 	private int bobbyCount = 1;
-	
+
 	//---------------------------頭貼----------------------------
 	public GameObject characterImageObj; //左邊主角對話框
 	private Image characterImage;
@@ -36,7 +36,7 @@ public class DialogsScript1 : MonoBehaviour
 
 
 	//----------------------------選擇---------------------------
-
+	public GameObject choose1;
 	//----------------------------對話---------------------------
 	public GameObject textBox;
 
@@ -74,12 +74,18 @@ public class DialogsScript1 : MonoBehaviour
 	public GameObject markObj; //路標對話框
 	private Animator markAni;
 	private BoxCollider2D markCollider;
-	
+
 	private BoxCollider2D statueCollider;
 	//------------------Attack----------------------
+	//小BOSS
 	public GameObject attackCollider;
 	private BoxCollider2D attackColliderCol;
 	public GameObject attackColliderBorder;
+
+	//維吉維克
+	public GameObject monsterCollider;
+	private BoxCollider2D monsterColliderCol;
+	public GameObject monsterColliderBorder;
 	//----------------audio----------------------
 	public AudioSource audio;
 	public AudioMixerSnapshot usually;
@@ -98,12 +104,12 @@ public class DialogsScript1 : MonoBehaviour
 		markAni = markObj.GetComponent<Animator>();
 		markCollider = markObj.GetComponent<BoxCollider2D>();
 		attackColliderCol = attackCollider.GetComponent<BoxCollider2D>();
-
+		monsterColliderCol = monsterCollider.GetComponent<BoxCollider2D>();
 		StaticObject.sister = 1; //魔法日報解鎖
 		PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);
 		StaticObject.book = 1; //魔法日報解鎖
 		PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);
-		
+
 		currentLine = 1;
 		endAtLine = 9;
 		StartCoroutine("fadeIn");
@@ -159,7 +165,7 @@ public class DialogsScript1 : MonoBehaviour
 		if (!isActive)
 			return;
 
-		if (currentLine == 1 || currentLine == 2 || currentLine == 8 || currentLine == 15 ||currentLine ==38 || currentLine == 40)
+		if (currentLine == 1 || currentLine == 2 || currentLine == 8 || currentLine == 15 || currentLine == 38 || currentLine == 40)
 		{
 			whotalk.text = "緹緹";
 			characterImage.color = talkNow;
@@ -244,7 +250,7 @@ public class DialogsScript1 : MonoBehaviour
 			otherImage.sprite = bobby_cry; //-------------------------要替換成bobby_cry頭貼
 		}
 
-		if (currentLine == 29 || currentLine == 33 || currentLine ==51)
+		if (currentLine == 29 || currentLine == 33 || currentLine == 51)
 		{
 			whotalk.text = "緹緹";
 			characterImage.color = talkNow;
@@ -320,7 +326,7 @@ public class DialogsScript1 : MonoBehaviour
 			cameraFollow.moveCount = 4;
 		}
 
-		if (currentLine == 47||currentLine==60 || currentLine == 62 || currentLine == 67 || currentLine == 69)
+		if (currentLine == 47 || currentLine == 60 || currentLine == 62 || currentLine == 67 || currentLine == 69)
 		{
 			DisableTextBox();
 		}
@@ -363,10 +369,10 @@ public class DialogsScript1 : MonoBehaviour
 		yield return new WaitForSeconds(1.5f);
 		currentLine = 20;
 		endAtLine = 20;
-		NPCAppear();	
+		NPCAppear();
 	}
 
-	IEnumerator cameraToBalance()  
+	IEnumerator cameraToBalance()
 	{
 		cameraFollow.isFollowTarget = false; //看向歪斜天平
 		cameraFollow.moveCount = 3;
@@ -374,7 +380,7 @@ public class DialogsScript1 : MonoBehaviour
 		currentLine = 45;
 		endAtLine = 47;
 		NPCAppear();
-		yield return new WaitUntil(()=>currentLine == 47);
+		yield return new WaitUntil(() => currentLine == 47);
 		cameraFollow.moveCount = 0;
 		cameraFollow.isFollowTarget = true;
 	}
@@ -396,7 +402,16 @@ public class DialogsScript1 : MonoBehaviour
 		endAtLine = 62;
 		NPCAppear();
 		yield return new WaitUntil(() => currentLine == 62);
+	}
 
+	IEnumerator BeforeMonsterBattle()
+	{
+		yield return new WaitForSeconds(2);
+		currentLine = 71;
+		endAtLine = 80;
+		NPCAppear();
+		yield return new WaitUntil(() => currentLine == 80);
+		choose1.SetActive(true);
 	}
 
 	public void NPCAppear()
@@ -406,7 +421,7 @@ public class DialogsScript1 : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.gameObject.name == "NPC_Bobby" &&bobbyCount == 1) //遇到波比對話
+		if (col.gameObject.name == "NPC_Bobby" && bobbyCount == 1) //遇到波比對話
 		{
 			bobbyCount = 0;
 			currentLine = 22;
@@ -444,11 +459,49 @@ public class DialogsScript1 : MonoBehaviour
 			gameManager.drawGame.TransitionTo(10f);
 			StartCoroutine("BeforeBossBattle");
 		}
+
+		if (col.gameObject.name == "monsterCollider") //進入維吉維克攻擊
+		{
+			cameraFollow.moveCount = 8;
+			cameraFollow.isFollowTarget = false;
+			monsterColliderCol.enabled = false;
+			monsterColliderBorder.SetActive(true); //開啟邊界
+			//gameManager.drawGame.TransitionTo(10f);
+			StartCoroutine("BeforeMonsterBattle");
+		}
 	}
 	//----------------------------選擇----------------------------
+	public void Choose1_save() //拯救
+	{
+		currentLine = 82;
+		endAtLine = 83;
+		NPCAppear();
+		StartCoroutine("waitMonsterAttack");
+	}
+
+	public void Choose1_NoSave() //不拯救
+	{
+		currentLine = 94;
+		endAtLine = 95;
+		NPCAppear();
+		StartCoroutine("noMonsterAttack");
+	}
+
+	IEnumerator waitMonsterAttack()
+	{
+		yield return new WaitUntil(() => currentLine ==82);
+		gameManager.teachHint.SetActive(true);
+		gameManager.attackRedImage.SetActive(true);
+	}
+
+	IEnumerator noMonsterAttack()
+	{
+		yield return new WaitUntil(() => currentLine == 97);
+		Debug.Log("123123");
+	}
 
 	//----------------------------對話----------------------------
-		private IEnumerator TextScroll(string lineOfText)
+	private IEnumerator TextScroll(string lineOfText)
 	{
 		int letter = 0;
 		theText.text = "";

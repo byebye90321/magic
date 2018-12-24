@@ -100,8 +100,23 @@ public class CameraFollow : MonoBehaviour {
 						StartCoroutine(ZoomCamera(3, 2.5f, 0.1f, 50));
 					}
 				}
+				if (moveCount == 7 )  //離開小BOSS戰鬥
+				{
+					StartCoroutine(ZoomCamera(2.5f, 3, 0.1f, 50));
+					scaleCount = 0;
+				}
 
-				if (moveCount == 7 )  //進入小BOSS戰鬥
+				if (moveCount == 8 && scaleCount == 0)  //進入維吉維克戰鬥
+				{
+					Vector3 newPosition = new Vector3(50f, 4.5f, -8);
+					transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
+					if (transform.position.x > 49.5f)
+					{
+						StartCoroutine(ZoomCamera(3, 2.5f, 0.1f, 50));
+					}
+				}
+
+				if (moveCount == 9)  //離開維吉維克戰鬥
 				{
 					StartCoroutine(ZoomCamera(2.5f, 3, 0.1f, 50));
 					scaleCount = 0;
@@ -112,6 +127,10 @@ public class CameraFollow : MonoBehaviour {
 			//transform.position = new Vector3(Mathf.Clamp(target.position.x, xMin, xMax), Mathf.Clamp(target.position.y, yMin, yMax),-8);
 
 			if (transform.position.x < xMin)
+			{
+				transform.position = new Vector2(Mathf.Clamp(transform.position.x, xMin, xMax), transform.position.y);
+			}
+			if (transform.position.x > xMax)
 			{
 				transform.position = new Vector2(Mathf.Clamp(transform.position.x, xMin, xMax), transform.position.y);
 			}

@@ -291,7 +291,14 @@ public class NPCTask : MonoBehaviour {
 		yield return new WaitForSeconds(1f);
 		gameManager.ParticleObj1.SetActive(false);
 		gameManager.achievementObj.SetActive(false);
-
+		yield return new WaitForSeconds(1.5f);
+		gameManager.FadeWhite.SetActive(true);
+		yield return new WaitForSeconds(0.5f);
+		rigid2D.position = new Vector2(39f, 1f);
+		yield return new WaitForSeconds(1.5f);
+		gameManager.FadeWhite.SetActive(false);
+		yield return new WaitForSeconds(1f);
+		gameManager.stoneDoorAni.SetBool("openDoor", true);
 	}
 
 	public void bookFly()
