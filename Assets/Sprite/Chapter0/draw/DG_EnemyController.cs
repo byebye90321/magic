@@ -37,7 +37,6 @@ public class DG_EnemyController : MonoBehaviour{
 
 	//-------------Particle System-----------------
 	public GameObject AtkParticle;
-	public GameObject G1_BeatenParticle; //被G1攻擊特效
 
 	void Start()
 	{
@@ -88,11 +87,11 @@ public class DG_EnemyController : MonoBehaviour{
 
 	public void G1_Beaten()
 	{
-		G1_BeatenParticle.SetActive(true);
+		gesture.G1_beaten.SetActive(true);
 		StartCoroutine("wait");
 	}
 
-	IEnumerator SkillG2()  //序章 被技能G2攻擊
+	IEnumerator SkillG2()  //被技能G2攻擊
 	{
 		yield return new WaitForSeconds(.3f);
 		TakeDamage(gesture.skillG2.skillInfo.Atk);
@@ -172,7 +171,7 @@ public class DG_EnemyController : MonoBehaviour{
 			StartCoroutine("wait");
 		}
 
-		if (col.gameObject.name == "G0_Particle")
+		if (col.gameObject.name == "G0_Particle") //被G0攻擊
 		{
 			gesture.G0_beaten.SetActive(true);
 			TakeDamage(gesture.skill0.skillInfo.Atk);
@@ -181,7 +180,7 @@ public class DG_EnemyController : MonoBehaviour{
 			enemy2.state.SetAnimation(0, "death", false);
 			enemy2.state.AddAnimation(0, "idle", true, 0f);
 			damageTextObj.SetActive(true);
-			StartCoroutine("wait");
+			StartCoroutine("G0_Close");
 			damageText.text = "-" + gesture.skill0.skillInfo.Atk;
 		}
 	}
@@ -191,8 +190,16 @@ public class DG_EnemyController : MonoBehaviour{
 		yield return new WaitForSeconds(.5f);
 		damageTextObj.SetActive(false);
 		yield return new WaitForSeconds(.5f);
-		G1_BeatenParticle.SetActive(false);
+		gesture.G1_beaten.SetActive(false);
 		AtkParticle.SetActive(false);
+	}
+
+	IEnumerator G0_Close()
+	{
+		yield return new WaitForSeconds(.5f);
+		damageTextObj.SetActive(false);
+		yield return new WaitForSeconds(.5f);
+		gesture.G0_beaten.SetActive(false);
 	}
 }
 

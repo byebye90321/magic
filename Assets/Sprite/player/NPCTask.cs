@@ -106,8 +106,7 @@ public class NPCTask : MonoBehaviour {
 				{
 					isTasting = true;
 					if (playerController.isRedFairy || playerController.isBlueFairy)  //完成任務
-					{
-						Debug.Log("456456");
+					{						
 						StartCoroutine("StatueTaskFinish");
 					}
 					else  //接任務
@@ -204,6 +203,7 @@ public class NPCTask : MonoBehaviour {
 	//任務2完成，獲得技能2
 	public IEnumerator StatueTaskFinish()
 	{
+		isTasting = false;
 		StatueCollider.enabled = false;
 		if (playerController.isRedFairy)
 		{
@@ -250,7 +250,7 @@ public class NPCTask : MonoBehaviour {
 	//任務1完成，獲得技能1
 	public IEnumerator BobbyTaskFinish()
 	{
-		BobbyCollider.enabled = false;
+		isTasting = false;
 		if (playerController.isRedFlower) //lose
 		{
 			dialogsScript1.currentLine = 68;
@@ -265,6 +265,7 @@ public class NPCTask : MonoBehaviour {
 			dialogsScript1.NPCAppear();
 			yield return new WaitUntil(() => dialogsScript1.currentLine == 67);
 		}
+		BobbyCollider.enabled = false;
 		yield return new WaitForSeconds(0.5f);
 		gameManager.achievementObj.SetActive(true);
 		gameManager.achievementText.text = "完成任務一";

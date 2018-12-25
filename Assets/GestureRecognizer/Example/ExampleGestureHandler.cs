@@ -45,6 +45,14 @@ public class ExampleGestureHandler : MonoBehaviour
 	//----------Particle System--------------
 	public GameObject G0_Particle;
 	public GameObject G0_beaten;
+	public GameObject G1_Particle;
+	public GameObject G1_beaten;
+	public GameObject G2_Particle;
+	public GameObject G2_beaten;
+	public GameObject B1_Particle;
+	public GameObject B1_beaten;
+	public GameObject B2_Particle;
+	public GameObject B2_beaten;
 
 	void Start()
 	{
@@ -105,7 +113,7 @@ public class ExampleGestureHandler : MonoBehaviour
 				Debug.Log("G1攻擊");
 				DG_playerController.Attack();
 				skillG1.currentCoolDown = 0;
-				//G0_Particle.SetActive(true);
+				G1_Particle.SetActive(true);
 				StartCoroutine("close1");
 			}
 			else
@@ -119,7 +127,7 @@ public class ExampleGestureHandler : MonoBehaviour
 				Debug.Log("B1攻擊");
 				DG_playerController.Attack();
 				skillB1.currentCoolDown = 0;
-				//G0_Particle.SetActive(true);
+				B1_Particle.SetActive(true);
 				StartCoroutine("close1");
 			}
 			else
@@ -136,7 +144,7 @@ public class ExampleGestureHandler : MonoBehaviour
 				Debug.Log("G2攻擊");
 				DG_playerController.Attack();
 				skillG2.currentCoolDown = 0;
-				//G0_Particle.SetActive(true);
+				G2_Particle.SetActive(true);
 				StartCoroutine("close2");
 			}
 			else
@@ -150,7 +158,7 @@ public class ExampleGestureHandler : MonoBehaviour
 				Debug.Log("B2攻擊");
 				DG_playerController.Attack();
 				skillB2.currentCoolDown = 0;
-				//G0_Particle.SetActive(true);
+				B2_Particle.SetActive(true);
 				StartCoroutine("close2");
 			}
 			else
@@ -184,14 +192,18 @@ public class ExampleGestureHandler : MonoBehaviour
 	IEnumerator close1()
 	{
 		yield return new WaitForSeconds(1f);
-		/*G0_Particle.SetActive(false);
-		G0_beaten.SetActive(false);*/
+		G1_Particle.SetActive(false);
+		G1_beaten.SetActive(false);
+		B1_Particle.SetActive(false);
+		B1_beaten.SetActive(false);
 	}
 
 	IEnumerator close2()
 	{
 		yield return new WaitForSeconds(1f);
-		/*G0_Particle.SetActive(false);
-		G0_beaten.SetActive(false);*/
+		G2_Particle.SetActive(false);
+		G2_beaten.SetActive(false);
+		B2_Particle.SetActive(false);
+		B2_beaten.SetActive(false);
 	}
 }
