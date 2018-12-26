@@ -108,9 +108,9 @@ public class CameraFollow : MonoBehaviour {
 
 				if (moveCount == 8 && scaleCount == 0)  //進入維吉維克戰鬥
 				{
-					Vector3 newPosition = new Vector3(50f, 4.5f, -8);
+					Vector3 newPosition = new Vector3(50.5f, 4.5f, -8);
 					transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
-					if (transform.position.x > 49.5f)
+					if (transform.position.x > 50.4f)
 					{
 						StartCoroutine(ZoomCamera(3, 2.5f, 0.1f, 50));
 					}

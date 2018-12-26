@@ -336,6 +336,16 @@ public class DialogsScript1 : MonoBehaviour
 			DisableTextBox();
 		}
 
+		if (currentLine == 82)
+		{
+			DisableTextBox();
+		}
+
+		if (currentLine == 96)
+		{
+			DisableTextBox();
+		}
+
 		if (Input.GetMouseButtonDown(0))
 		{
 			if (!isTyping)
@@ -380,7 +390,7 @@ public class DialogsScript1 : MonoBehaviour
 		currentLine = 45;
 		endAtLine = 47;
 		NPCAppear();
-		yield return new WaitUntil(() => currentLine == 47);
+		yield return new WaitUntil(() => currentLine >= 47);
 		cameraFollow.moveCount = 0;
 		cameraFollow.isFollowTarget = true;
 	}
@@ -482,7 +492,7 @@ public class DialogsScript1 : MonoBehaviour
 	public void Choose1_save() //拯救
 	{
 		currentLine = 81;
-		endAtLine = 81;
+		endAtLine = 82;
 		NPCAppear();
 		choose1.SetActive(false);
 		StartCoroutine("waitMonsterAttack");
@@ -491,7 +501,7 @@ public class DialogsScript1 : MonoBehaviour
 	public void Choose1_NoSave() //不拯救
 	{
 		currentLine = 94;
-		endAtLine = 95;
+		endAtLine = 96;
 		NPCAppear();
 		choose1.SetActive(false);
 		StartCoroutine("noMonsterAttack");
@@ -499,15 +509,19 @@ public class DialogsScript1 : MonoBehaviour
 
 	IEnumerator waitMonsterAttack()
 	{
+		Debug.Log("1");
 		yield return new WaitUntil(() => currentLine ==82);
+		Debug.Log("2");
 		gameManager.teachHint.SetActive(true);
 		gameManager.attackRedImage.SetActive(true);
 	}
 
 	IEnumerator noMonsterAttack()
 	{
-		yield return new WaitUntil(() => currentLine == 97);
-		Debug.Log("123123");
+		Debug.Log("3");
+		yield return new WaitUntil(() => currentLine == 96);
+		Debug.Log("4");
+		DG_EnemyController.isAttack = false;
 	}
 
 	//----------------------------對話----------------------------

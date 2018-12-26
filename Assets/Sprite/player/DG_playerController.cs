@@ -36,6 +36,7 @@ public class DG_playerController : MonoBehaviour
 								   //藤蔓
 	private bool vine1 = false;
 	private bool vine2 = false;
+	private bool vine3 = false;
 	//拾取物件	
 	public GameObject stoneObj1;
 	private bool stone1 = false;
@@ -270,6 +271,18 @@ public class DG_playerController : MonoBehaviour
 					vine2 = false;
 				}
 			}
+			else if (vine3 == true)  //藤蔓3
+			{
+				//rigid2D.position = new Vector2(13.2f, rigid2D.position.y);
+				if (rigid2D.position.y >= 6.5f)
+				{
+					rigid2D.position = new Vector2(51.5f, 8f);
+					animator_S.SetBool("climb", false);
+					isClimbBtn = false;
+					isClimb = false;
+					vine3 = false;
+				}
+			}
 		}
 
 		//----------------------Pick Up--------------------------
@@ -380,11 +393,19 @@ public class DG_playerController : MonoBehaviour
 			ClimbBtn.transform.SetAsLastSibling();
 		}
 
-		if (col.gameObject.name == "vine2") //進入藤蔓1
+		if (col.gameObject.name == "vine2") //進入藤蔓2
 		{
 			isClimb = true;  //是否可以爬
 			ClimbImg.enabled = true;  //開啟爬鍵
 			vine2 = true; //遇到vine1的藤蔓
+			ClimbBtn.transform.SetAsLastSibling();
+		}
+
+		if (col.gameObject.name == "vine3") //進入藤蔓3
+		{
+			isClimb = true;  //是否可以爬
+			ClimbImg.enabled = true;  //開啟爬鍵
+			vine3 = true; //遇到vine1的藤蔓
 			ClimbBtn.transform.SetAsLastSibling();
 		}
 
@@ -455,11 +476,17 @@ public class DG_playerController : MonoBehaviour
 			ClimbImg.enabled = false;
 			vine1 = false;
 		}
-		if (col.gameObject.name == "vine2") //離開藤蔓1
+		if (col.gameObject.name == "vine2") //離開藤蔓2
 		{
 			isClimb = false;
 			ClimbImg.enabled = false;
 			vine2 = false;
+		}
+		if (col.gameObject.name == "vine3") //離開藤蔓3
+		{
+			isClimb = false;
+			ClimbImg.enabled = false;
+			vine3 = false;
 		}
 
 		if (col.tag == "NPC") //觸碰到NPC

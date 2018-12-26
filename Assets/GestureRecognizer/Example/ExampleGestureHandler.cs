@@ -44,15 +44,15 @@ public class ExampleGestureHandler : MonoBehaviour
 	public Skills skillB2;
 	//----------Particle System--------------
 	public GameObject G0_Particle;
-	public GameObject G0_beaten;
+	//public GameObject G0_beaten;
 	public GameObject G1_Particle;
-	public GameObject G1_beaten;
+	//public GameObject G1_beaten;
 	public GameObject G2_Particle;
-	public GameObject G2_beaten;
+	//public GameObject G2_beaten;
 	public GameObject B1_Particle;
-	public GameObject B1_beaten;
+	//public GameObject B1_beaten;
 	public GameObject B2_Particle;
-	public GameObject B2_beaten;
+	//public GameObject B2_beaten;
 
 	void Start()
 	{
@@ -138,7 +138,7 @@ public class ExampleGestureHandler : MonoBehaviour
 		//技能2
 		if (skillG2.attack == true)
 		{
-			if (result.gesture.id == "G2")
+			if (result.gesture.id == "Circle")
 			{
 				//enemyController.StartCoroutine("SkillG2");
 				Debug.Log("G2攻擊");
@@ -186,24 +186,19 @@ public class ExampleGestureHandler : MonoBehaviour
 	{
 		yield return new WaitForSeconds(1f);
 		G0_Particle.SetActive(false);
-		G0_beaten.SetActive(false);
 	}
 
 	IEnumerator close1()
 	{
 		yield return new WaitForSeconds(1f);
 		G1_Particle.SetActive(false);
-		G1_beaten.SetActive(false);
 		B1_Particle.SetActive(false);
-		B1_beaten.SetActive(false);
 	}
 
 	IEnumerator close2()
 	{
 		yield return new WaitForSeconds(1f);
 		G2_Particle.SetActive(false);
-		G2_beaten.SetActive(false);
 		B2_Particle.SetActive(false);
-		B2_beaten.SetActive(false);
 	}
 }
