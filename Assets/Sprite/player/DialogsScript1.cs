@@ -25,14 +25,17 @@ public class DialogsScript1 : MonoBehaviour
 	public Sprite sister_angry;
 	public Sprite sister_happy;
 	public Sprite sister_normal;
-	public Sprite sister_opps;
+	public Sprite sister_oops;
 	public Sprite sister_sad;
 	public Sprite sister_smile;
 	public GameObject otherImageObj; //右邊角色對話框
 	private Image otherImage;
 	public Sprite book;
-	public Sprite bobby_normal;
-	public Sprite bobby_cry;
+	public Sprite bobby_rainbow_normal;
+	public Sprite bobby_rainbow_happy;
+	public Sprite bobby_monochrome_cry;
+	public Sprite statue_rainbow;
+	public Sprite statue_monochrom;
 
 
 	//----------------------------選擇---------------------------
@@ -111,7 +114,7 @@ public class DialogsScript1 : MonoBehaviour
 		PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);
 
 		currentLine = 1;
-		endAtLine = 9;
+		endAtLine = 10;
 		StartCoroutine("fadeIn");
 
 		if (currentLine > endAtLine)
@@ -170,7 +173,7 @@ public class DialogsScript1 : MonoBehaviour
 			whotalk.text = "緹緹";
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
-			characterImage.sprite = sister_opps;
+			characterImage.sprite = sister_oops;
 		}
 		if (currentLine == 3 || currentLine == 12)
 		{
@@ -205,8 +208,16 @@ public class DialogsScript1 : MonoBehaviour
 				theText.text = "(每個新場景前端會設立<color=#FF8888>補血站</color>，就在前方，站上去試試。)";
 			}
 		}
+
+		if (currentLine == 10)
+		{
+			otherImageObj.SetActive(false);
+			DisableTextBox();
+		}
+
 		if (currentLine == 11 || currentLine == 43)
 		{
+			otherImageObj.SetActive(true);
 			whotalk.text = "緹緹";
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
@@ -231,14 +242,15 @@ public class DialogsScript1 : MonoBehaviour
 			whotalk.text = "緹緹";
 			characterImage.color = talkNow;
 			characterImage.sprite = sister_sad;
+			otherImageObj.SetActive(false);
 		}
 
-		if (currentLine == 24 || currentLine == 26 || currentLine == 52)
+		if (currentLine == 24 || currentLine == 26 || currentLine == 45 || currentLine == 52)
 		{
 			whotalk.text = "緹緹";
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
-			characterImage.sprite = sister_opps;
+			characterImage.sprite = sister_oops;
 		}
 
 		if (currentLine == 25 || currentLine == 27 || currentLine == 31)
@@ -247,10 +259,10 @@ public class DialogsScript1 : MonoBehaviour
 			characterImage.color = untalkNow;
 			otherImage.color = talkNow;
 			otherImageObj.SetActive(true);
-			otherImage.sprite = bobby_cry; //-------------------------要替換成bobby_cry頭貼
+			otherImage.sprite = bobby_monochrome_cry; //-------------------------要替換成bobby_cry頭貼
 		}
 
-		if (currentLine == 29 || currentLine == 33 || currentLine == 51)
+		if (currentLine == 29 || currentLine == 51)
 		{
 			whotalk.text = "緹緹";
 			characterImage.color = talkNow;
@@ -261,7 +273,17 @@ public class DialogsScript1 : MonoBehaviour
 		if (currentLine == 32)
 		{
 			npcTask.taskPanel.SetActive(true);
+			otherImageObj.SetActive(false);
 			DisableTextBox();
+		}
+
+		if (currentLine == 33)
+		{
+			whotalk.text = "緹緹";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = sister_angry;
+			otherImageObj.SetActive(true);
 		}
 
 		if (currentLine == 34)
@@ -288,6 +310,7 @@ public class DialogsScript1 : MonoBehaviour
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_sad;
+			otherImageObj.SetActive(false);
 		}
 
 		if (currentLine == 37)
@@ -316,9 +339,13 @@ public class DialogsScript1 : MonoBehaviour
 
 		if (currentLine == 42)
 		{
-			//DialogsPanelAni.SetBool("isOpen", false);
 			markCollider.enabled = false;
 			DisableTextBox();
+		}
+
+		if (currentLine == 45)
+		{
+			cameraFollow.moveCount = 4;
 		}
 
 		if (currentLine == 46)
@@ -330,10 +357,48 @@ public class DialogsScript1 : MonoBehaviour
 		{
 			DisableTextBox();
 		}
+
+		if (currentLine == 48 || currentLine == 49 || currentLine == 55)
+		{
+			whotalk.text = "雕像";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = statue_monochrom;
+		}
+
+		if (currentLine == 50)
+		{
+			npcTask.StatueCollider.enabled = true;
+			npcTask.taskPanel.SetActive(true);
+			DisableTextBox();
+		}
+
 		if (currentLine == 53)
 		{
 			npcTask.StatueCollider.enabled = true;
 			DisableTextBox();
+		}
+		if (currentLine == 54)
+		{
+			whotalk.text = "雕像";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = statue_rainbow;
+		}
+		if (currentLine == 55)
+		{
+			whotalk.text = "雕像";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = statue_monochrom;
+		}
+
+		if (currentLine == 57)  //我在打這裡喔
+		{
+			whotalk.text = "緹緹";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = sister_smile;
 		}
 
 		if (currentLine == 82)

@@ -112,8 +112,8 @@ public class NPCTask : MonoBehaviour {
 					else  //接任務
 					{
 						StatueTask = true;
-						statueAni.SetBool("isOpen1", true);
-						//StatueTast();
+						//statueAni.SetBool("isOpen1", true);
+						StatueTast();
 					}
 				}
 			}
@@ -136,7 +136,7 @@ public class NPCTask : MonoBehaviour {
 		Debug.Log(Mathf.Abs(rigid2D.transform.position.x - Bobby.transform.position.x));
 
 		dialogsScript1.currentLine = 24;
-		dialogsScript1.endAtLine = 32;
+		dialogsScript1.endAtLine = 33;
 		dialogsScript1.NPCAppear();
 	}
 
@@ -194,8 +194,12 @@ public class NPCTask : MonoBehaviour {
 	//任務2 Statue
 	public void StatueTast()
 	{
+		dialogsScript1.currentLine = 48;
+		dialogsScript1.endAtLine = 50;
+		dialogsScript1.NPCAppear();
+
 		Debug.Log(Mathf.Abs(rigid2D.transform.position.x - Statue.transform.position.x));
-		taskPanel.SetActive(true);
+		//taskPanel.SetActive(true);
 		taskTitleText.text = "雕像平衡";
 		taskContentText.text = "恢復平衡需要一種重物，我想<color=#ef6c00>紅精靈</color>再適合不過了!牠們就棲息在<color=#ef6c00>荊棘樹幹的樹洞</color>中，幫我抓一隻回來吧!";
 	}
@@ -208,10 +212,6 @@ public class NPCTask : MonoBehaviour {
 		if (playerController.isRedFairy)
 		{
 			statueAni.SetBool("win", true);
-		}
-		else
-		{
-			statueAni.SetBool("lose", true);
 		}
 		yield return new WaitForSeconds(0.5f);
 		gameManager.achievementObj.SetActive(true);
