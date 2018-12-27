@@ -36,6 +36,14 @@ public class DialogsScript1 : MonoBehaviour
 	public Sprite bobby_monochrome_cry;
 	public Sprite statue_rainbow;
 	public Sprite statue_monochrom;
+	public Sprite wiki_normal;
+	public Sprite wiki_attack;
+	public Sprite wiki_cry;
+	public Sprite wiki_good;
+	public Sprite wiko_oops;
+	public Sprite wiko_attack;
+	public Sprite wiko_cry;
+	public Sprite wiko_good;
 
 
 	//----------------------------選擇---------------------------
@@ -78,7 +86,11 @@ public class DialogsScript1 : MonoBehaviour
 	private Animator markAni;
 	private BoxCollider2D markCollider;
 
+	public GameObject statueObj;
 	private BoxCollider2D statueCollider;
+
+	public GameObject vine3;
+	private BoxCollider2D vine3Collider;
 	//------------------Attack----------------------
 	//小BOSS
 	public GameObject attackCollider;
@@ -108,6 +120,8 @@ public class DialogsScript1 : MonoBehaviour
 		markCollider = markObj.GetComponent<BoxCollider2D>();
 		attackColliderCol = attackCollider.GetComponent<BoxCollider2D>();
 		monsterColliderCol = monsterCollider.GetComponent<BoxCollider2D>();
+		statueCollider = statueObj.GetComponent<BoxCollider2D>();
+		vine3Collider = vine3.GetComponent<BoxCollider2D>();
 		StaticObject.sister = 1; //魔法日報解鎖
 		PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);
 		StaticObject.book = 1; //魔法日報解鎖
@@ -215,7 +229,7 @@ public class DialogsScript1 : MonoBehaviour
 			DisableTextBox();
 		}
 
-		if (currentLine == 11 || currentLine == 43)
+		if (currentLine == 11)
 		{
 			otherImageObj.SetActive(true);
 			whotalk.text = "緹緹";
@@ -259,7 +273,7 @@ public class DialogsScript1 : MonoBehaviour
 			characterImage.color = untalkNow;
 			otherImage.color = talkNow;
 			otherImageObj.SetActive(true);
-			otherImage.sprite = bobby_monochrome_cry; //-------------------------要替換成bobby_cry頭貼
+			otherImage.sprite = bobby_monochrome_cry; 
 		}
 
 		if (currentLine == 29 || currentLine == 51)
@@ -343,6 +357,15 @@ public class DialogsScript1 : MonoBehaviour
 			DisableTextBox();
 		}
 
+		if (currentLine == 43)
+		{
+			otherImageObj.SetActive(false);
+			whotalk.text = "緹緹";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = sister_happy;
+		}
+
 		if (currentLine == 45)
 		{
 			cameraFollow.moveCount = 4;
@@ -353,7 +376,7 @@ public class DialogsScript1 : MonoBehaviour
 			cameraFollow.moveCount = 4;
 		}
 
-		if (currentLine == 47 || currentLine == 60 || currentLine == 62 || currentLine == 67 || currentLine == 69)
+		if (currentLine == 47 || currentLine == 60 || currentLine == 62 || currentLine == 67 )
 		{
 			DisableTextBox();
 		}
@@ -393,20 +416,166 @@ public class DialogsScript1 : MonoBehaviour
 			characterImage.sprite = statue_monochrom;
 		}
 
-		if (currentLine == 57)  //我在打這裡喔
+		if (currentLine == 57)  
 		{
 			whotalk.text = "緹緹";
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
-			characterImage.sprite = sister_smile;
+			characterImage.sprite = sister_oops;
+			otherImageObj.SetActive(false);
 		}
 
-		if (currentLine == 82)
+		if (currentLine == 59)  
+		{
+			whotalk.text = "緹緹";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = sister_angry;
+		}
+
+		if(currentLine == 61)
+		{
+			whotalk.text = "緹緹";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = sister_oops;
+			playerController.redFlowerCollider.enabled = true;
+			playerController.blueFlowerCollider.enabled = true;
+		}
+
+		if (currentLine == 63 || currentLine == 64)
+		{
+			whotalk.text = "波比";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = bobby_rainbow_normal;
+		}
+
+		if (currentLine == 65 || currentLine == 66)
+		{
+			whotalk.text = "波比";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = bobby_rainbow_happy;
+		}
+
+		if (currentLine == 68 || currentLine == 69)
+		{
+			whotalk.text = "波比";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = bobby_monochrome_cry;
+		}
+
+		if (currentLine == 70)
 		{
 			DisableTextBox();
 		}
 
-		if (currentLine == 96)
+		if (currentLine == 71 || currentLine ==73)
+		{
+			whotalk.text = "維吉";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = wiki_normal;
+		}
+
+		if (currentLine == 72 ||currentLine==74)
+		{
+			otherImageObj.SetActive(true);
+			whotalk.text = "維克";
+			characterImage.color = untalkNow;
+			otherImage.color = talkNow;
+			otherImage.sprite = wiko_oops;
+		}
+
+		if (currentLine == 75)
+		{
+			whotalk.text = "維克維克";
+			characterImage.color = talkNow;
+			otherImage.color = talkNow;
+			characterImage.sprite = wiki_attack;
+			otherImage.sprite = wiko_attack;
+		}
+
+		if (currentLine == 76)
+		{
+			otherImageObj.SetActive(false);
+			whotalk.text = "緹緹";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = sister_angry;
+		}
+
+		if (currentLine == 79)
+		{
+			whotalk.text = "緹緹";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = sister_oops;
+		}
+
+		if (currentLine == 81)
+		{
+			whotalk.text = "緹緹";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = sister_angry;
+		}
+
+		if (currentLine == 80 || currentLine == 82)
+		{
+			DisableTextBox();
+		}
+
+		if (currentLine == 83)
+		{
+			otherImageObj.SetActive(true);
+			vine3Collider.enabled = true;
+			whotalk.text = "維吉";
+			characterImage.color = untalkNow;
+			otherImage.color = talkNow;
+			characterImage.sprite = sister_angry;
+			otherImage.sprite = wiki_cry;
+		}
+		if (currentLine == 84)
+		{
+			whotalk.text = "維克";
+			characterImage.color = untalkNow;
+			otherImage.color = talkNow;
+			characterImage.sprite = sister_angry;
+			otherImage.sprite = wiko_cry;
+		}
+		if (currentLine == 85)
+		{
+			whotalk.text = "緹緹";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = sister_angry;
+		}
+		if (currentLine == 86)
+		{
+			whotalk.text = "維吉";
+			characterImage.color = untalkNow;
+			otherImage.color = talkNow;
+			otherImage.sprite = wiki_good;
+		}
+		if (currentLine == 87)
+		{
+			whotalk.text = "維克";
+			characterImage.color = untalkNow;
+			otherImage.color = talkNow;
+			otherImage.sprite = wiko_good;
+		}
+		if (currentLine == 88)
+		{
+			whotalk.text = "緹緹";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = sister_happy;
+			otherImageObj.SetActive(false);
+		}
+		if (currentLine==89 || currentLine == 96)
 		{
 			DisableTextBox();
 		}

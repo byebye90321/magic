@@ -62,12 +62,14 @@ public class DG_playerController : MonoBehaviour
 	public GameObject redFlower;
 	[HideInInspector]
 	public bool isRedFlower;
-	private BoxCollider2D redFlowerCollider;
+	[HideInInspector]
+	public BoxCollider2D redFlowerCollider;
 
 	public GameObject blueFlower;
 	[HideInInspector]
 	public bool isBlueFlower;
-	private BoxCollider2D blueFlowerCollider;
+	[HideInInspector]
+	public BoxCollider2D blueFlowerCollider;
 	//--------------SpineAnimation----------------
 	public Animator animator_S;
 	public Animator animator_B;
@@ -310,29 +312,42 @@ public class DG_playerController : MonoBehaviour
 			{
 				stoneObj5.SetActive(false);
 			}
-			if (isRedFairy) //紅藍精靈
+			if (redFairy.activeInHierarchy && isRedFairy) //紅藍精靈
 			{
 				redFairy.SetActive(false);
-				blueFairyCollider.enabled = false;
+				blueFairy.SetActive(true);
+				isBlueFairy = false;
+				isRedFairy = true;
+				//blueFairyCollider.enabled = false;
 				npcTask.StatueCollider.enabled = true;
 			}
-			else if (isBlueFairy)
+			if (blueFairy.activeInHierarchy && isBlueFairy)
 			{
 				blueFairy.SetActive(false);
-				redFairyCollider.enabled = false;
+				redFairy.SetActive(true);
+				isBlueFairy = true;
+				isRedFairy = false;
+				//redFairyCollider.enabled = false;
 				npcTask.StatueCollider.enabled = true;
 			}
-			if (isRedFlower) //紅藍花
+
+			if (redFlower.activeInHierarchy && isRedFlower) //紅藍花
 			{
 				redFlower.SetActive(false);
-				blueFlowerCollider.enabled = false;
+				blueFlower.SetActive(true);
+				isRedFlower = true;
+				isBlueFlower = false;
+				//blueFlowerCollider.enabled = false;
 				gameManager.Teleportation.SetActive(true);
 				npcTask.BobbyCollider.enabled = true;
 			}
-			else if (isBlueFlower)
+			if (blueFlower.activeInHierarchy && isBlueFlower)
 			{
 				blueFlower.SetActive(false);
-				redFlowerCollider.enabled = false;
+				redFlower.SetActive(true);
+				isRedFlower = false;
+				isBlueFlower = true;
+				//redFlowerCollider.enabled = false;
 				gameManager.Teleportation.SetActive(true);
 				npcTask.BobbyCollider.enabled = true;
 			}
@@ -440,7 +455,8 @@ public class DG_playerController : MonoBehaviour
 		{
 			redFairyParticle.SetActive(true);
 			isRedFairy = true;
-		}else if (col.gameObject.name == "blueFairy") //觸碰到藍精靈
+		}
+		if (col.gameObject.name == "blueFairy") //觸碰到藍精靈
 		{
 			blueFairyParticle.SetActive(true);
 			isBlueFairy = true;
@@ -450,7 +466,7 @@ public class DG_playerController : MonoBehaviour
 		{
 			isRedFlower = true;
 		}
-		else if (col.gameObject.name == "blueFlower") //觸碰到藍花
+		if (col.gameObject.name == "blueFlower") //觸碰到藍花
 		{
 			isBlueFlower = true;
 		}
@@ -525,7 +541,7 @@ public class DG_playerController : MonoBehaviour
 			redFairyParticle.SetActive(false);
 			isRedFairy = false;
 		}
-		else if (col.gameObject.name == "blueFairy") //離開藍精靈
+		if (col.gameObject.name == "blueFairy") //離開藍精靈
 		{
 			blueFairyParticle.SetActive(false);
 			isBlueFairy = false;
@@ -535,7 +551,7 @@ public class DG_playerController : MonoBehaviour
 		{
 			isRedFlower = false;
 		}
-		else if (col.gameObject.name == "blueFlower") //離開藍花
+		if (col.gameObject.name == "blueFlower") //離開藍花
 		{
 			isBlueFlower = false;
 		}

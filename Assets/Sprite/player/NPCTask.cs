@@ -212,8 +212,16 @@ public class NPCTask : MonoBehaviour {
 		if (playerController.isRedFairy)
 		{
 			statueAni.SetBool("win", true);
+			dialogsScript1.currentLine = 54;
+			dialogsScript1.currentLine = 54;
+			dialogsScript1.NPCAppear();
 		}
-		yield return new WaitForSeconds(0.5f);
+		else {
+			dialogsScript1.currentLine = 55;
+			dialogsScript1.currentLine = 55;
+			dialogsScript1.NPCAppear();
+		}
+		yield return new WaitForSeconds(.5f);
 		gameManager.achievementObj.SetActive(true);
 		gameManager.achievementText.text = "完成任務二";
 		yield return new WaitForSeconds(2f);
@@ -254,7 +262,7 @@ public class NPCTask : MonoBehaviour {
 		if (playerController.isRedFlower) //lose
 		{
 			dialogsScript1.currentLine = 68;
-			dialogsScript1.endAtLine = 69;
+			dialogsScript1.endAtLine = 70;
 			dialogsScript1.NPCAppear();
 			yield return new WaitUntil(() =>dialogsScript1.currentLine ==70);
 		}
@@ -277,7 +285,7 @@ public class NPCTask : MonoBehaviour {
 		yield return new WaitForSeconds(0.5f);
 		gameManager.ParticleObj1.SetActive(true);
 		yield return new WaitForSeconds(0.5f);
-		if (playerController.isBlueFairy)
+		if (playerController.isBlueFlower)
 		{
 			StaticObject.G1 = 1;
 			gameManager.G1.SetActive(true);
