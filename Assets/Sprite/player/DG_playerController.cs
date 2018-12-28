@@ -125,8 +125,6 @@ public class DG_playerController : MonoBehaviour
 	}
 
 	public void Update() {
-
-		curHealth = HealthSlider.value;
 		//----------health------------
 		if (damaged)
 		{
@@ -179,29 +177,12 @@ public class DG_playerController : MonoBehaviour
 				animator_S.SetBool("isJump", jumping);
 				if (CrossPlatformInputManager.GetButtonDown("Jump"))
 				{
-					if (ChapterName == "0")
-					{
-						dg_GameManager.TeachJump = true;
-						//jumping = true;
-						rigid2D.velocity = new Vector2(0, jumpForce);
-						//animator_S.SetBool("isJump", jumping);
-						//animator_B.SetBool("isJump", jumping); //test版
-					}
-					else if (ChapterName == "1")
-					{
-						jumping = true;
-						rigid2D.velocity = new Vector2(0, jumpForce);
-						animator_S.SetBool("isJump", jumping);
-
-					}
+					jumping = true;
+					rigid2D.velocity = new Vector2(0, jumpForce);
+					animator_S.SetBool("isJump", jumping);
 				}
-				//animator_S.SetBool("fall", false);
-				//animator_B.SetBool("fall", false);  
 			}
-			else
-			{
-				//OnLanding();
-			}
+
 
 			//-------------MOVE----------------------------
 
@@ -364,7 +345,10 @@ public class DG_playerController : MonoBehaviour
 		{
 			TakeDamage(enemyAtk);
 			animator_S.SetTrigger("beaten");
-			animator_B.SetTrigger("beaten");
+			if (ChapterName == "0")
+			{
+				animator_B.SetTrigger("beaten");
+			}
 			healthTextObj.SetActive(true);
 			healthText.text = "-" + enemyAtk;
 			StartCoroutine("smallbeaten");

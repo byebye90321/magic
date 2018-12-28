@@ -247,7 +247,7 @@ public class DG_EnemyController : MonoBehaviour{
 		yield return new WaitForSeconds(.5f);
 		damageTextObj.SetActive(false);
 		yield return new WaitForSeconds(.5f);
-		G1_beaten.SetActive(false);
+		G0_beaten.SetActive(false);
 		AtkParticle.SetActive(false);
 	}
 
