@@ -51,6 +51,8 @@ public class NPCTask : MonoBehaviour {
 	public GameObject StoneParticle4;
 	public GameObject StoneParticle5;
 	public GameObject Fairy;
+	public GameObject BigBalance;
+	private Animator BigBalanceAni;
 
 	// Use this for initialization
 	void Start () {
@@ -61,6 +63,7 @@ public class NPCTask : MonoBehaviour {
 			StatueCollider = Statue.GetComponent<BoxCollider2D>();
 			taskAni = bookObj.GetComponent<Animator>();
 			statueAni = Statue.GetComponent<Animator>();
+			BigBalanceAni = BigBalance.GetComponent<Animator>();
 		}	
 	}
 	
@@ -230,19 +233,16 @@ public class NPCTask : MonoBehaviour {
 		gameManager.achievementObj.SetActive(true);
 		gameManager.achievementText.text = "獲得技能二";
 		yield return new WaitForSeconds(0.5f);
-		gameManager.ParticleObj2.SetActive(true);
+		gameManager.ParticleObj2.SetActive(true); //skill Particle
 		yield return new WaitForSeconds(0.5f);
 		if (playerController.isRedFairy)
 		{
-			statueAni.SetBool("win", true);
 			StaticObject.G2 = 1;
 			gameManager.G2.SetActive(true);
 			PlayerPrefs.SetInt("StaticObject.G2", StaticObject.G2);
-			//Debug.Log(StaticObject.G2);
 		}
 		else
 		{
-			statueAni.SetBool("lose", true);
 			StaticObject.B2 = 1;
 			gameManager.B2.SetActive(true);
 			PlayerPrefs.SetInt("StaticObject.B2", StaticObject.B2);
@@ -253,6 +253,8 @@ public class NPCTask : MonoBehaviour {
 		yield return new WaitForSeconds(0.5f);
 		cameraFollow.isFollowTarget = false;
 		cameraFollow.moveCount = 5;
+		yield return new WaitForSeconds(.5f);
+		BigBalanceAni.SetBool("balance", true);
 	}
 
 	//任務1完成，獲得技能1

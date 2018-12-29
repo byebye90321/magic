@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour {
 
 	public IEnumerator floorOpen2()
 	{
-		if (cameraFollow.transform.position.x < 33.1f)
+		if (cameraFollow.transform.position.x < 30.1f)
 		{
 			cameraFollow.moveCount = 0;
 			yield return new WaitForSeconds(0.5f);
@@ -200,8 +200,8 @@ public class GameManager : MonoBehaviour {
 		cameraFollow.isFollowTarget = true;
 		yield return new WaitForSeconds(2f);
 		achievementObj.SetActive(false);
-		dialogsScript1.attackColliderBorder.SetActive(false);
-		dialogsScript1.attackCollider.SetActive(false);
+		dialogsScript1.monsterColliderBorder.SetActive(false);
+		dialogsScript1.monsterCollider.SetActive(false);
 		StartCoroutine(dialogsScript1.AfterMonsterBattle());
 	}
 

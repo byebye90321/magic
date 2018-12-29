@@ -44,15 +44,10 @@ public class ExampleGestureHandler : MonoBehaviour
 	public Skills skillB2;
 	//----------Particle System--------------
 	public GameObject G0_Particle;
-	//public GameObject G0_beaten;
 	public GameObject G1_Particle;
-	//public GameObject G1_beaten;
 	public GameObject G2_Particle;
-	//public GameObject G2_beaten;
 	public GameObject B1_Particle;
-	//public GameObject B1_beaten;
 	public GameObject B2_Particle;
-	//public GameObject B2_beaten;
 
 	void Start()
 	{

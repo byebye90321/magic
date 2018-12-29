@@ -85,9 +85,9 @@ public class CameraFollow : MonoBehaviour {
 					Vector3 newPosition = new Vector3(39, 3, -8);
 					transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
 				}
-				if (moveCount == 5)  //發現雕像上升平台
+				if (moveCount == 5)  //雕像平衡
 				{
-					Vector3 newPosition = new Vector3(33, 5, -8);
+					Vector3 newPosition = new Vector3(30, 5.5f, -8);
 					transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
 					StartCoroutine(gameManager.floorOpen2());
 				}

@@ -743,18 +743,14 @@ public class DialogsScript1 : MonoBehaviour
 
 	IEnumerator waitMonsterAttack()
 	{
-		Debug.Log("1");
 		yield return new WaitUntil(() => currentLine ==82);
-		Debug.Log("2");
 		gameManager.teachHint.SetActive(true);
 		gameManager.attackRedImage.SetActive(true);
 	}
 
 	IEnumerator noMonsterAttack()
 	{
-		Debug.Log("3");
 		yield return new WaitUntil(() => currentLine == 96);
-		Debug.Log("4");
 		DG_EnemyController.isAttack = false;
 	}
 

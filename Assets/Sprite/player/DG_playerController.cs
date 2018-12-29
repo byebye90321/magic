@@ -140,11 +140,12 @@ public class DG_playerController : MonoBehaviour
 
 		if (ChapterName == "1")
 		{
-			if (HealthSlider.value < 100)
+			if (curHealth < 100)
 			{
 				if (addBlood)
 				{
-					HealthSlider.value += 0.1f;
+					curHealth += 0.1f;
+					HealthSlider.value = curHealth;
 				}
 			}
 			else
@@ -376,7 +377,7 @@ public class DG_playerController : MonoBehaviour
 
 			if (col.tag == "heart")  //補血愛心
 			{
-				HealthSlider.value += 10;
+				curHealth += 30;
 				healthTextObj.SetActive(true);
 				healthText.text = "+10";
 				StartCoroutine("wait1");

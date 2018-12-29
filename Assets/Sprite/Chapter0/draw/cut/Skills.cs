@@ -30,7 +30,6 @@ public class Skills : MonoBehaviour
 	{
 		if (DG_GameManager.drawState == DrawState.Game || GameManager.chapterState == ChapterState.Game)
 		{
-			Debug.Log(ChapterState.Game);
 			if (currentCoolDown < coolDown)
 			{
 				attack = false;

@@ -14,6 +14,7 @@ public class cut : MonoBehaviour
 	public SkeletonAnimation enemy;
 	public static int isDeath;
 	public GameObject DeathEffect;
+
 	void Start()
     {
         col = GetComponent<BoxCollider2D>();
@@ -47,8 +48,7 @@ public class cut : MonoBehaviour
 				StartCoroutine("Death");
 			}
         }
-
-    }
+	}
 
 	IEnumerator Death() {
 		enemy.state.SetAnimation(0, "death", false);
