@@ -14,6 +14,7 @@ public class DG_playerController : MonoBehaviour
 	public GameManager gameManager; //正章
 	public NPCTask npcTask;
 	public DialogsScript1 dialogsScript1; //正章1對話
+	public ExampleGestureHandler gesture;
 	//------------playerControl----------------------
 	public Rigidbody2D rigid2D;
 	public Transform graphics;
@@ -95,6 +96,7 @@ public class DG_playerController : MonoBehaviour
 	//------------------draw-------------------------
 	public Canvas drawCanvas;
 	//-----------------Particle System---------------
+	public Transform attackParticle;
 	public GameObject NPCPoint; //NPC驚嘆號
 	public GameObject redFairyParticle;
 	public GameObject blueFairyParticle;
@@ -205,6 +207,17 @@ public class DG_playerController : MonoBehaviour
 			{
 				graphics.localRotation = Quaternion.Euler(0, 0, 0);
 				healthCanvas.localRotation = Quaternion.Euler(0, 0, 0);
+				attackParticle.rotation = Quaternion.Euler(0, 0, 0);
+				var G0 = gesture.G0_ParticleP.textureSheetAnimation;
+				G0.flipU = 0;
+				var G1 = gesture.G1_ParticleP.textureSheetAnimation;
+				G1.flipU = 0;
+				var G2 = gesture.G2_ParticleP.textureSheetAnimation;
+				G2.flipU = 0;
+				var B1 = gesture.B1_ParticleP.textureSheetAnimation;
+				B1.flipU = 0;
+				var B2 = gesture.B2_ParticleP.textureSheetAnimation;
+				B2.flipU = 0;
 				if (ChapterName == "0")
 				{
 					dg_GameManager.TeachMove = true;
@@ -214,6 +227,17 @@ public class DG_playerController : MonoBehaviour
 			{
 				graphics.localRotation = Quaternion.Euler(0, 180, 0);
 				healthCanvas.localRotation = Quaternion.Euler(0, 180, 0);
+				attackParticle.rotation = Quaternion.Euler(0, 180, 0);
+				var G0 = gesture.G0_ParticleP.textureSheetAnimation;
+				G0.flipU = 1;
+				var G1 = gesture.G1_ParticleP.textureSheetAnimation;
+				G1.flipU = 1;
+				var G2 = gesture.G2_ParticleP.textureSheetAnimation;
+				G2.flipU = 1;
+				var B1 = gesture.B1_ParticleP.textureSheetAnimation;
+				B1.flipU = 1;
+				var B2 = gesture.B2_ParticleP.textureSheetAnimation;
+				B2.flipU = 1;
 				if (ChapterName == "0")
 				{
 					dg_GameManager.TeachMove = true;
@@ -365,7 +389,24 @@ public class DG_playerController : MonoBehaviour
 
 		if (col.tag == "EndPoint")  //序章-結束點
 		{
-			dg_GameManager.win();
+			if (ChapterName == "0")
+			{
+				dg_GameManager.win();
+			}
+			else if (ChapterName == "1")
+			{
+				if (StaticObject.sHE1 == 1)
+				{
+					gameManager.sHE1.SetActive(true);
+					gameManager.win();
+				}
+				else
+				{
+					gameManager.sBE1.SetActive(true);
+					gameManager.lose();
+				}
+
+			}
 		}
 
 		if (HealthSlider.value < 100) {
@@ -570,8 +611,11 @@ public class DG_playerController : MonoBehaviour
 	IEnumerator Bossbeaten()
 	{
 		yield return new WaitForSeconds(0.4f);
-		animator_S.SetTrigger("beaten");
-		animator_B.SetTrigger("beaten");
+		if (ChapterName == "0")
+		{
+			animator_B.SetTrigger("beaten");
+		}
+		animator_S.SetTrigger("beaten");	
 		healthTextObj.SetActive(true);
 		for (int i = 0; i < 2; i++)
 		{

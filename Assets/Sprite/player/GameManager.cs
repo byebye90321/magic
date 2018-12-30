@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 
 public enum ChapterState
 {
-	Teach, Pause, Game, Dead, Win
+	Teach, Pause, Game, Dead, Win, Lose
 }
 public class GameManager : MonoBehaviour {
 
@@ -65,9 +65,17 @@ public class GameManager : MonoBehaviour {
 	//-------------------角色---------------------
 	public GameObject smallBoss;
 	public GameObject monster;
+	//--------------------結局--------------------
+	public GameObject sHE1;
+	public GameObject sBE1;
+	//--------------------回饋介面----------------
+	public GameObject winPanel;
+	public GameObject losePanel;
+	public GameObject unlockPanel;
+	public GameObject gameOverPenal;
 	//------------------FADE淡出-------------------
-	public GameObject winFade;
-	Animator fade;
+	public GameObject FadeOut; 
+	private Animator FadeOutAni;
 	public bool isRun = false;
 
 	public GameObject FadeWhite;
@@ -90,6 +98,7 @@ public class GameManager : MonoBehaviour {
 		PlayerPrefs.GetInt("StaticObject.G2", StaticObject.G2);
 		//Debug.Log("StaticObject.G2：" + StaticObject.G2);
 		stoneDoorAni = stoneDoorObj.GetComponent<Animator>();
+		FadeOutAni = FadeOut.GetComponent<Animator>();
 	}
 	
 	void FixedUpdate () {
@@ -151,7 +160,6 @@ public class GameManager : MonoBehaviour {
 			yield return new WaitForSeconds(3);
 			cameraFollow.isFollowTarget = true;
 			dialogsScript1.vine2text.SetActive(true);
-			Debug.Log("dddd");
 		}
 	}
 
@@ -243,6 +251,12 @@ public class GameManager : MonoBehaviour {
 		StartCoroutine("Win");
 	}
 
+	public void lose()
+	{
+		chapterState = ChapterState.Lose;
+		StartCoroutine("Lose");
+	}
+
 	IEnumerator GameOver()
 	{
 		yield return new WaitForSeconds(0.1f);
@@ -259,11 +273,34 @@ public class GameManager : MonoBehaviour {
 	{
 		PlayerPrefs.SetFloat("StaticObject.balanceSlider", balanceValue);
 		PlayerPrefs.SetFloat("StaticObject.playerHealth", playerController.HealthSlider.value);
-		yield return new WaitForSeconds(0.1f);
-		winFade.SetActive(true);
-		fade.SetBool("FadeOut", true);
+		yield return new WaitForSeconds(2f);
+		if (StaticObject.sHE1 == 1)
+		{
+			winPanel.SetActive(true);
+		}
+		yield return new WaitForSeconds(2.5f);
+		FadeOut.SetActive(true);
+		FadeOutAni.SetBool("FadeOut", true);
 		yield return new WaitForSeconds(1.5f);
-		//SceneManager.LoadScene("RunGame_chapter0");  //接下一關
+		Debug.Log("77878789");
+		SceneManager.LoadScene("LoadingToMain");  //接下一關 //先回主畫面
+	}
+
+	IEnumerator Lose()
+	{
+		PlayerPrefs.SetFloat("StaticObject.balanceSlider", balanceValue);
+		PlayerPrefs.SetFloat("StaticObject.playerHealth", playerController.HealthSlider.value);
+		yield return new WaitForSeconds(3f);
+		if (StaticObject.sBE1 == 1)
+		{
+			losePanel.SetActive(true);
+		}
+		yield return new WaitForSeconds(2.5f);
+		FadeOut.SetActive(true);
+		FadeOutAni.SetBool("FadeOut", true);
+		yield return new WaitForSeconds(1.5f);
+		Debug.Log("666666");
+		SceneManager.LoadScene("LoadingToMain");  //接下一關  //先回主畫面
 	}
 
 	IEnumerator WaitForAudio()

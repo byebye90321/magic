@@ -33,7 +33,7 @@ public class ExampleGestureHandler : MonoBehaviour
 	public static bool cardisAtk4 = false;*/
 
 	//----------------2版------------------
-	
+
 	public DG_EnemyController enemyController;
 	public DG_playerController DG_playerController;
 	//public PlayerController playerController;
@@ -44,14 +44,29 @@ public class ExampleGestureHandler : MonoBehaviour
 	public Skills skillB2;
 	//----------Particle System--------------
 	public GameObject G0_Particle;
+	[HideInInspector]
+	public ParticleSystem G0_ParticleP;
 	public GameObject G1_Particle;
+	[HideInInspector]
+	public ParticleSystem G1_ParticleP;
 	public GameObject G2_Particle;
+	[HideInInspector]
+	public ParticleSystem G2_ParticleP;
 	public GameObject B1_Particle;
+	[HideInInspector]
+	public ParticleSystem B1_ParticleP;
 	public GameObject B2_Particle;
+	[HideInInspector]
+	public ParticleSystem B2_ParticleP;
 
 	void Start()
 	{
 		references = referenceRoot.GetComponentsInChildren<GesturePatternDraw>();
+		G0_ParticleP = G0_Particle.GetComponent<ParticleSystem>();
+		G1_ParticleP = G1_Particle.GetComponent<ParticleSystem>();
+		G2_ParticleP = G2_Particle.GetComponent<ParticleSystem>();
+		B1_ParticleP = B1_Particle.GetComponent<ParticleSystem>();
+		B2_ParticleP = B2_Particle.GetComponent<ParticleSystem>();
 	}
 
 	void ShowAll()

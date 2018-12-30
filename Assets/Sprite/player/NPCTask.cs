@@ -40,6 +40,8 @@ public class NPCTask : MonoBehaviour {
 	private Animator statueAni;
 	//-------------------機關---------------------
 	public GameObject StoneCanvas;
+	public GameObject stoneBefore;
+	public GameObject stoneAfter;
 	public drag slot1;
 	public drag slot2;
 	public drag slot3;
@@ -254,7 +256,10 @@ public class NPCTask : MonoBehaviour {
 		cameraFollow.isFollowTarget = false;
 		cameraFollow.moveCount = 5;
 		yield return new WaitForSeconds(.5f);
-		BigBalanceAni.SetBool("balance", true);
+		if (playerController.isRedFairy)
+		{
+			BigBalanceAni.SetBool("balance", true);
+		}		
 	}
 
 	//任務1完成，獲得技能1
@@ -339,7 +344,9 @@ public class NPCTask : MonoBehaviour {
 		yield return new WaitForSeconds(3);
 		StoneCanvas.SetActive(false);
 		StoneCollider.enabled = false;
-		yield return new WaitForSeconds(1);
+		stoneAfter.SetActive(true);
+		stoneBefore.SetActive(false);
+		yield return new WaitForSeconds(.3f);
 		cameraFollow.isFollowTarget = false;
 		cameraFollow.moveCount = 2;
 		slot1.isRight = false;  //防止循環

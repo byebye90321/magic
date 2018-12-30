@@ -38,7 +38,7 @@ public class drag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHandler
 	{
 		if ((other.gameObject.name == gameObject.name) && itemBeingDragged == null) {
 			isRight = true;
-			Debug.Log(isRight);
+			//Debug.Log(isRight);
 		}
 	}
 
@@ -47,7 +47,7 @@ public class drag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHandler
 		if ((other.gameObject.name == gameObject.name))
 		{
 			isRight = false;
-			Debug.Log(isRight);
+			//Debug.Log(isRight);
 		}
 	}
 }

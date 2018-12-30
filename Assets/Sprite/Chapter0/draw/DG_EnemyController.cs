@@ -15,6 +15,7 @@ public class DG_EnemyController : MonoBehaviour{
 	public int maxHealth = 100;
 	public GameObject healthSlider;
 	public Slider Health;
+	public GameObject HealthCanvas;
 	bool isDead;
 	bool damaged;
 
@@ -27,11 +28,13 @@ public class DG_EnemyController : MonoBehaviour{
 	private BoxCollider2D col;
 	private Vector2[] vec = { Vector2.left, Vector2.right };   //切后的半截往两个方向飞出
 
-	public static bool isAttack = true;
+	public bool isAttack = false; //戰鬥
+	public float AtkCount = 0;
 	//------------------Animation------------------ 
 	public SkeletonAnimation enemy1;
 	public SkeletonAnimation enemy2;
-
+	public Transform enemy1Transform;
+	public Transform enemy2Transform;
 	//--------------音效
 	public AudioSource audio;
 	public AudioClip AtkSound;
@@ -66,6 +69,31 @@ public class DG_EnemyController : MonoBehaviour{
 				Health.value = curHealth;
 			}
 		}
+
+		if (isAttack == true && AtkCount == 0)
+		{
+			StartCoroutine("Atk");
+		}
+	}
+
+	IEnumerator Atk()
+	{
+		AtkCount = 1;
+		yield return new WaitForSeconds(1);
+		if (enemyName == "0")
+		{
+
+		}
+		else
+		{
+			InvokeRepeating("AttackTime", 1f, 10f);
+		}
+	}
+
+
+	public void AttackTime()
+	{
+		W1_Particle();
 	}
 
 	//-------------------------Attack--------------------------
@@ -246,7 +274,7 @@ public class DG_EnemyController : MonoBehaviour{
 	{
 		yield return new WaitForSeconds(.5f);
 		damageTextObj.SetActive(false);
-		yield return new WaitForSeconds(.5f);
+		yield return new WaitForSeconds(1f);
 		G0_beaten.SetActive(false);
 		AtkParticle.SetActive(false);
 	}

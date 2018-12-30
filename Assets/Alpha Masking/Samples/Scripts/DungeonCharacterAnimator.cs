@@ -80,6 +80,7 @@ public class DungeonCharacterAnimator : MonoBehaviour
 
 	void ChaseRadiusCheck()
 	{
+
 		diatanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 		diatanceToInitial = Vector3.Distance(transform.position, initialPosition);
 

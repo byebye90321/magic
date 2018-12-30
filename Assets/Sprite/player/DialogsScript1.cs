@@ -15,6 +15,8 @@ public class DialogsScript1 : MonoBehaviour
 	public DG_playerController playerController;
 	public GameManager gameManager;
 	public NPCTask npcTask;
+	public DG_EnemyController EnemyController;
+	public DG_EnemyController MonsterController;
 	//--------------------------互動對話-----------------------------
 	public GameObject vine2text;
 	private int bobbyCount = 1;
@@ -91,6 +93,10 @@ public class DialogsScript1 : MonoBehaviour
 
 	public GameObject vine3;
 	private BoxCollider2D vine3Collider;
+
+	public GameObject mark2Obj;
+	private BoxCollider2D mark2Collider;
+	private Animator mark2Ani;
 	//------------------Attack----------------------
 	//小BOSS
 	public GameObject attackCollider;
@@ -108,6 +114,7 @@ public class DialogsScript1 : MonoBehaviour
 	public GameObject pause;
 	private Color talkNow = new Color(1, 1, 1, 1);
 	private Color untalkNow = new Color(.6f, .6f, .6f, 1);
+	public GameObject BEfogParticle;
 
 
 	void Start() {
@@ -122,10 +129,12 @@ public class DialogsScript1 : MonoBehaviour
 		monsterColliderCol = monsterCollider.GetComponent<BoxCollider2D>();
 		statueCollider = statueObj.GetComponent<BoxCollider2D>();
 		vine3Collider = vine3.GetComponent<BoxCollider2D>();
-		StaticObject.sister = 1; //魔法日報解鎖
+		mark2Collider = mark2Obj.GetComponent<BoxCollider2D>();
+		mark2Ani = mark2Obj.GetComponent<Animator>();
+		/*StaticObject.sister = 1; //魔法日報解鎖
 		PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);
 		StaticObject.book = 1; //魔法日報解鎖
-		PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);
+		PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);*/
 
 		currentLine = 1;
 		endAtLine = 10;
@@ -368,7 +377,8 @@ public class DialogsScript1 : MonoBehaviour
 
 		if (currentLine == 45)
 		{
-			cameraFollow.moveCount = 4;
+			otherImageObj.SetActive(false);
+			cameraFollow.moveCount = 3;
 		}
 
 		if (currentLine == 46)
@@ -638,6 +648,7 @@ public class DialogsScript1 : MonoBehaviour
 		yield return new WaitUntil(() => currentLine == 60);
 		gameManager.teachHint.SetActive(true);
 		gameManager.attackRedImage.SetActive(true);
+		EnemyController.isAttack = true;
 	}
 
 	public IEnumerator AfterBossBattle()
@@ -721,6 +732,19 @@ public class DialogsScript1 : MonoBehaviour
 			//gameManager.drawGame.TransitionTo(10f);
 			StartCoroutine("BeforeMonsterBattle");
 		}
+
+		if (col.gameObject.name == "mark2") //遇到路標2
+		{
+			if (StaticObject.sHE1 == 1) //拯救
+			{
+				mark2Ani.SetBool("save", true);
+			}
+			else
+			{
+				mark2Ani.SetBool("noSave", true);
+			}
+			mark2Collider.enabled = false;
+		}
 	}
 	//----------------------------選擇----------------------------
 	public void Choose1_save() //拯救
@@ -741,17 +765,35 @@ public class DialogsScript1 : MonoBehaviour
 		StartCoroutine("noMonsterAttack");
 	}
 
-	IEnumerator waitMonsterAttack()
+	IEnumerator waitMonsterAttack()  //拯救-戰鬥
 	{
+		StaticObject.sHE1 = 1;
+		StaticObject.sBE1 = 0;
+		PlayerPrefs.SetInt("StaticObject.sHE1", StaticObject.sHE1);
+		PlayerPrefs.SetInt("StaticObject.sBE1", StaticObject.sBE1);
 		yield return new WaitUntil(() => currentLine ==82);
 		gameManager.teachHint.SetActive(true);
 		gameManager.attackRedImage.SetActive(true);
+		MonsterController.isAttack = true;
+		MonsterController.enemy2Transform.localRotation = Quaternion.Euler(0, 180, 0);
+		MonsterController.enemy2Transform.position = new Vector2(50f, 3.38f);
 	}
 
-	IEnumerator noMonsterAttack()
+	IEnumerator noMonsterAttack()  //不拯救-不戰鬥
 	{
+		cameraFollow.moveCount = 9;
+		StaticObject.sHE1 = 0;
+		StaticObject.sBE1 = 1;
+		PlayerPrefs.SetInt("StaticObject.sHE1", StaticObject.sHE1);
+		PlayerPrefs.SetInt("StaticObject.sBE1", StaticObject.sBE1);
 		yield return new WaitUntil(() => currentLine == 96);
-		DG_EnemyController.isAttack = false;
+		vine3Collider.enabled = true;
+		yield return new WaitForSeconds(0.3f);
+		cameraFollow.isFollowTarget = true;
+		MonsterController.isAttack = false; //維吉維克不戰鬥
+		MonsterController.HealthCanvas.SetActive(false);
+		monsterColliderBorder.SetActive(false);
+		BEfogParticle.SetActive(true);
 	}
 
 	//----------------------------對話----------------------------

@@ -243,10 +243,15 @@ MonoBehaviour:
   skillG2: {fileID: 941627119}
   skillB2: {fileID: 1306921074}
   G0_Particle: {fileID: 2100390523}
-  G1_Particle: {fileID: 0}
-  G2_Particle: {fileID: 0}
-  B1_Particle: {fileID: 0}
-  B2_Particle: {fileID: 0}
+  G0_ParticleP: {fileID: 0}
+  G1_Particle: {fileID: 55157992}
+  G1_ParticleP: {fileID: 0}
+  G2_Particle: {fileID: 224015527}
+  G2_ParticleP: {fileID: 0}
+  B1_Particle: {fileID: 1397528504}
+  B1_ParticleP: {fileID: 0}
+  B2_Particle: {fileID: 769540275}
+  B2_ParticleP: {fileID: 0}
 --- !u!114 &10663016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,11 +763,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 55157992}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.17, y: 1.49, z: 0}
+  m_LocalPosition: {x: 5.17, y: 1.4899998, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
-  m_Father: {fileID: 462784791}
-  m_RootOrder: 6
+  m_Father: {fileID: 1321666422}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &55157994
 ParticleSystemRenderer:
@@ -6885,11 +6890,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 224015527}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.03, y: 1.57, z: 0}
+  m_LocalPosition: {x: 5.03, y: 1.5700002, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
-  m_Father: {fileID: 462784791}
-  m_RootOrder: 7
+  m_Father: {fileID: 1321666422}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &224015529
 ParticleSystemRenderer:
@@ -11729,7 +11734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6ec6ba30a5a9248a41a0841582e0c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: 
+  enemyName: 0
   gesture: {fileID: 10663015}
   drawCanvas: {fileID: 193435398}
   gameManager: {fileID: 0}
@@ -11737,12 +11742,17 @@ MonoBehaviour:
   maxHealth: 100
   healthSlider: {fileID: 204645073}
   Health: {fileID: 204645075}
+  HealthCanvas: {fileID: 0}
   damageTextObj: {fileID: 1415337536}
   obj1: {fileID: 1243852364850532, guid: 3f360d484a927284aa17aace94eda240, type: 2}
   obj2: {fileID: 1125585046511690, guid: ebad3fc44d8e2024789770303964b3be, type: 2}
   wz: []
+  isAttack: 1
+  AtkCount: 0
   enemy1: {fileID: 863012549}
   enemy2: {fileID: 858368490}
+  enemy1Transform: {fileID: 0}
+  enemy2Transform: {fileID: 0}
   audio: {fileID: 228383961}
   AtkSound: {fileID: 8300000, guid: 1410b0ffe9da4394bb93085d761fe188, type: 3}
   AtkParticle: {fileID: 877432018}
@@ -13808,12 +13818,7 @@ Transform:
   - {fileID: 1238059408}
   - {fileID: 2053723859}
   - {fileID: 229258310}
-  - {fileID: 2100390526}
-  - {fileID: 484646015}
-  - {fileID: 55157993}
-  - {fileID: 224015528}
-  - {fileID: 1397528505}
-  - {fileID: 769540276}
+  - {fileID: 1321666422}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13878,6 +13883,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   npcTask: {fileID: 0}
   dialogsScript1: {fileID: 0}
+  gesture: {fileID: 10663015}
   rigid2D: {fileID: 462784792}
   graphics: {fileID: 462784791}
   speed: 5
@@ -13922,6 +13928,7 @@ MonoBehaviour:
   enemyAtk: 10
   BossAtk: 30
   drawCanvas: {fileID: 0}
+  attackParticle: {fileID: 1321666422}
   NPCPoint: {fileID: 0}
   redFairyParticle: {fileID: 0}
   blueFairyParticle: {fileID: 0}
@@ -14492,11 +14499,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 484646014}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 1.84, z: 9}
+  m_LocalPosition: {x: 0.03999996, y: 1.8400002, z: 9}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
-  m_Father: {fileID: 462784791}
-  m_RootOrder: 5
+  m_Father: {fileID: 1321666422}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &484646016
 ParticleSystemRenderer:
@@ -25875,11 +25882,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 769540275}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.73, y: 1.11, z: 0}
+  m_LocalPosition: {x: 5.73, y: 1.1100001, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
-  m_Father: {fileID: 462784791}
-  m_RootOrder: 9
+  m_Father: {fileID: 1321666422}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &769540277
 ParticleSystemRenderer:
@@ -45233,6 +45240,40 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1319639545}
+--- !u!1 &1321666421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1321666422}
+  m_Layer: 10
+  m_Name: AttackParticle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1321666422
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1321666421}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2100390526}
+  - {fileID: 484646015}
+  - {fileID: 55157993}
+  - {fileID: 224015528}
+  - {fileID: 1397528505}
+  - {fileID: 769540276}
+  m_Father: {fileID: 462784791}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1324136041
 GameObject:
   m_ObjectHideFlags: 0
@@ -46191,11 +46232,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1397528504}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.3, y: 1.33, z: 0}
+  m_LocalPosition: {x: 5.3, y: 1.3299999, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
-  m_Father: {fileID: 462784791}
-  m_RootOrder: 8
+  m_Father: {fileID: 1321666422}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &1397528506
 ParticleSystemRenderer:
@@ -64743,11 +64784,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2100390523}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.88, y: 2.01, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 6.5, y: 3.9, z: 0}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children: []
-  m_Father: {fileID: 462784791}
-  m_RootOrder: 4
+  m_Father: {fileID: 1321666422}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2100390527
 BoxCollider2D:
