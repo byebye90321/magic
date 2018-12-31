@@ -306,7 +306,7 @@ public class RG_playerController : MonoBehaviour
 			Down = true;
 			slideBtn.interactable = true;
 			runGameManager.targetText.SetActive(true);
-			runGameManager.teachText.text = "遇到下方障礙物，按下滑鍵";
+			runGameManager.teachText.text = "遇到上方障礙物，按下滑鍵";
 			runGameManager.maskObj.SetActive(true);	
 			runGameManager.mask.uvRect = new Rect(0.38f, 0.3f, 1.5f, 1.5f);
 		}

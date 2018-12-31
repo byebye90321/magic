@@ -8,8 +8,9 @@ public class drag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHandler
 	public static GameObject itemBeingDragged;
 	public Image stone;
 	public bool isRight;
-	Vector3 startPosition;
-	Transform startParent;
+	public bool full;
+	public Vector3 startPosition;
+	public Transform startParent;
 
 	public void OnBeginDrag(PointerEventData eventData)
 	{
@@ -38,7 +39,11 @@ public class drag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHandler
 	{
 		if ((other.gameObject.name == gameObject.name) && itemBeingDragged == null) {
 			isRight = true;
-			//Debug.Log(isRight);
+			full = true;
+		}
+		if ((other.gameObject.name != gameObject.name) && itemBeingDragged == null)
+		{
+			full = true;
 		}
 	}
 
@@ -47,7 +52,11 @@ public class drag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHandler
 		if ((other.gameObject.name == gameObject.name))
 		{
 			isRight = false;
-			//Debug.Log(isRight);
+			full = false;
+		}
+		if ((other.gameObject.name != gameObject.name))
+		{
+			full = false;
 		}
 	}
 }

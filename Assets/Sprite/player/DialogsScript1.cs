@@ -109,7 +109,6 @@ public class DialogsScript1 : MonoBehaviour
 	public GameObject monsterColliderBorder;
 	//----------------audio----------------------
 	public AudioSource audio;
-	public AudioMixerSnapshot usually;
 	//-----------------其他---------------------
 	public GameObject pause;
 	private Color talkNow = new Color(1, 1, 1, 1);
@@ -119,7 +118,7 @@ public class DialogsScript1 : MonoBehaviour
 
 	void Start() {
 
-		usually.TransitionTo(10f);
+		//usually.TransitionTo(10f);
 		fadeOut = FadeOut.GetComponent<Animator>();
 		characterImage = characterImageObj.GetComponent<Image>();
 		otherImage = otherImageObj.GetComponent<Image>();
@@ -645,10 +644,11 @@ public class DialogsScript1 : MonoBehaviour
 		currentLine = 57;
 		endAtLine = 60;
 		NPCAppear();
-		yield return new WaitUntil(() => currentLine == 60);
+		yield return new WaitUntil(() => currentLine >= 60);
 		gameManager.teachHint.SetActive(true);
 		gameManager.attackRedImage.SetActive(true);
 		EnemyController.isAttack = true;
+		yield return new WaitForSeconds(.1f);
 	}
 
 	public IEnumerator AfterBossBattle()
@@ -665,8 +665,9 @@ public class DialogsScript1 : MonoBehaviour
 		currentLine = 71;
 		endAtLine = 80;
 		NPCAppear();
-		yield return new WaitUntil(() => currentLine == 80);
+		yield return new WaitUntil(() => currentLine >= 80);
 		choose1.SetActive(true);
+		yield return new WaitForSeconds(.1f);
 	}
 
 	public IEnumerator AfterMonsterBattle()
@@ -729,7 +730,7 @@ public class DialogsScript1 : MonoBehaviour
 			cameraFollow.isFollowTarget = false;
 			monsterColliderCol.enabled = false;
 			monsterColliderBorder.SetActive(true); //開啟邊界
-			//gameManager.drawGame.TransitionTo(10f);
+			gameManager.drawGame.TransitionTo(10f);
 			StartCoroutine("BeforeMonsterBattle");
 		}
 
@@ -776,7 +777,7 @@ public class DialogsScript1 : MonoBehaviour
 		gameManager.attackRedImage.SetActive(true);
 		MonsterController.isAttack = true;
 		MonsterController.enemy2Transform.localRotation = Quaternion.Euler(0, 180, 0);
-		MonsterController.enemy2Transform.position = new Vector2(50f, 3.38f);
+		MonsterController.enemy2Transform.position = new Vector2(50.8f, 3.38f);
 	}
 
 	IEnumerator noMonsterAttack()  //不拯救-不戰鬥
@@ -824,6 +825,7 @@ public class DialogsScript1 : MonoBehaviour
 	{
 		playerController.drawCanvas.enabled = false;		
 		isActive = true;
+		playerController.cutting = false;
 		textBox.SetActive(true);
 		gameManager.Pause.interactable = false;
 		npcTask.bookBtn.interactable = false;
@@ -832,6 +834,7 @@ public class DialogsScript1 : MonoBehaviour
 	public void DisableTextBox()
 	{
 		isActive = false;
+		playerController.cutting = true;
 		playerController.drawCanvas.enabled = true;
 		textBox.SetActive(false);
 		gameManager.Pause.interactable = true;

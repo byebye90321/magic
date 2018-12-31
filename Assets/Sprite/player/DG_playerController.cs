@@ -95,6 +95,7 @@ public class DG_playerController : MonoBehaviour
 
 	//------------------draw-------------------------
 	public Canvas drawCanvas;
+	public bool cutting; //小怪
 	//-----------------Particle System---------------
 	public Transform attackParticle;
 	public GameObject NPCPoint; //NPC驚嘆號
@@ -363,7 +364,7 @@ public class DG_playerController : MonoBehaviour
 		}
 	}
 
-	//---------------------Damage-----------------------
+	//---------------------碰撞-----------------------
 	void OnTriggerEnter2D(Collider2D col)  
 	{
 		if (col.tag == "smallEnemy") //序章-玩家受到小怪物攻擊
@@ -424,6 +425,15 @@ public class DG_playerController : MonoBehaviour
 				StartCoroutine("wait1");
 				Destroy(col.gameObject);
 			}
+		}
+
+		if (col.tag == "trap") //碰到陷阱
+		{
+			TakeDamage(1);
+			animator_S.SetTrigger("beaten");
+			healthTextObj.SetActive(true);
+			healthText.text = "-" + 1;
+			StartCoroutine("smallbeaten");
 		}
 
 		if (col.gameObject.name == "vine1") //進入藤蔓1

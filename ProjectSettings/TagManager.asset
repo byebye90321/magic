@@ -24,6 +24,7 @@ TagManager:
   - heart
   - NPC
   - pickUpObj
+  - trap
   layers:
   - Default
   - TransparentFX
@@ -76,11 +77,11 @@ TagManager:
   - name: Blood
     uniqueID: 1881793337
     locked: 0
-  - name: monster
-    uniqueID: 2505807791
-    locked: 0
   - name: NPC
     uniqueID: 4130353849
+    locked: 0
+  - name: monster
+    uniqueID: 2505807791
     locked: 0
   - name: player
     uniqueID: 2076825951

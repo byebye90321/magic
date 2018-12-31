@@ -87,6 +87,7 @@ public class GameManager : MonoBehaviour {
 
 	void Start () {
 		chapterState = ChapterState.Game;
+		usually.TransitionTo(10f);
 		balanceValue = PlayerPrefs.GetFloat("StaticObject.balanceSlider");
 		playerController.curHealth = PlayerPrefs.GetFloat("StaticObject.playerHealth");
 		playerController.HealthSlider.value = playerController.curHealth;
@@ -157,7 +158,7 @@ public class GameManager : MonoBehaviour {
 			cameraFollow.moveCount = 0;
 			yield return new WaitForSeconds(0.5f);
 			vine2.SetActive(true);
-			yield return new WaitForSeconds(3);
+			yield return new WaitForSeconds(2);
 			cameraFollow.isFollowTarget = true;
 			dialogsScript1.vine2text.SetActive(true);
 		}

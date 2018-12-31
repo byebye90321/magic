@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Spine.Unity;
+using Spine;
 
 public class NPCTask : MonoBehaviour {
 
@@ -29,6 +31,7 @@ public class NPCTask : MonoBehaviour {
 	public bool StatueTask; //判斷跟誰接任務
 
 	//-------------------NPC---------------------
+	public SkeletonAnimation BobbyAni;
 	public GameObject Bobby;
 	[HideInInspector]
 	public BoxCollider2D BobbyCollider;
@@ -52,6 +55,7 @@ public class NPCTask : MonoBehaviour {
 	public GameObject StoneParticle3;
 	public GameObject StoneParticle4;
 	public GameObject StoneParticle5;
+	public GameObject stoneFlash;
 	public GameObject Fairy;
 	public GameObject BigBalance;
 	private Animator BigBalanceAni;
@@ -133,6 +137,14 @@ public class NPCTask : MonoBehaviour {
 			StoneParticle5.SetActive(true);
 			StartCoroutine("waitClose");
 		}
+		if (slot1.full && slot2.full && slot3.full && slot4.full && slot5.full)
+		{
+			if (!slot1.isRight || !slot2.isRight || !slot3.isRight || !slot4.isRight || !slot5.isRight)
+			{
+				StartCoroutine("StoneWrong");
+			}
+		}
+		
 	}
 
 	//任務1 Bobby
@@ -266,19 +278,20 @@ public class NPCTask : MonoBehaviour {
 	public IEnumerator BobbyTaskFinish()
 	{
 		isTasting = false;
+		BobbyAni.state.SetAnimation(0, "idle__Multicolor", true);
 		if (playerController.isRedFlower) //lose
 		{
 			dialogsScript1.currentLine = 68;
 			dialogsScript1.endAtLine = 70;
 			dialogsScript1.NPCAppear();
-			yield return new WaitUntil(() =>dialogsScript1.currentLine ==70);
+			yield return new WaitUntil(() =>dialogsScript1.currentLine >=70);
 		}
 		else //win
 		{
 			dialogsScript1.currentLine = 63;
 			dialogsScript1.endAtLine = 67;
 			dialogsScript1.NPCAppear();
-			yield return new WaitUntil(() => dialogsScript1.currentLine == 67);
+			yield return new WaitUntil(() => dialogsScript1.currentLine >= 67);
 		}
 		BobbyCollider.enabled = false;
 		yield return new WaitForSeconds(0.5f);
@@ -351,6 +364,29 @@ public class NPCTask : MonoBehaviour {
 		cameraFollow.moveCount = 2;
 		slot1.isRight = false;  //防止循環
 	}
+
+	IEnumerator StoneWrong()  //石鎮錯誤
+	{
+		for (int i = 0; i < 1; i++)
+		{
+			stoneFlash.SetActive(true);
+			yield return new WaitForSeconds(0.1f);
+			stoneFlash.SetActive(false);
+			yield return new WaitForSeconds(0.1f);
+		}
+		yield return new WaitForSeconds(0.1f);
+		slot1.gameObject.transform.position = slot1.startPosition;
+		slot1.gameObject.transform.parent = slot1.startParent;
+		slot2.gameObject.transform.position = slot2.startPosition;
+		slot2.gameObject.transform.parent = slot2.startParent;
+		slot3.gameObject.transform.position = slot3.startPosition;
+		slot3.gameObject.transform.parent = slot3.startParent;
+		slot4.gameObject.transform.position = slot4.startPosition;
+		slot4.gameObject.transform.parent = slot4.startParent;
+		slot5.gameObject.transform.position = slot5.startPosition;
+		slot5.gameObject.transform.parent = slot5.startParent;
+	}
+	
 
 	public void Close()
 	{

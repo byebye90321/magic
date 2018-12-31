@@ -13928,6 +13928,7 @@ MonoBehaviour:
   enemyAtk: 10
   BossAtk: 30
   drawCanvas: {fileID: 0}
+  cutting: 1
   attackParticle: {fileID: 1321666422}
   NPCPoint: {fileID: 0}
   redFairyParticle: {fileID: 0}
@@ -31601,7 +31602,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1789159505
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
 --- !u!33 &858368492
 MeshFilter:
@@ -31828,7 +31829,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1789159505
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
 --- !u!33 &863012551
 MeshFilter:
@@ -58129,7 +58130,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1789159505
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
 --- !u!33 &1756818928
 MeshFilter:
@@ -58163,6 +58164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ffe3b58adf48bd4a9e0d3f8dca7c636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 462784794}
   obj1: {fileID: 1243852364850532, guid: 3f360d484a927284aa17aace94eda240, type: 2}
   obj2: {fileID: 1243852364850532, guid: 3f360d484a927284aa17aace94eda240, type: 2}
   wz: []
@@ -59016,7 +59018,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1789159505
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
 --- !u!33 &1916129298
 MeshFilter:
@@ -59050,6 +59052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ffe3b58adf48bd4a9e0d3f8dca7c636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 462784794}
   obj1: {fileID: 1243852364850532, guid: 3f360d484a927284aa17aace94eda240, type: 2}
   obj2: {fileID: 1243852364850532, guid: 3f360d484a927284aa17aace94eda240, type: 2}
   wz: []

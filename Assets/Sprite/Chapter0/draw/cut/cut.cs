@@ -5,6 +5,7 @@ using Spine;
 
 public class cut : MonoBehaviour
 {
+	public DG_playerController playerController;
     public GameObject obj1, obj2;    //分开后的两边水果
     public GameObject[] wz;          //几种污渍背景
 
@@ -39,7 +40,7 @@ public class cut : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            if (col.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)))                //鼠标在当前水果2Dcollider内
+            if (col.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)) &&playerController.cutting)                //鼠标在当前水果2Dcollider内
             {
                 //CreateHalf(obj1, 0);
                 //CreateHalf(obj2, 1);

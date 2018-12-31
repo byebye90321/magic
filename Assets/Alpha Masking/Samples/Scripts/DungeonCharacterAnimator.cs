@@ -5,8 +5,8 @@ public class DungeonCharacterAnimator : MonoBehaviour
 {
 
 	public float _initialRandomTime = 0;
-	public float _randomSpeed = 0;
-	public float xSpeed;
+	public float _randomSpeed = 0;  //來回速度
+	public float xDistacne;  //來回距離
 	private Vector2 initialPosition; //初始位置
 	public Transform player;
 	public MonsterState monsterState;
@@ -23,8 +23,8 @@ public class DungeonCharacterAnimator : MonoBehaviour
 
 	void Start()
 	{
-		_initialRandomTime = Random.Range(0f, 3f);
-		_randomSpeed = Random.Range(1f, 1.7f);
+		//_initialRandomTime = Random.Range(0f, 3f);
+		//_randomSpeed = Random.Range(1f, 1.7f);
 		initialPosition = transform.position;
 		monsterState = MonsterState.idle;
 	}
@@ -35,7 +35,7 @@ public class DungeonCharacterAnimator : MonoBehaviour
 		{
 			case MonsterState.idle:
 				float currentPositionTime = Time.time * _randomSpeed + _initialRandomTime;
-				transform.position = new Vector3(initialPosition.x + Mathf.Cos(currentPositionTime) * xSpeed, transform.position.y, transform.position.z);
+				transform.position = new Vector3(initialPosition.x + Mathf.Cos(currentPositionTime) * xDistacne, transform.position.y, transform.position.z);
 				if (currentPositionTime % (Mathf.PI * 2f) < Mathf.PI)
 				{
 					transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
