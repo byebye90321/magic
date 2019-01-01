@@ -61,13 +61,38 @@ public class cut : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		/*if (col.gameObject.name == "Player")
+		if (col.gameObject.name == "G0_Particle") //被G0攻擊
 		{
-			//CreateHalf(obj1, 0);
-			//CreateHalf(obj2, 1);
-			//Createwz();
-			//Destroy(this.gameObject);
-			StartCoroutine("Death");
-		}*/
+			StartCoroutine("SkillDeath");
+		}
+
+		if (col.gameObject.name == "G1_Particle") //被G1攻擊
+		{
+			StartCoroutine("SkillDeath");
+		}
+
+		if (col.gameObject.name == "B1_Particle") //被B1攻擊
+		{
+			StartCoroutine("SkillDeath");
+		}
+
+		if (col.gameObject.name == "G2_Particle") //被G2攻擊
+		{
+			StartCoroutine("SkillDeath");
+		}
+		if (col.gameObject.name == "B2_Particle") //被B2攻擊
+		{
+			StartCoroutine("SkillDeath");
+		}
+	}
+
+	IEnumerator SkillDeath()
+	{
+		yield return new WaitForSeconds(0.5f);
+		enemy.state.SetAnimation(0, "death", false);
+		DeathEffect.SetActive(true);
+		yield return new WaitForSeconds(0.7f);
+		isDeath += 1;
+		Destroy(this.gameObject);
 	}
 }
