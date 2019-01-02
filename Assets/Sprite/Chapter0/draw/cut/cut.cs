@@ -42,10 +42,10 @@ public class cut : MonoBehaviour
         {
             if (col.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)) &&playerController.cutting)                //鼠标在当前水果2Dcollider内
             {
-                //CreateHalf(obj1, 0);
-                //CreateHalf(obj2, 1);
-                //Createwz();
-				//Destroy(this.gameObject);				
+                /*CreateHalf(obj1, 0);
+                CreateHalf(obj2, 1);
+                Createwz();
+				Destroy(this.gameObject);*/				
 				StartCoroutine("Death");
 			}
         }

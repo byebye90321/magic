@@ -83,6 +83,14 @@ public class DungeonCharacterAnimator : MonoBehaviour
 
 		diatanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 		diatanceToInitial = Vector3.Distance(transform.position, initialPosition);
+		if (transform.position.x - player.transform.position.x>0 )
+		{
+			transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+		}
+		else
+		{
+			transform.localScale = new Vector3(-0.1f, 0.1f, 0.1f);
+		}
 
 		if (diatanceToInitial > 7 || diatanceToPlayer > 3)
 		{
@@ -93,6 +101,17 @@ public class DungeonCharacterAnimator : MonoBehaviour
 	void ReturnCheck()
 	{
 		diatanceToInitial = Vector3.Distance(transform.position, initialPosition);
+
+		if (transform.position.x  - initialPosition.x > 0)
+		{
+			transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+			Debug.Log("0");
+		}
+		else
+		{
+			transform.localScale = new Vector3(-0.1f, 0.1f, 0.1f);
+			Debug.Log("1");
+		}
 		if (diatanceToInitial < 0.1f)
 		{
 			isChasing = false;
@@ -106,5 +125,6 @@ public class DungeonCharacterAnimator : MonoBehaviour
 		yield return new WaitForSeconds(.3f);
 		warningObj.SetActive(false);
 		transform.position = Vector2.MoveTowards(transform.position, player.position, 2f * Time.deltaTime);
+
 	}
 }

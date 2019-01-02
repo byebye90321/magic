@@ -80,11 +80,11 @@ TagManager:
   - name: NPC
     uniqueID: 4130353849
     locked: 0
-  - name: monster
-    uniqueID: 2505807791
-    locked: 0
   - name: player
     uniqueID: 2076825951
+    locked: 0
+  - name: monster
+    uniqueID: 2505807791
     locked: 0
   - name: Effect
     uniqueID: 1262026175
