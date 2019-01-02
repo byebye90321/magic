@@ -65,7 +65,7 @@ public class DG_GameManager : MonoBehaviour {
 	public bool TeachMove = false;
 	[HideInInspector]
 	public bool TeachJump = false;
-	public RawImage mask;
+	public GameObject mask;
 	public GameObject maskObj;
 	private Animator HitOpen;
 	public GameObject HitObj;
@@ -112,7 +112,9 @@ public class DG_GameManager : MonoBehaviour {
 			HitOpen = HitObj.GetComponent<Animator>();
 			fingerAnim = fingerObj.GetComponent<Animator>();
 			enemyAnim = enemy.GetComponent<Animator>();
-			mask.uvRect = new Rect(1.15f, 0.26f, 1.5f, 1.5f);
+			//mask.uvRect = new Rect(1.15f, 0.26f, 1.5f, 1.5f);
+			//mask.transform.position = new Vector2(-900,-260);
+			mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(-900, -260);
 			//joystickCanvas.SetActive(false);
 			StartCoroutine("count1");
 		}
@@ -278,7 +280,9 @@ public class DG_GameManager : MonoBehaviour {
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "看來我們得使用其他方法才能加快攻擊";
 		maskObj.SetActive(true);
-		mask.uvRect = new Rect(1.15f, 0.26f, 1.5f, 1.5f);
+		//mask.uvRect = new Rect(1.15f, 0.26f, 1.5f, 1.5f);
+		//mask.transform.position = new Vector2(-900, -260);
+		mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(-900, -260);
 		TouchNextImage.SetActive(true);
 		NextFlashText.SetActive(true);
 		yield return new WaitUntil(() => count == 11);
@@ -289,7 +293,10 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count5() //CD技能
 	{
-		mask.uvRect = new Rect(-0.21f, 0.34f, 2.5f, 2.5f);
+		//mask.uvRect = new Rect(-0.21f, 0.34f, 2.5f, 2.5f);
+		//mask.transform.position = new Vector2(-266, -302);
+		mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(-266, -302);
+		//mask.GetComponent<RectTransform>().localScale = new Vector3(mask, 1.0f, 1.0f);
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "下方為已蒐集到技能";
 		TouchNextImage.SetActive(true);
@@ -345,7 +352,9 @@ public class DG_GameManager : MonoBehaviour {
 
 		fingerObj.SetActive(true);
 		maskObj.SetActive(true);
-		mask.uvRect = new Rect(0.33f, 0.26f, 1.5f, 1.5f);
+		//mask.uvRect = new Rect(0.33f, 0.26f, 1.5f, 1.5f);
+		//mask.transform.position = new Vector2(-498, -215);
+		mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(-498, -215);
 		HitOpen.SetTrigger("HitOpen");
 		teachText.text = "使用移動鍵與跳鍵逃離這裡";
 		fingerObj.SetActive(true);
