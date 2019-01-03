@@ -91,7 +91,6 @@ public class DG_playerController : MonoBehaviour
 	//------------------Enemy-----------------------
 	public int enemyAtk;
 	public int BossAtk;
-	
 
 	//------------------draw-------------------------
 	public Canvas drawCanvas;

@@ -516,13 +516,13 @@ public class DialogsScript1 : MonoBehaviour
 			characterImage.sprite = sister_angry;
 		}
 
-		if (currentLine == 79)
+		/*if (currentLine == 79)
 		{
 			whotalk.text = "緹緹";
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_oops;
-		}
+		}*/
 
 		if (currentLine == 81)
 		{
@@ -532,7 +532,7 @@ public class DialogsScript1 : MonoBehaviour
 			characterImage.sprite = sister_angry;
 		}
 
-		if (currentLine == 80 || currentLine == 82)
+		if (currentLine == 79 || currentLine == 82)
 		{
 			DisableTextBox();
 		}
@@ -663,9 +663,9 @@ public class DialogsScript1 : MonoBehaviour
 	{
 		yield return new WaitForSeconds(2);
 		currentLine = 71;
-		endAtLine = 80;
+		endAtLine = 79;
 		NPCAppear();
-		yield return new WaitUntil(() => currentLine >= 80);
+		yield return new WaitUntil(() => currentLine >= 79);
 		choose1.SetActive(true);
 		yield return new WaitForSeconds(.1f);
 	}
@@ -808,14 +808,15 @@ public class DialogsScript1 : MonoBehaviour
 		{
 			theText.text += lineOfText[letter];
 			//bool 判斷<color> </color>
-			if (theText.text == "<")
+			/*if (theText.text == "<")
 			{
 				Debug.Log("12");
 				yield return new WaitUntil(() => theText.text==">");		
-			}
+			}*/
 
 			letter += 1;
 			yield return new WaitForSeconds(typeSpeed);
+
 		}
 		theText.text = lineOfText;
 		isTyping = false;
