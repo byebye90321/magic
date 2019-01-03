@@ -25,6 +25,9 @@ public class NPCTask : MonoBehaviour {
 	public GameObject taskObj; //右邊支線任務面板
 	public GameObject bookObj;
 	private Animator taskAni;
+	public GameObject otherTitle;
+	public GameObject otherTask1; //波比任務
+	public GameObject otherTask2; //雕像任務
 	public Button bookBtn;
 	public int bookCount = 0;
 	public bool BobbyTask; //判斷跟誰接任務
@@ -166,7 +169,8 @@ public class NPCTask : MonoBehaviour {
 		if (BobbyTask == true)
 		{
 			BobbyCollider.enabled = false;
-			taskAni.SetInteger("taskCount", 2); //任務1
+			otherTitle.SetActive(true);
+			otherTask1.SetActive(true);  //波比任務
 			dialogsScript1.currentLine = 33;
 			dialogsScript1.endAtLine = 35;
 			dialogsScript1.NPCAppear();
@@ -175,7 +179,8 @@ public class NPCTask : MonoBehaviour {
 		if (StatueTask == true)
 		{
 			StatueCollider.enabled = false;
-			taskAni.SetInteger("taskCount", 3); //任務2
+			otherTitle.SetActive(true);
+			otherTask2.SetActive(true); //雕像任務
 			dialogsScript1.currentLine = 51;
 			dialogsScript1.endAtLine = 51;
 			dialogsScript1.NPCAppear();

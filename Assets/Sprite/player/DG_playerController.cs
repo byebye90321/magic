@@ -179,7 +179,7 @@ public class DG_playerController : MonoBehaviour
 			{
 				jumping = false;
 				animator_S.SetBool("isJump", jumping);
-				if (CrossPlatformInputManager.GetButtonDown("Jump"))
+				if (CrossPlatformInputManager.GetButtonDown("Jump")/*||Input.GetKeyDown(KeyCode.B)*/)
 				{
 					jumping = true;
 					rigid2D.velocity = new Vector2(0, jumpForce);
