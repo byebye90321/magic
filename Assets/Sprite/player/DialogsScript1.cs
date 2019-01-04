@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using Spine.Unity;
 using Spine;
 using UnityEngine.Audio;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class DialogsScript1 : MonoBehaviour
 {
@@ -244,6 +245,7 @@ public class DialogsScript1 : MonoBehaviour
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_happy;
+			Joystick.isMove = true;
 		}
 
 		if (currentLine == 19)  //書本飛翔
@@ -440,6 +442,7 @@ public class DialogsScript1 : MonoBehaviour
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_angry;
+			Joystick.isMove = true;
 		}
 
 		if(currentLine == 61)
@@ -476,7 +479,7 @@ public class DialogsScript1 : MonoBehaviour
 			characterImage.sprite = bobby_monochrome_cry;
 		}
 
-		if (currentLine == 70)
+		if (currentLine == 70 || currentLine == 82)
 		{
 			DisableTextBox();
 		}
@@ -532,8 +535,9 @@ public class DialogsScript1 : MonoBehaviour
 			characterImage.sprite = sister_angry;
 		}
 
-		if (currentLine == 79 || currentLine == 82)
+		if (currentLine == 79)
 		{
+			Joystick.isMove = true;
 			DisableTextBox();
 		}
 
@@ -645,7 +649,8 @@ public class DialogsScript1 : MonoBehaviour
 		endAtLine = 60;
 		NPCAppear();
 		yield return new WaitUntil(() => currentLine >= 60);
-		gameManager.teachHint.SetActive(true);
+		//gameManager.teachHint.SetActive(true);
+		gameManager.teachHintAni.SetTrigger("HintOpen");
 		gameManager.attackRedImage.SetActive(true);
 		EnemyController.isAttack = true;
 		yield return new WaitForSeconds(.1f);
@@ -773,7 +778,8 @@ public class DialogsScript1 : MonoBehaviour
 		PlayerPrefs.SetInt("StaticObject.sHE1", StaticObject.sHE1);
 		PlayerPrefs.SetInt("StaticObject.sBE1", StaticObject.sBE1);
 		yield return new WaitUntil(() => currentLine ==82);
-		gameManager.teachHint.SetActive(true);
+		//gameManager.teachHint.SetActive(true);
+		gameManager.teachHintAni.SetTrigger("HintOpen");
 		gameManager.attackRedImage.SetActive(true);
 		MonsterController.isAttack = true;
 		MonsterController.enemy2Transform.localRotation = Quaternion.Euler(0, 180, 0);

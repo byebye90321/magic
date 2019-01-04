@@ -62,6 +62,8 @@ public class GameManager : MonoBehaviour {
 	//-------------------畫符物件-----------------
 	public GameObject attackRedImage;
 	public GameObject teachHint;
+	[HideInInspector]
+	public Animator teachHintAni;
 	//-------------------角色---------------------
 	public GameObject smallBoss;
 	public GameObject monster;
@@ -100,6 +102,7 @@ public class GameManager : MonoBehaviour {
 		//Debug.Log("StaticObject.G2：" + StaticObject.G2);
 		stoneDoorAni = stoneDoorObj.GetComponent<Animator>();
 		FadeOutAni = FadeOut.GetComponent<Animator>();
+		teachHintAni = teachHint.GetComponent<Animator>();
 	}
 	
 	void FixedUpdate () {
@@ -179,7 +182,8 @@ public class GameManager : MonoBehaviour {
 	public IEnumerator BossAttackWin()
 	{
 		usually.TransitionTo(10f);
-		teachHint.SetActive(false);
+		//teachHint.SetActive(false);
+		teachHintAni.SetTrigger("close");
 		attackRedImage.SetActive(false);
 		cameraFollow.moveCount = 7;
 		yield return new WaitForSeconds(0.3f);
@@ -198,7 +202,8 @@ public class GameManager : MonoBehaviour {
 	public IEnumerator MonsterAttackWin()
 	{
 		usually.TransitionTo(10f);
-		teachHint.SetActive(false);
+		//teachHint.SetActive(false);
+		teachHintAni.SetTrigger("close");
 		attackRedImage.SetActive(false);
 		cameraFollow.moveCount = 9;
 		yield return new WaitForSeconds(0.3f);

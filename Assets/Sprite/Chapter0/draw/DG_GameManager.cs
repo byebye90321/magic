@@ -216,9 +216,9 @@ public class DG_GameManager : MonoBehaviour {
 		fingerObj.SetActive(true);
 		//fingerAnim.SetInteger("finger", 1);
 		drawCanvas.GetComponent<Canvas>().enabled = true;
-		yield return new WaitUntil(() => cut.isDeath >= 1);
+		yield return new WaitUntil(() => cut.DeathCount >= 1);
 		fingerObj.SetActive(false);
-		yield return new WaitUntil(() => cut.isDeath >= 2);
+		yield return new WaitUntil(() => cut.DeathCount >= 2);
 		teachText.text = "消滅成功！Perfect！";
 		drawCanvas.GetComponent<Canvas>().enabled = false;
 		blade.transform.position = new Vector2(0, 0);

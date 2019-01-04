@@ -199,6 +199,8 @@
      <Compile Include="Assets\Sprite\game kit\PhysicsHelper.cs" />
      <Compile Include="Assets\Sprite\game kit\PlatformCatcher.cs" />
      <Compile Include="Assets\Sprite\game kit\VisibleBubbleUp.cs" />
+     <Compile Include="Assets\Sprite\gameObject\ObjectAnimaton.cs" />
+     <Compile Include="Assets\Sprite\gameObject\ObjectStop.cs" />
      <Compile Include="Assets\Sprite\player\DG_playerController.cs" />
      <Compile Include="Assets\Sprite\player\DialogsScript.cs" />
      <Compile Include="Assets\Sprite\player\DialogsScript1.cs" />

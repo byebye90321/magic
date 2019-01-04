@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DungeonCharacterAnimator : MonoBehaviour
 {
-
+	public cut cut;
 	public float _initialRandomTime = 0;
 	public float _randomSpeed = 0;  //來回速度
 	public float xDistacne;  //來回距離
@@ -17,6 +17,7 @@ public class DungeonCharacterAnimator : MonoBehaviour
 		idle,
 		chase,
 		back,
+		dead,
 	}
 	public float diatanceToPlayer;
 	public float diatanceToInitial;
@@ -60,7 +61,13 @@ public class DungeonCharacterAnimator : MonoBehaviour
 				transform.position = Vector2.MoveTowards(transform.position, initialPosition, 2f * Time.deltaTime);
 				ReturnCheck();
 				break;
+
+			case MonsterState.dead:
+				transform.position = transform.position;
+				break;
 		}
+
+		
 	
 	}
 
@@ -92,7 +99,11 @@ public class DungeonCharacterAnimator : MonoBehaviour
 			transform.localScale = new Vector3(-0.1f, 0.1f, 0.1f);
 		}
 
-		if (diatanceToInitial > 7 || diatanceToPlayer > 3)
+		if (cut.isDead)
+		{
+			monsterState = MonsterState.dead;
+		}
+		else if (diatanceToInitial > 7 || diatanceToPlayer > 3)
 		{
 			monsterState = MonsterState.back;
 		}
@@ -105,12 +116,10 @@ public class DungeonCharacterAnimator : MonoBehaviour
 		if (transform.position.x  - initialPosition.x > 0)
 		{
 			transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-			Debug.Log("0");
 		}
 		else
 		{
 			transform.localScale = new Vector3(-0.1f, 0.1f, 0.1f);
-			Debug.Log("1");
 		}
 		if (diatanceToInitial < 0.1f)
 		{
