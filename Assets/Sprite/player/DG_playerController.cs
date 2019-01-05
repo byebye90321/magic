@@ -17,6 +17,8 @@ public class DG_playerController : MonoBehaviour
 	public ExampleGestureHandler gesture;
 
 	private ActiveClimb activeClimb;
+	[HideInInspector]
+	public NpcTalk npcTalk;
 	//------------playerControl----------------------
 	public Rigidbody2D rigid2D;
 	public Transform graphics;
@@ -125,6 +127,7 @@ public class DG_playerController : MonoBehaviour
 			blueFairyCollider = blueFairy.GetComponent<BoxCollider2D>();
 			redFlowerCollider = redFlower.GetComponent<BoxCollider2D>();
 			blueFlowerCollider = blueFlower.GetComponent<BoxCollider2D>();
+			activeClimb = GameObject.Find("vine1").GetComponent<ActiveClimb>();  //防錯誤 爬藤蔓
 		}
 	}
 
@@ -250,53 +253,22 @@ public class DG_playerController : MonoBehaviour
 
 		if (CrossPlatformInputManager.GetButtonDown("Climb"))
 		{
-			isClimbBtn = true;
+			activeClimb.isClimb = true;
 			animator_S.SetBool("climb", true);
 		}
 
 
-		if (isClimb && isClimbBtn)
+		if (activeClimb.isClimb)
 		{
 			rigid2D.MovePosition(rigid2D.position + Vector2.up * 2 * Time.deltaTime);
+			if (rigid2D.position.y >= activeClimb.highestPoint)
+			{
+				rigid2D.position = activeClimb.targetPoint;
+				animator_S.SetBool("climb", false);
+				activeClimb.isClimb = false;
+			}
 
-			if (vine1 == true)  //藤蔓1
-			{
-				//rigid2D.position = new Vector2(4.1f, rigid2D.position.y);
-				if (rigid2D.position.y >= 5)
-				{
-					rigid2D.position = new Vector2(4.7f, 6);
-					animator_S.SetBool("climb", false);
-					isClimbBtn = false;
-					isClimb = false;
-					vine1 = false;
-				}
-			}
-			else if (vine2 == true)  //藤蔓2
-			{
-				//rigid2D.position = new Vector2(13.2f, rigid2D.position.y);
-				if (rigid2D.position.y >= 6.5f)
-				{
-					rigid2D.position = new Vector2(14, 7.5f);
-					animator_S.SetBool("climb", false);
-					isClimbBtn = false;
-					isClimb = false;
-					vine2 = false;
-				}
-			}
-			else if (vine3 == true)  //藤蔓3
-			{
-				//rigid2D.position = new Vector2(13.2f, rigid2D.position.y);
-				if (rigid2D.position.y >= 6.5f)
-				{
-					rigid2D.position = new Vector2(51.5f, 8f);
-					animator_S.SetBool("climb", false);
-					isClimbBtn = false;
-					isClimb = false;
-					vine3 = false;
-				}
-			}
 		}
-
 
 		//----------------------Pick Up--------------------------
 		if (CrossPlatformInputManager.GetButtonDown("PickUp"))
@@ -329,7 +301,6 @@ public class DG_playerController : MonoBehaviour
 				blueFairy.SetActive(true);
 				isBlueFairy = false;
 				isRedFairy = true;
-				//blueFairyCollider.enabled = false;
 				npcTask.StatueCollider.enabled = true;
 			}
 			if (blueFairy.activeInHierarchy && isBlueFairy)
@@ -338,7 +309,6 @@ public class DG_playerController : MonoBehaviour
 				redFairy.SetActive(true);
 				isBlueFairy = true;
 				isRedFairy = false;
-				//redFairyCollider.enabled = false;
 				npcTask.StatueCollider.enabled = true;
 			}
 
@@ -348,7 +318,6 @@ public class DG_playerController : MonoBehaviour
 				blueFlower.SetActive(true);
 				isRedFlower = true;
 				isBlueFlower = false;
-				//blueFlowerCollider.enabled = false;
 				gameManager.Teleportation.SetActive(true);
 				npcTask.BobbyCollider.enabled = true;
 			}
@@ -358,7 +327,6 @@ public class DG_playerController : MonoBehaviour
 				redFlower.SetActive(true);
 				isRedFlower = false;
 				isBlueFlower = true;
-				//redFlowerCollider.enabled = false;
 				gameManager.Teleportation.SetActive(true);
 				npcTask.BobbyCollider.enabled = true;
 			}
@@ -366,8 +334,29 @@ public class DG_playerController : MonoBehaviour
 			StartCoroutine("MoveWait");
 			PickUpImg.enabled = false;
 		}
-	}
 
+		//-----------------------Talk----------------------------
+		if (CrossPlatformInputManager.GetButtonDown("Talk"))
+		{
+			if (Mathf.Abs(rigid2D.transform.position.x - npcTalk.NPC.transform.position.x) < 2 && npcTalk.NPCPoint.activeInHierarchy == true && npcTalk.isTasting == false)
+			{
+				npcTalk.isTasting = true;
+				if (isRedFlower || isBlueFlower)  //完成任務
+				{
+					Debug.Log("gg");
+					npcTask.GetComponent<NPCTask>().Invoke(npcTalk.endTaskName, 0f); //尚有問題，進不去 
+				}
+				else  //接任務
+				{
+					//BobbyTast();
+					string task = npcTalk.startTaskName;
+					//Invoke("npcTask.BobbyTast()", 0f);
+					npcTask.GetComponent<NPCTask>().Invoke(task, 0f);
+					Debug.Log("rr");
+				}
+			}
+		}
+	}
 	//---------------------碰撞-----------------------
 	void OnTriggerEnter2D(Collider2D col)  
 	{
@@ -431,47 +420,14 @@ public class DG_playerController : MonoBehaviour
 			}
 		}
 
-		/*if (col.tag == "vine") //進入藤蔓
+		if (col.tag == "vine") //進入藤蔓
 		{
 			activeClimb = col.gameObject.GetComponent<ActiveClimb>();
-		}*/
-
-		/*if (col.tag == "trap") //碰到陷阱
-		{
-			TakeDamage(1);
-			animator_S.SetTrigger("beaten");
-			healthTextObj.SetActive(true);
-			healthText.text = "-" + 1;
-			StartCoroutine("smallbeaten");
-		}*/
-
-		if (col.gameObject.name == "vine1") //進入藤蔓1
-		{
-			isClimb = true;  //是否可以爬
-			ClimbImg.enabled = true;  //開啟爬鍵
-			vine1 = true; //遇到vine1的藤蔓
-			ClimbBtn.transform.SetAsLastSibling();
-		}
-
-		if (col.gameObject.name == "vine2") //進入藤蔓2
-		{
-			isClimb = true;  //是否可以爬
-			ClimbImg.enabled = true;  //開啟爬鍵
-			vine2 = true; //遇到vine1的藤蔓
-			ClimbBtn.transform.SetAsLastSibling();
-		}
-
-		if (col.gameObject.name == "vine3") //進入藤蔓3
-		{
-			isClimb = true;  //是否可以爬
-			ClimbImg.enabled = true;  //開啟爬鍵
-			vine3 = true; //遇到vine1的藤蔓
-			ClimbBtn.transform.SetAsLastSibling();
 		}
 
 		if (col.tag == "NPC") //觸碰到NPC
 		{
-			NPCPoint.SetActive(true);
+			npcTalk = col.gameObject.GetComponent<NpcTalk>();
 		}
 
 		if (col.tag == "pickUpObj") //拾取物件
@@ -529,25 +485,6 @@ public class DG_playerController : MonoBehaviour
 		{
 			addBlood = false;
 			lineParticle.SetActive(false);
-		}
-
-		if (col.gameObject.name == "vine1") //離開藤蔓1
-		{
-			isClimb = false;
-			ClimbImg.enabled = false;
-			vine1 = false;
-		}
-		if (col.gameObject.name == "vine2") //離開藤蔓2
-		{
-			isClimb = false;
-			ClimbImg.enabled = false;
-			vine2 = false;
-		}
-		if (col.gameObject.name == "vine3") //離開藤蔓3
-		{
-			isClimb = false;
-			ClimbImg.enabled = false;
-			vine3 = false;
 		}
 
 		if (col.tag == "NPC") //觸碰到NPC

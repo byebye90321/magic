@@ -166,7 +166,7 @@ public class NPCTask : MonoBehaviour {
 		taskPanel.SetActive(false);
 		bookCount = 0;  //如果右方面板關閉，強制開啟
 		taskAni.SetBool("isOpen", true);
-		if (BobbyTask == true)
+		if (playerController.npcTalk.whoTask == "BobbyTask")
 		{
 			BobbyCollider.enabled = false;
 			otherTitle.SetActive(true);

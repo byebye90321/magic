@@ -26,12 +26,16 @@ public class ObjectTrap : MonoBehaviour {
 	{
 		if (col.gameObject.name == "Player")
 		{
-
+			healthTextObj.SetActive(false);
 			CancelInvoke("beaten");
 		}
 	}
+
 	void beaten()
 	{
+		if (!this.gameObject.activeInHierarchy)
+			CancelInvoke("beaten");
+
 		playerController.TakeDamage(damageInt);
 		characterAni.SetTrigger("beaten");
 		healthTextObj.SetActive(true);
