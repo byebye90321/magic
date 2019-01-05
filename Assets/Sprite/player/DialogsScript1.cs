@@ -671,7 +671,7 @@ public class DialogsScript1 : MonoBehaviour
 		endAtLine = 79;
 		NPCAppear();
 		yield return new WaitUntil(() => currentLine >= 79);
-		choose1.SetActive(true);
+		choose1.SetActive(true);  //開啟任務面板
 		yield return new WaitForSeconds(.1f);
 	}
 

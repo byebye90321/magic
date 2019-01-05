@@ -30,14 +30,12 @@ public class RunGameManager : MonoBehaviour {
 	public GameObject distance;
 
 	//教學物件
-	public GameObject targetText;
 	public GameObject Arrow;
-
 
 	//暫停物件
 	public GameObject pauseMenu;
 	public GameObject black_bgImage;
-	public Button Puase;	
+	public Button Puase;
 	float StartTime = 1;
 
 	//FADE淡出
@@ -65,15 +63,19 @@ public class RunGameManager : MonoBehaviour {
 	//---------------教學Next物件---------------
 	public GameObject TouchNextImage;
 	private int count = 0;
-	public GameObject maskObj;
-	public RawImage mask;
-	public Text teachText;
+	public GameObject maskGroup;
+	public GameObject mask;
+	public GameObject HintObj;
+	[HideInInspector]
+	public Animator HintAni;
+	public Text HintText;
 	public GameObject NextFlashText;
 
 	void Start () {
 		Puase.interactable = false;
 		Instance = this;
 		fade = winFade.GetComponent<Animator>();
+		HintAni = HintObj.GetComponent<Animator>();
 		lose_Fade.SetActive(false);
 		Application.targetFrameRate = 100;  //幀數
 		balanceValue = PlayerPrefs.GetFloat("StaticObject.balanceSlider");
@@ -108,27 +110,27 @@ public class RunGameManager : MonoBehaviour {
 
 	IEnumerator Target() {
 		gameState = GameState.Start;
-		maskObj.SetActive(true);
-		mask.uvRect = new Rect(0.79f, 0.26f, 1.5f, 1.5f);
-		targetText.SetActive(true);
+		maskGroup.SetActive(true);
+		//mask.uvRect = new Rect(0.79f, 0.26f, 1.5f, 1.5f);
+		mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(900, -250);
 		NextFlashText.SetActive(true);
-		teachText.text = "目標！逃離地下道抵達終點";
+		HintAni.SetTrigger("HintOpen");
+		HintText.text = "目標！逃離地下道抵達終點";
 		yield return new WaitUntil(() => count == 1);
-		teachText.text = "上方為你與怪物的距離條";
+		HintText.text = "上方為你與怪物的距離條";
 		distance.transform.SetSiblingIndex(6);
 		yield return new WaitUntil(() => count == 2);
-		teachText.text = "若觸碰到後方怪物即挑戰失敗，請注意";
+		HintText.text = "若觸碰到後方怪物即挑戰失敗，請注意";
 		yield return new WaitUntil(() => count == 3);
-		teachText.text = "挑戰即將開始";
+		HintText.text = "挑戰即將開始";
 		yield return new WaitUntil(() => count == 4);
 		NextFlashText.SetActive(false);
 		distance.transform.SetAsFirstSibling();
 		//mask.uvRect = new Rect(0.38f, 0.3f, 1.5f, 1.5f);
-		maskObj.SetActive(false);
-		targetText.SetActive(false);
+		HintAni.SetTrigger("close");
+		maskGroup.SetActive(false);
 		TouchNextImage.SetActive(false);
 		InvokeRepeating("timer", 1, 1);
-		gameState = GameState.Start;
 	}
 
 	public void Next()

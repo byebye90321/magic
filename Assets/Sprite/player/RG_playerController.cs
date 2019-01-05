@@ -45,7 +45,7 @@ public class RG_playerController : MonoBehaviour
 	//---------------------------Hurt-----------------------------
 	public float VecityHurt;
 	public float RecoverySpeed;
-	public GameObject falsh;
+	public GameObject flash;
 	//---------------------------音效-----------------------------
 	public AudioSource audio;
 	public AudioClip hurtSound;
@@ -110,8 +110,8 @@ public class RG_playerController : MonoBehaviour
 					{
 						speed = 0.12f;
 						VecitySpeed = 0.12f;
-						runGameManager.maskObj.SetActive(false);
-						runGameManager.targetText.SetActive(false);
+						runGameManager.maskGroup.SetActive(false);
+						runGameManager.HintAni.SetTrigger("close");
 						//teachObj.SetActive(false);
 						Up = false;
 					}
@@ -126,8 +126,8 @@ public class RG_playerController : MonoBehaviour
 					{
 						speed = 0.12f;
 						VecitySpeed = 0.12f;
-						runGameManager.maskObj.SetActive(false);
-						runGameManager.targetText.SetActive(false);
+						runGameManager.maskGroup.SetActive(false);
+						runGameManager.HintAni.SetTrigger("close");
 						//teachObj.SetActive(false);
 						Down = false;
 					}
@@ -196,50 +196,6 @@ public class RG_playerController : MonoBehaviour
 		{
 			Time.timeScale = 1;
 		}
-
-
-		
-
-		/*if (Touch)
-		{
-			if (grounded)
-			{
-				
-				Vector2 offset = pointB - pointA;
-				if (offset.y > 0 && sliding == true)
-				{
-					//Debug.Log("up");
-					sister.SetTrigger("jump");
-					bother.SetTrigger("jump");
-					rigid2D.velocity = new Vector2(0, jumpForce);
-					if (Up == true)
-					{
-						speed = 0.15f;
-						VecitySpeed = 0.15f;
-						runGameManager.black_bgImage.SetActive(false);
-						teachObj.SetActive(false);
-						Up = false;
-
-					}
-				}
-				else if (offset.y < 0 && sliding==true)
-				{
-					//Debug.Log("down");
-					sister.SetTrigger("sliding");
-					bother.SetTrigger("sliding");
-					SlidingParticle.SetActive(true);
-					StartCoroutine("Sliding");
-					if (Down == true)
-					{
-						speed = 0.15f;
-						VecitySpeed = 0.15f;
-						runGameManager.black_bgImage.SetActive(false);
-						teachObj.SetActive(false);
-						Down = false;
-					}
-				}
-			}
-		}*/
 	}
 
 
@@ -262,9 +218,9 @@ public class RG_playerController : MonoBehaviour
 	IEnumerator HurtDelay()
 	{
 		for (int i = 0; i < 3; i++) {
-			falsh.SetActive(true);
+			flash.SetActive(true);
 			yield return new WaitForSeconds(0.1f);
-			falsh.SetActive(false);
+			flash.SetActive(false);
 			yield return new WaitForSeconds(0.1f);
 		}
 		yield return new WaitForSeconds(0.2f);
@@ -289,26 +245,28 @@ public class RG_playerController : MonoBehaviour
 
 		if (col.gameObject.name == "TeachUp")
 		{
+			hurt.SetActive(false);
 			speed = 0.01f;
 			VecitySpeed = 0.01f;
 			Up = true;
 			jumpBtn.interactable = true;
-			runGameManager.targetText.SetActive(true);
-			runGameManager.teachText.text = "遇到下方障礙物，按跳躍鍵";
-			runGameManager.maskObj.SetActive(true);
-			runGameManager.mask.uvRect = new Rect(-0.87f, 0.3f, 1.5f, 1.5f);
+			runGameManager.HintAni.SetTrigger("HintOpen");
+			runGameManager.HintText.text = "遇到下方障礙物，按跳躍鍵";
+			runGameManager.maskGroup.SetActive(true);
+			runGameManager.mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(530, -250);
 		}
 
 		if (col.gameObject.name == "TeachDown")
 		{
+			hurt.SetActive(false);
 			speed = 0.01f;
 			VecitySpeed = 0.01f;
 			Down = true;
 			slideBtn.interactable = true;
-			runGameManager.targetText.SetActive(true);
-			runGameManager.teachText.text = "遇到上方障礙物，按下滑鍵";
-			runGameManager.maskObj.SetActive(true);	
-			runGameManager.mask.uvRect = new Rect(0.38f, 0.3f, 1.5f, 1.5f);
+			runGameManager.HintAni.SetTrigger("HintOpen");
+			runGameManager.HintText.text = "遇到上方障礙物，按下滑鍵";
+			runGameManager.maskGroup.SetActive(true);
+			runGameManager.mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(-550, -250);
 		}
 	}
 
@@ -319,8 +277,9 @@ public class RG_playerController : MonoBehaviour
 			speed = 0.12f;
 			VecitySpeed = 0.12f;
 			Up = false;
-			runGameManager.maskObj.SetActive(false);
-			runGameManager.targetText.SetActive(false);
+			runGameManager.maskGroup.SetActive(false);
+			runGameManager.HintAni.SetTrigger("close");
+			hurt.SetActive(true);
 		}
 
 		if (col.gameObject.name == "TeachDown")
@@ -328,8 +287,9 @@ public class RG_playerController : MonoBehaviour
 			speed = 0.12f;
 			VecitySpeed = 0.12f;
 			Down = false;
-			runGameManager.maskObj.SetActive(false);
-			runGameManager.targetText.SetActive(false);
+			runGameManager.maskGroup.SetActive(false);
+			runGameManager.HintAni.SetTrigger("close");
+			hurt.SetActive(true);
 		}
 	}
 }

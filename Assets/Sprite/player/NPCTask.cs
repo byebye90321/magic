@@ -16,8 +16,8 @@ public class NPCTask : MonoBehaviour {
 	public Rigidbody2D rigid2D;
 	//----------------NPC Tast------------------------
 	public GameObject taskPanel; //任務面板
-	public Text taskTitleText;
-	public Text taskContentText;
+	public Text taskTitleText;  //任務標題
+	public Text taskContentText; //內容文字
 	public GameObject BobbyPoint; //波比提示!特效
 	public GameObject StonePoint; //石陣提示!特效
 	public GameObject StatuePoint; //石陣提示!特效

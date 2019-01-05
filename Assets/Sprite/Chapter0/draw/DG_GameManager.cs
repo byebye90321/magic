@@ -67,8 +67,8 @@ public class DG_GameManager : MonoBehaviour {
 	public bool TeachJump = false;
 	public GameObject mask;
 	public GameObject maskObj;
-	private Animator HitOpen;
-	public GameObject HitObj;
+	private Animator HintAni;
+	public GameObject HintObj;
 	private Animator fingerAnim;
 	public GameObject fingerObj;
 	private Animator enemyAnim;
@@ -109,7 +109,7 @@ public class DG_GameManager : MonoBehaviour {
 			jumpBtn.color = new Color(255, 255, 255, 0);
 
 			drawCanvas.GetComponent<Canvas>().enabled = false;
-			HitOpen = HitObj.GetComponent<Animator>();
+			HintAni = HintObj.GetComponent<Animator>();
 			fingerAnim = fingerObj.GetComponent<Animator>();
 			enemyAnim = enemy.GetComponent<Animator>();
 			//mask.uvRect = new Rect(1.15f, 0.26f, 1.5f, 1.5f);
@@ -163,6 +163,7 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count1() //開頭
 	{
+		HintAni.SetTrigger("HintOpen");
 		teachText.text = "目標！使用魔法擊退敵人！";
 		teachText.fontSize = 34;
 		maskObj.SetActive(true);
@@ -172,7 +173,7 @@ public class DG_GameManager : MonoBehaviour {
 
 	IEnumerator count2()  //平衡條介紹
 	{
-		HitOpen.SetTrigger("HitOpen");
+		HintAni.SetTrigger("HintOpen");
 		teachText.fontSize = 28;
 		balanceSlider.transform.SetSiblingIndex(4);
 		teachText.text = "上方的平衡條代表世界的平衡值";
@@ -188,11 +189,11 @@ public class DG_GameManager : MonoBehaviour {
 	IEnumerator count3() //小怪物
 	{
 		//----------小怪物傷害----------
-		HitObj.SetActive(true);
+		HintAni.SetTrigger("HintOpen");
 		teachText.text = "接下來將介紹基本攻擊方式";
 		yield return new WaitUntil(() => count == 5);
 		maskObj.SetActive(false);
-		HitObj.SetActive(true);
+		HintAni.SetTrigger("HintOpen");
 		teachText.text = "小怪物來襲！";
 		cut1.GetComponent<cut>().enabled = false;
 		cut2.GetComponent<cut>().enabled = false;
@@ -206,7 +207,7 @@ public class DG_GameManager : MonoBehaviour {
 		yield return new WaitForSeconds(1f);
 		enemyAnim.SetTrigger("Atk");
 		yield return new WaitForSeconds(2f);
-		HitOpen.SetTrigger("HitOpen");
+		HintAni.SetTrigger("HintOpen");
 		teachText.text = "現在準備反擊！";
 		//----------反擊----------
 		yield return new WaitForSeconds(1f);
@@ -229,7 +230,7 @@ public class DG_GameManager : MonoBehaviour {
 	IEnumerator count4() //大怪物
 	{
 		//----------大怪物傷害----------
-		HitObj.SetActive(false);
+		HintAni.SetTrigger("close");
 		warningRedImage.SetActive(true);
 		for (int i = 0; i < 3; i++)
 		{
@@ -239,19 +240,18 @@ public class DG_GameManager : MonoBehaviour {
 			warningExclamation.SetActive(false);
 			yield return new WaitForSeconds(0.3f);
 		}
-		HitObj.SetActive(true);
-		HitOpen.SetTrigger("HitOpen");
+		HintAni.SetTrigger("HintOpen");
+		HintAni.SetTrigger("HintOpen");
 		teachText.text = "警告！小BOSS即將來襲！！！";
 		yield return new WaitForSeconds(1f);
 		BossEnemy.SetActive(true);
 		TouchNextImage.SetActive(true);
 		NextFlashText.SetActive(true);
 		yield return new WaitUntil(() => count == 7);
-		HitOpen.SetTrigger("HitOpen");
-		HitOpen.SetTrigger("HitOpen");
+		HintAni.SetTrigger("HintOpen");
 		teachText.text = "小BOSS會使用技能造成巨大傷害";
 		yield return new WaitUntil(() => count == 8);
-		HitOpen.SetTrigger("HitOpen");
+		HintAni.SetTrigger("HintOpen");
 		teachText.text = "攻擊即將來襲，請注意";
 		yield return new WaitUntil(() => count == 9);
 		TouchNextImage.SetActive(false);
@@ -266,17 +266,17 @@ public class DG_GameManager : MonoBehaviour {
 		TouchNextImage.SetActive(false);
 		NextFlashText.SetActive(false);
 		drawCanvas.GetComponent<Canvas>().enabled = true;
-		HitOpen.SetTrigger("HitOpen");
+		HintAni.SetTrigger("HintOpen");
 		teachText.text = "連續攻擊小BOSS";
 		fingerObj.SetActive(true);
 		fingerAnim.SetInteger("finger", 1);
 		yield return new WaitUntil(() => dg_enemyController.curHealth <= 99);
 		fingerObj.SetActive(false);
-		HitOpen.SetTrigger("HitOpen");
+		HintAni.SetTrigger("HintOpen");
 		teachText.text = "繼續攻擊";
 		yield return new WaitUntil(() => dg_enemyController.curHealth <= 90);  //BUG
 		drawCanvas.GetComponent<Canvas>().enabled = false;
-		HitOpen.SetTrigger("HitOpen");
+		HintAni.SetTrigger("HintOpen");
 		teachText.text = "看來我們得使用其他方法才能加快攻擊";
 		maskObj.SetActive(true);
 		//mask.uvRect = new Rect(1.15f, 0.26f, 1.5f, 1.5f);
@@ -293,7 +293,7 @@ public class DG_GameManager : MonoBehaviour {
 	{
 		//mask.uvRect = new Rect(-0.21f, 0.34f, 2.5f, 2.5f);
 		mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(-266, -302);
-		HitOpen.SetTrigger("HitOpen");
+		HintAni.SetTrigger("HintOpen");
 		teachText.text = "下方為已蒐集到技能";
 		TouchNextImage.SetActive(true);
 		NextFlashText.SetActive(true);
@@ -307,7 +307,7 @@ public class DG_GameManager : MonoBehaviour {
 		fingerAnim.SetInteger("finger", 2);
 		drawCanvas.GetComponent<Canvas>().enabled = true;
 		yield return new WaitUntil(() => geature.skill0.currentCoolDown == 0);
-		HitOpen.SetTrigger("HitOpen");
+		HintAni.SetTrigger("HintOpen");
 		teachText.text = "Excellent！";
 		notDrawImage.SetActive(false);
 		warningRedImage.SetActive(false);
@@ -315,12 +315,12 @@ public class DG_GameManager : MonoBehaviour {
 		drawCanvas.GetComponent<Canvas>().enabled = false;
 		BossCollider.GetComponent<BoxCollider2D>().enabled = false;
 		yield return new WaitForSeconds(2f);
-		HitOpen.SetTrigger("HitOpen");
+		HintAni.SetTrigger("HintOpen");
 		teachText.text = "技能須等待冷卻時間才可繼續使用";
 		TouchNextImage.SetActive(true);
 		NextFlashText.SetActive(true);
 		yield return new WaitUntil(() => count == 13);
-		HitObj.SetActive(false);
+		HintAni.SetTrigger("close");
 
 		textPanel.SetActive(true);
 		Puase.interactable = false;
@@ -328,7 +328,7 @@ public class DG_GameManager : MonoBehaviour {
 		TouchNextImage.SetActive(true);
 		NextFlashText.SetActive(true);
 		yield return new WaitUntil(() => count == 14);
-		HitObj.SetActive(true);
+		HintAni.SetTrigger("HintOpen");
 		TouchNextImage.SetActive(false);
 		textPanel.SetActive(false);
 		NextFlashText.SetActive(false);
@@ -350,7 +350,7 @@ public class DG_GameManager : MonoBehaviour {
 		maskObj.SetActive(true);
 		//mask.uvRect = new Rect(0.33f, 0.26f, 1.5f, 1.5f);
 		mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(-498, -215);
-		HitOpen.SetTrigger("HitOpen");
+		HintAni.SetTrigger("HintOpen");
 		teachText.text = "使用移動鍵與跳鍵逃離這裡";
 		fingerObj.SetActive(true);
 		fingerAnim.SetInteger("finger", 3);

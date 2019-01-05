@@ -15,6 +15,8 @@ public class DG_playerController : MonoBehaviour
 	public NPCTask npcTask;
 	public DialogsScript1 dialogsScript1; //正章1對話
 	public ExampleGestureHandler gesture;
+
+	private ActiveClimb activeClimb;
 	//------------playerControl----------------------
 	public Rigidbody2D rigid2D;
 	public Transform graphics;
@@ -123,7 +125,6 @@ public class DG_playerController : MonoBehaviour
 			blueFairyCollider = blueFairy.GetComponent<BoxCollider2D>();
 			redFlowerCollider = redFlower.GetComponent<BoxCollider2D>();
 			blueFlowerCollider = blueFlower.GetComponent<BoxCollider2D>();
-
 		}
 	}
 
@@ -250,25 +251,27 @@ public class DG_playerController : MonoBehaviour
 		if (CrossPlatformInputManager.GetButtonDown("Climb"))
 		{
 			isClimbBtn = true;
-			animator_S.SetBool("climb",true);
+			animator_S.SetBool("climb", true);
 		}
+
 
 		if (isClimb && isClimbBtn)
 		{
 			rigid2D.MovePosition(rigid2D.position + Vector2.up * 2 * Time.deltaTime);
 
-            if (vine1 == true)  //藤蔓1
-            {
-                //rigid2D.position = new Vector2(4.1f, rigid2D.position.y);
-                if (rigid2D.position.y >= 5)
-                {
-                    rigid2D.position = new Vector2(4.7f, 6);
-                    animator_S.SetBool("climb", false);
-                    isClimbBtn = false;
-                    isClimb = false;
-                    vine1 = false;
-                }
-			}else if (vine2 == true)  //藤蔓2
+			if (vine1 == true)  //藤蔓1
+			{
+				//rigid2D.position = new Vector2(4.1f, rigid2D.position.y);
+				if (rigid2D.position.y >= 5)
+				{
+					rigid2D.position = new Vector2(4.7f, 6);
+					animator_S.SetBool("climb", false);
+					isClimbBtn = false;
+					isClimb = false;
+					vine1 = false;
+				}
+			}
+			else if (vine2 == true)  //藤蔓2
 			{
 				//rigid2D.position = new Vector2(13.2f, rigid2D.position.y);
 				if (rigid2D.position.y >= 6.5f)
@@ -293,6 +296,7 @@ public class DG_playerController : MonoBehaviour
 				}
 			}
 		}
+
 
 		//----------------------Pick Up--------------------------
 		if (CrossPlatformInputManager.GetButtonDown("PickUp"))
@@ -367,7 +371,7 @@ public class DG_playerController : MonoBehaviour
 	//---------------------碰撞-----------------------
 	void OnTriggerEnter2D(Collider2D col)  
 	{
-		if (col.tag == "smallEnemy") //序章-玩家受到小怪物攻擊
+		/*if (col.tag == "smallEnemy") //序章-玩家受到小怪物攻擊
 		{
 			TakeDamage(enemyAtk);
 			animator_S.SetTrigger("beaten");
@@ -378,7 +382,7 @@ public class DG_playerController : MonoBehaviour
 			healthTextObj.SetActive(true);
 			healthText.text = "-" + enemyAtk;
 			StartCoroutine("smallbeaten");
-		}
+		}*/
 
 		if (col.gameObject.name == "AtkParticle") //序章-玩家受到小BOSS攻擊
 		{
@@ -427,14 +431,19 @@ public class DG_playerController : MonoBehaviour
 			}
 		}
 
-		if (col.tag == "trap") //碰到陷阱
+		/*if (col.tag == "vine") //進入藤蔓
+		{
+			activeClimb = col.gameObject.GetComponent<ActiveClimb>();
+		}*/
+
+		/*if (col.tag == "trap") //碰到陷阱
 		{
 			TakeDamage(1);
 			animator_S.SetTrigger("beaten");
 			healthTextObj.SetActive(true);
 			healthText.text = "-" + 1;
 			StartCoroutine("smallbeaten");
-		}
+		}*/
 
 		if (col.gameObject.name == "vine1") //進入藤蔓1
 		{
@@ -605,7 +614,7 @@ public class DG_playerController : MonoBehaviour
 		healthTextObj.SetActive(false);
 	}
 
-	IEnumerator smallbeaten()
+	/*IEnumerator smallbeaten()
 	{
 		for (int i = 0; i < 2; i++)
 		{
@@ -616,7 +625,7 @@ public class DG_playerController : MonoBehaviour
 		}
 		yield return new WaitForSeconds(.5f);
 		healthTextObj.SetActive(false);
-	}
+	}*/
 
 	IEnumerator Bossbeaten()
 	{
