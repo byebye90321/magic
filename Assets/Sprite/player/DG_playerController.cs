@@ -17,16 +17,13 @@ public class DG_playerController : MonoBehaviour
 	public ExampleGestureHandler gesture;
 
 	private ActiveClimb activeClimb;
+	private ActivePickUp activePickUp;
 	[HideInInspector]
 	public NpcTalk npcTalk;
 	//------------playerControl----------------------
 	public Rigidbody2D rigid2D;
 	public Transform graphics;
 	public float speed = 3.0f;
-	public GameObject PickUpBtn;
-	private Image PickUpImg;
-	public GameObject ClimbBtn;
-	private Image ClimbImg;
 
 	public LayerMask whatIsGround;
 	public Transform groundCheck;
@@ -35,46 +32,6 @@ public class DG_playerController : MonoBehaviour
 	public float jumpForce = 12f;
 	public bool jumping = false; //是否可跳
 	public bool isActive = true;  //是否可移動、跳躍
-	public bool isClimb = false;  //是否可攀爬
-	public bool isClimbBtn = false;  //爬鍵是否開啟
-	public bool isPickUp = false;  //是否可拾取
-								   //藤蔓
-	private bool vine1 = false;
-	private bool vine2 = false;
-	private bool vine3 = false;
-	//拾取物件	
-	public GameObject stoneObj1;
-	private bool stone1 = false;
-	public GameObject stoneObj2;
-	private bool stone2 = false;
-	public GameObject stoneObj3;
-	private bool stone3 = false;
-	public GameObject stoneObj4;
-	private bool stone4 = false;
-	public GameObject stoneObj5;
-	private bool stone5 = false;
-
-	public GameObject redFairy;
-	[HideInInspector]
-	public bool isRedFairy;
-	private BoxCollider2D redFairyCollider;
-
-	public GameObject blueFairy;
-	[HideInInspector]
-	public bool isBlueFairy;
-	private BoxCollider2D blueFairyCollider;
-
-	public GameObject redFlower;
-	[HideInInspector]
-	public bool isRedFlower;
-	[HideInInspector]
-	public BoxCollider2D redFlowerCollider;
-
-	public GameObject blueFlower;
-	[HideInInspector]
-	public bool isBlueFlower;
-	[HideInInspector]
-	public BoxCollider2D blueFlowerCollider;
 	//--------------SpineAnimation----------------
 	public Animator animator_S;
 	public Animator animator_B;
@@ -101,10 +58,8 @@ public class DG_playerController : MonoBehaviour
 	public bool cutting; //小怪
 	//-----------------Particle System---------------
 	public Transform attackParticle;
-	public GameObject NPCPoint; //NPC驚嘆號
 	public GameObject redFairyParticle;
 	public GameObject blueFairyParticle;
-	//public GameObject G1_Skill;
 	public GameObject W1_beaten;
 	//------------------Audio--------------------
 	public AudioSource audio;
@@ -121,13 +76,8 @@ public class DG_playerController : MonoBehaviour
 
 		if (ChapterName == "1")
 		{
-			ClimbImg = ClimbBtn.GetComponent<Image>();
-			PickUpImg = PickUpBtn.GetComponent<Image>();
-			redFairyCollider = redFairy.GetComponent<BoxCollider2D>();
-			blueFairyCollider = blueFairy.GetComponent<BoxCollider2D>();
-			redFlowerCollider = redFlower.GetComponent<BoxCollider2D>();
-			blueFlowerCollider = blueFlower.GetComponent<BoxCollider2D>();
 			activeClimb = GameObject.Find("vine1").GetComponent<ActiveClimb>();  //防錯誤 爬藤蔓
+			activePickUp = GameObject.Find("stone1").GetComponent<ActivePickUp>(); //防錯誤 拾取物品
 		}
 	}
 
@@ -257,7 +207,6 @@ public class DG_playerController : MonoBehaviour
 			animator_S.SetBool("climb", true);
 		}
 
-
 		if (activeClimb.isClimb)
 		{
 			rigid2D.MovePosition(rigid2D.position + Vector2.up * 2 * Time.deltaTime);
@@ -267,7 +216,6 @@ public class DG_playerController : MonoBehaviour
 				animator_S.SetBool("climb", false);
 				activeClimb.isClimb = false;
 			}
-
 		}
 
 		//----------------------Pick Up--------------------------
@@ -275,83 +223,69 @@ public class DG_playerController : MonoBehaviour
 		{
 			animator_S.SetTrigger("pickUp");
 
-			if (stone1)
+			if (activePickUp.task) //如果是任務
 			{
-				stoneObj1.SetActive(false);
+				activePickUp.PickUpObj.SetActive(false);
+				activePickUp.anotherObj.SetActive(true);
+
+				if (activePickUp.PickUpObjName == "right")
+				{
+					npcTalk.right = true;
+					npcTalk.wrong = false;
+					npcTalk.NPCBoxcollider.enabled = true;
+					if (npcTalk.whoTask == "BobbyTask")
+						gameManager.Teleportation.SetActive(true);
+				}
+				else if (activePickUp.PickUpObjName == "wrong")
+				{
+					npcTalk.right = false;
+					npcTalk.wrong = true;
+					npcTalk.NPCBoxcollider.enabled = true;
+					if (npcTalk.whoTask == "BobbyTask")
+						gameManager.Teleportation.SetActive(true);
+				}				
 			}
-			if (stone2)
+			else
 			{
-				stoneObj2.SetActive(false);
-			}
-			if (stone3)
-			{
-				stoneObj3.SetActive(false);
-			}
-			if (stone4)
-			{
-				stoneObj4.SetActive(false);
-			}
-			if (stone5)
-			{
-				stoneObj5.SetActive(false);
-			}
-			if (redFairy.activeInHierarchy && isRedFairy) //紅藍精靈
-			{
-				redFairy.SetActive(false);
-				blueFairy.SetActive(true);
-				isBlueFairy = false;
-				isRedFairy = true;
-				npcTask.StatueCollider.enabled = true;
-			}
-			if (blueFairy.activeInHierarchy && isBlueFairy)
-			{
-				blueFairy.SetActive(false);
-				redFairy.SetActive(true);
-				isBlueFairy = true;
-				isRedFairy = false;
-				npcTask.StatueCollider.enabled = true;
+				if (activePickUp.PickUpObjBool)  //普通拾取物品
+				{
+					activePickUp.PickUpObj.SetActive(false);
+					ActivePickUp.PickUpInt += 1;
+					Debug.Log(ActivePickUp.PickUpInt);
+				}
 			}
 
-			if (redFlower.activeInHierarchy && isRedFlower) //紅藍花
-			{
-				redFlower.SetActive(false);
-				blueFlower.SetActive(true);
-				isRedFlower = true;
-				isBlueFlower = false;
-				gameManager.Teleportation.SetActive(true);
-				npcTask.BobbyCollider.enabled = true;
-			}
-			if (blueFlower.activeInHierarchy && isBlueFlower)
-			{
-				blueFlower.SetActive(false);
-				redFlower.SetActive(true);
-				isRedFlower = false;
-				isBlueFlower = true;
-				gameManager.Teleportation.SetActive(true);
-				npcTask.BobbyCollider.enabled = true;
-			}
 			isActive = false;
 			StartCoroutine("MoveWait");
-			PickUpImg.enabled = false;
+			activePickUp.PickUpImg.enabled = false;
 		}
 
 		//-----------------------Talk----------------------------
 		if (CrossPlatformInputManager.GetButtonDown("Talk"))
 		{
-			if (Mathf.Abs(rigid2D.transform.position.x - npcTalk.NPC.transform.position.x) < 2 && npcTalk.NPCPoint.activeInHierarchy == true && npcTalk.isTasting == false)
+			if (npcTalk.gimmick) //機關
 			{
-				npcTalk.isTasting = true;
-				if (isRedFlower || isBlueFlower)  //完成任務
+				if (ActivePickUp.PickUpInt>=5 && npcTalk.gimmickName=="Stone")
 				{
-					Debug.Log("gg");
-					npcTask.GetComponent<NPCTask>().Invoke(npcTalk.endTaskName, 0f); //尚有問題，進不去 
+					npcTalk.gimmickObj.SetActive(true);
 				}
-				else  //接任務
+			}
+			else //一般NPC
+			{
+				if (Mathf.Abs(rigid2D.transform.position.x - npcTalk.NPC.transform.position.x) < 2 && npcTalk.NPCPoint.activeInHierarchy == true && npcTalk.isTasting == false)
 				{
-					//BobbyTast();
-					string task = npcTalk.startTaskName;
-					//Invoke("npcTask.BobbyTast()", 0f);
-					npcTask.GetComponent<NPCTask>().Invoke(task, 0f);
+					npcTalk.isTasting = true;
+					if (npcTalk.right == true || npcTalk.wrong == true)  //完成任務
+					{
+						Debug.Log("a2");
+						npcTask.TaskFinish();
+					}
+					else  //接任務
+					{
+						Debug.Log("a1");
+						string taskStart = npcTalk.startTaskName;
+						npcTask.GetComponent<NPCTask>().Invoke(taskStart, 0f);
+					}
 					Debug.Log("rr");
 				}
 			}
@@ -360,18 +294,6 @@ public class DG_playerController : MonoBehaviour
 	//---------------------碰撞-----------------------
 	void OnTriggerEnter2D(Collider2D col)  
 	{
-		/*if (col.tag == "smallEnemy") //序章-玩家受到小怪物攻擊
-		{
-			TakeDamage(enemyAtk);
-			animator_S.SetTrigger("beaten");
-			if (ChapterName == "0")
-			{
-				animator_B.SetTrigger("beaten");
-			}
-			healthTextObj.SetActive(true);
-			healthText.text = "-" + enemyAtk;
-			StartCoroutine("smallbeaten");
-		}*/
 
 		if (col.gameObject.name == "AtkParticle") //序章-玩家受到小BOSS攻擊
 		{
@@ -399,7 +321,6 @@ public class DG_playerController : MonoBehaviour
 					gameManager.sBE1.SetActive(true);
 					gameManager.lose();
 				}
-
 			}
 		}
 
@@ -432,44 +353,31 @@ public class DG_playerController : MonoBehaviour
 
 		if (col.tag == "pickUpObj") //拾取物件
 		{
-			PickUpImg.enabled = true;  //開啟拾取鍵
-			PickUpBtn.transform.SetAsLastSibling();
-			if (col.gameObject.name == "stone1") //形石
+			activePickUp = col.gameObject.GetComponent<ActivePickUp>();
+
+			if (col.gameObject.name == activePickUp.PickUpObjName) //形石
 			{
-				stone1 = true;
-			}else if(col.gameObject.name == "stone2")
-			{
-				stone2 = true;
-			}else if (col.gameObject.name == "stone3")
-			{
-				stone3 = true;
-			}else if (col.gameObject.name == "stone4")
-			{
-				stone4 = true;
-			}else if (col.gameObject.name == "stone5")
-			{
-				stone5 = true;
+				activePickUp.PickUpObjBool = true;
 			}
 		}
 
-		if (col.gameObject.name=="redFairy") //觸碰到紅精靈
+		/*if (col.gameObject.name=="redFairy") //觸碰到紅精靈
 		{
 			redFairyParticle.SetActive(true);
-			isRedFairy = true;
 		}
 		if (col.gameObject.name == "blueFairy") //觸碰到藍精靈
 		{
 			blueFairyParticle.SetActive(true);
-			isBlueFairy = true;
+		}*/
+
+		if (col.gameObject.name == "redFairy" || col.gameObject.name == "blueFairy") //觸碰到紅藍精靈
+		{
+			npcTalk = GameObject.Find("NPC_Statue").GetComponent<NpcTalk>();
 		}
 
-		if (col.gameObject.name == "redFlower") //觸碰到紅花
+		if (col.gameObject.name == "redFlower"|| col.gameObject.name == "blueFlower") //觸碰到紅藍花
 		{
-			isRedFlower = true;
-		}
-		if (col.gameObject.name == "blueFlower") //觸碰到藍花
-		{
-			isBlueFlower = true;
+			npcTalk = GameObject.Find("NPC_Bobby").GetComponent<NpcTalk>();
 		}
 
 		if (col.gameObject.name == "Teleportation") //傳送陣
@@ -487,56 +395,25 @@ public class DG_playerController : MonoBehaviour
 			lineParticle.SetActive(false);
 		}
 
-		if (col.tag == "NPC") //觸碰到NPC
+		if (col.tag == "pickUpObj") //離開物件
 		{
-			NPCPoint.SetActive(false);
-		}
-
-		if (col.tag == "pickUpObj") //離開拾取物件
-		{
-			PickUpImg.enabled = false;  
-		}
-
-		if (col.gameObject.name == "stone1")  //形石
-		{
-			stone1 = false;
-		}
-		else if (col.gameObject.name == "stone2")
-		{
-			stone2 = false;
-		}
-		else if (col.gameObject.name == "stone3")
-		{
-			stone3 = false;
-		}
-		else if (col.gameObject.name == "stone4")
-		{
-			stone4 = false;
-		}
-		else if (col.gameObject.name == "stone5")
-		{
-			stone5 = false;
+			if (col.gameObject.name == activePickUp.PickUpObjName) //形石
+			{
+				activePickUp.PickUpObjBool = false;
+			}
 		}
 
 		if (col.gameObject.name == "redFairy") //離開紅精靈
 		{
 			redFairyParticle.SetActive(false);
-			isRedFairy = false;
+
 		}
 		if (col.gameObject.name == "blueFairy") //離開藍精靈
 		{
 			blueFairyParticle.SetActive(false);
-			isBlueFairy = false;
+
 		}
 
-		if (col.gameObject.name == "redFlower") //離開紅花
-		{
-			isRedFlower = false;
-		}
-		if (col.gameObject.name == "blueFlower") //離開藍花
-		{
-			isBlueFlower = false;
-		}
 	}
 
 	IEnumerator MoveWait()
@@ -550,19 +427,6 @@ public class DG_playerController : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 		healthTextObj.SetActive(false);
 	}
-
-	/*IEnumerator smallbeaten()
-	{
-		for (int i = 0; i < 2; i++)
-		{
-			falsh.SetActive(true);
-			yield return new WaitForSeconds(0.1f);
-			falsh.SetActive(false);
-			yield return new WaitForSeconds(0.1f);
-		}
-		yield return new WaitForSeconds(.5f);
-		healthTextObj.SetActive(false);
-	}*/
 
 	IEnumerator Bossbeaten()
 	{

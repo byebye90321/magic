@@ -5,8 +5,14 @@ using UnityEngine.UI;
 
 public class NpcTalk : MonoBehaviour {
 
+	public bool gimmick;  //是否為機關
+	public string gimmickName;
+	public GameObject gimmickObj;
+
 	public GameObject NPC;  //NPC物件
-	private BoxCollider2D NPCBoxcollider;  
+	[HideInInspector]
+	public BoxCollider2D NPCBoxcollider;  
+
 	public GameObject NPCPoint;  //NPC頭上驚嘆號
 	public GameObject TalkBtn;  //對話鍵
 
@@ -17,16 +23,18 @@ public class NpcTalk : MonoBehaviour {
 	public string startTaskName; //開始任務
 	public string endTaskName; //完成任務
 
+	public bool right;
+	public bool wrong;
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.gameObject.name == "Player")
 		{
+			NPCBoxcollider = NPC.GetComponent<BoxCollider2D>();
 			NPCPoint.SetActive(true);
 			TalkImg = TalkBtn.GetComponent<Image>();
 			TalkImg.enabled = true;
-			TalkBtn.transform.SetAsLastSibling();
-			
+			TalkBtn.transform.SetAsLastSibling();			
 		}
 	}
 

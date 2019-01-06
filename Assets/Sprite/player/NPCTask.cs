@@ -18,16 +18,18 @@ public class NPCTask : MonoBehaviour {
 	public GameObject taskPanel; //任務面板
 	public Text taskTitleText;  //任務標題
 	public Text taskContentText; //內容文字
-	public GameObject BobbyPoint; //波比提示!特效
-	public GameObject StonePoint; //石陣提示!特效
-	public GameObject StatuePoint; //石陣提示!特效
-	public bool isTasting = false; //是否可再開啟任務頁面
+	//public GameObject BobbyPoint; //波比提示!特效
+	//public GameObject StonePoint; //石陣提示!特效
+	//public GameObject StatuePoint; //石陣提示!特效
+	//public bool isTasting = false; //是否可再開啟任務頁面
 	public GameObject taskObj; //右邊支線任務面板
 	public GameObject bookObj;
 	private Animator taskAni;
-	public GameObject otherTitle;
+	public GameObject otherTitle;  //支線任務title
 	public GameObject otherTask1; //波比任務
+	public GameObject Task1FinishImage;
 	public GameObject otherTask2; //雕像任務
+	public GameObject Task2FinishImage;
 	public Button bookBtn;
 	public int bookCount = 0;
 	public bool BobbyTask; //判斷跟誰接任務
@@ -79,7 +81,7 @@ public class NPCTask : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		//----------------------NPC tast-------------------------
-		if (Input.GetMouseButtonDown(0))
+		/*if (Input.GetMouseButtonDown(0))
 		{
 			Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
@@ -129,7 +131,7 @@ public class NPCTask : MonoBehaviour {
 					}
 				}
 			}
-		}
+		}*/
 		//-------------------------森林機關-----------------------
 		if (slot1.isRight && slot2.isRight && slot3.isRight && slot4.isRight && slot5.isRight) //完成的時候
 		{
@@ -162,7 +164,7 @@ public class NPCTask : MonoBehaviour {
 
 	public void Task_Yes()
 	{
-		isTasting = false;
+		playerController.npcTalk.isTasting = false;
 		taskPanel.SetActive(false);
 		bookCount = 0;  //如果右方面板關閉，強制開啟
 		taskAni.SetBool("isOpen", true);
@@ -176,7 +178,7 @@ public class NPCTask : MonoBehaviour {
 			dialogsScript1.NPCAppear();
 			BobbyTask = false;
 		}
-		if (StatueTask == true)
+		if (playerController.npcTalk.whoTask == "StatueTask")
 		{
 			StatueCollider.enabled = false;
 			otherTitle.SetActive(true);
@@ -192,9 +194,9 @@ public class NPCTask : MonoBehaviour {
 
 	public void Task_NO()
 	{
-		isTasting = false;
+		playerController.npcTalk.isTasting = false;
 		taskPanel.SetActive(false);
-		if (BobbyTask == true)
+		if (playerController.npcTalk.whoTask == "BobbyTask")
 		{
 			BobbyCollider.enabled = false;
 			dialogsScript1.currentLine = 36;
@@ -202,7 +204,7 @@ public class NPCTask : MonoBehaviour {
 			dialogsScript1.NPCAppear();
 			BobbyTask = false;
 		}
-		if (StatueTask == true)
+		if (playerController.npcTalk.whoTask == "StatueTask")
 		{
 			StatueCollider.enabled = false;
 			dialogsScript1.currentLine = 52;
@@ -229,9 +231,10 @@ public class NPCTask : MonoBehaviour {
 	//任務2完成，獲得技能2
 	public IEnumerator StatueTaskFinish()
 	{
-		isTasting = false;
+		playerController.npcTalk.isTasting = false;
 		StatueCollider.enabled = false;
-		if (playerController.isRedFairy)
+		Task2FinishImage.SetActive(true);
+		if (playerController.npcTalk.right) //假如選到正確的
 		{
 			statueAni.SetBool("win", true);
 			dialogsScript1.currentLine = 54;
@@ -254,7 +257,7 @@ public class NPCTask : MonoBehaviour {
 		yield return new WaitForSeconds(0.5f);
 		gameManager.ParticleObj2.SetActive(true); //skill Particle
 		yield return new WaitForSeconds(0.5f);
-		if (playerController.isRedFairy)
+		if (playerController.npcTalk.right)
 		{
 			StaticObject.G2 = 1;
 			gameManager.G2.SetActive(true);
@@ -273,18 +276,25 @@ public class NPCTask : MonoBehaviour {
 		cameraFollow.isFollowTarget = false;
 		cameraFollow.moveCount = 5;
 		yield return new WaitForSeconds(.5f);
-		if (playerController.isRedFairy)
+		if (playerController.npcTalk.right)
 		{
 			BigBalanceAni.SetBool("balance", true);
 		}		
 	}
 
+	
+	public void TaskFinish()
+	{
+		Debug.Log("a3");
+		StartCoroutine(playerController.npcTalk.endTaskName);
+	}
+
 	//任務1完成，獲得技能1
 	public IEnumerator BobbyTaskFinish()
 	{
-		isTasting = false;
-		BobbyAni.state.SetAnimation(0, "idle__Multicolor", true);
-		if (playerController.isRedFlower) //lose
+		playerController.npcTalk.isTasting = false;
+		Task1FinishImage.SetActive(true);
+		if (playerController.npcTalk.wrong) //lose
 		{
 			dialogsScript1.currentLine = 68;
 			dialogsScript1.endAtLine = 70;
@@ -293,6 +303,7 @@ public class NPCTask : MonoBehaviour {
 		}
 		else //win
 		{
+			BobbyAni.state.SetAnimation(0, "idle__Multicolor", true);
 			dialogsScript1.currentLine = 63;
 			dialogsScript1.endAtLine = 67;
 			dialogsScript1.NPCAppear();
@@ -310,7 +321,7 @@ public class NPCTask : MonoBehaviour {
 		yield return new WaitForSeconds(0.5f);
 		gameManager.ParticleObj1.SetActive(true);
 		yield return new WaitForSeconds(0.5f);
-		if (playerController.isBlueFlower)
+		if (playerController.npcTalk.right)
 		{
 			StaticObject.G1 = 1;
 			gameManager.G1.SetActive(true);

@@ -200,6 +200,7 @@
      <Compile Include="Assets\Sprite\game kit\PlatformCatcher.cs" />
      <Compile Include="Assets\Sprite\game kit\VisibleBubbleUp.cs" />
      <Compile Include="Assets\Sprite\gameObject\ActiveClimb.cs" />
+     <Compile Include="Assets\Sprite\gameObject\ActivePickUp.cs" />
      <Compile Include="Assets\Sprite\gameObject\NpcTalk.cs" />
      <Compile Include="Assets\Sprite\gameObject\ObjectAnimaton.cs" />
      <Compile Include="Assets\Sprite\gameObject\ObjectStop.cs" />

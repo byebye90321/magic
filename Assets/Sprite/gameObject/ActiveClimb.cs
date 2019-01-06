@@ -6,7 +6,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class ActiveClimb : MonoBehaviour {
 
-	public static string ClimbObjName;
+	public string ClimbObjName;
 	public GameObject ClimbBtn;
 	private Image ClimbImg;
 	public bool isClimb = false;  //是否可攀爬

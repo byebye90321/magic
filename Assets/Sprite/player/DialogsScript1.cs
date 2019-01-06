@@ -451,8 +451,6 @@ public class DialogsScript1 : MonoBehaviour
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_oops;
-			playerController.redFlowerCollider.enabled = true;
-			playerController.blueFlowerCollider.enabled = true;
 		}
 
 		if (currentLine == 63 || currentLine == 64)
@@ -474,6 +472,7 @@ public class DialogsScript1 : MonoBehaviour
 		if (currentLine == 68 || currentLine == 69)
 		{
 			whotalk.text = "波比";
+			characterImageObj.transform.localRotation = Quaternion.Euler(0, 180, 0);
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = bobby_monochrome_cry;
@@ -481,6 +480,7 @@ public class DialogsScript1 : MonoBehaviour
 
 		if (currentLine == 70 || currentLine == 82)
 		{
+			characterImageObj.transform.localRotation = Quaternion.Euler(0, 0, 0);
 			DisableTextBox();
 		}
 
@@ -518,14 +518,6 @@ public class DialogsScript1 : MonoBehaviour
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_angry;
 		}
-
-		/*if (currentLine == 79)
-		{
-			whotalk.text = "緹緹";
-			characterImage.color = talkNow;
-			otherImage.color = untalkNow;
-			characterImage.sprite = sister_oops;
-		}*/
 
 		if (currentLine == 81)
 		{
