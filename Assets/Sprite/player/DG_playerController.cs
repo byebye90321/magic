@@ -63,7 +63,7 @@ public class DG_playerController : MonoBehaviour
 	public GameObject W1_beaten;
 	//------------------Audio--------------------
 	public AudioSource audio;
-	public AudioClip AtkSound;
+	public AudioClip pickUp;
 
 	public Vector2 player;
 
@@ -223,6 +223,11 @@ public class DG_playerController : MonoBehaviour
 		if (CrossPlatformInputManager.GetButtonDown("PickUp"))
 		{
 			animator_S.SetTrigger("pickUp");
+
+			if (!audio.isPlaying)
+			{
+				audio.PlayOneShot(pickUp);
+			}
 
 			if (activePickUp.task) //如果是任務
 			{
@@ -469,7 +474,6 @@ public class DG_playerController : MonoBehaviour
 			animator_B.SetTrigger("attack");
 		}
 		animator_S.SetTrigger("attack");
-		audio.PlayOneShot(AtkSound);
 	}
 
 

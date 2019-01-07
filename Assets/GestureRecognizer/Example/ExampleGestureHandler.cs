@@ -14,24 +14,6 @@ public class ExampleGestureHandler : MonoBehaviour
 	GesturePatternDraw[] references;
 
 	//public static bool playerAtk = false;
-	//----------------------卡牌----------------------
-	/*public CardData cardData;
-	public CardCD cardCD1;
-	public CardCD cardCD2;
-	public CardCD cardCD3;
-	public CardCD cardCD4;
-
-	public int cardAtk;
-	public int cardCur1 = 1;
-	public int cardCur2 = 1;
-	public int cardCur3 = 1;
-	public int cardCur4 = 1;
-
-	public static bool cardisAtk1 = false;
-	public static bool cardisAtk2 = false;
-	public static bool cardisAtk3 = false;
-	public static bool cardisAtk4 = false;*/
-
 	//----------------2版------------------
 
 	public DG_EnemyController enemyController;
@@ -58,6 +40,14 @@ public class ExampleGestureHandler : MonoBehaviour
 	public GameObject B2_Particle;
 	[HideInInspector]
 	public ParticleSystem B2_ParticleP;
+
+	//-------------Audio----------------
+	public AudioSource audio;
+	public AudioClip G0;
+	public AudioClip G1;
+	public AudioClip G2;
+	public AudioClip B1;
+	public AudioClip B2;
 
 	void Start()
 	{
@@ -105,6 +95,7 @@ public class ExampleGestureHandler : MonoBehaviour
 				}
 				Debug.Log("攻擊0");
 				DG_playerController.Attack();
+				audio.PlayOneShot(G0);
 				textResult.text = result.gesture.id + "\n" + Mathf.RoundToInt(result.score.score * 100) + "%";
 				skill0.currentCoolDown = 0;
 				G0_Particle.SetActive(true);
@@ -122,6 +113,7 @@ public class ExampleGestureHandler : MonoBehaviour
 			{
 				Debug.Log("G1攻擊");
 				DG_playerController.Attack();
+				audio.PlayOneShot(G1);
 				skillG1.currentCoolDown = 0;
 				G1_Particle.SetActive(true);
 				StartCoroutine("close1");
@@ -136,6 +128,7 @@ public class ExampleGestureHandler : MonoBehaviour
 			{
 				Debug.Log("B1攻擊");
 				DG_playerController.Attack();
+				audio.PlayOneShot(B1);
 				skillB1.currentCoolDown = 0;
 				B1_Particle.SetActive(true);
 				StartCoroutine("close1");
@@ -150,9 +143,9 @@ public class ExampleGestureHandler : MonoBehaviour
 		{
 			if (result.gesture.id == "Circle")
 			{
-				//enemyController.StartCoroutine("SkillG2");
 				Debug.Log("G2攻擊");
 				DG_playerController.Attack();
+				audio.PlayOneShot(G2);
 				skillG2.currentCoolDown = 0;
 				G2_Particle.SetActive(true);
 				StartCoroutine("close2");
@@ -167,6 +160,7 @@ public class ExampleGestureHandler : MonoBehaviour
 			{
 				Debug.Log("B2攻擊");
 				DG_playerController.Attack();
+				audio.PlayOneShot(B2);
 				skillB2.currentCoolDown = 0;
 				B2_Particle.SetActive(true);
 				StartCoroutine("close2");

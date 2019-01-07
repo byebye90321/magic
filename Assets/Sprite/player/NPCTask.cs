@@ -22,10 +22,11 @@ public class NPCTask : MonoBehaviour {
 	public GameObject bookObj;
 	private Animator taskAni;
 	public GameObject otherTitle;  //支線任務title
+	public Image Task1StarImage;   //未完成1任務星星
+	public Image Task2StarImage;   //未完成2任務星星
+	public Sprite TaskFinishImage;  //完成任務打勾
 	public GameObject otherTask1; //波比任務
-	public GameObject Task1FinishImage;
 	public GameObject otherTask2; //雕像任務
-	public GameObject Task2FinishImage;
 	public Button bookBtn;
 	public int bookCount = 0;
 	public bool BobbyTask; //判斷跟誰接任務
@@ -60,7 +61,10 @@ public class NPCTask : MonoBehaviour {
 	public GameObject Fairy;
 	public GameObject BigBalance;
 	private Animator BigBalanceAni;
-
+	//--------------Audio---------------
+	public AudioSource audio;
+	public AudioClip stoneWin;
+	public AudioClip stoneLose;
 	// Use this for initialization
 	void Start () {
 		if (ChapterName == "1")
@@ -229,7 +233,7 @@ public class NPCTask : MonoBehaviour {
 	{
 		playerController.npcTalk.isTasting = false;
 		StatueCollider.enabled = false;
-		Task2FinishImage.SetActive(true);
+		Task2StarImage.sprite = TaskFinishImage;
 		if (playerController.npcTalk.right) //假如選到正確的
 		{
 			statueAni.SetBool("win", true);
@@ -289,7 +293,7 @@ public class NPCTask : MonoBehaviour {
 	public IEnumerator BobbyTaskFinish()
 	{
 		playerController.npcTalk.isTasting = false;
-		Task1FinishImage.SetActive(true);
+		Task1StarImage.sprite = TaskFinishImage;
 		if (playerController.npcTalk.wrong) //lose
 		{
 			dialogsScript1.currentLine = 68;
@@ -366,6 +370,11 @@ public class NPCTask : MonoBehaviour {
 
 	IEnumerator waitClose()  //關閉石陣機關
 	{
+		if (!audio.isPlaying)
+		{
+			audio.PlayOneShot(stoneWin);
+		}
+		
 		yield return new WaitForSeconds(3);
 		StoneCanvas.SetActive(false);
 		StoneCollider.enabled = false;
@@ -379,6 +388,11 @@ public class NPCTask : MonoBehaviour {
 
 	IEnumerator StoneWrong()  //石鎮錯誤
 	{
+		if (!audio.isPlaying)
+		{
+			audio.PlayOneShot(stoneLose);
+		}
+		
 		for (int i = 0; i < 1; i++)
 		{
 			stoneFlash.SetActive(true);

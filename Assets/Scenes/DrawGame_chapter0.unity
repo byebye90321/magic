@@ -13817,11 +13817,10 @@ MonoBehaviour:
   npcTask: {fileID: 0}
   dialogsScript1: {fileID: 0}
   gesture: {fileID: 10663015}
+  npcTalk: {fileID: 0}
   rigid2D: {fileID: 462784792}
   graphics: {fileID: 462784791}
   speed: 5
-  PickUpBtn: {fileID: 0}
-  ClimbBtn: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -13830,24 +13829,6 @@ MonoBehaviour:
   jumpForce: 15
   jumping: 0
   isActive: 1
-  isClimb: 0
-  isClimbBtn: 0
-  isPickUp: 0
-  stoneObj1: {fileID: 0}
-  stoneObj2: {fileID: 0}
-  stoneObj3: {fileID: 0}
-  stoneObj4: {fileID: 0}
-  stoneObj5: {fileID: 0}
-  redFairy: {fileID: 0}
-  isRedFairy: 0
-  blueFairy: {fileID: 0}
-  isBlueFairy: 0
-  redFlower: {fileID: 0}
-  isRedFlower: 0
-  redFlowerCollider: {fileID: 0}
-  blueFlower: {fileID: 0}
-  isBlueFlower: 0
-  blueFlowerCollider: {fileID: 0}
   animator_S: {fileID: 1564279822}
   animator_B: {fileID: 1238059409}
   curHealth: 100
@@ -13863,12 +13844,11 @@ MonoBehaviour:
   drawCanvas: {fileID: 0}
   cutting: 1
   attackParticle: {fileID: 1321666422}
-  NPCPoint: {fileID: 0}
   redFairyParticle: {fileID: 0}
   blueFairyParticle: {fileID: 0}
   W1_beaten: {fileID: 484646014}
   audio: {fileID: 462784795}
-  AtkSound: {fileID: 8300000, guid: 2e4ad0293bc47ec4da93e3dd0c99d87a, type: 3}
+  AtkSound: {fileID: 8300000, guid: 5e1f23a7fc815bd4b875ccf03b42ffe1, type: 3}
   player: {x: 0, y: 0}
 --- !u!82 &462784795
 AudioSource:
@@ -51790,14 +51770,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.745283, g: 0.745283, b: 0.745283, a: 0.9019608}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 8deb7763fe6b6024c82f994bb9cdf5f4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8cc55125ec923fa42a0e2f947e7eca1f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -58351,9 +58331,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 462784794}
-  obj1: {fileID: 1243852364850532, guid: 3f360d484a927284aa17aace94eda240, type: 2}
-  obj2: {fileID: 1243852364850532, guid: 3f360d484a927284aa17aace94eda240, type: 2}
-  wz: []
   enemy: {fileID: 1756818926}
   DeathEffect: {fileID: 589561243}
   isDead: 0
@@ -59241,9 +59218,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 462784794}
-  obj1: {fileID: 1243852364850532, guid: 3f360d484a927284aa17aace94eda240, type: 2}
-  obj2: {fileID: 1243852364850532, guid: 3f360d484a927284aa17aace94eda240, type: 2}
-  wz: []
   enemy: {fileID: 1916129296}
   DeathEffect: {fileID: 952153610}
   isDead: 0

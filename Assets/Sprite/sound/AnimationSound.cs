@@ -16,4 +16,10 @@ public class AnimationSound : MonoBehaviour {
 			audio.PlayOneShot(Sound);
 		}
 	}
+
+	void AnimatorSoundPlay() //np player
+	{
+		audio.PlayOneShot(Sound);
+		
+	}
 }
