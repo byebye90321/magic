@@ -112,7 +112,7 @@ public class RunGameManager : MonoBehaviour {
 		gameState = GameState.Start;
 		maskGroup.SetActive(true);
 		//mask.uvRect = new Rect(0.79f, 0.26f, 1.5f, 1.5f);
-		mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(900, -250);
+		mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(900, -280);
 		NextFlashText.SetActive(true);
 		HintAni.SetTrigger("HintOpen");
 		HintText.text = "目標！逃離地下道抵達終點";

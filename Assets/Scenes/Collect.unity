@@ -741,7 +741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2592,7 +2592,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 103.599976, y: 36.229996}
+  m_AnchoredPosition: {x: 103.599976, y: 38.99}
   m_SizeDelta: {x: -325.39996, y: 116.62}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &154300605
@@ -4160,7 +4160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5102,7 +5102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5170,7 +5170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6128,7 +6128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6215,7 +6215,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u9B54\u6CD5\u65E5\u5831"
+  m_Text: "\u9B54\u6CD5\u6210\u5C31"
 --- !u!222 &511592620
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7161,7 +7161,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d8089fe261e3d0a4ba0e7a4b428f0ebd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60ac5b7598047c8499439013d6f85d80, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7710,8 +7710,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1042087821}
-  m_RootOrder: 6
+  m_Father: {fileID: 581338520}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7812,12 +7812,12 @@ GameObject:
   m_Component:
   - component: {fileID: 581338520}
   m_Layer: 5
-  m_Name: panel1_paper
+  m_Name: panel3_paper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &581338520
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7836,6 +7836,7 @@ RectTransform:
   - {fileID: 743541870}
   - {fileID: 1085616103}
   - {fileID: 1124096140}
+  - {fileID: 580944720}
   m_Father: {fileID: 1042087821}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7892,7 +7893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8350,7 +8351,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b532436c7659ee646bbd9cbb96183c62, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 497536d790a01de4793ce74e73892eae, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9540,7 +9541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10619,7 +10620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12738,7 +12739,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 1a5414714b71e254894c73ed4a0960b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 55e812259b8c86c4e96316b9430e4f95, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13096,7 +13097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -13530,7 +13531,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f97c0ff6218489d46aaeec7a1c9f3a9e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 756b050832cfb664fbe41217754206a4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15637,9 +15638,8 @@ RectTransform:
   - {fileID: 1465215798}
   - {fileID: 1583847063}
   - {fileID: 2101011695}
-  - {fileID: 580944720}
-  - {fileID: 581338520}
   - {fileID: 1496167746}
+  - {fileID: 581338520}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20454,7 +20454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -21116,7 +21116,7 @@ GameObject:
   - component: {fileID: 1496167746}
   - component: {fileID: 1496167747}
   m_Layer: 5
-  m_Name: panel3_introduce
+  m_Name: panel1_introduce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21136,7 +21136,7 @@ RectTransform:
   - {fileID: 1703231318}
   - {fileID: 1845153460}
   m_Father: {fileID: 1042087821}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -21154,17 +21154,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24ce35573c9e084da9f059b472047bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  back: {fileID: 580944719}
+  back: {fileID: 1583847062}
   panel3: {fileID: 1496167745}
   scrollRect: {fileID: 74094807}
   Text: {fileID: 1468592068}
   NameText: {fileID: 129302423}
   characterImage: {fileID: 1845153461}
-  Sister: {fileID: 21300000, guid: b532436c7659ee646bbd9cbb96183c62, type: 3}
-  Book: {fileID: 21300000, guid: f97c0ff6218489d46aaeec7a1c9f3a9e, type: 3}
-  Bobby: {fileID: 21300000, guid: d8089fe261e3d0a4ba0e7a4b428f0ebd, type: 3}
-  Wiki: {fileID: 21300000, guid: 74b1a2c9995d46c4bb7bad509c70f969, type: 3}
-  Wiko: {fileID: 21300000, guid: 1a5414714b71e254894c73ed4a0960b4, type: 3}
+  Sister: {fileID: 21300000, guid: 497536d790a01de4793ce74e73892eae, type: 3}
+  Book: {fileID: 21300000, guid: 756b050832cfb664fbe41217754206a4, type: 3}
+  Bobby: {fileID: 21300000, guid: 60ac5b7598047c8499439013d6f85d80, type: 3}
+  Wiki: {fileID: 21300000, guid: c017465c9cdafa3419172715011746c5, type: 3}
+  Wiko: {fileID: 21300000, guid: 55e812259b8c86c4e96316b9430e4f95, type: 3}
 --- !u!1 &1505346103
 GameObject:
   m_ObjectHideFlags: 0
@@ -22558,7 +22558,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 103.599976, y: 39}
+  m_AnchoredPosition: {x: 103.599976, y: 38.99}
   m_SizeDelta: {x: -325.39996, y: 116.62}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &1615806735
@@ -24885,7 +24885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -26541,7 +26541,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 74b1a2c9995d46c4bb7bad509c70f969, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c017465c9cdafa3419172715011746c5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -27016,7 +27016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -27084,7 +27084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -28560,7 +28560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

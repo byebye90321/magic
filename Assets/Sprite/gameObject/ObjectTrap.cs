@@ -19,6 +19,7 @@ public class ObjectTrap : MonoBehaviour {
 		{
 
 			InvokeRepeating("beaten", 0f, 2f);
+			flash.SetActive(false);
 		}
 	}
 
@@ -28,6 +29,7 @@ public class ObjectTrap : MonoBehaviour {
 		{
 			healthTextObj.SetActive(false);
 			CancelInvoke("beaten");
+			flash.SetActive(false);
 		}
 	}
 

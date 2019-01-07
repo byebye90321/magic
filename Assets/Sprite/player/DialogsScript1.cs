@@ -131,10 +131,10 @@ public class DialogsScript1 : MonoBehaviour
 		vine3Collider = vine3.GetComponent<BoxCollider2D>();
 		mark2Collider = mark2Obj.GetComponent<BoxCollider2D>();
 		mark2Ani = mark2Obj.GetComponent<Animator>();
-		/*StaticObject.sister = 1; //魔法日報解鎖
+		StaticObject.sister = 1; //妹妹解鎖
 		PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);
 		StaticObject.book = 1; //魔法日報解鎖
-		PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);*/
+		PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);
 
 		currentLine = 1;
 		endAtLine = 10;
@@ -283,7 +283,9 @@ public class DialogsScript1 : MonoBehaviour
 			characterImage.color = untalkNow;
 			otherImage.color = talkNow;
 			otherImageObj.SetActive(true);
-			otherImage.sprite = bobby_monochrome_cry; 
+			otherImage.sprite = bobby_monochrome_cry;
+			StaticObject.bobby = 1; //波比解鎖
+			PlayerPrefs.SetInt("StaticObject.bobby", StaticObject.bobby);
 		}
 
 		if (currentLine == 29 || currentLine == 51)
@@ -490,6 +492,8 @@ public class DialogsScript1 : MonoBehaviour
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = wiki_normal;
+			StaticObject.wiki = 1; //維吉解鎖
+			PlayerPrefs.SetInt("StaticObject.wiki", StaticObject.wiki);
 		}
 
 		if (currentLine == 72 ||currentLine==74)
@@ -499,6 +503,8 @@ public class DialogsScript1 : MonoBehaviour
 			characterImage.color = untalkNow;
 			otherImage.color = talkNow;
 			otherImage.sprite = wiko_oops;
+			StaticObject.wiko = 1; //維吉解鎖
+			PlayerPrefs.SetInt("StaticObject.wiko", StaticObject.wiko);
 		}
 
 		if (currentLine == 75)
@@ -641,8 +647,8 @@ public class DialogsScript1 : MonoBehaviour
 		endAtLine = 60;
 		NPCAppear();
 		yield return new WaitUntil(() => currentLine >= 60);
-		//gameManager.teachHint.SetActive(true);
 		gameManager.teachHintAni.SetTrigger("HintOpen");
+		gameManager.teachHintText.text = "進入戰鬥";
 		gameManager.attackRedImage.SetActive(true);
 		EnemyController.isAttack = true;
 		yield return new WaitForSeconds(.1f);
@@ -769,9 +775,9 @@ public class DialogsScript1 : MonoBehaviour
 		StaticObject.sBE1 = 0;
 		PlayerPrefs.SetInt("StaticObject.sHE1", StaticObject.sHE1);
 		PlayerPrefs.SetInt("StaticObject.sBE1", StaticObject.sBE1);
-		yield return new WaitUntil(() => currentLine ==82);
-		//gameManager.teachHint.SetActive(true);
+		yield return new WaitUntil(() => currentLine == 82);
 		gameManager.teachHintAni.SetTrigger("HintOpen");
+		gameManager.teachHintText.text = "進入戰鬥";
 		gameManager.attackRedImage.SetActive(true);
 		MonsterController.isAttack = true;
 		MonsterController.enemy2Transform.localRotation = Quaternion.Euler(0, 180, 0);

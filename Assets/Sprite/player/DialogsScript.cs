@@ -424,13 +424,13 @@ public class DialogsScript : MonoBehaviour
 				PlayerPrefs.SetInt("StaticObject.s1", StaticObject.s1);
 				StaticObject.sHE1 = 1;
 				PlayerPrefs.SetInt("StaticObject.sHE1", StaticObject.sHE1);
-				StaticObject.card02 = false;
+				/*StaticObject.card02 = false;
 				StaticObject.card05 = false;
 				StaticObject.card06 = false;
 				StaticObject.card10 = false;
 				StaticObject.card13 = false;
 				StaticObject.card14 = false;
-				Draw_sister_GM.end = false;
+				Draw_sister_GM.end = false;*/
 				GameObject HE = (GameObject)Instantiate(he) as GameObject;
 				
 				StartCoroutine("fadeOutAni");
@@ -443,12 +443,12 @@ public class DialogsScript : MonoBehaviour
 				PlayerPrefs.SetInt("StaticObject.s1", StaticObject.s1);
 				StaticObject.sBE1 = 1;
 				PlayerPrefs.SetInt("StaticObject.sBE1", StaticObject.sBE1);
-				StaticObject.card02 = false;
+				/*.card02 = false;
 				StaticObject.card05 = false;
 				StaticObject.card06 = false;
 				StaticObject.card10 = false;
 				StaticObject.card13 = false;
-				StaticObject.card14 = false;
+				StaticObject.card14 = false;*/
 				GameObject BE = (GameObject)Instantiate(be) as GameObject;
 				StartCoroutine("fadeOutAni");
 				Debug.Log("BE");

@@ -64,6 +64,11 @@ public class GameManager : MonoBehaviour {
 	public GameObject teachHint;
 	[HideInInspector]
 	public Animator teachHintAni;
+	public Text teachHintText;
+	public GameObject downHint;
+	[HideInInspector]
+	public Animator downHintAni;
+	public Text downHintText;
 	//-------------------角色---------------------
 	public GameObject smallBoss;
 	public GameObject monster;
@@ -71,10 +76,12 @@ public class GameManager : MonoBehaviour {
 	public GameObject sHE1;
 	public GameObject sBE1;
 	//--------------------回饋介面----------------
-	public GameObject winPanel;
-	public GameObject losePanel;
-	public GameObject unlockPanel;
-	public GameObject gameOverPenal;
+	public GameObject winPanel;  //通關
+	public GameObject losePanel;  //失敗
+	public GameObject unlockPanel;  //解鎖
+	public GameObject gameOverPenal;  //gameOver
+
+	public Text gameOverText;
 	//------------------FADE淡出-------------------
 	public GameObject FadeOut; 
 	private Animator FadeOutAni;
@@ -99,10 +106,11 @@ public class GameManager : MonoBehaviour {
 		Debug.Log(balanceValue);
 		Debug.Log(playerController.curHealth);
 		PlayerPrefs.GetInt("StaticObject.G2", StaticObject.G2);
-		//Debug.Log("StaticObject.G2：" + StaticObject.G2);
 		stoneDoorAni = stoneDoorObj.GetComponent<Animator>();
 		FadeOutAni = FadeOut.GetComponent<Animator>();
 		teachHintAni = teachHint.GetComponent<Animator>();
+		downHintAni = downHint.GetComponent<Animator>();
+		Application.targetFrameRate = 100;  //幀數
 	}
 	
 	void FixedUpdate () {
@@ -121,16 +129,17 @@ public class GameManager : MonoBehaviour {
 			else if (balanceSlider.value > 100)
 			{
 				balanceValue = 100;
+				playerController.curHealth = 100;
 			}
 			/*else if (balanceSlider.value < 10)  //殘血變色
 			{
 				sliderimage.color = Color.Lerp(new Color(r2, g2, b2), new Color(r1, g1, b1), balanceSlider.value / 10);  //從G變R
 			}*/
 
-			if (balanceSlider.value == 0 || playerController.curHealth == 0)
+			if (balanceSlider.value <= 0 || playerController.curHealth <= 0)
 			{
 				Debug.Log("战斗失败");
-				chapterState = ChapterState.Dead;
+				Dead();
 			}
 
 			/*if (dg_enemyController.curHealth == 0)
@@ -248,6 +257,10 @@ public class GameManager : MonoBehaviour {
 	public void Dead()
 	{
 		chapterState = ChapterState.Dead;
+		if (balanceSlider.value <= 0)
+			gameOverText.text = "世界已失衡\n遊戲失敗";
+		if (playerController.curHealth <= 0)
+			gameOverText.text = "血量耗盡\n遊戲失敗";
 		StartCoroutine("GameOver");
 	}
 
@@ -263,19 +276,19 @@ public class GameManager : MonoBehaviour {
 		StartCoroutine("Lose");
 	}
 
-	IEnumerator GameOver()
+	IEnumerator GameOver()  //GameOver
 	{
-		yield return new WaitForSeconds(0.1f);
-		//BackGrounaAudio.Stop();
-		//Time.timeScale = 0;
-		/*winFade.SetActive(true);
-		fade.SetBool("win", true);*/
-		Debug.Log("Dead");
+		yield return new WaitForSeconds(.5f);
+		gameOverPenal.SetActive(true);
+		yield return new WaitForSeconds(2.5f);
+		FadeOut.SetActive(true);
+		FadeOutAni.SetBool("FadeOut", true);
 		yield return new WaitForSeconds(1.5f);
-
+		Debug.Log("77878789");
+		SceneManager.LoadScene("LoadingToMain");  //接下一關 //先回主畫面
 	}
 
-	IEnumerator Win()
+	IEnumerator Win()  //過關
 	{
 		PlayerPrefs.SetFloat("StaticObject.balanceSlider", balanceValue);
 		PlayerPrefs.SetFloat("StaticObject.playerHealth", playerController.HealthSlider.value);
@@ -292,7 +305,7 @@ public class GameManager : MonoBehaviour {
 		SceneManager.LoadScene("LoadingToMain");  //接下一關 //先回主畫面
 	}
 
-	IEnumerator Lose()
+	IEnumerator Lose()  //失敗
 	{
 		PlayerPrefs.SetFloat("StaticObject.balanceSlider", balanceValue);
 		PlayerPrefs.SetFloat("StaticObject.playerHealth", playerController.HealthSlider.value);

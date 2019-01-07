@@ -23,33 +23,6 @@ public static class StaticObject
 	public static float balanceSlider = 100f;
 	public static float playerHealth = 100f;
 
-	//------------------卡牌------------------------
-	//第一張
-	public static bool card00 = true;  //00,B,魔法框框
-
-	//第二張
-	public static bool card05 = false; //05,B,察覺之心
-	//public static bool card07 = false;
-	//public static bool card08 = false;
-	//public static bool card09 = false;	
-	public static bool card13 = false; //13,C,迷途羔羊	
-	//public static bool card15 = false;
-	//public static bool card16 = false;
-	//public static bool card17 = false;
-
-	//第三張
-	public static bool card02 = false; //02,A,被擁抱的玫瑰
-	//public static bool card03 = false;
-	//public static bool card04 = false;
-	public static bool card06 = false; //06,B,信念之盾
-	public static bool card10 = false; //10,B,腐爛之果
-	//public static bool card11 = false;
-	//public static bool card12 = false;
-	public static bool card14 = false; //14,C,生鏽的茅
-
-	//第四張
-	//public static bool card01 = false; //01,A,先知卡
-
 	//--------------------技能----------------------------
 	public static int G1 = 0;
 	public static int B1 = 0;
@@ -72,11 +45,11 @@ public static class StaticObject
 	//--------------------人物解鎖------------------------
 	public static int sister = 0;
 	public static int bother = 0;
-	public static int utopia = 0;
-	public static int hikari = 0;
+	public static int utopia = 0; //烏托邦
+	public static int hikari = 0; //追光者
 	public static int book = 0;
 
-	public static int EnemyKing = 0;
+	public static int EnemyKing = 0; //框框
 	public static int J = 0;
 	public static int Q = 0;
 	public static int K = 0;
@@ -84,7 +57,5 @@ public static class StaticObject
 	public static int bobby = 0;
 	public static int wiki = 0;
 	public static int wiko = 0;
-	public static int boMom = 0;
-	public static int boDad = 0;
 
 }

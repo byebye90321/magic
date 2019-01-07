@@ -18,10 +18,6 @@ public class NPCTask : MonoBehaviour {
 	public GameObject taskPanel; //任務面板
 	public Text taskTitleText;  //任務標題
 	public Text taskContentText; //內容文字
-	//public GameObject BobbyPoint; //波比提示!特效
-	//public GameObject StonePoint; //石陣提示!特效
-	//public GameObject StatuePoint; //石陣提示!特效
-	//public bool isTasting = false; //是否可再開啟任務頁面
 	public GameObject taskObj; //右邊支線任務面板
 	public GameObject bookObj;
 	private Animator taskAni;

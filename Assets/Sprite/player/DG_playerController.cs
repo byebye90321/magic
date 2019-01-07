@@ -78,6 +78,7 @@ public class DG_playerController : MonoBehaviour
 		{
 			activeClimb = GameObject.Find("vine1").GetComponent<ActiveClimb>();  //防錯誤 爬藤蔓
 			activePickUp = GameObject.Find("stone1").GetComponent<ActivePickUp>(); //防錯誤 拾取物品
+			ActivePickUp.PickUpInt = 0;
 		}
 	}
 
@@ -265,9 +266,15 @@ public class DG_playerController : MonoBehaviour
 		{
 			if (npcTalk.gimmick) //機關
 			{
-				if (ActivePickUp.PickUpInt>=5 && npcTalk.gimmickName=="Stone")
+				if (ActivePickUp.PickUpInt >= 5 && npcTalk.gimmickName == "Stone")
 				{
 					npcTalk.gimmickObj.SetActive(true);
+				}
+				else
+				{
+					//尚未收集完畢
+					gameManager.downHintAni.SetTrigger("whereHint");
+					gameManager.downHintText.text = "形石尚未收集完畢";
 				}
 			}
 			else //一般NPC
@@ -277,16 +284,13 @@ public class DG_playerController : MonoBehaviour
 					npcTalk.isTasting = true;
 					if (npcTalk.right == true || npcTalk.wrong == true)  //完成任務
 					{
-						Debug.Log("a2");
 						npcTask.TaskFinish();
 					}
 					else  //接任務
 					{
-						Debug.Log("a1");
 						string taskStart = npcTalk.startTaskName;
 						npcTask.GetComponent<NPCTask>().Invoke(taskStart, 0f);
 					}
-					Debug.Log("rr");
 				}
 			}
 		}
