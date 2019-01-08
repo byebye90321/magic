@@ -13,17 +13,30 @@ public class cut : MonoBehaviour
 	public GameObject DeathEffect;
 	public bool isDead;
 
+	/*public bool cutObj;
+	public GameObject obj1, obj2, obj3;    //分开后的两边水果
+	private Vector2[] vec = { Vector2.left, Vector2.right };   //切后的半截往两个方向飞出*/
+
 	void Start()
     {
         col = GetComponent<BoxCollider2D>();
     }
+
+	/*private void CreateHalf(GameObject obj, int index)       //创建半个水果
+	{
+		obj = Instantiate(obj, transform.position, Quaternion.AngleAxis(Random.Range(-30f, 30f), Vector3.back)) as GameObject;
+		Rigidbody2D rgd = obj.GetComponent<Rigidbody2D>();
+		float v = Random.Range(2f, 4f);                        //随机飞出速度
+		rgd.velocity = vec[index] * v;
+		Destroy(obj, 2f);
+	}*/
 
     void Update()
     {
         if (Input.GetMouseButton(0))
         {
             if (col.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)) &&playerController.cutting)                //鼠标在当前水果2Dcollider内
-            {			
+            {
 				StartCoroutine("Death");
 			}
         }

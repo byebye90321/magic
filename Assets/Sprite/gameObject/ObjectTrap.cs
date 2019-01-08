@@ -47,13 +47,13 @@ public class ObjectTrap : MonoBehaviour {
 
 	IEnumerator beatens()
 	{
-		for (int i = 0; i < 2; i++)
+		/*for (int i = 0; i < 2; i++)   //受傷閃紅光(須更正)
 		{
 			flash.SetActive(true);
 			yield return new WaitForSeconds(0.1f);
 			flash.SetActive(false);
 			yield return new WaitForSeconds(0.1f);
-		}
+		}*/
 		yield return new WaitForSeconds(.5f);
 		healthTextObj.SetActive(false);
 	}

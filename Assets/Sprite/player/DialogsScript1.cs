@@ -98,6 +98,8 @@ public class DialogsScript1 : MonoBehaviour
 	public GameObject mark2Obj;
 	private BoxCollider2D mark2Collider;
 	private Animator mark2Ani;
+
+	public GameObject MaskGroup;
 	//------------------Attack----------------------
 	//小BOSS
 	public GameObject attackCollider;
@@ -261,6 +263,25 @@ public class DialogsScript1 : MonoBehaviour
 			otherImageObj.SetActive(false);
 			characterImage.sprite = sister_angry;
 		}
+
+		if (currentLine == 101 || currentLine == 102)  //藤蔓教學
+		{
+			characterImageObj.transform.localRotation = Quaternion.Euler(0, 180, 0);
+			whotalk.text = "魔法書籍";
+			characterImage.color = talkNow;
+			otherImageObj.SetActive(false);
+			characterImage.sprite = book;
+			playerController.climb.raycastTarget = false;
+		}
+
+		if (currentLine == 103)  //藤蔓出現黑mask
+		{
+			playerController.climb.raycastTarget = true;
+			characterImageObj.transform.localRotation = Quaternion.Euler(0, 0, 0);
+			MaskGroup.SetActive(true);
+			DisableTextBox();
+		}
+
 		if (currentLine == 22)
 		{
 			whotalk.text = "緹緹";
@@ -299,6 +320,7 @@ public class DialogsScript1 : MonoBehaviour
 		if (currentLine == 32)
 		{
 			npcTask.taskPanel.SetActive(true);
+			npcTask.TaskBtn.SetActive(true);
 			otherImageObj.SetActive(false);
 			DisableTextBox();
 		}
@@ -406,6 +428,7 @@ public class DialogsScript1 : MonoBehaviour
 		{
 			npcTask.StatueCollider.enabled = true;
 			npcTask.taskPanel.SetActive(true);
+			npcTask.TaskBtn.SetActive(true);
 			DisableTextBox();
 		}
 
@@ -686,8 +709,26 @@ public class DialogsScript1 : MonoBehaviour
 		EnableTextBox();
 	}
 
+	public void teleportation()
+	{
+		playerController.pickUpInt = 0;
+		currentLine = 104;
+		currentLine = 104;
+		NPCAppear();
+	}
+
+
+
 	void OnTriggerEnter2D(Collider2D col)
 	{
+		if (col.gameObject.name == "vin1Collider") //藤蔓1對話
+		{
+			currentLine = 101;
+			endAtLine = 103;
+			NPCAppear();
+			Destroy(col.gameObject);
+		}
+
 		if (col.gameObject.name == "NPC_Bobby" && bobbyCount == 1) //遇到波比對話
 		{
 			bobbyCount = 0;

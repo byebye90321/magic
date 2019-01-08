@@ -67,6 +67,8 @@ public class DG_playerController : MonoBehaviour
 
 	public Vector2 player;
 
+	public int pickUpInt = 1;
+	public Image climb;
 
 	void Start()
 	{
@@ -201,21 +203,25 @@ public class DG_playerController : MonoBehaviour
 			}
 		}
 		//-----------------------Climb--------------------------
-
-		if (CrossPlatformInputManager.GetButtonDown("Climb"))
+		if (ChapterName == "1")
 		{
-			activeClimb.isClimb = true;
-			animator_S.SetBool("climb", true);
-		}
-
-		if (activeClimb.isClimb)
-		{
-			rigid2D.MovePosition(rigid2D.position + Vector2.up * 2 * Time.deltaTime);
-			if (rigid2D.position.y >= activeClimb.highestPoint)
+			if (CrossPlatformInputManager.GetButtonDown("Climb"))
 			{
-				rigid2D.position = activeClimb.targetPoint;
-				animator_S.SetBool("climb", false);
-				activeClimb.isClimb = false;
+				activeClimb.isClimb = true;
+				animator_S.SetBool("climb", true);
+				dialogsScript1.MaskGroup.SetActive(false);
+				Joystick.isMove = true;
+			}
+
+			if (activeClimb.isClimb)
+			{
+				rigid2D.MovePosition(rigid2D.position + Vector2.up * 2 * Time.deltaTime);
+				if (rigid2D.position.y >= activeClimb.highestPoint)
+				{
+					rigid2D.position = activeClimb.targetPoint;
+					animator_S.SetBool("climb", false);
+					activeClimb.isClimb = false;
+				}
 			}
 		}
 
@@ -240,7 +246,13 @@ public class DG_playerController : MonoBehaviour
 					npcTalk.wrong = false;
 					npcTalk.NPCBoxcollider.enabled = true;
 					if (npcTalk.whoTask == "BobbyTask")
+					{
 						gameManager.Teleportation.SetActive(true);
+						if (pickUpInt == 1)
+						{
+							dialogsScript1.teleportation();
+						}
+					}
 				}
 				else if (activePickUp.PickUpObjName == "wrong")
 				{
@@ -248,8 +260,10 @@ public class DG_playerController : MonoBehaviour
 					npcTalk.wrong = true;
 					npcTalk.NPCBoxcollider.enabled = true;
 					if (npcTalk.whoTask == "BobbyTask")
+					{
 						gameManager.Teleportation.SetActive(true);
-				}				
+					}
+				}
 			}
 			else
 			{
@@ -370,14 +384,14 @@ public class DG_playerController : MonoBehaviour
 			}
 		}
 
-		/*if (col.gameObject.name=="redFairy") //觸碰到紅精靈
+		if (col.gameObject.name=="redFairy") //觸碰到紅精靈
 		{
 			redFairyParticle.SetActive(true);
 		}
 		if (col.gameObject.name == "blueFairy") //觸碰到藍精靈
 		{
 			blueFairyParticle.SetActive(true);
-		}*/
+		}
 
 		if (col.gameObject.name == "redFairy" || col.gameObject.name == "blueFairy") //觸碰到紅藍精靈
 		{
@@ -422,7 +436,6 @@ public class DG_playerController : MonoBehaviour
 			blueFairyParticle.SetActive(false);
 
 		}
-
 	}
 
 	IEnumerator MoveWait()

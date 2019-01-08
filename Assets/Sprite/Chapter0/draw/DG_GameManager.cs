@@ -292,7 +292,7 @@ public class DG_GameManager : MonoBehaviour {
 	IEnumerator count5() //CD技能
 	{
 		//mask.uvRect = new Rect(-0.21f, 0.34f, 2.5f, 2.5f);
-		mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(-266, -302);
+		mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(380, 70);
 		HintAni.SetTrigger("HintOpen");
 		teachText.text = "下方為已蒐集到技能";
 		TouchNextImage.SetActive(true);
@@ -349,7 +349,7 @@ public class DG_GameManager : MonoBehaviour {
 		fingerObj.SetActive(true);
 		maskObj.SetActive(true);
 		//mask.uvRect = new Rect(0.33f, 0.26f, 1.5f, 1.5f);
-		mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(-498, -215);
+		mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(140, 144);
 		HintAni.SetTrigger("HintOpen");
 		teachText.text = "使用移動鍵與跳鍵逃離這裡";
 		fingerObj.SetActive(true);
@@ -444,6 +444,12 @@ public class DG_GameManager : MonoBehaviour {
 		fade.SetBool("FadeOut", true);
 		yield return new WaitForSeconds(1.5f);
 		SceneManager.LoadScene("RunGame_chapter0");  //接下一關
+	}
+
+	IEnumerator WaitForAudio()
+	{
+		yield return new WaitForSeconds(0);
+		SceneManager.LoadScene(Application.loadedLevel);
 	}
 
 }

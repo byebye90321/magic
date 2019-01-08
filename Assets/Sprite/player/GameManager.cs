@@ -302,7 +302,7 @@ public class GameManager : MonoBehaviour {
 		FadeOutAni.SetBool("FadeOut", true);
 		yield return new WaitForSeconds(1.5f);
 		Debug.Log("77878789");
-		SceneManager.LoadScene("LoadingToMain");  //接下一關 //先回主畫面
+		SceneManager.LoadScene("ChooseChapter");  //接下一關 //先回
 	}
 
 	IEnumerator Lose()  //失敗
@@ -319,7 +319,7 @@ public class GameManager : MonoBehaviour {
 		FadeOutAni.SetBool("FadeOut", true);
 		yield return new WaitForSeconds(1.5f);
 		Debug.Log("666666");
-		SceneManager.LoadScene("LoadingToMain");  //接下一關  //先回主畫面
+		SceneManager.LoadScene("ChooseChapter");  //接下一關  //先回主畫面
 	}
 
 	IEnumerator WaitForAudio()

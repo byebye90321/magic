@@ -32,6 +32,8 @@ public class NPCTask : MonoBehaviour {
 	public bool BobbyTask; //判斷跟誰接任務
 	public bool StatueTask; //判斷跟誰接任務
 
+	public GameObject TaskBtn; //任務YES NO按鈕
+	public GameObject TaskCloseBtn;
 	//-------------------NPC---------------------
 	public SkeletonAnimation BobbyAni;
 	public GameObject Bobby;
@@ -223,9 +225,14 @@ public class NPCTask : MonoBehaviour {
 		dialogsScript1.NPCAppear();
 
 		Debug.Log(Mathf.Abs(rigid2D.transform.position.x - Statue.transform.position.x));
-		//taskPanel.SetActive(true);
 		taskTitleText.text = "雕像平衡";
 		taskContentText.text = "恢復平衡需要一種重物，我想<color=#ef6c00>紅精靈</color>再適合不過了!牠們就棲息在<color=#ef6c00>荊棘樹幹的樹洞</color>中，幫我抓一隻回來吧!";
+	}
+
+
+	public void TaskFinish()
+	{
+		StartCoroutine(playerController.npcTalk.endTaskName);
 	}
 
 	//任務2完成，獲得技能2
@@ -280,13 +287,6 @@ public class NPCTask : MonoBehaviour {
 		{
 			BigBalanceAni.SetBool("balance", true);
 		}		
-	}
-
-	
-	public void TaskFinish()
-	{
-		Debug.Log("a3");
-		StartCoroutine(playerController.npcTalk.endTaskName);
 	}
 
 	//任務1完成，獲得技能1
@@ -346,6 +346,31 @@ public class NPCTask : MonoBehaviour {
 		gameManager.stoneDoorAni.SetBool("openDoor", true);
 	}
 
+	public void OpenOtherTask1()
+	{
+		taskPanel.SetActive(true);
+		TaskBtn.SetActive(false);
+		TaskCloseBtn.SetActive(true);
+		taskTitleText.text = "波比的花";
+		taskContentText.text = "我有一朵很珍惜的<color=#ef6c00>水晶蘭花</color>，現在花被視為異端，歪歪們把牠搶走了!還把我痛毆一頓...請幫助我拿回屬於我的花兒!\n\n<color=#ef6c00>石鎮處</color>的線索會幫助你順利前行!找到歪歪的下落";
+	}
+
+	public void OpenOtherTask2()
+	{
+		taskPanel.SetActive(true);
+		TaskBtn.SetActive(false);
+		TaskCloseBtn.SetActive(true);
+		taskTitleText.text = "雕像平衡";
+		taskContentText.text = "恢復平衡需要一種重物，我想<color=#ef6c00>紅精靈</color>再適合不過了!牠們就棲息在<color=#ef6c00>荊棘樹幹的樹洞</color>中，幫我抓一隻回來吧!";
+	}
+
+	public void CloseTaskPanel()
+	{
+		taskPanel.SetActive(false);
+		TaskCloseBtn.SetActive(false);
+	}
+
+	//---------------------book-------------------------
 	public void bookFly()
 	{
 		bookObj.SetActive(true);
@@ -367,6 +392,8 @@ public class NPCTask : MonoBehaviour {
 			taskObj.SetActive(false);
 		}
 	}
+
+	//------------------------石鎮-------------------------
 
 	IEnumerator waitClose()  //關閉石陣機關
 	{
@@ -413,8 +440,7 @@ public class NPCTask : MonoBehaviour {
 		slot5.gameObject.transform.parent = slot5.startParent;
 	}
 	
-
-	public void Close()
+	public void Close()  //石鎮解謎關閉
 	{
 		StoneCanvas.SetActive(false);
 	}

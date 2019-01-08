@@ -253,7 +253,7 @@ public class RG_playerController : MonoBehaviour
 			runGameManager.HintAni.SetTrigger("HintOpen");
 			runGameManager.HintText.text = "遇到下方障礙物，按跳躍鍵";
 			runGameManager.maskGroup.SetActive(true);
-			runGameManager.mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(530, -270);
+			runGameManager.mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(1180, 120);
 		}
 
 		if (col.gameObject.name == "TeachDown")
@@ -266,7 +266,7 @@ public class RG_playerController : MonoBehaviour
 			runGameManager.HintAni.SetTrigger("HintOpen");
 			runGameManager.HintText.text = "遇到上方障礙物，按下滑鍵";
 			runGameManager.maskGroup.SetActive(true);
-			runGameManager.mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(-550, -270);
+			runGameManager.mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(90, 120);
 		}
 	}
 
