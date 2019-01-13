@@ -12,6 +12,8 @@ public class FpsTest : MonoBehaviour
 
 	public float m_FPS = 0;
 
+	public Text fps;
+
 	void Awake()
 	{
 		Application.targetFrameRate = 100;
@@ -34,6 +36,7 @@ public class FpsTest : MonoBehaviour
 			m_LastUpdateShowTime = Time.realtimeSinceStartup;
 		}
 		//Debug.Log(m_FPS);
+		fps.text = m_FPS.ToString("#0.00");
 	}
 
 }
