@@ -313,6 +313,49 @@ public class DG_playerController : MonoBehaviour
 				}
 			}
 		}
+
+		if (Input.GetMouseButtonDown(0))
+		{
+			Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+
+			if (hit.collider == null)
+			{
+
+			}
+			else if (hit.collider.name == "NPC_Bobby" || hit.collider.name == "NPC_Statue" || hit.collider.name == "Stone")
+			{
+				if (npcTalk.gimmick) //機關
+				{
+					if (ActivePickUp.PickUpInt >= 5 && npcTalk.gimmickName == "Stone")
+					{
+						npcTalk.gimmickObj.SetActive(true);
+					}
+					else
+					{
+						//尚未收集完畢
+						gameManager.downHintAni.SetTrigger("whereHint");
+						gameManager.downHintText.text = "形石尚未收集完畢";
+					}
+				}
+				else //一般NPC
+				{
+					if (Mathf.Abs(rigid2D.transform.position.x - npcTalk.NPC.transform.position.x) < 2 && npcTalk.NPCPoint.activeInHierarchy == true && npcTalk.isTasting == false)
+					{
+						npcTalk.isTasting = true;
+						if (npcTalk.right == true || npcTalk.wrong == true)  //完成任務
+						{
+							npcTask.TaskFinish();
+						}
+						else  //接任務
+						{
+							string taskStart = npcTalk.startTaskName;
+							npcTask.GetComponent<NPCTask>().Invoke(taskStart, 0f);
+						}
+					}
+				}
+			}
+		}
 	}
 	//---------------------碰撞-----------------------
 	void OnTriggerEnter2D(Collider2D col)  

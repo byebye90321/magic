@@ -97,10 +97,10 @@ public class NPCTask : MonoBehaviour {
 			{
 				if (Mathf.Abs(rigid2D.transform.position.x - Bobby.transform.position.x) < 2 && BobbyPoint.activeInHierarchy == true && isTasting == false)
 				{
-					isTasting = true;
+					playerController.npcTalk.isTasting = true;
 					if (playerController.isRedFlower || playerController.isBlueFlower)  //完成任務
 					{
-						StartCoroutine("BobbyTaskFinish");
+						TaskFinish();
 					}
 					else  //接任務
 					{
@@ -120,15 +120,14 @@ public class NPCTask : MonoBehaviour {
 			{
 				if (Mathf.Abs(rigid2D.transform.position.x - Statue.transform.position.x) < 2 && StatuePoint.activeInHierarchy == true && isTasting == false)
 				{
-					isTasting = true;
+					playerController.npcTalk.isTasting = true;
 					if (playerController.isRedFairy || playerController.isBlueFairy)  //完成任務
-					{						
-						StartCoroutine("StatueTaskFinish");
+					{
+						TaskFinish();
 					}
 					else  //接任務
 					{
 						StatueTask = true;
-						//statueAni.SetBool("isOpen1", true);
 						StatueTast();
 					}
 				}

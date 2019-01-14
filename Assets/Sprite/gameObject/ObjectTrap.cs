@@ -18,7 +18,7 @@ public class ObjectTrap : MonoBehaviour {
 		if (col.gameObject.name == "Player")
 		{
 
-			InvokeRepeating("beaten", 0f, 2f);
+			InvokeRepeating("beaten", 0f, 1f);
 			flash.SetActive(false);
 		}
 	}
