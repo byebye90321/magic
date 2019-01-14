@@ -27,26 +27,20 @@ public class SkillPress : MonoBehaviour
 	public void OnPointerDown(PointerEventData eventData)
 	{
 		DownState = true;
-		if (gameObject.name == "Skill0")
+		if (gameObject.name == "G0")
 		{
-			info.SetActive(true);
-			skills = GameObject.Find("Skill0").GetComponent<Skills>();
-			coldDown = skills.skillInfo.coolDown;
-			coldDownText.text = coldDown.ToString("#0");
-			Atk = skills.skillInfo.Atk;
-			AtkText.text = Atk.ToString("#0");
-			icon.sprite = skills.skillInfo.SkillSpriteIcon;
+			skills = GameObject.Find("G0").GetComponent<Skills>();
 		}
 		if (gameObject.name == "G1")
 		{
-			info.SetActive(true);
 			skills = GameObject.Find("G1").GetComponent<Skills>();
-			coldDown = skills.skillInfo.coolDown;
-			coldDownText.text = coldDown.ToString("#0");
-			Atk = skills.skillInfo.Atk;
-			AtkText.text = Atk.ToString("#0");
-			icon.sprite = skills.skillInfo.SkillSpriteIcon;
 		}
+		info.SetActive(true);
+		coldDown = skills.skillInfo.coolDown;
+		coldDownText.text = coldDown.ToString("#0");
+		Atk = skills.skillInfo.Atk;
+		AtkText.text = Atk.ToString("#0");
+		icon.sprite = skills.skillInfo.SkillSpriteIcon;
 	}
 
 	public void OnPointerUp(PointerEventData eventData)
