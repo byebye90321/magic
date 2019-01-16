@@ -238,6 +238,7 @@
      <Compile Include="Assets\Sprite\UI\introduceManager.cs" />
      <Compile Include="Assets\Sprite\UI\Scroll.cs" />
      <Compile Include="Assets\Sprite\UI\UIParticleSystem.cs" />
+     <Compile Include="Assets\ST.cs" />
      <Compile Include="Assets\unity-ui-extensions\Examples\ComboBox\ComboBoxChanged.cs" />
      <Compile Include="Assets\unity-ui-extensions\Examples\Cooldown\CooldownEffect_Image.cs" />
      <Compile Include="Assets\unity-ui-extensions\Examples\Cooldown\CooldownEffect_SAUIM.cs" />
@@ -475,11 +476,11 @@
      <None Include="Assets\Spine\enemy\chacha\ChaCha.atlas.txt" />
      <None Include="Assets\Sprite\player\sister_forest 1.txt" />
      <None Include="Assets\unity-ui-extensions\Shaders\UI Particle MultiplyDouble.shader" />
- <Reference Include="UnityEditor.StandardEvents">
- <HintPath>C:/Users/USERTY/Desktop/magic/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
- </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
  <HintPath>C:/Users/USERTY/Desktop/magic/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.StandardEvents">
+ <HintPath>C:/Users/USERTY/Desktop/magic/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
