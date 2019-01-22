@@ -9,7 +9,7 @@ public class ObjectTrap : MonoBehaviour {
 	public Animator characterAni;
 	public GameObject healthTextObj;
 	public Text healthText;
-	public GameObject flash;
+	public Animator flash;
 
 	public int damageInt;
 
@@ -17,9 +17,7 @@ public class ObjectTrap : MonoBehaviour {
 	{
 		if (col.gameObject.name == "Player")
 		{
-
 			InvokeRepeating("beaten", 0f, 1f);
-			flash.SetActive(false);
 		}
 	}
 
@@ -29,7 +27,6 @@ public class ObjectTrap : MonoBehaviour {
 		{
 			healthTextObj.SetActive(false);
 			CancelInvoke("beaten");
-			flash.SetActive(false);
 		}
 	}
 
@@ -47,13 +44,7 @@ public class ObjectTrap : MonoBehaviour {
 
 	IEnumerator beatens()
 	{
-		/*for (int i = 0; i < 2; i++)   //受傷閃紅光(須更正)
-		{
-			flash.SetActive(true);
-			yield return new WaitForSeconds(0.1f);
-			flash.SetActive(false);
-			yield return new WaitForSeconds(0.1f);
-		}*/
+		flash.SetTrigger("flash");
 		yield return new WaitForSeconds(.5f);
 		healthTextObj.SetActive(false);
 	}
