@@ -6,17 +6,15 @@ public class background2 : MonoBehaviour
     public Vector3 CreatPos;
     public float width;
     Renderer rend;
-	public background2 back2;
-    // Use this for initialization
+	//public background2 back2;
+
     void Start()
     {
         rend = GetComponent<Renderer>();
         width = rend.bounds.size.x;
         CreatPos = new Vector3(transform.position.x + width, transform.position.y, transform.position.z);
-		//back2 = GetComponent<background2>();
 	}
 
-    // Update is called once per frame
     void Update()
     {
 
