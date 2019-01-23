@@ -19,6 +19,7 @@ public class DG_EnemyController : MonoBehaviour{
 	bool isDead;
 	bool damaged;
 
+	public Animator healthAni;
 	public GameObject damageTextObj;
 	private Text damageText;
 
@@ -97,7 +98,7 @@ public class DG_EnemyController : MonoBehaviour{
 	}
 
 	//-------------------------Attack--------------------------
-	IEnumerator Skill0()  //序章 被技能0攻擊
+	/*IEnumerator Skill0()  //序章 被技能0攻擊
 	{
 		yield return new WaitForSeconds(.3f);
 		TakeDamage(gesture.skill0.skillInfo.Atk);
@@ -106,7 +107,7 @@ public class DG_EnemyController : MonoBehaviour{
 		damageTextObj.SetActive(true);
 		damageText.text = "-" + gesture.skill0.skillInfo.Atk;
 		StartCoroutine("wait");	
-	}
+	}*/
 
 	public void W1_Particle()
 	{
@@ -131,7 +132,7 @@ public class DG_EnemyController : MonoBehaviour{
 		TakeDamage(gesture.skillG2.skillInfo.Atk);
 		enemy1.state.SetAnimation(0, "death", false);
 		enemy2.state.SetAnimation(0, "death", false);
-		damageTextObj.SetActive(true);
+		//damageTextObj.SetActive(true);
 		damageText.text = "-" + gesture.skillG2.skillInfo.Atk;
 		StartCoroutine("wait");
 	}
@@ -195,7 +196,7 @@ public class DG_EnemyController : MonoBehaviour{
 		if (col.gameObject.name == "Blade" && drawCanvas.isActiveAndEnabled && isAttack==true)
 		{
 			TakeDamage(1);
-			damageTextObj.SetActive(true);
+			healthAni.SetTrigger("hurtText");
 			damageText.text = "-" + 1;
 			enemy1.state.SetAnimation(0, "death", false);
 			enemy1.state.AddAnimation(0, "idle", true, 0f);
@@ -212,7 +213,7 @@ public class DG_EnemyController : MonoBehaviour{
 			enemy1.state.AddAnimation(0, "idle", true, 0f);
 			enemy2.state.SetAnimation(0, "death", false);
 			enemy2.state.AddAnimation(0, "idle", true, 0f);
-			damageTextObj.SetActive(true);
+			healthAni.SetTrigger("hurtText");
 			StartCoroutine("G0_Close");
 			damageText.text = "-" + gesture.skill0.skillInfo.Atk;
 		}
@@ -225,7 +226,7 @@ public class DG_EnemyController : MonoBehaviour{
 			enemy1.state.AddAnimation(0, "idle", true, 0f);
 			enemy2.state.SetAnimation(0, "death", false);
 			enemy2.state.AddAnimation(0, "idle", true, 0f);
-			damageTextObj.SetActive(true);
+			healthAni.SetTrigger("hurtText");
 			StartCoroutine("G1_Close");
 			damageText.text = "-" + gesture.skillG1.skillInfo.Atk;
 		}
@@ -238,7 +239,7 @@ public class DG_EnemyController : MonoBehaviour{
 			enemy1.state.AddAnimation(0, "idle", true, 0f);
 			enemy2.state.SetAnimation(0, "death", false);
 			enemy2.state.AddAnimation(0, "idle", true, 0f);
-			damageTextObj.SetActive(true);
+			healthAni.SetTrigger("hurtText");
 			StartCoroutine("G1_Close");
 			damageText.text = "-" + gesture.skillB1.skillInfo.Atk;
 		}
@@ -251,7 +252,7 @@ public class DG_EnemyController : MonoBehaviour{
 			enemy1.state.AddAnimation(0, "idle", true, 0f);
 			enemy2.state.SetAnimation(0, "death", false);
 			enemy2.state.AddAnimation(0, "idle", true, 0f);
-			damageTextObj.SetActive(true);
+			healthAni.SetTrigger("hurtText");
 			StartCoroutine("G2_Close");
 			damageText.text = "-" + gesture.skillG2.skillInfo.Atk;
 		}
@@ -263,7 +264,7 @@ public class DG_EnemyController : MonoBehaviour{
 			enemy1.state.AddAnimation(0, "idle", true, 0f);
 			enemy2.state.SetAnimation(0, "death", false);
 			enemy2.state.AddAnimation(0, "idle", true, 0f);
-			damageTextObj.SetActive(true);
+			healthAni.SetTrigger("hurtText");
 			StartCoroutine("G2_Close");
 			damageText.text = "-" + gesture.skillB2.skillInfo.Atk;
 		}
@@ -272,8 +273,7 @@ public class DG_EnemyController : MonoBehaviour{
 
 	IEnumerator wait()
 	{
-		yield return new WaitForSeconds(.5f);
-		damageTextObj.SetActive(false);
+
 		yield return new WaitForSeconds(1f);
 		G0_beaten.SetActive(false);
 		AtkParticle.SetActive(false);
@@ -282,15 +282,11 @@ public class DG_EnemyController : MonoBehaviour{
 	IEnumerator G0_Close()
 	{
 		yield return new WaitForSeconds(.5f);
-		damageTextObj.SetActive(false);
-		yield return new WaitForSeconds(.5f);
 		G0_beaten.SetActive(false);
 	}
 
 	IEnumerator G1_Close()
 	{
-		yield return new WaitForSeconds(.5f);
-		damageTextObj.SetActive(false);
 		yield return new WaitForSeconds(.5f);
 		G1_beaten.SetActive(false);
 		B1_beaten.SetActive(false);
@@ -298,8 +294,6 @@ public class DG_EnemyController : MonoBehaviour{
 
 	IEnumerator G2_Close()
 	{
-		yield return new WaitForSeconds(.5f);
-		damageTextObj.SetActive(false);
 		yield return new WaitForSeconds(.5f);
 		G2_beaten.SetActive(false);
 	}

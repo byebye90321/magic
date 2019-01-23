@@ -36,6 +36,8 @@ public class DG_playerController : MonoBehaviour
 	public Animator animator_S;
 	public Animator animator_B;
 
+	public SkeletonAnimation SpineSister;
+	public SkeletonAnimation SpineBother;
 	//--------------------Health-------------------
 	public float curHealth = 100f;
 	public float maxHealth = 100f;
@@ -46,6 +48,7 @@ public class DG_playerController : MonoBehaviour
 	bool damaged;
 	bool addBlood;
 	public GameObject falsh;
+	public Animator healthAni;
 	public GameObject healthTextObj;
 	private Text healthText;
 	public GameObject lineParticle;
@@ -499,19 +502,20 @@ public class DG_playerController : MonoBehaviour
 		if (ChapterName == "0")
 		{
 			animator_B.SetTrigger("beaten");
+			SpineBother.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0.5f);
 		}
-		animator_S.SetTrigger("beaten");	
-		healthTextObj.SetActive(true);
-		for (int i = 0; i < 2; i++)
-		{
-			falsh.SetActive(true);
-			yield return new WaitForSeconds(0.1f);
-			falsh.SetActive(false);
-			yield return new WaitForSeconds(0.1f);
-		}	
+		healthAni.SetTrigger("hurtText");
+		animator_S.SetTrigger("beaten");		
+		SpineSister.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0.5f);
+
+		yield return new WaitForSeconds(0.7f);
+		SpineSister.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0f);
+		if (ChapterName == "0")
+			SpineBother.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0f);
+
 		yield return new WaitForSeconds(.2f);
 		W1_beaten.SetActive(false);
-		healthTextObj.SetActive(false);
+
 	}
 
 	IEnumerator Teleportation()

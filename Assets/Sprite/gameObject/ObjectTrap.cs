@@ -7,7 +7,7 @@ public class ObjectTrap : MonoBehaviour {
 
 	public DG_playerController playerController;
 	public Animator characterAni;
-	public GameObject healthTextObj;
+	public Animator healthAni;
 	public Text healthText;
 	public Animator flash;
 
@@ -25,7 +25,6 @@ public class ObjectTrap : MonoBehaviour {
 	{
 		if (col.gameObject.name == "Player")
 		{
-			healthTextObj.SetActive(false);
 			CancelInvoke("beaten");
 		}
 	}
@@ -36,16 +35,21 @@ public class ObjectTrap : MonoBehaviour {
 			CancelInvoke("beaten");
 
 		playerController.TakeDamage(damageInt);
-		characterAni.SetTrigger("beaten");
-		healthTextObj.SetActive(true);
-		healthText.text = "-" + damageInt;
+		characterAni.SetTrigger("beaten");	
 		StartCoroutine("beatens");
 	}
 
 	IEnumerator beatens()
 	{
+		healthAni.SetTrigger("hurtText");
+		healthText.text = "-" + damageInt;
 		flash.SetTrigger("flash");
+		playerController.SpineSister.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0.5f);
+		if(playerController.ChapterName=="0")
+			playerController.SpineBother.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0.5f);
 		yield return new WaitForSeconds(.5f);
-		healthTextObj.SetActive(false);
+		playerController.SpineSister.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0f);
+		if (playerController.ChapterName == "0")
+			playerController.SpineBother.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0f);
 	}
 }

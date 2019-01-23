@@ -313,8 +313,9 @@ public class DG_GameManager : MonoBehaviour {
 		warningRedImage.SetActive(false);
 		fingerObj.SetActive(false);
 		drawCanvas.GetComponent<Canvas>().enabled = false;
-		BossCollider.GetComponent<BoxCollider2D>().enabled = false;
+		
 		yield return new WaitForSeconds(2f);
+		BossCollider.GetComponent<BoxCollider2D>().enabled = false;
 		HintAni.SetTrigger("HintOpen");
 		teachText.text = "技能須等待冷卻時間才可繼續使用";
 		TouchNextImage.SetActive(true);

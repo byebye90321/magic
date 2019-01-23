@@ -89,10 +89,10 @@ public class ExampleGestureHandler : MonoBehaviour
 		{
 			if (result.gesture.id == "M")
 			{
-				if (ChapterName == "0")
+				/*if (ChapterName == "0")
 				{
 					enemyController.StartCoroutine("Skill0");
-				}
+				}*/
 				Debug.Log("攻擊0");
 				DG_playerController.Attack();
 				audio.PlayOneShot(G0);
