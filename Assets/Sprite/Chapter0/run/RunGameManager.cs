@@ -24,7 +24,7 @@ public class RunGameManager : MonoBehaviour {
 
 	public float playerHealth;
 	public Slider HealthSlider;
-	public GameObject damageTextObj;
+	
 
 	//--------------------------距離條----------------------
 	public GameObject distance;
@@ -85,7 +85,14 @@ public class RunGameManager : MonoBehaviour {
 		balanceText.text = Mathf.Floor(balanceValue).ToString("0");
 		Debug.Log(balanceValue);
 		Debug.Log(playerHealth);
-		StartCoroutine("Target");
+		if (chapterName == "0")
+		{
+			StartCoroutine("Target");
+		}
+		else if (chapterName == "1")
+		{
+			InvokeRepeating("timer", 1, 1);
+		}
 	}
 
 	public void Update()

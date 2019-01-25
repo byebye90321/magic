@@ -7,6 +7,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class RG_playerController : MonoBehaviour
 {
+	public string ChapterName;
 	public static RG_playerController Player;
 	public RunGameManager runGameManager;
 
@@ -30,10 +31,6 @@ public class RG_playerController : MonoBehaviour
 	public bool jumping = false;
 	//slide
 	public bool sliding = false;
-	//up&down
-	/*private Vector2 pointA;
-	private Vector2 pointB;
-	public bool Touch;*/
 
 	public Button jumpBtn;
 	public Button slideBtn;
@@ -42,10 +39,14 @@ public class RG_playerController : MonoBehaviour
 	public float hurtSpeed;
 	public float VecitySpeed;
 	public float MaxSpeed = 0.8f;
+	//---------------------------health-------------------------
+	public Animator healthAni;
+	public GameObject healthTextObj;
+	private Text healthText;
 	//---------------------------Hurt-----------------------------
 	public float VecityHurt;
 	public float RecoverySpeed;
-	public GameObject flash;
+	public Animator flash;
 	//---------------------------音效-----------------------------
 	public AudioSource audio;
 	public AudioClip hurtSound;
@@ -66,8 +67,12 @@ public class RG_playerController : MonoBehaviour
 		rigid2D.AddForce(new Vector2(0, 0));
 		rigid2D.velocity = new Vector2(0, 0f);
 		VecitySpeed = speed;
-		jumpBtn.interactable = false;
-		slideBtn.interactable = false;
+		healthText = healthTextObj.GetComponent<Text>();
+		if (ChapterName == "0")
+		{
+			jumpBtn.interactable = false;
+			slideBtn.interactable = false;
+		}
 	}
 
 	//---------------------------------Jump----------------------------------
@@ -76,20 +81,29 @@ public class RG_playerController : MonoBehaviour
 		if (RunGameManager.gameState == GameState.Start)
 		{
 			skeletonAnimation_S.state.TimeScale = 0;
-			skeletonAnimation_B.state.TimeScale = 0;
-
+			if (ChapterName == "0")
+			{
+				skeletonAnimation_B.state.TimeScale = 0;
+			}
 		}
 		else if (RunGameManager.gameState == GameState.Running)
 		{
-			if (Up==true || Down==true)
+			if (ChapterName == "0")
 			{
-				skeletonAnimation_S.state.TimeScale = 0.1f;
-				skeletonAnimation_B.state.TimeScale = 0.1f;
+				if (Up == true || Down == true)
+				{
+					skeletonAnimation_S.state.TimeScale = 0.1f;
+					skeletonAnimation_B.state.TimeScale = 0.1f;
+				}
+				else
+				{
+					skeletonAnimation_S.state.TimeScale = 1;
+					skeletonAnimation_B.state.TimeScale = 1;
+				}
 			}
-			else
+			else if (ChapterName == "1")
 			{
 				skeletonAnimation_S.state.TimeScale = 1;
-				skeletonAnimation_B.state.TimeScale = 1;
 			}
 			//--------------jump---------------------
 			Player.transform.position = new Vector3(Player.transform.position.x + VecitySpeed, Player.transform.position.y, 10);
@@ -100,26 +114,30 @@ public class RG_playerController : MonoBehaviour
 			//-----------------------------------3版-------------------------------------
 			if (grounded)
 			{
-                //Debug.Log(hitObject.name);
                 if (CrossPlatformInputManager.GetButtonDown("Jump"))
 				{
 					rigid2D.velocity = new Vector2(0, jumpForce);
 					sister.SetTrigger("jump");
-					bother.SetTrigger("jump");
+					if (ChapterName == "0")
+					{
+						bother.SetTrigger("jump");
+					}
 					if (Up == true)
 					{
 						speed = 0.12f;
 						VecitySpeed = 0.12f;
 						runGameManager.maskGroup.SetActive(false);
 						runGameManager.HintAni.SetTrigger("close");
-						//teachObj.SetActive(false);
 						Up = false;
 					}
 				}
 				else if (CrossPlatformInputManager.GetButtonDown("Slide"))
 				{
 					sister.SetTrigger("sliding");
-					bother.SetTrigger("sliding");
+					if (ChapterName == "0")
+					{
+						bother.SetTrigger("sliding");
+					}
 					SlidingParticle.SetActive(true);
 					StartCoroutine("Sliding");
 					if (Down == true)
@@ -128,7 +146,6 @@ public class RG_playerController : MonoBehaviour
 						VecitySpeed = 0.12f;
 						runGameManager.maskGroup.SetActive(false);
 						runGameManager.HintAni.SetTrigger("close");
-						//teachObj.SetActive(false);
 						Down = false;
 					}
 				}
@@ -177,20 +194,29 @@ public class RG_playerController : MonoBehaviour
 		else if (RunGameManager.gameState == GameState.Dead)
 		{
 			skeletonAnimation_S.loop = false;
-			skeletonAnimation_B.loop = false;
 			sister.SetTrigger("death");
-			bother.SetTrigger("death");
+			if (ChapterName == "0")
+			{
+				skeletonAnimation_B.loop = false;
+				bother.SetTrigger("death");
+			}
 		}
 		//------------------------------------Win------------------------------------------- 
 		else if (RunGameManager.gameState == GameState.Win)
 		{
 			skeletonAnimation_S.state.TimeScale = 0;
-			skeletonAnimation_B.state.TimeScale = 0;
+			if (ChapterName == "0")
+			{
+				skeletonAnimation_B.state.TimeScale = 0;
+			}
 		}
 		else if (RunGameManager.gameState == GameState.Pause)
 		{
 			skeletonAnimation_S.state.TimeScale = 0;
-			skeletonAnimation_B.state.TimeScale = 0;
+			if (ChapterName == "0")
+			{
+				skeletonAnimation_B.state.TimeScale = 0;
+			}
 		}
 		else
 		{
@@ -205,29 +231,20 @@ public class RG_playerController : MonoBehaviour
 		SlidingParticle.SetActive(false);
 		VecitySpeed = 0.12f;
 		sister.SetTrigger("run");
-		bother.SetTrigger("run");
+		if (ChapterName == "0")
+		{
+			bother.SetTrigger("run");
+		}
 	}
 
 	public void Hurt()
 	{
 		VecitySpeed -= VecityHurt;
 		runGameManager.HealthSlider.value -= 1;
-		runGameManager.damageTextObj.SetActive(true);
-		StartCoroutine("HurtDelay");
+		healthAni.SetTrigger("hurtText");
+		healthText.text = "-1";
+		flash.SetTrigger("flash");
 	}
-	IEnumerator HurtDelay()
-	{
-		for (int i = 0; i < 3; i++) {
-			flash.SetActive(true);
-			yield return new WaitForSeconds(0.1f);
-			flash.SetActive(false);
-			yield return new WaitForSeconds(0.1f);
-		}
-		yield return new WaitForSeconds(0.2f);
-		runGameManager.damageTextObj.SetActive(false);
-	}
-
-	
 
 	void OnTriggerEnter2D(Collider2D col)
 	{

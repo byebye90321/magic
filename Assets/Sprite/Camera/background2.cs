@@ -6,7 +6,7 @@ public class background2 : MonoBehaviour
     public Vector3 CreatPos;
     public float width;
     Renderer rend;
-	//public background2 back2;
+	public int value;
 
     void Start()
     {
@@ -24,8 +24,9 @@ public class background2 : MonoBehaviour
     {
         if (col.tag == "Player")
         {
-            Instantiate(gameObject, CreatPos, new Quaternion(0, 0, 0, 0));
-            CreatPos = new Vector3(CreatPos.x + width, CreatPos.y, CreatPos.z);
+			//CreatPos = new Vector3(Mathf.Floor((CreatPos.x + width*value)*100)/100, CreatPos.y, CreatPos.z);
+			CreatPos = new Vector3(CreatPos.x + width * value, CreatPos.y, CreatPos.z);
+			Instantiate(gameObject, CreatPos, new Quaternion(0, 0, 0, 0));
 		}
     }
 }
