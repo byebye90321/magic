@@ -17,9 +17,7 @@ public class RG_playerController : MonoBehaviour
 	//---------------------------Teach---------------------------
 	public bool Up = false;
 	public bool Down = false;
-	//public GameObject teachObj;
-	//public Animator teachAnim;
-	bool end = false;
+	public bool end = false;
 	//-----------------------ground check------------------------
 	public LayerMask whatIsGround;
 	public bool grounded = false;
@@ -31,7 +29,6 @@ public class RG_playerController : MonoBehaviour
 	public bool jumping = false;
 	//slide
 	public bool sliding = false;
-
 	public Button jumpBtn;
 	public Button slideBtn;
 	//--------------------------velocity-------------------------
@@ -62,6 +59,7 @@ public class RG_playerController : MonoBehaviour
 
 	void Start()
 	{
+		end = false;
 		Player = this;
 		rigid2D = GetComponent<Rigidbody2D>();
 		rigid2D.AddForce(new Vector2(0, 0));
@@ -151,25 +149,6 @@ public class RG_playerController : MonoBehaviour
 				}
 			}
 
-			//-----------------------------------2版-------------------------------------------
-			if (!end)
-			{
-				/*if (Input.GetMouseButtonUp(0))
-				{
-					pointB = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-					Touch = true;
-				}
-				else
-				{
-					Touch = false;
-				}
-
-				if (Input.GetMouseButtonDown(0))
-				{
-					pointA = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-				}*/
-			}
-
 			if (VecitySpeed < speed)
 			{
 				VecitySpeed += RecoverySpeed;
@@ -193,12 +172,16 @@ public class RG_playerController : MonoBehaviour
 		//------------------------------------Dead------------------------------------------ 
 		else if (RunGameManager.gameState == GameState.Dead)
 		{
-			skeletonAnimation_S.loop = false;
-			sister.SetTrigger("death");
-			if (ChapterName == "0")
+			if (!end)
 			{
-				skeletonAnimation_B.loop = false;
-				bother.SetTrigger("death");
+				skeletonAnimation_S.loop = false;
+				sister.SetTrigger("death");
+				if (ChapterName == "0")
+				{
+					skeletonAnimation_B.loop = false;
+					bother.SetTrigger("death");
+				}
+				end = true;
 			}
 		}
 		//------------------------------------Win------------------------------------------- 
@@ -252,7 +235,6 @@ public class RG_playerController : MonoBehaviour
 		{
 			VecitySpeed = 0.07f;
 			speed = 0.07f;
-			end = true;
 		}
 
 		if (col.gameObject.name == "Fade2_End")
@@ -284,6 +266,12 @@ public class RG_playerController : MonoBehaviour
 			runGameManager.HintText.text = "遇到上方障礙物，按下滑鍵";
 			runGameManager.maskGroup.SetActive(true);
 			runGameManager.mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(90, 120);
+		}
+
+		if (col.gameObject.name == "monster")
+		{
+			Debug.Log("dead");
+			RunGameManager.Instance.Dead();
 		}
 	}
 

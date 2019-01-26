@@ -39,7 +39,7 @@ public class RunGameManager : MonoBehaviour {
 	float StartTime = 1;
 
 	//FADE淡出
-	public GameObject winFade;
+	public GameObject FadeOut;
 	Animator fade;
 	public SkeletonAnimation fadeAni;
 	public GameObject lose_Fade;
@@ -52,7 +52,8 @@ public class RunGameManager : MonoBehaviour {
 	public Canvas canvas;
 
 	//結算
-	public GameObject winObj;
+	public GameObject winObj;  //過關
+	public GameObject gameoverObj; //被追到
 	private float addInt;
 	public Text addText;
 
@@ -74,7 +75,7 @@ public class RunGameManager : MonoBehaviour {
 	void Start () {
 		Puase.interactable = false;
 		Instance = this;
-		fade = winFade.GetComponent<Animator>();
+		fade = FadeOut.GetComponent<Animator>();
 		HintAni = HintObj.GetComponent<Animator>();
 		lose_Fade.SetActive(false);
 		Application.targetFrameRate = 100;  //幀數
@@ -85,6 +86,7 @@ public class RunGameManager : MonoBehaviour {
 		balanceText.text = Mathf.Floor(balanceValue).ToString("0");
 		Debug.Log(balanceValue);
 		Debug.Log(playerHealth);
+		gameState = GameState.Start;
 		if (chapterName == "0")
 		{
 			StartCoroutine("Target");
@@ -211,10 +213,16 @@ public class RunGameManager : MonoBehaviour {
 
 	IEnumerator GameOver()
 	{
+		yield return new WaitForSeconds(.5f);
 		lose_Fade.SetActive(true);
 		canvas.GetComponent<Canvas>().enabled = false;
 		fadeAni.state.SetAnimation(0, "animation", false);
+		yield return new WaitForSeconds(1f);
+		gameoverObj.SetActive(true);
 		yield return new WaitForSeconds(2f);
+		FadeOut.SetActive(true);
+		fade.SetBool("FadeOut", true);
+		yield return new WaitForSeconds(3f);
 		SceneManager.LoadScene(Application.loadedLevel);
 	}
 
@@ -224,7 +232,7 @@ public class RunGameManager : MonoBehaviour {
 		addInt = 100 - Mathf.Floor(balanceValue);
 		addText.text = "+" + addInt;
 		yield return new WaitForSeconds(4f);
-		winFade.SetActive(true);
+		FadeOut.SetActive(true);
 		fade.SetBool("FadeOut", true);
 		StaticObject.balanceSlider = balanceValue;
 		StaticObject.playerHealth = HealthSlider.value;

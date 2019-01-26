@@ -188,7 +188,7 @@
      <Compile Include="Assets\Sprite\Chapter0\MoviePlay.cs" />
      <Compile Include="Assets\Sprite\Chapter0\run\distance.cs" />
      <Compile Include="Assets\Sprite\Chapter0\run\fallAnim.cs" />
-     <Compile Include="Assets\Sprite\Chapter0\run\moster.cs" />
+     <Compile Include="Assets\Sprite\Chapter0\run\RG_monsterController.cs" />
      <Compile Include="Assets\Sprite\Chapter0\run\RunGameManager.cs" />
      <Compile Include="Assets\Sprite\drawEffect.cs" />
      <Compile Include="Assets\Sprite\End\EndPoint.cs" />

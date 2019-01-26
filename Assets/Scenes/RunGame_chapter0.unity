@@ -4123,13 +4123,14 @@ MonoBehaviour:
   pauseMenu: {fileID: 2101011694}
   black_bgImage: {fileID: 580944719}
   Puase: {fileID: 1518416756}
-  winFade: {fileID: 1368669327}
+  FadeOut: {fileID: 1368669327}
   fadeAni: {fileID: 265393109}
   lose_Fade: {fileID: 265393108}
   countdown: {fileID: 318135218}
   warning: {fileID: 1940333864}
   canvas: {fileID: 1338800948}
   winObj: {fileID: 324404876}
+  gameoverObj: {fileID: 0}
   addText: {fileID: 1417893636}
   audio: {fileID: 1324136045}
   countSound: {fileID: 8300000, guid: a5a564a7278c3084ca8b63875858b048, type: 3}
@@ -15105,14 +15106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9387cab83ac2d94fa9f1b27c419be23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChapterName: 0
   playerController: {fileID: 1069018176}
   speed: 0.105
   player: {fileID: 1069018174}
-  warningImage: {fileID: 0}
-  warningText: {fileID: 0}
   isStop: 0
-  audio: {fileID: 1324136045}
-  warmingSound: {fileID: 8300000, guid: a5a564a7278c3084ca8b63875858b048, type: 3}
 --- !u!61 &691938510
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15795,7 +15793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modifiedMaterial: {fileID: 1330913504}
-  instanceID: 87016
+  instanceID: 131434
 --- !u!114 &849754069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16910,6 +16908,7 @@ MonoBehaviour:
   hurt: {fileID: 1493154346}
   Up: 0
   Down: 0
+  end: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
