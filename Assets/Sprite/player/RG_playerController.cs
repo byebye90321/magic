@@ -105,14 +105,14 @@ public class RG_playerController : MonoBehaviour
 			}
 			//--------------jump---------------------
 			Player.transform.position = new Vector3(Player.transform.position.x + VecitySpeed, Player.transform.position.y, 10);
-            var hitObject = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
-            grounded = hitObject;
-            
+			var hitObject = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+			grounded = hitObject;
+
 			//rigid2D.velocity = new Vector2(rigid2D.velocity.x + VecitySpeed, rigid2D.velocity.y);
 			//-----------------------------------3版-------------------------------------
 			if (grounded)
 			{
-                if (CrossPlatformInputManager.GetButtonDown("Jump"))
+				if (CrossPlatformInputManager.GetButtonDown("Jump"))
 				{
 					rigid2D.velocity = new Vector2(0, jumpForce);
 					sister.SetTrigger("jump");
@@ -169,8 +169,23 @@ public class RG_playerController : MonoBehaviour
 
 		}
 
-		//------------------------------------Dead------------------------------------------ 
+		//------------------------------------Dead ------------------------------------------ 
 		else if (RunGameManager.gameState == GameState.Dead)
+		{
+			if (!end)
+			{
+				skeletonAnimation_S.loop = false;
+				sister.SetTrigger("death");
+				if (ChapterName == "0")
+				{
+					skeletonAnimation_B.loop = false;
+					bother.SetTrigger("death");
+				}
+				end = true;
+			}
+		}
+		//---------------------------------MonsterCatch-------------------------------------
+		else if (RunGameManager.gameState == GameState.MonsterCatch)
 		{
 			if (!end)
 			{
@@ -223,10 +238,15 @@ public class RG_playerController : MonoBehaviour
 	public void Hurt()
 	{
 		VecitySpeed -= VecityHurt;
-		runGameManager.HealthSlider.value -= 1;
+		runGameManager.playerHealth -= 1;
+		runGameManager.HealthSlider.value = runGameManager.playerHealth;
 		healthAni.SetTrigger("hurtText");
 		healthText.text = "-1";
 		flash.SetTrigger("flash");
+		if (runGameManager.playerHealth <= 0)
+		{
+			RunGameManager.Instance.Dead();
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D col)
@@ -239,7 +259,7 @@ public class RG_playerController : MonoBehaviour
 
 		if (col.gameObject.name == "Fade2_End")
 		{
-			RunGameManager.Instance.win();
+			RunGameManager.Instance.Win();
 		}
 
 		if (col.gameObject.name == "TeachUp")
@@ -270,8 +290,7 @@ public class RG_playerController : MonoBehaviour
 
 		if (col.gameObject.name == "monster")
 		{
-			Debug.Log("dead");
-			RunGameManager.Instance.Dead();
+			RunGameManager.Instance.MonsterCatch();
 		}
 	}
 

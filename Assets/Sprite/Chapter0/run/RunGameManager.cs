@@ -8,7 +8,7 @@ using Spine;
 
 public enum GameState
 {
-	Start, Pause, Running, Dead,  Win
+	Start, Pause, Running, Dead, MonsterCatch,  Win
 }
 
 public class RunGameManager : MonoBehaviour {
@@ -20,12 +20,11 @@ public class RunGameManager : MonoBehaviour {
 	//-----------------------平衡條 & 血條-----------------------
 	public float balanceValue;
 	public Slider balanceSlider;
-	public Text balanceText;
+	private GameObject balanceTextObj;
+	private Text balanceText;
 
 	public float playerHealth;
 	public Slider HealthSlider;
-	
-
 	//--------------------------距離條----------------------
 	public GameObject distance;
 
@@ -51,11 +50,14 @@ public class RunGameManager : MonoBehaviour {
 	public GameObject warning;
 	public Canvas canvas;
 
-	//結算
+	//------------------------------------結算-----------------------
 	public GameObject winObj;  //過關
-	public GameObject gameoverObj; //被追到
+	public GameObject gameoverObj; //血量歸零
+	public GameObject loseObj; //被怪物追到
 	private float addInt;
-	public Text addText;
+	private float subtractInt;
+	private GameObject addSubTextObj;
+	private Text addSubText;
 
 	//--------------音效
 	public AudioSource audio;
@@ -79,11 +81,12 @@ public class RunGameManager : MonoBehaviour {
 		HintAni = HintObj.GetComponent<Animator>();
 		lose_Fade.SetActive(false);
 		Application.targetFrameRate = 100;  //幀數
+
 		balanceValue = PlayerPrefs.GetFloat("StaticObject.balanceSlider");
-		playerHealth = PlayerPrefs.GetFloat("StaticObject.playerHealth");
+		//playerHealth = PlayerPrefs.GetFloat("StaticObject.playerHealth");
 		HealthSlider.value = playerHealth;
 		balanceSlider.value = balanceValue;
-		balanceText.text = Mathf.Floor(balanceValue).ToString("0");
+		//balanceText.text = Mathf.Floor(balanceValue).ToString("0");
 		Debug.Log(balanceValue);
 		Debug.Log(playerHealth);
 		gameState = GameState.Start;
@@ -99,28 +102,30 @@ public class RunGameManager : MonoBehaviour {
 
 	public void Update()
 	{
-		if (gameState == GameState.Win)
+		/*if (gameState == GameState.Win || gameState == GameState.Dead || gameState == GameState.MonsterCatch)
 		{
-			if (balanceSlider.value >= 100 || balanceValue >=100)
+			balanceSlider.value = balanceValue;
+			balanceText.text = balanceSlider.value.ToString("0");
+			/*if (balanceSlider.value >= 100 || balanceValue >= 100)
 			{
 				balanceValue = 100;
 				balanceSlider.value = balanceValue;
 				balanceText.text = Mathf.Floor(balanceValue).ToString("0");
 			}
-			else if(balanceSlider.value < 100)
+			else if (balanceSlider.value < 100)
 			{
 				balanceValue += 100f;
 				balanceSlider.value = balanceValue;
 				balanceText.text = Mathf.Floor(balanceValue).ToString("0");
 			}
-		}
 
+		//目前問題，win lose gameover介面加減數值問題 開啟後用find?
+		}*/
 	}
 
 	IEnumerator Target() {
 		gameState = GameState.Start;
 		maskGroup.SetActive(true);
-		//mask.uvRect = new Rect(0.79f, 0.26f, 1.5f, 1.5f);
 		mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(900, -280);
 		NextFlashText.SetActive(true);
 		HintAni.SetTrigger("HintOpen");
@@ -135,7 +140,6 @@ public class RunGameManager : MonoBehaviour {
 		yield return new WaitUntil(() => count == 4);
 		NextFlashText.SetActive(false);
 		distance.transform.SetAsFirstSibling();
-		//mask.uvRect = new Rect(0.38f, 0.3f, 1.5f, 1.5f);
 		HintAni.SetTrigger("close");
 		maskGroup.SetActive(false);
 		TouchNextImage.SetActive(false);
@@ -202,35 +206,62 @@ public class RunGameManager : MonoBehaviour {
 	public void Dead()
 	{
 		gameState = GameState.Dead;
-		StartCoroutine("GameOver");
+		StartCoroutine("dead");
 	}
 
-	public void win()
+	public void MonsterCatch() //被怪物抓到
+	{
+		gameState = GameState.MonsterCatch;
+		StartCoroutine("monsterCatch");
+	}
+
+	public void Win()
 	{
 		gameState = GameState.Win;	
-		StartCoroutine("Win");
+		StartCoroutine("win");
 	}
 
-	IEnumerator GameOver()
+	IEnumerator dead()  //血量歸零
+	{
+		yield return new WaitForSeconds(.5f);
+		lose_Fade.SetActive(true);		
+		//subtractInt = 100 - Mathf.Floor(balanceValue);	
+		canvas.GetComponent<Canvas>().enabled = false;
+		fadeAni.state.SetAnimation(0, "animation", false);
+		yield return new WaitForSeconds(1f);
+		gameoverObj.SetActive(true);
+		addSub();
+		yield return new WaitForSeconds(2f);
+		FadeOut.SetActive(true);
+		fade.SetBool("FadeOut", true);
+		yield return new WaitForSeconds(2f);
+		SceneManager.LoadScene(Application.loadedLevel);
+	}
+
+	IEnumerator monsterCatch()  //被怪物追到
 	{
 		yield return new WaitForSeconds(.5f);
 		lose_Fade.SetActive(true);
 		canvas.GetComponent<Canvas>().enabled = false;
 		fadeAni.state.SetAnimation(0, "animation", false);
 		yield return new WaitForSeconds(1f);
-		gameoverObj.SetActive(true);
+		loseObj.SetActive(true);
+		addSub();
 		yield return new WaitForSeconds(2f);
 		FadeOut.SetActive(true);
 		fade.SetBool("FadeOut", true);
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(2f);
 		SceneManager.LoadScene(Application.loadedLevel);
 	}
 
-	IEnumerator Win()
+	IEnumerator win()
 	{
 		winObj.SetActive(true);
-		addInt = 100 - Mathf.Floor(balanceValue);
-		addText.text = "+" + addInt;
+		//addInt = 100 - Mathf.Floor(balanceValue);
+		addInt = 20;
+		addSubText.text = "+" + addInt;
+		balanceValue = balanceValue+addInt;
+
 		yield return new WaitForSeconds(4f);
 		FadeOut.SetActive(true);
 		fade.SetBool("FadeOut", true);
@@ -249,5 +280,20 @@ public class RunGameManager : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(0);
 		SceneManager.LoadScene(Application.loadedLevel);
+	}
+
+	public void addSub()
+	{
+		subtractInt = 10;
+		addSubTextObj = GameObject.Find("addSubText");
+		balanceTextObj = GameObject.Find("balanceText");
+		addSubText = addSubTextObj.GetComponent<Text>();
+		balanceText = balanceTextObj.GetComponent<Text>();
+		addSubText.text = "-" + subtractInt;
+		balanceValue = balanceValue - subtractInt;
+		balanceSlider.value = balanceValue;
+		Debug.Log(balanceSlider.value);
+		Debug.Log(balanceValue);
+		balanceText.text = balanceValue.ToString("0");
 	}
 }
