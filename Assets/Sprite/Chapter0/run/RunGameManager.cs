@@ -19,7 +19,10 @@ public class RunGameManager : MonoBehaviour {
 
 	//-----------------------平衡條 & 血條-----------------------
 	public float balanceValue;
-	public Slider balanceSlider;
+
+	private GameObject balanceSliderObj;
+	private Slider balanceSlider;
+
 	private GameObject balanceTextObj;
 	private Text balanceText;
 
@@ -83,9 +86,9 @@ public class RunGameManager : MonoBehaviour {
 		Application.targetFrameRate = 100;  //幀數
 
 		balanceValue = PlayerPrefs.GetFloat("StaticObject.balanceSlider");
-		//playerHealth = PlayerPrefs.GetFloat("StaticObject.playerHealth");
+		playerHealth = PlayerPrefs.GetFloat("StaticObject.playerHealth");
 		HealthSlider.value = playerHealth;
-		balanceSlider.value = balanceValue;
+		//balanceSlider.value = balanceValue;
 		//balanceText.text = Mathf.Floor(balanceValue).ToString("0");
 		Debug.Log(balanceValue);
 		Debug.Log(playerHealth);
@@ -224,8 +227,7 @@ public class RunGameManager : MonoBehaviour {
 	IEnumerator dead()  //血量歸零
 	{
 		yield return new WaitForSeconds(.5f);
-		lose_Fade.SetActive(true);		
-		//subtractInt = 100 - Mathf.Floor(balanceValue);	
+		lose_Fade.SetActive(true);			
 		canvas.GetComponent<Canvas>().enabled = false;
 		fadeAni.state.SetAnimation(0, "animation", false);
 		yield return new WaitForSeconds(1f);
@@ -258,9 +260,21 @@ public class RunGameManager : MonoBehaviour {
 	{
 		winObj.SetActive(true);
 		//addInt = 100 - Mathf.Floor(balanceValue);
+
 		addInt = 20;
+		addSubTextObj = GameObject.Find("addSubText");
+		balanceTextObj = GameObject.Find("balanceText");
+		balanceSliderObj = GameObject.Find("BalanaceSlider");
+		addSubText = addSubTextObj.GetComponent<Text>();
+		balanceText = balanceTextObj.GetComponent<Text>();
+		balanceSlider = balanceSliderObj.GetComponent<Slider>();
+		balanceSlider.value = balanceValue;
 		addSubText.text = "+" + addInt;
 		balanceValue = balanceValue+addInt;
+		balanceSlider.value = balanceValue;
+		Debug.Log(balanceSlider.value);
+		Debug.Log(balanceValue);
+		balanceText.text = balanceValue.ToString("0");
 
 		yield return new WaitForSeconds(4f);
 		FadeOut.SetActive(true);
@@ -284,11 +298,15 @@ public class RunGameManager : MonoBehaviour {
 
 	public void addSub()
 	{
+
 		subtractInt = 10;
 		addSubTextObj = GameObject.Find("addSubText");
 		balanceTextObj = GameObject.Find("balanceText");
+		balanceSliderObj = GameObject.Find("BalanaceSlider");
 		addSubText = addSubTextObj.GetComponent<Text>();
 		balanceText = balanceTextObj.GetComponent<Text>();
+		balanceSlider = balanceSliderObj.GetComponent<Slider>();
+		balanceSlider.value = balanceValue;
 		addSubText.text = "-" + subtractInt;
 		balanceValue = balanceValue - subtractInt;
 		balanceSlider.value = balanceValue;
