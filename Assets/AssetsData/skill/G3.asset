@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d1fac3068f195458bac1e9fe757695, type: 3}
+  m_Name: G3
+  m_EditorClassIdentifier: 
+  id: G3
+  SkillSpritebg: {fileID: 21300000, guid: da45f2a075712fa4cb64aad62d4751ed, type: 3}
+  SkillSpriteIcon: {fileID: 21300000, guid: 97f398da646c5704eaacad379fda4b67, type: 3}
+  coolDown: 9
+  Atk: 25
+  isAtk: 0

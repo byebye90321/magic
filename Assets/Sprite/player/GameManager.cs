@@ -41,10 +41,10 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject ParticleObj1;
 	public GameObject ParticleObj2;
-	//------------------成就----------------------
-	public GameObject achievementObj;
-	private Animator achievementAni;
-	public Text achievementText;
+	//------------------事件----------------------
+	public GameObject eventObj;
+	private Animator eventAni;
+	public Text eventText;
 
 	//----------------平台物件、互動物件------------------
 	public GameObject AirFloor;
@@ -196,13 +196,13 @@ public class GameManager : MonoBehaviour {
 		attackRedImage.SetActive(false);
 		cameraFollow.moveCount = 7;
 		yield return new WaitForSeconds(0.3f);
-		achievementObj.SetActive(true);
-		achievementText.text = "擊敗歪歪";
+		eventObj.SetActive(true);
+		eventText.text = "擊敗歪歪";
 		smallBoss.SetActive(false);
 		cameraFollow.moveCount = 0;
 		cameraFollow.isFollowTarget = true;
 		yield return new WaitForSeconds(2f);
-		achievementObj.SetActive(false);
+		eventObj.SetActive(false);
 		dialogsScript1.attackColliderBorder.SetActive(false);
 		dialogsScript1.attackCollider.SetActive(false);
 		StartCoroutine(dialogsScript1.AfterBossBattle());
@@ -216,13 +216,13 @@ public class GameManager : MonoBehaviour {
 		attackRedImage.SetActive(false);
 		cameraFollow.moveCount = 9;
 		yield return new WaitForSeconds(0.3f);
-		achievementObj.SetActive(true);
-		achievementText.text = "擊敗維吉維克";
+		eventObj.SetActive(true);
+		eventText.text = "擊敗維吉維克";
 		monster.SetActive(false);
 		cameraFollow.moveCount = 0;
 		cameraFollow.isFollowTarget = true;
 		yield return new WaitForSeconds(2f);
-		achievementObj.SetActive(false);
+		eventObj.SetActive(false);
 		dialogsScript1.monsterColliderBorder.SetActive(false);
 		dialogsScript1.monsterCollider.SetActive(false);
 		StartCoroutine(dialogsScript1.AfterMonsterBattle());

@@ -197,6 +197,7 @@ public class NPCTask : MonoBehaviour {
 	{
 		playerController.npcTalk.isTasting = false;
 		taskPanel.SetActive(false);
+		gameManager.balanceValue -= 5;
 		if (playerController.npcTalk.whoTask == "BobbyTask")
 		{
 			BobbyCollider.enabled = false;
@@ -253,13 +254,13 @@ public class NPCTask : MonoBehaviour {
 			dialogsScript1.NPCAppear();
 		}
 		yield return new WaitForSeconds(.5f);
-		gameManager.achievementObj.SetActive(true);
-		gameManager.achievementText.text = "完成任務二";
+		gameManager.eventObj.SetActive(true);
+		gameManager.eventText.text = "完成任務二";
 		yield return new WaitForSeconds(2f);
-		gameManager.achievementObj.SetActive(false);
+		gameManager.eventObj.SetActive(false);
 		yield return new WaitForSeconds(0.1f);
-		gameManager.achievementObj.SetActive(true);
-		gameManager.achievementText.text = "獲得技能二";
+		gameManager.eventObj.SetActive(true);
+		gameManager.eventText.text = "獲得技能二";
 		yield return new WaitForSeconds(0.5f);
 		gameManager.ParticleObj2.SetActive(true); //skill Particle
 		yield return new WaitForSeconds(0.5f);
@@ -277,7 +278,7 @@ public class NPCTask : MonoBehaviour {
 		}
 		yield return new WaitForSeconds(1f);
 		gameManager.ParticleObj2.SetActive(false);
-		gameManager.achievementObj.SetActive(false);
+		gameManager.eventObj.SetActive(false);
 		yield return new WaitForSeconds(0.5f);
 		cameraFollow.isFollowTarget = false;
 		cameraFollow.moveCount = 5;
@@ -310,13 +311,13 @@ public class NPCTask : MonoBehaviour {
 		}
 		BobbyCollider.enabled = false;
 		yield return new WaitForSeconds(0.5f);
-		gameManager.achievementObj.SetActive(true);
-		gameManager.achievementText.text = "完成任務一";
+		gameManager.eventObj.SetActive(true);
+		gameManager.eventText.text = "完成任務一";
 		yield return new WaitForSeconds(2f);
-		gameManager.achievementObj.SetActive(false);
+		gameManager.eventObj.SetActive(false);
 		yield return new WaitForSeconds(0.1f);
-		gameManager.achievementObj.SetActive(true);
-		gameManager.achievementText.text = "獲得技能一";
+		gameManager.eventObj.SetActive(true);
+		gameManager.eventText.text = "獲得技能一";
 		yield return new WaitForSeconds(0.5f);
 		gameManager.ParticleObj1.SetActive(true);
 		yield return new WaitForSeconds(0.5f);
@@ -334,7 +335,7 @@ public class NPCTask : MonoBehaviour {
 		}
 		yield return new WaitForSeconds(1f);
 		gameManager.ParticleObj1.SetActive(false);
-		gameManager.achievementObj.SetActive(false);
+		gameManager.eventObj.SetActive(false);
 		yield return new WaitForSeconds(1.5f);
 		gameManager.FadeWhite.SetActive(true);
 		yield return new WaitForSeconds(0.5f);

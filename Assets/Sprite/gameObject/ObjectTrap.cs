@@ -10,6 +10,7 @@ public class ObjectTrap : MonoBehaviour {
 	public Animator healthAni;
 	public Text healthText;
 	public Animator flash;
+	public GameObject healthObj;
 
 	public int damageInt;
 
@@ -41,8 +42,11 @@ public class ObjectTrap : MonoBehaviour {
 
 	IEnumerator beatens()
 	{
-		healthAni.SetTrigger("hurtText");
-		healthText.text = "-" + damageInt;
+		//healthAni.SetTrigger("hurtText");
+		//healthText.text = "-" + damageInt;
+		GameObject NEWatkpreft = (GameObject)Instantiate(healthObj) as GameObject;
+		NEWatkpreft.transform.position = new Vector3(Random.Range(-3.0f, 4.0f), Random.Range(-2.5f, 4.0f), 0);
+
 		flash.SetTrigger("flash");
 		playerController.SpineSister.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0.5f);
 		if(playerController.ChapterName=="0")
