@@ -19,9 +19,13 @@ public class DG_EnemyController : MonoBehaviour{
 	bool isDead;
 	bool damaged;
 
-	public Animator healthAni;
+	/*public Animator healthAni;
 	public GameObject damageTextObj;
-	private Text damageText;
+	private Text damageText;*/
+
+	private Text healthText;
+	public GameObject healthObj;
+	public GameObject canvas;
 
 	//---------------------CUT--------------------
 	public GameObject obj1, obj2;    //分开后的两边水果
@@ -53,7 +57,7 @@ public class DG_EnemyController : MonoBehaviour{
 		col = GetComponent<BoxCollider2D>();
 		enemy1.state.SetAnimation(0, "idle", true);
 		enemy2.state.SetAnimation(0, "idle", true);
-		damageText = damageTextObj.GetComponent<Text>();
+		//damageText = damageTextObj.GetComponent<Text>();
 	}
 	
 	void Update()
@@ -133,7 +137,7 @@ public class DG_EnemyController : MonoBehaviour{
 		enemy1.state.SetAnimation(0, "death", false);
 		enemy2.state.SetAnimation(0, "death", false);
 		//damageTextObj.SetActive(true);
-		damageText.text = "-" + gesture.skillG2.skillInfo.Atk;
+		healthText.text = "-" + gesture.skillG2.skillInfo.Atk;
 		StartCoroutine("wait");
 	}
 
@@ -196,12 +200,10 @@ public class DG_EnemyController : MonoBehaviour{
 		if (col.gameObject.name == "Blade" && drawCanvas.isActiveAndEnabled && isAttack==true)
 		{
 			TakeDamage(1);
-			healthAni.SetTrigger("hurtText");
-			damageText.text = "-" + 1;
-			enemy1.state.SetAnimation(0, "death", false);
-			enemy1.state.AddAnimation(0, "idle", true, 0f);
-			enemy2.state.SetAnimation(0, "death", false);
-			enemy2.state.AddAnimation(0, "idle", true, 0f);
+			/*healthAni.SetTrigger("hurtText");
+			damageText.text = "-" + 1;*/
+			StartCoroutine("damageActive");
+			healthText.text = "-" + 1;
 			StartCoroutine("wait");
 		}
 
@@ -209,66 +211,69 @@ public class DG_EnemyController : MonoBehaviour{
 		{
 			G0_beaten.SetActive(true);
 			TakeDamage(gesture.skill0.skillInfo.Atk);
-			enemy1.state.SetAnimation(0, "death", false);
-			enemy1.state.AddAnimation(0, "idle", true, 0f);
-			enemy2.state.SetAnimation(0, "death", false);
-			enemy2.state.AddAnimation(0, "idle", true, 0f);
-			healthAni.SetTrigger("hurtText");
+			StartCoroutine("damageActive");
+			//healthAni.SetTrigger("hurtText");
+			healthText.text = "-" + gesture.skill0.skillInfo.Atk;
 			StartCoroutine("G0_Close");
-			damageText.text = "-" + gesture.skill0.skillInfo.Atk;
+			
 		}
 
 		if (col.gameObject.name == "G1_Particle") //被G1攻擊
 		{
 			G1_beaten.SetActive(true);
 			TakeDamage(gesture.skillG1.skillInfo.Atk);
-			enemy1.state.SetAnimation(0, "death", false);
-			enemy1.state.AddAnimation(0, "idle", true, 0f);
-			enemy2.state.SetAnimation(0, "death", false);
-			enemy2.state.AddAnimation(0, "idle", true, 0f);
-			healthAni.SetTrigger("hurtText");
+			StartCoroutine("damageActive");
+			//healthAni.SetTrigger("hurtText");
 			StartCoroutine("G1_Close");
-			damageText.text = "-" + gesture.skillG1.skillInfo.Atk;
+			healthText.text = "-" + gesture.skillG1.skillInfo.Atk;
 		}
 
 		if (col.gameObject.name == "B1_Particle") //被B1攻擊
 		{
 			B1_beaten.SetActive(true);
 			TakeDamage(gesture.skillB1.skillInfo.Atk);
-			enemy1.state.SetAnimation(0, "death", false);
-			enemy1.state.AddAnimation(0, "idle", true, 0f);
-			enemy2.state.SetAnimation(0, "death", false);
-			enemy2.state.AddAnimation(0, "idle", true, 0f);
-			healthAni.SetTrigger("hurtText");
+			StartCoroutine("damageActive");
+			//healthAni.SetTrigger("hurtText");
 			StartCoroutine("G1_Close");
-			damageText.text = "-" + gesture.skillB1.skillInfo.Atk;
+			healthText.text = "-" + gesture.skillB1.skillInfo.Atk;
 		}
 
 		if (col.gameObject.name == "G2_Particle") //被G2攻擊
 		{
 			G2_beaten.SetActive(true);
 			TakeDamage(gesture.skillG2.skillInfo.Atk);
-			enemy1.state.SetAnimation(0, "death", false);
-			enemy1.state.AddAnimation(0, "idle", true, 0f);
-			enemy2.state.SetAnimation(0, "death", false);
-			enemy2.state.AddAnimation(0, "idle", true, 0f);
-			healthAni.SetTrigger("hurtText");
+			StartCoroutine("damageActive");
+			//healthAni.SetTrigger("hurtText");
 			StartCoroutine("G2_Close");
-			damageText.text = "-" + gesture.skillG2.skillInfo.Atk;
+			healthText.text = "-" + gesture.skillG2.skillInfo.Atk;
 		}
 		if (col.gameObject.name == "B2_Particle") //被B2攻擊
 		{
 			B2_beaten.SetActive(true);
 			TakeDamage(gesture.skillB2.skillInfo.Atk);
-			enemy1.state.SetAnimation(0, "death", false);
-			enemy1.state.AddAnimation(0, "idle", true, 0f);
-			enemy2.state.SetAnimation(0, "death", false);
-			enemy2.state.AddAnimation(0, "idle", true, 0f);
-			healthAni.SetTrigger("hurtText");
+			StartCoroutine("damageActive");
+			//healthAni.SetTrigger("hurtText");
 			StartCoroutine("G2_Close");
-			damageText.text = "-" + gesture.skillB2.skillInfo.Atk;
+			healthText.text = "-" + gesture.skillB2.skillInfo.Atk;
 		}
 
+	}
+
+	IEnumerator damageActive()
+	{
+		enemy1.state.SetAnimation(0, "death", false);
+		enemy1.state.AddAnimation(0, "idle", true, 0f);
+		enemy2.state.SetAnimation(0, "death", false);
+		enemy2.state.AddAnimation(0, "idle", true, 0f);
+	
+		//healthAni.SetTrigger("hurtText");
+		GameObject NEWatkpreft = Instantiate(healthObj) as GameObject;
+		NEWatkpreft.transform.SetParent(canvas.transform, false);
+		NEWatkpreft.GetComponent<RectTransform>().anchoredPosition = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);
+		healthText = NEWatkpreft.GetComponentInChildren<Text>();
+		//healthText.text = "-" + damageInt;
+		yield return new WaitForSeconds(.1f);
+		Destroy(NEWatkpreft, .5f);
 	}
 
 	IEnumerator wait()

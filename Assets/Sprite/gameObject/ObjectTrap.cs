@@ -7,10 +7,11 @@ public class ObjectTrap : MonoBehaviour {
 
 	public DG_playerController playerController;
 	public Animator characterAni;
-	public Animator healthAni;
-	public Text healthText;
+	//public Animator healthAni;
+	private Text healthText;
 	public Animator flash;
 	public GameObject healthObj;
+	public GameObject canvas;
 
 	public int damageInt;
 
@@ -43,9 +44,12 @@ public class ObjectTrap : MonoBehaviour {
 	IEnumerator beatens()
 	{
 		//healthAni.SetTrigger("hurtText");
-		//healthText.text = "-" + damageInt;
-		GameObject NEWatkpreft = (GameObject)Instantiate(healthObj) as GameObject;
-		NEWatkpreft.transform.position = new Vector3(Random.Range(-3.0f, 4.0f), Random.Range(-2.5f, 4.0f), 0);
+		
+		GameObject NEWatkpreft = Instantiate(healthObj) as GameObject;
+		NEWatkpreft.transform.SetParent(canvas.transform, false);		
+		NEWatkpreft.GetComponent<RectTransform>().anchoredPosition = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);
+		healthText = NEWatkpreft.GetComponentInChildren<Text>();
+		healthText.text = "-" + damageInt;
 
 		flash.SetTrigger("flash");
 		playerController.SpineSister.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0.5f);
@@ -55,5 +59,8 @@ public class ObjectTrap : MonoBehaviour {
 		playerController.SpineSister.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0f);
 		if (playerController.ChapterName == "0")
 			playerController.SpineBother.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0f);
+
+		Destroy(NEWatkpreft,.5f);
 	}
+	
 }

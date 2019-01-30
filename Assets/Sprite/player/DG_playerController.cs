@@ -50,10 +50,13 @@ public class DG_playerController : MonoBehaviour
 	public GameObject falsh;
 	public Animator healthAni;
 	public GameObject healthTextObj;
-	private Text healthText;
 	public GameObject lineParticle;
+
+	private Text healthText;
+	public GameObject healthObj;
+	public GameObject canvas;
 	//------------------Enemy-----------------------
-	public int enemyAtk;
+	//public int enemyAtk;
 	public int BossAtk;
 
 	//------------------draw-------------------------
@@ -77,7 +80,7 @@ public class DG_playerController : MonoBehaviour
 	{
 		rigid2D.velocity = new Vector2(0, 0f);		
 		healthCanvas = playerHealth.GetComponent<Transform>();
-		healthText = healthTextObj.GetComponent<Text>();
+		//healthText = healthTextObj.GetComponent<Text>();
 
 		if (ChapterName == "1")
 		{
@@ -368,7 +371,6 @@ public class DG_playerController : MonoBehaviour
 		{
 			TakeDamage(BossAtk);
 			W1_beaten.SetActive(true);
-			healthText.text = "-" + BossAtk;
 			StartCoroutine("Bossbeaten");
 		}
 
@@ -504,10 +506,14 @@ public class DG_playerController : MonoBehaviour
 			animator_B.SetTrigger("beaten");
 			SpineBother.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0.5f);
 		}
-		healthAni.SetTrigger("hurtText");
 		animator_S.SetTrigger("beaten");		
 		SpineSister.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0.5f);
 
+		GameObject NEWatkpreft = Instantiate(healthObj) as GameObject;
+		NEWatkpreft.transform.SetParent(canvas.transform, false);
+		NEWatkpreft.GetComponent<RectTransform>().anchoredPosition = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);
+		healthText = NEWatkpreft.GetComponentInChildren<Text>();
+		healthText.text = "-" + BossAtk;
 		yield return new WaitForSeconds(0.7f);
 		SpineSister.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0f);
 		if (ChapterName == "0")
@@ -515,7 +521,7 @@ public class DG_playerController : MonoBehaviour
 
 		yield return new WaitForSeconds(.2f);
 		W1_beaten.SetActive(false);
-
+		Destroy(NEWatkpreft, .5f);
 	}
 
 	IEnumerator Teleportation()

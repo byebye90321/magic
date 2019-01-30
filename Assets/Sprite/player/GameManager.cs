@@ -284,7 +284,6 @@ public class GameManager : MonoBehaviour {
 		FadeOut.SetActive(true);
 		FadeOutAni.SetBool("FadeOut", true);
 		yield return new WaitForSeconds(1.5f);
-		Debug.Log("77878789");
 		SceneManager.LoadScene("LoadingToMain");  //接下一關 //先回主畫面
 	}
 

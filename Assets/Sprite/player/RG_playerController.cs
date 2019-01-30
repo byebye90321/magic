@@ -39,7 +39,10 @@ public class RG_playerController : MonoBehaviour
 	//---------------------------health-------------------------
 	public Animator healthAni;
 	public GameObject healthTextObj;
+
 	private Text healthText;
+	public GameObject healthObj;
+	public GameObject canvas;
 	//---------------------------Hurt-----------------------------
 	public float VecityHurt;
 	public float RecoverySpeed;
@@ -65,7 +68,7 @@ public class RG_playerController : MonoBehaviour
 		rigid2D.AddForce(new Vector2(0, 0));
 		rigid2D.velocity = new Vector2(0, 0f);
 		VecitySpeed = speed;
-		healthText = healthTextObj.GetComponent<Text>();
+		//healthText = healthTextObj.GetComponent<Text>();
 		if (ChapterName == "0")
 		{
 			jumpBtn.interactable = false;
@@ -240,13 +243,17 @@ public class RG_playerController : MonoBehaviour
 		VecitySpeed -= VecityHurt;
 		runGameManager.playerHealth -= 1;
 		runGameManager.HealthSlider.value = runGameManager.playerHealth;
-		healthAni.SetTrigger("hurtText");
-		healthText.text = "-1";
+		GameObject NEWatkpreft = Instantiate(healthObj) as GameObject;
+		NEWatkpreft.transform.SetParent(canvas.transform, false);
+		NEWatkpreft.GetComponent<RectTransform>().anchoredPosition = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);
+		healthText = NEWatkpreft.GetComponentInChildren<Text>();
+		healthText.text = "-" + 1;
 		flash.SetTrigger("flash");
 		if (runGameManager.playerHealth <= 0)
 		{
 			RunGameManager.Instance.Dead();
 		}
+		Destroy(NEWatkpreft, .5f);
 	}
 
 	void OnTriggerEnter2D(Collider2D col)

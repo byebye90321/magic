@@ -270,7 +270,14 @@ public class RunGameManager : MonoBehaviour {
 		balanceSlider = balanceSliderObj.GetComponent<Slider>();
 		balanceSlider.value = balanceValue;
 		addSubText.text = "+" + addInt;
-		balanceValue = balanceValue+addInt;
+		if (balanceValue + addInt >= 100)
+		{
+			balanceValue = 100;
+		}
+		else
+		{
+			balanceValue = balanceValue + addInt;
+		}
 		balanceSlider.value = balanceValue;
 		Debug.Log(balanceSlider.value);
 		Debug.Log(balanceValue);
