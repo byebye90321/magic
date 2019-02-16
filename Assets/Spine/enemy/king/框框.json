@@ -1,0 +1,1895 @@
+{
+"skeleton": { "hash": "uxcNt+chMT+kbrlKWmHJMcEVitg", "spine": "3.6.53", "width": 2124.54, "height": 2573 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "hip", "parent": "root", "x": -130.71, "y": 1454.42 },
+	{ "name": "上披風", "parent": "hip", "length": 248.66, "rotation": 89.22, "x": -3.41, "y": 3.41 },
+	{ "name": "上披風3", "parent": "上披風", "length": 211.2, "rotation": 1.71, "x": 197.53, "y": 2.71 },
+	{ "name": "右手上臂", "parent": "上披風3", "length": 558.52, "rotation": -148.88, "x": -3.08, "y": -190.71 },
+	{ "name": "右手下臂", "parent": "右手上臂", "length": 522.76, "rotation": 104.28, "x": 509.12, "y": -27.57 },
+	{ "name": "右手手掌", "parent": "右手下臂", "length": 248.17, "rotation": -2.99, "x": 486.7, "y": 3.24 },
+	{ "name": "法杖", "parent": "右手手掌", "length": 848.09, "rotation": 46.67, "x": 189.41, "y": 32.02 },
+	{ "name": "右水滴", "parent": "法杖", "length": 124.08, "rotation": -175.84, "x": 501.76, "y": -211.93 },
+	{ "name": "右腳", "parent": "上披風", "length": 1292.22, "rotation": -173.95, "x": -159.76, "y": -182.37 },
+	{ "name": "右身體黑圈_前", "parent": "上披風3", "length": 188.41, "rotation": 138.47, "x": 85.25, "y": 5.44 },
+	{ "name": "右身體黑圈_後", "parent": "右身體黑圈_前", "length": 231.26, "rotation": -95.59, "x": 108.24, "y": -5.91 },
+	{ "name": "左手上臂", "parent": "上披風3", "length": 546.97, "rotation": 151.23, "x": 16.64, "y": 187.09 },
+	{ "name": "左手下臂", "parent": "左手上臂", "length": 478.31, "rotation": 13.41, "x": 464.8, "y": -4.88 },
+	{ "name": "左手掌", "parent": "左手下臂", "length": 339.27, "rotation": 8.09, "x": 446.93, "y": -1.04 },
+	{ "name": "左水滴", "parent": "法杖", "length": 128.43, "rotation": 176.99, "x": 504.01, "y": 208.82 },
+	{ "name": "左腳", "parent": "上披風", "length": 1318.23, "rotation": -173.25, "x": -149.1, "y": 149.38 },
+	{ "name": "左身體黑圈_前", "parent": "上披風3", "length": 212.43, "rotation": -139.82, "x": 85.19, "y": 2.03 },
+	{ "name": "左身體黑圈_後", "parent": "左身體黑圈_前", "length": 226.59, "rotation": 96.34, "x": 128.17, "y": -3.33 },
+	{ "name": "披風_後", "parent": "上披風3", "length": 1450.06, "rotation": 163.87, "x": 38.79, "y": 4.77 },
+	{ "name": "頭", "parent": "上披風3", "length": 519.32, "rotation": 3.59, "x": 183.9, "y": -2.97 },
+	{ "name": "正常表情", "parent": "頭", "length": 162.24, "rotation": -55.48, "x": 239.56, "y": 5 },
+	{ "name": "法杖中間水晶", "parent": "法杖", "length": 48.41, "rotation": -50.71, "x": 516.95 },
+	{ "name": "法杖棍子", "parent": "法杖", "length": 1760.92, "rotation": -179.78, "x": 23.05, "y": 3.41 },
+	{ "name": "頭水晶", "parent": "頭", "length": 175.98, "rotation": -0.07, "x": 329.5, "y": -4.27 },
+	{ "name": "黑球", "parent": "上披風3", "length": 251.21, "rotation": -41.53, "x": 78.44, "y": 5.55 }
+],
+"slots": [
+	{ "name": "左身體黑圈_後", "bone": "左身體黑圈_後", "attachment": "左身體黑圈_後" },
+	{ "name": "右身體黑圈_後", "bone": "右身體黑圈_後", "attachment": "右身體黑圈_後" },
+	{ "name": "披風_後", "bone": "披風_後", "attachment": "披風_後" },
+	{ "name": "左手上臂", "bone": "左手上臂", "attachment": "左手上臂" },
+	{ "name": "左手下臂", "bone": "左手下臂", "attachment": "左手下臂" },
+	{ "name": "右手上臂", "bone": "右手上臂", "attachment": "右手上臂" },
+	{ "name": "右腳", "bone": "右腳", "attachment": "右腳" },
+	{ "name": "法杖棍子", "bone": "法杖棍子", "attachment": "法杖棍子" },
+	{ "name": "右手下臂", "bone": "右手下臂", "attachment": "右手下臂" },
+	{ "name": "右手手掌", "bone": "右手手掌", "attachment": "右手手掌" },
+	{ "name": "左腳", "bone": "左腳", "attachment": "左腳" },
+	{ "name": "上披風", "bone": "上披風3", "attachment": "上披風" },
+	{ "name": "法杖中間水晶", "bone": "法杖中間水晶", "attachment": "法杖中間水晶" },
+	{ "name": "左水滴", "bone": "左水滴", "attachment": "左水滴" },
+	{ "name": "右水滴", "bone": "右水滴", "attachment": "右水滴" },
+	{ "name": "法杖", "bone": "法杖", "attachment": "法杖" },
+	{ "name": "左手掌", "bone": "左手掌", "attachment": "左手掌" },
+	{ "name": "左身體黑圈_前", "bone": "左身體黑圈_前", "attachment": "左身體黑圈_前" },
+	{ "name": "右身體黑圈_前", "bone": "右身體黑圈_前", "attachment": "右身體黑圈_前" },
+	{ "name": "黑球", "bone": "黑球", "attachment": "黑球" },
+	{ "name": "頭", "bone": "頭", "attachment": "頭" },
+	{ "name": "頭水晶", "bone": "頭水晶", "attachment": "頭水晶" },
+	{ "name": "正常表情", "bone": "正常表情", "attachment": "正常表情" }
+],
+"skins": {
+	"default": {
+		"上披風": {
+			"上披風": { "x": -110.43, "y": 17.95, "rotation": -90.92, "width": 1018, "height": 1055 }
+		},
+		"右手上臂": {
+			"右手上臂": { "x": 278.58, "y": 2.71, "rotation": 57.96, "width": 356, "height": 491 }
+		},
+		"右手下臂": {
+			"右手下臂": { "x": 241.85, "y": 3.01, "rotation": -46.32, "width": 381, "height": 430 }
+		},
+		"右手手掌": {
+			"右手手掌": { "x": 117.72, "y": -13.09, "rotation": -43.33, "width": 211, "height": 259 }
+		},
+		"右水滴": {
+			"右水滴": { "x": 61.89, "y": -0.62, "rotation": 85.84, "width": 55, "height": 131 }
+		},
+		"右腳": {
+			"右腳": { "x": 643.43, "y": -18.49, "rotation": 84.73, "width": 188, "height": 1290 }
+		},
+		"右身體黑圈_前": {
+			"右身體黑圈_前": { "x": 80.98, "y": 22.85, "rotation": 130.6, "width": 1204, "height": 812 }
+		},
+		"右身體黑圈_後": {
+			"右身體黑圈_後": { "x": 66.16, "y": -106.52, "rotation": -133.81, "width": 1149, "height": 647 }
+		},
+		"左手上臂": {
+			"左手上臂": { "x": 269.56, "y": -2.2, "rotation": 117.84, "width": 332, "height": 501 }
+		},
+		"左手下臂": {
+			"左手下臂": { "x": 235.75, "y": 13.23, "rotation": 104.43, "width": 209, "height": 471 }
+		},
+		"左手掌": {
+			"左手掌": { "x": 172.82, "y": -24.61, "rotation": 96.34, "width": 181, "height": 357 }
+		},
+		"左水滴": {
+			"左水滴": { "x": 63.19, "y": -1.56, "rotation": 93.01, "width": 54, "height": 135 }
+		},
+		"左腳": {
+			"左腳": { "x": 657.73, "y": -9.11, "rotation": 84.04, "width": 194, "height": 1311 }
+		},
+		"左身體黑圈_前": {
+			"左身體黑圈_前": { "x": 106.6, "y": -8.41, "rotation": 48.9, "width": 1235, "height": 753 }
+		},
+		"左身體黑圈_後": {
+			"左身體黑圈_後": { "x": 89.66, "y": 102.62, "rotation": -47.45, "width": 1173, "height": 592 }
+		},
+		"披風_後": {
+			"披風_後": { "x": 741.62, "y": 134.4, "rotation": 105.2, "width": 1778, "height": 1508 }
+		},
+		"正常表情": {
+			"攻擊表情": { "x": 68.32, "y": 78.43, "rotation": -39.04, "width": 412, "height": 139 },
+			"正常表情": { "x": 63.59, "y": 82.91, "rotation": -39.04, "width": 453, "height": 200 },
+			"閉眼表情": { "x": 60.81, "y": 75.51, "rotation": -39.04, "width": 398, "height": 113 }
+		},
+		"法杖": {
+			"法杖": { "x": 421.49, "y": -2.8, "rotation": -90, "width": 435, "height": 848 }
+		},
+		"法杖中間水晶": {
+			"法杖中間水晶": { "x": -28.66, "y": -16.56, "rotation": -39.29, "width": 580, "height": 381 }
+		},
+		"法杖棍子": {
+			"法杖棍子": { "x": 871.08, "y": 2.84, "rotation": 89.78, "width": 73, "height": 1759 }
+		},
+		"頭": {
+			"頭": { "x": 261.59, "y": -13.96, "rotation": -94.51, "width": 1265, "height": 530 }
+		},
+		"頭水晶": {
+			"頭水晶": { "x": 74.02, "y": -3.26, "rotation": -94.45, "width": 126, "height": 246 }
+		},
+		"黑球": {
+			"黑球": { "x": 57.28, "y": -12.34, "rotation": -49.4, "width": 1468, "height": 726 }
+		}
+	}
+},
+"animations": {
+	"death": {
+		"slots": {
+			"正常表情": {
+				"attachment": [
+					{ "time": 0, "name": "正常表情" },
+					{ "time": 0.1667, "name": "閉眼表情" }
+				]
+			}
+		},
+		"bones": {
+			"hip": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"上披風": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.5, "angle": -19.55, "curve": "stepped" },
+					{ "time": 0.6, "angle": -19.55 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"上披風3": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.5, "angle": 2.75, "curve": "stepped" },
+					{ "time": 0.6, "angle": 2.75 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"頭": {
+				"rotate": [
+					{ "time": 0, "angle": -4.17 },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.5, "angle": -4.82, "curve": "stepped" },
+					{ "time": 0.6, "angle": -4.82 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"正常表情": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左身體黑圈_前": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.5, "angle": -10.22, "curve": "stepped" },
+					{ "time": 0.6, "angle": -10.22 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左身體黑圈_後": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右身體黑圈_前": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.5, "angle": -15.52, "curve": "stepped" },
+					{ "time": 0.6, "angle": -15.52 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右身體黑圈_後": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"黑球": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6, "angle": 178.07 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"左手上臂": {
+				"rotate": [
+					{ "time": 0, "angle": -11.43 },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.5, "angle": -50.44, "curve": "stepped" },
+					{ "time": 0.6, "angle": -50.44 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左手下臂": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.5, "angle": 11.37, "curve": "stepped" },
+					{ "time": 0.6, "angle": 11.37 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左手掌": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右手上臂": {
+				"rotate": [
+					{ "time": 0, "angle": -4.75 },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.5, "angle": 48.1, "curve": "stepped" },
+					{ "time": 0.6, "angle": 48.1 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右手下臂": {
+				"rotate": [
+					{ "time": 0, "angle": 7.19 },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.5, "angle": -65.02, "curve": "stepped" },
+					{ "time": 0.6, "angle": -65.02 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右手手掌": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"法杖": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.5, "angle": -18.72, "curve": "stepped" },
+					{ "time": 0.6, "angle": -18.72 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"法杖棍子": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"法杖中間水晶": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右水滴": {
+				"rotate": [
+					{ "time": 0, "angle": 347.79 },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.5, "angle": 68.52, "curve": "stepped" },
+					{ "time": 0.6, "angle": 68.52 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左水滴": {
+				"rotate": [
+					{ "time": 0, "angle": -12.21 },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.5, "angle": -291.48, "curve": "stepped" },
+					{ "time": 0.6, "angle": -291.48 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左腳": {
+				"rotate": [
+					{ "time": 0, "angle": 7.97 },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.5, "angle": 340, "curve": "stepped" },
+					{ "time": 0.6, "angle": 340 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右腳": {
+				"rotate": [
+					{ "time": 0, "angle": 7.97 },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.5, "angle": 3.92, "curve": "stepped" },
+					{ "time": 0.6, "angle": 3.92 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"披風_後": {
+				"rotate": [
+					{ "time": 0, "angle": -5.88 },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.5, "angle": -8.04, "curve": "stepped" },
+					{ "time": 0.6, "angle": -8.04 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"頭水晶": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"hit01": {
+		"slots": {
+			"正常表情": {
+				"attachment": [
+					{ "time": 0, "name": "正常表情" },
+					{ "time": 0.5, "name": "攻擊表情" }
+				]
+			}
+		},
+		"bones": {
+			"hip": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"上披風": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"上披風3": {
+				"rotate": [
+					{ "time": 0, "angle": -3.17 },
+					{ "time": 0.1667, "angle": 2.49 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"頭": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"正常表情": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左身體黑圈_前": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": 4.69 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左身體黑圈_後": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右身體黑圈_前": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": -11.78 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右身體黑圈_後": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"黑球": {
+				"rotate": [
+					{ "time": 0, "angle": -45.43 },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": 174.85 },
+					{ "time": 0.8333, "angle": -103.71 },
+					{ "time": 1.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左手上臂": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": -17.98 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 },
+					{ "time": 0.6667, "x": 92.37, "y": -1.49 }
+				]
+			},
+			"左手下臂": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": -12.28 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左手掌": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1667, "angle": -15.42 },
+					{ "time": 0.6667, "angle": 23.09 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右手上臂": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": -8.71,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.1667,
+						"angle": 2.75,
+						"curve": [ 1, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"angle": 127.62,
+						"curve": [ 0.988, 0, 0.75, 1 ]
+					},
+					{ "time": 0.8333, "angle": 58.03, "curve": "stepped" },
+					{ "time": 1, "angle": 58.03 },
+					{ "time": 1.0667, "angle": 56.58 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右手下臂": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": -100.8 },
+					{ "time": 1, "angle": -85.27 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 },
+					{ "time": 0.6667, "x": -46.12, "y": 34.48 }
+				]
+			},
+			"右手手掌": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 1, "angle": 11.89 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"法杖": {
+				"rotate": [
+					{ "time": 0, "angle": -9.89 },
+					{ "time": 0.1667, "angle": 5.86 },
+					{ "time": 0.8333, "angle": 43.54 },
+					{ "time": 1, "angle": 15.65 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"法杖棍子": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"法杖中間水晶": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右水滴": {
+				"rotate": [
+					{ "time": 0, "angle": 18.12 },
+					{ "time": 0.1667, "angle": 344.78 },
+					{ "time": 0.6667, "angle": 265.9 },
+					{ "time": 1, "angle": 53.86, "curve": "stepped" },
+					{ "time": 1.1667, "angle": 53.86 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左水滴": {
+				"rotate": [
+					{ "time": 0, "angle": -341.88 },
+					{ "time": 0.1667, "angle": -15.22 },
+					{ "time": 0.6667, "angle": -94.1 },
+					{ "time": 1, "angle": -338.98, "curve": "stepped" },
+					{ "time": 1.1667, "angle": -338.98 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左腳": {
+				"rotate": [
+					{ "time": 0, "angle": 4.89 },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": 343.38 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右腳": {
+				"rotate": [
+					{ "time": 0, "angle": 11.69 },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": 6.98 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"披風_後": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1667, "angle": 10.78 },
+					{ "time": 0.6667, "angle": -10.08 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"頭水晶": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"root": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": -49.27 },
+					{
+						"time": 0.1667,
+						"x": 0,
+						"y": 215.57,
+						"curve": [ 1, 0, 0, 1 ]
+					},
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"hit02": {
+		"slots": {
+			"正常表情": {
+				"attachment": [
+					{ "time": 0, "name": "正常表情" },
+					{ "time": 0.3333, "name": "攻擊表情" }
+				]
+			}
+		},
+		"bones": {
+			"左腳": {
+				"rotate": [
+					{ "time": 0, "angle": 352.44 },
+					{
+						"time": 0.1667,
+						"angle": 4.61,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 0.6667, "angle": 337.11, "curve": "stepped" },
+					{ "time": 0.8333, "angle": 337.11 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左手掌": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1667, "angle": -15.42 },
+					{ "time": 0.6667, "angle": -1.62, "curve": "stepped" },
+					{ "time": 0.8333, "angle": -1.62 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"法杖": {
+				"rotate": [
+					{ "time": 0, "angle": -9.89 },
+					{ "time": 0.1667, "angle": -1.48 },
+					{ "time": 0.4, "angle": 2.35, "curve": "stepped" },
+					{ "time": 0.5667, "angle": 2.35 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右手下臂": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": -100.8, "curve": "stepped" },
+					{ "time": 0.8333, "angle": -100.8 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 },
+					{ "time": 0.6667, "x": -46.12, "y": 34.48, "curve": "stepped" },
+					{ "time": 0.8333, "x": -46.12, "y": 34.48 }
+				]
+			},
+			"右水滴": {
+				"rotate": [
+					{ "time": 0, "angle": 18.12 },
+					{ "time": 0.1667, "angle": 344.78 },
+					{ "time": 0.6667, "angle": 265.9, "curve": "stepped" },
+					{ "time": 0.8333, "angle": 265.9 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右腳": {
+				"rotate": [
+					{ "time": 0, "angle": 2.67 },
+					{
+						"time": 0.1667,
+						"angle": 353.25,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 0.6667, "angle": 15.97, "curve": "stepped" },
+					{ "time": 0.8333, "angle": 15.97 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右手上臂": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": -8.71,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.1667,
+						"angle": 9.96,
+						"curve": [ 1, 0, 0, 1 ]
+					},
+					{ "time": 0.6667, "angle": 121.51, "curve": "stepped" },
+					{ "time": 0.8333, "angle": 121.51 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左身體黑圈_後": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左水滴": {
+				"rotate": [
+					{ "time": 0, "angle": -341.88 },
+					{ "time": 0.1667, "angle": -15.22 },
+					{ "time": 0.6667, "angle": -94.1, "curve": "stepped" },
+					{ "time": 0.8333, "angle": -94.1 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"黑球": {
+				"rotate": [
+					{ "time": 0, "angle": -45.43 },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": 22.73 },
+					{ "time": 0.8333, "angle": 197.43 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右身體黑圈_後": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"正常表情": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"上披風": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左身體黑圈_前": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": 4.69, "curve": "stepped" },
+					{ "time": 0.8333, "angle": 4.69 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"hip": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": -113.11 },
+					{ "time": 0.1667, "x": 0, "y": 0 },
+					{
+						"time": 0.6667,
+						"x": 0,
+						"y": 101.92,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"右手手掌": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"頭": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": -7.26 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"頭水晶": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"法杖棍子": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"法杖中間水晶": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"上披風3": {
+				"rotate": [
+					{ "time": 0, "angle": -3.17 },
+					{ "time": 0.1667, "angle": 2.49 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左手上臂": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": 10.6,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.1667,
+						"angle": -8.57,
+						"curve": [ 0.478, 0, 0, 1 ]
+					},
+					{ "time": 0.6667, "angle": -129.75, "curve": "stepped" },
+					{ "time": 0.8333, "angle": -129.75 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{
+						"time": 0.1667,
+						"x": 0,
+						"y": 0,
+						"curve": [ 1, 0, 0, 1 ]
+					},
+					{ "time": 0.6667, "x": 92.37, "y": -1.49, "curve": "stepped" },
+					{ "time": 0.8333, "x": 92.37, "y": -1.49 }
+				]
+			},
+			"披風_後": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1667, "angle": 10.78 },
+					{ "time": 0.3333, "angle": -6.64 },
+					{ "time": 0.6667, "angle": 0.48, "curve": "stepped" },
+					{ "time": 0.8333, "angle": 0.48 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左手下臂": {
+				"rotate": [
+					{ "time": 0, "angle": -16.82 },
+					{ "time": 0.1667, "angle": -78.96 },
+					{ "time": 0.3333, "angle": -62.88 },
+					{ "time": 0.6667, "angle": -12.28, "curve": "stepped" },
+					{ "time": 0.8333, "angle": -12.28 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右身體黑圈_前": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": -11.78, "curve": "stepped" },
+					{ "time": 0.8333, "angle": -11.78 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"hit03": {
+		"slots": {
+			"正常表情": {
+				"attachment": [
+					{ "time": 0, "name": "正常表情" },
+					{ "time": 0.5, "name": "攻擊表情" }
+				]
+			}
+		},
+		"bones": {
+			"hip": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0, "curve": "stepped" },
+					{ "time": 0.6667, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": -104.61 },
+					{ "time": 0.1667, "x": 0, "y": 246.58, "curve": "stepped" },
+					{ "time": 0.6667, "x": 0, "y": 246.58, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 246.58 }
+				]
+			},
+			"上披風": {
+				"rotate": [
+					{ "time": 0, "angle": -8.93 },
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": 8.36, "curve": "stepped" },
+					{ "time": 1, "angle": 8.36 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"上披風3": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"頭": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": -1.22, "curve": "stepped" },
+					{ "time": 1, "angle": -1.22 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"正常表情": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左身體黑圈_前": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": -1.1, "curve": "stepped" },
+					{ "time": 1, "angle": -1.1 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左身體黑圈_後": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右身體黑圈_前": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": -9.98, "curve": "stepped" },
+					{ "time": 1, "angle": -9.98 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右身體黑圈_後": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"黑球": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1667, "angle": 113.99 },
+					{ "time": 0.3333, "angle": 175.57 },
+					{ "time": 0.6667, "angle": -4.88 },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"左手上臂": {
+				"rotate": [
+					{ "time": 0, "angle": 2.01 },
+					{
+						"time": 0.1667,
+						"angle": 2.33,
+						"curve": [ 1.286, 0, 0.857, 0.6 ]
+					},
+					{
+						"time": 0.5,
+						"angle": -48.53,
+						"curve": [ 0.077, 0.57, 0.308, 1 ]
+					},
+					{ "time": 0.6667, "angle": -68.24, "curve": "stepped" },
+					{ "time": 1, "angle": -68.24 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左手下臂": {
+				"rotate": [
+					{ "time": 0, "angle": -140.85 },
+					{
+						"time": 0.1667,
+						"angle": -143.33,
+						"curve": [ 1.286, 0, 0.857, 0.6 ]
+					},
+					{
+						"time": 0.5,
+						"angle": -63.93,
+						"curve": [ 0.077, 0.57, 0.308, 1 ]
+					},
+					{ "time": 0.6667, "angle": -9.56, "curve": "stepped" },
+					{ "time": 1, "angle": -9.56 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左手掌": {
+				"rotate": [
+					{ "time": 0, "angle": -5.68 },
+					{
+						"time": 0.1667,
+						"angle": 0,
+						"curve": [ 1.286, 0, 0.857, 0.6 ]
+					},
+					{
+						"time": 0.5,
+						"angle": -24.66,
+						"curve": [ 0.077, 0.57, 0.308, 1 ]
+					},
+					{ "time": 0.6667, "angle": -85.82, "curve": "stepped" },
+					{ "time": 1, "angle": -85.82 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右手上臂": {
+				"rotate": [
+					{
+						"time": 0.1667,
+						"angle": 0,
+						"curve": [ 1, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.5,
+						"angle": -16.4,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 0.6667, "angle": 267.92, "curve": "stepped" },
+					{ "time": 1, "angle": 267.92 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右手下臂": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.5, "angle": -160.61 },
+					{ "time": 0.6667, "angle": -140.46, "curve": "stepped" },
+					{ "time": 1, "angle": -140.46 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 },
+					{ "time": 0.6667, "x": -33.13, "y": 64.91, "curve": "stepped" },
+					{ "time": 1, "x": -33.13, "y": 64.91 }
+				]
+			},
+			"右手手掌": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": 0.21, "curve": "stepped" },
+					{ "time": 1, "angle": 0.21 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"法杖": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 },
+					{ "time": 0.6667, "angle": -127.03, "curve": "stepped" },
+					{ "time": 1, "angle": -127.03 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 },
+					{ "time": 0.6667, "x": -78.07, "y": -169.37, "curve": "stepped" },
+					{ "time": 1, "x": -78.07, "y": -169.37 }
+				]
+			},
+			"法杖棍子": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"法杖中間水晶": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右水滴": {
+				"rotate": [
+					{ "time": 0, "angle": 30.41 },
+					{ "time": 0.1667, "angle": 341.15 },
+					{ "time": 0.5, "angle": 254.72 },
+					{ "time": 0.6667, "angle": 279.85 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左水滴": {
+				"rotate": [
+					{ "time": 0, "angle": -329.59 },
+					{ "time": 0.1667, "angle": -18.85 },
+					{ "time": 0.5, "angle": -105.62 },
+					{ "time": 0.6667, "angle": -51.31 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"左腳": {
+				"rotate": [
+					{ "time": 0, "angle": 19.69 },
+					{ "time": 0.1667, "angle": 3.47 },
+					{ "time": 0.6667, "angle": 318.95, "curve": "stepped" },
+					{ "time": 1, "angle": 318.95 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"右腳": {
+				"rotate": [
+					{ "time": 0, "angle": 27.7 },
+					{ "time": 0.1667, "angle": 3.47 },
+					{ "time": 0.6667, "angle": 336.53, "curve": "stepped" },
+					{ "time": 1, "angle": 336.53 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"披風_後": {
+				"rotate": [
+					{ "time": 0, "angle": -8.5 },
+					{ "time": 0.1667, "angle": 12.41 },
+					{ "time": 0.6667, "angle": -17.07, "curve": "stepped" },
+					{ "time": 1, "angle": -17.07 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			},
+			"頭水晶": {
+				"rotate": [
+					{ "time": 0.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0.1667, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"idle": {
+		"slots": {
+			"正常表情": {
+				"attachment": [
+					{ "time": 0, "name": "正常表情" },
+					{ "time": 0.1667, "name": "閉眼表情" },
+					{ "time": 0.3333, "name": "正常表情" }
+				]
+			}
+		},
+		"bones": {
+			"hip": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.8333, "x": 0, "y": 102.49 },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"上披風": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"上披風3": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"頭": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"正常表情": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"左身體黑圈_前": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.8333, "angle": 1.47 },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"左身體黑圈_後": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"右身體黑圈_前": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.8333, "angle": -6.56 },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"右身體黑圈_後": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"黑球": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.8333, "angle": 190.89 },
+					{ "time": 1.2333, "angle": 132.14 },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"左手上臂": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.8333, "angle": -13.14 },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"左手下臂": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"左手掌": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"右手上臂": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.8333, "angle": 9.94 },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"右手下臂": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.8333, "angle": -11.17 },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"右手手掌": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"法杖": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.8333, "angle": -7.06 },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"法杖棍子": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"法杖中間水晶": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"右水滴": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.8333, "angle": 33.8 },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"左水滴": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.8333, "angle": -38.13 },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"左腳": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.8333, "angle": -5.58 },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"右腳": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.8333, "angle": 0.88 },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"披風_後": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.8333, "angle": -5.35 },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"頭水晶": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"walk": {
+		"slots": {
+			"正常表情": {
+				"attachment": [
+					{ "time": 0, "name": "正常表情" },
+					{ "time": 0.1333, "name": "閉眼表情" },
+					{ "time": 0.3, "name": "正常表情" }
+				]
+			}
+		},
+		"bones": {
+			"右手下臂": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": -11.17 },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"左身體黑圈_後": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"左手掌": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"右身體黑圈_前": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": -6.56 },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"右手手掌": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"披風_後": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": -12.71 },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"左腳": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": 345.87 },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"左手下臂": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": 14.85 },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"上披風": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"法杖棍子": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"左手上臂": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": -36.86 },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"正常表情": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"右腳": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": 10.63 },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"上披風3": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"法杖": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": -7.06 },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"左水滴": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": -38.13 },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"黑球": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": 190.89 },
+					{ "time": 1.1, "angle": 132.14 },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"hip": {
+				"rotate": [
+					{ "time": 0, "angle": 9.3, "curve": "stepped" },
+					{ "time": 0.6667, "angle": 9.3, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 9.3 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 261 },
+					{ "time": 0.6667, "x": 0, "y": 0 },
+					{ "time": 1.3333, "x": 0, "y": 261 }
+				]
+			},
+			"右手上臂": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": 25.57 },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"法杖中間水晶": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"右水滴": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": 33.8 },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"頭": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"右身體黑圈_後": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"左身體黑圈_前": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": 1.47 },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			},
+			"頭水晶": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				]
+			}
+		}
+	}
+}
+}

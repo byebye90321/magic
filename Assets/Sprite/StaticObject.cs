@@ -3,7 +3,7 @@ using System.Collections;
 
 public static class StaticObject
 {
-	//float int string
+	public static int nowClass = 0;
 
 	//------------------音量音效---------------------
 	public static float bgmVolume = 1f;

@@ -1,0 +1,533 @@
+{
+"skeleton": { "hash": "YnRLSpxbE3V4CO4aen1F2hq4aIY", "spine": "3.6.53", "width": 1404, "height": 2035 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "腳", "parent": "root", "length": 1065.3, "rotation": 90.36, "x": 2.62, "y": 48.71 },
+	{ "name": "身體", "parent": "腳", "length": 629.89, "rotation": 2.37, "x": 951.99, "y": -19.27 },
+	{ "name": "右上臂", "parent": "身體", "length": 318.26, "rotation": -123.33, "x": 446.12, "y": -184.66 },
+	{ "name": "右下臂", "parent": "右上臂", "length": 253.44, "rotation": 61.36, "x": 283, "y": -0.04 },
+	{ "name": "右掌", "parent": "右下臂", "length": 232.34, "rotation": -7.96, "x": 228.44, "y": 0.22 },
+	{ "name": "左上臂", "parent": "身體", "length": 268.27, "rotation": 137.17, "x": 444.27, "y": 195.11 },
+	{ "name": "左下臂", "parent": "左上臂", "length": 343.95, "rotation": -117.76, "x": 242.25, "y": -5.43 },
+	{ "name": "頭", "parent": "身體", "length": 359.59, "rotation": -3.79, "x": 597.27, "y": 14.88 },
+	{ "name": "張嘴", "parent": "頭", "length": 50.47, "rotation": -52.61, "x": 78.68, "y": -1.09 },
+	{ "name": "眼鏡", "parent": "頭", "length": 156.34, "rotation": -50.87, "x": 118.31, "y": 1.86 },
+	{ "name": "頭髮", "parent": "頭", "length": 204.05, "rotation": -55.25, "x": 232.99, "y": 4.31 },
+	{ "name": "鼻子", "parent": "頭", "length": 82.26, "rotation": 125.04, "x": 159.82, "y": 2.63 }
+],
+"slots": [
+	{ "name": "右上臂", "bone": "右上臂", "attachment": "右上臂" },
+	{ "name": "右掌", "bone": "右掌", "attachment": "右掌" },
+	{ "name": "右下臂", "bone": "右下臂", "attachment": "右下臂" },
+	{ "name": "腳", "bone": "腳", "attachment": "腳" },
+	{ "name": "左上臂", "bone": "左上臂", "attachment": "左上臂" },
+	{ "name": "身體", "bone": "身體", "attachment": "身體" },
+	{ "name": "頭", "bone": "頭", "attachment": "頭" },
+	{ "name": "左下臂", "bone": "左下臂", "attachment": "左下臂" },
+	{ "name": "頭髮", "bone": "頭髮", "attachment": "頭髮" },
+	{ "name": "眼鏡", "bone": "眼鏡", "attachment": "眼鏡" },
+	{ "name": "鼻子", "bone": "鼻子", "attachment": "鼻子" },
+	{ "name": "張嘴", "bone": "張嘴", "attachment": "閉嘴" }
+],
+"skins": {
+	"default": {
+		"右上臂": {
+			"右上臂": { "x": 156.54, "y": 16.03, "rotation": 30.61, "width": 295, "height": 226 }
+		},
+		"右下臂": {
+			"右下臂": { "x": 114.11, "y": -2.49, "rotation": -30.75, "width": 263, "height": 180 }
+		},
+		"右掌": {
+			"右掌": { "x": 115.92, "y": 5.76, "rotation": -22.79, "width": 228, "height": 128 }
+		},
+		"左上臂": {
+			"左上臂": { "x": 125.45, "y": -13.14, "rotation": 130.1, "width": 211, "height": 243 }
+		},
+		"左下臂": {
+			"左下臂": { "x": 226.26, "y": -29.79, "rotation": -112.14, "width": 297, "height": 492 }
+		},
+		"張嘴": {
+			"張嘴": { "x": 22.63, "y": 3.17, "rotation": -36.33, "width": 64, "height": 40 },
+			"閉嘴": { "x": 21.84, "y": 1.26, "rotation": -23.28, "width": 59, "height": 30 }
+		},
+		"眼鏡": {
+			"眼鏡": { "x": 47.47, "y": 45.11, "rotation": -38.07, "width": 358, "height": 81 }
+		},
+		"腳": {
+			"腳": { "x": 493.24, "y": 23.48, "rotation": -90.36, "width": 555, "height": 1141 }
+		},
+		"身體": {
+			"身體": { "x": 310.94, "y": 12.61, "rotation": -92.73, "width": 472, "height": 645 }
+		},
+		"頭": {
+			"頭": { "x": 175.25, "y": -6.15, "rotation": -88.94, "width": 383, "height": 363 }
+		},
+		"頭髮": {
+			"頭髮": { "x": 22.42, "y": 44.63, "rotation": -33.69, "width": 440, "height": 254 }
+		},
+		"鼻子": {
+			"鼻子": { "x": 36.53, "y": -3.83, "rotation": 146.02, "width": 74, "height": 64 }
+		}
+	}
+},
+"animations": {
+	"idle": {
+		"bones": {
+			"腳": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"身體": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.8333, "x": 9.74, "y": -0.06 },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"頭": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"頭髮": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"眼鏡": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"鼻子": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.8333, "angle": -12.52 },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"右上臂": {
+				"rotate": [
+					{ "time": 0, "angle": -39.68 },
+					{ "time": 0.8333, "angle": -37.43 },
+					{ "time": 1.6667, "angle": -39.68 }
+				],
+				"translate": [
+					{ "time": 0, "x": 53.35, "y": 3.71, "curve": "stepped" },
+					{ "time": 1.6667, "x": 53.35, "y": 3.71 }
+				]
+			},
+			"張嘴": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"右下臂": {
+				"rotate": [
+					{ "time": 0, "angle": -118.01 },
+					{ "time": 0.8333, "angle": -112.12 },
+					{ "time": 1.6667, "angle": -118.01 }
+				],
+				"translate": [
+					{ "time": 0, "x": 5.08, "y": 14.16, "curve": "stepped" },
+					{ "time": 1.6667, "x": 5.08, "y": 14.16 }
+				]
+			},
+			"右掌": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"左上臂": {
+				"rotate": [
+					{ "time": 0, "angle": 11.81 },
+					{ "time": 0.8333, "angle": 1.73 },
+					{ "time": 1.6667, "angle": 11.81 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			},
+			"左下臂": {
+				"rotate": [
+					{ "time": 0, "angle": -5.12, "curve": "stepped" },
+					{ "time": 1.6667, "angle": -5.12 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"talk": {
+		"slots": {
+			"張嘴": {
+				"attachment": [
+					{ "time": 0, "name": "閉嘴" },
+					{ "time": 0.3333, "name": "閉嘴" },
+					{ "time": 0.4667, "name": "張嘴" },
+					{ "time": 0.6333, "name": "閉嘴" },
+					{ "time": 0.9, "name": "張嘴" },
+					{ "time": 1.2, "name": "閉嘴" },
+					{ "time": 1.4, "name": "張嘴" },
+					{ "time": 1.6667, "name": "閉嘴" },
+					{ "time": 1.8667, "name": "張嘴" },
+					{ "time": 2.1, "name": "閉嘴" },
+					{ "time": 2.4667, "name": "閉嘴" },
+					{ "time": 3.3333, "name": "張嘴" }
+				]
+			}
+		},
+		"bones": {
+			"腳": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 3.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3.3333, "x": 0, "y": 0 }
+				]
+			},
+			"身體": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 3.3333, "angle": 0 }
+				],
+				"translate": [
+					{
+						"time": 0,
+						"x": 0,
+						"y": 0,
+						"curve": [ 0.25, 0, 0.625, 0.5 ]
+					},
+					{
+						"time": 0.8333,
+						"x": 9,
+						"y": -0.06,
+						"curve": [ 0.337, 0.35, 0.675, 0.69 ]
+					},
+					{
+						"time": 1.6667,
+						"x": -13.25,
+						"y": 0.08,
+						"curve": [ 0.382, 0.57, 0.735, 1 ]
+					},
+					{
+						"time": 2.4667,
+						"x": 9,
+						"y": -0.06,
+						"curve": [ 0.337, 0.35, 0.675, 0.69 ]
+					},
+					{ "time": 3.3333, "x": 0, "y": 0 }
+				]
+			},
+			"頭": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 3.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3.3333, "x": 0, "y": 0 }
+				]
+			},
+			"頭髮": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 3.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3.3333, "x": 0, "y": 0 }
+				]
+			},
+			"眼鏡": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 3.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3.3333, "x": 0, "y": 0 }
+				]
+			},
+			"鼻子": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": 0,
+						"curve": [ 0.281, 0, 0.623, 0.39 ]
+					},
+					{
+						"time": 0.8333,
+						"angle": -12.93,
+						"curve": [ 0.309, 0.26, 0.655, 0.63 ]
+					},
+					{
+						"time": 2.5333,
+						"angle": -2.32,
+						"curve": [ 0.379, 0.6, 0.723, 1 ]
+					},
+					{ "time": 3.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3.3333, "x": 0, "y": 0 }
+				]
+			},
+			"右上臂": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": 0,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"angle": 10.25,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1.3333,
+						"angle": 72.04,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 2,
+						"angle": -28.23,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 2.6667,
+						"angle": -40.7,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 3.3333, "angle": 0 }
+				],
+				"translate": [
+					{
+						"time": 0,
+						"x": 0,
+						"y": 0,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1.3333,
+						"x": 1.63,
+						"y": 34.13,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 3.3333, "x": 0, "y": 0 }
+				]
+			},
+			"張嘴": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 3.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3.3333, "x": 0, "y": 0 }
+				]
+			},
+			"右下臂": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": 0,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"angle": 13.32,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1.3333,
+						"angle": -59.76,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 2,
+						"angle": -61.79,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 2.6667,
+						"angle": -29.78,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 3.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3.3333, "x": 0, "y": 0 }
+				]
+			},
+			"右掌": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": 0,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"angle": -38.95,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1.3333,
+						"angle": -7.43,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 2,
+						"angle": 0.4,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 2.6667,
+						"angle": 11.99,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 3.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3.3333, "x": 0, "y": 0 }
+				]
+			},
+			"左上臂": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": 0,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"angle": -30.65,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1,
+						"angle": -33.07,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1.3333,
+						"angle": -26.47,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1.6667,
+						"angle": -30.87,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 2,
+						"angle": -27.39,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 2.6667, "angle": 0, "curve": "stepped" },
+					{ "time": 3.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3.3333, "x": 0, "y": 0 }
+				]
+			},
+			"左下臂": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": 0,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"angle": -6.41,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1,
+						"angle": 0.18,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1.3333,
+						"angle": -6.41,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1.6667,
+						"angle": -12.39,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 2,
+						"angle": -6.41,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 2.3333,
+						"angle": 1.52,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 2.6667, "angle": 0, "curve": "stepped" },
+					{ "time": 3.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3.3333, "x": 0, "y": 0 }
+				]
+			}
+		}
+	}
+}
+}

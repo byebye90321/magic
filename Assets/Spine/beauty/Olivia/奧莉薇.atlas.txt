@@ -1,0 +1,104 @@
+
+奧莉薇.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+冒底
+  rotate: false
+  xy: 470, 417
+  size: 259, 93
+  orig: 259, 93
+  offset: 0, 0
+  index: -1
+右上臂
+  rotate: true
+  xy: 470, 187
+  size: 50, 141
+  orig: 50, 141
+  offset: 0, 0
+  index: -1
+右下臂
+  rotate: true
+  xy: 618, 289
+  size: 126, 106
+  orig: 126, 106
+  offset: 0, 0
+  index: -1
+右手掌
+  rotate: true
+  xy: 431, 121
+  size: 63, 45
+  orig: 63, 45
+  offset: 0, 0
+  index: -1
+左上臂
+  rotate: true
+  xy: 908, 412
+  size: 98, 101
+  orig: 99, 101
+  offset: 1, 0
+  index: -1
+左下臂
+  rotate: true
+  xy: 731, 435
+  size: 75, 175
+  orig: 75, 175
+  offset: 0, 0
+  index: -1
+左手掌
+  rotate: false
+  xy: 478, 131
+  size: 38, 54
+  orig: 38, 54
+  offset: 0, 0
+  index: -1
+帽子
+  rotate: false
+  xy: 2, 2
+  size: 313, 180
+  orig: 313, 180
+  offset: 0, 0
+  index: -1
+後髮
+  rotate: false
+  xy: 2, 184
+  size: 285, 326
+  orig: 285, 326
+  offset: 0, 0
+  index: -1
+正常表情
+  rotate: true
+  xy: 317, 5
+  size: 71, 99
+  orig: 71, 99
+  offset: 0, 0
+  index: -1
+瀏海
+  rotate: false
+  xy: 317, 78
+  size: 112, 106
+  orig: 112, 106
+  offset: 0, 0
+  index: -1
+衣服
+  rotate: false
+  xy: 289, 186
+  size: 179, 324
+  orig: 179, 324
+  offset: 0, 0
+  index: -1
+閉眼表情
+  rotate: true
+  xy: 618, 219
+  size: 68, 99
+  orig: 68, 99
+  offset: 0, 0
+  index: -1
+頭
+  rotate: false
+  xy: 470, 239
+  size: 146, 176
+  orig: 146, 176
+  offset: 0, 0
+  index: -1

@@ -14,6 +14,7 @@ public class DG_playerController : MonoBehaviour
 	public GameManager gameManager; //正章
 	public NPCTask npcTask;
 	public DialogsScript1 dialogsScript1; //正章1對話
+	public DialogsScript2 dialogsScript2; //正章2對話
 	public ExampleGestureHandler gesture;
 
 	private ActiveClimb activeClimb;
@@ -48,12 +49,13 @@ public class DG_playerController : MonoBehaviour
 	bool damaged;
 	bool addBlood;
 	public GameObject falsh;
-	public Animator healthAni;
-	public GameObject healthTextObj;
+	//public Animator healthAni;
+	//public GameObject healthTextObj;
 	public GameObject lineParticle;
 
 	private Text healthText;
 	public GameObject healthObj;
+	public GameObject addHealthObj;
 	public GameObject canvas;
 	//------------------Enemy-----------------------
 	//public int enemyAtk;
@@ -87,6 +89,11 @@ public class DG_playerController : MonoBehaviour
 			activeClimb = GameObject.Find("vine1").GetComponent<ActiveClimb>();  //防錯誤 爬藤蔓
 			activePickUp = GameObject.Find("stone1").GetComponent<ActivePickUp>(); //防錯誤 拾取物品
 			ActivePickUp.PickUpInt = 0;
+		}else if (ChapterName == "2")
+		{
+			activeClimb = GameObject.Find("ladder").GetComponent<ActiveClimb>();  //防錯誤 爬藤蔓
+			//activePickUp = GameObject.Find("stone1").GetComponent<ActivePickUp>(); //防錯誤 拾取物品
+			//ActivePickUp.PickUpInt = 0;
 		}
 	}
 
@@ -104,7 +111,7 @@ public class DG_playerController : MonoBehaviour
 			}
 		}
 
-		if (ChapterName == "1")
+		if (ChapterName == "1" || ChapterName == "2")
 		{
 			if (curHealth < 100)
 			{
@@ -119,9 +126,15 @@ public class DG_playerController : MonoBehaviour
 				lineParticle.SetActive(false);
 			}
 
-			if (curHealth >= 100 && !dialogsScript1.teachBlood) //補血站教學
+			if (curHealth >= 100) //補血站教學
 			{
-				dialogsScript1.BloodStation();
+				if (ChapterName == "1" && !dialogsScript1.teachBlood)
+				{
+					dialogsScript1.BloodStation();
+				}else if(ChapterName == "2" && !dialogsScript2.teachBlood)
+					{
+						dialogsScript2.BloodStation();
+					}
 			}
 		}
 	}
@@ -161,7 +174,7 @@ public class DG_playerController : MonoBehaviour
 				animator_S.SetFloat("run", Mathf.Abs(moveVec.x));
 				animator_B.SetFloat("run", Mathf.Abs(moveVec.x));
 			}
-			else if (ChapterName == "1")
+			else 
 			{
 				animator_S.SetFloat("Speed", Mathf.Abs(moveVec.x));
 			}
@@ -209,14 +222,17 @@ public class DG_playerController : MonoBehaviour
 			}
 		}
 		//-----------------------Climb--------------------------
-		if (ChapterName == "1")
+		if (ChapterName == "1" || ChapterName == "2")
 		{
 			if (CrossPlatformInputManager.GetButtonDown("Climb"))
 			{
 				activeClimb.isClimb = true;
 				animator_S.SetBool("climb", true);
-				dialogsScript1.MaskGroup.SetActive(false);
-				Joystick.isMove = true;
+				if (ChapterName == "1")
+				{
+					dialogsScript1.MaskGroup.SetActive(false);
+					Joystick.isMove = true;
+				}
 			}
 
 			if (activeClimb.isClimb)
@@ -227,6 +243,7 @@ public class DG_playerController : MonoBehaviour
 					rigid2D.position = activeClimb.targetPoint;
 					animator_S.SetBool("climb", false);
 					activeClimb.isClimb = false;
+					Debug.Log("456");
 				}
 			}
 		}
@@ -268,6 +285,10 @@ public class DG_playerController : MonoBehaviour
 					if (npcTalk.whoTask == "BobbyTask")
 					{
 						gameManager.Teleportation.SetActive(true);
+						if (pickUpInt == 1)
+						{
+							dialogsScript1.teleportation();
+						}
 					}
 				}
 			}
@@ -404,10 +425,15 @@ public class DG_playerController : MonoBehaviour
 
 			if (col.tag == "heart")  //補血愛心
 			{
-				curHealth += 30;
-				healthTextObj.SetActive(true);
-				healthText.text = "+10";
-				StartCoroutine("wait1");
+				curHealth += 10;
+				//healthTextObj.SetActive(true);
+				//healthText.text = "+10";
+				//StartCoroutine("wait1");
+				GameObject NEWatkpreft = Instantiate(addHealthObj) as GameObject;
+				NEWatkpreft.transform.SetParent(canvas.transform, false);
+				NEWatkpreft.GetComponent<RectTransform>().anchoredPosition = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);
+				healthText = NEWatkpreft.GetComponentInChildren<Text>();
+				healthText.text = "+" + 10;
 				Destroy(col.gameObject);
 			}
 		}
@@ -432,14 +458,14 @@ public class DG_playerController : MonoBehaviour
 			}
 		}
 
-		if (col.gameObject.name=="redFairy") //觸碰到紅精靈
+		/*if (col.gameObject.name=="redFairy") //觸碰到紅精靈
 		{
 			redFairyParticle.SetActive(true);
 		}
 		if (col.gameObject.name == "blueFairy") //觸碰到藍精靈
 		{
 			blueFairyParticle.SetActive(true);
-		}
+		}*/
 
 		if (col.gameObject.name == "redFairy" || col.gameObject.name == "blueFairy") //觸碰到紅藍精靈
 		{
@@ -449,6 +475,11 @@ public class DG_playerController : MonoBehaviour
 		if (col.gameObject.name == "redFlower"|| col.gameObject.name == "blueFlower") //觸碰到紅藍花
 		{
 			npcTalk = GameObject.Find("NPC_Bobby").GetComponent<NpcTalk>();
+		}
+
+		if (col.gameObject.name == "rightClock" || col.gameObject.name == "falseClock") //觸碰到紅藍花
+		{
+			npcTalk = GameObject.Find("NPC_Dida").GetComponent<NpcTalk>();
 		}
 
 		if (col.gameObject.name == "Teleportation") //傳送陣
@@ -474,7 +505,7 @@ public class DG_playerController : MonoBehaviour
 			}
 		}
 
-		if (col.gameObject.name == "redFairy") //離開紅精靈
+		/*if (col.gameObject.name == "redFairy") //離開紅精靈
 		{
 			redFairyParticle.SetActive(false);
 
@@ -483,7 +514,7 @@ public class DG_playerController : MonoBehaviour
 		{
 			blueFairyParticle.SetActive(false);
 
-		}
+		}*/
 	}
 
 	IEnumerator MoveWait()
@@ -492,11 +523,6 @@ public class DG_playerController : MonoBehaviour
 		isActive = true;
 	}
 
-	IEnumerator wait1()
-	{
-		yield return new WaitForSeconds(1f);
-		healthTextObj.SetActive(false);
-	}
 
 	IEnumerator Bossbeaten()
 	{
@@ -508,7 +534,6 @@ public class DG_playerController : MonoBehaviour
 		}
 		animator_S.SetTrigger("beaten");		
 		SpineSister.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0.5f);
-
 		GameObject NEWatkpreft = Instantiate(healthObj) as GameObject;
 		NEWatkpreft.transform.SetParent(canvas.transform, false);
 		NEWatkpreft.GetComponent<RectTransform>().anchoredPosition = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);

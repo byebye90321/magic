@@ -1,0 +1,188 @@
+
+歪歪K.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+右手
+  rotate: false
+  xy: 2, 153
+  size: 236, 371
+  orig: 236, 371
+  offset: 0, 0
+  index: -1
+右手碎石_新
+  rotate: false
+  xy: 1636, 744
+  size: 184, 149
+  orig: 184, 150
+  offset: 0, 1
+  index: -1
+右手黑圈_前
+  rotate: false
+  xy: 950, 910
+  size: 487, 112
+  orig: 487, 112
+  offset: 0, 0
+  index: -1
+右手黑圈_後
+  rotate: false
+  xy: 1230, 650
+  size: 170, 115
+  orig: 170, 116
+  offset: 0, 1
+  index: -1
+右手黑圈前_新
+  rotate: true
+  xy: 648, 212
+  size: 155, 101
+  orig: 157, 101
+  offset: 1, 0
+  index: -1
+右手黑圈後_新
+  rotate: true
+  xy: 542, 208
+  size: 159, 104
+  orig: 159, 106
+  offset: 0, 1
+  index: -1
+右耳朵毛
+  rotate: true
+  xy: 1869, 893
+  size: 129, 168
+  orig: 129, 168
+  offset: 0, 0
+  index: -1
+右腳
+  rotate: true
+  xy: 559, 567
+  size: 92, 278
+  orig: 92, 278
+  offset: 0, 0
+  index: -1
+左手
+  rotate: false
+  xy: 240, 122
+  size: 165, 402
+  orig: 167, 403
+  offset: 1, 1
+  index: -1
+左手碎石_新
+  rotate: false
+  xy: 2, 2
+  size: 207, 149
+  orig: 207, 150
+  offset: 0, 1
+  index: -1
+左手黑圈_前
+  rotate: false
+  xy: 542, 369
+  size: 158, 123
+  orig: 159, 125
+  offset: 0, 1
+  index: -1
+左手黑圈_後
+  rotate: false
+  xy: 1402, 622
+  size: 168, 109
+  orig: 168, 109
+  offset: 0, 0
+  index: -1
+左手黑圈_新
+  rotate: true
+  xy: 648, 55
+  size: 155, 101
+  orig: 157, 101
+  offset: 1, 0
+  index: -1
+左手黑圈後_新
+  rotate: true
+  xy: 542, 47
+  size: 159, 104
+  orig: 159, 106
+  offset: 0, 1
+  index: -1
+左耳朵毛
+  rotate: true
+  xy: 211, 2
+  size: 93, 180
+  orig: 93, 180
+  offset: 0, 0
+  index: -1
+左腳
+  rotate: true
+  xy: 950, 673
+  size: 92, 278
+  orig: 92, 278
+  offset: 0, 0
+  index: -1
+攻擊表情
+  rotate: false
+  xy: 559, 494
+  size: 174, 71
+  orig: 176, 71
+  offset: 1, 0
+  index: -1
+正常表情
+  rotate: false
+  xy: 1822, 792
+  size: 211, 99
+  orig: 211, 101
+  offset: 0, 1
+  index: -1
+身體
+  rotate: true
+  xy: 1403, 733
+  size: 160, 231
+  orig: 160, 231
+  offset: 0, 0
+  index: -1
+身體碎石_新
+  rotate: false
+  xy: 2, 775
+  size: 555, 247
+  orig: 556, 248
+  offset: 0, 1
+  index: -1
+身體黑圈_前
+  rotate: false
+  xy: 2, 526
+  size: 555, 247
+  orig: 556, 248
+  offset: 0, 1
+  index: -1
+身體黑圈_後
+  rotate: false
+  xy: 1439, 895
+  size: 428, 127
+  orig: 429, 127
+  offset: 0, 0
+  index: -1
+身體黑圈前_新
+  rotate: false
+  xy: 950, 767
+  size: 451, 141
+  orig: 451, 141
+  offset: 0, 0
+  index: -1
+身體黑圈後_新
+  rotate: true
+  xy: 407, 97
+  size: 427, 133
+  orig: 427, 133
+  offset: 0, 0
+  index: -1
+閉眼表情
+  rotate: false
+  xy: 1822, 723
+  size: 175, 67
+  orig: 177, 67
+  offset: 1, 0
+  index: -1
+頭
+  rotate: false
+  xy: 559, 661
+  size: 389, 361
+  orig: 389, 362
+  offset: 0, 0
+  index: -1

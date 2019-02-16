@@ -1,0 +1,181 @@
+
+框框.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+上披風
+  rotate: false
+  xy: 893, 1492
+  size: 508, 527
+  orig: 509, 528
+  offset: 0, 0
+  index: -1
+右手上臂
+  rotate: false
+  xy: 929, 1024
+  size: 178, 246
+  orig: 178, 246
+  offset: 0, 0
+  index: -1
+右手下臂
+  rotate: false
+  xy: 606, 684
+  size: 191, 215
+  orig: 191, 215
+  offset: 0, 0
+  index: -1
+右手手掌
+  rotate: false
+  xy: 577, 346
+  size: 106, 129
+  orig: 106, 130
+  offset: 0, 0
+  index: -1
+右水滴
+  rotate: false
+  xy: 1319, 1425
+  size: 28, 65
+  orig: 28, 66
+  offset: 0, 1
+  index: -1
+右腳
+  rotate: true
+  xy: 1319, 1281
+  size: 94, 645
+  orig: 94, 645
+  offset: 0, 0
+  index: -1
+右身體黑圈_前
+  rotate: false
+  xy: 2, 493
+  size: 602, 406
+  orig: 602, 406
+  offset: 0, 0
+  index: -1
+右身體黑圈_後
+  rotate: false
+  xy: 2, 169
+  size: 573, 322
+  orig: 575, 324
+  offset: 1, 1
+  index: -1
+左手上臂
+  rotate: false
+  xy: 1109, 1021
+  size: 164, 249
+  orig: 166, 251
+  offset: 1, 1
+  index: -1
+左手下臂
+  rotate: true
+  xy: 606, 578
+  size: 104, 236
+  orig: 105, 236
+  offset: 1, 0
+  index: -1
+左手掌
+  rotate: false
+  xy: 799, 737
+  size: 91, 178
+  orig: 91, 179
+  offset: 0, 1
+  index: -1
+左水滴
+  rotate: true
+  xy: 2, 2
+  size: 27, 68
+  orig: 27, 68
+  offset: 0, 0
+  index: -1
+左腳
+  rotate: true
+  xy: 2, 70
+  size: 97, 656
+  orig: 97, 656
+  offset: 0, 0
+  index: -1
+左身體黑圈_前
+  rotate: false
+  xy: 1403, 1644
+  size: 616, 375
+  orig: 618, 377
+  offset: 1, 1
+  index: -1
+左身體黑圈_後
+  rotate: false
+  xy: 1319, 984
+  size: 585, 295
+  orig: 587, 296
+  offset: 1, 0
+  index: -1
+披風_後
+  rotate: false
+  xy: 2, 1265
+  size: 889, 754
+  orig: 889, 754
+  offset: 0, 0
+  index: -1
+攻擊表情
+  rotate: true
+  xy: 1906, 1073
+  size: 206, 68
+  orig: 206, 70
+  offset: 0, 1
+  index: -1
+正常表情
+  rotate: false
+  xy: 606, 477
+  size: 225, 99
+  orig: 227, 100
+  offset: 1, 0
+  index: -1
+法杖
+  rotate: true
+  xy: 893, 1272
+  size: 218, 424
+  orig: 218, 424
+  offset: 0, 0
+  index: -1
+法杖中間水晶
+  rotate: true
+  xy: 738, 974
+  size: 289, 189
+  orig: 290, 191
+  offset: 0, 1
+  index: -1
+法杖棍子
+  rotate: true
+  xy: 2, 31
+  size: 37, 880
+  orig: 37, 880
+  offset: 0, 0
+  index: -1
+閉眼表情
+  rotate: false
+  xy: 738, 917
+  size: 199, 55
+  orig: 199, 57
+  offset: 0, 1
+  index: -1
+頭
+  rotate: false
+  xy: 1403, 1377
+  size: 633, 265
+  orig: 633, 265
+  offset: 0, 0
+  index: -1
+頭水晶
+  rotate: false
+  xy: 577, 222
+  size: 63, 122
+  orig: 63, 123
+  offset: 0, 1
+  index: -1
+黑球
+  rotate: false
+  xy: 2, 901
+  size: 734, 362
+  orig: 734, 363
+  offset: 0, 0
+  index: -1

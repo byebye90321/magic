@@ -47,6 +47,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sister_chapter1.unity
     guid: 2a27f142d3d4a34478d5ca192fbc0054
+  - enabled: 1
+    path: Assets/Scenes/RunGame_chapter1.unity
+    guid: 77546f1b15288ff468b68344599dd223
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000

@@ -76,6 +76,9 @@ public class RunGameManager : MonoBehaviour {
 	public Animator HintAni;
 	public Text HintText;
 	public GameObject NextFlashText;
+	//----------------------對話框物件-------------
+	public GameObject textPanel;
+	public Text text;
 
 	void Start () {
 		Puase.interactable = false;
@@ -99,7 +102,8 @@ public class RunGameManager : MonoBehaviour {
 		}
 		else if (chapterName == "1")
 		{
-			InvokeRepeating("timer", 1, 1);
+			StartCoroutine("Conversation");
+			//InvokeRepeating("timer", 1, 1);
 		}
 	}
 
@@ -145,6 +149,22 @@ public class RunGameManager : MonoBehaviour {
 		distance.transform.SetAsFirstSibling();
 		HintAni.SetTrigger("close");
 		maskGroup.SetActive(false);
+		TouchNextImage.SetActive(false);
+		InvokeRepeating("timer", 1, 1);
+	}
+
+	IEnumerator Conversation()
+	{
+		textPanel.SetActive(true);
+		text.text = "終於離開那片森林了，看來前面就是城鎮了吧";
+		yield return new WaitUntil(() => count == 1);
+		text.text = "！";
+		yield return new WaitUntil(() => count == 2);
+		text.text = "歪歪為什麼又追了上來！？";
+		yield return new WaitUntil(() => count == 3);
+		text.text = "不管了，趕緊逃跑吧！";
+		yield return new WaitUntil(() => count == 4);
+		textPanel.SetActive(false);
 		TouchNextImage.SetActive(false);
 		InvokeRepeating("timer", 1, 1);
 	}

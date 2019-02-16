@@ -1,0 +1,83 @@
+
+蘿莉.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+右手
+  rotate: false
+  xy: 478, 214
+  size: 208, 287
+  orig: 208, 288
+  offset: 0, 1
+  index: -1
+右腳
+  rotate: false
+  xy: 932, 337
+  size: 55, 164
+  orig: 55, 164
+  offset: 0, 0
+  index: -1
+右頭髮
+  rotate: true
+  xy: 485, 8
+  size: 204, 224
+  orig: 204, 224
+  offset: 0, 0
+  index: -1
+左手
+  rotate: false
+  xy: 263, 196
+  size: 213, 305
+  orig: 213, 306
+  offset: 0, 1
+  index: -1
+左腳
+  rotate: false
+  xy: 424, 30
+  size: 59, 164
+  orig: 59, 164
+  offset: 0, 0
+  index: -1
+左頭髮
+  rotate: false
+  xy: 711, 27
+  size: 204, 224
+  orig: 204, 224
+  offset: 0, 0
+  index: -1
+睜眼
+  rotate: true
+  xy: 268, 2
+  size: 192, 77
+  orig: 192, 78
+  offset: 0, 1
+  index: -1
+蝴蝶結
+  rotate: false
+  xy: 2, 27
+  size: 264, 113
+  orig: 264, 113
+  offset: 0, 0
+  index: -1
+身體
+  rotate: false
+  xy: 2, 142
+  size: 259, 359
+  orig: 283, 360
+  offset: 0, 1
+  index: -1
+閉眼
+  rotate: true
+  xy: 347, 6
+  size: 188, 75
+  orig: 188, 76
+  offset: 0, 1
+  index: -1
+頭
+  rotate: true
+  xy: 688, 253
+  size: 248, 242
+  orig: 248, 242
+  offset: 0, 0
+  index: -1

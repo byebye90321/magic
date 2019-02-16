@@ -1,0 +1,97 @@
+
+葛雷斯.png
+size: 2048,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+右上臂
+  rotate: false
+  xy: 1551, 130
+  size: 148, 113
+  orig: 148, 113
+  offset: 0, 0
+  index: -1
+右下臂
+  rotate: false
+  xy: 1825, 153
+  size: 131, 90
+  orig: 132, 90
+  offset: 0, 0
+  index: -1
+右掌
+  rotate: false
+  xy: 1551, 64
+  size: 114, 64
+  orig: 114, 64
+  offset: 0, 0
+  index: -1
+左上臂
+  rotate: true
+  xy: 1701, 137
+  size: 106, 122
+  orig: 106, 122
+  offset: 0, 0
+  index: -1
+左下臂
+  rotate: true
+  xy: 887, 94
+  size: 149, 246
+  orig: 149, 246
+  offset: 0, 0
+  index: -1
+張嘴
+  rotate: false
+  xy: 1135, 94
+  size: 32, 20
+  orig: 32, 20
+  offset: 0, 0
+  index: -1
+眼鏡
+  rotate: false
+  xy: 887, 52
+  size: 178, 40
+  orig: 179, 41
+  offset: 1, 0
+  index: -1
+腳
+  rotate: true
+  xy: 2, 2
+  size: 241, 558
+  orig: 278, 571
+  offset: 37, 13
+  index: -1
+身體
+  rotate: true
+  xy: 562, 7
+  size: 236, 323
+  orig: 236, 323
+  offset: 0, 0
+  index: -1
+閉嘴
+  rotate: false
+  xy: 887, 35
+  size: 30, 15
+  orig: 30, 15
+  offset: 0, 0
+  index: -1
+頭
+  rotate: false
+  xy: 1357, 61
+  size: 192, 182
+  orig: 192, 182
+  offset: 0, 0
+  index: -1
+頭髮
+  rotate: false
+  xy: 1135, 116
+  size: 220, 127
+  orig: 220, 127
+  offset: 0, 0
+  index: -1
+鼻子
+  rotate: false
+  xy: 1958, 211
+  size: 37, 32
+  orig: 37, 32
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,308 @@
+{
+"skeleton": { "hash": "4MQ6peNltFEZWR507hc1t+Jo2n0", "spine": "3.6.53", "width": 1194.05, "height": 2556 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "身體", "parent": "root", "x": 2.15, "y": 1804.72 },
+	{ "name": "身體3", "parent": "身體", "length": 333.54, "rotation": 87.09, "y": -2.82 },
+	{ "name": "右手上臂", "parent": "身體3", "length": 349.71, "rotation": -150.73, "x": 242.42, "y": -97.91 },
+	{ "name": "右手下臂", "parent": "右手上臂", "length": 424.31, "rotation": -1.16, "x": 321.93, "y": 1.16 },
+	{ "name": "右手手掌", "parent": "右手下臂", "length": 180.61, "rotation": -0.24, "x": 357.45, "y": -2.85 },
+	{ "name": "右手袖子", "parent": "右手上臂", "length": 697.09, "rotation": -16.02, "x": 135.92, "y": -2.05 },
+	{ "name": "右腳", "parent": "身體", "length": 1623.98, "rotation": -91.68, "x": 101.9, "y": -182.52 },
+	{ "name": "左手上臂", "parent": "身體3", "length": 350.97, "rotation": 156.14, "x": 230.57, "y": 79.56 },
+	{ "name": "左手下臂", "parent": "左手上臂", "length": 427.99, "rotation": 0.54, "x": 320.68, "y": -2.63 },
+	{ "name": "左手手掌", "parent": "左手下臂", "length": 188.15, "rotation": -1.49, "x": 363.62, "y": 2.9 },
+	{ "name": "左手袖子", "parent": "左手上臂", "length": 708.89, "rotation": 12.1, "x": 132.31, "y": -0.6 },
+	{ "name": "左腳", "parent": "身體", "length": 1610.62, "rotation": -88.07, "x": -105.26, "y": -192.71 },
+	{ "name": "頭", "parent": "身體3", "length": 384.59, "rotation": 6.28, "x": 308.03, "y": 1.53 },
+	{ "name": "後髮", "parent": "頭", "length": 1135.53, "rotation": 174.64, "x": 419.4, "y": 14.92 },
+	{ "name": "正常表情", "parent": "頭", "length": 139.79, "rotation": 43.27, "x": 127.48, "y": 3.81 },
+	{ "name": "瀏海", "parent": "頭", "length": 479.69, "rotation": -132.39, "x": 431.17, "y": 70.78 }
+],
+"slots": [
+	{ "name": "後髮", "bone": "後髮", "attachment": "後髮" },
+	{ "name": "左手上臂", "bone": "左手上臂", "attachment": "左手上臂" },
+	{ "name": "左手下臂", "bone": "左手下臂", "attachment": "左手下臂" },
+	{ "name": "左手手掌", "bone": "左手手掌", "attachment": "左手手掌" },
+	{ "name": "左手袖子", "bone": "左手袖子", "attachment": "左手袖子" },
+	{ "name": "右手上臂", "bone": "右手上臂", "attachment": "右手上臂" },
+	{ "name": "右手下臂", "bone": "右手下臂", "attachment": "右手下臂" },
+	{ "name": "右手手掌", "bone": "右手手掌", "attachment": "右手手掌" },
+	{ "name": "右手袖子", "bone": "右手袖子", "attachment": "右手袖子" },
+	{ "name": "左腳", "bone": "左腳", "attachment": "左腳" },
+	{ "name": "右腳", "bone": "右腳", "attachment": "右腳" },
+	{ "name": "身體", "bone": "身體3", "attachment": "身體" },
+	{ "name": "頭", "bone": "頭", "attachment": "頭" },
+	{ "name": "正常表情", "bone": "正常表情", "attachment": "正常表情" },
+	{ "name": "瀏海", "bone": "瀏海", "attachment": "瀏海" }
+],
+"skins": {
+	"default": {
+		"右手上臂": {
+			"右手上臂": { "x": 183.19, "y": 4.07, "rotation": 63.64, "width": 189, "height": 332 }
+		},
+		"右手下臂": {
+			"右手下臂": { "x": 203.84, "y": -6.94, "rotation": 64.8, "width": 226, "height": 388 }
+		},
+		"右手手掌": {
+			"右手手掌": { "x": 90.31, "y": 0.3, "rotation": 65.04, "width": 119, "height": 174 }
+		},
+		"右手袖子": {
+			"右手袖子": { "x": 367.81, "y": 51.32, "rotation": 79.67, "width": 399, "height": 752 }
+		},
+		"右腳": {
+			"右腳": { "x": 804.69, "y": 56.76, "rotation": 91.68, "width": 371, "height": 1621 }
+		},
+		"左手上臂": {
+			"左手上臂": { "x": 181.91, "y": -7.54, "rotation": 116.77, "width": 194, "height": 327 }
+		},
+		"左手下臂": {
+			"左手下臂": { "x": 204.24, "y": 1.55, "rotation": 116.23, "width": 232, "height": 385 }
+		},
+		"左手手掌": {
+			"左手手掌": { "x": 83.78, "y": -3.74, "rotation": 117.72, "width": 121, "height": 175 }
+		},
+		"左手袖子": {
+			"左手袖子": { "x": 380.43, "y": -50.85, "rotation": 104.67, "width": 394, "height": 755 }
+		},
+		"左腳": {
+			"左腳": { "x": 797.35, "y": -57.1, "rotation": 88.07, "width": 370, "height": 1621 }
+		},
+		"後髮": {
+			"後髮": { "x": 574.94, "y": 72.47, "rotation": 89.29, "width": 1141, "height": 1153 }
+		},
+		"正常表情": {
+			"正常表情": { "x": 49.3, "y": -27.09, "rotation": -136.64, "width": 276, "height": 205 },
+			"閉眼表情": { "x": 48.58, "y": -27.78, "rotation": -136.64, "width": 260, "height": 205 }
+		},
+		"瀏海": {
+			"瀏海": { "x": 209.78, "y": -17.49, "rotation": 39.03, "width": 471, "height": 337 }
+		},
+		"身體": {
+			"身體": { "x": 8.03, "y": 5.33, "rotation": -87.09, "width": 379, "height": 655 }
+		},
+		"頭": {
+			"頭": { "x": 187.44, "y": 0.53, "rotation": -93.37, "width": 352, "height": 386 }
+		}
+	}
+},
+"animations": {
+	"animation": {
+		"slots": {
+			"正常表情": {
+				"attachment": [
+					{ "time": 0, "name": "正常表情" },
+					{ "time": 0.2333, "name": "閉眼表情" },
+					{ "time": 0.5667, "name": "正常表情" }
+				]
+			}
+		},
+		"bones": {
+			"身體": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0, "curve": "stepped" },
+					{ "time": 2.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0, "y": 0 }
+				]
+			},
+			"身體3": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0, "curve": "stepped" },
+					{ "time": 2.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.6667, "x": 0, "y": -7.21 },
+					{ "time": 1.3333, "x": 0, "y": 0 },
+					{ "time": 2, "x": 0, "y": 7.2 },
+					{ "time": 2.6667, "x": 0, "y": 0 }
+				]
+			},
+			"頭": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0, "curve": "stepped" },
+					{ "time": 2.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0, "y": 0 }
+				]
+			},
+			"正常表情": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0, "curve": "stepped" },
+					{ "time": 2.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0, "y": 0 }
+				]
+			},
+			"瀏海": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": -1.45 },
+					{ "time": 1.3333, "angle": 0 },
+					{ "time": 2, "angle": 0.72 },
+					{ "time": 2.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0, "y": 0 }
+				]
+			},
+			"後髮": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": 2.53 },
+					{ "time": 1.3333, "angle": 0 },
+					{ "time": 2, "angle": -1.83 },
+					{ "time": 2.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0, "y": 0 }
+				]
+			},
+			"左手上臂": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": 1.91 },
+					{ "time": 1.3333, "angle": 0 },
+					{ "time": 2, "angle": -0.55 },
+					{ "time": 2.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0, "y": 0 }
+				]
+			},
+			"左手下臂": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0, "curve": "stepped" },
+					{ "time": 2.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0, "y": 0 }
+				]
+			},
+			"左手手掌": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0, "curve": "stepped" },
+					{ "time": 2.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0, "y": 0 }
+				]
+			},
+			"右手上臂": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": -0.83 },
+					{ "time": 1.3333, "angle": 0 },
+					{ "time": 2, "angle": 1 },
+					{ "time": 2.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0, "y": 0 }
+				]
+			},
+			"右手下臂": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0, "curve": "stepped" },
+					{ "time": 2.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0, "y": 0 }
+				]
+			},
+			"右手手掌": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0, "curve": "stepped" },
+					{ "time": 2.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0, "y": 0 }
+				]
+			},
+			"左腳": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 1.3333, "angle": 0.84 },
+					{ "time": 2.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0, "y": 0 }
+				]
+			},
+			"右腳": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 1.3333, "angle": -0.41 },
+					{ "time": 2.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0, "y": 0 }
+				]
+			},
+			"左手袖子": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": 1.28 },
+					{ "time": 1.3333, "angle": 0 },
+					{ "time": 2, "angle": 0.7 },
+					{ "time": 2.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0, "y": 0 }
+				]
+			},
+			"右手袖子": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.6667, "angle": 0.18 },
+					{ "time": 1.3333, "angle": 0 },
+					{ "time": 2, "angle": 0.61 },
+					{ "time": 2.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0, "y": 0 }
+				]
+			}
+		}
+	}
+}
+}

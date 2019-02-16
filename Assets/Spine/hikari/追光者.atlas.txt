@@ -1,0 +1,118 @@
+
+追光者.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+右手上臂
+  rotate: false
+  xy: 440, 275
+  size: 94, 164
+  orig: 95, 166
+  offset: 1, 1
+  index: -1
+右手下臂
+  rotate: true
+  xy: 905, 530
+  size: 113, 194
+  orig: 113, 194
+  offset: 0, 0
+  index: -1
+右手手掌
+  rotate: true
+  xy: 2, 2
+  size: 60, 87
+  orig: 60, 87
+  offset: 0, 0
+  index: -1
+右手袖子
+  rotate: false
+  xy: 2, 64
+  size: 200, 375
+  orig: 200, 376
+  offset: 0, 1
+  index: -1
+右腳
+  rotate: true
+  xy: 575, 832
+  size: 186, 811
+  orig: 186, 811
+  offset: 0, 0
+  index: -1
+左手上臂
+  rotate: false
+  xy: 204, 104
+  size: 96, 164
+  orig: 97, 164
+  offset: 0, 0
+  index: -1
+左手下臂
+  rotate: true
+  xy: 1388, 704
+  size: 116, 192
+  orig: 116, 193
+  offset: 0, 1
+  index: -1
+左手手掌
+  rotate: false
+  xy: 1946, 931
+  size: 60, 87
+  orig: 61, 88
+  offset: 0, 0
+  index: -1
+左手袖子
+  rotate: true
+  xy: 1388, 822
+  size: 196, 378
+  orig: 197, 378
+  offset: 0, 0
+  index: -1
+左腳
+  rotate: true
+  xy: 575, 645
+  size: 185, 811
+  orig: 185, 811
+  offset: 0, 0
+  index: -1
+後髮
+  rotate: false
+  xy: 2, 441
+  size: 571, 577
+  orig: 571, 577
+  offset: 0, 0
+  index: -1
+正常表情
+  rotate: false
+  xy: 1582, 717
+  size: 138, 103
+  orig: 138, 103
+  offset: 0, 0
+  index: -1
+瀏海
+  rotate: false
+  xy: 204, 270
+  size: 234, 169
+  orig: 236, 169
+  offset: 2, 0
+  index: -1
+身體
+  rotate: true
+  xy: 575, 453
+  size: 190, 328
+  orig: 190, 328
+  offset: 0, 0
+  index: -1
+閉眼表情
+  rotate: false
+  xy: 1101, 540
+  size: 130, 103
+  orig: 130, 103
+  offset: 0, 0
+  index: -1
+頭
+  rotate: false
+  xy: 1768, 825
+  size: 176, 193
+  orig: 176, 193
+  offset: 0, 0
+  index: -1

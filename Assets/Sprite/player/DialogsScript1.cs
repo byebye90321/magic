@@ -73,16 +73,6 @@ public class DialogsScript1 : MonoBehaviour
 	public GameObject FadeIn;
 	Animator fadeOut;
 
-	//--------------------------場景-----------------------------
-
-	//------------------------結局相關---------------------------
-	//關卡樹狀圖，非圖鑑樹狀圖，不存檔
-	/*public static bool sHE1 = false;
-	public static bool sBE1 = false;
-
-	public GameObject he;
-	public GameObject be;*/
-
 	//-----------------------教學、互動物件變數-------------------------
 	public bool teachBlood = false;
 	public GameObject markObj; //路標對話框
@@ -117,47 +107,72 @@ public class DialogsScript1 : MonoBehaviour
 	private Color talkNow = new Color(1, 1, 1, 1);
 	private Color untalkNow = new Color(.6f, .6f, .6f, 1);
 	public GameObject BEfogParticle;
-
+	//-----------------vs
+	public GameObject vsWiko;
+	public GameObject vsYYJ;
+	//---------------場景保存物件----------------
+	public GameObject col;
 
 	void Start() {
+
+		if (StaticObject.nowClass == 0)
+		{
+			/*Debug.Log(StaticObject.nowClass);
+			StaticObject.nowClass = 1;
+			PlayerPrefs.SetInt("StaticObject.nowClass", StaticObject.nowClass);
+			Debug.Log(StaticObject.nowClass);*/
+			//產生物件
+			currentLine = 1;
+			endAtLine = 10;
+
+			markAni = markObj.GetComponent<Animator>();
+			markCollider = markObj.GetComponent<BoxCollider2D>();
+			attackColliderCol = attackCollider.GetComponent<BoxCollider2D>();
+			monsterColliderCol = monsterCollider.GetComponent<BoxCollider2D>();
+			statueCollider = statueObj.GetComponent<BoxCollider2D>();
+			vine3Collider = vine3.GetComponent<BoxCollider2D>();
+			mark2Collider = mark2Obj.GetComponent<BoxCollider2D>();
+			mark2Ani = mark2Obj.GetComponent<Animator>();
+			StaticObject.sister = 1; //妹妹解鎖
+			PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);
+			StaticObject.book = 1; //魔法日報解鎖
+			PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);
+
+			if (currentLine > endAtLine)
+			{
+				isActive = false;
+				textBox.SetActive(false);
+				GameEnd = false;
+			}
+			if (textFile != null)
+				textLines = (textFile.text.Split('\n'));
+			if (endAtLine == 0)
+				endAtLine = textLines.Length - 1;
+			if (isActive)
+				EnableTextBox();
+			else
+			{
+				DisableTextBox();
+			}
+		}
+		else 
+		{
+			gameObject.transform.position = new Vector2(53.4f,6.4f);
+			col.SetActive(false);
+
+
+
+		}
 
 		//usually.TransitionTo(10f);
 		fadeOut = FadeOut.GetComponent<Animator>();
 		characterImage = characterImageObj.GetComponent<Image>();
 		otherImage = otherImageObj.GetComponent<Image>();
-		markAni = markObj.GetComponent<Animator>();
-		markCollider = markObj.GetComponent<BoxCollider2D>();
-		attackColliderCol = attackCollider.GetComponent<BoxCollider2D>();
-		monsterColliderCol = monsterCollider.GetComponent<BoxCollider2D>();
-		statueCollider = statueObj.GetComponent<BoxCollider2D>();
-		vine3Collider = vine3.GetComponent<BoxCollider2D>();
-		mark2Collider = mark2Obj.GetComponent<BoxCollider2D>();
-		mark2Ani = mark2Obj.GetComponent<Animator>();
-		StaticObject.sister = 1; //妹妹解鎖
-		PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);
-		StaticObject.book = 1; //魔法日報解鎖
-		PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);
-
-		currentLine = 1;
-		endAtLine = 10;
+		
+		
 		StartCoroutine("fadeIn");
 
-		if (currentLine > endAtLine)
-		{
-			isActive = false;
-			textBox.SetActive(false);
-			GameEnd = false;
-		}
-		if (textFile != null)
-			textLines = (textFile.text.Split('\n'));
-		if (endAtLine == 0)
-			endAtLine = textLines.Length - 1;
-		if (isActive)
-			EnableTextBox();
-		else
-		{
-			DisableTextBox();
-		}
+		
 	}
 
 	IEnumerator fadeIn()
@@ -670,10 +685,15 @@ public class DialogsScript1 : MonoBehaviour
 		endAtLine = 60;
 		NPCAppear();
 		yield return new WaitUntil(() => currentLine >= 60);
+		gameManager.vsPanel.SetActive(true);
+		vsYYJ.SetActive(true);
+		yield return new WaitForSeconds(3);
 		gameManager.teachHintAni.SetTrigger("HintOpen");
 		gameManager.teachHintText.text = "進入戰鬥";
 		gameManager.attackRedImage.SetActive(true);
 		EnemyController.isAttack = true;
+		gameManager.vsPanel.SetActive(false);
+		vsYYJ.SetActive(false);
 		yield return new WaitForSeconds(.1f);
 	}
 
@@ -693,7 +713,6 @@ public class DialogsScript1 : MonoBehaviour
 		NPCAppear();
 		yield return new WaitUntil(() => currentLine >= 79);
 		choose1.SetActive(true);  //開啟任務面板
-		yield return new WaitForSeconds(.1f);
 	}
 
 	public IEnumerator AfterMonsterBattle()
@@ -817,12 +836,17 @@ public class DialogsScript1 : MonoBehaviour
 		PlayerPrefs.SetInt("StaticObject.sHE1", StaticObject.sHE1);
 		PlayerPrefs.SetInt("StaticObject.sBE1", StaticObject.sBE1);
 		yield return new WaitUntil(() => currentLine == 82);
+		gameManager.vsPanel.SetActive(true);
+		vsWiko.SetActive(true);
+		yield return new WaitForSeconds(3);
 		gameManager.teachHintAni.SetTrigger("HintOpen");
 		gameManager.teachHintText.text = "進入戰鬥";
 		gameManager.attackRedImage.SetActive(true);
 		MonsterController.isAttack = true;
 		MonsterController.enemy2Transform.localRotation = Quaternion.Euler(0, 180, 0);
-		MonsterController.enemy2Transform.position = new Vector2(50.8f, 3.38f);
+		MonsterController.enemy2Transform.position = new Vector2(51f, 3.1f);
+		gameManager.vsPanel.SetActive(false);
+		vsWiko.SetActive(false);
 	}
 
 	IEnumerator noMonsterAttack()  //不拯救-不戰鬥

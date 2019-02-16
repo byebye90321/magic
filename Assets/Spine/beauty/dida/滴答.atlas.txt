@@ -1,0 +1,223 @@
+
+滴答.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+右大腿
+  rotate: true
+  xy: 1065, 470
+  size: 78, 115
+  orig: 78, 115
+  offset: 0, 0
+  index: -1
+左大腿
+  rotate: true
+  xy: 1065, 470
+  size: 78, 115
+  orig: 78, 115
+  offset: 0, 0
+  index: -1
+右大腿_單
+  rotate: true
+  xy: 1182, 468
+  size: 78, 115
+  orig: 78, 115
+  offset: 0, 0
+  index: -1
+左大腿_單
+  rotate: true
+  xy: 1182, 468
+  size: 78, 115
+  orig: 78, 115
+  offset: 0, 0
+  index: -1
+右小腿
+  rotate: false
+  xy: 1900, 750
+  size: 115, 190
+  orig: 116, 190
+  offset: 1, 0
+  index: -1
+左小腿
+  rotate: false
+  xy: 1900, 750
+  size: 115, 190
+  orig: 116, 190
+  offset: 1, 0
+  index: -1
+右小腿_單
+  rotate: false
+  xy: 948, 494
+  size: 115, 190
+  orig: 116, 190
+  offset: 1, 0
+  index: -1
+左小腿_單
+  rotate: false
+  xy: 948, 494
+  size: 115, 190
+  orig: 116, 190
+  offset: 1, 0
+  index: -1
+右披風
+  rotate: false
+  xy: 2, 491
+  size: 333, 511
+  orig: 333, 511
+  offset: 0, 0
+  index: -1
+右袖子
+  rotate: true
+  xy: 337, 454
+  size: 199, 294
+  orig: 199, 294
+  offset: 0, 0
+  index: -1
+左手
+  rotate: false
+  xy: 1458, 581
+  size: 130, 95
+  orig: 130, 95
+  offset: 0, 0
+  index: -1
+左手_單
+  rotate: false
+  xy: 1864, 653
+  size: 130, 95
+  orig: 130, 95
+  offset: 0, 0
+  index: -1
+左披風
+  rotate: true
+  xy: 1342, 913
+  size: 89, 467
+  orig: 89, 467
+  offset: 0, 0
+  index: -1
+左袖子
+  rotate: false
+  xy: 523, 165
+  size: 124, 287
+  orig: 124, 288
+  offset: 0, 1
+  index: -1
+左袖子底
+  rotate: true
+  xy: 1811, 942
+  size: 60, 172
+  orig: 60, 172
+  offset: 0, 0
+  index: -1
+帽子
+  rotate: false
+  xy: 337, 655
+  size: 367, 347
+  orig: 367, 347
+  offset: 0, 0
+  index: -1
+帽子底
+  rotate: false
+  xy: 706, 686
+  size: 303, 316
+  orig: 303, 316
+  offset: 0, 0
+  index: -1
+後披風
+  rotate: false
+  xy: 2, 5
+  size: 277, 484
+  orig: 277, 484
+  offset: 0, 0
+  index: -1
+後髮
+  rotate: true
+  xy: 523, 6
+  size: 157, 240
+  orig: 157, 240
+  offset: 0, 0
+  index: -1
+後髮_單
+  rotate: true
+  xy: 706, 527
+  size: 157, 240
+  orig: 157, 240
+  offset: 0, 0
+  index: -1
+微笑 的複製
+  rotate: false
+  xy: 1065, 550
+  size: 143, 140
+  orig: 143, 140
+  offset: 0, 0
+  index: -1
+拐杖
+  rotate: true
+  xy: 1011, 692
+  size: 71, 303
+  orig: 71, 303
+  offset: 0, 0
+  index: -1
+拐杖_單
+  rotate: true
+  xy: 1316, 678
+  size: 71, 303
+  orig: 71, 303
+  offset: 0, 0
+  index: -1
+眼鏡
+  rotate: false
+  xy: 1621, 652
+  size: 241, 97
+  orig: 241, 97
+  offset: 0, 0
+  index: -1
+睜眼
+  rotate: true
+  xy: 1210, 548
+  size: 142, 101
+  orig: 142, 102
+  offset: 0, 1
+  index: -1
+身體
+  rotate: true
+  xy: 1011, 765
+  size: 237, 329
+  orig: 237, 329
+  offset: 0, 0
+  index: -1
+閉眼
+  rotate: false
+  xy: 1313, 571
+  size: 143, 105
+  orig: 143, 107
+  offset: 0, 1
+  index: -1
+頭
+  rotate: false
+  xy: 281, 228
+  size: 240, 224
+  orig: 240, 224
+  offset: 0, 0
+  index: -1
+頭_單
+  rotate: false
+  xy: 281, 2
+  size: 240, 224
+  orig: 240, 224
+  offset: 0, 0
+  index: -1
+頭髮
+  rotate: false
+  xy: 1342, 751
+  size: 277, 160
+  orig: 277, 160
+  offset: 0, 0
+  index: -1
+頭髮_單
+  rotate: false
+  xy: 1621, 751
+  size: 277, 160
+  orig: 277, 160
+  offset: 0, 0
+  index: -1

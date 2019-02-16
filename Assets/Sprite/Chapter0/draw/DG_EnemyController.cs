@@ -58,6 +58,7 @@ public class DG_EnemyController : MonoBehaviour{
 		enemy1.state.SetAnimation(0, "idle", true);
 		enemy2.state.SetAnimation(0, "idle", true);
 		//damageText = damageTextObj.GetComponent<Text>();
+		canvas = transform.Find("Enemy/EnemyHealthCanvas/GameObject").gameObject;
 	}
 	
 	void Update()
@@ -136,7 +137,6 @@ public class DG_EnemyController : MonoBehaviour{
 		TakeDamage(gesture.skillG2.skillInfo.Atk);
 		enemy1.state.SetAnimation(0, "death", false);
 		enemy2.state.SetAnimation(0, "death", false);
-		//damageTextObj.SetActive(true);
 		healthText.text = "-" + gesture.skillG2.skillInfo.Atk;
 		StartCoroutine("wait");
 	}
@@ -174,12 +174,10 @@ public class DG_EnemyController : MonoBehaviour{
 		{
 			StartCoroutine(gameManager.MonsterAttackWin());
 		}
-		
-
 	}
 
 		//------------------------Cut---------------------------
-		private void CreateHalf(GameObject obj, int index)       //创建半个水果
+		/*private void CreateHalf(GameObject obj, int index)       //创建半个水果
 	{
 		obj = Instantiate(obj, transform.position, Quaternion.AngleAxis(Random.Range(-30f, 30f), Vector3.back)) as GameObject;
 		Rigidbody2D rgd = obj.GetComponent<Rigidbody2D>();
@@ -193,17 +191,16 @@ public class DG_EnemyController : MonoBehaviour{
 			return;
 		GameObject obj = Instantiate(wz[Random.Range(0, wz.Length)], transform.position, Quaternion.AngleAxis(Random.Range(-30f, 30f), Vector3.back)) as GameObject;
 		Destroy(obj, 0.5f);
-	}
+	}*/
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.gameObject.name == "Blade" && drawCanvas.isActiveAndEnabled && isAttack==true)
 		{
+			
 			TakeDamage(1);
-			/*healthAni.SetTrigger("hurtText");
-			damageText.text = "-" + 1;*/
 			StartCoroutine("damageActive");
-			healthText.text = "-" + 1;
+			healthText.text = "-" + 1;		
 			StartCoroutine("wait");
 		}
 
@@ -212,7 +209,6 @@ public class DG_EnemyController : MonoBehaviour{
 			G0_beaten.SetActive(true);
 			TakeDamage(gesture.skill0.skillInfo.Atk);
 			StartCoroutine("damageActive");
-			//healthAni.SetTrigger("hurtText");
 			healthText.text = "-" + gesture.skill0.skillInfo.Atk;
 			StartCoroutine("G0_Close");
 			
@@ -223,7 +219,6 @@ public class DG_EnemyController : MonoBehaviour{
 			G1_beaten.SetActive(true);
 			TakeDamage(gesture.skillG1.skillInfo.Atk);
 			StartCoroutine("damageActive");
-			//healthAni.SetTrigger("hurtText");
 			StartCoroutine("G1_Close");
 			healthText.text = "-" + gesture.skillG1.skillInfo.Atk;
 		}
@@ -233,7 +228,6 @@ public class DG_EnemyController : MonoBehaviour{
 			B1_beaten.SetActive(true);
 			TakeDamage(gesture.skillB1.skillInfo.Atk);
 			StartCoroutine("damageActive");
-			//healthAni.SetTrigger("hurtText");
 			StartCoroutine("G1_Close");
 			healthText.text = "-" + gesture.skillB1.skillInfo.Atk;
 		}
@@ -243,7 +237,6 @@ public class DG_EnemyController : MonoBehaviour{
 			G2_beaten.SetActive(true);
 			TakeDamage(gesture.skillG2.skillInfo.Atk);
 			StartCoroutine("damageActive");
-			//healthAni.SetTrigger("hurtText");
 			StartCoroutine("G2_Close");
 			healthText.text = "-" + gesture.skillG2.skillInfo.Atk;
 		}
@@ -252,7 +245,6 @@ public class DG_EnemyController : MonoBehaviour{
 			B2_beaten.SetActive(true);
 			TakeDamage(gesture.skillB2.skillInfo.Atk);
 			StartCoroutine("damageActive");
-			//healthAni.SetTrigger("hurtText");
 			StartCoroutine("G2_Close");
 			healthText.text = "-" + gesture.skillB2.skillInfo.Atk;
 		}
@@ -278,7 +270,6 @@ public class DG_EnemyController : MonoBehaviour{
 
 	IEnumerator wait()
 	{
-
 		yield return new WaitForSeconds(1f);
 		G0_beaten.SetActive(false);
 		AtkParticle.SetActive(false);

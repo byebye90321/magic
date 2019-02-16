@@ -1,0 +1,69 @@
+
+錢多多.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+右手
+  rotate: false
+  xy: 195, 45
+  size: 79, 161
+  orig: 79, 161
+  offset: 0, 0
+  index: -1
+左手上臂
+  rotate: false
+  xy: 822, 373
+  size: 93, 129
+  orig: 93, 129
+  offset: 0, 0
+  index: -1
+左手下臂
+  rotate: true
+  xy: 630, 255
+  size: 72, 107
+  orig: 72, 107
+  offset: 0, 0
+  index: -1
+左手手掌
+  rotate: true
+  xy: 2, 2
+  size: 29, 57
+  orig: 29, 57
+  offset: 0, 0
+  index: -1
+正常表情
+  rotate: false
+  xy: 2, 33
+  size: 191, 173
+  orig: 192, 173
+  offset: 1, 0
+  index: -1
+身體
+  rotate: false
+  xy: 349, 249
+  size: 279, 253
+  orig: 279, 253
+  offset: 0, 0
+  index: -1
+閉眼表情
+  rotate: false
+  xy: 630, 329
+  size: 190, 173
+  orig: 190, 173
+  offset: 0, 0
+  index: -1
+頭
+  rotate: false
+  xy: 2, 208
+  size: 345, 294
+  orig: 345, 294
+  offset: 0, 0
+  index: -1
+鬍子
+  rotate: false
+  xy: 349, 209
+  size: 88, 38
+  orig: 88, 38
+  offset: 0, 0
+  index: -1

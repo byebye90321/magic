@@ -38,9 +38,15 @@ public class GameManager : MonoBehaviour {
 	public GameObject B1;
 	public GameObject G2;
 	public GameObject B2;
+	public GameObject G3;
+	public GameObject B3;
+	public GameObject G4;
+	public GameObject B4;
 
 	public GameObject ParticleObj1;
 	public GameObject ParticleObj2;
+	public GameObject ParticleObj3;
+	public GameObject ParticleObj4;
 	//------------------事件----------------------
 	public GameObject eventObj;
 	private Animator eventAni;
@@ -69,6 +75,8 @@ public class GameManager : MonoBehaviour {
 	[HideInInspector]
 	public Animator downHintAni;
 	public Text downHintText;
+
+	public GameObject vsPanel;
 	//-------------------角色---------------------
 	public GameObject smallBoss;
 	public GameObject monster;
@@ -111,6 +119,8 @@ public class GameManager : MonoBehaviour {
 		teachHintAni = teachHint.GetComponent<Animator>();
 		downHintAni = downHint.GetComponent<Animator>();
 		Application.targetFrameRate = 100;  //幀數
+
+		
 	}
 	
 	void FixedUpdate () {
@@ -151,6 +161,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	//-----------------------------Camera移轉鏡頭相關--------------------
+	//第一章
 	public IEnumerator floorOpen()
 	{
 		if (cameraFollow.transform.position.y <= 3.6)
@@ -228,6 +239,17 @@ public class GameManager : MonoBehaviour {
 		StartCoroutine(dialogsScript1.AfterMonsterBattle());
 	}
 
+	//第二章
+	public IEnumerator highest()
+	{
+		if (cameraFollow.transform.position.y >= 8.9f)
+		{
+			cameraFollow.moveCount = 0;
+			yield return new WaitForSeconds(1);
+			cameraFollow.isFollowTarget = true;
+		}
+	}
+
 	public void pause()
 	{
 		black_bgImage.SetActive(true);
@@ -300,8 +322,7 @@ public class GameManager : MonoBehaviour {
 		FadeOut.SetActive(true);
 		FadeOutAni.SetBool("FadeOut", true);
 		yield return new WaitForSeconds(1.5f);
-		Debug.Log("77878789");
-		SceneManager.LoadScene("ChooseChapter");  //接下一關 //先回
+		SceneManager.LoadScene("RunGame_chapter1");  //接下一關 //先回
 	}
 
 	IEnumerator Lose()  //失敗

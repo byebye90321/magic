@@ -1,0 +1,69 @@
+
+神秘人.png
+size: 2048,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+右手上臂
+  rotate: true
+  xy: 2, 2
+  size: 73, 129
+  orig: 73, 129
+  offset: 0, 0
+  index: -1
+右手下臂
+  rotate: false
+  xy: 1420, 136
+  size: 83, 118
+  orig: 83, 120
+  offset: 0, 2
+  index: -1
+右手手掌
+  rotate: false
+  xy: 1505, 138
+  size: 74, 116
+  orig: 74, 116
+  offset: 0, 0
+  index: -1
+左手上臂
+  rotate: false
+  xy: 1373, 61
+  size: 45, 193
+  orig: 45, 193
+  offset: 0, 0
+  index: -1
+左手下臂
+  rotate: true
+  xy: 2, 77
+  size: 56, 192
+  orig: 56, 192
+  offset: 0, 0
+  index: -1
+左手手掌
+  rotate: false
+  xy: 1581, 145
+  size: 76, 109
+  orig: 76, 109
+  offset: 0, 0
+  index: -1
+手杖
+  rotate: true
+  xy: 2, 135
+  size: 119, 674
+  orig: 119, 675
+  offset: 0, 1
+  index: -1
+身體
+  rotate: true
+  xy: 678, 16
+  size: 238, 412
+  orig: 238, 412
+  offset: 0, 0
+  index: -1
+頭
+  rotate: false
+  xy: 1092, 42
+  size: 279, 212
+  orig: 279, 212
+  offset: 0, 0
+  index: -1

@@ -11,6 +11,7 @@ public class NPCTask : MonoBehaviour {
 	public GameManager gameManager;
 	public DG_playerController playerController;
 	public DialogsScript1 dialogsScript1;
+	public DialogsScript2 dialogsScript2;
 	public CameraFollow cameraFollow;
 	//------------------player位置-------------------
 	public Rigidbody2D rigid2D;
@@ -31,10 +32,25 @@ public class NPCTask : MonoBehaviour {
 	public int bookCount = 0;
 	public bool BobbyTask; //判斷跟誰接任務
 	public bool StatueTask; //判斷跟誰接任務
+	public bool DidaTask; //判斷跟誰接任務
+	public bool CocoTask; //判斷跟誰接任務
 
 	public GameObject TaskBtn; //任務YES NO按鈕
 	public GameObject TaskCloseBtn;
+
+	public GameObject questionPanel;
+	public int questionID;
+	public string answerChoose;
+	public Text answer1;
+	public Text answer2;
+	public Text answer3;
+	public int questionRight = 0;
+	public int questionFalse = 0;
+	public Toggle toggle1;
+	public Toggle toggle2;
+	public Toggle toggle3;
 	//-------------------NPC---------------------
+	//1
 	public SkeletonAnimation BobbyAni;
 	public GameObject Bobby;
 	[HideInInspector]
@@ -45,6 +61,16 @@ public class NPCTask : MonoBehaviour {
 	[HideInInspector]
 	public BoxCollider2D StatueCollider;
 	private Animator statueAni;
+	//2
+	public GameObject Dida;
+	[HideInInspector]
+	public BoxCollider2D DidaCollider;
+	public GameObject Coco;
+	[HideInInspector]
+	public BoxCollider2D CocoCollider;
+	public GameObject Dragon;
+	[HideInInspector]
+	public BoxCollider2D DragonCollider;
 	//-------------------機關---------------------
 	public GameObject StoneCanvas;
 	public GameObject stoneBefore;
@@ -60,7 +86,8 @@ public class NPCTask : MonoBehaviour {
 	public GameObject StoneParticle4;
 	public GameObject StoneParticle5;
 	public GameObject stoneFlash;
-	public GameObject Fairy;
+	public BoxCollider2D redFairy;
+	public BoxCollider2D blueFairy;
 	public GameObject BigBalance;
 	private Animator BigBalanceAni;
 	//--------------Audio---------------
@@ -69,15 +96,22 @@ public class NPCTask : MonoBehaviour {
 	public AudioClip stoneLose;
 	// Use this for initialization
 	void Start () {
+		taskAni = bookObj.GetComponent<Animator>();
 		if (ChapterName == "1")
 		{
 			BobbyCollider = Bobby.GetComponent<BoxCollider2D>();
 			StoneCollider = Stone.GetComponent<BoxCollider2D>();
-			StatueCollider = Statue.GetComponent<BoxCollider2D>();
-			taskAni = bookObj.GetComponent<Animator>();
+			StatueCollider = Statue.GetComponent<BoxCollider2D>();	
 			statueAni = Statue.GetComponent<Animator>();
 			BigBalanceAni = BigBalance.GetComponent<Animator>();
-		}	
+		}
+		else if (ChapterName == "2")
+		{
+			DidaCollider = Dida.GetComponent<BoxCollider2D>();
+			CocoCollider = Coco.GetComponent<BoxCollider2D>();
+			taskAni.SetBool("isOpen", true);
+		}
+		
 	}
 	
 	// Update is called once per frame
@@ -188,8 +222,20 @@ public class NPCTask : MonoBehaviour {
 			dialogsScript1.endAtLine = 51;
 			dialogsScript1.NPCAppear();
 			statueAni.SetBool("isOpen1", false);
-			Fairy.SetActive(true);
+			redFairy.enabled = true;
+			blueFairy.enabled = true;
 			StatueTask = false;
+		}
+
+		if (playerController.npcTalk.whoTask == "DidaTask")
+		{
+			DidaCollider.enabled = false;
+			otherTitle.SetActive(true);
+			otherTask1.SetActive(true); //接受滴答任務
+			dialogsScript2.currentLine = 27;
+			dialogsScript2.endAtLine = 30;
+			dialogsScript2.NPCAppear();
+			DidaTask = false;
 		}
 	}
 
@@ -215,6 +261,14 @@ public class NPCTask : MonoBehaviour {
 			statueAni.SetBool("isOpen1", false);
 			StatueTask = false;
 		}
+		if (playerController.npcTalk.whoTask == "DidaTask")
+		{
+			DidaCollider.enabled = false;
+			dialogsScript2.currentLine = 31;
+			dialogsScript2.endAtLine = 31;
+			dialogsScript2.NPCAppear();
+			//DidaTask = false;
+		}
 	}
 
 	//任務2 Statue
@@ -229,6 +283,151 @@ public class NPCTask : MonoBehaviour {
 		taskContentText.text = "恢復平衡需要一種重物，我想<color=#ef6c00>紅精靈</color>再適合不過了!牠們就棲息在<color=#ef6c00>荊棘樹幹的樹洞</color>中，幫我抓一隻回來吧!";
 	}
 
+	//任務3 Dida 接任務前對話
+	public void DidaTast()
+	{
+		dialogsScript2.currentLine = 18;
+		dialogsScript2.endAtLine = 26;
+		dialogsScript2.NPCAppear();
+
+		Debug.Log(Mathf.Abs(rigid2D.transform.position.x - Dida.transform.position.x));
+		taskTitleText.text = "滴答的懷錶";
+		taskContentText.text = "懷錶\n時間流逝\n青春不再\n若時光能倒流\n不再往前";
+	}
+
+	//任務4 Coco 接任務前對話
+	public void CocoTast()
+	{
+		dialogsScript2.currentLine = 33;
+		dialogsScript2.endAtLine = 36;
+		dialogsScript2.NPCAppear();
+	}
+	//龍~
+	public void DragonTast()
+	{
+		dialogsScript2.currentLine = 75;
+		dialogsScript2.endAtLine = 85;
+		dialogsScript2.NPCAppear();
+	}
+
+	public void cocoTaskStart()
+	{
+		questionPanel.SetActive(true);
+		CocoCollider.enabled = false;
+		otherTitle.SetActive(true);
+		otherTask2.SetActive(true); //接受可可任務
+		dialogsScript2.questionBool = true;
+		dialogsScript2.textBox.SetActive(true);
+		dialogsScript2.theText.text = "妳!就是妳!妳覺得我看起來如何?嗯?";
+		dialogsScript2.whotalk.text = "可可";
+		CocoTask = false;	
+	}
+
+	public void questionChoose()
+	{
+		if (answerChoose=="1"|| answerChoose == "2"||answerChoose == "3")
+		{
+			if (questionID == 0) //第一題
+			{
+				dialogsScript2.theText.text = "要怎麼像男生跟像女生啊?我總是做不好!";
+				answer1.text = "像男生就是要強壯勇敢、像女生就是要溫柔美麗。";
+				answer2.text = "不用像男生或像女生啊!你只要像你自己就好啦~";
+				answer3.text = "你做不好是因為你是男生卻喜歡女生的東西。";
+				if (answerChoose == "3")
+				{
+					questionRight += 1;
+				}
+				else if (answerChoose == "1" || answerChoose == "2")
+				{
+					questionFalse += 1;
+				}
+			}
+			else if (questionID == 1)//第二題
+			{
+				dialogsScript2.theText.text = "我就是喜歡化妝打扮、穿可愛蓬蓬裙!";
+				answer1.text = "沒錯，做自己喜歡的事最讚了!";
+				answer2.text = "還是低調一點比較好吧?";
+				answer3.text = "我不喜歡化妝打扮、穿可愛蓬蓬裙...";
+				if (answerChoose == "2")
+				{
+					questionRight += 1;
+				}
+				else if (answerChoose == "1" || answerChoose == "3")
+				{
+					questionFalse += 1;
+				}
+			}
+			else if (questionID == 2)//第三題
+			{
+				dialogsScript2.theText.text = "所以我一直被別人閒言閒語的，唉，好難過啊!";
+				answer1.text = "那是因為你真的太奇怪啦!";
+				answer2.text = "讓我想到維吉維克兄弟，這些人都該學會尊重他人!";
+				answer3.text = "這不是你的錯，但身在框框烏托邦，還是跟大家一樣比較好。";
+				if (answerChoose == "1")
+				{
+					questionRight += 1;
+				}
+				else if (answerChoose == "2" || answerChoose == "3")
+				{
+					questionFalse += 1;
+				}
+			}
+			else if (questionID == 3)//第四題
+			{
+				dialogsScript2.theText.text = "我不想做自己喜歡的事卻被嫌棄，寂寞的活阿~嗚嗚。";
+				answer1.text = "這個世道就是這樣，沒辦法。";
+				answer2.text = "你不寂寞，有很多人跟你一樣，一樣奇怪。";
+				answer3.text = "你只要努力做自己就好!追求自己所愛才叫活著!";
+				if (answerChoose == "2")
+				{
+					questionRight += 1;
+				}
+				else if (answerChoose == "1" || answerChoose == "3")
+				{
+					questionFalse += 1;
+				}
+			}
+			else if (questionID == 4)//第五題
+			{
+				if (answerChoose == "3")
+				{
+					questionRight += 1;
+				}
+				else if (answerChoose == "1" || answerChoose == "2")
+				{
+					questionFalse += 1;
+				}
+				questionPanel.SetActive(false);
+				dialogsScript2.questionBool = false;
+				dialogsScript2.currentLine = 62;
+				dialogsScript2.endAtLine = 74;
+				dialogsScript2.NPCAppear();
+			}
+			if (questionRight + questionFalse == questionID + 1)
+			{
+				questionID += 1;
+			}
+		}
+		
+		toggle1.isOn = false;
+		toggle2.isOn = false;
+		toggle3.isOn = false;
+		Debug.Log(questionID);
+		answerChoose = "4";
+	}
+
+	public void Toggle1()
+	{
+		answerChoose = "1";
+	}
+	public void Toggle2()
+	{
+		answerChoose = "2";
+	}
+	public void Toggle3()
+	{
+		answerChoose = "3";
+	}
 
 	public void TaskFinish()
 	{
@@ -245,12 +444,12 @@ public class NPCTask : MonoBehaviour {
 		{
 			statueAni.SetBool("win", true);
 			dialogsScript1.currentLine = 54;
-			dialogsScript1.currentLine = 54;
+			dialogsScript1.endAtLine = 54;
 			dialogsScript1.NPCAppear();
 		}
 		else {
 			dialogsScript1.currentLine = 55;
-			dialogsScript1.currentLine = 55;
+			dialogsScript1.endAtLine = 55;
 			dialogsScript1.NPCAppear();
 		}
 		yield return new WaitForSeconds(.5f);
@@ -346,7 +545,95 @@ public class NPCTask : MonoBehaviour {
 		gameManager.stoneDoorAni.SetBool("openDoor", true);
 	}
 
-	public void OpenOtherTask1()
+	//任務3完成，獲得技能3
+	public IEnumerator DidaTaskFinish()
+	{
+		playerController.npcTalk.isTasting = false;
+		DidaCollider.enabled = false;
+		Task1StarImage.sprite = TaskFinishImage;
+		if (playerController.npcTalk.right) //假如選到正確的
+		{
+			dialogsScript2.currentLine = 89;
+			dialogsScript2.endAtLine = 92;
+			dialogsScript2.NPCAppear();
+			yield return new WaitUntil(() => dialogsScript2.currentLine >= 92);
+		}
+		else
+		{
+			dialogsScript2.currentLine = 93;
+			dialogsScript2.endAtLine = 96;
+			dialogsScript2.NPCAppear();
+			yield return new WaitUntil(() => dialogsScript2.currentLine >= 96);
+		}
+		yield return new WaitForSeconds(.5f);
+		gameManager.eventObj.SetActive(true);
+		gameManager.eventText.text = "完成任務三";
+		yield return new WaitForSeconds(2f);
+		gameManager.eventObj.SetActive(false);
+		yield return new WaitForSeconds(0.1f);
+		gameManager.eventObj.SetActive(true);
+		gameManager.eventText.text = "獲得技能三";
+		yield return new WaitForSeconds(0.5f);
+		gameManager.ParticleObj3.SetActive(true); //skill Particle
+		yield return new WaitForSeconds(0.5f);
+		if (playerController.npcTalk.right)
+		{
+			StaticObject.G3 = 1;
+			gameManager.G3.SetActive(true);
+			PlayerPrefs.SetInt("StaticObject.G3", StaticObject.G3);
+		}
+		else
+		{
+			StaticObject.B3 = 1;
+			gameManager.B3.SetActive(true);
+			PlayerPrefs.SetInt("StaticObject.B3", StaticObject.B3);
+		}
+		yield return new WaitForSeconds(1f);
+		gameManager.ParticleObj3.SetActive(false);
+		gameManager.eventObj.SetActive(false);
+	}
+
+	//任務4完成，獲得技能4
+	public IEnumerator CocoTaskFinish()
+	{
+		playerController.npcTalk.isTasting = false;
+		//StatueCollider.enabled = false;
+		Task2StarImage.sprite = TaskFinishImage;
+		gameManager.eventObj.SetActive(true);
+		gameManager.eventText.text = "完成任務四";
+		yield return new WaitForSeconds(2f);
+		gameManager.eventObj.SetActive(false);
+		yield return new WaitForSeconds(0.1f);
+		gameManager.eventObj.SetActive(true);
+		gameManager.eventText.text = "獲得技能四";
+		yield return new WaitForSeconds(0.5f);
+		gameManager.ParticleObj4.SetActive(true); //skill Particle
+		yield return new WaitForSeconds(0.5f);
+		if (questionRight>questionFalse)
+		{
+			StaticObject.G4 = 1;
+			gameManager.G4.SetActive(true);
+			PlayerPrefs.SetInt("StaticObject.G4", StaticObject.G4);
+		}
+		else
+		{
+			StaticObject.B4 = 1;
+			gameManager.B4.SetActive(true);
+			PlayerPrefs.SetInt("StaticObject.B4", StaticObject.B4);
+		}
+		yield return new WaitForSeconds(1f);
+		gameManager.ParticleObj4.SetActive(false);
+		gameManager.eventObj.SetActive(false);
+		/*yield return new WaitForSeconds(0.5f);
+		cameraFollow.isFollowTarget = false;
+		cameraFollow.moveCount = 5;
+		yield return new WaitForSeconds(.5f);
+		if (playerController.npcTalk.right)
+		{
+			BigBalanceAni.SetBool("balance", true);
+		}*/
+	}
+	/*public void OpenOtherTask1()
 	{
 		taskPanel.SetActive(true);
 		TaskBtn.SetActive(false);
@@ -363,6 +650,15 @@ public class NPCTask : MonoBehaviour {
 		taskTitleText.text = "雕像平衡";
 		taskContentText.text = "恢復平衡需要一種重物，我想<color=#ef6c00>紅精靈</color>再適合不過了!牠們就棲息在<color=#ef6c00>荊棘樹幹的樹洞</color>中，幫我抓一隻回來吧!";
 	}
+
+	public void OpenOtherTask3()
+	{
+		taskPanel.SetActive(true);
+		TaskBtn.SetActive(false);
+		TaskCloseBtn.SetActive(true);
+		taskTitleText.text = "滴答的懷錶";
+		taskContentText.text = "幫助滴答找到遺失的懷錶";
+	}*/
 
 	public void CloseTaskPanel()
 	{
