@@ -49,8 +49,6 @@ public class DG_playerController : MonoBehaviour
 	bool damaged;
 	bool addBlood;
 	public GameObject falsh;
-	//public Animator healthAni;
-	//public GameObject healthTextObj;
 	public GameObject lineParticle;
 
 	private Text healthText;
@@ -66,8 +64,6 @@ public class DG_playerController : MonoBehaviour
 	public bool cutting; //小怪
 	//-----------------Particle System---------------
 	public Transform attackParticle;
-	public GameObject redFairyParticle;
-	public GameObject blueFairyParticle;
 	public GameObject W1_beaten;
 	//------------------Audio--------------------
 	public AudioSource audio;
@@ -82,7 +78,6 @@ public class DG_playerController : MonoBehaviour
 	{
 		rigid2D.velocity = new Vector2(0, 0f);		
 		healthCanvas = playerHealth.GetComponent<Transform>();
-		//healthText = healthTextObj.GetComponent<Text>();
 
 		if (ChapterName == "1")
 		{
@@ -426,9 +421,6 @@ public class DG_playerController : MonoBehaviour
 			if (col.tag == "heart")  //補血愛心
 			{
 				curHealth += 10;
-				//healthTextObj.SetActive(true);
-				//healthText.text = "+10";
-				//StartCoroutine("wait1");
 				GameObject NEWatkpreft = Instantiate(addHealthObj) as GameObject;
 				NEWatkpreft.transform.SetParent(canvas.transform, false);
 				NEWatkpreft.GetComponent<RectTransform>().anchoredPosition = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);
@@ -457,15 +449,6 @@ public class DG_playerController : MonoBehaviour
 				activePickUp.PickUpObjBool = true;
 			}
 		}
-
-		/*if (col.gameObject.name=="redFairy") //觸碰到紅精靈
-		{
-			redFairyParticle.SetActive(true);
-		}
-		if (col.gameObject.name == "blueFairy") //觸碰到藍精靈
-		{
-			blueFairyParticle.SetActive(true);
-		}*/
 
 		if (col.gameObject.name == "redFairy" || col.gameObject.name == "blueFairy") //觸碰到紅藍精靈
 		{

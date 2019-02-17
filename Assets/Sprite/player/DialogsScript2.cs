@@ -57,7 +57,7 @@ public class DialogsScript2 : MonoBehaviour
 	public Sprite Olivia;
 	public Sprite money_normal;
 	public Sprite money_angry;
-	public Sprite secretK;
+	public Sprite secretK; //神秘人
 
 	//----------------------------選擇---------------------------
 	public GameObject choose1;
@@ -101,6 +101,8 @@ public class DialogsScript2 : MonoBehaviour
 	private Animator mark2Ani;
 
 	public GameObject MaskGroup;
+	//2
+	public GameObject clock;
 	//------------------Attack----------------------
 	//小BOSS
 	public GameObject attackCollider;
@@ -358,6 +360,12 @@ public class DialogsScript2 : MonoBehaviour
 			otherImage.sprite = dargon_monochrome_normal;
 		}
 
+		if (currentLine == 86)
+		{
+			DisableTextBox();
+			clock.SetActive(true);
+		}
+
 		if (currentLine == 87)
 		{
 			whotalk.text = "緹緹";
@@ -508,15 +516,7 @@ public class DialogsScript2 : MonoBehaviour
 			otherImage.color = untalkNow;
 			characterImage.sprite = secretK;
 		}
-		/*if (currentLine == 8)
-		{
-			otherImageObj.SetActive(true);
-			whotalk.text = "緹緹";
-			characterImage.color = talkNow;
-			otherImage.color = untalkNow;
-			characterImage.sprite = sister_happy;
-			Joystick.isMove = true;
-		}
+
 		if (currentLine == 9)
 		{
 			whotalk.text = "魔法書籍";
@@ -526,7 +526,7 @@ public class DialogsScript2 : MonoBehaviour
 			{
 				theText.text = "(每個新場景前端會設立<color=#FF8888>補血站</color>，就在前方，站上去試試。)";
 			}
-		}*/
+		}
 
 		if (Input.GetMouseButtonDown(0))
 		{

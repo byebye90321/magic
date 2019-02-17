@@ -86,8 +86,15 @@ public class NPCTask : MonoBehaviour {
 	public GameObject StoneParticle4;
 	public GameObject StoneParticle5;
 	public GameObject stoneFlash;
+	//1
+	public BoxCollider2D redFlower;
+	public BoxCollider2D blueFlower;
+	//2
 	public BoxCollider2D redFairy;
 	public BoxCollider2D blueFairy;
+	//3
+	public BoxCollider2D rightClock;
+	public BoxCollider2D falseClock;
 	public GameObject BigBalance;
 	private Animator BigBalanceAni;
 	//--------------Audio---------------
@@ -109,6 +116,7 @@ public class NPCTask : MonoBehaviour {
 		{
 			DidaCollider = Dida.GetComponent<BoxCollider2D>();
 			CocoCollider = Coco.GetComponent<BoxCollider2D>();
+			DragonCollider = Dragon.GetComponent<BoxCollider2D>();
 			taskAni.SetBool("isOpen", true);
 		}
 		
@@ -306,8 +314,9 @@ public class NPCTask : MonoBehaviour {
 	public void DragonTast()
 	{
 		dialogsScript2.currentLine = 75;
-		dialogsScript2.endAtLine = 85;
+		dialogsScript2.endAtLine = 86;
 		dialogsScript2.NPCAppear();
+		DragonCollider.enabled = false;
 	}
 
 	public void cocoTaskStart()
@@ -452,6 +461,8 @@ public class NPCTask : MonoBehaviour {
 			dialogsScript1.endAtLine = 55;
 			dialogsScript1.NPCAppear();
 		}
+		redFairy.enabled = false;
+		blueFairy.enabled = false;
 		yield return new WaitForSeconds(.5f);
 		gameManager.eventObj.SetActive(true);
 		gameManager.eventText.text = "完成任務二";
@@ -508,6 +519,8 @@ public class NPCTask : MonoBehaviour {
 			dialogsScript1.NPCAppear();
 			yield return new WaitUntil(() => dialogsScript1.currentLine >= 67);
 		}
+		redFlower.enabled = false;
+		blueFlower.enabled = false;
 		BobbyCollider.enabled = false;
 		yield return new WaitForSeconds(0.5f);
 		gameManager.eventObj.SetActive(true);
@@ -565,6 +578,8 @@ public class NPCTask : MonoBehaviour {
 			dialogsScript2.NPCAppear();
 			yield return new WaitUntil(() => dialogsScript2.currentLine >= 96);
 		}
+		rightClock.enabled = false;
+		falseClock.enabled = false;
 		yield return new WaitForSeconds(.5f);
 		gameManager.eventObj.SetActive(true);
 		gameManager.eventText.text = "完成任務三";
@@ -597,7 +612,6 @@ public class NPCTask : MonoBehaviour {
 	public IEnumerator CocoTaskFinish()
 	{
 		playerController.npcTalk.isTasting = false;
-		//StatueCollider.enabled = false;
 		Task2StarImage.sprite = TaskFinishImage;
 		gameManager.eventObj.SetActive(true);
 		gameManager.eventText.text = "完成任務四";
@@ -624,41 +638,7 @@ public class NPCTask : MonoBehaviour {
 		yield return new WaitForSeconds(1f);
 		gameManager.ParticleObj4.SetActive(false);
 		gameManager.eventObj.SetActive(false);
-		/*yield return new WaitForSeconds(0.5f);
-		cameraFollow.isFollowTarget = false;
-		cameraFollow.moveCount = 5;
-		yield return new WaitForSeconds(.5f);
-		if (playerController.npcTalk.right)
-		{
-			BigBalanceAni.SetBool("balance", true);
-		}*/
 	}
-	/*public void OpenOtherTask1()
-	{
-		taskPanel.SetActive(true);
-		TaskBtn.SetActive(false);
-		TaskCloseBtn.SetActive(true);
-		taskTitleText.text = "波比的花";
-		taskContentText.text = "我有一朵很珍惜的<color=#ef6c00>水晶蘭花</color>，現在花被視為異端，歪歪們把牠搶走了!還把我痛毆一頓...請幫助我拿回屬於我的花兒!\n\n<color=#ef6c00>石鎮處</color>的線索會幫助你順利前行!找到歪歪的下落";
-	}
-
-	public void OpenOtherTask2()
-	{
-		taskPanel.SetActive(true);
-		TaskBtn.SetActive(false);
-		TaskCloseBtn.SetActive(true);
-		taskTitleText.text = "雕像平衡";
-		taskContentText.text = "恢復平衡需要一種重物，我想<color=#ef6c00>紅精靈</color>再適合不過了!牠們就棲息在<color=#ef6c00>荊棘樹幹的樹洞</color>中，幫我抓一隻回來吧!";
-	}
-
-	public void OpenOtherTask3()
-	{
-		taskPanel.SetActive(true);
-		TaskBtn.SetActive(false);
-		TaskCloseBtn.SetActive(true);
-		taskTitleText.text = "滴答的懷錶";
-		taskContentText.text = "幫助滴答找到遺失的懷錶";
-	}*/
 
 	public void CloseTaskPanel()
 	{
