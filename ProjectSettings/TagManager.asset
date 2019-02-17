@@ -80,6 +80,9 @@ TagManager:
   - name: NPC
     uniqueID: 4130353849
     locked: 0
+  - name: NPC_front
+    uniqueID: 774922653
+    locked: 0
   - name: player
     uniqueID: 2076825951
     locked: 0

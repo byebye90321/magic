@@ -107,19 +107,22 @@ public class GameManager : MonoBehaviour {
 		usually.TransitionTo(10f);
 		//balanceValue = PlayerPrefs.GetFloat("StaticObject.balanceSlider");
 		//playerController.curHealth = PlayerPrefs.GetFloat("StaticObject.playerHealth");
-		playerController.HealthSlider.value = playerController.curHealth;
-		AirFloor.SetActive(false);
+		playerController.HealthSlider.value = playerController.curHealth;	
 		balanceSlider.value = balanceValue;
 		balanceText.text = Mathf.Floor(balanceValue).ToString("0");
 		Debug.Log(balanceValue);
 		Debug.Log(playerController.curHealth);
-		PlayerPrefs.GetInt("StaticObject.G2", StaticObject.G2);
-		stoneDoorAni = stoneDoorObj.GetComponent<Animator>();
+		PlayerPrefs.GetInt("StaticObject.G2", StaticObject.G2);	
 		FadeOutAni = FadeOut.GetComponent<Animator>();
 		teachHintAni = teachHint.GetComponent<Animator>();
 		downHintAni = downHint.GetComponent<Animator>();
 		Application.targetFrameRate = 100;  //幀數
 
+		if (ChapterName == "1")
+		{
+			AirFloor.SetActive(false);
+			stoneDoorAni = stoneDoorObj.GetComponent<Animator>();
+		}
 		
 	}
 	

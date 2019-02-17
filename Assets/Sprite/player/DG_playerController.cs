@@ -87,8 +87,8 @@ public class DG_playerController : MonoBehaviour
 		}else if (ChapterName == "2")
 		{
 			activeClimb = GameObject.Find("ladder").GetComponent<ActiveClimb>();  //防錯誤 爬藤蔓
-			//activePickUp = GameObject.Find("stone1").GetComponent<ActivePickUp>(); //防錯誤 拾取物品
-			//ActivePickUp.PickUpInt = 0;
+			activePickUp = GameObject.Find("Card").GetComponent<ActivePickUp>(); //防錯誤 拾取物品
+			ActivePickUp.PickUpInt = 0;
 		}
 	}
 
@@ -296,7 +296,7 @@ public class DG_playerController : MonoBehaviour
 					Debug.Log(ActivePickUp.PickUpInt);
 				}
 			}
-
+			Debug.Log(activePickUp.PickUpObjName);
 			isActive = false;
 			StartCoroutine("MoveWait");
 			activePickUp.PickUpImg.enabled = false;
@@ -307,16 +307,35 @@ public class DG_playerController : MonoBehaviour
 		{
 			if (npcTalk.gimmick) //機關
 			{
-				if (ActivePickUp.PickUpInt >= 5 && npcTalk.gimmickName == "Stone")
-				{
-					npcTalk.gimmickObj.SetActive(true);
+				if (npcTalk.gimmickName == "Stone") {
+					if (ActivePickUp.PickUpInt >= 5)
+					{
+						npcTalk.gimmickObj.SetActive(true);
+					}
+					else
+					{
+						//尚未收集完畢
+						gameManager.downHintAni.SetTrigger("whereHint");
+						gameManager.downHintText.text = "形石尚未收集完畢";
+					}
 				}
-				else
+
+				if (npcTalk.gimmickName == "Mirror")
 				{
-					//尚未收集完畢
-					gameManager.downHintAni.SetTrigger("whereHint");
-					gameManager.downHintText.text = "形石尚未收集完畢";
-				}
+					if (ActivePickUp.PickUpInt >= 1)
+					{
+						dialogsScript2.Mirror = true;
+						npcTask.TaskFinish();
+					}
+					else
+					{
+						string taskStart = npcTalk.startTaskName;
+						npcTask.GetComponent<NPCTask>().Invoke(taskStart, 0f);
+						//尚未收集完畢
+						gameManager.downHintAni.SetTrigger("whereHint");
+						gameManager.downHintText.text = "尚未取得入場券";
+					}
+				}			
 			}
 			else //一般NPC
 			{
@@ -487,17 +506,6 @@ public class DG_playerController : MonoBehaviour
 				activePickUp.PickUpObjBool = false;
 			}
 		}
-
-		/*if (col.gameObject.name == "redFairy") //離開紅精靈
-		{
-			redFairyParticle.SetActive(false);
-
-		}
-		if (col.gameObject.name == "blueFairy") //離開藍精靈
-		{
-			blueFairyParticle.SetActive(false);
-
-		}*/
 	}
 
 	IEnumerator MoveWait()

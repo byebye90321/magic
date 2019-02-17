@@ -103,6 +103,10 @@ public class DialogsScript2 : MonoBehaviour
 	public GameObject MaskGroup;
 	//2
 	public GameObject clock;
+	public bool Mirror;
+	public GameObject card;
+	[HideInInspector]
+	public Animator cardAni;
 	//------------------Attack----------------------
 	//小BOSS
 	public GameObject attackCollider;
@@ -134,6 +138,7 @@ public class DialogsScript2 : MonoBehaviour
 		PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);
 		StaticObject.book = 1; //魔法日報解鎖
 		PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);
+		cardAni = card.GetComponent<Animator>();
 
 		currentLine = 1;
 		endAtLine = 4;
@@ -398,7 +403,7 @@ public class DialogsScript2 : MonoBehaviour
 			otherImageObj.SetActive(true);
 		}
 
-		if (currentLine == 97 || currentLine == 101 || currentLine == 104)
+		if (currentLine == 97 || currentLine == 101 || currentLine == 103)
 		{
 			whotalk.text = "魔鏡";
 			characterImage.color = talkNow;
@@ -424,12 +429,21 @@ public class DialogsScript2 : MonoBehaviour
 			otherImage.sprite = sister_smile;
 		}
 
-		if (currentLine == 103)
+		if (currentLine == 102)
 		{
-			whotalk.text = "緹緹";
-			characterImage.color = untalkNow;
-			otherImage.color = talkNow;
-			otherImage.sprite = sister_angry;
+			if (Mirror)
+			{
+				whotalk.text = "緹緹";
+				characterImage.color = untalkNow;
+				otherImage.color = talkNow;
+				otherImage.sprite = sister_angry;
+				otherImageObj.SetActive(true);
+				endAtLine = 104;
+			}
+			else
+			{
+				DisableTextBox();
+			}
 		}
 
 		if (currentLine == 107)
@@ -642,13 +656,13 @@ public class DialogsScript2 : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.gameObject.name == "vin1Collider") //藤蔓1對話
+		/*if (col.gameObject.name == "vin1Collider") //藤蔓1對話
 		{
 			currentLine = 101;
 			endAtLine = 103;
 			NPCAppear();
 			Destroy(col.gameObject);
-		}
+		}*/
 
 		if (col.gameObject.name == "NPC_Bobby" && bobbyCount == 1) //遇到波比對話
 		{

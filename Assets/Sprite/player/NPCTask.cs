@@ -71,6 +71,8 @@ public class NPCTask : MonoBehaviour {
 	public GameObject Dragon;
 	[HideInInspector]
 	public BoxCollider2D DragonCollider;
+	public BoxCollider2D MirrorCollider;
+	public BoxCollider2D MirrorCollider2;
 	//-------------------機關---------------------
 	public GameObject StoneCanvas;
 	public GameObject stoneBefore;
@@ -86,17 +88,18 @@ public class NPCTask : MonoBehaviour {
 	public GameObject StoneParticle4;
 	public GameObject StoneParticle5;
 	public GameObject stoneFlash;
-	//1
-	public BoxCollider2D redFlower;
-	public BoxCollider2D blueFlower;
-	//2
-	public BoxCollider2D redFairy;
-	public BoxCollider2D blueFairy;
-	//3
-	public BoxCollider2D rightClock;
-	public BoxCollider2D falseClock;
 	public GameObject BigBalance;
 	private Animator BigBalanceAni;
+	//任務1
+	public BoxCollider2D redFlower;
+	public BoxCollider2D blueFlower;
+	//任務2
+	public BoxCollider2D redFairy;
+	public BoxCollider2D blueFairy;
+	//任務3
+	public BoxCollider2D rightClock;
+	public BoxCollider2D falseClock;
+
 	//--------------Audio---------------
 	public AudioSource audio;
 	public AudioClip stoneWin;
@@ -301,6 +304,7 @@ public class NPCTask : MonoBehaviour {
 		Debug.Log(Mathf.Abs(rigid2D.transform.position.x - Dida.transform.position.x));
 		taskTitleText.text = "滴答的懷錶";
 		taskContentText.text = "懷錶\n時間流逝\n青春不再\n若時光能倒流\n不再往前";
+		Coco.SetActive(true);
 	}
 
 	//任務4 Coco 接任務前對話
@@ -318,6 +322,25 @@ public class NPCTask : MonoBehaviour {
 		dialogsScript2.NPCAppear();
 		DragonCollider.enabled = false;
 	}
+
+	//魔鏡(沒券)
+	public void MirrorTask()
+	{
+		dialogsScript2.currentLine = 97;
+		dialogsScript2.endAtLine = 102;
+		dialogsScript2.NPCAppear();
+	}
+
+	//魔鏡(有券)
+	public void MirrorTaskFinish()
+	{
+		dialogsScript2.currentLine = 97;
+		dialogsScript2.endAtLine = 102;
+		dialogsScript2.NPCAppear();
+		MirrorCollider.enabled = false;
+		MirrorCollider2.enabled = false;
+	}
+	
 
 	public void cocoTaskStart()
 	{
@@ -580,6 +603,7 @@ public class NPCTask : MonoBehaviour {
 		}
 		rightClock.enabled = false;
 		falseClock.enabled = false;
+		dialogsScript2.cardAni.SetTrigger("getCard");
 		yield return new WaitForSeconds(.5f);
 		gameManager.eventObj.SetActive(true);
 		gameManager.eventText.text = "完成任務三";
@@ -614,6 +638,7 @@ public class NPCTask : MonoBehaviour {
 		playerController.npcTalk.isTasting = false;
 		Task2StarImage.sprite = TaskFinishImage;
 		gameManager.eventObj.SetActive(true);
+		Dragon.SetActive(true);
 		gameManager.eventText.text = "完成任務四";
 		yield return new WaitForSeconds(2f);
 		gameManager.eventObj.SetActive(false);
