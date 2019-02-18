@@ -133,6 +133,15 @@ public class CameraFollow : MonoBehaviour {
 						transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
 						StartCoroutine(gameManager.highest());
 					}
+					if (moveCount == 2 && scaleCount == 0)  //選美比賽 縮小
+					{
+						Vector3 newPosition = new Vector3(22.5f, 9f, -8);
+						transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
+						if (transform.position.y > 8.9f)
+						{
+							StartCoroutine(ZoomCamera(3, 3.5f, 0.1f, 50));
+						}
+					}
 
 				}
 
@@ -154,7 +163,7 @@ public class CameraFollow : MonoBehaviour {
 			}
 
 			offest.y = 2f - ((transform.position.y / (yMax - yMin)) * 2f); //offest Y軸偏移
-																		   //Camera.main.orthographicSize = 5-((transform.position.y / (yMax - yMin)) * 4f);
+			//Camera.main.orthographicSize = 5-((transform.position.y / (yMax - yMin)) * 4f);
 			transform.position = new Vector3(transform.position.x, transform.position.y, -8);
 		}
 	}

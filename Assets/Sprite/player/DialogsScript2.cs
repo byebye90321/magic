@@ -107,6 +107,7 @@ public class DialogsScript2 : MonoBehaviour
 	public GameObject card;
 	[HideInInspector]
 	public Animator cardAni;
+	public Animator MirrorAni;
 	//------------------Attack----------------------
 	//小BOSS
 	public GameObject attackCollider;
@@ -438,12 +439,18 @@ public class DialogsScript2 : MonoBehaviour
 				otherImage.color = talkNow;
 				otherImage.sprite = sister_angry;
 				otherImageObj.SetActive(true);
-				endAtLine = 104;
+				endAtLine = 105;
 			}
 			else
 			{
 				DisableTextBox();
 			}
+		}
+
+		if (currentLine == 105)
+		{
+			DisableTextBox();
+			MirrorAni.SetTrigger("mirrorOpen");
 		}
 
 		if (currentLine == 107)
@@ -639,6 +646,13 @@ public class DialogsScript2 : MonoBehaviour
 		yield return new WaitUntil(() => currentLine == 89);
 	}
 
+	IEnumerator beatuyZoom()
+	{
+		cameraFollow.isFollowTarget = false; 
+		cameraFollow.moveCount = 2;
+		yield return new WaitForSeconds(2);
+	}
+
 	public void NPCAppear()
 	{
 		EnableTextBox();
@@ -724,6 +738,15 @@ public class DialogsScript2 : MonoBehaviour
 				mark2Ani.SetBool("noSave", true);
 			}
 			mark2Collider.enabled = false;
+		}
+
+		if (col.gameObject.name == "beatuyZoomCollider") //進入小BOSS攻擊
+		{
+			cameraFollow.moveCount = 2;
+			cameraFollow.isFollowTarget = false;
+			//attackColliderCol.enabled = false;
+			//gameManager.drawGame.TransitionTo(10f);
+			StartCoroutine("beatuyZoom");
 		}
 	}
 	//----------------------------選擇----------------------------
