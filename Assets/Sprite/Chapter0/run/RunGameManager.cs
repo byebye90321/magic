@@ -13,6 +13,7 @@ public enum GameState
 
 public class RunGameManager : MonoBehaviour {
 
+	public string NextSceneName;
 	public static RunGameManager Instance;
 	public static GameState gameState;
 	public string chapterName;
@@ -314,7 +315,7 @@ public class RunGameManager : MonoBehaviour {
 		Debug.Log(StaticObject.playerHealth);
 		yield return new WaitForSeconds(1.5f);
 		
-		SceneManager.LoadScene("Chapter0_5movie");  //接下一關
+		SceneManager.LoadScene(NextSceneName);  //接下一關
 	}
 
 	IEnumerator WaitForAudio()

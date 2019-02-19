@@ -619,7 +619,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2076825951
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 1
 --- !u!33 &68309499
 MeshFilter:
@@ -2172,7 +2172,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1240888473
-  m_SortingLayer: 13
+  m_SortingLayer: 14
   m_SortingOrder: 0
 --- !u!33 &265393111
 MeshFilter:
@@ -4609,6 +4609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1e527fdf9469b4093d7c212dcdb7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NextSceneName: Chapter0_5movie
   chapterName: 0
   balanceValue: 0
   playerHealth: 0
@@ -4636,6 +4637,8 @@ MonoBehaviour:
   HintAni: {fileID: 0}
   HintText: {fileID: 291303510}
   NextFlashText: {fileID: 1135344175}
+  textPanel: {fileID: 0}
+  text: {fileID: 0}
 --- !u!4 &563256530
 Transform:
   m_ObjectHideFlags: 0
@@ -10383,7 +10386,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2076825951
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
 --- !u!33 &623244628
 MeshFilter:
@@ -10969,7 +10972,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1262026175
-  m_SortingLayer: 9
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_RenderMode: 4
   m_SortMode: 0
@@ -15814,7 +15817,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1789159505
-  m_SortingLayer: 8
+  m_SortingLayer: 9
   m_SortingOrder: 0
 --- !u!33 &691938506
 MeshFilter:
@@ -16554,7 +16557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modifiedMaterial: {fileID: 1330913504}
-  instanceID: 160626
+  instanceID: 32510
 --- !u!114 &849754069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18601,7 +18604,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1262026175
-  m_SortingLayer: 9
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_RenderMode: 4
   m_SortMode: 0
@@ -23640,7 +23643,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1262026175
-  m_SortingLayer: 9
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -28291,7 +28294,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1262026175
-  m_SortingLayer: 9
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_RenderMode: 4
   m_SortMode: 0
@@ -34862,7 +34865,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1262026175
-  m_SortingLayer: 9
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_RenderMode: 4
   m_SortMode: 0
@@ -40175,7 +40178,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1262026175
-  m_SortingLayer: 9
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_RenderMode: 4
   m_SortMode: 0
@@ -46079,7 +46082,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1262026175
-  m_SortingLayer: 9
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_RenderMode: 4
   m_SortMode: 0
@@ -51004,7 +51007,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1262026175
-  m_SortingLayer: 9
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_RenderMode: 4
   m_SortMode: 0
