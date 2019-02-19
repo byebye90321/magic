@@ -4107,10 +4107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1e527fdf9469b4093d7c212dcdb7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: Sister_chapter2
+  NextSceneName: Sister_chapter2
   chapterName: 1
-  balanceValue: 60
-  playerHealth: 13.24
+  balanceValue: 100
+  playerHealth: 80
   HealthSlider: {fileID: 629410945}
   distance: {fileID: 1940333864}
   Arrow: {fileID: 1681000197}

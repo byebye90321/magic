@@ -135,10 +135,10 @@ public class DialogsScript2 : MonoBehaviour
 		fadeOut = FadeOut.GetComponent<Animator>();
 		characterImage = characterImageObj.GetComponent<Image>();
 		otherImage = otherImageObj.GetComponent<Image>();
-		StaticObject.sister = 1; //妹妹解鎖
+		/*StaticObject.sister = 1; //妹妹解鎖
 		PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);
 		StaticObject.book = 1; //魔法日報解鎖
-		PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);
+		PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);*/
 		cardAni = card.GetComponent<Animator>();
 
 		currentLine = 1;
@@ -202,7 +202,7 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.sprite = sister_normal;
 		}
 
-		if (currentLine == 4 || currentLine == 11 || currentLine == 18 || currentLine == 24 || currentLine == 79 || currentLine == 83)
+		if (currentLine == 4 || currentLine == 11 || currentLine == 24 || currentLine == 79 || currentLine == 83)
 		{
 			whotalk.text = "緹緹";
 			characterImage.color = talkNow;
@@ -244,6 +244,15 @@ public class DialogsScript2 : MonoBehaviour
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_smile;
 			Joystick.isMove = true;
+		}
+
+		if (currentLine == 18)
+		{
+			whotalk.text = "緹緹";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = sister_oops;
+			otherImageObj.SetActive(false);
 		}
 
 		if (currentLine == 19 || currentLine == 21 || currentLine == 25 || currentLine == 28|| currentLine == 95)
@@ -538,7 +547,15 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.sprite = secretK;
 		}
 
-		if (currentLine == 9)
+		if (currentLine == 136)
+		{
+			whotalk.text = "緹緹";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = sister_normal;
+		}
+
+		/*if (currentLine == 9)
 		{
 			whotalk.text = "魔法書籍";
 			characterImage.color = untalkNow;
@@ -547,7 +564,7 @@ public class DialogsScript2 : MonoBehaviour
 			{
 				theText.text = "(每個新場景前端會設立<color=#FF8888>補血站</color>，就在前方，站上去試試。)";
 			}
-		}
+		}*/
 
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -747,6 +764,13 @@ public class DialogsScript2 : MonoBehaviour
 			//attackColliderCol.enabled = false;
 			//gameManager.drawGame.TransitionTo(10f);
 			StartCoroutine("beatuyZoom");
+		}
+
+		if (col.gameObject.name == "NPC_Grace")
+		{
+			currentLine = 107;
+			endAtLine = 136;
+			NPCAppear();
 		}
 	}
 	//----------------------------選擇----------------------------

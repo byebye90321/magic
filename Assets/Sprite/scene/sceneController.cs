@@ -20,7 +20,7 @@ public class sceneController : MonoBehaviour {
 
 	public void ToContinueGame()
 	{
-		Application.LoadLevel("ChooseChapter");
+		SceneManager.LoadScene("ChooseChapter");
 	}
 
 	public void ToNewGame()
@@ -31,18 +31,18 @@ public class sceneController : MonoBehaviour {
 
 	public void ToCollect()
 	{
-		Application.LoadLevel("Collect");
+		SceneManager.LoadScene("Collect");
 	}
 
 	public void ToMenu()
 	{
-		Application.LoadLevel("Main");
+		SceneManager.LoadScene("Main");
 	}
 
 	public void LoadingToMain()
 	{
 		Time.timeScale = 1f;
-		Application.LoadLevel("LoadingToMain");
+		SceneManager.LoadScene("LoadingToMain");
 	}
 
 	public void ToExit()
@@ -52,8 +52,14 @@ public class sceneController : MonoBehaviour {
 
 	public void sisterGame()
 	{
-		Application.LoadLevel("Loading");
+		SceneManager.LoadScene("Loading");
 	}
+
+	public void sisterRun1()
+	{
+		SceneManager.LoadScene("RunGame_chapter1");
+	}
+
 
 	//魔法日報問題
 	/*public void paper1() {

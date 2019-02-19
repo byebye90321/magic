@@ -4,7 +4,6 @@ using System.Collections;
 public static class StaticObject
 {
 	public static int nowClass = 0;
-
 	//------------------音量音效---------------------
 	public static float bgmVolume = 1f;
 	public static float sfxVolume = 1f;

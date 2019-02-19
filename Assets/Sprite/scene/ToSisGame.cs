@@ -7,11 +7,13 @@ using UnityEngine.SceneManagement;
 public class ToSisGame : MonoBehaviour {
 
 	//--------------------------場景-----------------------------
+	public string NextSceneName;
 	AsyncOperation ToGame;
 
 	public Slider loadingBar;
 
 	public void Start() {
+		//NextSceneName
 		ToGame = SceneManager.LoadSceneAsync("Sister_chapter1");
 		ToGame.allowSceneActivation = false;
 	}

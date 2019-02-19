@@ -123,7 +123,24 @@ public class GameManager : MonoBehaviour {
 			AirFloor.SetActive(false);
 			stoneDoorAni = stoneDoorObj.GetComponent<Animator>();
 		}
-		
+
+		if (StaticObject.G1 == 1)
+			G1.SetActive(true);
+		if (StaticObject.G2 == 1)
+			G2.SetActive(true);
+		if (StaticObject.G3 == 1)
+			G3.SetActive(true);
+		if (StaticObject.G4 == 1)
+			G4.SetActive(true);
+		if (StaticObject.B1 == 1)
+			B1.SetActive(true);
+		if (StaticObject.B2 == 1)
+			B2.SetActive(true);
+		if (StaticObject.B3 == 1)
+			B3.SetActive(true);
+		if (StaticObject.B4 == 1)
+			B4.SetActive(true);
+
 	}
 	
 	void FixedUpdate () {
