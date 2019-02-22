@@ -53,10 +53,14 @@ public class DialogsScript2 : MonoBehaviour
 	public Sprite dargon_rainbow_closedEyes;
 	public Sprite dargon_beauty;
 	public Sprite mirror;
+	public Animator GraceAni;
 	public Sprite Grace; //主持人
+	public Animator OliviaAni;
 	public Sprite Olivia;
+	public Animator moneyAni;
 	public Sprite money_normal;
 	public Sprite money_angry;
+	public Animator secretAni;
 	public Sprite secretK; //神秘人
 
 	//----------------------------選擇---------------------------
@@ -108,6 +112,10 @@ public class DialogsScript2 : MonoBehaviour
 	[HideInInspector]
 	public Animator cardAni;
 	public Animator MirrorAni;
+	public GameObject beatuy; //玩家角色選美頁面
+	public GameObject AudienceTalk1;
+	private Animator AudienceTalkAni1;
+
 	//------------------Attack----------------------
 	//小BOSS
 	public GameObject attackCollider;
@@ -140,7 +148,7 @@ public class DialogsScript2 : MonoBehaviour
 		StaticObject.book = 1; //魔法日報解鎖
 		PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);*/
 		cardAni = card.GetComponent<Animator>();
-
+		AudienceTalkAni1 = AudienceTalk1.GetComponent<Animator>();
 		currentLine = 1;
 		endAtLine = 4;
 		StartCoroutine("fadeIn");
@@ -468,6 +476,7 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = Grace;
+			GraceAni.SetTrigger("talk");
 		}
 
 		if (currentLine == 110)
@@ -479,13 +488,14 @@ public class DialogsScript2 : MonoBehaviour
 			otherImageObj.SetActive(true);
 		}
 
-		if (currentLine == 112 || currentLine == 117 || currentLine == 120 || currentLine == 124 || currentLine == 132)
+		if (currentLine == 112 || currentLine == 117 || currentLine == 120 || currentLine == 124 || currentLine == 132 || currentLine == 138)
 		{
 			whotalk.text = "葛雷斯";
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = Grace;
 			otherImageObj.SetActive(false);
+			GraceAni.SetTrigger("talk");
 		}
 		if (currentLine == 116)
 		{
@@ -529,6 +539,7 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.color = talkNow;
 			otherImage.color = talkNow;
 			characterImage.sprite = Olivia;
+			OliviaAni.SetTrigger("talk");
 		}
 
 		if (currentLine == 129)
@@ -537,6 +548,7 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = money_normal;
+			moneyAni.SetTrigger("talk");
 		}
 
 		if (currentLine == 131)
@@ -545,6 +557,7 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = secretK;
+			secretAni.SetTrigger("talk");
 		}
 
 		if (currentLine == 136)
@@ -553,6 +566,42 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_normal;
+		}
+
+		if (currentLine == 137)
+		{
+			DisableTextBox();
+			beatuy.SetActive(true);
+		}
+
+		if (currentLine == 140)
+		{
+			DisableTextBox();
+			AudienceTalk1.SetActive(true);
+		}
+
+		if (currentLine == 148)
+		{
+			whotalk.text = "緹緹";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = sister_angry;
+			
+		}
+
+		if (currentLine == 151)
+		{
+			whotalk.text = "";
+			characterImageObj.SetActive(false);
+			otherImageObj.SetActive(false);
+			AudienceTalkAni1.SetTrigger("Close");
+		}
+
+		if (currentLine == 153)
+		{
+			DisableTextBox();
+			//關掉負能量煙
+			//開起爆炸
 		}
 
 		/*if (currentLine == 9)
@@ -769,7 +818,7 @@ public class DialogsScript2 : MonoBehaviour
 		if (col.gameObject.name == "NPC_Grace")
 		{
 			currentLine = 107;
-			endAtLine = 136;
+			endAtLine = 137;
 			NPCAppear();
 		}
 	}

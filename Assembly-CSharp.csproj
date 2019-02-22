@@ -207,6 +207,7 @@
      <Compile Include="Assets\Sprite\gameObject\ObjectParticle.cs" />
      <Compile Include="Assets\Sprite\gameObject\ObjectStop.cs" />
      <Compile Include="Assets\Sprite\gameObject\ObjectTrap.cs" />
+     <Compile Include="Assets\Sprite\gameObject\ToggleParticle.cs" />
      <Compile Include="Assets\Sprite\player\DG_playerController.cs" />
      <Compile Include="Assets\Sprite\player\DialogsScript.cs" />
      <Compile Include="Assets\Sprite\player\DialogsScript1.cs" />
@@ -224,6 +225,7 @@
      <Compile Include="Assets\Sprite\player\sister_draw_forest\Draw_sister_forest.cs" />
      <Compile Include="Assets\Sprite\player\sister_draw_forest\Draw_sister_forest_Enemy.cs" />
      <Compile Include="Assets\Sprite\player\sister_draw_forest\Draw_sister_GM.cs" />
+     <Compile Include="Assets\Sprite\player\textCall.cs" />
      <Compile Include="Assets\Sprite\scene\CharacterToggle.cs" />
      <Compile Include="Assets\Sprite\scene\FloorMove.cs" />
      <Compile Include="Assets\Sprite\scene\LoadingToMain.cs" />
