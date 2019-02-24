@@ -23,6 +23,7 @@ public class DialogsScript2 : MonoBehaviour
 	private int bobbyCount = 1;
 
 	//---------------------------頭貼----------------------------
+	public string playerName;
 	public GameObject characterImageObj; //左邊主角對話框
 	private Image characterImage;
 	public Sprite sister_angry;
@@ -34,24 +35,27 @@ public class DialogsScript2 : MonoBehaviour
 	public GameObject otherImageObj; //右邊角色對話框
 	private Image otherImage;
 	public Sprite book;
+	public GameObject didaObj;
 	public Sprite dida_monochrome_normal;
 	public Sprite dida_monochrome_sad;
 	public Sprite dida_monochrome_smile;
 	public Sprite dida_rainbow_normal;
 	public Sprite dida_rainbow_sad;
 	public Sprite dida_beauty;
+	public GameObject cocoObj;
 	public Sprite coco_monochrome_normal;
 	public Sprite coco_monochrome_sad;
 	public Sprite coco_monochrome_cry;
 	public Sprite coco_rainbow_normal;
 	public Sprite coco_rainbow_sad;
 	public Sprite coco_beauty;
-	public Sprite dargon_monochrome_normal;
-	public Sprite dargon_monochrome_smile;
-	public Sprite dargon_monochrome_angry;
-	public Sprite dargon_rainbow_smile;
-	public Sprite dargon_rainbow_closedEyes;
-	public Sprite dargon_beauty;
+	public GameObject dragonObj;
+	public Sprite dragon_monochrome_normal;
+	public Sprite dragon_monochrome_smile;
+	public Sprite dragon_monochrome_angry;
+	public Sprite dragon_rainbow_smile;
+	public Sprite dragon_rainbow_closedEyes;
+	public Sprite dragon_beauty;
 	public Sprite mirror;
 	public Animator GraceAni;
 	public Sprite Grace; //主持人
@@ -113,8 +117,14 @@ public class DialogsScript2 : MonoBehaviour
 	public Animator cardAni;
 	public Animator MirrorAni;
 	public GameObject beatuy; //玩家角色選美頁面
-	public GameObject AudienceTalk1;
+	public GameObject AudienceTalk1; //觀眾對話1
 	private Animator AudienceTalkAni1;
+	public GameObject AudienceTalk2; //觀眾對話2
+	private Animator AudienceTalkAni2;
+
+
+	public GameObject beatuySmokeObj; //變形的煙
+	public GameObject beatutMember; //選美型態的參賽者
 
 	//------------------Attack----------------------
 	//小BOSS
@@ -149,6 +159,7 @@ public class DialogsScript2 : MonoBehaviour
 		PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);*/
 		cardAni = card.GetComponent<Animator>();
 		AudienceTalkAni1 = AudienceTalk1.GetComponent<Animator>();
+		AudienceTalkAni2 = AudienceTalk2.GetComponent<Animator>();
 		currentLine = 1;
 		endAtLine = 4;
 		StartCoroutine("fadeIn");
@@ -196,7 +207,7 @@ public class DialogsScript2 : MonoBehaviour
 
 		if (currentLine == 1 ||currentLine == 6)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_happy;
@@ -204,23 +215,24 @@ public class DialogsScript2 : MonoBehaviour
 
 		if (currentLine == 2 || currentLine == 7 || currentLine == 64 || currentLine == 70 || currentLine == 81)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_normal;
 		}
 
-		if (currentLine == 4 || currentLine == 11 || currentLine == 24 || currentLine == 79 || currentLine == 83)
+		if (currentLine == 4 || currentLine == 11 || currentLine == 24 || currentLine == 79 || currentLine == 83 ||currentLine==154 || currentLine == 174)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_oops;
+			characterImageObj.SetActive(true);
 		}
 
 		if (currentLine == 8 || currentLine==22)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_sad;
@@ -228,7 +240,7 @@ public class DialogsScript2 : MonoBehaviour
 
 		if (currentLine == 31)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_sad;
@@ -247,7 +259,7 @@ public class DialogsScript2 : MonoBehaviour
 
 		if (currentLine == 13 || currentLine == 16 || currentLine == 27 || currentLine == 73 || currentLine == 77)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_smile;
@@ -256,7 +268,7 @@ public class DialogsScript2 : MonoBehaviour
 
 		if (currentLine == 18)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_oops;
@@ -305,7 +317,7 @@ public class DialogsScript2 : MonoBehaviour
 
 		if (currentLine == 33)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_normal;
@@ -363,7 +375,7 @@ public class DialogsScript2 : MonoBehaviour
 			whotalk.text = "龍~";
 			characterImage.color = untalkNow;
 			otherImage.color = talkNow;
-			otherImage.sprite = dargon_monochrome_angry;
+			otherImage.sprite = dragon_monochrome_angry;
 		}
 
 		if (currentLine == 76 || currentLine == 80 || currentLine == 82 || currentLine == 85)
@@ -371,7 +383,7 @@ public class DialogsScript2 : MonoBehaviour
 			whotalk.text = "龍~";
 			characterImage.color = untalkNow;
 			otherImage.color = talkNow;
-			otherImage.sprite = dargon_monochrome_smile;
+			otherImage.sprite = dragon_monochrome_smile;
 			otherImageObj.SetActive(true);
 		}
 
@@ -380,7 +392,7 @@ public class DialogsScript2 : MonoBehaviour
 			whotalk.text = "龍~";
 			characterImage.color = untalkNow;
 			otherImage.color = talkNow;
-			otherImage.sprite = dargon_monochrome_normal;
+			otherImage.sprite = dragon_monochrome_normal;
 		}
 
 		if (currentLine == 86)
@@ -391,7 +403,7 @@ public class DialogsScript2 : MonoBehaviour
 
 		if (currentLine == 87)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_happy;
@@ -400,7 +412,7 @@ public class DialogsScript2 : MonoBehaviour
 
 		if (currentLine == 91)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_smile;
@@ -432,7 +444,7 @@ public class DialogsScript2 : MonoBehaviour
 
 		if (currentLine == 98)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = untalkNow;
 			otherImage.color = talkNow;
 			otherImage.sprite = sister_normal;
@@ -441,7 +453,7 @@ public class DialogsScript2 : MonoBehaviour
 
 		if (currentLine == 100)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = untalkNow;
 			otherImage.color = talkNow;
 			otherImage.sprite = sister_smile;
@@ -451,7 +463,7 @@ public class DialogsScript2 : MonoBehaviour
 		{
 			if (Mirror)
 			{
-				whotalk.text = "緹緹";
+				whotalk.text = playerName;
 				characterImage.color = untalkNow;
 				otherImage.color = talkNow;
 				otherImage.sprite = sister_angry;
@@ -481,14 +493,14 @@ public class DialogsScript2 : MonoBehaviour
 
 		if (currentLine == 110)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = untalkNow;
 			otherImage.color = talkNow;
 			otherImage.sprite = sister_oops;
 			otherImageObj.SetActive(true);
 		}
 
-		if (currentLine == 112 || currentLine == 117 || currentLine == 120 || currentLine == 124 || currentLine == 132 || currentLine == 138)
+		if (currentLine == 112 || currentLine == 117 || currentLine == 120 || currentLine == 124 || currentLine == 132 || currentLine == 138 ||currentLine==155)
 		{
 			whotalk.text = "葛雷斯";
 			characterImage.color = talkNow;
@@ -520,20 +532,20 @@ public class DialogsScript2 : MonoBehaviour
 			whotalk.text = "龍~";
 			characterImage.color = untalkNow;
 			otherImage.color = talkNow;
-			otherImage.sprite = dargon_beauty;
+			otherImage.sprite = dragon_beauty;
 			otherImageObj.SetActive(true);
 		}
 
 		if (currentLine == 123)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_normal;
 			otherImageObj.SetActive(false);
 		}
 
-		if (currentLine == 127)
+		if (currentLine == 127 || currentLine == 156)
 		{
 			whotalk.text = "奧莉薇";
 			characterImage.color = talkNow;
@@ -542,12 +554,21 @@ public class DialogsScript2 : MonoBehaviour
 			OliviaAni.SetTrigger("talk");
 		}
 
-		if (currentLine == 129)
+		if (currentLine == 129 )
 		{
 			whotalk.text = "錢多多";
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = money_normal;
+			moneyAni.SetTrigger("talk");
+		}
+
+		if (currentLine == 158)
+		{
+			whotalk.text = "錢多多";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = money_angry;
 			moneyAni.SetTrigger("talk");
 		}
 
@@ -562,7 +583,7 @@ public class DialogsScript2 : MonoBehaviour
 
 		if (currentLine == 136)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_normal;
@@ -580,9 +601,9 @@ public class DialogsScript2 : MonoBehaviour
 			AudienceTalk1.SetActive(true);
 		}
 
-		if (currentLine == 148)
+		if (currentLine == 148 || currentLine == 167)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_angry;
@@ -600,8 +621,26 @@ public class DialogsScript2 : MonoBehaviour
 		if (currentLine == 153)
 		{
 			DisableTextBox();
-			//關掉負能量煙
-			//開起爆炸
+			StartCoroutine("beatuySmoke");
+		}
+
+		if (currentLine == 160)
+		{
+			DisableTextBox();
+			AudienceTalk2.SetActive(true);
+		}
+
+		if (currentLine == 170)
+		{
+			DisableTextBox();
+			AudienceTalkAni2.SetTrigger("change");
+		}
+
+		if (currentLine == 175)
+		{
+			DisableTextBox();
+			AudienceTalk2.SetActive(false);
+			//K現身
 		}
 
 		/*if (currentLine == 9)
@@ -646,7 +685,7 @@ public class DialogsScript2 : MonoBehaviour
 		NPCAppear();
 	}
 
-	IEnumerator BloodFlyAfter()
+	/*IEnumerator BloodFlyAfter()
 	{
 		yield return new WaitForSeconds(1.5f);
 		currentLine = 20;
@@ -665,7 +704,7 @@ public class DialogsScript2 : MonoBehaviour
 		yield return new WaitUntil(() => currentLine >= 47);
 		cameraFollow.moveCount = 0;
 		cameraFollow.isFollowTarget = true;
-	}
+	}*/
 
 	IEnumerator BeforeBossBattle()
 	{
@@ -717,6 +756,23 @@ public class DialogsScript2 : MonoBehaviour
 		cameraFollow.isFollowTarget = false; 
 		cameraFollow.moveCount = 2;
 		yield return new WaitForSeconds(2);
+	}
+
+	IEnumerator beatuySmoke()
+	{
+		beatuySmokeObj.SetActive(true);
+		yield return new WaitForSeconds(2);
+		AudienceTalkAni1.SetTrigger("particleClose");
+		didaObj.transform.position = new Vector2(21.5f, 8.2f);
+		cocoObj.transform.position = new Vector2(22.18f, 8.2f);
+		dragonObj.transform.position = new Vector2(23.3f, 8.25f);
+		beatutMember.SetActive(false);
+		yield return new WaitForSeconds(3);
+		beatuySmokeObj.SetActive(false);
+		currentLine = 154;
+		endAtLine = 160;
+		NPCAppear();
+
 	}
 
 	public void NPCAppear()

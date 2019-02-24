@@ -12,4 +12,18 @@ public class textCall : MonoBehaviour {
 		dialogsScript2.endAtLine = 153;
 		dialogsScript2.NPCAppear();
 	}
+
+	public void textCall2()
+	{
+		dialogsScript2.currentLine = 167;
+		dialogsScript2.endAtLine = 170;
+		dialogsScript2.NPCAppear();
+	}
+
+	public void textCall3()
+	{
+		dialogsScript2.currentLine = 174;
+		dialogsScript2.endAtLine = 175;
+		dialogsScript2.NPCAppear();
+	}
 }
