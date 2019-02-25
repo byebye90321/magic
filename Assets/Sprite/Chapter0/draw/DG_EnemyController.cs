@@ -28,10 +28,10 @@ public class DG_EnemyController : MonoBehaviour{
 	public GameObject canvas;
 
 	//---------------------CUT--------------------
-	public GameObject obj1, obj2;    //分开后的两边水果
-	public GameObject[] wz;          //几种污渍背景
-	private BoxCollider2D col;
-	private Vector2[] vec = { Vector2.left, Vector2.right };   //切后的半截往两个方向飞出
+	//public GameObject obj1, obj2;    //分开后的两边水果
+	//public GameObject[] wz;          //几种污渍背景
+	//private BoxCollider2D col;
+	//private Vector2[] vec = { Vector2.left, Vector2.right };   //切后的半截往两个方向飞出
 
 	public bool isAttack = false; //戰鬥
 	public float AtkCount = 0;
@@ -54,11 +54,16 @@ public class DG_EnemyController : MonoBehaviour{
 
 	void Start()
 	{
-		col = GetComponent<BoxCollider2D>();
+		//col = GetComponent<BoxCollider2D>();
+
+		if (enemyName == "2p")
+		{
+			enemy2.state.SetAnimation(0, "idle", true);
+		}
 		enemy1.state.SetAnimation(0, "idle", true);
-		enemy2.state.SetAnimation(0, "idle", true);
-		//damageText = damageTextObj.GetComponent<Text>();
+
 		canvas = transform.Find("Enemy/EnemyHealthCanvas/GameObject").gameObject;
+		
 	}
 	
 	void Update()
@@ -277,7 +282,7 @@ public class DG_EnemyController : MonoBehaviour{
 
 	IEnumerator G0_Close()
 	{
-		yield return new WaitForSeconds(.5f);
+		yield return new WaitForSeconds(1f);
 		G0_beaten.SetActive(false);
 	}
 

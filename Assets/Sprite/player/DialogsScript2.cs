@@ -17,7 +17,7 @@ public class DialogsScript2 : MonoBehaviour
 	public GameManager gameManager;
 	public NPCTask npcTask;
 	public DG_EnemyController EnemyController;
-	public DG_EnemyController MonsterController;
+	//public DG_EnemyController MonsterController;
 	//--------------------------互動對話-----------------------------
 	public GameObject vine2text;
 	private int bobbyCount = 1;
@@ -66,6 +66,7 @@ public class DialogsScript2 : MonoBehaviour
 	public Sprite money_angry;
 	public Animator secretAni;
 	public Sprite secretK; //神秘人
+	public Sprite YYK; //K
 
 	//----------------------------選擇---------------------------
 	public GameObject choose1;
@@ -94,21 +95,11 @@ public class DialogsScript2 : MonoBehaviour
 
 	//-----------------------教學、互動物件變數-------------------------
 	public bool teachBlood = false;
-	public GameObject markObj; //路標對話框
-	private Animator markAni;
-	private BoxCollider2D markCollider;
+	//public GameObject markObj; //路標對話框
+	//private Animator markAni;
+	//private BoxCollider2D markCollider;
 
-	public GameObject statueObj;
-	private BoxCollider2D statueCollider;
-
-	public GameObject vine3;
-	private BoxCollider2D vine3Collider;
-
-	public GameObject mark2Obj;
-	private BoxCollider2D mark2Collider;
-	private Animator mark2Ani;
-
-	public GameObject MaskGroup;
+	//public GameObject MaskGroup;
 	//2
 	public GameObject clock;
 	public bool Mirror;
@@ -121,21 +112,20 @@ public class DialogsScript2 : MonoBehaviour
 	private Animator AudienceTalkAni1;
 	public GameObject AudienceTalk2; //觀眾對話2
 	private Animator AudienceTalkAni2;
-
+	public GameObject AudienceTalk3; //觀眾對話3
 
 	public GameObject beatuySmokeObj; //變形的煙
 	public GameObject beatutMember; //選美型態的參賽者
 
+	public GameObject secertKObj; //神秘人Obj
+	public GameObject KParticle; //神秘人變身particle
+	public GameObject K;
 	//------------------Attack----------------------
 	//小BOSS
 	public GameObject attackCollider;
 	private BoxCollider2D attackColliderCol;
 	public GameObject attackColliderBorder;
 
-	//維吉維克
-	public GameObject monsterCollider;
-	private BoxCollider2D monsterColliderCol;
-	public GameObject monsterColliderBorder;
 	//----------------audio----------------------
 	public AudioSource audio;
 	//-----------------其他---------------------
@@ -144,8 +134,7 @@ public class DialogsScript2 : MonoBehaviour
 	private Color untalkNow = new Color(.6f, .6f, .6f, 1);
 	public GameObject BEfogParticle;
 	//-----------------vs
-	public GameObject vsWiko;
-	public GameObject vsYYJ;
+	public GameObject vsYYK;
 
 	void Start() {
 
@@ -221,7 +210,7 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.sprite = sister_normal;
 		}
 
-		if (currentLine == 4 || currentLine == 11 || currentLine == 24 || currentLine == 79 || currentLine == 83 ||currentLine==154 || currentLine == 174)
+		if (currentLine == 4 || currentLine == 11 || currentLine == 24 || currentLine == 79 || currentLine == 83 ||currentLine==154 || currentLine == 174 || currentLine == 177)
 		{
 			whotalk.text = playerName;
 			characterImage.color = talkNow;
@@ -335,7 +324,6 @@ public class DialogsScript2 : MonoBehaviour
 
 		if (currentLine == 36)
 		{
-			//otherImageObj.SetActive(false);
 			npcTask.cocoTaskStart();
 			currentLine = 0;
 		}
@@ -641,6 +629,22 @@ public class DialogsScript2 : MonoBehaviour
 			DisableTextBox();
 			AudienceTalk2.SetActive(false);
 			//K現身
+			StartCoroutine("KChange");
+		}
+
+		if (currentLine == 176)
+		{
+			whotalk.text = "歪歪K";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = YYK;
+		}
+
+		if (currentLine == 178)
+		{
+			AudienceTalk3.SetActive(true);
+			DisableTextBox();
+			//觀眾
 		}
 
 		/*if (currentLine == 9)
@@ -673,7 +677,6 @@ public class DialogsScript2 : MonoBehaviour
 					cancelTyping = true;
 			}
 		}
-
 	}
 
 	//-------------------------碰撞對話-----------------------------
@@ -685,44 +688,39 @@ public class DialogsScript2 : MonoBehaviour
 		NPCAppear();
 	}
 
-	/*IEnumerator BloodFlyAfter()
+	IEnumerator KChange()
 	{
-		yield return new WaitForSeconds(1.5f);
-		currentLine = 20;
-		endAtLine = 20;
-		NPCAppear();
-	}
-
-	IEnumerator cameraToBalance()
-	{
-		cameraFollow.isFollowTarget = false; //看向歪斜天平
-		cameraFollow.moveCount = 3;
+		KParticle.SetActive(true);
+		yield return new WaitForSeconds(1);
+		secertKObj.SetActive(false);
 		yield return new WaitForSeconds(2);
-		currentLine = 45;
-		endAtLine = 47;
-		NPCAppear();
-		yield return new WaitUntil(() => currentLine >= 47);
-		cameraFollow.moveCount = 0;
-		cameraFollow.isFollowTarget = true;
-	}*/
-
-	IEnumerator BeforeBossBattle()
-	{
-		yield return new WaitForSeconds(2);
-		currentLine = 57;
-		endAtLine = 60;
-		NPCAppear();
-		yield return new WaitUntil(() => currentLine >= 60);
+		K.SetActive(true);
+		/*yield return new WaitUntil(() => currentLine >= 188);
 		gameManager.vsPanel.SetActive(true);
-		vsYYJ.SetActive(true);
+		vsYYK.SetActive(true);
 		yield return new WaitForSeconds(3);
 		gameManager.teachHintAni.SetTrigger("HintOpen");
 		gameManager.teachHintText.text = "進入戰鬥";
 		gameManager.attackRedImage.SetActive(true);
 		EnemyController.isAttack = true;
 		gameManager.vsPanel.SetActive(false);
-		vsYYJ.SetActive(false);
-		yield return new WaitForSeconds(.1f);
+		vsYYK.SetActive(false);*/
+	}
+
+	IEnumerator BeforeKBattle()
+	{
+
+		yield return new WaitUntil(() => currentLine >= 188);
+		gameManager.vsPanel.SetActive(true);
+		vsYYK.SetActive(true);
+		yield return new WaitForSeconds(3);
+		gameManager.teachHintAni.SetTrigger("HintOpen");
+		gameManager.teachHintText.text = "進入戰鬥";
+		gameManager.attackRedImage.SetActive(true);
+		EnemyController.isAttack = true;
+		gameManager.vsPanel.SetActive(false);
+		vsYYK.SetActive(false);
+		//MonsterController.HealthCanvas.SetActive(false);
 	}
 
 	public IEnumerator AfterBossBattle()
@@ -731,24 +729,6 @@ public class DialogsScript2 : MonoBehaviour
 		endAtLine = 62;
 		NPCAppear();
 		yield return new WaitUntil(() => currentLine == 62);
-	}
-
-	IEnumerator BeforeMonsterBattle()
-	{
-		yield return new WaitForSeconds(2);
-		currentLine = 71;
-		endAtLine = 79;
-		NPCAppear();
-		yield return new WaitUntil(() => currentLine >= 79);
-		choose1.SetActive(true);  //開啟任務面板
-	}
-
-	public IEnumerator AfterMonsterBattle()
-	{
-		currentLine = 83;
-		endAtLine = 89;
-		NPCAppear();
-		yield return new WaitUntil(() => currentLine == 89);
 	}
 
 	IEnumerator beatuyZoom()
@@ -772,7 +752,6 @@ public class DialogsScript2 : MonoBehaviour
 		currentLine = 154;
 		endAtLine = 160;
 		NPCAppear();
-
 	}
 
 	public void NPCAppear()
@@ -780,89 +759,19 @@ public class DialogsScript2 : MonoBehaviour
 		EnableTextBox();
 	}
 
-	public void teleportation()
-	{
-		playerController.pickUpInt = 0;
-		currentLine = 104;
-		currentLine = 104;
-		NPCAppear();
-	}
-
-
-
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		/*if (col.gameObject.name == "vin1Collider") //藤蔓1對話
+		if (col.gameObject.name == "battleCollider") //進入K攻擊
 		{
-			currentLine = 101;
-			endAtLine = 103;
-			NPCAppear();
-			Destroy(col.gameObject);
-		}*/
-
-		if (col.gameObject.name == "NPC_Bobby" && bobbyCount == 1) //遇到波比對話
-		{
-			bobbyCount = 0;
-			currentLine = 22;
-			endAtLine = 22;
-			NPCAppear();
-		}
-
-		if (col.gameObject.name == "mark") //遇到路標對話
-		{
-			currentLine = 38;
-			endAtLine = 42;
-			NPCAppear();
-		}
-
-		if (col.gameObject.name == "vin2text") //藤蔓對話
-		{
-			currentLine = 43;
-			endAtLine = 43;
-			NPCAppear();
-			Destroy(col.gameObject);
-		}
-
-		if (col.gameObject.name == "balanceText") //看見天平對話
-		{
-			StartCoroutine("cameraToBalance");
-			Destroy(col.gameObject);
-		}
-
-		if (col.gameObject.name == "battleCollider") //進入小BOSS攻擊
-		{
-			cameraFollow.moveCount = 6;
+			/*cameraFollow.moveCount = 6;
 			cameraFollow.isFollowTarget = false;
 			attackColliderCol.enabled = false;
-			attackColliderBorder.SetActive(true); //開啟邊界
+			attackColliderBorder.SetActive(true); //開啟邊界*/
 			gameManager.drawGame.TransitionTo(10f);
-			StartCoroutine("BeforeBossBattle");
+			StartCoroutine("BeforeKBattle");
 		}
 
-		if (col.gameObject.name == "monsterCollider") //進入維吉維克攻擊
-		{
-			cameraFollow.moveCount = 8;
-			cameraFollow.isFollowTarget = false;
-			monsterColliderCol.enabled = false;
-			monsterColliderBorder.SetActive(true); //開啟邊界
-			gameManager.drawGame.TransitionTo(10f);
-			StartCoroutine("BeforeMonsterBattle");
-		}
-
-		if (col.gameObject.name == "mark2") //遇到路標2
-		{
-			if (StaticObject.sHE1 == 1) //拯救
-			{
-				mark2Ani.SetBool("save", true);
-			}
-			else
-			{
-				mark2Ani.SetBool("noSave", true);
-			}
-			mark2Collider.enabled = false;
-		}
-
-		if (col.gameObject.name == "beatuyZoomCollider") //進入小BOSS攻擊
+		if (col.gameObject.name == "beatuyZoomCollider") //進入選美舞台
 		{
 			cameraFollow.moveCount = 2;
 			cameraFollow.isFollowTarget = false;
@@ -895,43 +804,6 @@ public class DialogsScript2 : MonoBehaviour
 		NPCAppear();
 		choose1.SetActive(false);
 		StartCoroutine("noMonsterAttack");
-	}
-
-	IEnumerator waitMonsterAttack()  //拯救-戰鬥
-	{
-		StaticObject.sHE1 = 1;
-		StaticObject.sBE1 = 0;
-		PlayerPrefs.SetInt("StaticObject.sHE1", StaticObject.sHE1);
-		PlayerPrefs.SetInt("StaticObject.sBE1", StaticObject.sBE1);
-		yield return new WaitUntil(() => currentLine == 82);
-		gameManager.vsPanel.SetActive(true);
-		vsWiko.SetActive(true);
-		yield return new WaitForSeconds(3);
-		gameManager.teachHintAni.SetTrigger("HintOpen");
-		gameManager.teachHintText.text = "進入戰鬥";
-		gameManager.attackRedImage.SetActive(true);
-		MonsterController.isAttack = true;
-		MonsterController.enemy2Transform.localRotation = Quaternion.Euler(0, 180, 0);
-		MonsterController.enemy2Transform.position = new Vector2(51f, 3.1f);
-		gameManager.vsPanel.SetActive(false);
-		vsWiko.SetActive(false);
-	}
-
-	IEnumerator noMonsterAttack()  //不拯救-不戰鬥
-	{
-		cameraFollow.moveCount = 9;
-		StaticObject.sHE1 = 0;
-		StaticObject.sBE1 = 1;
-		PlayerPrefs.SetInt("StaticObject.sHE1", StaticObject.sHE1);
-		PlayerPrefs.SetInt("StaticObject.sBE1", StaticObject.sBE1);
-		yield return new WaitUntil(() => currentLine == 96);
-		vine3Collider.enabled = true;
-		yield return new WaitForSeconds(0.3f);
-		cameraFollow.isFollowTarget = true;
-		MonsterController.isAttack = false; //維吉維克不戰鬥
-		MonsterController.HealthCanvas.SetActive(false);
-		monsterColliderBorder.SetActive(false);
-		BEfogParticle.SetActive(true);
 	}
 
 	//----------------------------對話----------------------------
