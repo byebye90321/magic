@@ -17,10 +17,11 @@ public class DialogsScript2 : MonoBehaviour
 	public GameManager gameManager;
 	public NPCTask npcTask;
 	public DG_EnemyController EnemyController;
+	public ExampleGestureHandler gesture;
 	//public DG_EnemyController MonsterController;
 	//--------------------------互動對話-----------------------------
-	public GameObject vine2text;
-	private int bobbyCount = 1;
+	//public GameObject vine2text;
+	//private int bobbyCount = 1;
 
 	//---------------------------頭貼----------------------------
 	public string playerName;
@@ -120,6 +121,10 @@ public class DialogsScript2 : MonoBehaviour
 	public GameObject secertKObj; //神秘人Obj
 	public GameObject KParticle; //神秘人變身particle
 	public GameObject K;
+
+	public GameObject playerAddParticle; //player攻擊加成特效
+	public GameObject addText; //攻擊加成文字
+	public BoxCollider2D BossKCollider;
 	//------------------Attack----------------------
 	//小BOSS
 	public GameObject attackCollider;
@@ -589,13 +594,12 @@ public class DialogsScript2 : MonoBehaviour
 			AudienceTalk1.SetActive(true);
 		}
 
-		if (currentLine == 148 || currentLine == 167)
+		if (currentLine == 148 || currentLine == 167 || currentLine == 182)
 		{
 			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
-			characterImage.sprite = sister_angry;
-			
+			characterImage.sprite = sister_angry;			
 		}
 
 		if (currentLine == 151)
@@ -646,6 +650,52 @@ public class DialogsScript2 : MonoBehaviour
 			DisableTextBox();
 			//觀眾
 		}
+
+		if (currentLine == 183)
+		{
+			whotalk.text = "滴答";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = dida_rainbow_normal;
+			AudienceTalk3.SetActive(false);
+		}
+
+		if (currentLine == 184)
+		{
+			whotalk.text = "可可";
+			characterImage.color = talkNow;
+			otherImage.color = untalkNow;
+			characterImage.sprite = coco_rainbow_normal;
+		}
+
+		if (currentLine == 185 || currentLine == 187)
+		{
+			whotalk.text = "龍~";
+			characterImage.color = untalkNow;
+			otherImage.color = talkNow;
+			otherImage.sprite = dragon_rainbow_smile;
+			otherImageObj.SetActive(true);
+			characterImageObj.SetActive(false);
+		}
+
+		if (currentLine == 186)
+		{
+			whotalk.text = "滴答&可可";
+			characterImage.color = talkNow;
+			otherImage.color = talkNow;
+			characterImage.sprite =dida_rainbow_normal;
+			otherImage.sprite = coco_rainbow_normal;
+			characterImageObj.SetActive(true);
+		}
+
+		if (currentLine == 188)
+		{
+			DisableTextBox();
+			//出現給力量光芒
+			//Joystick.isMove = true;
+			StartCoroutine("BeforeKBattle");
+		}
+
 
 		/*if (currentLine == 9)
 		{
@@ -710,17 +760,22 @@ public class DialogsScript2 : MonoBehaviour
 	IEnumerator BeforeKBattle()
 	{
 
-		yield return new WaitUntil(() => currentLine >= 188);
+		
+		playerAddParticle.SetActive(true);
+		addText.SetActive(true);
+		yield return new WaitForSeconds(3);
 		gameManager.vsPanel.SetActive(true);
 		vsYYK.SetActive(true);
 		yield return new WaitForSeconds(3);
 		gameManager.teachHintAni.SetTrigger("HintOpen");
 		gameManager.teachHintText.text = "進入戰鬥";
+		BossKCollider.enabled = true;
+		gesture.AddAttack = 5;
 		gameManager.attackRedImage.SetActive(true);
 		EnemyController.isAttack = true;
 		gameManager.vsPanel.SetActive(false);
 		vsYYK.SetActive(false);
-		//MonsterController.HealthCanvas.SetActive(false);
+		EnemyController.HealthCanvas.SetActive(true);
 	}
 
 	public IEnumerator AfterBossBattle()

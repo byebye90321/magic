@@ -15,7 +15,7 @@ public class ExampleGestureHandler : MonoBehaviour
 
 	//public static bool playerAtk = false;
 	//----------------2版------------------
-
+	public int AddAttack;
 	public DG_EnemyController enemyController;
 	public DG_playerController DG_playerController;
 	//public PlayerController playerController;

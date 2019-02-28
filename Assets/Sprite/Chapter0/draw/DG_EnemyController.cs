@@ -7,6 +7,7 @@ using Spine;
 public class DG_EnemyController : MonoBehaviour{
 
 	public string enemyName;
+	public int enemyInt;
 	public ExampleGestureHandler gesture;
     public Canvas drawCanvas;
 	public GameManager gameManager;
@@ -26,6 +27,8 @@ public class DG_EnemyController : MonoBehaviour{
 	private Text healthText;
 	public GameObject healthObj;
 	public GameObject canvas;
+	//--------------attack------
+	public string hitSkillName;
 
 	//---------------------CUT--------------------
 	//public GameObject obj1, obj2;    //分开后的两边水果
@@ -56,7 +59,7 @@ public class DG_EnemyController : MonoBehaviour{
 	{
 		//col = GetComponent<BoxCollider2D>();
 
-		if (enemyName == "2p")
+		if (enemyInt==2)
 		{
 			enemy2.state.SetAnimation(0, "idle", true);
 		}
@@ -121,10 +124,13 @@ public class DG_EnemyController : MonoBehaviour{
 
 	public void W1_Particle()
 	{
-		enemy1.state.SetAnimation(0, "hit", false);
+		enemy1.state.SetAnimation(0, hitSkillName, false);
 		enemy1.state.AddAnimation(0, "idle", true, 0f);
-		enemy2.state.SetAnimation(0, "hit", false);
-		enemy2.state.AddAnimation(0, "idle", true, 0f);
+		if (enemyInt == 2)
+		{
+			enemy2.state.SetAnimation(0, hitSkillName, false);
+			enemy2.state.AddAnimation(0, "idle", true, 0f);
+		}
 		audio.PlayOneShot(AtkSound);
 		AtkParticle.SetActive(true);
 		StartCoroutine("wait");
@@ -163,13 +169,19 @@ public class DG_EnemyController : MonoBehaviour{
 	IEnumerator Death()
 	{
 		enemy1.state.TimeScale = .4f;
-		enemy2.state.TimeScale = .4f;
+		if (enemyInt == 2)
+		{
+			enemy2.state.TimeScale = .4f;
+		}
 		isDead = true;
 		yield return new WaitForSeconds(0.7f);	
 		healthSlider.SetActive(false);
 		yield return new WaitForSeconds(.8f);
 		enemy1.state.TimeScale = .1f;
-		enemy2.state.TimeScale = .1f;
+		if (enemyInt == 2)
+		{
+			enemy2.state.TimeScale = .1f;
+		}
 
 		if (enemyName == "BossEnemy")  //歪歪KQ
 		{
@@ -178,6 +190,10 @@ public class DG_EnemyController : MonoBehaviour{
 		else if (enemyName == "MonsterEnemy") //維吉維克
 		{
 			StartCoroutine(gameManager.MonsterAttackWin());
+		}
+		else if (enemyName == "K") //維吉維克
+		{
+			Debug.Log("deathK");
 		}
 	}
 
@@ -212,9 +228,9 @@ public class DG_EnemyController : MonoBehaviour{
 		if (col.gameObject.name == "G0_Particle") //被G0攻擊
 		{
 			G0_beaten.SetActive(true);
-			TakeDamage(gesture.skill0.skillInfo.Atk);
+			TakeDamage(gesture.skill0.skillInfo.Atk+gesture.AddAttack);
 			StartCoroutine("damageActive");
-			healthText.text = "-" + gesture.skill0.skillInfo.Atk;
+			healthText.text = "-" + (gesture.skill0.skillInfo.Atk + gesture.AddAttack);
 			StartCoroutine("G0_Close");
 			
 		}
@@ -222,36 +238,36 @@ public class DG_EnemyController : MonoBehaviour{
 		if (col.gameObject.name == "G1_Particle") //被G1攻擊
 		{
 			G1_beaten.SetActive(true);
-			TakeDamage(gesture.skillG1.skillInfo.Atk);
+			TakeDamage(gesture.skillG1.skillInfo.Atk + gesture.AddAttack);
 			StartCoroutine("damageActive");
 			StartCoroutine("G1_Close");
-			healthText.text = "-" + gesture.skillG1.skillInfo.Atk;
+			healthText.text = "-" + (gesture.skillG1.skillInfo.Atk + gesture.AddAttack);
 		}
 
 		if (col.gameObject.name == "B1_Particle") //被B1攻擊
 		{
 			B1_beaten.SetActive(true);
-			TakeDamage(gesture.skillB1.skillInfo.Atk);
+			TakeDamage(gesture.skillB1.skillInfo.Atk + gesture.AddAttack);
 			StartCoroutine("damageActive");
 			StartCoroutine("G1_Close");
-			healthText.text = "-" + gesture.skillB1.skillInfo.Atk;
+			healthText.text = "-" + (gesture.skillB1.skillInfo.Atk + gesture.AddAttack);
 		}
 
 		if (col.gameObject.name == "G2_Particle") //被G2攻擊
 		{
 			G2_beaten.SetActive(true);
-			TakeDamage(gesture.skillG2.skillInfo.Atk);
+			TakeDamage(gesture.skillG2.skillInfo.Atk + gesture.AddAttack);
 			StartCoroutine("damageActive");
 			StartCoroutine("G2_Close");
-			healthText.text = "-" + gesture.skillG2.skillInfo.Atk;
+			healthText.text = "-" + (gesture.skillG2.skillInfo.Atk + gesture.AddAttack);
 		}
 		if (col.gameObject.name == "B2_Particle") //被B2攻擊
 		{
 			B2_beaten.SetActive(true);
-			TakeDamage(gesture.skillB2.skillInfo.Atk);
+			TakeDamage(gesture.skillB2.skillInfo.Atk + gesture.AddAttack);
 			StartCoroutine("damageActive");
 			StartCoroutine("G2_Close");
-			healthText.text = "-" + gesture.skillB2.skillInfo.Atk;
+			healthText.text = "-" + (gesture.skillB2.skillInfo.Atk + gesture.AddAttack);
 		}
 
 	}
@@ -260,8 +276,11 @@ public class DG_EnemyController : MonoBehaviour{
 	{
 		enemy1.state.SetAnimation(0, "death", false);
 		enemy1.state.AddAnimation(0, "idle", true, 0f);
+		if(enemyInt==2)
+		{
 		enemy2.state.SetAnimation(0, "death", false);
 		enemy2.state.AddAnimation(0, "idle", true, 0f);
+		}
 	
 		//healthAni.SetTrigger("hurtText");
 		GameObject NEWatkpreft = Instantiate(healthObj) as GameObject;
