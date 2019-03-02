@@ -111,7 +111,9 @@ public class DialogsScript1 : MonoBehaviour
 	public GameObject vsWiko;
 	public GameObject vsYYJ;
 	//---------------場景保存物件----------------
-	public GameObject col;
+	public GameObject col; //碰撞器開關
+	//public Animator endSema; //結界動畫
+
 
 	void Start() {
 

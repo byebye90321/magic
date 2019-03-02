@@ -11,6 +11,7 @@ public class DG_EnemyController : MonoBehaviour{
 	public ExampleGestureHandler gesture;
     public Canvas drawCanvas;
 	public GameManager gameManager;
+	public GameObject player;
 	//--------------------Health-------------------
 	public int curHealth = 100;
 	public int maxHealth = 100;
@@ -29,7 +30,7 @@ public class DG_EnemyController : MonoBehaviour{
 	public GameObject canvas;
 	//--------------attack------
 	public string hitSkillName;
-
+	public int attackCount;
 	//---------------------CUT--------------------
 	//public GameObject obj1, obj2;    //分开后的两边水果
 	//public GameObject[] wz;          //几种污渍背景
@@ -37,12 +38,14 @@ public class DG_EnemyController : MonoBehaviour{
 	//private Vector2[] vec = { Vector2.left, Vector2.right };   //切后的半截往两个方向飞出
 
 	public bool isAttack = false; //戰鬥
-	public float AtkCount = 0;
+	private float AtkCount = 0;
 	//------------------Animation------------------ 
 	public SkeletonAnimation enemy1;
 	public SkeletonAnimation enemy2;
 	public Transform enemy1Transform;
 	public Transform enemy2Transform;
+
+	public Animator Kattack;
 	//--------------音效
 	public AudioSource audio;
 	public AudioClip AtkSound;
@@ -52,8 +55,12 @@ public class DG_EnemyController : MonoBehaviour{
 	public GameObject G0_beaten;
 	public GameObject G1_beaten;
 	public GameObject G2_beaten;
+	public GameObject G3_beaten;
+	public GameObject G4_beaten;
 	public GameObject B1_beaten;
 	public GameObject B2_beaten;
+	public GameObject B3_beaten;
+	public GameObject B4_beaten;
 
 	void Start()
 	{
@@ -69,7 +76,7 @@ public class DG_EnemyController : MonoBehaviour{
 		
 	}
 	
-	void Update()
+	void FixedUpdate()
 	{
 		//------------------health----------------------
 		if (damaged)
@@ -94,9 +101,13 @@ public class DG_EnemyController : MonoBehaviour{
 	{
 		AtkCount = 1;
 		yield return new WaitForSeconds(1);
-		if (enemyName == "0")
+		if (enemyName == "0") //序章
 		{
 
+		}
+		else if(enemyName=="K")
+		{
+			Kattack.SetTrigger("attack");
 		}
 		else
 		{
@@ -110,18 +121,16 @@ public class DG_EnemyController : MonoBehaviour{
 		W1_Particle();
 	}
 
-	//-------------------------Attack--------------------------
-	/*IEnumerator Skill0()  //序章 被技能0攻擊
+	public void KAttack()
 	{
-		yield return new WaitForSeconds(.3f);
-		TakeDamage(gesture.skill0.skillInfo.Atk);
-		enemy1.state.SetAnimation(0, "stun", true);
-		enemy2.state.SetAnimation(0, "stun", true);
-		damageTextObj.SetActive(true);
-		damageText.text = "-" + gesture.skill0.skillInfo.Atk;
-		StartCoroutine("wait");	
-	}*/
+		enemy1.state.SetAnimation(0, hitSkillName, false);
+		enemy1.state.AddAnimation(0, "idle", true, 0f);
+		audio.PlayOneShot(AtkSound);
+		AtkParticle.SetActive(true);
+		StartCoroutine("wait");
+	}
 
+	//-------------------------序章Attack--------------------------
 	public void W1_Particle()
 	{
 		enemy1.state.SetAnimation(0, hitSkillName, false);
@@ -193,7 +202,7 @@ public class DG_EnemyController : MonoBehaviour{
 		}
 		else if (enemyName == "K") //維吉維克
 		{
-			Debug.Log("deathK");
+			StartCoroutine(gameManager.KAttackWin());
 		}
 	}
 
@@ -270,6 +279,40 @@ public class DG_EnemyController : MonoBehaviour{
 			healthText.text = "-" + (gesture.skillB2.skillInfo.Atk + gesture.AddAttack);
 		}
 
+		if (col.gameObject.name == "G3_Particle") //被G3攻擊
+		{
+			G3_beaten.SetActive(true);
+			TakeDamage(gesture.skillG3.skillInfo.Atk + gesture.AddAttack);
+			StartCoroutine("damageActive");
+			StartCoroutine("G3_Close");
+			healthText.text = "-" + (gesture.skillG3.skillInfo.Atk + gesture.AddAttack);
+		}
+		if (col.gameObject.name == "B3_Particle") //被B3攻擊
+		{
+			B3_beaten.SetActive(true);
+			TakeDamage(gesture.skillB3.skillInfo.Atk + gesture.AddAttack);
+			StartCoroutine("damageActive");
+			StartCoroutine("G3_Close");
+			healthText.text = "-" + (gesture.skillB3.skillInfo.Atk + gesture.AddAttack);
+		}
+
+		if (col.gameObject.name == "G4_Particle") //被G4攻擊
+		{
+			G4_beaten.SetActive(true);
+			TakeDamage(gesture.skillG4.skillInfo.Atk + gesture.AddAttack);
+			StartCoroutine("damageActive");
+			StartCoroutine("G4_Close");
+			healthText.text = "-" + (gesture.skillG4.skillInfo.Atk + gesture.AddAttack);
+		}
+		if (col.gameObject.name == "B4_Particle") //被B4攻擊
+		{
+			B4_beaten.SetActive(true);
+			TakeDamage(gesture.skillB4.skillInfo.Atk + gesture.AddAttack);
+			StartCoroutine("damageActive");
+			StartCoroutine("G4_Close");
+			healthText.text = "-" + (gesture.skillB4.skillInfo.Atk + gesture.AddAttack);
+		}
+
 	}
 
 	IEnumerator damageActive()
@@ -316,6 +359,21 @@ public class DG_EnemyController : MonoBehaviour{
 	{
 		yield return new WaitForSeconds(.5f);
 		G2_beaten.SetActive(false);
+		B2_beaten.SetActive(false);
+	}
+
+	IEnumerator G3_Close()
+	{
+		yield return new WaitForSeconds(.5f);
+		G3_beaten.SetActive(false);
+		B3_beaten.SetActive(false);
+	}
+
+	IEnumerator G4_Close()
+	{
+		yield return new WaitForSeconds(.5f);
+		G4_beaten.SetActive(false);
+		B4_beaten.SetActive(false);
 	}
 }
 

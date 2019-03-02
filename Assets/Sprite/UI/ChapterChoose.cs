@@ -15,4 +15,6 @@ public class ChapterChoose : MonoBehaviour {
 	{
 		chapter1.SetActive(false);
 	}
+
+
 }

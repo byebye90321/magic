@@ -14,8 +14,10 @@ public class GameManager : MonoBehaviour {
 	public string ChapterName; //關卡名稱
 	public DG_playerController playerController; //玩家腳本
 	public DialogsScript1 dialogsScript1;
+	public DialogsScript2 dialogsScript2;
 	public ExampleGestureHandler geature; //畫符腳本
 
+	public string nextSceneName;
 	//-----------------暫停物件-------------------
 	public Button Pause;
 	public GameObject pauseMenu;
@@ -80,9 +82,12 @@ public class GameManager : MonoBehaviour {
 	//-------------------角色---------------------
 	public GameObject smallBoss;
 	public GameObject monster;
+	public GameObject K;
 	//--------------------結局--------------------
-	public GameObject sHE1;
-	public GameObject sBE1;
+	public GameObject sHE1; //離開森林
+	public GameObject sBE1; //迷失森林
+	public GameObject sBE2; //回家
+
 	//--------------------回饋介面----------------
 	public GameObject winPanel;  //通關
 	public GameObject losePanel;  //失敗
@@ -270,6 +275,20 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	public IEnumerator KAttackWin()
+	{
+		usually.TransitionTo(10f);
+		teachHintAni.SetTrigger("close");
+		attackRedImage.SetActive(false);
+		yield return new WaitForSeconds(0.3f);
+		eventObj.SetActive(true);
+		eventText.text = "擊敗歪歪K";
+		yield return new WaitForSeconds(2f);
+		smallBoss.SetActive(false);
+		eventObj.SetActive(false);	
+		StartCoroutine(dialogsScript2.AfterKBattle());
+	}
+
 	public void pause()
 	{
 		black_bgImage.SetActive(true);
@@ -326,34 +345,39 @@ public class GameManager : MonoBehaviour {
 		FadeOut.SetActive(true);
 		FadeOutAni.SetBool("FadeOut", true);
 		yield return new WaitForSeconds(1.5f);
-		SceneManager.LoadScene("LoadingToMain");  //接下一關 //先回主畫面
+		SceneManager.LoadScene("LoadingToMain");  //先回主畫面
 	}
 
 	IEnumerator Win()  //過關
 	{
 		PlayerPrefs.SetFloat("StaticObject.balanceSlider", balanceValue);
 		PlayerPrefs.SetFloat("StaticObject.playerHealth", playerController.HealthSlider.value);
-		yield return new WaitForSeconds(2f);
-		if (StaticObject.sHE1 == 1)
+		if (ChapterName == "1")
+		{
+			yield return new WaitForSeconds(2f);
+		}
+		winPanel.SetActive(true);
+		/*if (StaticObject.sHE1 == 1)
 		{
 			winPanel.SetActive(true);
-		}
+		}*/
 		yield return new WaitForSeconds(2.5f);
 		FadeOut.SetActive(true);
 		FadeOutAni.SetBool("FadeOut", true);
 		yield return new WaitForSeconds(1.5f);
-		SceneManager.LoadScene("RunGame_chapter1");  //接下一關 //先回
+		SceneManager.LoadScene(nextSceneName);  //接下一關 //先回
 	}
 
 	IEnumerator Lose()  //失敗
 	{
 		PlayerPrefs.SetFloat("StaticObject.balanceSlider", balanceValue);
 		PlayerPrefs.SetFloat("StaticObject.playerHealth", playerController.HealthSlider.value);
-		yield return new WaitForSeconds(3f);
-		if (StaticObject.sBE1 == 1)
+		yield return new WaitForSeconds(2f);
+		losePanel.SetActive(true);
+		/*if (StaticObject.sBE1 == 1)
 		{
 			losePanel.SetActive(true);
-		}
+		}*/
 		yield return new WaitForSeconds(2.5f);
 		FadeOut.SetActive(true);
 		FadeOutAni.SetBool("FadeOut", true);

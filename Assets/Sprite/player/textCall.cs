@@ -40,4 +40,11 @@ public class textCall : MonoBehaviour {
 		dialogsScript2.endAtLine = 178;
 		dialogsScript2.NPCAppear();
 	}
+
+	public void textCall5() //戰鬥後對話
+	{
+		dialogsScript2.currentLine = 200;
+		dialogsScript2.endAtLine = 207;
+		dialogsScript2.NPCAppear();
+	}
 }

@@ -60,6 +60,11 @@ public class sceneController : MonoBehaviour {
 		SceneManager.LoadScene("RunGame_chapter1");
 	}
 
+	public void sisterGame2()
+	{
+		SceneManager.LoadScene("Sister_chapter2");
+	}
+
 
 	//魔法日報問題
 	/*public void paper1() {

@@ -186,10 +186,18 @@ public class DG_playerController : MonoBehaviour
 				G1.flipU = 0;
 				var G2 = gesture.G2_ParticleP.textureSheetAnimation;
 				G2.flipU = 0;
+				var G3 = gesture.G3_ParticleP.textureSheetAnimation;
+				G2.flipU = 0;
+				var G4 = gesture.G4_ParticleP.textureSheetAnimation;
+				G2.flipU = 0;
 				var B1 = gesture.B1_ParticleP.textureSheetAnimation;
 				B1.flipU = 0;
 				var B2 = gesture.B2_ParticleP.textureSheetAnimation;
 				B2.flipU = 0;
+				var B3 = gesture.B3_ParticleP.textureSheetAnimation;
+				B3.flipU = 0;
+				var B4 = gesture.B4_ParticleP.textureSheetAnimation;
+				B4.flipU = 0;
 				if (ChapterName == "0")
 				{
 					dg_GameManager.TeachMove = true;
@@ -206,10 +214,18 @@ public class DG_playerController : MonoBehaviour
 				G1.flipU = 1;
 				var G2 = gesture.G2_ParticleP.textureSheetAnimation;
 				G2.flipU = 1;
+				var G3 = gesture.G3_ParticleP.textureSheetAnimation;
+				G3.flipU = 1;
+				var G4 = gesture.G4_ParticleP.textureSheetAnimation;
+				G4.flipU = 1;
 				var B1 = gesture.B1_ParticleP.textureSheetAnimation;
 				B1.flipU = 1;
 				var B2 = gesture.B2_ParticleP.textureSheetAnimation;
 				B2.flipU = 1;
+				var B3 = gesture.B3_ParticleP.textureSheetAnimation;
+				B3.flipU = 1;
+				var B4 = gesture.B4_ParticleP.textureSheetAnimation;
+				B4.flipU = 1;
 				if (ChapterName == "0")
 				{
 					dg_GameManager.TeachMove = true;
@@ -359,13 +375,13 @@ public class DG_playerController : MonoBehaviour
 		{
 			Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
-
 			if (hit.collider == null)
 			{
 
 			}
-			else if (hit.collider.name == "NPC_Bobby" || hit.collider.name == "NPC_Statue" || hit.collider.name == "Stone")
+			else if (hit.collider.name == "NPC_Bobby" || hit.collider.name == "NPC_Statue" || hit.collider.name == "Stone" || hit.collider.name == "NPC_Dida" || hit.collider.name == "NPC_Coco" || hit.collider.name == "NPC_Dragon" || hit.collider.name == "Mirror")
 			{
+				npcTalk = hit.collider.GetComponent<NpcTalk>();
 				if (npcTalk.gimmick) //機關
 				{
 					if (ActivePickUp.PickUpInt >= 5 && npcTalk.gimmickName == "Stone")
@@ -401,6 +417,12 @@ public class DG_playerController : MonoBehaviour
 	//---------------------碰撞-----------------------
 	void OnTriggerEnter2D(Collider2D col)  
 	{
+		if (col.gameObject.name == "BossEnemy") //觸碰到敵人
+		{
+			TakeDamage(BossAtk);
+			W1_beaten.SetActive(true);
+			StartCoroutine("Bossbeaten");
+		}
 
 		if (col.gameObject.name == "AtkParticle") //序章-玩家受到小BOSS攻擊
 		{
@@ -425,6 +447,18 @@ public class DG_playerController : MonoBehaviour
 				else
 				{
 					gameManager.sBE1.SetActive(true);
+					gameManager.lose();
+				}
+			}
+			else if (ChapterName == "2")
+			{
+				if (StaticObject.sHE2 == 1)
+				{
+					gameManager.win();
+				}
+				else
+				{
+					gameManager.sBE2.SetActive(true);
 					gameManager.lose();
 				}
 			}
@@ -517,9 +551,10 @@ public class DG_playerController : MonoBehaviour
 
 	IEnumerator Bossbeaten()
 	{
-		yield return new WaitForSeconds(0.4f);
+		
 		if (ChapterName == "0")
 		{
+			yield return new WaitForSeconds(0.4f);
 			animator_B.SetTrigger("beaten");
 			SpineBother.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0.5f);
 		}

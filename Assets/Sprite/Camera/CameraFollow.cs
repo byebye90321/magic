@@ -135,7 +135,7 @@ public class CameraFollow : MonoBehaviour {
 					}
 					if (moveCount == 2 && scaleCount == 0)  //選美比賽 縮小
 					{
-						Vector3 newPosition = new Vector3(22.5f, 8.9f, -8);
+						Vector3 newPosition = new Vector3(22f, 8.9f, -8);
 						transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
 						if (transform.position.y > 8.8f)
 						{

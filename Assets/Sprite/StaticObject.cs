@@ -40,6 +40,8 @@ public static class StaticObject
 	public static int s1 = 0;
 	public static int sHE1 = 0;
 	public static int sBE1 = 0;
+	public static int sHE2 = 0;
+	public static int sBE2 = 0;
 
 	//--------------------人物解鎖------------------------
 	public static int sister = 0;

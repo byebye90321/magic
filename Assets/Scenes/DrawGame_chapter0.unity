@@ -236,6 +236,7 @@ MonoBehaviour:
   ChapterName: 0
   textResult: {fileID: 1235186461}
   referenceRoot: {fileID: 1262337813}
+  AddAttack: 0
   enemyController: {fileID: 228383963}
   DG_playerController: {fileID: 462784794}
   skill0: {fileID: 312836678}
@@ -11734,7 +11735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &228383960
 Transform:
   m_ObjectHideFlags: 0
@@ -11882,9 +11883,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: 0
+  enemyInt: 0
   gesture: {fileID: 10663015}
   drawCanvas: {fileID: 193435398}
   gameManager: {fileID: 0}
+  player: {fileID: 0}
   curHealth: 100
   maxHealth: 100
   healthSlider: {fileID: 204645073}
@@ -11892,23 +11895,26 @@ MonoBehaviour:
   HealthCanvas: {fileID: 312445238}
   healthObj: {fileID: 1758122354299720, guid: de96657885cb99c48b9d72d53437873c, type: 2}
   canvas: {fileID: 1314837974}
-  obj1: {fileID: 1243852364850532, guid: 3f360d484a927284aa17aace94eda240, type: 2}
-  obj2: {fileID: 1125585046511690, guid: ebad3fc44d8e2024789770303964b3be, type: 2}
-  wz: []
+  hitSkillName: 
+  attackCount: 0
   isAttack: 1
-  AtkCount: 0
   enemy1: {fileID: 863012549}
   enemy2: {fileID: 858368490}
   enemy1Transform: {fileID: 0}
   enemy2Transform: {fileID: 0}
+  Kattack: {fileID: 0}
   audio: {fileID: 228383961}
   AtkSound: {fileID: 8300000, guid: 1410b0ffe9da4394bb93085d761fe188, type: 3}
   AtkParticle: {fileID: 877432018}
   G0_beaten: {fileID: 1697238395}
   G1_beaten: {fileID: 0}
   G2_beaten: {fileID: 0}
+  G3_beaten: {fileID: 0}
+  G4_beaten: {fileID: 0}
   B1_beaten: {fileID: 0}
   B2_beaten: {fileID: 0}
+  B3_beaten: {fileID: 0}
+  B4_beaten: {fileID: 0}
 --- !u!95 &228383964
 Animator:
   serializedVersion: 3
@@ -44868,7 +44874,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 4.2, y: 5}
   m_SizeDelta: {x: 96.34, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
