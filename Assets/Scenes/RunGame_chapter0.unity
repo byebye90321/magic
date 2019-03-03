@@ -4055,8 +4055,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextSceneName: Chapter0_5movie
   chapterName: 0
-  balanceValue: 0
-  playerHealth: 0
+  balanceValue: 100
+  playerHealth: 100
   HealthSlider: {fileID: 629410945}
   distance: {fileID: 1940333864}
   Arrow: {fileID: 1681000197}
@@ -15691,7 +15691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modifiedMaterial: {fileID: 1330913504}
-  instanceID: 301956
+  instanceID: 219194
 --- !u!114 &849754069
 MonoBehaviour:
   m_ObjectHideFlags: 0

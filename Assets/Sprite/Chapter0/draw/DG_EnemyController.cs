@@ -182,6 +182,10 @@ public class DG_EnemyController : MonoBehaviour{
 		{
 			enemy2.state.TimeScale = .4f;
 		}
+		if (enemyName == "K") //維吉維克
+		{
+			Kattack.speed = 0;
+		}
 		isDead = true;
 		yield return new WaitForSeconds(0.7f);	
 		healthSlider.SetActive(false);

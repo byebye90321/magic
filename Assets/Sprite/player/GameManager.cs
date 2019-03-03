@@ -283,7 +283,7 @@ public class GameManager : MonoBehaviour {
 		yield return new WaitForSeconds(0.3f);
 		eventObj.SetActive(true);
 		eventText.text = "擊敗歪歪K";
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(1f);
 		smallBoss.SetActive(false);
 		eventObj.SetActive(false);	
 		StartCoroutine(dialogsScript2.AfterKBattle());

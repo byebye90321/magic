@@ -115,6 +115,7 @@ public class DG_GameManager : MonoBehaviour {
 			//mask.uvRect = new Rect(1.15f, 0.26f, 1.5f, 1.5f);
 			mask.GetComponent<RectTransform>().anchoredPosition = new Vector2(-900, -260);
 			//joystickCanvas.SetActive(false);
+			cut.DeathCount = 0;
 			StartCoroutine("count1");
 		}
 	}

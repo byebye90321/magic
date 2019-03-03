@@ -11895,7 +11895,7 @@ MonoBehaviour:
   HealthCanvas: {fileID: 312445238}
   healthObj: {fileID: 1758122354299720, guid: de96657885cb99c48b9d72d53437873c, type: 2}
   canvas: {fileID: 1314837974}
-  hitSkillName: 
+  hitSkillName: hit
   attackCount: 0
   isAttack: 1
   enemy1: {fileID: 863012549}
