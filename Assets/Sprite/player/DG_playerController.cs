@@ -384,17 +384,47 @@ public class DG_playerController : MonoBehaviour
 				npcTalk = hit.collider.GetComponent<NpcTalk>();
 				if (npcTalk.gimmick) //機關
 				{
-					if (ActivePickUp.PickUpInt >= 5 && npcTalk.gimmickName == "Stone")
-					{
-						npcTalk.gimmickObj.SetActive(true);
-					}
-					else
-					{
-						//尚未收集完畢
-						gameManager.downHintAni.SetTrigger("whereHint");
-						gameManager.downHintText.text = "形石尚未收集完畢";
-					}
-				}
+                    if (npcTalk.gimmickName == "Stone")
+                    {
+                        if (ActivePickUp.PickUpInt >= 5)
+                        {
+                            npcTalk.gimmickObj.SetActive(true);
+                        }
+                        else
+                        {
+                            gameManager.downHintAni.SetTrigger("whereHint");
+                            gameManager.downHintText.text = "形石尚未收集完畢";
+                        }
+                    }
+
+                    if (npcTalk.gimmickName == "Mirror")
+                    {
+                        if (ActivePickUp.PickUpInt >= 1)
+                        {
+                            dialogsScript2.Mirror = true;
+                            npcTask.TaskFinish();
+                            
+                        }
+                        else
+                        {
+                            string taskStart = npcTalk.startTaskName;
+                            npcTask.GetComponent<NPCTask>().Invoke(taskStart, 0f);
+                            gameManager.downHintAni.SetTrigger("whereHint");
+                            gameManager.downHintText.text = "尚未取得入場券";
+                        }
+                        
+                    }
+                    /*if (ActivePickUp.PickUpInt >= 5 && npcTalk.gimmickName == "Stone")
+                    {
+                        npcTalk.gimmickObj.SetActive(true);
+                    }
+                    else
+                    {
+                        //尚未收集完畢
+                        gameManager.downHintAni.SetTrigger("whereHint");
+                        gameManager.downHintText.text = "形石尚未收集完畢";
+                    }*/
+                }
 				else //一般NPC
 				{
 					if (Mathf.Abs(rigid2D.transform.position.x - npcTalk.NPC.transform.position.x) < 2 && npcTalk.NPCPoint.activeInHierarchy == true && npcTalk.isTasting == false)

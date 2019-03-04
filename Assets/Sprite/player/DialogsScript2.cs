@@ -38,6 +38,7 @@ public class DialogsScript2 : MonoBehaviour
 	private Image otherImage;
 	public Sprite book;
 	public GameObject didaObj;
+    public SkeletonAnimation didaAni;
 	public Sprite dida_monochrome_normal;
 	public Sprite dida_monochrome_sad;
 	public Sprite dida_monochrome_smile;
@@ -45,14 +46,16 @@ public class DialogsScript2 : MonoBehaviour
 	public Sprite dida_rainbow_sad;
 	public Sprite dida_beauty;
 	public GameObject cocoObj;
-	public Sprite coco_monochrome_normal;
+    public SkeletonAnimation cocoAni;
+    public Sprite coco_monochrome_normal;
 	public Sprite coco_monochrome_sad;
 	public Sprite coco_monochrome_cry;
 	public Sprite coco_rainbow_normal;
 	public Sprite coco_rainbow_sad;
 	public Sprite coco_beauty;
 	public GameObject dragonObj;
-	public Sprite dragon_monochrome_normal;
+    public SkeletonAnimation dragonAni;
+    public Sprite dragon_monochrome_normal;
 	public Sprite dragon_monochrome_smile;
 	public Sprite dragon_monochrome_angry;
 	public Sprite dragon_rainbow_smile;
@@ -109,6 +112,7 @@ public class DialogsScript2 : MonoBehaviour
 	[HideInInspector]
 	public Animator cardAni;
 	public Animator MirrorAni;
+    public GameObject beatuyCloud;
 	public GameObject beatuy; //玩家角色選美頁面
 	public BoxCollider2D graceCol; //主持人
 	public GameObject AudienceTalk1; //觀眾對話1
@@ -477,7 +481,9 @@ public class DialogsScript2 : MonoBehaviour
 		{
 			DisableTextBox();
 			MirrorAni.SetTrigger("mirrorOpen");
-		}
+            beatuyCloud.SetActive(true);
+
+        }
 
 		if (currentLine == 107)
 		{
@@ -506,7 +512,8 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.sprite = Grace;
 			otherImageObj.SetActive(false);
 			GraceAni.SetTrigger("talk");
-		}
+            Joystick.isMove = true;
+        }
 		if (currentLine == 116)
 		{
 			whotalk.text = "滴答";
@@ -650,7 +657,7 @@ public class DialogsScript2 : MonoBehaviour
 			otherImageObj.SetActive(false);
 		}
 
-		if (currentLine == 178)
+        if (currentLine == 178)
 		{
 			AudienceTalk3.SetActive(true);
 			DisableTextBox();
@@ -700,7 +707,20 @@ public class DialogsScript2 : MonoBehaviour
 			StartCoroutine("BeforeKBattle");
 		}
 
-		if (currentLine == 194)
+        if (currentLine == 189)
+        {
+            whotalk.text = "歪歪K";
+            characterImage.color = talkNow;
+            otherImage.color = untalkNow;
+            characterImage.sprite = YYK;
+            characterImageObj.SetActive(true);
+            otherImageObj.SetActive(false);
+            didaAni.state.SetAnimation(0, "idle_C", true);
+            cocoAni.state.SetAnimation(0, "idle_C", true);
+            dragonAni.state.SetAnimation(0, "idle_C", true);
+        }
+
+        if (currentLine == 194)
 		{
 			whotalk.text = "可可";
 			characterImage.color = talkNow;
@@ -867,7 +887,10 @@ public class DialogsScript2 : MonoBehaviour
 		didaObj.transform.position = new Vector2(21.1f, 8.2f);
 		cocoObj.transform.position = new Vector2(21.7f, 8.2f);
 		dragonObj.transform.position = new Vector2(22.7f, 8.25f);
-		beatutMember.SetActive(false);
+        /*didaAni.state.SetAnimation(0, "idle_C", true);
+        cocoAni.state.SetAnimation(0, "idle_C", true);
+        dragonAni.state.SetAnimation(0, "idle_C", true);*/
+        beatutMember.SetActive(false);
 		yield return new WaitForSeconds(3);
 		beatuySmokeObj.SetActive(false);
 		currentLine = 154;
