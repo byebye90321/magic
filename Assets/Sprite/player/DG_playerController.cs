@@ -187,9 +187,9 @@ public class DG_playerController : MonoBehaviour
 				var G2 = gesture.G2_ParticleP.textureSheetAnimation;
 				G2.flipU = 0;
 				var G3 = gesture.G3_ParticleP.textureSheetAnimation;
-				G2.flipU = 0;
+				G3.flipU = 0;
 				var G4 = gesture.G4_ParticleP.textureSheetAnimation;
-				G2.flipU = 0;
+				G4.flipU = 0;
 				var B1 = gesture.B1_ParticleP.textureSheetAnimation;
 				B1.flipU = 0;
 				var B2 = gesture.B2_ParticleP.textureSheetAnimation;

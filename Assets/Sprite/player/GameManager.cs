@@ -105,6 +105,8 @@ public class GameManager : MonoBehaviour {
 	public AudioSource audio;
 	public AudioMixerSnapshot usually;
 	public AudioMixerSnapshot drawGame;
+	public AudioMixerSnapshot drawGame2;
+	public AudioMixerSnapshot beatuyChoose;
 
 
 	void Start () {
@@ -277,7 +279,7 @@ public class GameManager : MonoBehaviour {
 
 	public IEnumerator KAttackWin()
 	{
-		usually.TransitionTo(10f);
+		usually.TransitionTo(3f);
 		teachHintAni.SetTrigger("close");
 		attackRedImage.SetActive(false);
 		yield return new WaitForSeconds(0.3f);

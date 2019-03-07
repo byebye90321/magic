@@ -600,7 +600,8 @@ public class DialogsScript2 : MonoBehaviour
 		{
 			DisableTextBox();
 			beatuy.SetActive(true);
-		}
+            gameManager.beatuyChoose.TransitionTo(10f);
+        }
 
 		if (currentLine == 140)
 		{
@@ -742,7 +743,8 @@ public class DialogsScript2 : MonoBehaviour
 		{
 			DisableTextBox();
 			Joystick.isMove = true;
-			StartCoroutine("BeforeKBattle");
+            gameManager.drawGame2.TransitionTo(5f);
+            StartCoroutine("BeforeKBattle");
 		}
 
         if (currentLine == 189)

@@ -11,6 +11,8 @@ AudioMixerController:
   m_Snapshots:
   - {fileID: 24500006}
   - {fileID: 245717385869706164}
+  - {fileID: 245543840331270430}
+  - {fileID: 245668824672296422}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -27,6 +29,7 @@ AudioMixerController:
     - cfe850544c0990d4aac67094e003bbcd
     - 637fa53b4f5695443bf955843d1f5f9e
     - a962077a57d81884a9e1100ba337a368
+    - bf336da6b07d23c41abf847283bf3dc2
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -71,6 +74,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: a6d02684a87a4704285af64c35fb6630
   m_FloatValues:
+    0cf7c886b3ad9da4380a71142cd804e7: -61.75006
     9275c317a1ac98a4cb6fe0aaa88b06b6: -0.0024418756
     c05711697e1fc0b4ea559f485b0adbb1: -0.08374829
     befba68e36bb0fd4cb6dcb45c0cefe64: -80
@@ -87,6 +91,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: 243118917375425270}
   - {fileID: 243476501167159608}
+  - {fileID: 243533329451380584}
   m_Volume: 9796b735b00b7e247a18b057ea59223d
   m_Pitch: 0d520c5f88d500d4783fa56756665119
   m_Effects:
@@ -146,6 +151,23 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &243533329451380584
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Music3
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: bf336da6b07d23c41abf847283bf3dc2
+  m_Children: []
+  m_Volume: 0cf7c886b3ad9da4380a71142cd804e7
+  m_Pitch: b281d5d7092fd3142a154e83bcbcd63a
+  m_Effects:
+  - {fileID: 244742825906631856}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &244048820715579940
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -168,6 +190,19 @@ AudioMixerEffectController:
   m_EffectID: 130ea952db1fff64095fab9c782a7d1f
   m_EffectName: Attenuation
   m_MixLevel: 65ff921ab31cda64190b99cbbbcf471f
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244742825906631856
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 08f921819763d5a43b82ed13ae57be99
+  m_EffectName: Attenuation
+  m_MixLevel: 67d68c74c8b0ec44ba07f073ff104978
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
@@ -198,6 +233,36 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!245 &245543840331270430
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 2beatuyChoose
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 6f4dce76a45c4284c948a23a81fedf31
+  m_FloatValues:
+    0cf7c886b3ad9da4380a71142cd804e7: -6.991066
+    9275c317a1ac98a4cb6fe0aaa88b06b6: -0.0024418756
+    c05711697e1fc0b4ea559f485b0adbb1: -0.08374829
+    befba68e36bb0fd4cb6dcb45c0cefe64: -59.606762
+    9a20891f5acc1594f8006c4f25e1c781: -80
+  m_TransitionOverrides: {}
+--- !u!245 &245668824672296422
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 2drawGame
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 92d8b171d63a4364f8b2b275ad50b0bb
+  m_FloatValues:
+    0cf7c886b3ad9da4380a71142cd804e7: -22.003613
+    9275c317a1ac98a4cb6fe0aaa88b06b6: -0.0024418756
+    c05711697e1fc0b4ea559f485b0adbb1: -0.08374829
+    befba68e36bb0fd4cb6dcb45c0cefe64: 0.23288241
+    9a20891f5acc1594f8006c4f25e1c781: -59.34104
+  m_TransitionOverrides: {}
 --- !u!245 &245717385869706164
 AudioMixerSnapshotController:
   m_ObjectHideFlags: 0
@@ -207,6 +272,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: ea4149410c177bb4b843a2f790b615ab
   m_FloatValues:
+    0cf7c886b3ad9da4380a71142cd804e7: -80
     9275c317a1ac98a4cb6fe0aaa88b06b6: -0.0024418756
     c05711697e1fc0b4ea559f485b0adbb1: -0.08374829
     befba68e36bb0fd4cb6dcb45c0cefe64: -2.9490063
