@@ -222,7 +222,7 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.sprite = sister_normal;
 		}
 
-		if (currentLine == 4 || currentLine == 11 || currentLine == 24 || currentLine == 79 || currentLine == 83 ||currentLine==154 || currentLine == 174 || currentLine == 177 || currentLine == 202)
+		if (currentLine == 4 || currentLine == 11 || currentLine == 24 || currentLine == 79 || currentLine == 83 ||currentLine==154 || currentLine == 174 || currentLine == 202)
 		{
 			whotalk.text = playerName;
 			characterImage.color = talkNow;
@@ -502,7 +502,8 @@ public class DialogsScript2 : MonoBehaviour
 			otherImage.color = talkNow;
 			otherImage.sprite = sister_oops;
 			otherImageObj.SetActive(true);
-		}
+            otherImage.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
 
 		if (currentLine == 112 || currentLine == 117 || currentLine == 120 || currentLine == 124 || currentLine == 132 || currentLine == 138 ||currentLine==155)
 		{
@@ -521,7 +522,8 @@ public class DialogsScript2 : MonoBehaviour
 			otherImage.color = talkNow;
 			otherImage.sprite = dida_beauty;
 			otherImageObj.SetActive(true);
-		}
+            otherImage.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
 
 		if (currentLine == 119)
 		{
@@ -606,7 +608,7 @@ public class DialogsScript2 : MonoBehaviour
 			AudienceTalk1.SetActive(true);
 		}
 
-		if (currentLine == 148 || currentLine == 167 || currentLine == 182 || currentLine == 192)
+		if (currentLine == 148 || currentLine == 167 || currentLine == 192)
 		{
 			whotalk.text = playerName;
 			characterImage.color = talkNow;
@@ -657,30 +659,52 @@ public class DialogsScript2 : MonoBehaviour
 			otherImageObj.SetActive(false);
 		}
 
+        if (currentLine == 177)
+        {
+            whotalk.text = playerName;
+            characterImage.color = untalkNow;
+            otherImage.color = talkNow;
+            otherImage.sprite = sister_oops;
+            otherImageObj.SetActive(true);
+            otherImage.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
+
         if (currentLine == 178)
 		{
 			AudienceTalk3.SetActive(true);
 			DisableTextBox();
 		}
 
-		if (currentLine == 183)
+        if (currentLine == 182)
+        {
+            whotalk.text = playerName;
+            characterImage.color = talkNow;
+            otherImage.color = untalkNow;
+            characterImage.sprite = sister_angry;
+            characterImageObj.SetActive(true);
+            otherImageObj.SetActive(false);
+            //otherImage.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
+
+        if (currentLine == 183)
 		{
 			whotalk.text = "滴答";
 			characterImage.color = talkNow;
-			otherImage.color = untalkNow;
-			characterImage.sprite = dida_rainbow_normal;
-			AudienceTalk3.SetActive(false);
+			otherImage.color = talkNow;
+            otherImage.sprite = dida_rainbow_normal;
+            otherImageObj.SetActive(true);
+            AudienceTalk3.SetActive(false);
 		}
 
 		if (currentLine == 184)
 		{
 			whotalk.text = "可可";
-			characterImage.color = talkNow;
-			otherImage.color = untalkNow;
-			characterImage.sprite = coco_rainbow_normal;
+			characterImage.color = untalkNow;
+			otherImage.color = talkNow;
+            otherImage.sprite = coco_rainbow_normal;
 		}
 
-		if (currentLine == 185 || currentLine == 187)
+		if (currentLine == 185)
 		{
 			whotalk.text = "龍~";
 			characterImage.color = untalkNow;
@@ -688,7 +712,9 @@ public class DialogsScript2 : MonoBehaviour
 			otherImage.sprite = dragon_rainbow_smile;
 			otherImageObj.SetActive(true);
 			characterImageObj.SetActive(false);
-		}
+            otherImage.transform.localRotation = Quaternion.Euler(0, 180, 0);
+
+        }
 
 		if (currentLine == 186)
 		{
@@ -700,7 +726,19 @@ public class DialogsScript2 : MonoBehaviour
 			characterImageObj.SetActive(true);
 		}
 
-		if (currentLine == 188)
+        if (currentLine == 187)
+        {
+            whotalk.text = "龍~";
+            characterImage.color = talkNow;
+            otherImage.color = untalkNow;
+            characterImage.sprite = dragon_rainbow_smile;
+            characterImageObj.SetActive(true);
+            otherImageObj.SetActive(false);
+            characterImage.transform.localRotation = Quaternion.Euler(0, 180, 0);
+
+        }
+
+        if (currentLine == 188)
 		{
 			DisableTextBox();
 			Joystick.isMove = true;
