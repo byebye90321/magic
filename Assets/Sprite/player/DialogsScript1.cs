@@ -156,7 +156,10 @@ public class DialogsScript1 : MonoBehaviour
 			{
 				DisableTextBox();
 			}
-		}
+            StaticObject.nowClass = 1f;
+            PlayerPrefs.SetFloat("StaticObject.nowClass", StaticObject.nowClass);
+
+        }
 		else 
 		{
 			gameObject.transform.position = new Vector2(53.4f,6.4f);

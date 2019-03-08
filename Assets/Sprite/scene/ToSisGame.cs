@@ -13,9 +13,18 @@ public class ToSisGame : MonoBehaviour {
 	public Slider loadingBar;
 
 	public void Start() {
-		//NextSceneName
-		ToGame = SceneManager.LoadSceneAsync("Sister_chapter1");
-		ToGame.allowSceneActivation = false;
+        //NextSceneName
+        //ToGame = SceneManager.LoadSceneAsync("Sister_chapter1");
+
+        if (StaticObject.nowClass == 0) //序章
+            NextSceneName = "Sister_chapter1";
+        if (StaticObject.nowClass == 1) //森林
+            NextSceneName = "RunGame_chapter1";
+        else if(StaticObject.nowClass==1.5f) //森林跑酷
+            NextSceneName = "Sister_chapter2";
+
+        ToGame = SceneManager.LoadSceneAsync(NextSceneName);
+        ToGame.allowSceneActivation = false;
 	}
 
 	public void Update() {

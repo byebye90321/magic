@@ -450,16 +450,25 @@ public class NPCTask : MonoBehaviour {
 
 	public void Toggle1()
 	{
-		answerChoose = "1";
-	}
+        if (toggle1.isOn)
+		    answerChoose = "1";
+        else
+            answerChoose = "4";
+    }
 	public void Toggle2()
 	{
-		answerChoose = "2";
-	}
+        if (toggle2.isOn)
+            answerChoose = "2";
+        else
+            answerChoose = "4";
+    }
 	public void Toggle3()
 	{
-		answerChoose = "3";
-	}
+        if (toggle3.isOn)
+            answerChoose = "3";
+        else
+            answerChoose = "4";
+    }
 
 	public void TaskFinish()
 	{
@@ -745,4 +754,41 @@ public class NPCTask : MonoBehaviour {
 	{
 		StoneCanvas.SetActive(false);
 	}
+
+    //點選開啟任務介面
+    public void OpenOtherTask1()
+    {
+        taskPanel.SetActive(true);
+        TaskCloseBtn.SetActive(true);
+        TaskBtn.SetActive(false);
+        taskTitleText.text = "波比的花";
+        taskContentText.text = "我有一朵很珍惜的<color=#ef6c00>水晶蘭花</color>，現在花被視為異端，歪歪們把牠搶走了!還把我痛毆一頓...請幫助我拿回屬於我的花兒!石鎮處的線索會幫助你順利前行!找到歪歪的下落";
+    }
+
+    public void OpenOtherTask2()
+    {
+        taskPanel.SetActive(true);
+        TaskCloseBtn.SetActive(true);
+        TaskBtn.SetActive(false);
+        taskTitleText.text = "雕像平衡";
+        taskContentText.text = "恢復平衡需要一種重物，我想<color=#ef6c00>紅精靈</color>再適合不過了!牠們就棲息在<color=#ef6c00>荊棘樹幹的樹洞</color>中，幫我抓一隻回來吧!";
+    }
+
+    public void OpenOtherTask3()
+    {
+        taskPanel.SetActive(true);
+        TaskCloseBtn.SetActive(true);
+        TaskBtn.SetActive(false);
+        taskTitleText.text = "滴答的懷錶";
+        taskContentText.text = "懷錶\n時間流逝\n青春不再\n若時光能倒流\n不再往前";
+    }
+
+    public void OpenOtherTask4()
+    {
+        taskPanel.SetActive(true);
+        TaskCloseBtn.SetActive(true);
+        TaskBtn.SetActive(false);
+        taskTitleText.text = "可可的煩惱";
+        taskContentText.text = "你覺得我看起來如何?像男生跟像女生誰規定的?我就是喜歡OO，妳認為呢?那些對我閒言閒語的人如果可以，我想做自己。";
+    }
 }

@@ -104,8 +104,11 @@ public class RunGameManager : MonoBehaviour {
 		else if (chapterName == "1")
 		{
 			StartCoroutine("Conversation");
-			//InvokeRepeating("timer", 1, 1);
-		}
+            StaticObject.nowClass = 1.5f;
+            PlayerPrefs.SetFloat("StaticObject.nowClass", StaticObject.nowClass);
+        }
+
+
 	}
 
 	public void Update()
@@ -315,7 +318,7 @@ public class RunGameManager : MonoBehaviour {
 		Debug.Log(StaticObject.playerHealth);
 		yield return new WaitForSeconds(1.5f);
 		
-		SceneManager.LoadScene(NextSceneName);  //接下一關
+		SceneManager.LoadScene("Loading");  //接下一關
 	}
 
 	IEnumerator WaitForAudio()

@@ -214,7 +214,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 57888328}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11391c11175fa984b9e351fe3b078139, type: 3}
   m_Name: 
@@ -227,12 +227,13 @@ AudioSource:
   m_GameObject: {fileID: 57888328}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243118917375425270, guid: 91f284e7b979a0f47890ce00bd1823e5,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 4fe0e62ad7a24b64190c6be4a3240105, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -14445,7 +14446,7 @@ Prefab:
     - target: {fileID: 224271034615857152, guid: 384caf8ffce3f2f479670638f0f86be3,
         type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224271034615857152, guid: 384caf8ffce3f2f479670638f0f86be3,
         type: 2}
@@ -31471,8 +31472,8 @@ RectTransform:
   - {fileID: 1877373322}
   - {fileID: 704262638}
   - {fileID: 1135344176}
-  - {fileID: 1692413130}
   - {fileID: 695914213}
+  - {fileID: 1692413130}
   - {fileID: 1922652240}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -47137,7 +47138,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1338800949}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

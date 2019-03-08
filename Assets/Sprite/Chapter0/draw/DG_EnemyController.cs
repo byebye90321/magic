@@ -196,7 +196,7 @@ public class DG_EnemyController : MonoBehaviour{
 			enemy2.state.TimeScale = .1f;
 		}
 
-		if (enemyName == "BossEnemy")  //歪歪KQ
+		if (enemyName == "BossEnemy")  //歪歪JQ
 		{
 			StartCoroutine(gameManager.BossAttackWin());
 		}
@@ -204,7 +204,7 @@ public class DG_EnemyController : MonoBehaviour{
 		{
 			StartCoroutine(gameManager.MonsterAttackWin());
 		}
-		else if (enemyName == "K") //維吉維克
+		else if (enemyName == "K") //K
 		{
 			StartCoroutine(gameManager.KAttackWin());
 		}
@@ -238,84 +238,87 @@ public class DG_EnemyController : MonoBehaviour{
 			StartCoroutine("wait");
 		}
 
-		if (col.gameObject.name == "G0_Particle") //被G0攻擊
-		{
-			G0_beaten.SetActive(true);
-			TakeDamage(gesture.skill0.skillInfo.Atk+gesture.AddAttack);
-			StartCoroutine("damageActive");
-			healthText.text = "-" + (gesture.skill0.skillInfo.Atk + gesture.AddAttack);
-			StartCoroutine("G0_Close");
-			
-		}
+        if (isAttack == true)
+        {
+            if (col.gameObject.name == "G0_Particle") //被G0攻擊
+            {
+                G0_beaten.SetActive(true);
+                TakeDamage(gesture.skill0.skillInfo.Atk + gesture.AddAttack);
+                StartCoroutine("damageActive");
+                healthText.text = "-" + (gesture.skill0.skillInfo.Atk + gesture.AddAttack);
+                StartCoroutine("G0_Close");
 
-		if (col.gameObject.name == "G1_Particle") //被G1攻擊
-		{
-			G1_beaten.SetActive(true);
-			TakeDamage(gesture.skillG1.skillInfo.Atk + gesture.AddAttack);
-			StartCoroutine("damageActive");
-			StartCoroutine("G1_Close");
-			healthText.text = "-" + (gesture.skillG1.skillInfo.Atk + gesture.AddAttack);
-		}
+            }
 
-		if (col.gameObject.name == "B1_Particle") //被B1攻擊
-		{
-			B1_beaten.SetActive(true);
-			TakeDamage(gesture.skillB1.skillInfo.Atk + gesture.AddAttack);
-			StartCoroutine("damageActive");
-			StartCoroutine("G1_Close");
-			healthText.text = "-" + (gesture.skillB1.skillInfo.Atk + gesture.AddAttack);
-		}
+            if (col.gameObject.name == "G1_Particle") //被G1攻擊
+            {
+                G1_beaten.SetActive(true);
+                TakeDamage(gesture.skillG1.skillInfo.Atk + gesture.AddAttack);
+                StartCoroutine("damageActive");
+                StartCoroutine("G1_Close");
+                healthText.text = "-" + (gesture.skillG1.skillInfo.Atk + gesture.AddAttack);
+            }
 
-		if (col.gameObject.name == "G2_Particle") //被G2攻擊
-		{
-			G2_beaten.SetActive(true);
-			TakeDamage(gesture.skillG2.skillInfo.Atk + gesture.AddAttack);
-			StartCoroutine("damageActive");
-			StartCoroutine("G2_Close");
-			healthText.text = "-" + (gesture.skillG2.skillInfo.Atk + gesture.AddAttack);
-		}
-		if (col.gameObject.name == "B2_Particle") //被B2攻擊
-		{
-			B2_beaten.SetActive(true);
-			TakeDamage(gesture.skillB2.skillInfo.Atk + gesture.AddAttack);
-			StartCoroutine("damageActive");
-			StartCoroutine("G2_Close");
-			healthText.text = "-" + (gesture.skillB2.skillInfo.Atk + gesture.AddAttack);
-		}
+            if (col.gameObject.name == "B1_Particle") //被B1攻擊
+            {
+                B1_beaten.SetActive(true);
+                TakeDamage(gesture.skillB1.skillInfo.Atk + gesture.AddAttack);
+                StartCoroutine("damageActive");
+                StartCoroutine("G1_Close");
+                healthText.text = "-" + (gesture.skillB1.skillInfo.Atk + gesture.AddAttack);
+            }
 
-		if (col.gameObject.name == "G3_Particle") //被G3攻擊
-		{
-			G3_beaten.SetActive(true);
-			TakeDamage(gesture.skillG3.skillInfo.Atk + gesture.AddAttack);
-			StartCoroutine("damageActive");
-			StartCoroutine("G3_Close");
-			healthText.text = "-" + (gesture.skillG3.skillInfo.Atk + gesture.AddAttack);
-		}
-		if (col.gameObject.name == "B3_Particle") //被B3攻擊
-		{
-			B3_beaten.SetActive(true);
-			TakeDamage(gesture.skillB3.skillInfo.Atk + gesture.AddAttack);
-			StartCoroutine("damageActive");
-			StartCoroutine("G3_Close");
-			healthText.text = "-" + (gesture.skillB3.skillInfo.Atk + gesture.AddAttack);
-		}
+            if (col.gameObject.name == "G2_Particle") //被G2攻擊
+            {
+                G2_beaten.SetActive(true);
+                TakeDamage(gesture.skillG2.skillInfo.Atk + gesture.AddAttack);
+                StartCoroutine("damageActive");
+                StartCoroutine("G2_Close");
+                healthText.text = "-" + (gesture.skillG2.skillInfo.Atk + gesture.AddAttack);
+            }
+            if (col.gameObject.name == "B2_Particle") //被B2攻擊
+            {
+                B2_beaten.SetActive(true);
+                TakeDamage(gesture.skillB2.skillInfo.Atk + gesture.AddAttack);
+                StartCoroutine("damageActive");
+                StartCoroutine("G2_Close");
+                healthText.text = "-" + (gesture.skillB2.skillInfo.Atk + gesture.AddAttack);
+            }
 
-		if (col.gameObject.name == "G4_Particle") //被G4攻擊
-		{
-			G4_beaten.SetActive(true);
-			TakeDamage(gesture.skillG4.skillInfo.Atk + gesture.AddAttack);
-			StartCoroutine("damageActive");
-			StartCoroutine("G4_Close");
-			healthText.text = "-" + (gesture.skillG4.skillInfo.Atk + gesture.AddAttack);
-		}
-		if (col.gameObject.name == "B4_Particle") //被B4攻擊
-		{
-			B4_beaten.SetActive(true);
-			TakeDamage(gesture.skillB4.skillInfo.Atk + gesture.AddAttack);
-			StartCoroutine("damageActive");
-			StartCoroutine("G4_Close");
-			healthText.text = "-" + (gesture.skillB4.skillInfo.Atk + gesture.AddAttack);
-		}
+            if (col.gameObject.name == "G3_Particle") //被G3攻擊
+            {
+                G3_beaten.SetActive(true);
+                TakeDamage(gesture.skillG3.skillInfo.Atk + gesture.AddAttack);
+                StartCoroutine("damageActive");
+                StartCoroutine("G3_Close");
+                healthText.text = "-" + (gesture.skillG3.skillInfo.Atk + gesture.AddAttack);
+            }
+            if (col.gameObject.name == "B3_Particle") //被B3攻擊
+            {
+                B3_beaten.SetActive(true);
+                TakeDamage(gesture.skillB3.skillInfo.Atk + gesture.AddAttack);
+                StartCoroutine("damageActive");
+                StartCoroutine("G3_Close");
+                healthText.text = "-" + (gesture.skillB3.skillInfo.Atk + gesture.AddAttack);
+            }
+
+            if (col.gameObject.name == "G4_Particle") //被G4攻擊
+            {
+                G4_beaten.SetActive(true);
+                TakeDamage(gesture.skillG4.skillInfo.Atk + gesture.AddAttack);
+                StartCoroutine("damageActive");
+                StartCoroutine("G4_Close");
+                healthText.text = "-" + (gesture.skillG4.skillInfo.Atk + gesture.AddAttack);
+            }
+            if (col.gameObject.name == "B4_Particle") //被B4攻擊
+            {
+                B4_beaten.SetActive(true);
+                TakeDamage(gesture.skillB4.skillInfo.Atk + gesture.AddAttack);
+                StartCoroutine("damageActive");
+                StartCoroutine("G4_Close");
+                healthText.text = "-" + (gesture.skillB4.skillInfo.Atk + gesture.AddAttack);
+            }
+        }
 
 	}
 

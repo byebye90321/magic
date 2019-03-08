@@ -7,9 +7,9 @@ public class knife : MonoBehaviour
     public Canvas drawCanvas;
 	public GameObject bladeTrailPrefab;
     public GameObject blade;
-	public float minCuttingVelocity = .001f;
+	public float minCuttingVelocity = .01f;
 
-	bool isCutting = false;
+	public bool isCutting = false;
 
 	Vector2 previousPosition;
 
@@ -17,7 +17,7 @@ public class knife : MonoBehaviour
 
 	Rigidbody2D rb;
 	Camera cam;
-	//CircleCollider2D circleCollider;
+	CircleCollider2D circleCollider;
 	public int deathCount;
 
 	public LayerMask layerMask;
@@ -28,7 +28,7 @@ public class knife : MonoBehaviour
 	{
 		cam = Camera.main;
 		rb = GetComponent<Rigidbody2D>();
-        //circleCollider = GetComponent<CircleCollider2D>();
+        circleCollider = GetComponent<CircleCollider2D>();
         //currentBladeTrail = Instantiate(bladeTrailPrefab,transform);
     }
 
@@ -57,11 +57,11 @@ public class knife : MonoBehaviour
 		float velocity = (newPosition - previousPosition).magnitude * Time.deltaTime;
 		if (velocity > minCuttingVelocity)
 		{
-			//circleCollider.enabled = true;
+			circleCollider.enabled = true;
 		}
 		else
 		{
-			//circleCollider.enabled = false;
+			circleCollider.enabled = false;
 		}
 
 		previousPosition = newPosition;
@@ -86,7 +86,7 @@ public class knife : MonoBehaviour
 		isCutting = false;
 		currentBladeTrail.transform.SetParent(null);
 		Destroy(currentBladeTrail, 2f);
-		//circleCollider.enabled = false;
+		circleCollider.enabled = false;
 	}
 
 

@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject smallBoss;
 	public GameObject monster;
 	public GameObject K;
+    public GameObject KObj;
 	//--------------------結局--------------------
 	public GameObject sHE1; //離開森林
 	public GameObject sBE1; //迷失森林
@@ -135,18 +136,18 @@ public class GameManager : MonoBehaviour {
 			G1.SetActive(true);
 		if (StaticObject.G2 == 1)
 			G2.SetActive(true);
-		if (StaticObject.G3 == 1)
+		/*if (StaticObject.G3 == 1)
 			G3.SetActive(true);
 		if (StaticObject.G4 == 1)
-			G4.SetActive(true);
+			G4.SetActive(true);*/
 		if (StaticObject.B1 == 1)
 			B1.SetActive(true);
 		if (StaticObject.B2 == 1)
 			B2.SetActive(true);
-		if (StaticObject.B3 == 1)
+		/*if (StaticObject.B3 == 1)
 			B3.SetActive(true);
 		if (StaticObject.B4 == 1)
-			B4.SetActive(true);
+			B4.SetActive(true);*/
 
 	}
 	
@@ -229,13 +230,12 @@ public class GameManager : MonoBehaviour {
 	public IEnumerator BossAttackWin()
 	{
 		usually.TransitionTo(10f);
-		//teachHint.SetActive(false);
 		teachHintAni.SetTrigger("close");
 		attackRedImage.SetActive(false);
 		cameraFollow.moveCount = 7;
 		yield return new WaitForSeconds(0.3f);
 		eventObj.SetActive(true);
-		eventText.text = "擊敗歪歪";
+		eventText.text = "擊敗歪歪JQ";
 		smallBoss.SetActive(false);
 		cameraFollow.moveCount = 0;
 		cameraFollow.isFollowTarget = true;
@@ -249,7 +249,6 @@ public class GameManager : MonoBehaviour {
 	public IEnumerator MonsterAttackWin()
 	{
 		usually.TransitionTo(10f);
-		//teachHint.SetActive(false);
 		teachHintAni.SetTrigger("close");
 		attackRedImage.SetActive(false);
 		cameraFollow.moveCount = 9;
@@ -279,17 +278,18 @@ public class GameManager : MonoBehaviour {
 
 	public IEnumerator KAttackWin()
 	{
-		usually.TransitionTo(3f);
+        usually.TransitionTo(3f);
 		teachHintAni.SetTrigger("close");
 		attackRedImage.SetActive(false);
-		yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.3f);
 		eventObj.SetActive(true);
 		eventText.text = "擊敗歪歪K";
-		yield return new WaitForSeconds(1f);
-		smallBoss.SetActive(false);
-		eventObj.SetActive(false);	
-		StartCoroutine(dialogsScript2.AfterKBattle());
-	}
+        K.SetActive(false);
+        yield return new WaitForSeconds(2f);     
+        eventObj.SetActive(false);
+        StartCoroutine(dialogsScript2.AfterKBattle());
+        KObj.SetActive(false);
+    }
 
 	public void pause()
 	{
@@ -367,7 +367,7 @@ public class GameManager : MonoBehaviour {
 		FadeOut.SetActive(true);
 		FadeOutAni.SetBool("FadeOut", true);
 		yield return new WaitForSeconds(1.5f);
-		SceneManager.LoadScene(nextSceneName);  //接下一關 //先回
+		SceneManager.LoadScene("Loading");  //接下一關 
 	}
 
 	IEnumerator Lose()  //失敗

@@ -214,7 +214,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 57888328}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11391c11175fa984b9e351fe3b078139, type: 3}
   m_Name: 
@@ -15691,7 +15691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modifiedMaterial: {fileID: 1330913504}
-  instanceID: 219194
+  instanceID: 690888
 --- !u!114 &849754069
 MonoBehaviour:
   m_ObjectHideFlags: 0

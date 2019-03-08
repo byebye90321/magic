@@ -18,10 +18,6 @@ public class DialogsScript2 : MonoBehaviour
 	public NPCTask npcTask;
 	public DG_EnemyController EnemyController;
 	public ExampleGestureHandler gesture;
-	//public DG_EnemyController MonsterController;
-	//--------------------------互動對話-----------------------------
-	//public GameObject vine2text;
-	//private int bobbyCount = 1;
 
 	//---------------------------頭貼----------------------------
 	public string playerName;
@@ -100,11 +96,6 @@ public class DialogsScript2 : MonoBehaviour
 
 	//-----------------------教學、互動物件變數-------------------------
 	public bool teachBlood = false;
-	//public GameObject markObj; //路標對話框
-	//private Animator markAni;
-	//private BoxCollider2D markCollider;
-
-	//public GameObject MaskGroup;
 	//2
 	public GameObject clock;
 	public bool Mirror;
@@ -140,8 +131,10 @@ public class DialogsScript2 : MonoBehaviour
 
 	//----------------audio----------------------
 	public AudioSource audio;
-	//-----------------其他---------------------
-	public GameObject pause;
+    public AudioClip cheer;
+    public AudioClip quarrel;
+    //-----------------其他---------------------
+    public GameObject pause;
 	private Color talkNow = new Color(1, 1, 1, 1);
 	private Color untalkNow = new Color(.6f, .6f, .6f, 1);
 	public GameObject BEfogParticle;
@@ -181,7 +174,10 @@ public class DialogsScript2 : MonoBehaviour
 		{
 			DisableTextBox();
 		}
-	}
+
+        StaticObject.nowClass = 2;
+        PlayerPrefs.SetFloat("StaticObject.nowClass", StaticObject.nowClass);
+    }
 
 	IEnumerator fadeIn()
 	{
@@ -493,7 +489,9 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.sprite = Grace;
 			GraceAni.SetTrigger("talk");
 			graceCol.enabled = false;
-		}
+            if(!audio.isPlaying)
+                audio.PlayOneShot(cheer);
+        }
 
 		if (currentLine == 110)
 		{
@@ -568,6 +566,7 @@ public class DialogsScript2 : MonoBehaviour
 			otherImage.color = untalkNow;
 			characterImage.sprite = money_normal;
 			moneyAni.SetTrigger("talk");
+            otherImageObj.SetActive(false);
 		}
 
 		if (currentLine == 158)
@@ -609,13 +608,15 @@ public class DialogsScript2 : MonoBehaviour
 			AudienceTalk1.SetActive(true);
 		}
 
-		if (currentLine == 148 || currentLine == 167 || currentLine == 192)
-		{
-			whotalk.text = playerName;
-			characterImage.color = talkNow;
-			otherImage.color = untalkNow;
-			characterImage.sprite = sister_angry;			
-		}
+        if (currentLine == 148)
+        {
+            whotalk.text = playerName;
+            characterImage.color = talkNow;
+            otherImage.color = untalkNow;
+            characterImage.sprite = sister_angry;
+            if (!audio.isPlaying)
+                audio.PlayOneShot(quarrel);
+        }
 
 		if (currentLine == 151)
 		{
@@ -637,7 +638,15 @@ public class DialogsScript2 : MonoBehaviour
 			AudienceTalk2.SetActive(true);
 		}
 
-		if (currentLine == 170)
+        if (currentLine == 167 || currentLine == 192)
+        {
+            whotalk.text = playerName;
+            characterImage.color = talkNow;
+            otherImage.color = untalkNow;
+            characterImage.sprite = sister_angry;
+        }
+
+        if (currentLine == 170)
 		{
 			DisableTextBox();
 			AudienceTalkAni2.SetTrigger("change");
@@ -693,9 +702,10 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.color = talkNow;
 			otherImage.color = talkNow;
             otherImage.sprite = dida_rainbow_normal;
+            otherImage.transform.localRotation = Quaternion.Euler(0, 0, 0);
             otherImageObj.SetActive(true);
             AudienceTalk3.SetActive(false);
-		}
+        }
 
 		if (currentLine == 184)
 		{
@@ -703,7 +713,8 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.color = untalkNow;
 			otherImage.color = talkNow;
             otherImage.sprite = coco_rainbow_normal;
-		}
+            otherImage.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
 
 		if (currentLine == 185)
 		{
@@ -711,10 +722,9 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.color = untalkNow;
 			otherImage.color = talkNow;
 			otherImage.sprite = dragon_rainbow_smile;
-			otherImageObj.SetActive(true);
-			characterImageObj.SetActive(false);
-            otherImage.transform.localRotation = Quaternion.Euler(0, 180, 0);
-
+			//otherImageObj.SetActive(true);
+			//characterImageObj.SetActive(false);
+            otherImage.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 
 		if (currentLine == 186)
@@ -725,7 +735,8 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.sprite =dida_rainbow_normal;
 			otherImage.sprite = coco_rainbow_normal;
 			characterImageObj.SetActive(true);
-		}
+            characterImage.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
 
         if (currentLine == 187)
         {
@@ -735,7 +746,7 @@ public class DialogsScript2 : MonoBehaviour
             characterImage.sprite = dragon_rainbow_smile;
             characterImageObj.SetActive(true);
             otherImageObj.SetActive(false);
-            characterImage.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            //characterImage.transform.localRotation = Quaternion.Euler(0, 180, 0);
 
         }
 
@@ -758,30 +769,32 @@ public class DialogsScript2 : MonoBehaviour
             didaAni.state.SetAnimation(0, "idle_C", true);
             cocoAni.state.SetAnimation(0, "idle_C", true);
             dragonAni.state.SetAnimation(0, "idle_C", true);
+            characterImage.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 
         if (currentLine == 194)
 		{
 			whotalk.text = "可可";
-			characterImage.color = talkNow;
-			otherImage.color = untalkNow;
-			characterImage.sprite = coco_rainbow_sad;
-		}
+			characterImage.color = untalkNow;
+			otherImage.color = talkNow;
+			otherImage.sprite = coco_rainbow_sad;
+            otherImageObj.SetActive(true);
+        }
 
 		if (currentLine == 195)
 		{
 			whotalk.text = "滴答";
-			characterImage.color = talkNow;
-			otherImage.color = untalkNow;
-			characterImage.sprite = dida_rainbow_sad;
+			characterImage.color = untalkNow;
+			otherImage.color = talkNow;
+			otherImage.sprite = dida_rainbow_sad;
 		}
 
 		if (currentLine == 196)
 		{
 			whotalk.text = "龍~";
-			characterImage.color = talkNow;
-			otherImage.color = untalkNow;
-			characterImage.sprite = dragon_rainbow_closedEyes;
+			characterImage.color = untalkNow;
+			otherImage.color = talkNow;
+			otherImage.sprite = dragon_rainbow_closedEyes;
 		}
 
 		if (currentLine == 197)
@@ -870,16 +883,6 @@ public class DialogsScript2 : MonoBehaviour
 		secertKObj.SetActive(false);
 		yield return new WaitForSeconds(2);
 		K.SetActive(true);
-		/*yield return new WaitUntil(() => currentLine >= 188);
-		gameManager.vsPanel.SetActive(true);
-		vsYYK.SetActive(true);
-		yield return new WaitForSeconds(3);
-		gameManager.teachHintAni.SetTrigger("HintOpen");
-		gameManager.teachHintText.text = "進入戰鬥";
-		gameManager.attackRedImage.SetActive(true);
-		EnemyController.isAttack = true;
-		gameManager.vsPanel.SetActive(false);
-		vsYYK.SetActive(false);*/
 	}
 
 	IEnumerator BeforeKBattle()
@@ -904,12 +907,12 @@ public class DialogsScript2 : MonoBehaviour
 
 	public IEnumerator AfterKBattle()
 	{
-		playerAddParticle.SetActive(false);
-		addText.SetActive(false);
 		currentLine = 189;
 		endAtLine = 197;
 		NPCAppear();
-		yield return new WaitUntil(() => currentLine == 197);
+        playerAddParticle.SetActive(false);
+        addText.SetActive(false);
+        yield return new WaitUntil(() => currentLine == 197);
 	}
 
 	IEnumerator beatuyZoom()
