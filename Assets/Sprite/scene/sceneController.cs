@@ -52,7 +52,9 @@ public class sceneController : MonoBehaviour {
 
 	public void sisterGame()
 	{
-		SceneManager.LoadScene("Loading");
+        StaticObject.nowClass = 0f;
+        PlayerPrefs.SetFloat("StaticObject.nowClass", StaticObject.nowClass);
+        SceneManager.LoadScene("Loading");
 	}
 
 	public void sisterRun1()
@@ -62,7 +64,10 @@ public class sceneController : MonoBehaviour {
 
 	public void sisterGame2()
 	{
-		SceneManager.LoadScene("Sister_chapter2");
+        StaticObject.nowClass = 1.5f;
+        PlayerPrefs.SetFloat("StaticObject.nowClass", StaticObject.nowClass);
+        SceneManager.LoadScene("Loading");
+        //SceneManager.LoadScene("Sister_chapter2");
 	}
 
 

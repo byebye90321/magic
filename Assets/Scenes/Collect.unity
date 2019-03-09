@@ -442,48 +442,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efefbf60612ca66448298474ba6c824b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paperToggle: {fileID: 2039333039}
-  paperpanel: {fileID: 2039333035}
+  characterToggle: {fileID: 2039333039}
+  characterpanel: {fileID: 2039333035}
   treeToggle: {fileID: 524345959}
   treepanel: {fileID: 524345955}
-  characterToggle: {fileID: 838302963}
-  characterpanel: {fileID: 838302959}
-  paperB1: {fileID: 0}
-  paperB2: {fileID: 0}
-  paperB3: {fileID: 0}
-  paperB4: {fileID: 0}
-  paperB5: {fileID: 0}
-  paperB6: {fileID: 0}
-  paperB7: {fileID: 0}
-  paperB8: {fileID: 0}
-  paperT1: {fileID: 0}
-  paperT2: {fileID: 0}
-  paperT3: {fileID: 0}
-  paperT4: {fileID: 0}
-  paperT5: {fileID: 0}
-  paperT6: {fileID: 0}
-  paperT7: {fileID: 0}
-  paperT8: {fileID: 0}
-  lock1: {fileID: 0}
-  lock2: {fileID: 0}
-  lock3: {fileID: 0}
-  lock4: {fileID: 0}
-  lock5: {fileID: 0}
-  lock6: {fileID: 0}
-  lock7: {fileID: 0}
-  lock8: {fileID: 0}
-  paperQ1: {fileID: 1891819811}
-  paperQ2: {fileID: 1730966321}
-  paperQ3: {fileID: 1031323407}
-  paperQ4: {fileID: 1423665270}
-  paperQ5: {fileID: 431546767}
-  paperQ6: {fileID: 743541868}
-  paperQ7: {fileID: 1085616101}
-  paperQ8: {fileID: 1124096139}
+  achievementToggle: {fileID: 838302963}
+  achievementpanel: {fileID: 838302959}
   black_bg: {fileID: 580944719}
-  treeS1: {fileID: 2081980902}
-  treeSHE1: {fileID: 659837223}
-  treeSBE1: {fileID: 164614309}
   char1: {fileID: 615225510}
   char2: {fileID: 2053597809}
   char3: {fileID: 173099975}
@@ -1372,6 +1337,11 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114508362291533762, guid: 4d7e228d78da30a4895f705f4ecf74e0,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d7e228d78da30a4895f705f4ecf74e0, type: 2}
@@ -5900,7 +5870,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1459989315}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22211877
+  m_Size: 0.22211875
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -15299,7 +15269,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1777329664}
   m_HandleRect: {fileID: 1777329663}
   m_Direction: 0
-  m_Value: 0.00776044
+  m_Value: 0.00776051
   m_Size: 0.3005227
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -25059,7 +25029,7 @@ RectTransform:
   m_Father: {fileID: 501645649}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
-  m_AnchorMin: {x: 0.0054282513, y: 0}
+  m_AnchorMin: {x: 0.0054283002, y: 0}
   m_AnchorMax: {x: 0.30595097, y: 1}
   m_AnchoredPosition: {x: -1.6000061, y: -1.6}
   m_SizeDelta: {x: 97.1, y: 117.5}
@@ -28401,7 +28371,7 @@ GameObject:
   - component: {fileID: 2003996595}
   - component: {fileID: 2003996594}
   m_Layer: 5
-  m_Name: panel3 (1)
+  m_Name: panel3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
