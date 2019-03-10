@@ -95,7 +95,7 @@ public class collectLock : MonoBehaviour {
 		//----------------------解鎖人物介紹------------------------
 		sister = PlayerPrefs.GetInt("StaticObject.sister");
 		bother = PlayerPrefs.GetInt("StaticObject.bother");
-		utopia = PlayerPrefs.GetInt("StaticObject.utopia");
+		//utopia = PlayerPrefs.GetInt("StaticObject.utopia");
 		hikari = PlayerPrefs.GetInt("StaticObject.hikari");	
 		book = PlayerPrefs.GetInt("StaticObject.book");
 
@@ -108,69 +108,7 @@ public class collectLock : MonoBehaviour {
 		wiki = PlayerPrefs.GetInt("StaticObject.wiki");
 		wiko = PlayerPrefs.GetInt("StaticObject.wiko");
 		boMom = PlayerPrefs.GetInt("StaticObject.boMom");
-		boDad = PlayerPrefs.GetInt("StaticObject.boDad");
-
-		if (sister == 1)
-		{
-			char1.interactable = true;
-			clock1.SetActive(false);
-		}
-		if (bother == 1)
-		{
-			char2.interactable = true;
-			clock2.SetActive(false);
-		}
-		if (utopia == 1)
-		{
-			char3.interactable = true;
-			clock3.SetActive(false);
-		}
-		if (hikari == 1)
-		{
-			char4.interactable = true;
-			clock4.SetActive(false);
-		}
-		if (book == 1)
-		{
-			char5.interactable = true;
-			clock5.SetActive(false);
-		}
-		if (EnemyKing == 1)
-		{
-			char6.interactable = true;
-			clock6.SetActive(false);
-		}
-		if (J == 1)
-		{
-			char7.interactable = true;
-			clock7.SetActive(false);
-		}
-		if (Q == 1)
-		{
-			char8.interactable = true;
-			clock8.SetActive(false);
-		}
-		if (K == 1)
-		{
-			char9.interactable = true;
-			clock9.SetActive(false);
-		}
-		if (bobby == 1)
-		{
-			char10.interactable = true;
-			clock10.SetActive(false);
-		}
-		if (wiki == 1)
-		{
-			char11.interactable = true;
-			clock11.SetActive(false);
-		}
-		if (wiko == 1)
-		{
-			char12.interactable = true;
-			clock12.SetActive(false);
-		}
-
+		boDad = PlayerPrefs.GetInt("StaticObject.boDad");	
 	}
 
 	public void Update() {

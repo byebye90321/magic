@@ -8,16 +8,6 @@ public static class StaticObject
 	public static float bgmVolume = 1f;
 	public static float sfxVolume = 1f;
 
-	//--------------圖鑑-魔法日報解鎖-----------------
-	/*public static int Paper1 = 0;
-	public static int Paper2 = 0;
-	public static int Paper3 = 0;
-	public static int Paper4 = 0;
-	public static int Paper5 = 0;
-	public static int Paper6 = 0;
-	public static int Paper7 = 0;
-	public static int Paper8 = 0;*/
-
 	//-----------------平衡條 & 血量-----------------------
 	public static float balanceSlider = 100f;
 	public static float playerHealth = 100f;
@@ -46,7 +36,6 @@ public static class StaticObject
 	//--------------------人物解鎖------------------------
 	public static int sister = 0;
 	public static int bother = 0;
-	public static int utopia = 0; //烏托邦
 	public static int hikari = 0; //追光者
 	public static int book = 0;
 
@@ -58,6 +47,19 @@ public static class StaticObject
 	public static int bobby = 0;
 	public static int wiki = 0;
 	public static int wiko = 0;
+
+    public static int chichi = 0;
+    public static int chacha = 0;
+
+    public static int dida = 0;
+    public static int coco = 0;
+    public static int dragon = 0;
+    public static int Olivia = 0;
+    public static int money = 0;
+    public static int Grace = 0;
+
+
+
 
     //-----------------------成就---------------------------
     public static int a01 = 0; //力量的覺醒
