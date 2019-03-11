@@ -8,7 +8,7 @@ using System;
 public class Scroll : MonoBehaviour ,IBeginDragHandler,IEndDragHandler{
 
 	private ScrollRect scrollRect;
-	private float[] pageArray = new float[] { 0, 0.5f,1 };
+	private float[] pageArray = new float[] { 0, 0.35f,.7f,1 };
 	public float smoothing = 5;
 	private float targetVerticalPosition=1;
 	private bool isDraging = false;

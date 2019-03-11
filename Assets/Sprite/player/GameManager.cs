@@ -132,19 +132,19 @@ public class GameManager : MonoBehaviour {
 			stoneDoorAni = stoneDoorObj.GetComponent<Animator>();
 		}
 
-		if (StaticObject.G1 == 1)
+		/*if (StaticObject.G1 == 1)
 			G1.SetActive(true);
 		if (StaticObject.G2 == 1)
 			G2.SetActive(true);
-		/*if (StaticObject.G3 == 1)
+		if (StaticObject.G3 == 1)
 			G3.SetActive(true);
 		if (StaticObject.G4 == 1)
 			G4.SetActive(true);*/
-		if (StaticObject.B1 == 1)
+		/*if (StaticObject.B1 == 1)
 			B1.SetActive(true);
 		if (StaticObject.B2 == 1)
 			B2.SetActive(true);
-		/*if (StaticObject.B3 == 1)
+        if (StaticObject.B3 == 1)
 			B3.SetActive(true);
 		if (StaticObject.B4 == 1)
 			B4.SetActive(true);*/
@@ -222,7 +222,7 @@ public class GameManager : MonoBehaviour {
 			cameraFollow.moveCount = 0;
 			yield return new WaitForSeconds(0.5f);
 			AirFloor2.SetActive(true);
-			yield return new WaitForSeconds(2);
+			yield return new WaitForSeconds(1);
 			cameraFollow.isFollowTarget = true;
 		}
 	}
@@ -243,7 +243,8 @@ public class GameManager : MonoBehaviour {
 		eventObj.SetActive(false);
 		dialogsScript1.attackColliderBorder.SetActive(false);
 		dialogsScript1.attackCollider.SetActive(false);
-		StartCoroutine(dialogsScript1.AfterBossBattle());
+        dialogsScript1.bossCol.enabled = false;
+        StartCoroutine(dialogsScript1.AfterBossBattle());
 	}
 
 	public IEnumerator MonsterAttackWin()
@@ -262,7 +263,8 @@ public class GameManager : MonoBehaviour {
 		eventObj.SetActive(false);
 		dialogsScript1.monsterColliderBorder.SetActive(false);
 		dialogsScript1.monsterCollider.SetActive(false);
-		StartCoroutine(dialogsScript1.AfterMonsterBattle());
+        dialogsScript1.monsterCol.enabled = false;
+        StartCoroutine(dialogsScript1.AfterMonsterBattle());
 	}
 
 	//第二章

@@ -100,8 +100,12 @@ public class NPCTask : MonoBehaviour {
 	public BoxCollider2D rightClock;
 	public BoxCollider2D falseClock;
 
-	//--------------Audio---------------
-	public AudioSource audio;
+    //--------------成就------------
+    public achievement achievement;
+
+
+    //--------------Audio---------------
+    public AudioSource audio;
 	public AudioClip stoneWin;
 	public AudioClip stoneLose;
 	// Use this for initialization
@@ -198,8 +202,10 @@ public class NPCTask : MonoBehaviour {
 		
 	}
 
-	//任務1 Bobby
-	public void BobbyTast()
+    //----------------------成就-------------------------
+
+    //任務1 Bobby
+    public void BobbyTast()
 	{
 		Debug.Log(Mathf.Abs(rigid2D.transform.position.x - Bobby.transform.position.x));
 
@@ -487,7 +493,12 @@ public class NPCTask : MonoBehaviour {
 			dialogsScript1.currentLine = 54;
 			dialogsScript1.endAtLine = 54;
 			dialogsScript1.NPCAppear();
-		}
+            StaticObject.a08 = 1; //解鎖
+            PlayerPrefs.SetInt("StaticObject.a08", StaticObject.a08);
+            Debug.Log(StaticObject.a08);
+            achievement.achievementName = "平橫超平衡";
+            
+        }
 		else {
 			dialogsScript1.currentLine = 55;
 			dialogsScript1.endAtLine = 55;
@@ -528,7 +539,8 @@ public class NPCTask : MonoBehaviour {
 		if (playerController.npcTalk.right)
 		{
 			BigBalanceAni.SetBool("balance", true);
-		}		
+            StartCoroutine(achievement.Achievement());
+        }		
 	}
 
 	//任務1完成，獲得技能1

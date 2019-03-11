@@ -232,9 +232,11 @@
      <Compile Include="Assets\Sprite\sound\dontdestroy.cs" />
      <Compile Include="Assets\Sprite\sound\sound.cs" />
      <Compile Include="Assets\Sprite\StaticObject.cs" />
+     <Compile Include="Assets\Sprite\UI\achievement.cs" />
      <Compile Include="Assets\Sprite\UI\ChapterChoose.cs" />
-     <Compile Include="Assets\Sprite\UI\characterLock.cs" />
+     <Compile Include="Assets\Sprite\UI\collectAni.cs" />
      <Compile Include="Assets\Sprite\UI\collectLock.cs" />
+     <Compile Include="Assets\Sprite\UI\introduceAchievement.cs" />
      <Compile Include="Assets\Sprite\UI\introduceManager.cs" />
      <Compile Include="Assets\Sprite\UI\Scroll.cs" />
      <Compile Include="Assets\Sprite\UI\UIParticleSystem.cs" />

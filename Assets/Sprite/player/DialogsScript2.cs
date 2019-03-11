@@ -606,7 +606,9 @@ public class DialogsScript2 : MonoBehaviour
 		{
 			DisableTextBox();
 			AudienceTalk1.SetActive(true);
-		}
+            audio.Stop();
+
+        }
 
         if (currentLine == 148)
         {

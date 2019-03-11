@@ -42,7 +42,8 @@ public class RG_playerController : MonoBehaviour
 
 	private Text healthText;
 	public GameObject healthObj;
-	public GameObject canvas;
+    public GameObject addHealthObj;
+    public GameObject canvas;
 	//---------------------------Hurt-----------------------------
 	public float VecityHurt;
 	public float RecoverySpeed;
@@ -269,7 +270,19 @@ public class RG_playerController : MonoBehaviour
 			RunGameManager.Instance.Win();
 		}
 
-		if (col.gameObject.name == "TeachUp")
+        if (col.gameObject.tag == "heart")
+        {
+            runGameManager.playerHealth += 1;
+            runGameManager.HealthSlider.value = runGameManager.playerHealth;
+            GameObject NEWatkpreft = Instantiate(addHealthObj) as GameObject;
+            NEWatkpreft.transform.SetParent(canvas.transform, false);
+            NEWatkpreft.GetComponent<RectTransform>().anchoredPosition = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);
+            healthText = NEWatkpreft.GetComponentInChildren<Text>();
+            healthText.text = "+" + 1;
+            Destroy(col.gameObject);
+        }
+
+        if (col.gameObject.name == "TeachUp")
 		{
 			hurt.SetActive(false);
 			speed = 0.01f;

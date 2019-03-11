@@ -90,13 +90,15 @@ public class DialogsScript1 : MonoBehaviour
 	private Animator mark2Ani;
 
 	public GameObject MaskGroup;
-	//------------------Attack----------------------
-	//小BOSS
+    //------------------Attack----------------------
+    //小BOSS
+    public BoxCollider2D bossCol;
 	public GameObject attackCollider;
 	private BoxCollider2D attackColliderCol;
 	public GameObject attackColliderBorder;
 
-	//維吉維克
+    //維吉維克
+    public BoxCollider2D monsterCol;
 	public GameObject monsterCollider;
 	private BoxCollider2D monsterColliderCol;
 	public GameObject monsterColliderBorder;
@@ -116,8 +118,8 @@ public class DialogsScript1 : MonoBehaviour
 
 
 	void Start() {
-
-		if (StaticObject.nowClass == 0)
+        StaticObject.nowClass = 0;
+        if (StaticObject.nowClass == 0)
 		{
 			/*Debug.Log(StaticObject.nowClass);
 			StaticObject.nowClass = 1;
@@ -162,8 +164,8 @@ public class DialogsScript1 : MonoBehaviour
         }
 		else 
 		{
-			gameObject.transform.position = new Vector2(53.4f,6.4f);
-			col.SetActive(false);
+			/*gameObject.transform.position = new Vector2(53.4f,6.4f);
+			col.SetActive(false);*/
 
 
 
@@ -463,6 +465,8 @@ public class DialogsScript1 : MonoBehaviour
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = statue_rainbow;
+            /*StaticObject.a08 = 1; //解鎖
+            PlayerPrefs.SetInt("StaticObject.a08", StaticObject.a08);*/
 		}
 		if (currentLine == 55)
 		{
@@ -653,8 +657,8 @@ public class DialogsScript1 : MonoBehaviour
 
 	}
 
-	//-------------------------碰撞對話-----------------------------
-	public void BloodStation()  //補血站
+    //-------------------------碰撞對話-----------------------------
+    public void BloodStation()  //補血站
 	{
 		teachBlood = true;
 		currentLine = 11;

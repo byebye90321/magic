@@ -56,6 +56,7 @@ public static class StaticObject
     public static int dragon = 0;
     public static int Olivia = 0;
     public static int money = 0;
+    public static int secretK = 0;
     public static int Grace = 0;
 
 
