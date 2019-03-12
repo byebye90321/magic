@@ -724,8 +724,6 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.color = untalkNow;
 			otherImage.color = talkNow;
 			otherImage.sprite = dragon_rainbow_smile;
-			//otherImageObj.SetActive(true);
-			//characterImageObj.SetActive(false);
             otherImage.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 
@@ -858,7 +856,6 @@ public class DialogsScript2 : MonoBehaviour
 					if (currentLine > endAtLine)
 					{
 						DisableTextBox();
-						//npcDisappeaar();
 					}
 					else
 						StartCoroutine(TextScroll(textLines[currentLine]));
@@ -932,9 +929,6 @@ public class DialogsScript2 : MonoBehaviour
 		didaObj.transform.position = new Vector2(21.1f, 8.2f);
 		cocoObj.transform.position = new Vector2(21.7f, 8.2f);
 		dragonObj.transform.position = new Vector2(22.7f, 8.25f);
-        /*didaAni.state.SetAnimation(0, "idle_C", true);
-        cocoAni.state.SetAnimation(0, "idle_C", true);
-        dragonAni.state.SetAnimation(0, "idle_C", true);*/
         beatutMember.SetActive(false);
 		yield return new WaitForSeconds(3);
 		beatuySmokeObj.SetActive(false);
@@ -991,8 +985,8 @@ public class DialogsScript2 : MonoBehaviour
 		choose1.SetActive(false);
 		StaticObject.sHE2 = 1;
 		StaticObject.sBE2 = 0;
-		PlayerPrefs.SetInt("StaticObject.sHE1", StaticObject.sHE2);
-		PlayerPrefs.SetInt("StaticObject.sBE1", StaticObject.sBE2);
+		PlayerPrefs.SetInt("StaticObject.sHE2", StaticObject.sHE2);
+		PlayerPrefs.SetInt("StaticObject.sBE2", StaticObject.sBE2);
 	}
 
 	//----------------------------對話----------------------------
