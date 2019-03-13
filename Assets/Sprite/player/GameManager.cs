@@ -126,12 +126,54 @@ public class GameManager : MonoBehaviour {
 		downHintAni = downHint.GetComponent<Animator>();
 		Application.targetFrameRate = 100;  //幀數
 
-		if (ChapterName == "1")
-		{
-			AirFloor.SetActive(false);
-			stoneDoorAni = stoneDoorObj.GetComponent<Animator>();
-		}
+        if (ChapterName == "1")
+        {
+            AirFloor.SetActive(false);
+            stoneDoorAni = stoneDoorObj.GetComponent<Animator>();
 
+            //↓校內展需要程式，非正式版本
+            StaticObject.G1 = 0;
+            PlayerPrefs.SetInt("StaticObject.G1", StaticObject.G1);
+            StaticObject.G2 = 0;
+            PlayerPrefs.SetInt("StaticObject.G2", StaticObject.G2);
+            StaticObject.G3 = 0;
+            PlayerPrefs.SetInt("StaticObject.G3", StaticObject.G3);
+            StaticObject.G4 = 0;
+            PlayerPrefs.SetInt("StaticObject.G4", StaticObject.G4);
+            StaticObject.B1 = 0;
+            PlayerPrefs.SetInt("StaticObject.B1", StaticObject.B1);
+            StaticObject.B2 = 0;
+            PlayerPrefs.SetInt("StaticObject.B2", StaticObject.B2);
+            StaticObject.B3 = 0;
+            PlayerPrefs.SetInt("StaticObject.B3", StaticObject.B3);
+            StaticObject.B4 = 0;
+            PlayerPrefs.SetInt("StaticObject.B4", StaticObject.B4);
+
+        }
+        else if (ChapterName == "2")
+        {
+            //↓校內展需要程式，非正式版本
+            StaticObject.G1 = 0;
+            PlayerPrefs.SetInt("StaticObject.G1", StaticObject.G1);
+            StaticObject.G2 = 0;
+            PlayerPrefs.SetInt("StaticObject.G2", StaticObject.G2);
+            StaticObject.G3 = 0;
+            PlayerPrefs.SetInt("StaticObject.G3", StaticObject.G3);
+            StaticObject.G4 = 0;
+            PlayerPrefs.SetInt("StaticObject.G4", StaticObject.G4);
+            StaticObject.B1 = 0;
+            PlayerPrefs.SetInt("StaticObject.B1", StaticObject.B1);
+            StaticObject.B2 = 0;
+            PlayerPrefs.SetInt("StaticObject.B2", StaticObject.B2);
+            StaticObject.B3 = 0;
+            PlayerPrefs.SetInt("StaticObject.B3", StaticObject.B3);
+            StaticObject.B4 = 0;
+            PlayerPrefs.SetInt("StaticObject.B4", StaticObject.B4);
+            G1.SetActive(true);
+            G2.SetActive(true);
+        }
+
+        //正式版本應該是這樣的
 		/*if (StaticObject.G1 == 1)
 			G1.SetActive(true);
 		if (StaticObject.G2 == 1)
@@ -139,8 +181,8 @@ public class GameManager : MonoBehaviour {
 		if (StaticObject.G3 == 1)
 			G3.SetActive(true);
 		if (StaticObject.G4 == 1)
-			G4.SetActive(true);*/
-		/*if (StaticObject.B1 == 1)
+			G4.SetActive(true);
+		if (StaticObject.B1 == 1)
 			B1.SetActive(true);
 		if (StaticObject.B2 == 1)
 			B2.SetActive(true);
@@ -280,6 +322,8 @@ public class GameManager : MonoBehaviour {
 
 	public IEnumerator KAttackWin()
 	{
+        StaticObject.K = 1; //K解鎖
+        PlayerPrefs.SetInt("StaticObject.K", StaticObject.K);
         usually.TransitionTo(3f);
 		teachHintAni.SetTrigger("close");
 		attackRedImage.SetActive(false);

@@ -122,7 +122,10 @@ public class DialogsScript2 : MonoBehaviour
 
 	public GameObject playerAddParticle; //player攻擊加成特效
 	public GameObject addText; //攻擊加成文字
-	public BoxCollider2D BossKCollider;
+    public GameObject UpText;
+    public BoxCollider2D BossKCollider;
+
+    public GameObject changeShineParticle;
 	//------------------Attack----------------------
 	//小BOSS
 	//public GameObject attackCollider;
@@ -766,6 +769,7 @@ public class DialogsScript2 : MonoBehaviour
             characterImage.sprite = YYK;
             characterImageObj.SetActive(true);
             otherImageObj.SetActive(false);
+            changeShineParticle.SetActive(true);
             didaAni.state.SetAnimation(0, "idle_C", true);
             cocoAni.state.SetAnimation(0, "idle_C", true);
             dragonAni.state.SetAnimation(0, "idle_C", true);
@@ -888,7 +892,8 @@ public class DialogsScript2 : MonoBehaviour
 	{		
 		playerAddParticle.SetActive(true);
 		addText.SetActive(true);
-		yield return new WaitForSeconds(3);
+        UpText.SetActive(true);
+        yield return new WaitForSeconds(3);
 		gameManager.vsPanel.SetActive(true);
 		vsYYK.SetActive(true);
 		yield return new WaitForSeconds(3);
@@ -911,6 +916,7 @@ public class DialogsScript2 : MonoBehaviour
 		NPCAppear();
         playerAddParticle.SetActive(false);
         addText.SetActive(false);
+        UpText.SetActive(false);
         yield return new WaitUntil(() => currentLine == 197);
 	}
 
@@ -955,7 +961,15 @@ public class DialogsScript2 : MonoBehaviour
 			cameraFollow.moveCount = 2;
 			cameraFollow.isFollowTarget = false;
 			StartCoroutine("beatuyZoom");
-		}
+            StaticObject.Olivia = 1; //Olivia解鎖
+            PlayerPrefs.SetInt("StaticObject.Olivia", StaticObject.Olivia);
+            StaticObject.money = 1; //money解鎖
+            PlayerPrefs.SetInt("StaticObject.money", StaticObject.money);
+            StaticObject.secretK = 1; //secretK解鎖
+            PlayerPrefs.SetInt("StaticObject.secretK", StaticObject.secretK);
+            StaticObject.Grace = 1; //Grace解鎖
+            PlayerPrefs.SetInt("StaticObject.Grace", StaticObject.Grace);
+        }
 
 		if (col.gameObject.name == "NPC_Grace")
 		{

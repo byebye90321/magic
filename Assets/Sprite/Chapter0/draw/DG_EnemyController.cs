@@ -116,12 +116,12 @@ public class DG_EnemyController : MonoBehaviour{
 	}
 
 
-	public void AttackTime()
+	public void AttackTime() //站在原位攻擊
 	{
 		W1_Particle();
 	}
 
-	public void KAttack()
+	public void KAttack() //k攻擊
 	{
 		enemy1.state.SetAnimation(0, hitSkillName, false);
 		enemy1.state.AddAnimation(0, "idle", true, 0f);

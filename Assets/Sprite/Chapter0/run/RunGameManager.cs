@@ -317,8 +317,15 @@ public class RunGameManager : MonoBehaviour {
 		Debug.Log(StaticObject.balanceSlider);
 		Debug.Log(StaticObject.playerHealth);
 		yield return new WaitForSeconds(1.5f);
-		
-		SceneManager.LoadScene("Loading");  //接下一關
+
+        if (chapterName == "0")
+        {
+            SceneManager.LoadScene("Chapter0_5movie");
+        }
+        else
+        {
+            SceneManager.LoadScene("Loading");  //接下一關
+        }
 	}
 
 	IEnumerator WaitForAudio()

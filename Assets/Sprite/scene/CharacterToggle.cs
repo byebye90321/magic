@@ -21,7 +21,14 @@ public class CharacterToggle : MonoBehaviour
 		bother = bother.GetComponent<Toggle>();
 		sister = sister.GetComponent<Toggle>();
 		StartCoroutine("FadeIn");
-	}
+
+        StaticObject.sister = 1; //妹妹解鎖
+        PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);
+        StaticObject.bother = 1; //哥哥解鎖
+        PlayerPrefs.SetInt("StaticObject.bother", StaticObject.bother);
+        StaticObject.hikari = 1; //追光者解鎖
+        PlayerPrefs.SetInt("StaticObject.hikari", StaticObject.hikari);
+    }
 
 	public void bortherClick()
 	{

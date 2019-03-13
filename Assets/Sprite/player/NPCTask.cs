@@ -253,7 +253,9 @@ public class NPCTask : MonoBehaviour {
 			dialogsScript2.endAtLine = 30;
 			dialogsScript2.NPCAppear();
 			DidaTask = false;
-		}
+            StaticObject.dida = 1; //dida解鎖
+            PlayerPrefs.SetInt("StaticObject.dida", StaticObject.dida);
+        }
 	}
 
 	public void Task_NO()
@@ -319,7 +321,9 @@ public class NPCTask : MonoBehaviour {
 		dialogsScript2.currentLine = 33;
 		dialogsScript2.endAtLine = 36;
 		dialogsScript2.NPCAppear();
-	}
+        StaticObject.coco = 1; //coco解鎖
+        PlayerPrefs.SetInt("StaticObject.coco", StaticObject.coco);
+    }
 	//龍~
 	public void DragonTast()
 	{
@@ -327,7 +331,9 @@ public class NPCTask : MonoBehaviour {
 		dialogsScript2.endAtLine = 86;
 		dialogsScript2.NPCAppear();
 		DragonCollider.enabled = false;
-	}
+        StaticObject.dragon = 1; //dragon解鎖
+        PlayerPrefs.SetInt("StaticObject.dragon", StaticObject.dragon);
+    }
 
 	//魔鏡(沒券)
 	public void MirrorTask()

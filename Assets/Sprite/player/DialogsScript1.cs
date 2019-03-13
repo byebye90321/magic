@@ -137,12 +137,14 @@ public class DialogsScript1 : MonoBehaviour
 			vine3Collider = vine3.GetComponent<BoxCollider2D>();
 			mark2Collider = mark2Obj.GetComponent<BoxCollider2D>();
 			mark2Ani = mark2Obj.GetComponent<Animator>();
-			StaticObject.sister = 1; //妹妹解鎖
-			PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);
+			/*StaticObject.sister = 1; //妹妹解鎖
+			PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);*/
 			StaticObject.book = 1; //魔法日報解鎖
 			PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);
+            StaticObject.chacha = 1; //chacha解鎖
+            PlayerPrefs.SetInt("StaticObject.chacha", StaticObject.chacha);
 
-			if (currentLine > endAtLine)
+            if (currentLine > endAtLine)
 			{
 				isActive = false;
 				textBox.SetActive(false);
@@ -689,7 +691,11 @@ public class DialogsScript1 : MonoBehaviour
 
 	IEnumerator BeforeBossBattle()
 	{
-		yield return new WaitForSeconds(2);
+        StaticObject.J = 1; //J解鎖
+        PlayerPrefs.SetInt("StaticObject.J", StaticObject.J);
+        StaticObject.Q = 1; //Q解鎖
+        PlayerPrefs.SetInt("StaticObject.Q", StaticObject.Q);
+        yield return new WaitForSeconds(2);
 		currentLine = 57;
 		endAtLine = 60;
 		NPCAppear();
@@ -703,8 +709,8 @@ public class DialogsScript1 : MonoBehaviour
 		EnemyController.isAttack = true;
 		gameManager.vsPanel.SetActive(false);
 		vsYYJ.SetActive(false);
-		yield return new WaitForSeconds(.1f);
-	}
+		yield return new WaitForSeconds(.1f);      
+    }
 
 	public IEnumerator AfterBossBattle()
 	{
@@ -772,13 +778,13 @@ public class DialogsScript1 : MonoBehaviour
 			NPCAppear();
 		}
 
-		if (col.gameObject.name == "vin2text") //藤蔓對話
+		/*if (col.gameObject.name == "vin2text") //藤蔓對話
 		{
 			currentLine = 43;
 			endAtLine = 43;
 			NPCAppear();
 			Destroy(col.gameObject);
-		}
+		}*/
 
 		if (col.gameObject.name == "balanceText") //看見天平對話
 		{
