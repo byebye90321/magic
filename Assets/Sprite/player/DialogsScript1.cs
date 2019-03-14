@@ -90,6 +90,7 @@ public class DialogsScript1 : MonoBehaviour
 	private Animator mark2Ani;
 
 	public GameObject MaskGroup;
+    public GameObject arrow;
     //------------------Attack----------------------
     //小BOSS
     public BoxCollider2D bossCol;
@@ -331,6 +332,7 @@ public class DialogsScript1 : MonoBehaviour
 			otherImage.sprite = bobby_monochrome_cry;
 			StaticObject.bobby = 1; //波比解鎖
 			PlayerPrefs.SetInt("StaticObject.bobby", StaticObject.bobby);
+            arrow.SetActive(false);
 		}
 
 		if (currentLine == 29 || currentLine == 51)
