@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Chapter1_bg
+  m_EditorData:
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 47
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+    packingParameters:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 5e8d690a3afaf9c4081f7806c7f498bb, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 211809b8b094e5a4fa97a94513f7e180, type: 3}
+  - {fileID: 21300000, guid: a87d4d94dfb352b4ab02c401e791061a, type: 3}
+  - {fileID: 21300000, guid: ff91ee6d18aa79c4f9dd7a02b4596b2e, type: 3}
+  - {fileID: 21300000, guid: 08ff5f66b13ac9342896fb0e0d4feba9, type: 3}
+  - {fileID: 21300000, guid: a96699232ee21e14693fce7d438654ec, type: 3}
+  - {fileID: 21300000, guid: 797a89a956de6e749b405f31f79e2e07, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - "\u4E2D\u666F\u6A3906"
+  - "\u4E2D\u666F\u6A3904"
+  - "\u4E2D\u666F\u6A3901"
+  - "\u4E2D\u666F\u6A3903"
+  - "\u4E2D\u666F\u6A3902"
+  - "\u4E2D\u666F\u6A3905"
+  m_Tag: Chapter1_bg
+  m_IsVariant: 0

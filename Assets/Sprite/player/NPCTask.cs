@@ -131,8 +131,8 @@ public class NPCTask : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		//----------------------NPC tast-------------------------
-		/*if (Input.GetMouseButtonDown(0))
+        //----------------------NPC tast-------------------------
+        /*if (Input.GetMouseButtonDown(0))
 		{
 			Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
@@ -182,23 +182,26 @@ public class NPCTask : MonoBehaviour {
 				}
 			}
 		}*/
-		//-------------------------森林機關-----------------------
-		if (slot1.isRight && slot2.isRight && slot3.isRight && slot4.isRight && slot5.isRight) //完成的時候
-		{
-			StoneParticle1.SetActive(true);
-			StoneParticle2.SetActive(true);
-			StoneParticle3.SetActive(true);
-			StoneParticle4.SetActive(true);
-			StoneParticle5.SetActive(true);
-			StartCoroutine("waitClose");
-		}
-		if (slot1.full && slot2.full && slot3.full && slot4.full && slot5.full)
-		{
-			if (!slot1.isRight || !slot2.isRight || !slot3.isRight || !slot4.isRight || !slot5.isRight)
-			{
-				StartCoroutine("StoneWrong");
-			}
-		}
+        //-------------------------森林機關-----------------------
+        if (ChapterName == "1")
+        {
+            if (slot1.isRight && slot2.isRight && slot3.isRight && slot4.isRight && slot5.isRight) //完成的時候
+            {
+                StoneParticle1.SetActive(true);
+                StoneParticle2.SetActive(true);
+                StoneParticle3.SetActive(true);
+                StoneParticle4.SetActive(true);
+                StoneParticle5.SetActive(true);
+                StartCoroutine("waitClose");
+            }
+            if (slot1.full && slot2.full && slot3.full && slot4.full && slot5.full)
+            {
+                if (!slot1.isRight || !slot2.isRight || !slot3.isRight || !slot4.isRight || !slot5.isRight)
+                {
+                    StartCoroutine("StoneWrong");
+                }
+            }
+        }
 		
 	}
 

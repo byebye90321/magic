@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: play_often
+  m_EditorData:
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: Android
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 47
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+    packingParameters:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 4da036a1192d01e46ac8cd2f85fba072, type: 3}
+    - {fileID: 102900000, guid: f77dbd9c5ad8c6342aef28f7c17c33d8, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 28d8cb77f1064c14380fcfc56a00cddb, type: 3}
+  - {fileID: 21300000, guid: 38d30c0b48cafd34d9851b4d56a2c408, type: 3}
+  - {fileID: 21300000, guid: 96b9af11705358c4388f39c57127aa9e, type: 3}
+  - {fileID: 21300000, guid: ebd997eab25cc014f8ce49eee9265b83, type: 3}
+  - {fileID: 21300000, guid: 203911cbc69b8ba4a815eb2598e328db, type: 3}
+  - {fileID: 21300000, guid: c7eed771211c1ea4a9802d3d6a23bc47, type: 3}
+  - {fileID: 21300000, guid: fcc3cfbbfecd9d940baf65b178ab7ac0, type: 3}
+  - {fileID: 21300000, guid: 505eb799a5045614b8bcf2f29afc3615, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - "\u7D50\u754C\u5149"
+  - "\u767C\u5149"
+  - "\u7D50\u754C\u67F1\u5B50"
+  - "\u5E95\u5EA7"
+  - "\u9396\u93C8"
+  - "\u5DE6\u908A\u83F1\u5F62"
+  - "\u53F3\u908A\u83F1\u5F62"
+  - "\u7FC5\u8180\u611B\u5FC3"
+  m_Tag: play_often
+  m_IsVariant: 0
