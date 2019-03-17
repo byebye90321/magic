@@ -379,7 +379,7 @@ public class DG_playerController : MonoBehaviour
 			{
 
 			}
-			else if (hit.collider.name == "NPC_Bobby" || hit.collider.name == "NPC_Statue" /*|| hit.collider.name == "Stone"*/ || hit.collider.name == "NPC_Dida" || hit.collider.name == "NPC_Coco" || hit.collider.name == "NPC_Dragon" || hit.collider.name == "Mirror")
+			else if (hit.collider.name == "NPC_Bobby" || hit.collider.name == "NPC_Statue" /*|| hit.collider.name == "Stone"*/ || hit.collider.name == "NPC_Dida" || hit.collider.name == "NPC_Coco" || hit.collider.name == "NPC_Dragon" || hit.collider.name == "Mirror" && Mathf.Abs(rigid2D.transform.position.x - npcTalk.NPC.transform.position.x) < 2 && npcTalk.NPCPoint.activeInHierarchy == true && npcTalk.isTasting == false)
 			{
 				npcTalk = hit.collider.GetComponent<NpcTalk>();
 				if (npcTalk.gimmick) //機關

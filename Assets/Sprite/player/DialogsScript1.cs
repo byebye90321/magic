@@ -912,7 +912,7 @@ public class DialogsScript1 : MonoBehaviour
 	{
 		playerController.drawCanvas.enabled = false;		
 		isActive = true;
-		playerController.cutting = false;
+		//playerController.cutting = false;
 		textBox.SetActive(true);
 		gameManager.Pause.interactable = false;
 		npcTask.bookBtn.interactable = false;
@@ -921,7 +921,7 @@ public class DialogsScript1 : MonoBehaviour
 	public void DisableTextBox()
 	{
 		isActive = false;
-		playerController.cutting = true;
+		//playerController.cutting = true;
 		playerController.drawCanvas.enabled = true;
 		textBox.SetActive(false);
 		gameManager.Pause.interactable = true;
