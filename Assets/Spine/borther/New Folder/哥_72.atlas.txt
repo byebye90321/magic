@@ -1,0 +1,202 @@
+
+哥_72.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+右上臂
+  rotate: false
+  xy: 1135, 267
+  size: 68, 169
+  orig: 70, 170
+  offset: 1, 1
+  index: -1
+右下臂
+  rotate: false
+  xy: 1960, 695
+  size: 62, 152
+  orig: 63, 153
+  offset: 1, 1
+  index: -1
+右大腿
+  rotate: true
+  xy: 891, 226
+  size: 74, 222
+  orig: 74, 222
+  offset: 0, 0
+  index: -1
+右小腿
+  rotate: true
+  xy: 912, 438
+  size: 79, 290
+  orig: 79, 290
+  offset: 0, 0
+  index: -1
+右掌
+  rotate: true
+  xy: 1842, 650
+  size: 36, 61
+  orig: 37, 62
+  offset: 0, 0
+  index: -1
+右龜殼草
+  rotate: true
+  xy: 769, 35
+  size: 50, 98
+  orig: 50, 98
+  offset: 0, 0
+  index: -1
+哥_滑行
+  rotate: false
+  xy: 2, 354
+  size: 908, 646
+  orig: 1024, 1024
+  offset: 50, 143
+  index: -1
+左上臂
+  rotate: true
+  xy: 891, 79
+  size: 69, 170
+  orig: 70, 170
+  offset: 1, 0
+  index: -1
+左下臂
+  rotate: false
+  xy: 1949, 849
+  size: 64, 151
+  orig: 65, 153
+  offset: 1, 1
+  index: -1
+左大腿
+  rotate: true
+  xy: 891, 150
+  size: 74, 222
+  orig: 74, 222
+  offset: 0, 0
+  index: -1
+左小腿
+  rotate: true
+  xy: 479, 5
+  size: 80, 288
+  orig: 81, 289
+  offset: 1, 0
+  index: -1
+左掌
+  rotate: false
+  xy: 1063, 88
+  size: 36, 60
+  orig: 37, 61
+  offset: 0, 0
+  index: -1
+左龜殼草
+  rotate: false
+  xy: 1115, 136
+  size: 66, 129
+  orig: 66, 130
+  offset: 0, 0
+  index: -1
+後髮
+  rotate: false
+  xy: 1629, 832
+  size: 318, 168
+  orig: 318, 168
+  offset: 0, 0
+  index: -1
+披風上
+  rotate: false
+  xy: 1210, 482
+  size: 143, 48
+  orig: 143, 48
+  offset: 0, 0
+  index: -1
+披風右
+  rotate: false
+  xy: 1210, 532
+  size: 260, 468
+  orig: 260, 468
+  offset: 0, 0
+  index: -1
+披風左
+  rotate: false
+  xy: 912, 519
+  size: 296, 481
+  orig: 297, 481
+  offset: 0, 0
+  index: -1
+披風後
+  rotate: true
+  xy: 2, 2
+  size: 350, 475
+  orig: 350, 475
+  offset: 0, 0
+  index: -1
+攻擊表情
+  rotate: true
+  xy: 1842, 688
+  size: 142, 116
+  orig: 143, 116
+  offset: 1, 0
+  index: -1
+正常表情
+  rotate: false
+  xy: 1472, 532
+  size: 142, 120
+  orig: 143, 120
+  offset: 1, 0
+  index: -1
+瀏海
+  rotate: false
+  xy: 912, 302
+  size: 221, 134
+  orig: 221, 135
+  offset: 0, 1
+  index: -1
+蝴蝶翅膀上
+  rotate: false
+  xy: 1355, 472
+  size: 64, 58
+  orig: 64, 58
+  offset: 0, 0
+  index: -1
+蝴蝶翅膀下
+  rotate: false
+  xy: 1421, 488
+  size: 48, 42
+  orig: 48, 42
+  offset: 0, 0
+  index: -1
+被打表情
+  rotate: true
+  xy: 1748, 524
+  size: 120, 116
+  orig: 120, 116
+  offset: 0, 0
+  index: -1
+身體
+  rotate: false
+  xy: 1472, 654
+  size: 155, 346
+  orig: 155, 346
+  offset: 0, 0
+  index: -1
+閉眼表情
+  rotate: false
+  xy: 1616, 524
+  size: 130, 120
+  orig: 130, 120
+  offset: 0, 0
+  index: -1
+頭
+  rotate: false
+  xy: 1629, 646
+  size: 211, 184
+  orig: 211, 184
+  offset: 0, 0
+  index: -1
+龜殼
+  rotate: false
+  xy: 479, 87
+  size: 410, 265
+  orig: 410, 265
+  offset: 0, 0
+  index: -1
