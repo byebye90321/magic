@@ -151,7 +151,7 @@ public class DG_EnemyController : MonoBehaviour{
 		StartCoroutine("wait");
 	}
 
-	IEnumerator SkillG2()  //被技能G2攻擊
+	/*IEnumerator SkillG2()  //被技能G2攻擊
 	{
 		yield return new WaitForSeconds(.3f);
 		TakeDamage(gesture.skillG2.skillInfo.Atk);
@@ -159,7 +159,7 @@ public class DG_EnemyController : MonoBehaviour{
 		enemy2.state.SetAnimation(0, "death", false);
 		healthText.text = "-" + gesture.skillG2.skillInfo.Atk;
 		StartCoroutine("wait");
-	}
+	}*/
 
 	public void TakeDamage(int amount)
 	{
@@ -324,13 +324,26 @@ public class DG_EnemyController : MonoBehaviour{
 
 	IEnumerator damageActive()
 	{
-		enemy1.state.SetAnimation(0, "death", false);
-		enemy1.state.AddAnimation(0, "idle", true, 0f);
-		if(enemyInt==2)
-		{
-		enemy2.state.SetAnimation(0, "death", false);
-		enemy2.state.AddAnimation(0, "idle", true, 0f);
-		}
+        if (enemyName != "0")
+        {
+            enemy1.state.SetAnimation(0, "death", false);
+            enemy1.state.AddAnimation(0, "idle", true, 0f);
+            if (enemyInt == 2)
+            {
+                enemy2.state.SetAnimation(0, "death", false);
+                enemy2.state.AddAnimation(0, "idle", true, 0f);
+            }
+        }
+        else
+        {
+            enemy1.state.SetAnimation(0, "death", false);
+            enemy1.state.AddAnimation(0, "stun", true, 0f);
+            if (enemyInt == 2)
+            {
+                enemy2.state.SetAnimation(0, "death", false);
+                enemy2.state.AddAnimation(0, "stun", true, 0f);
+            }
+        }
 	
 		//healthAni.SetTrigger("hurtText");
 		GameObject NEWatkpreft = Instantiate(healthObj) as GameObject;

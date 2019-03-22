@@ -142,20 +142,22 @@ public class DG_playerController : MonoBehaviour
 			grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
 			animator_S.SetBool("ground", grounded);
 			if (ChapterName == "0")
-			{
 				animator_B.SetBool("ground", grounded);
-			}
 
 			if (grounded)
 			{
 				jumping = false;
 				animator_S.SetBool("isJump", jumping);
-				if (CrossPlatformInputManager.GetButtonDown("Jump")/*||Input.GetKeyDown(KeyCode.B)*/)
+                if (ChapterName == "0")
+                    animator_B.SetBool("isJump", jumping);
+                if (CrossPlatformInputManager.GetButtonDown("Jump")/*||Input.GetKeyDown(KeyCode.B)*/)
 				{
 					jumping = true;
 					rigid2D.velocity = new Vector2(0, jumpForce);
 					animator_S.SetBool("isJump", jumping);
-				}
+                    if (ChapterName == "0")
+                        animator_B.SetBool("isJump", jumping);
+                }
 			}
 
 
@@ -580,8 +582,7 @@ public class DG_playerController : MonoBehaviour
 
 
 	IEnumerator Bossbeaten()
-	{
-		
+	{	
 		if (ChapterName == "0")
 		{
 			yield return new WaitForSeconds(0.4f);

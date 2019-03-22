@@ -11883,7 +11883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: 0
-  enemyInt: 0
+  enemyInt: 2
   gesture: {fileID: 10663015}
   drawCanvas: {fileID: 193435398}
   gameManager: {fileID: 0}
@@ -13685,7 +13685,7 @@ Rigidbody2D:
   m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 4
   m_Material: {fileID: 6200000, guid: c8da966e967662843b53d3b9aea458a3, type: 2}
   m_Interpolate: 2
   m_SleepingMode: 1
@@ -25189,6 +25189,7 @@ MonoBehaviour:
     type: 2}
   blade: {fileID: 731472174}
   minCuttingVelocity: 0.001
+  isCutting: 0
   deathCount: 0
   layerMask:
     serializedVersion: 2
@@ -43244,7 +43245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 8baf9787ddf92d148a60127df611c887, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: a31418c3756a21d4d91ecd56746a923b, type: 2}
   initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
@@ -43278,7 +43279,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 763e53b7238969243ae777e829adb8b7, type: 2}
+  - {fileID: 2100000, guid: 32b920c053537384a98d660631f2d541, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

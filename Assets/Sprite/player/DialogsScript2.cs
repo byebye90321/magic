@@ -283,7 +283,8 @@ public class DialogsScript2 : MonoBehaviour
 			otherImage.color = talkNow;
 			otherImage.sprite = dida_monochrome_normal;
 			otherImageObj.SetActive(true);
-		}
+            otherImage.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
 
 		if (currentLine == 26)
 		{
@@ -300,7 +301,7 @@ public class DialogsScript2 : MonoBehaviour
 			otherImage.sprite = dida_monochrome_sad;
 		}
 
-		if (currentLine == 23 || currentLine == 89)
+		if (currentLine == 23)
 		{
 			whotalk.text = "滴答";
 			characterImage.color = untalkNow;
@@ -332,7 +333,8 @@ public class DialogsScript2 : MonoBehaviour
 			otherImage.color = talkNow;
 			otherImage.sprite = coco_monochrome_sad;
 			otherImageObj.SetActive(true);
-		}
+            otherImage.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
 
 		if (currentLine == 36)
 		{
@@ -376,7 +378,8 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.color = untalkNow;
 			otherImage.color = talkNow;
 			otherImage.sprite = dragon_monochrome_angry;
-		}
+            otherImage.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
 
 		if (currentLine == 76 || currentLine == 80 || currentLine == 82 || currentLine == 85)
 		{
@@ -395,7 +398,7 @@ public class DialogsScript2 : MonoBehaviour
 			otherImage.sprite = dragon_monochrome_normal;
 		}
 
-		if (currentLine == 86)
+        if (currentLine == 86)
 		{
 			DisableTextBox();
 			clock.SetActive(true);
@@ -410,14 +413,25 @@ public class DialogsScript2 : MonoBehaviour
 			otherImageObj.SetActive(false);
 		}
 
-		if (currentLine == 91)
+        if (currentLine == 89)
+        {
+            whotalk.text = "滴答";
+            characterImage.color = talkNow;
+            otherImage.color = untalkNow;
+            characterImage.sprite = dida_monochrome_smile;
+            otherImageObj.SetActive(false);
+            characterImage.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
+
+        if (currentLine == 91)
 		{
 			whotalk.text = playerName;
-			characterImage.color = talkNow;
-			otherImage.color = untalkNow;
-			characterImage.sprite = sister_smile;
+			characterImage.color = untalkNow;
+			otherImage.color = talkNow;
+            otherImage.sprite = sister_smile;
 			otherImageObj.SetActive(true);
-		}
+            otherImage.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
 
 		if (currentLine == 92 ||currentLine==96)
 		{
@@ -440,7 +454,8 @@ public class DialogsScript2 : MonoBehaviour
 			otherImage.color = untalkNow;
 			characterImage.sprite = mirror;
 			otherImageObj.SetActive(false);
-		}
+            otherImage.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
 
 		if (currentLine == 98)
 		{
@@ -449,7 +464,8 @@ public class DialogsScript2 : MonoBehaviour
 			otherImage.color = talkNow;
 			otherImage.sprite = sister_normal;
 			otherImageObj.SetActive(true);
-		}
+            otherImage.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
 
 		if (currentLine == 100)
 		{
