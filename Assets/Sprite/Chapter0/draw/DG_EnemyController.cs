@@ -47,7 +47,7 @@ public class DG_EnemyController : MonoBehaviour{
 
 	public Animator Kattack;
 	//--------------音效
-	public AudioSource audio;
+	public new AudioSource audio;
 	public AudioClip AtkSound;
 
 	//-------------Particle System-----------------

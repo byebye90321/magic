@@ -133,7 +133,7 @@ public class DialogsScript2 : MonoBehaviour
 	public GameObject attackColliderBorder;
 
 	//----------------audio----------------------
-	public AudioSource audio;
+	public new AudioSource audio;
     public AudioClip cheer;
     public AudioClip quarrel;
     //-----------------其他---------------------

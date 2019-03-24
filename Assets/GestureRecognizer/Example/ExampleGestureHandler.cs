@@ -58,7 +58,7 @@ public class ExampleGestureHandler : MonoBehaviour
 	[HideInInspector]
 	public ParticleSystem B4_ParticleP;
 	//-------------Audio----------------
-	public AudioSource audio;
+	public new AudioSource audio;
 	public AudioClip G0;
 	public AudioClip G1;
 	public AudioClip G2;

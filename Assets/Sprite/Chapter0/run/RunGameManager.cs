@@ -64,7 +64,7 @@ public class RunGameManager : MonoBehaviour {
 	private Text addSubText;
 
 	//--------------音效
-	public AudioSource audio;
+	public new AudioSource audio;
 	public AudioClip countSound;
 
 	//---------------教學Next物件---------------

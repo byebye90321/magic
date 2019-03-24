@@ -4,6 +4,7 @@ using System.Collections;
 public static class StaticObject
 {
 	public static float nowClass = 0;
+    public static int whoCharacter = 0; //哥哥1，妹妹2
 	//------------------音量音效---------------------
 	public static float bgmVolume = 1f;
 	public static float sfxVolume = 1f;

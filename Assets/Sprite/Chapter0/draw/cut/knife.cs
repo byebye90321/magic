@@ -21,7 +21,7 @@ public class knife : MonoBehaviour
 	public int deathCount;
 
 	public LayerMask layerMask;
-	public AudioSource audio;
+	public new AudioSource audio;
 	public AudioClip Sound;
 
 	void Start()

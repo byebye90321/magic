@@ -12,18 +12,18 @@ using UnityStandardAssets.CrossPlatformInput;
 public class DialogsScript1 : MonoBehaviour
 {
 	//------------------------引用程式----------------------------
-	public CameraFollow cameraFollow;
+	private CameraFollow cameraFollow;
 	public DG_playerController playerController;
-	public GameManager gameManager;
-	public NPCTask npcTask;
-	public DG_EnemyController EnemyController;
-	public DG_EnemyController MonsterController;
+	private GameManager gameManager;
+    private NPCTask npcTask;
+    private DG_EnemyController EnemyController;
+    private DG_EnemyController MonsterController;
 	//--------------------------互動對話-----------------------------
-	public GameObject vine2text;
 	private int bobbyCount = 1;
 
-	//---------------------------頭貼----------------------------
-	public GameObject characterImageObj; //左邊主角對話框
+    //---------------------------頭貼----------------------------
+    public string playerName;
+    private GameObject characterImageObj; //左邊主角對話框
 	private Image characterImage;
 	public Sprite sister_angry;
 	public Sprite sister_happy;
@@ -31,7 +31,7 @@ public class DialogsScript1 : MonoBehaviour
 	public Sprite sister_oops;
 	public Sprite sister_sad;
 	public Sprite sister_smile;
-	public GameObject otherImageObj; //右邊角色對話框
+	private GameObject otherImageObj; //右邊角色對話框
 	private Image otherImage;
 	public Sprite book;
 	public Sprite bobby_rainbow_normal;
@@ -104,7 +104,7 @@ public class DialogsScript1 : MonoBehaviour
 	private BoxCollider2D monsterColliderCol;
 	public GameObject monsterColliderBorder;
 	//----------------audio----------------------
-	public AudioSource audio;
+	public new AudioSource audio;
 	//-----------------其他---------------------
 	public GameObject pause;
 	private Color talkNow = new Color(1, 1, 1, 1);
@@ -115,80 +115,87 @@ public class DialogsScript1 : MonoBehaviour
 	public GameObject vsYYJ;
 	//---------------場景保存物件----------------
 	public GameObject col; //碰撞器開關
-	//public Animator endSema; //結界動畫
-
 
 	void Start() {
-        StaticObject.nowClass = 0;
-        if (StaticObject.nowClass == 0)
-		{
-			/*Debug.Log(StaticObject.nowClass);
-			StaticObject.nowClass = 1;
-			PlayerPrefs.SetInt("StaticObject.nowClass", StaticObject.nowClass);
-			Debug.Log(StaticObject.nowClass);*/
-			//產生物件
-			currentLine = 1;
-			endAtLine = 10;
 
-			markAni = markObj.GetComponent<Animator>();
-			markCollider = markObj.GetComponent<BoxCollider2D>();
-			attackColliderCol = attackCollider.GetComponent<BoxCollider2D>();
-			monsterColliderCol = monsterCollider.GetComponent<BoxCollider2D>();
-			statueCollider = statueObj.GetComponent<BoxCollider2D>();
-			vine3Collider = vine3.GetComponent<BoxCollider2D>();
-			mark2Collider = mark2Obj.GetComponent<BoxCollider2D>();
-			mark2Ani = mark2Obj.GetComponent<Animator>();
-			/*StaticObject.sister = 1; //妹妹解鎖
-			PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);*/
-			StaticObject.book = 1; //魔法日報解鎖
-			PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);
-            StaticObject.chacha = 1; //chacha解鎖
-            PlayerPrefs.SetInt("StaticObject.chacha", StaticObject.chacha);
+        StaticObject.nowClass = 0;     
+        if (StaticObject.nowClass == 0) //目前第一關(初始)
+        {       
+            //產生物件
+            currentLine = 1;
+            endAtLine = 10;
+
+            if (StaticObject.whoCharacter == 0)
+            {
+                TextAsset textFile1 = Resources.Load("Text/bother") as TextAsset;
+                textFile = textFile1;
+                playerName = "卡特";
+            }
+            else if (StaticObject.whoCharacter == 1)
+            {
+                TextAsset textFile1 = Resources.Load("Text/sister") as TextAsset;
+                textFile = textFile1;
+                playerName = "緹緹";
+            }
+
+            cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
+            gameManager = GameObject.Find("GameController").GetComponent<GameManager>();
+            npcTask = GameObject.Find("NPC").GetComponent<NPCTask>();
+            EnemyController = GameObject.Find("BossEnemy").GetComponent<DG_EnemyController>();
+            MonsterController = GameObject.Find("MonsterEnemy").GetComponent<DG_EnemyController>();
+            characterImageObj = GameObject.Find("characterImage");
+            characterImage = characterImageObj.GetComponent<Image>();
+            otherImageObj = GameObject.Find("otherImage");
+            otherImage = otherImageObj.GetComponent<Image>();
+
+
+            markAni = markObj.GetComponent<Animator>();
+            markCollider = markObj.GetComponent<BoxCollider2D>();
+            attackColliderCol = attackCollider.GetComponent<BoxCollider2D>();
+            monsterColliderCol = monsterCollider.GetComponent<BoxCollider2D>();
+            statueCollider = statueObj.GetComponent<BoxCollider2D>();
+            vine3Collider = vine3.GetComponent<BoxCollider2D>();
+            mark2Collider = mark2Obj.GetComponent<BoxCollider2D>();
+            mark2Ani = mark2Obj.GetComponent<Animator>();
 
             if (currentLine > endAtLine)
-			{
-				isActive = false;
-				textBox.SetActive(false);
-				GameEnd = false;
-			}
-			if (textFile != null)
-				textLines = (textFile.text.Split('\n'));
-			if (endAtLine == 0)
-				endAtLine = textLines.Length - 1;
-			if (isActive)
-				EnableTextBox();
-			else
-			{
-				DisableTextBox();
-			}
+            {
+                isActive = false;
+                textBox.SetActive(false);
+                GameEnd = false;
+            }
+            if (textFile != null)
+                textLines = (textFile.text.Split('\n'));
+            if (endAtLine == 0)
+                endAtLine = textLines.Length - 1;
+
+            if (isActive)
+                EnableTextBox();
+            else
+            {
+                DisableTextBox();
+            }
+
             StaticObject.nowClass = 1f;
             PlayerPrefs.SetFloat("StaticObject.nowClass", StaticObject.nowClass);
 
-        }
-		else 
-		{
-			/*gameObject.transform.position = new Vector2(53.4f,6.4f);
-			col.SetActive(false);*/
+            }
+            else 
+            {
 
+            }
 
-
-		}
-
-		//usually.TransitionTo(10f);
-		fadeOut = FadeOut.GetComponent<Animator>();
-		characterImage = characterImageObj.GetComponent<Image>();
-		otherImage = otherImageObj.GetComponent<Image>();
-		
-		
-		StartCoroutine("fadeIn");
-
-		
+            //usually.TransitionTo(10f);
+            fadeOut = FadeOut.GetComponent<Animator>();
+		    
+		    		
+		    StartCoroutine("fadeIn");	
 	}
 
 	IEnumerator fadeIn()
 	{
 		FadeIn.SetActive(true);
-		fadeOut.SetBool("FadeOut", true);
+		//fadeOut.SetBool("FadeOut", true);
 		yield return new WaitForSeconds(2f);
 		FadeIn.SetActive(false);
 	}
@@ -220,14 +227,14 @@ public class DialogsScript1 : MonoBehaviour
 
 		if (currentLine == 1 || currentLine == 2 || currentLine == 8 || currentLine == 15 || currentLine == 38 || currentLine == 40)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_oops;
 		}
 		if (currentLine == 3 || currentLine == 12)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_normal;
@@ -242,7 +249,7 @@ public class DialogsScript1 : MonoBehaviour
 		}
 		if (currentLine == 5 || currentLine == 6 || currentLine == 7)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_angry;
@@ -268,7 +275,7 @@ public class DialogsScript1 : MonoBehaviour
 		if (currentLine == 11)
 		{
 			otherImageObj.SetActive(true);
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_happy;
@@ -283,7 +290,7 @@ public class DialogsScript1 : MonoBehaviour
 		}
 		if (currentLine == 20)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImageObj.SetActive(false);
 			characterImage.sprite = sister_angry;
@@ -309,7 +316,7 @@ public class DialogsScript1 : MonoBehaviour
 
 		if (currentLine == 22)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			characterImage.sprite = sister_sad;
 			otherImageObj.SetActive(false);
@@ -317,7 +324,7 @@ public class DialogsScript1 : MonoBehaviour
 
 		if (currentLine == 24 || currentLine == 26 || currentLine == 45 || currentLine == 52)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_oops;
@@ -337,7 +344,7 @@ public class DialogsScript1 : MonoBehaviour
 
 		if (currentLine == 29 || currentLine == 51)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_angry;
@@ -353,7 +360,7 @@ public class DialogsScript1 : MonoBehaviour
 
 		if (currentLine == 33)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_angry;
@@ -380,7 +387,7 @@ public class DialogsScript1 : MonoBehaviour
 
 		if (currentLine == 36)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_sad;
@@ -405,7 +412,7 @@ public class DialogsScript1 : MonoBehaviour
 
 		if (currentLine == 41)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_smile;
@@ -420,7 +427,7 @@ public class DialogsScript1 : MonoBehaviour
 		if (currentLine == 43)
 		{
 			otherImageObj.SetActive(false);
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_happy;
@@ -482,7 +489,7 @@ public class DialogsScript1 : MonoBehaviour
 
 		if (currentLine == 57)  
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_oops;
@@ -491,7 +498,7 @@ public class DialogsScript1 : MonoBehaviour
 
 		if (currentLine == 59)  
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_angry;
@@ -500,7 +507,7 @@ public class DialogsScript1 : MonoBehaviour
 
 		if(currentLine == 61)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_oops;
@@ -570,7 +577,7 @@ public class DialogsScript1 : MonoBehaviour
 		if (currentLine == 76)
 		{
 			otherImageObj.SetActive(false);
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_angry;
@@ -578,7 +585,7 @@ public class DialogsScript1 : MonoBehaviour
 
 		if (currentLine == 81)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_angry;
@@ -610,7 +617,7 @@ public class DialogsScript1 : MonoBehaviour
 		}
 		if (currentLine == 85)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_angry;
@@ -631,7 +638,7 @@ public class DialogsScript1 : MonoBehaviour
 		}
 		if (currentLine == 88)
 		{
-			whotalk.text = "緹緹";
+			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_happy;

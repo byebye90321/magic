@@ -30,8 +30,8 @@ public class DG_GameManager : MonoBehaviour {
 	public Image sliderimage;
 	public float balanceValue;
 	public float spendTime;
-	float r1 = 0.7372549f, g1 = 0.2078431f, b1 = 0.5568628f;  //原平衡條桃色
-	float r2 = 0.7372549f, g2 = 0.2078431f, b2 = 0.3071967f;  //殘血後平衡條色
+	//float r1 = 0.7372549f, g1 = 0.2078431f, b1 = 0.5568628f;  //原平衡條桃色
+	//float r2 = 0.7372549f, g2 = 0.2078431f, b2 = 0.3071967f;  //殘血後平衡條色
 	public Text balanceText;
 
 	public static DG_GameManager Instance;
@@ -50,7 +50,7 @@ public class DG_GameManager : MonoBehaviour {
 	public bool isRun = false;
 
 	//--------------------音效---------------------
-	public AudioSource audio;
+	public new AudioSource audio;
 	public AudioClip runSound;
 	public AudioClip warningSound;
 

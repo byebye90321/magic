@@ -105,7 +105,7 @@ public class NPCTask : MonoBehaviour {
 
 
     //--------------Audio---------------
-    public AudioSource audio;
+    public new AudioSource audio;
 	public AudioClip stoneWin;
 	public AudioClip stoneLose;
 	// Use this for initialization
@@ -185,20 +185,24 @@ public class NPCTask : MonoBehaviour {
         //-------------------------森林機關-----------------------
         if (ChapterName == "1")
         {
-            if (slot1.isRight && slot2.isRight && slot3.isRight && slot4.isRight && slot5.isRight) //完成的時候
+            if (ActivePickUp.PickUpInt == 5)
             {
-                StoneParticle1.SetActive(true);
-                StoneParticle2.SetActive(true);
-                StoneParticle3.SetActive(true);
-                StoneParticle4.SetActive(true);
-                StoneParticle5.SetActive(true);
-                StartCoroutine("waitClose");
-            }
-            if (slot1.full && slot2.full && slot3.full && slot4.full && slot5.full)
-            {
-                if (!slot1.isRight || !slot2.isRight || !slot3.isRight || !slot4.isRight || !slot5.isRight)
+                if (slot1.isRight && slot2.isRight && slot3.isRight && slot4.isRight && slot5.isRight) //完成的時候
                 {
-                    StartCoroutine("StoneWrong");
+                    StoneParticle1.SetActive(true);
+                    StoneParticle2.SetActive(true);
+                    StoneParticle3.SetActive(true);
+                    StoneParticle4.SetActive(true);
+                    StoneParticle5.SetActive(true);
+                    Debug.Log("7");
+                    StartCoroutine("waitClose");
+                }
+                if (slot1.full && slot2.full && slot3.full && slot4.full && slot5.full)
+                {
+                    if (!slot1.isRight || !slot2.isRight || !slot3.isRight || !slot4.isRight || !slot5.isRight)
+                    {
+                        StartCoroutine("StoneWrong");
+                    }
                 }
             }
         }
@@ -728,7 +732,8 @@ public class NPCTask : MonoBehaviour {
 
 	IEnumerator waitClose()  //關閉石陣機關
 	{
-		if (!audio.isPlaying)
+        ActivePickUp.PickUpInt = 0;
+        if (!audio.isPlaying || StoneCanvas!=null)
 		{
 			audio.PlayOneShot(stoneWin);
 		}
@@ -741,8 +746,10 @@ public class NPCTask : MonoBehaviour {
 		yield return new WaitForSeconds(.3f);
 		cameraFollow.isFollowTarget = false;
 		cameraFollow.moveCount = 2;
-		slot1.isRight = false;  //防止循環
-	}
+		//slot1.isRight = false;  //防止循環
+        
+
+    }
 
 	IEnumerator StoneWrong()  //石鎮錯誤
 	{
@@ -760,15 +767,21 @@ public class NPCTask : MonoBehaviour {
 		}
 		yield return new WaitForSeconds(0.1f);
 		slot1.gameObject.transform.position = slot1.startPosition;
-		slot1.gameObject.transform.parent = slot1.startParent;
-		slot2.gameObject.transform.position = slot2.startPosition;
-		slot2.gameObject.transform.parent = slot2.startParent;
-		slot3.gameObject.transform.position = slot3.startPosition;
-		slot3.gameObject.transform.parent = slot3.startParent;
-		slot4.gameObject.transform.position = slot4.startPosition;
-		slot4.gameObject.transform.parent = slot4.startParent;
-		slot5.gameObject.transform.position = slot5.startPosition;
-		slot5.gameObject.transform.parent = slot5.startParent;
+		//slot1.gameObject.transform.parent = slot1.startParent;
+        slot1.transform.SetParent(slot1.startParent);
+        slot2.gameObject.transform.position = slot2.startPosition;
+		//slot2.gameObject.transform.parent = slot2.startParent;
+        slot2.transform.SetParent(slot2.startParent);
+        slot3.gameObject.transform.position = slot3.startPosition;
+        //slot3.gameObject.transform.parent = slot3.startParent;
+        slot3.transform.SetParent(slot3.startParent);
+        slot4.gameObject.transform.position = slot4.startPosition;
+        //slot4.gameObject.transform.parent = slot4.startParent;
+        slot4.transform.SetParent(slot4.startParent);
+        slot5.gameObject.transform.position = slot5.startPosition;
+        slot5.transform.SetParent(slot5.startParent);
+        //slot5.gameObject.transform.parent = slot5.startParent;
+        Debug.Log("8");
 	}
 	
 	public void Close()  //石鎮解謎關閉

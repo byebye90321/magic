@@ -66,7 +66,7 @@ public class DG_playerController : MonoBehaviour
 	public Transform attackParticle;
 	public GameObject W1_beaten;
 	//------------------Audio--------------------
-	public AudioSource audio;
+	public new AudioSource audio;
 	public AudioClip pickUp;
 
 	public Vector2 player;

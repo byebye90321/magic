@@ -6,7 +6,7 @@ public class Hurt : MonoBehaviour {
 	public static Hurt hurt;
 
 	//--------------音效
-	public AudioSource audio;
+	public new AudioSource audio;
 	public AudioClip hurtSound;
 	void Start () {
 		hurt = this;

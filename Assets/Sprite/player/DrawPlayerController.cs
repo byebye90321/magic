@@ -39,7 +39,7 @@ public class DrawPlayerController : MonoBehaviour {
 	public CardCD card4;*/
 	//private CardInfo cardInfo;
 	public CardData cardData;
-	float r = 0.38f, g = 0.38f, b = 0.38f, a = 1f;
+	//float r = 0.38f, g = 0.38f, b = 0.38f, a = 1f;
 	public Text curCD;
 
 	public int index = 1;
@@ -48,7 +48,7 @@ public class DrawPlayerController : MonoBehaviour {
 	public int cardindex3=1;
 	public int cardindex4=1;
 	//--------------音效
-	public AudioSource audio;
+	public new AudioSource audio;
 	public AudioClip atkSound;
 
 

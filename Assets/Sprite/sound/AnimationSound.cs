@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AnimationSound : MonoBehaviour {
 
-	public AudioSource audio;
+	public new AudioSource audio;
 	public AudioClip Sound;
 	public GameObject player;
 

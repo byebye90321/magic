@@ -29,7 +29,7 @@ public class BookInteract : MonoBehaviour
 	public GameObject Bookintercat;
 	public GameObject skill;
 
-	public AudioSource audio;
+	public new AudioSource audio;
 	public AudioClip kiss;
 	public AudioClip sword;
 

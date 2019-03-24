@@ -49,7 +49,7 @@ public class RG_playerController : MonoBehaviour
 	public float RecoverySpeed;
 	public Animator flash;
 	//---------------------------音效-----------------------------
-	public AudioSource audio;
+	public new AudioSource audio;
 	public AudioClip hurtSound;
 	//-------------------------animator---------------------------
 	public Animator sister;
