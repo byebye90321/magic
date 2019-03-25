@@ -21,8 +21,12 @@ public class DG_playerController : MonoBehaviour
 	private ActivePickUp activePickUp;
 	[HideInInspector]
 	public NpcTalk npcTalk;
-	//------------playerControl----------------------
-	public Rigidbody2D rigid2D;
+    //------------playerControl----------------------
+    public GameObject playerS; //角色-妹妹
+    public GameObject playerB; //角色-哥哥
+    public GameObject playerInsPoint; //角色生成位置
+
+    public Rigidbody2D rigid2D;
 	public Transform graphics;
 	public float speed = 3.0f;
 
@@ -33,8 +37,8 @@ public class DG_playerController : MonoBehaviour
 	public float jumpForce = 12f;
 	public bool jumping = false; //是否可跳
 	public bool isActive = true;  //是否可移動、跳躍
-	//--------------SpineAnimation----------------
-	public Animator animator_S;
+    //--------------Animation----------------
+    public Animator animator_S;
 	public Animator animator_B;
 
 	public SkeletonAnimation SpineSister;
@@ -90,7 +94,25 @@ public class DG_playerController : MonoBehaviour
 			activePickUp = GameObject.Find("Card").GetComponent<ActivePickUp>(); //防錯誤 拾取物品
 			ActivePickUp.PickUpInt = 0;
 		}
-	}
+
+        StaticObject.whoCharacter = 2;
+        if (StaticObject.whoCharacter == 1) //哥哥
+        {
+            GameObject playB = Instantiate(playerB) as GameObject;
+            playB.transform.SetParent(playerInsPoint.transform, false);
+        }
+        else if(StaticObject.whoCharacter == 2)
+        {
+            
+
+            GameObject playS = Instantiate(playerS) as GameObject;
+            playS.transform.SetParent(playerInsPoint.transform, false);
+            playS = GameObject.FindWithTag("Player");
+            animator_S = playS.GetComponent<Animator>();
+        }
+
+        
+    }
 
 	public void Update() {
 		//----------health------------
@@ -256,7 +278,6 @@ public class DG_playerController : MonoBehaviour
 					rigid2D.position = activeClimb.targetPoint;
 					animator_S.SetBool("climb", false);
 					activeClimb.isClimb = false;
-					Debug.Log("456");
 				}
 			}
 		}

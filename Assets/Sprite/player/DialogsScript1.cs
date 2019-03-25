@@ -23,7 +23,7 @@ public class DialogsScript1 : MonoBehaviour
 
     //---------------------------頭貼----------------------------
     public string playerName;
-    private GameObject characterImageObj; //左邊主角對話框
+    public GameObject characterImageObj; //左邊主角對話框
 	private Image characterImage;
 	public Sprite sister_angry;
 	public Sprite sister_happy;
@@ -31,7 +31,7 @@ public class DialogsScript1 : MonoBehaviour
 	public Sprite sister_oops;
 	public Sprite sister_sad;
 	public Sprite sister_smile;
-	private GameObject otherImageObj; //右邊角色對話框
+	public GameObject otherImageObj; //右邊角色對話框
 	private Image otherImage;
 	public Sprite book;
 	public Sprite bobby_rainbow_normal;
@@ -125,6 +125,7 @@ public class DialogsScript1 : MonoBehaviour
             currentLine = 1;
             endAtLine = 10;
 
+            StaticObject.whoCharacter = 1;
             if (StaticObject.whoCharacter == 0)
             {
                 TextAsset textFile1 = Resources.Load("Text/bother") as TextAsset;
@@ -143,9 +144,7 @@ public class DialogsScript1 : MonoBehaviour
             npcTask = GameObject.Find("NPC").GetComponent<NPCTask>();
             EnemyController = GameObject.Find("BossEnemy").GetComponent<DG_EnemyController>();
             MonsterController = GameObject.Find("MonsterEnemy").GetComponent<DG_EnemyController>();
-            characterImageObj = GameObject.Find("characterImage");
             characterImage = characterImageObj.GetComponent<Image>();
-            otherImageObj = GameObject.Find("otherImage");
             otherImage = otherImageObj.GetComponent<Image>();
 
 
