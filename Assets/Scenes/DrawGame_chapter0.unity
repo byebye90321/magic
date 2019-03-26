@@ -13735,6 +13735,9 @@ MonoBehaviour:
   dialogsScript2: {fileID: 0}
   gesture: {fileID: 10663015}
   npcTalk: {fileID: 0}
+  playerS: {fileID: 1165273360470102, guid: 92a96a0b1542a214ba0072e1f9cf3747, type: 2}
+  playerB: {fileID: 1484152249127560, guid: 000dbda8238bc7e4c8596a846272b44c, type: 2}
+  playerInsPoint: {fileID: 462784790}
   rigid2D: {fileID: 462784792}
   graphics: {fileID: 462784791}
   speed: 5

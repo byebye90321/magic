@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CharacterToggle : MonoBehaviour
 {
-
+    public string ChapterName;
 	public Toggle bother;
 	public Toggle sister;
 	public GameObject botherText;
@@ -15,28 +15,40 @@ public class CharacterToggle : MonoBehaviour
 	public GameObject light2;
 	public GameObject fadeIn;
 
-	// Use this for initialization
+    //關卡選擇
+    public Button Chapter1;
+    public Button Chapter2;
+
+
 	void Start()
 	{
-		bother = bother.GetComponent<Toggle>();
-		sister = sister.GetComponent<Toggle>();
-		StartCoroutine("FadeIn");
+        bother = bother.GetComponent<Toggle>();
+        sister = sister.GetComponent<Toggle>();
+        if (ChapterName == "characterChoose")
+        {
+            StartCoroutine("FadeIn");
+            StaticObject.sister = 1; //妹妹解鎖
+            PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);
+            StaticObject.bother = 1; //哥哥解鎖
+            PlayerPrefs.SetInt("StaticObject.bother", StaticObject.bother);
+            StaticObject.hikari = 1; //追光者解鎖
+            PlayerPrefs.SetInt("StaticObject.hikari", StaticObject.hikari);
+        }
+        else  //關卡選擇
+        {
+            classSister();
+        }
 
-        StaticObject.sister = 1; //妹妹解鎖
-        PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);
-        StaticObject.bother = 1; //哥哥解鎖
-        PlayerPrefs.SetInt("StaticObject.bother", StaticObject.bother);
-        StaticObject.hikari = 1; //追光者解鎖
-        PlayerPrefs.SetInt("StaticObject.hikari", StaticObject.hikari);
     }
 
 	public void bortherClick()
 	{
 		botherText.SetActive(true);
 		sisterText.SetActive(false);
-		OKBtn.SetActive(false); //確定鍵
 		light1.SetActive(true);
 		light2.SetActive(false);
+        StaticObject.whoCharacter = 1;
+        PlayerPrefs.SetInt("StaticObject.whoCharacter", StaticObject.whoCharacter);
 	}
 	public void sisterClick()
 	{
@@ -45,13 +57,28 @@ public class CharacterToggle : MonoBehaviour
 		OKBtn.SetActive(true);
 		light2.SetActive(true);
 		light1.SetActive(false);
-	}
+        StaticObject.whoCharacter = 2;
+        PlayerPrefs.SetInt("StaticObject.whoCharacter", StaticObject.whoCharacter);
+    }
 
 	IEnumerator FadeIn() {
 		yield return new WaitForSeconds(1);
 		fadeIn.SetActive(false);
 
 	}
+
+    //--------------------選關處用(選擇關卡)-------------------
+    public void classBorther()
+    {
+        StaticObject.whoCharacter = 1;
+        PlayerPrefs.SetInt("StaticObject.whoCharacter", StaticObject.whoCharacter);
+    }
+
+    public void classSister()
+    {
+        StaticObject.whoCharacter = 2;
+        PlayerPrefs.SetInt("StaticObject.whoCharacter", StaticObject.whoCharacter);
+    }
 
 
 }

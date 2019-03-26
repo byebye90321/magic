@@ -11,13 +11,13 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class DialogsScript2 : MonoBehaviour
 {
-	//------------------------引用程式----------------------------
-	public CameraFollow cameraFollow;
+    //------------------------引用程式----------------------------
+    private CameraFollow cameraFollow;
 	public DG_playerController playerController;
-	public GameManager gameManager;
-	public NPCTask npcTask;
-	public DG_EnemyController EnemyController;
-	public ExampleGestureHandler gesture;
+    private GameManager gameManager;
+    private NPCTask npcTask;
+    private DG_EnemyController EnemyController;
+    public ExampleGestureHandler gesture;
 
 	//---------------------------頭貼----------------------------
 	public string playerName;
@@ -144,21 +144,43 @@ public class DialogsScript2 : MonoBehaviour
 	//-----------------vs
 	public GameObject vsYYK;
 
-	void Start() {
+    void Awake()
+    {
+        cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
+        gameManager = GameObject.Find("GameController").GetComponent<GameManager>();
+        npcTask = GameObject.Find("NPC").GetComponent<NPCTask>();
+        characterImage = characterImageObj.GetComponent<Image>();
+        otherImage = otherImageObj.GetComponent<Image>();
+    }
 
-		//usually.TransitionTo(10f);
-		fadeOut = FadeOut.GetComponent<Animator>();
-		characterImage = characterImageObj.GetComponent<Image>();
-		otherImage = otherImageObj.GetComponent<Image>();
-		/*StaticObject.sister = 1; //妹妹解鎖
-		PlayerPrefs.SetInt("StaticObject.sister", StaticObject.sister);
-		StaticObject.book = 1; //魔法日報解鎖
-		PlayerPrefs.SetInt("StaticObject.book", StaticObject.book);*/
+	void Start() {
+        
+        //StaticObject.whoCharacter = 2;
+        if (StaticObject.whoCharacter == 1)
+        {
+            TextAsset textFile1 = Resources.Load("Text/bother2") as TextAsset;
+            textFile = textFile1;
+            playerName = "卡特";
+        }
+        else if (StaticObject.whoCharacter == 2)
+        {
+            TextAsset textFile1 = Resources.Load("Text/sister2") as TextAsset;
+            textFile = textFile1;
+            playerName = "緹緹";
+        }
+
+        currentLine = 1;
+        endAtLine = 4;
+
+        
+
+        fadeOut = FadeOut.GetComponent<Animator>();
+		
 		cardAni = card.GetComponent<Animator>();
 		AudienceTalkAni1 = AudienceTalk1.GetComponent<Animator>();
 		AudienceTalkAni2 = AudienceTalk2.GetComponent<Animator>();
-		currentLine = 1;
-		endAtLine = 4;
+
+        
 		StartCoroutine("fadeIn");
 
 		if (currentLine > endAtLine)
@@ -905,8 +927,9 @@ public class DialogsScript2 : MonoBehaviour
 	}
 
 	IEnumerator BeforeKBattle()
-	{		
-		playerAddParticle.SetActive(true);
+	{
+        EnemyController = GameObject.Find("BossEnemy").GetComponent<DG_EnemyController>();
+        playerAddParticle.SetActive(true);
 		addText.SetActive(true);
         UpText.SetActive(true);
         yield return new WaitForSeconds(3);

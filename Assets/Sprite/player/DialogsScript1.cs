@@ -125,14 +125,14 @@ public class DialogsScript1 : MonoBehaviour
             currentLine = 1;
             endAtLine = 10;
 
-            StaticObject.whoCharacter = 1;
-            if (StaticObject.whoCharacter == 0)
+            //StaticObject.whoCharacter = 1;
+            if (StaticObject.whoCharacter == 1)
             {
                 TextAsset textFile1 = Resources.Load("Text/bother") as TextAsset;
                 textFile = textFile1;
                 playerName = "卡特";
             }
-            else if (StaticObject.whoCharacter == 1)
+            else if (StaticObject.whoCharacter == 2)
             {
                 TextAsset textFile1 = Resources.Load("Text/sister") as TextAsset;
                 textFile = textFile1;

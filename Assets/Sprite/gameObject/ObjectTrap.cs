@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ObjectTrap : MonoBehaviour {
 
 	public DG_playerController playerController;
-	public Animator characterAni;
+    public Animator characterAni;
 	//public Animator healthAni;
 	private Text healthText;
 	public Animator flash;
@@ -14,6 +14,26 @@ public class ObjectTrap : MonoBehaviour {
 	public GameObject canvas;
 
 	public int damageInt;
+
+    public void Start()
+    {
+        if (playerController.ChapterName == "0")
+        {
+            
+        }
+
+        //StaticObject.whoCharacter = 1;
+        if (StaticObject.whoCharacter == 1)
+        {
+            GameObject playB = GameObject.FindWithTag("Player");
+            characterAni = playB.GetComponent<Animator>();
+        }
+        else if (StaticObject.whoCharacter == 2)
+        {
+            GameObject playS = GameObject.FindWithTag("Player");
+            characterAni = playS.GetComponent<Animator>();
+        }
+    }
 
 	void OnTriggerEnter2D(Collider2D col)
 	{

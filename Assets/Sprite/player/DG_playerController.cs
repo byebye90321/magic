@@ -78,12 +78,39 @@ public class DG_playerController : MonoBehaviour
 	public int pickUpInt = 1;
 	public Image climb;
 
+    void Awake()
+    {
+        //StaticObject.whoCharacter = 1;
+        if (ChapterName != "0")
+        {
+            //StaticObject.whoCharacter = 2;
+            if (StaticObject.whoCharacter == 1) //哥哥
+            {
+                GameObject playS = Instantiate(playerB) as GameObject;
+                playS.transform.SetParent(playerInsPoint.transform, false);
+                playS = GameObject.FindWithTag("Player");
+                animator_S = playS.GetComponent<Animator>();
+                SpineSister = playS.GetComponent<SkeletonAnimation>();
+                healthCanvas.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
+            }
+            else if (StaticObject.whoCharacter == 2) //妹妹
+            {
+                GameObject playS = Instantiate(playerS) as GameObject;
+                playS.transform.SetParent(playerInsPoint.transform, false);
+                playS = GameObject.FindWithTag("Player");
+                animator_S = playS.GetComponent<Animator>();
+                SpineSister = playS.GetComponent<SkeletonAnimation>();
+                healthCanvas.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -0.86f, 0);
+            }
+        }
+    }
+
 	void Start()
 	{
 		rigid2D.velocity = new Vector2(0, 0f);		
 		healthCanvas = playerHealth.GetComponent<Transform>();
 
-		if (ChapterName == "1")
+        if (ChapterName == "1")
 		{
 			activeClimb = GameObject.Find("vine1").GetComponent<ActiveClimb>();  //防錯誤 爬藤蔓
 			activePickUp = GameObject.Find("stone1").GetComponent<ActivePickUp>(); //防錯誤 拾取物品
@@ -94,24 +121,7 @@ public class DG_playerController : MonoBehaviour
 			activePickUp = GameObject.Find("Card").GetComponent<ActivePickUp>(); //防錯誤 拾取物品
 			ActivePickUp.PickUpInt = 0;
 		}
-
-        StaticObject.whoCharacter = 2;
-        if (StaticObject.whoCharacter == 1) //哥哥
-        {
-            GameObject playB = Instantiate(playerB) as GameObject;
-            playB.transform.SetParent(playerInsPoint.transform, false);
-        }
-        else if(StaticObject.whoCharacter == 2)
-        {
-            
-
-            GameObject playS = Instantiate(playerS) as GameObject;
-            playS.transform.SetParent(playerInsPoint.transform, false);
-            playS = GameObject.FindWithTag("Player");
-            animator_S = playS.GetComponent<Animator>();
-        }
-
-        
+      
     }
 
 	public void Update() {
@@ -631,7 +641,7 @@ public class DG_playerController : MonoBehaviour
 	{
 		gameManager.FadeWhite.SetActive(true);
 		yield return new WaitForSeconds(0.5f);
-		rigid2D.position = new Vector2(.8f, 7.5f);
+		rigid2D.position = new Vector2(-3.32f, 2.9f);
 		yield return new WaitForSeconds(1.5f);
 		gameManager.FadeWhite.SetActive(false);
 	}
