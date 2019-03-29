@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: B3
   m_EditorClassIdentifier: 
   id: B3
-  SkillSpritebg: {fileID: 21300000, guid: 1145aff848418e84591ce2badd76e3d4, type: 3}
+  SkillSpritebg: {fileID: 21300000, guid: 290ae09fddfd92443bce1d08bd5eb51c, type: 3}
   SkillSpriteIcon: {fileID: 21300000, guid: 11e9a02074e5e064599ec87ea29c2fc8, type: 3}
   coolDown: 10
   Atk: 10

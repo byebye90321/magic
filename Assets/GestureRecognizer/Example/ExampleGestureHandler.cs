@@ -165,7 +165,7 @@ public class ExampleGestureHandler : MonoBehaviour
 		//技能2
 		if (skillG2.attack == true)
 		{
-			if (result.gesture.id == "Circle")
+			if (result.gesture.id == "G2")
 			{
 				Debug.Log("G2攻擊");
 				DG_playerController.Attack();
