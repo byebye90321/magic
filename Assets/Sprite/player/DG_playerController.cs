@@ -80,7 +80,6 @@ public class DG_playerController : MonoBehaviour
 
     void Awake()
     {
-        //StaticObject.whoCharacter = 1;
         if (ChapterName != "0")
         {
             StaticObject.whoCharacter = 2;
@@ -121,7 +120,13 @@ public class DG_playerController : MonoBehaviour
 			activePickUp = GameObject.Find("Card").GetComponent<ActivePickUp>(); //防錯誤 拾取物品
 			ActivePickUp.PickUpInt = 0;
 		}
-      
+        else if (ChapterName == "3")
+        {
+            activeClimb = GameObject.Find("ladder").GetComponent<ActiveClimb>();  //防錯誤 爬藤蔓
+            //activePickUp = GameObject.Find("Card").GetComponent<ActivePickUp>(); //防錯誤 拾取物品
+            //ActivePickUp.PickUpInt = 0;
+        }
+
     }
 
 	public void Update() {
@@ -138,7 +143,7 @@ public class DG_playerController : MonoBehaviour
 			}
 		}
 
-		if (ChapterName == "1" || ChapterName == "2")
+		if (ChapterName == "1" || ChapterName == "2" || ChapterName == "3")
 		{
 			if (curHealth < 100)
 			{
@@ -267,7 +272,7 @@ public class DG_playerController : MonoBehaviour
 			}
 		}
 		//-----------------------Climb--------------------------
-		if (ChapterName == "1" || ChapterName == "2")
+		if (ChapterName != "0")
 		{
 			if (CrossPlatformInputManager.GetButtonDown("Climb"))
 			{

@@ -458,11 +458,11 @@
      <None Include="Assets\unity-ui-extensions\Shaders\UILinearDodge.shader" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\Ghost\Shaders\Spine-Special-Skeleton-Ghost.shader" />
      <None Include="Assets\unity-ui-extensions\Shaders\UI Particle VertexLit Blended.shader" />
+     <None Include="Assets\Spine\borther\哥_72.atlas.txt" />
      <None Include="Assets\unity-ui-extensions\Shaders\UI Particle AddMultiply.shader" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\Shaders\Sprite\CGIncludes\SpriteVertexLighting.cginc" />
      <None Include="Assets\unity-ui-extensions\Shaders\UI Particle Blend.shader" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\Shaders\Sprite\CameraDepthNormalsTexture.shader" />
-     <None Include="Assets\Spine\borther\哥_72.atlas.txt" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Shaders\Spine-Skeleton-TintBlack.shader" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\Shaders\Sprite\CGIncludes\ShaderShared.cginc" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\SkeletonGraphic\Shaders\Spine-SkeletonGraphic.shader" />

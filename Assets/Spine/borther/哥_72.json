@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "VGCSQ1Mgq5LEM4EMg0esRB3fy0I", "spine": "3.6.53", "width": 849, "height": 2057 },
+"skeleton": { "hash": "DerpVaFdHng3dOA4BC4QCSXxi14", "spine": "3.6.53", "width": 849, "height": 2057 },
 "bones": [
 	{ "name": "root" },
 	{ "name": "hip", "parent": "root", "x": 1.09, "y": 891.18 },
@@ -48,10 +48,10 @@
 	{ "name": "右龜殼草", "bone": "右龜殼草", "attachment": "右龜殼草" },
 	{ "name": "左龜殼草", "bone": "左龜殼草", "attachment": "左龜殼草" },
 	{ "name": "哥_滑行", "bone": "root" },
-	{ "name": "披風右", "bone": "披風右", "attachment": "披風右" },
 	{ "name": "左上臂", "bone": "左上臂", "attachment": "左上臂" },
 	{ "name": "左下臂", "bone": "左下臂", "attachment": "左下臂" },
 	{ "name": "左掌", "bone": "左掌", "attachment": "左掌" },
+	{ "name": "披風右", "bone": "披風右", "attachment": "披風右" },
 	{ "name": "披風左", "bone": "披風左", "attachment": "披風左" },
 	{ "name": "披風上", "bone": "披風上", "attachment": "披風上" }
 ],
@@ -1306,7 +1306,7 @@
 			},
 			"左下臂": {
 				"rotate": [
-					{ "time": 0, "angle": 13.38, "curve": "stepped" },
+					{ "time": 0, "angle": 13.32 },
 					{ "time": 0.1667, "angle": 13.38 },
 					{ "time": 0.6667, "angle": 0, "curve": "stepped" },
 					{ "time": 1, "angle": 0 }
@@ -1592,7 +1592,7 @@
 			"左上臂": {
 				"rotate": [
 					{ "time": 0, "angle": 0 },
-					{ "time": 0.6667, "angle": -4.67 },
+					{ "time": 0.6667, "angle": 6.36 },
 					{ "time": 1.3333, "angle": 0 }
 				],
 				"translate": [
@@ -1623,7 +1623,7 @@
 			"右上臂": {
 				"rotate": [
 					{ "time": 0, "angle": 0 },
-					{ "time": 0.6667, "angle": 8.54 },
+					{ "time": 0.6667, "angle": 3.57 },
 					{ "time": 1.3333, "angle": 0 }
 				],
 				"translate": [
@@ -1758,7 +1758,7 @@
 			"身體": {
 				"rotate": [
 					{ "time": 0, "angle": 11.43 },
-					{ "time": 0.5, "angle": -22.7 },
+					{ "time": 0.5, "angle": -16.77 },
 					{ "time": 1, "angle": 3.11 }
 				],
 				"translate": [
@@ -2063,7 +2063,7 @@
 			"身體": {
 				"rotate": [
 					{ "time": 0, "angle": -32.03 },
-					{ "time": 0.5, "angle": 14.57 },
+					{ "time": 0.5, "angle": 4.47 },
 					{ "time": 1, "angle": -5.64 }
 				],
 				"translate": [
@@ -2486,7 +2486,7 @@
 					{ "time": 1.3333, "angle": 335.04 }
 				],
 				"translate": [
-					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0, "x": 1.65, "y": -5.9 },
 					{ "time": 1.3333, "x": 0, "y": 0 }
 				]
 			},
@@ -2553,9 +2553,9 @@
 			},
 			"披風後": {
 				"rotate": [
-					{ "time": 0, "angle": -345.71 },
-					{ "time": 0.6667, "angle": -344.74 },
-					{ "time": 1.3333, "angle": -345.71 }
+					{ "time": 0, "angle": -349.27 },
+					{ "time": 0.6667, "angle": -12.9 },
+					{ "time": 1.3333, "angle": -349.27 }
 				],
 				"translate": [
 					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
@@ -3526,7 +3526,7 @@
 			"身體": {
 				"rotate": [
 					{ "time": 0, "angle": -1.22 },
-					{ "time": 0.2667, "angle": 2.24 },
+					{ "time": 0.2667, "angle": -0.5 },
 					{ "time": 0.5, "angle": -6.31 },
 					{ "time": 0.7667, "angle": 0.3 },
 					{ "time": 1, "angle": -1.22 }

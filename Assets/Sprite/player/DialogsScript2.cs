@@ -23,14 +23,15 @@ public class DialogsScript2 : MonoBehaviour
 	public string playerName;
 	public GameObject characterImageObj; //左邊主角對話框
 	private Image characterImage;
-	public Sprite sister_angry;
-	public Sprite sister_happy;
-	public Sprite sister_normal;
-	public Sprite sister_oops;
-	public Sprite sister_sad;
-	public Sprite sister_smile;
-	public Sprite sister_monochrome_normal;
-	public GameObject otherImageObj; //右邊角色對話框
+    private Sprite sister_angry;
+    private Sprite sister_happy;
+    private Sprite sister_normal;
+    private Sprite sister_oops;
+    private Sprite sister_sad;
+    private Sprite sister_smile;
+    private Sprite sister_monochrome_normal;
+
+    public GameObject otherImageObj; //右邊角色對話框
 	private Image otherImage;
 	public Sprite book;
 	public GameObject didaObj;
@@ -115,8 +116,10 @@ public class DialogsScript2 : MonoBehaviour
 
 	public GameObject beatuySmokeObj; //變形的煙
 	public GameObject beatutMember; //選美型態的參賽者
+    //public GameObject Audience; //觀眾圖
+    public GameObject Audienc;
 
-	public GameObject secertKObj; //神秘人Obj
+    public GameObject secertKObj; //神秘人Obj
 	public GameObject KParticle; //神秘人變身particle
 	public GameObject K;
 
@@ -128,8 +131,6 @@ public class DialogsScript2 : MonoBehaviour
     public GameObject changeShineParticle;
 	//------------------Attack----------------------
 	//小BOSS
-	//public GameObject attackCollider;
-	//private BoxCollider2D attackColliderCol;
 	public GameObject attackColliderBorder;
 
 	//----------------audio----------------------
@@ -151,22 +152,39 @@ public class DialogsScript2 : MonoBehaviour
         npcTask = GameObject.Find("NPC").GetComponent<NPCTask>();
         characterImage = characterImageObj.GetComponent<Image>();
         otherImage = otherImageObj.GetComponent<Image>();
+
     }
 
 	void Start() {
-        
+
+
         //StaticObject.whoCharacter = 2;
         if (StaticObject.whoCharacter == 1)
         {
             TextAsset textFile1 = Resources.Load("Text/bother2") as TextAsset;
             textFile = textFile1;
             playerName = "卡特";
+            sister_angry = Resources.Load("characterImage/bother/bother_angry", typeof(Sprite)) as Sprite;
+            sister_happy = Resources.Load("characterImage/bother/bother_happy", typeof(Sprite)) as Sprite;
+            sister_normal = Resources.Load("characterImage/bother/bother_normal", typeof(Sprite)) as Sprite;
+            sister_oops = Resources.Load("characterImage/bother/bother_oops", typeof(Sprite)) as Sprite;
+            sister_sad = Resources.Load("characterImage/bother/bother_sad", typeof(Sprite)) as Sprite;
+            sister_smile = Resources.Load("characterImage/bother/bother_normal", typeof(Sprite)) as Sprite;
+            sister_monochrome_normal = Resources.Load("characterImage/bother/bother_monochrome_normal", typeof(Sprite)) as Sprite;
+
         }
         else if (StaticObject.whoCharacter == 2)
         {
             TextAsset textFile1 = Resources.Load("Text/sister2") as TextAsset;
             textFile = textFile1;
             playerName = "緹緹";
+            sister_angry = Resources.Load("characterImage/sister/sister_angry", typeof(Sprite)) as Sprite;
+            sister_happy = Resources.Load("characterImage/sister/sister_happy", typeof(Sprite)) as Sprite;
+            sister_normal = Resources.Load("characterImage/sister/sister_normal", typeof(Sprite)) as Sprite;
+            sister_oops = Resources.Load("characterImage/sister/sister_oops", typeof(Sprite)) as Sprite;
+            sister_sad = Resources.Load("characterImage/sister/sister_sad", typeof(Sprite)) as Sprite;
+            sister_smile = Resources.Load("characterImage/sister/sister_smile", typeof(Sprite)) as Sprite;
+            sister_monochrome_normal = Resources.Load("characterImage/sister/sister_monochrome_normal", typeof(Sprite)) as Sprite;
         }
 
         currentLine = 1;
@@ -811,6 +829,7 @@ public class DialogsScript2 : MonoBehaviour
             didaAni.state.SetAnimation(0, "idle_C", true);
             cocoAni.state.SetAnimation(0, "idle_C", true);
             dragonAni.state.SetAnimation(0, "idle_C", true);
+            Audienc.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Audience_color");
             characterImage.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 

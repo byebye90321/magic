@@ -25,12 +25,12 @@ public class DialogsScript1 : MonoBehaviour
     public string playerName;
     public GameObject characterImageObj; //左邊主角對話框
 	private Image characterImage;
-	public Sprite sister_angry;
-	public Sprite sister_happy;
-	public Sprite sister_normal;
-	public Sprite sister_oops;
-	public Sprite sister_sad;
-	public Sprite sister_smile;
+    private Sprite sister_angry;
+    private Sprite sister_happy;
+    private Sprite sister_normal;
+    private Sprite sister_oops;
+    private Sprite sister_sad;
+    private Sprite sister_smile;
 	public GameObject otherImageObj; //右邊角色對話框
 	private Image otherImage;
 	public Sprite book;
@@ -131,12 +131,24 @@ public class DialogsScript1 : MonoBehaviour
                 TextAsset textFile1 = Resources.Load("Text/bother") as TextAsset;
                 textFile = textFile1;
                 playerName = "卡特";
+                sister_angry = Resources.Load("characterImage/bother/bother_angry", typeof(Sprite)) as Sprite;
+                sister_happy = Resources.Load("characterImage/bother/bother_happy", typeof(Sprite)) as Sprite;
+                sister_normal = Resources.Load("characterImage/bother/bother_normal", typeof(Sprite)) as Sprite;
+                sister_oops = Resources.Load("characterImage/bother/bother_oops", typeof(Sprite)) as Sprite;
+                sister_sad = Resources.Load("characterImage/bother/bother_sad", typeof(Sprite)) as Sprite;
+                sister_smile = Resources.Load("characterImage/bother/bother_normal", typeof(Sprite)) as Sprite;
             }
             else if (StaticObject.whoCharacter == 2)
             {
                 TextAsset textFile1 = Resources.Load("Text/sister") as TextAsset;
                 textFile = textFile1;
                 playerName = "緹緹";
+                sister_angry = Resources.Load("characterImage/sister/sister_angry", typeof(Sprite)) as Sprite;
+                sister_happy = Resources.Load("characterImage/sister/sister_happy", typeof(Sprite)) as Sprite;
+                sister_normal = Resources.Load("characterImage/sister/sister_normal", typeof(Sprite)) as Sprite;
+                sister_oops = Resources.Load("characterImage/sister/sister_oops", typeof(Sprite)) as Sprite;
+                sister_sad = Resources.Load("characterImage/sister/sister_sad", typeof(Sprite)) as Sprite;
+                sister_smile = Resources.Load("characterImage/sister/sister_smile", typeof(Sprite)) as Sprite;
             }
 
             cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
