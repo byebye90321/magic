@@ -26,7 +26,12 @@ public class NpcTalk : MonoBehaviour {
 	public bool right;
 	public bool wrong;
 
-	void OnTriggerEnter2D(Collider2D col)
+    public void Start()
+    {
+        NPCBoxcollider = NPC.GetComponent<BoxCollider2D>();
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.gameObject.name == "Player")
 		{

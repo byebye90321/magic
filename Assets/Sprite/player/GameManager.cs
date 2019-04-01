@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour {
 	public DG_playerController playerController; //玩家腳本
 	public DialogsScript1 dialogsScript1;
 	public DialogsScript2 dialogsScript2;
-	public ExampleGestureHandler geature; //畫符腳本
+	public DialogsScript3 dialogsScript3;
+    public ExampleGestureHandler geature; //畫符腳本
 
 	public string nextSceneName;
 	//-----------------暫停物件-------------------
@@ -336,7 +337,18 @@ public class GameManager : MonoBehaviour {
         KObj.SetActive(false);
     }
 
-	public void pause()
+    //第三章
+    public IEnumerator pillarKey()
+    {
+        yield return new WaitForSeconds(1.5f);
+        dialogsScript3.Key.SetActive(true);
+        
+        yield return new WaitForSeconds(2f);      
+        cameraFollow.moveCount = 0;
+        cameraFollow.isFollowTarget = true;
+    }
+
+    public void pause()
 	{
 		black_bgImage.SetActive(true);
 		pauseMenu.SetActive(true);

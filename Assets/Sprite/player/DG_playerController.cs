@@ -15,7 +15,8 @@ public class DG_playerController : MonoBehaviour
 	public NPCTask npcTask;
 	public DialogsScript1 dialogsScript1; //正章1對話
 	public DialogsScript2 dialogsScript2; //正章2對話
-	public ExampleGestureHandler gesture;
+	public DialogsScript3 dialogsScript3; //正章2對話
+    public ExampleGestureHandler gesture;
 
 	private ActiveClimb activeClimb;
 	private ActivePickUp activePickUp;
@@ -123,8 +124,9 @@ public class DG_playerController : MonoBehaviour
         else if (ChapterName == "3")
         {
             activeClimb = GameObject.Find("ladder").GetComponent<ActiveClimb>();  //防錯誤 爬藤蔓
-            //activePickUp = GameObject.Find("Card").GetComponent<ActivePickUp>(); //防錯誤 拾取物品
-            //ActivePickUp.PickUpInt = 0;
+            activePickUp = GameObject.Find("pillar").GetComponent<ActivePickUp>(); //防錯誤 拾取物品
+            npcTalk = GameObject.Find("door_close").GetComponent<NpcTalk>();
+            ActivePickUp.PickUpInt = 0;
         }
 
     }
@@ -345,10 +347,22 @@ public class DG_playerController : MonoBehaviour
 			{
 				if (activePickUp.PickUpObjBool)  //普通拾取物品
 				{
-					activePickUp.PickUpObj.SetActive(false);
-					ActivePickUp.PickUpInt += 1;
-					Debug.Log(ActivePickUp.PickUpInt);
-				}
+                    if (activePickUp.PickUpObjName == "pillar")
+                    {
+                        activePickUp.PickUpObj.GetComponent<Animator>().SetBool("turnOn",true);
+                        ActivePickUp.PickUpInt += 1;
+                        Debug.Log(ActivePickUp.PickUpInt);
+                        if (ActivePickUp.PickUpInt == 4)
+                            StartCoroutine(dialogsScript3.pillarCameraMove());
+                    }
+                    else
+                    {
+                        activePickUp.PickUpObj.SetActive(false);
+                        ActivePickUp.PickUpInt += 1;
+                        Debug.Log(ActivePickUp.PickUpInt);
+                    }
+                    
+                }
 			}
 			Debug.Log(activePickUp.PickUpObjName);
 			isActive = false;
@@ -586,7 +600,12 @@ public class DG_playerController : MonoBehaviour
 			npcTalk = GameObject.Find("NPC_Dida").GetComponent<NpcTalk>();
 		}
 
-		if (col.gameObject.name == "Teleportation") //傳送陣
+        if (col.gameObject.name == "rightKey" || col.gameObject.name == "falseKey") //觸碰到紅藍花
+        {
+            npcTalk = GameObject.Find("door_close").GetComponent<NpcTalk>();
+        }
+
+        if (col.gameObject.name == "Teleportation") //傳送陣
 		{
 			StartCoroutine("Teleportation");
 		}

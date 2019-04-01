@@ -53,7 +53,7 @@ public class CameraFollow : MonoBehaviour {
 			transform.position = target.position;
 			transform.position = new Vector3(Mathf.Clamp(target.position.x + 3f, xMin, xMax), Mathf.Clamp(target.position.y, yMin, yMax));
 		}
-		if (ChapterName == "1" || ChapterName == "2") //正章
+		if (ChapterName == "1" || ChapterName == "2" || ChapterName == "3") //正章
 		{
 			if (isFollowTarget) //正常跟隨玩家狀況
 			{
@@ -125,7 +125,7 @@ public class CameraFollow : MonoBehaviour {
 						scaleCount = 0;
 					}
 				}
-				if (ChapterName == "2") //正章1
+				if (ChapterName == "2") //正章2
 				{
 					if (moveCount == 1)  //可可高樓
 					{
@@ -142,12 +142,21 @@ public class CameraFollow : MonoBehaviour {
 							//StartCoroutine(ZoomCamera(3, 3.5f, 0.1f, 50));
 						}
 					}
-
 				}
+                if (ChapterName == "3") //正章3
+                {
+                    if (moveCount == 1)  //鑰匙
+                    {
+                        Vector3 newPosition = new Vector3(5.5f, 7.5f, -8);
+                        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
+                        StartCoroutine(gameManager.pillarKey());
+                    }
 
-				//transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
-				//transform.position = new Vector3(Mathf.Clamp(target.position.x, xMin, xMax), Mathf.Clamp(target.position.y, yMin, yMax),-8);			
-			}
+                }
+
+                //transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothSpeed);
+                //transform.position = new Vector3(Mathf.Clamp(target.position.x, xMin, xMax), Mathf.Clamp(target.position.y, yMin, yMax),-8);			
+            }
 			if (transform.position.x < xMin)
 			{
 				transform.position = new Vector2(Mathf.Clamp(transform.position.x, xMin, xMax), transform.position.y);
