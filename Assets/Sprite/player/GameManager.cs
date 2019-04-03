@@ -45,13 +45,15 @@ public class GameManager : MonoBehaviour {
 	public GameObject B3;
 	public GameObject G4;
 	public GameObject B4;
+	public GameObject G5;
 
-	public GameObject ParticleObj1;
+    public GameObject ParticleObj1;
 	public GameObject ParticleObj2;
 	public GameObject ParticleObj3;
 	public GameObject ParticleObj4;
-	//------------------事件----------------------
-	public GameObject eventObj;
+	public GameObject ParticleObj5;
+    //------------------事件----------------------
+    public GameObject eventObj;
 	private Animator eventAni;
 	public Text eventText;
 
@@ -99,7 +101,8 @@ public class GameManager : MonoBehaviour {
 	public Text gameOverText;
 	//------------------FADE淡出-------------------
 	public GameObject FadeOut; 
-	private Animator FadeOutAni;
+    [HideInInspector]
+	public Animator FadeOutAni;
 	public bool isRun = false;
 
 	public GameObject FadeWhite;

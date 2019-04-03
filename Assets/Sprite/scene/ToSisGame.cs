@@ -22,7 +22,9 @@ public class ToSisGame : MonoBehaviour {
             NextSceneName = "RunGame_chapter1";
         else if(StaticObject.nowClass==1.5f) //森林跑酷
             NextSceneName = "Sister_chapter2";
-        else if (StaticObject.nowClass == 2f) //城鎮
+        else if (StaticObject.nowClass == 2) //城鎮
+            NextSceneName = "Sister_chapter3";
+        else if (StaticObject.nowClass == 3) //城鎮
             NextSceneName = "Main";
 
         ToGame = SceneManager.LoadSceneAsync(NextSceneName);

@@ -34,41 +34,6 @@ public class DialogsScript3 : MonoBehaviour
     public GameObject otherImageObj; //右邊角色對話框
 	private Image otherImage;
 	public Sprite book;
-	/*public GameObject didaObj;
-    public SkeletonAnimation didaAni;
-	public Sprite dida_monochrome_normal;
-	public Sprite dida_monochrome_sad;
-	public Sprite dida_monochrome_smile;
-	public Sprite dida_rainbow_normal;
-	public Sprite dida_rainbow_sad;
-	public Sprite dida_beauty;
-	public GameObject cocoObj;
-    public SkeletonAnimation cocoAni;
-    public Sprite coco_monochrome_normal;
-	public Sprite coco_monochrome_sad;
-	public Sprite coco_monochrome_cry;
-	public Sprite coco_rainbow_normal;
-	public Sprite coco_rainbow_sad;
-	public Sprite coco_beauty;
-	public GameObject dragonObj;
-    public SkeletonAnimation dragonAni;
-    public Sprite dragon_monochrome_normal;
-	public Sprite dragon_monochrome_smile;
-	public Sprite dragon_monochrome_angry;
-	public Sprite dragon_rainbow_smile;
-	public Sprite dragon_rainbow_closedEyes;
-	public Sprite dragon_beauty;
-	public Sprite mirror;
-	public Animator GraceAni;
-	public Sprite Grace; //主持人
-	public Animator OliviaAni;
-	public Sprite Olivia;
-	public Animator moneyAni;
-	public Sprite money_normal;
-	public Sprite money_angry;
-	public Animator secretAni;
-	public Sprite secretK; //神秘人
-	public Sprite YYK; //K*/
 
 	//----------------------------選擇---------------------------
 	//public GameObject choose1;
@@ -99,6 +64,7 @@ public class DialogsScript3 : MonoBehaviour
 	public bool teachBlood = false;
 
     public GameObject Key;
+    public GameObject blackSmokeParticle;
 
 	//------------------Attack----------------------
 	//小BOSS
@@ -129,7 +95,7 @@ public class DialogsScript3 : MonoBehaviour
         //StaticObject.whoCharacter = 2;
         if (StaticObject.whoCharacter == 1)
         {
-            TextAsset textFile1 = Resources.Load("Text/bother2") as TextAsset;
+            TextAsset textFile1 = Resources.Load("Text/bother3") as TextAsset;
             textFile = textFile1;
             playerName = "卡特";
             sister_angry = Resources.Load("characterImage/bother/bother_angry", typeof(Sprite)) as Sprite;
@@ -143,7 +109,7 @@ public class DialogsScript3 : MonoBehaviour
         }
         else if (StaticObject.whoCharacter == 2)
         {
-            TextAsset textFile1 = Resources.Load("Text/sister2") as TextAsset;
+            TextAsset textFile1 = Resources.Load("Text/sister3") as TextAsset;
             textFile = textFile1;
             playerName = "緹緹";
             sister_angry = Resources.Load("characterImage/sister/sister_angry", typeof(Sprite)) as Sprite;
@@ -156,7 +122,7 @@ public class DialogsScript3 : MonoBehaviour
         }
 
         currentLine = 1;
-        endAtLine = 4;
+        endAtLine = 9;
 
         fadeOut = FadeOut.GetComponent<Animator>();
         
@@ -179,7 +145,7 @@ public class DialogsScript3 : MonoBehaviour
 			DisableTextBox();
 		}
 
-        StaticObject.nowClass = 2;
+        StaticObject.nowClass = 3;
         PlayerPrefs.SetFloat("StaticObject.nowClass", StaticObject.nowClass);
     }
 
@@ -198,7 +164,7 @@ public class DialogsScript3 : MonoBehaviour
 		fadeOut.SetBool("FadeOut", true);
 		yield return new WaitForSeconds(2f);
 		GameEnd = false;
-		SceneManager.LoadScene("Settle");
+		//SceneManager.LoadScene("Settle");
 	}
 
     public IEnumerator pillarCameraMove()
@@ -213,15 +179,54 @@ public class DialogsScript3 : MonoBehaviour
 		if (!isActive)
 			return;
 
-		if (currentLine == 1 ||currentLine == 6 || currentLine == 190)
+		if (currentLine == 1 || currentLine == 5 || currentLine == 7 || currentLine == 11)
 		{
 			whotalk.text = playerName;
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
-			characterImage.sprite = sister_happy;
+			characterImage.sprite = sister_oops;
 		}
 
-		if (Input.GetMouseButtonDown(0))
+        if (currentLine == 2 || currentLine == 3 || currentLine == 13)
+        {
+            whotalk.text = playerName;
+            characterImage.color = talkNow;
+            otherImage.color = untalkNow;
+            characterImage.sprite = sister_sad;          
+        }
+
+        if (currentLine == 4 || currentLine == 6 || currentLine == 8 || currentLine == 14)
+        {
+            whotalk.text = "魔法書籍";
+            characterImage.color = untalkNow;
+            otherImage.color = talkNow;
+            otherImage.sprite = book;
+            otherImageObj.SetActive(true);
+        }
+
+        if (currentLine == 9)
+        {
+            whotalk.text = playerName;
+            characterImage.color = talkNow;
+            otherImage.color = untalkNow;
+            characterImage.sprite = sister_smile;
+        }
+
+        if (currentLine == 15)
+        {
+            whotalk.text = playerName;
+            characterImage.color = talkNow;
+            otherImage.color = untalkNow;
+            characterImage.sprite = sister_angry;
+        }
+
+        if (currentLine == 18)
+        {
+            DisableTextBox();
+        }
+
+
+        if (Input.GetMouseButtonDown(0))
 		{
 			if (!questionBool)
 			{

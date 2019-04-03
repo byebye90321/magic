@@ -20,7 +20,7 @@ public class DG_playerController : MonoBehaviour
 
 	private ActiveClimb activeClimb;
 	private ActivePickUp activePickUp;
-	[HideInInspector]
+	//[HideInInspector]
 	public NpcTalk npcTalk;
     //------------playerControl----------------------
     public GameObject playerS; //角色-妹妹
@@ -125,7 +125,7 @@ public class DG_playerController : MonoBehaviour
         {
             activeClimb = GameObject.Find("ladder").GetComponent<ActiveClimb>();  //防錯誤 爬藤蔓
             activePickUp = GameObject.Find("pillar").GetComponent<ActivePickUp>(); //防錯誤 拾取物品
-            npcTalk = GameObject.Find("door_close").GetComponent<NpcTalk>();
+            npcTalk = GameObject.Find("Door").GetComponent<NpcTalk>();
             ActivePickUp.PickUpInt = 0;
         }
 
@@ -351,6 +351,7 @@ public class DG_playerController : MonoBehaviour
                     {
                         activePickUp.PickUpObj.GetComponent<Animator>().SetBool("turnOn",true);
                         ActivePickUp.PickUpInt += 1;
+                        activePickUp.PickUpObjCol.enabled = false;
                         Debug.Log(ActivePickUp.PickUpInt);
                         if (ActivePickUp.PickUpInt == 4)
                             StartCoroutine(dialogsScript3.pillarCameraMove());
@@ -403,8 +404,28 @@ public class DG_playerController : MonoBehaviour
 						gameManager.downHintAni.SetTrigger("whereHint");
 						gameManager.downHintText.text = "尚未取得入場券";
 					}
-				}			
-			}
+				}
+
+                if (npcTalk.gimmickName == "Door")
+                {
+                    if (npcTalk.right == true)  //完成任務
+                    {
+                        npcTask.TaskFinish();
+                    }
+                    else if (npcTalk.wrong == true)
+                    {
+                        string taskStart = npcTalk.startTaskName;
+                        npcTask.GetComponent<NPCTask>().Invoke(taskStart, 0f);
+                        //尚未收集完畢
+                        gameManager.downHintAni.SetTrigger("whereHint");
+                        gameManager.downHintText.text = "這把鑰匙無法開啟";
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
 			else //一般NPC
 			{
 				if (Mathf.Abs(rigid2D.transform.position.x - npcTalk.NPC.transform.position.x) < 2 && npcTalk.NPCPoint.activeInHierarchy == true && npcTalk.isTasting == false)
@@ -578,8 +599,8 @@ public class DG_playerController : MonoBehaviour
 		if (col.tag == "pickUpObj") //拾取物件
 		{
 			activePickUp = col.gameObject.GetComponent<ActivePickUp>();
-
-			if (col.gameObject.name == activePickUp.PickUpObjName) //形石
+           
+            if (col.gameObject.name == activePickUp.PickUpObjName) //形石
 			{
 				activePickUp.PickUpObjBool = true;
 			}
@@ -595,14 +616,14 @@ public class DG_playerController : MonoBehaviour
 			npcTalk = GameObject.Find("NPC_Bobby").GetComponent<NpcTalk>();
 		}
 
-		if (col.gameObject.name == "rightClock" || col.gameObject.name == "falseClock") //觸碰到紅藍花
+		if (col.gameObject.name == "rightClock" || col.gameObject.name == "falseClock") //觸碰到時鐘
 		{
 			npcTalk = GameObject.Find("NPC_Dida").GetComponent<NpcTalk>();
 		}
 
-        if (col.gameObject.name == "rightKey" || col.gameObject.name == "falseKey") //觸碰到紅藍花
+        if (col.gameObject.name == "rightKey" || col.gameObject.name == "falseKey") //觸碰到鑰匙
         {
-            npcTalk = GameObject.Find("door_close").GetComponent<NpcTalk>();
+            npcTalk = GameObject.Find("Door").GetComponent<NpcTalk>();
         }
 
         if (col.gameObject.name == "Teleportation") //傳送陣

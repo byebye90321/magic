@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Spine.Unity;
 using Spine;
+using UnityEngine.SceneManagement;
 
 public class NPCTask : MonoBehaviour {
 
@@ -12,7 +13,8 @@ public class NPCTask : MonoBehaviour {
 	public DG_playerController playerController;
 	public DialogsScript1 dialogsScript1;
 	public DialogsScript2 dialogsScript2;
-	public CameraFollow cameraFollow;
+	public DialogsScript3 dialogsScript3;
+    public CameraFollow cameraFollow;
 	//------------------player位置-------------------
 	public Rigidbody2D rigid2D;
 	//----------------NPC Tast------------------------
@@ -73,8 +75,13 @@ public class NPCTask : MonoBehaviour {
 	public BoxCollider2D DragonCollider;
 	public BoxCollider2D MirrorCollider;
 	public BoxCollider2D MirrorCollider2;
-	//-------------------機關---------------------
-	public GameObject StoneCanvas;
+    //3
+    public GameObject Door;
+    [HideInInspector]
+    public BoxCollider2D DoorCollider;
+    private Animator DoorAni;
+    //-------------------機關---------------------
+    public GameObject StoneCanvas;
 	public GameObject stoneBefore;
 	public GameObject stoneAfter;
 	public drag slot1;
@@ -111,21 +118,26 @@ public class NPCTask : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		taskAni = bookObj.GetComponent<Animator>();
-		if (ChapterName == "1")
-		{
-			BobbyCollider = Bobby.GetComponent<BoxCollider2D>();
-			StoneCollider = Stone.GetComponent<BoxCollider2D>();
-			StatueCollider = Statue.GetComponent<BoxCollider2D>();	
-			statueAni = Statue.GetComponent<Animator>();
-			BigBalanceAni = BigBalance.GetComponent<Animator>();
-		}
-		else if (ChapterName == "2")
-		{
-			DidaCollider = Dida.GetComponent<BoxCollider2D>();
-			CocoCollider = Coco.GetComponent<BoxCollider2D>();
-			DragonCollider = Dragon.GetComponent<BoxCollider2D>();
-			taskAni.SetBool("isOpen", true);
-		}
+        if (ChapterName == "1")
+        {
+            BobbyCollider = Bobby.GetComponent<BoxCollider2D>();
+            StoneCollider = Stone.GetComponent<BoxCollider2D>();
+            StatueCollider = Statue.GetComponent<BoxCollider2D>();
+            statueAni = Statue.GetComponent<Animator>();
+            BigBalanceAni = BigBalance.GetComponent<Animator>();
+        }
+        else if (ChapterName == "2")
+        {
+            DidaCollider = Dida.GetComponent<BoxCollider2D>();
+            CocoCollider = Coco.GetComponent<BoxCollider2D>();
+            DragonCollider = Dragon.GetComponent<BoxCollider2D>();
+            taskAni.SetBool("isOpen", true);
+        }
+        else if (ChapterName == "3")
+        {
+            DoorCollider = Door.GetComponent<BoxCollider2D>();
+            DoorAni = Door.GetComponent<Animator>();
+        }
 		
 	}
 	
@@ -194,7 +206,6 @@ public class NPCTask : MonoBehaviour {
                     StoneParticle3.SetActive(true);
                     StoneParticle4.SetActive(true);
                     StoneParticle5.SetActive(true);
-                    Debug.Log("7");
                     StartCoroutine("waitClose");
                 }
                 if (slot1.full && slot2.full && slot3.full && slot4.full && slot5.full)
@@ -699,7 +710,38 @@ public class NPCTask : MonoBehaviour {
 		gameManager.eventObj.SetActive(false);
 	}
 
-	public void CloseTaskPanel()
+    //任務5完成，獲得技能5
+    public IEnumerator DoorTaskFinish()
+    {
+        DoorAni.SetBool("Open", true);
+        yield return new WaitForSeconds(1f);
+        dialogsScript3.blackSmokeParticle.SetActive(true);
+        playerController.npcTalk.isTasting = false;
+        DoorCollider.enabled = false;
+        Task2StarImage.sprite = TaskFinishImage;
+        dialogsScript3.currentLine = 11;
+        dialogsScript3.endAtLine = 18;
+        dialogsScript3.NPCAppear();
+        yield return new WaitUntil(() => dialogsScript3.currentLine == 18);
+        gameManager.eventObj.SetActive(true);
+        gameManager.eventText.text = "獲得技能五";
+        yield return new WaitForSeconds(0.5f);
+        gameManager.ParticleObj5.SetActive(true); //skill Particle
+        yield return new WaitForSeconds(0.5f);
+        StaticObject.G5 = 1;
+        gameManager.G5.SetActive(true);
+        PlayerPrefs.SetInt("StaticObject.G5", StaticObject.G5);    
+        yield return new WaitForSeconds(1f);
+        gameManager.ParticleObj5.SetActive(false);
+        gameManager.eventObj.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        gameManager.FadeOut.SetActive(true);
+        gameManager.FadeOutAni.SetBool("FadeOut", true);
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Loading");  //接下一關 
+    }
+
+    public void CloseTaskPanel()
 	{
 		taskPanel.SetActive(false);
 		TaskCloseBtn.SetActive(false);
