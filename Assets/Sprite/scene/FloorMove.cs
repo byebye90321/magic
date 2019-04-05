@@ -4,36 +4,28 @@ using UnityEngine;
 
 public class FloorMove : MonoBehaviour {
 
-	public bool X;
-	public bool Y;
+    bool moveRight = true;
 
 	[SerializeField]
 	private float xMax;
 	[SerializeField]
-	private float yMax;
-	[SerializeField]
 	private float xMin;
-	[SerializeField]
-	private float yMin;
-
 	public float speed;
 
-	void Start () {
-		
-	}
 	
 	void Update () {
 
-		if (X)
-		{
-			transform.localPosition = new Vector3(Mathf.PingPong(speed, xMax), transform.position.y, transform.position.z);
-			speed += 0.02f;
-		}
+        //movingPlatform.transform.position = new Vector3(Mathf.PingPong(speed, xMax), movingPlatform.transform.position.y, movingPlatform.transform.position.z);
+        //speed += 0.01f;
+        if (transform.position.x > xMax)
+            moveRight = false;
+        else if(transform.position.x < xMin)
+            moveRight = true;
 
-		if (Y)
-		{
-			transform.localPosition = new Vector3(transform.position.x, Mathf.PingPong(speed, yMax), transform.position.z);
-			speed += 0.02f;
-		}
+        if (moveRight)
+            transform.position = new Vector2(transform.position.x + speed * Time.deltaTime, transform.position.y);
+        else
+            transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
+        
 	}
 }

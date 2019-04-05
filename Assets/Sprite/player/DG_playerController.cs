@@ -630,7 +630,6 @@ public class DG_playerController : MonoBehaviour
 		{
 			StartCoroutine("Teleportation");
 		}
-
 	}
 
 	void OnTriggerExit2D(Collider2D col)
@@ -647,10 +646,22 @@ public class DG_playerController : MonoBehaviour
 			{
 				activePickUp.PickUpObjBool = false;
 			}
-		}
-	}
+		}   
+    }
 
-	IEnumerator MoveWait()
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.name.Equals("MovingPlatform"))
+            this.transform.parent = col.transform;      
+    }
+
+    void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.name.Equals("MovingPlatform"))
+            this.transform.parent = null;
+    }
+
+    IEnumerator MoveWait()
 	{
 		yield return new WaitForSeconds(1f);
 		isActive = true;

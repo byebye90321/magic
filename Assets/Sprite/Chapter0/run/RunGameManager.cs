@@ -13,7 +13,7 @@ public enum GameState
 
 public class RunGameManager : MonoBehaviour {
 
-	public string NextSceneName;
+	private string NextSceneName;
 	public static RunGameManager Instance;
 	public static GameState gameState;
 	public string chapterName;
@@ -54,8 +54,13 @@ public class RunGameManager : MonoBehaviour {
 	public GameObject warning;
 	public Canvas canvas;
 
-	//------------------------------------結算-----------------------
-	public GameObject winObj;  //過關
+    //人物icon
+    public Image playerIcon;
+    public Sprite sisterIcon;
+    public Sprite botherIcon;
+
+    //------------------------------------結算-----------------------
+    public GameObject winObj;  //過關
 	public GameObject gameoverObj; //血量歸零
 	public GameObject loseObj; //被怪物追到
 	private float addInt;
@@ -78,8 +83,13 @@ public class RunGameManager : MonoBehaviour {
 	public Text HintText;
 	public GameObject NextFlashText;
 	//----------------------對話框物件-------------
-	public GameObject textPanel;
-	public Text text;
+	public GameObject textPanel; 
+    public string playerName; //主角名
+    public GameObject characterImageObj; //左邊主角對話框
+    private Image characterImage;
+    private Sprite characterImageSprite;
+    public Text text;
+    public Text playerNameText;
 
 	void Start () {
 		Puase.interactable = false;
@@ -100,16 +110,43 @@ public class RunGameManager : MonoBehaviour {
 		if (chapterName == "0")
 		{
 			StartCoroutine("Target");
-		}
+            NextSceneName = "Chapter0_5movie";
+
+        }
 		else if (chapterName == "1")
 		{
 			StartCoroutine("Conversation");
             StaticObject.nowClass = 1.5f;
             PlayerPrefs.SetFloat("StaticObject.nowClass", StaticObject.nowClass);
         }
+        else if (chapterName == "3")
+        {
+            StartCoroutine("Conversation2");
+            StaticObject.nowClass = 3.5f;
+            PlayerPrefs.SetFloat("StaticObject.nowClass", StaticObject.nowClass);
+        }
 
+        if (chapterName != "0")
+        {
+            if (StaticObject.whoCharacter == 1)
+            {
+                playerName = "卡特";
+                characterImageSprite = Resources.Load("characterImage/bother/bother_angry", typeof(Sprite)) as Sprite;
+                playerIcon.sprite = botherIcon;
+            }
+            else if (StaticObject.whoCharacter == 2) //妹妹
+            {
+                playerName = "緹緹";
+                characterImageSprite = Resources.Load("characterImage/sister/sister_angry", typeof(Sprite)) as Sprite;
+                playerIcon.sprite = sisterIcon;
+            }
 
-	}
+            characterImage = characterImageObj.GetComponent<Image>();
+            characterImage.sprite = characterImageSprite;
+        }
+        
+
+    }
 
 	public void Update()
 	{
@@ -173,7 +210,19 @@ public class RunGameManager : MonoBehaviour {
 		InvokeRepeating("timer", 1, 1);
 	}
 
-	public void Next()
+    IEnumerator Conversation2()
+    {
+        textPanel.SetActive(true);
+        text.text = "哥哥與追光者就在前方了！";
+        yield return new WaitUntil(() => count == 1);
+        text.text = "我馬上就去救你們！等等我";
+        yield return new WaitUntil(() => count == 2);
+        textPanel.SetActive(false);
+        TouchNextImage.SetActive(false);
+        InvokeRepeating("timer", 1, 1);
+    }
+
+    public void Next()
 	{
 		count += 1;
 	}

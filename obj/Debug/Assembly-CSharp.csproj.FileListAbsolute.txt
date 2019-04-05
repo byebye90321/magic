@@ -336,3 +336,7 @@ C:\Users\magic\Desktop\magic\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.
 C:\Users\magic\Desktop\magic\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\magic\Desktop\magic\obj\Debug\Assembly-CSharp.dll
 C:\Users\magic\Desktop\magic\obj\Debug\Assembly-CSharp.pdb
+C:\Users\USERTY\Desktop\magic\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\USERTY\Desktop\magic\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+C:\Users\USERTY\Desktop\magic\obj\Debug\Assembly-CSharp.dll
+C:\Users\USERTY\Desktop\magic\obj\Debug\Assembly-CSharp.pdb

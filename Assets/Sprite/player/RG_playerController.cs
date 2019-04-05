@@ -31,13 +31,19 @@ public class RG_playerController : MonoBehaviour
 	public bool sliding = false;
 	public Button jumpBtn;
 	public Button slideBtn;
-	//--------------------------velocity-------------------------
-	public float speed;
+
+    public GameObject playerS; //角色-妹妹
+    public GameObject playerB; //角色-哥哥
+    public GameObject playerInsPoint; //角色生成位置
+    //--------------------------velocity-------------------------
+    public float speed;
 	public float hurtSpeed;
 	public float VecitySpeed;
 	public float MaxSpeed = 0.8f;
-	//---------------------------health-------------------------
-	public Animator healthAni;
+    //---------------------------health-------------------------
+    public GameObject healthCanvas;
+
+    public Animator healthAni;
 	public GameObject healthTextObj;
 
 	private Text healthText;
@@ -59,7 +65,38 @@ public class RG_playerController : MonoBehaviour
 	//------------------------Particle System-------------------
 	public GameObject SlidingParticle;
 
-
+    void Awake()
+    {
+        if (ChapterName == "0")
+        {
+            jumpBtn.interactable = false;
+            slideBtn.interactable = false;
+        }
+        else
+        {
+            StaticObject.whoCharacter = 2;
+            if (StaticObject.whoCharacter == 1) //哥哥
+            {
+                GameObject playS = Instantiate(playerB) as GameObject;
+                playS.transform.SetParent(playerInsPoint.transform, false);
+                playS = GameObject.Find("/Player/PlayerBother(Clone)");
+                //playS = GameObject.FindWithTag("Player");
+                sister = playS.GetComponent<Animator>();
+                skeletonAnimation_S = playS.GetComponent<SkeletonAnimation>();
+                healthCanvas.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -2.65f, 0);
+            }
+            else if (StaticObject.whoCharacter == 2) //妹妹
+            {
+                GameObject playS = Instantiate(playerS) as GameObject;
+                playS.transform.SetParent(playerInsPoint.transform, false);
+                playS = GameObject.Find("/Player/PlayerSister(Clone)");
+                //playS = GameObject.FindWithTag("Player");
+                sister = playS.GetComponent<Animator>();
+                skeletonAnimation_S = playS.GetComponent<SkeletonAnimation>();
+                healthCanvas.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -3.63f, 0);
+            }
+        }
+    }
 
 	void Start()
 	{
@@ -69,12 +106,8 @@ public class RG_playerController : MonoBehaviour
 		rigid2D.AddForce(new Vector2(0, 0));
 		rigid2D.velocity = new Vector2(0, 0f);
 		VecitySpeed = speed;
-		//healthText = healthTextObj.GetComponent<Text>();
-		if (ChapterName == "0")
-		{
-			jumpBtn.interactable = false;
-			slideBtn.interactable = false;
-		}
+        //healthText = healthTextObj.GetComponent<Text>();
+        
 	}
 
 	//---------------------------------Jump----------------------------------
@@ -103,7 +136,7 @@ public class RG_playerController : MonoBehaviour
 					skeletonAnimation_B.state.TimeScale = 1;
 				}
 			}
-			else if (ChapterName == "1")
+			else
 			{
 				skeletonAnimation_S.state.TimeScale = 1;
 			}
