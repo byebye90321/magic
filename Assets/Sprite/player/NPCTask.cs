@@ -142,7 +142,7 @@ public class NPCTask : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
         //----------------------NPC tast-------------------------
         /*if (Input.GetMouseButtonDown(0))
 		{
@@ -197,7 +197,7 @@ public class NPCTask : MonoBehaviour {
         //-------------------------森林機關-----------------------
         if (ChapterName == "1")
         {
-            if (ActivePickUp.PickUpInt == 5)
+            if (ActivePickUp.PickUpInt >= 5)
             {
                 if (slot1.isRight && slot2.isRight && slot3.isRight && slot4.isRight && slot5.isRight) //完成的時候
                 {

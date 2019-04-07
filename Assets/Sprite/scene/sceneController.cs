@@ -67,21 +67,13 @@ public class sceneController : MonoBehaviour {
         StaticObject.nowClass = 1.5f;
         PlayerPrefs.SetFloat("StaticObject.nowClass", StaticObject.nowClass);
         SceneManager.LoadScene("Loading");
-        //SceneManager.LoadScene("Sister_chapter2");
 	}
 
+    public void sisterGame3()
+    {
+        StaticObject.nowClass = 2f;
+        PlayerPrefs.SetFloat("StaticObject.nowClass", StaticObject.nowClass);
+        SceneManager.LoadScene("Loading");
+    }
 
-	//魔法日報問題
-	/*public void paper1() {
-		Application.OpenURL("https://goo.gl/UWCWqi");
-	}
-
-	public void paper2() {
-		Application.OpenURL("https://goo.gl/9Sr7Jw");
-
-	}
-
-	public void paper3() {
-		Application.OpenURL("https://goo.gl/9fye4W");
-	}*/
 }

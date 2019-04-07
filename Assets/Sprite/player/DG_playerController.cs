@@ -16,6 +16,7 @@ public class DG_playerController : MonoBehaviour
 	public DialogsScript1 dialogsScript1; //正章1對話
 	public DialogsScript2 dialogsScript2; //正章2對話
 	public DialogsScript3 dialogsScript3; //正章2對話
+	public DialogsScript4 dialogsScript4; //正章2對話
     public ExampleGestureHandler gesture;
 
 	private ActiveClimb activeClimb;
@@ -83,7 +84,7 @@ public class DG_playerController : MonoBehaviour
     {
         if (ChapterName != "0")
         {
-            StaticObject.whoCharacter = 2;
+            //StaticObject.whoCharacter = 1;
             if (StaticObject.whoCharacter == 1) //哥哥
             {
                 GameObject playS = Instantiate(playerB) as GameObject;
@@ -128,6 +129,13 @@ public class DG_playerController : MonoBehaviour
             npcTalk = GameObject.Find("Door").GetComponent<NpcTalk>();
             ActivePickUp.PickUpInt = 0;
         }
+        else if (ChapterName == "4")
+        {
+            //activeClimb = GameObject.Find("ladder").GetComponent<ActiveClimb>();  //防錯誤 爬藤蔓
+            activePickUp = GameObject.Find("handle").GetComponent<ActivePickUp>(); //防錯誤 拾取物品
+            //npcTalk = GameObject.Find("Door").GetComponent<NpcTalk>();
+            ActivePickUp.PickUpInt = 0;
+        }
 
     }
 
@@ -145,7 +153,7 @@ public class DG_playerController : MonoBehaviour
 			}
 		}
 
-		if (ChapterName == "1" || ChapterName == "2" || ChapterName == "3")
+		if (ChapterName !="0")
 		{
 			if (curHealth < 100)
 			{
@@ -189,7 +197,7 @@ public class DG_playerController : MonoBehaviour
 				animator_S.SetBool("isJump", jumping);
                 if (ChapterName == "0")
                     animator_B.SetBool("isJump", jumping);
-                if (CrossPlatformInputManager.GetButtonDown("Jump")/*||Input.GetKeyDown(KeyCode.B)*/)
+                if (CrossPlatformInputManager.GetButtonDown("Jump")||Input.GetKeyDown(KeyCode.B))
 				{
 					jumping = true;
 					rigid2D.velocity = new Vector2(0, jumpForce);
@@ -203,7 +211,11 @@ public class DG_playerController : MonoBehaviour
 			//-------------MOVE----------------------------
 
 			Vector2 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertiacl")) * speed;
-			rigid2D.velocity = new Vector2(moveVec.x, rigid2D.velocity.y);
+            if (Input.GetKey(KeyCode.RightArrow))
+                moveVec = new Vector2(2,0);
+            else if(Input.GetKey(KeyCode.LeftArrow))
+                moveVec = new Vector2(-2, 0);
+            rigid2D.velocity = new Vector2(moveVec.x, rigid2D.velocity.y);
 
 			if (ChapterName == "0")
 			{
@@ -274,7 +286,7 @@ public class DG_playerController : MonoBehaviour
 			}
 		}
 		//-----------------------Climb--------------------------
-		if (ChapterName != "0")
+		if (ChapterName == "1" || ChapterName == "2" || ChapterName == "3")
 		{
 			if (CrossPlatformInputManager.GetButtonDown("Climb"))
 			{
@@ -355,6 +367,15 @@ public class DG_playerController : MonoBehaviour
                         Debug.Log(ActivePickUp.PickUpInt);
                         if (ActivePickUp.PickUpInt == 4)
                             StartCoroutine(dialogsScript3.pillarCameraMove());
+                    }
+                    else if (activePickUp.PickUpObjName == "handle")
+                    {
+                        activePickUp.PickUpObj.GetComponent<Animator>().SetBool("turnOn", true);
+                        ActivePickUp.PickUpInt += 1;
+                        activePickUp.PickUpObjCol.enabled = false;
+                        Debug.Log(ActivePickUp.PickUpInt);
+                        if (ActivePickUp.PickUpInt == 1) //開平台
+                            StartCoroutine(dialogsScript4.PlatformOpen());
                     }
                     else
                     {

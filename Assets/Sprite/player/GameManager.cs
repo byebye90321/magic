@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
 	public DialogsScript1 dialogsScript1;
 	public DialogsScript2 dialogsScript2;
 	public DialogsScript3 dialogsScript3;
+	public DialogsScript4 dialogsScript4;
     public ExampleGestureHandler geature; //畫符腳本
 
 	public string nextSceneName;

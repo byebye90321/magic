@@ -211,6 +211,7 @@
      <Compile Include="Assets\Sprite\player\DialogsScript1.cs" />
      <Compile Include="Assets\Sprite\player\DialogsScript2.cs" />
      <Compile Include="Assets\Sprite\player\DialogsScript3.cs" />
+     <Compile Include="Assets\Sprite\player\DialogsScript4.cs" />
      <Compile Include="Assets\Sprite\player\drag\drag.cs" />
      <Compile Include="Assets\Sprite\player\drag\slot.cs" />
      <Compile Include="Assets\Sprite\player\drag\StoneCanvas.cs" />

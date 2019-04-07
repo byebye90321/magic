@@ -164,7 +164,6 @@ public class DialogsScript3 : MonoBehaviour
 		fadeOut.SetBool("FadeOut", true);
 		yield return new WaitForSeconds(2f);
 		GameEnd = false;
-		//SceneManager.LoadScene("Settle");
 	}
 
     public IEnumerator pillarCameraMove()
@@ -254,40 +253,6 @@ public class DialogsScript3 : MonoBehaviour
 		endAtLine = 16;
 		NPCAppear();
 	}
-
-
-	/*IEnumerator BeforeKBattle()
-	{
-        EnemyController = GameObject.Find("BossEnemy").GetComponent<DG_EnemyController>();
-        playerAddParticle.SetActive(true);
-		addText.SetActive(true);
-        UpText.SetActive(true);
-        yield return new WaitForSeconds(3);
-		gameManager.vsPanel.SetActive(true);
-		vsYYK.SetActive(true);
-		yield return new WaitForSeconds(3);
-		gameManager.teachHintAni.SetTrigger("HintOpen");
-		gameManager.teachHintText.text = "進入戰鬥";
-		gameManager.drawGame.TransitionTo(10f);
-		BossKCollider.enabled = true;
-		gesture.AddAttack = 5;
-		gameManager.attackRedImage.SetActive(true);
-		EnemyController.isAttack = true;
-		gameManager.vsPanel.SetActive(false);
-		vsYYK.SetActive(false);
-		EnemyController.HealthCanvas.SetActive(true);
-	}
-
-	public IEnumerator AfterKBattle()
-	{
-		currentLine = 189;
-		endAtLine = 197;
-		NPCAppear();
-        playerAddParticle.SetActive(false);
-        addText.SetActive(false);
-        UpText.SetActive(false);
-        yield return new WaitUntil(() => currentLine == 197);
-	}*/
 
 	public void NPCAppear()
 	{

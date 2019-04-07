@@ -24,8 +24,10 @@ public class ToSisGame : MonoBehaviour {
             NextSceneName = "Sister_chapter2";
         else if (StaticObject.nowClass == 2) //城鎮
             NextSceneName = "Sister_chapter3";
-        else if (StaticObject.nowClass == 3) //城鎮
-            NextSceneName = "Main";
+        else if (StaticObject.nowClass == 3) //圖書館
+            NextSceneName = "RunGame_chapter3";
+        else if (StaticObject.nowClass == 3.5) //
+            NextSceneName = "Sister_chapter4";
 
         ToGame = SceneManager.LoadSceneAsync(NextSceneName);
         ToGame.allowSceneActivation = false;

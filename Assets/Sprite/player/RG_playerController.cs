@@ -74,7 +74,7 @@ public class RG_playerController : MonoBehaviour
         }
         else
         {
-            StaticObject.whoCharacter = 2;
+            //StaticObject.whoCharacter = 2;
             if (StaticObject.whoCharacter == 1) //哥哥
             {
                 GameObject playS = Instantiate(playerB) as GameObject;

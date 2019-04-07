@@ -143,6 +143,7 @@ public class RunGameManager : MonoBehaviour {
 
             characterImage = characterImageObj.GetComponent<Image>();
             characterImage.sprite = characterImageSprite;
+            playerNameText.text = playerName;
         }
         
 
