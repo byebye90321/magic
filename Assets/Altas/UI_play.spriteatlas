@@ -61,12 +61,14 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 599c450736403914ba1b6adc10e76a9c, type: 3}
   - {fileID: 21300000, guid: 4ac5fdcb59dac04428274d021427a9ee, type: 3}
   - {fileID: 21300000, guid: e8c984a3505d74e46a637b8d06cead6a, type: 3}
+  - {fileID: 21300000, guid: 3fa9da0524fefe247b1f3e312e4e8280, type: 3}
   - {fileID: 21300000, guid: ff016ab5633531c40bb43017e8620b67, type: 3}
   - {fileID: 21300000, guid: 94ade96c77dc03143a12c1dfae4ff711, type: 3}
   - {fileID: 21300000, guid: e6d995ce3cb8bb4419777334035d9d84, type: 3}
   - {fileID: 21300000, guid: d9a89745b74b46749bf342f46aa2f6ee, type: 3}
   - {fileID: 21300000, guid: 367b6c280bbb8cb4282b246dffec92c2, type: 3}
   - {fileID: 21300000, guid: 78cb5f14a70ea3145ba4197cdb46d202, type: 3}
+  - {fileID: 21300000, guid: 6d90e82b457ab1b4e94f6ff166363007, type: 3}
   - {fileID: 21300000, guid: 7baf07dd3dcb26a46953a5266397720d, type: 3}
   - {fileID: 21300000, guid: 5f0940394d4c41744871b619478157f6, type: 3}
   - {fileID: 21300000, guid: ee89d62d3d81b394fae98dda2ac08b4e, type: 3}
@@ -95,12 +97,14 @@ SpriteAtlas:
   - "\u4E0B\u6ED1\u6309\u9375\u52A0\u7BAD\u982D"
   - "\u5C0D\u8A71\u6309\u9215"
   - "\u64BF\u53D6\u6309\u9375 (1)"
+  - "\u4EFB\u52D9\u6B04_\u5B8C\u6210"
   - "\u4EFB\u52D9\u6B04_\u4E0B_\u767D"
   - "\u722C_\u6309\u9215"
   - "\u6416\u687F\u9215"
   - "\u5E73\u8861\u689D_\u767D\u689D"
   - "\u8840\u91CF\u689D"
   - "\u8840\u91CF\u689D_\u767D\u689D"
+  - "NPC\u4EFB\u52D9\u5DF2\u5B8C\u6210\u9A5A\u5606\u865F"
   - "\u4EFB\u52D9\u63D0\u793A"
   - "\u6307\u91DD"
   - "\u4EFB\u52D9\u52FE\u52FE"

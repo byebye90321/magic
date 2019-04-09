@@ -21,10 +21,6 @@ public class DG_EnemyController : MonoBehaviour{
 	bool isDead;
 	bool damaged;
 
-	/*public Animator healthAni;
-	public GameObject damageTextObj;
-	private Text damageText;*/
-
 	private Text healthText;
 	public GameObject healthObj;
 	public GameObject canvas;
@@ -109,6 +105,10 @@ public class DG_EnemyController : MonoBehaviour{
 		{
 			Kattack.SetTrigger("attack");
 		}
+        else if(enemyName =="King")
+        {
+            InvokeRepeating("AttackTime", 1f, 10f);
+        }
 		else
 		{
 			InvokeRepeating("AttackTime", 1f, 10f);

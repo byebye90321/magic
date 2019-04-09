@@ -91,7 +91,7 @@ public class DialogsScript4 : MonoBehaviour
     }
 
 	void Start() {
-        //StaticObject.whoCharacter = 2;
+        StaticObject.whoCharacter = 2;
         if (StaticObject.whoCharacter == 1)
         {
             TextAsset textFile1 = Resources.Load("Text/bother3") as TextAsset;
@@ -108,7 +108,7 @@ public class DialogsScript4 : MonoBehaviour
         }
         else if (StaticObject.whoCharacter == 2)
         {
-            TextAsset textFile1 = Resources.Load("Text/sister3") as TextAsset;
+            TextAsset textFile1 = Resources.Load("Text/sister4") as TextAsset;
             textFile = textFile1;
             playerName = "緹緹";
             sister_angry = Resources.Load("characterImage/sister/sister_angry", typeof(Sprite)) as Sprite;
@@ -178,8 +178,11 @@ public class DialogsScript4 : MonoBehaviour
 
 		if (currentLine == 1)
 		{
-            DisableTextBox();
-		}
+            whotalk.text = playerName;
+            characterImage.color = talkNow;
+            otherImage.color = untalkNow;
+            characterImage.sprite = sister_smile;
+        }
 
 
         if (Input.GetMouseButtonDown(0))
