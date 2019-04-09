@@ -742,7 +742,7 @@ public class DialogsScript1 : MonoBehaviour
 
 	IEnumerator BeforeMonsterBattle()
 	{
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1.5f);
 		currentLine = 71;
 		endAtLine = 79;
 		NPCAppear();
@@ -797,14 +797,6 @@ public class DialogsScript1 : MonoBehaviour
 			endAtLine = 42;
 			NPCAppear();
 		}
-
-		/*if (col.gameObject.name == "vin2text") //藤蔓對話
-		{
-			currentLine = 43;
-			endAtLine = 43;
-			NPCAppear();
-			Destroy(col.gameObject);
-		}*/
 
 		if (col.gameObject.name == "balanceText") //看見天平對話
 		{
@@ -870,7 +862,7 @@ public class DialogsScript1 : MonoBehaviour
 		StaticObject.sBE1 = 0;
 		PlayerPrefs.SetInt("StaticObject.sHE1", StaticObject.sHE1);
 		PlayerPrefs.SetInt("StaticObject.sBE1", StaticObject.sBE1);
-		yield return new WaitUntil(() => currentLine == 82);
+		yield return new WaitUntil(() => currentLine >= 82);
 		gameManager.vsPanel.SetActive(true);
 		vsWiko.SetActive(true);
 		yield return new WaitForSeconds(3);

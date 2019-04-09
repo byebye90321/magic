@@ -354,6 +354,24 @@ public class DG_playerController : MonoBehaviour
 						}
 					}
 				}
+
+                if (npcTalk.right || npcTalk.wrong)
+                {
+                    if (npcTalk.whoTask == "BobbyTask" || npcTalk.whoTask == "DidaTask")
+                    {
+                        npcTask.Task1StarImage.sprite = npcTask.TaskFinishImage;
+                        npcTask.Task1bg.sprite = npcTask.TaskFinishBg;
+                        npcTask.Task1Content.SetActive(false);
+                        npcTask.Task1FinishContent.SetActive(true);
+                    }
+                    else if (npcTalk.whoTask == "StatueTask")
+                    {
+                        npcTask.Task2StarImage.sprite = npcTask.TaskFinishImage;
+                        npcTask.Task2bg.sprite = npcTask.TaskFinishBg;
+                        npcTask.Task2Content.SetActive(false);
+                        npcTask.Task2FinishContent.SetActive(true);
+                    }
+                }
 			}
 			else
 			{
@@ -443,16 +461,17 @@ public class DG_playerController : MonoBehaviour
                     }
                     else
                     {
-
+                        gameManager.downHintAni.SetTrigger("whereHint");
+                        gameManager.downHintText.text = "沒有開啟門的鑰匙";
                     }
                 }
             }
 			else //一般NPC
 			{
-				if (Mathf.Abs(rigid2D.transform.position.x - npcTalk.NPC.transform.position.x) < 2 && npcTalk.NPCPoint.activeInHierarchy == true && npcTalk.isTasting == false)
+				if (Mathf.Abs(rigid2D.transform.position.x - npcTalk.NPC.transform.position.x) < 2  && npcTalk.isTasting == false)
 				{
 					npcTalk.isTasting = true;
-					if (npcTalk.right == true || npcTalk.wrong == true)  //完成任務
+					if (npcTalk.right == true || npcTalk.wrong == true && npcTalk.finishPoint.activeInHierarchy == true)  //完成任務
 					{
 						npcTask.TaskFinish();
 					}
@@ -473,7 +492,7 @@ public class DG_playerController : MonoBehaviour
 			{
 
 			}
-			else if (hit.collider.name == "NPC_Bobby" || hit.collider.name == "NPC_Statue" /*|| hit.collider.name == "Stone"*/ || hit.collider.name == "NPC_Dida" || hit.collider.name == "NPC_Coco" || hit.collider.name == "NPC_Dragon" || hit.collider.name == "Mirror" && Mathf.Abs(rigid2D.transform.position.x - npcTalk.NPC.transform.position.x) < 2 && npcTalk.NPCPoint.activeInHierarchy == true && npcTalk.isTasting == false)
+			else if (hit.collider.name == "NPC_Bobby" || hit.collider.name == "NPC_Statue" /*|| hit.collider.name == "Stone"*/ || hit.collider.name == "NPC_Dida" || hit.collider.name == "NPC_Coco" || hit.collider.name == "NPC_Dragon" || hit.collider.name == "Mirror" && Mathf.Abs(rigid2D.transform.position.x - npcTalk.NPC.transform.position.x) < 2  && npcTalk.isTasting == false)
 			{
 				npcTalk = hit.collider.GetComponent<NpcTalk>();
 				if (npcTalk.gimmick) //機關
@@ -508,23 +527,13 @@ public class DG_playerController : MonoBehaviour
                         }
                         
                     }
-                    /*if (ActivePickUp.PickUpInt >= 5 && npcTalk.gimmickName == "Stone")
-                    {
-                        npcTalk.gimmickObj.SetActive(true);
-                    }
-                    else
-                    {
-                        //尚未收集完畢
-                        gameManager.downHintAni.SetTrigger("whereHint");
-                        gameManager.downHintText.text = "形石尚未收集完畢";
-                    }*/
                 }
 				else //一般NPC
 				{
-					if (Mathf.Abs(rigid2D.transform.position.x - npcTalk.NPC.transform.position.x) < 2 && npcTalk.NPCPoint.activeInHierarchy == true && npcTalk.isTasting == false)
+					if (Mathf.Abs(rigid2D.transform.position.x - npcTalk.NPC.transform.position.x) < 2 && npcTalk.finishPoint.activeInHierarchy == true && npcTalk.isTasting == false)
 					{
 						npcTalk.isTasting = true;
-						if (npcTalk.right == true || npcTalk.wrong == true)  //完成任務
+						if (npcTalk.right == true || npcTalk.wrong == true && npcTalk.finishPoint.activeInHierarchy == true)  //完成任務
 						{
 							npcTask.TaskFinish();
 						}

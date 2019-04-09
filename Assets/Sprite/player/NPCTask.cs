@@ -24,11 +24,22 @@ public class NPCTask : MonoBehaviour {
 	public GameObject taskObj; //右邊支線任務面板
 	public GameObject bookObj;
 	private Animator taskAni;
+
 	public GameObject otherTitle;  //支線任務title
 	public Image Task1StarImage;   //未完成1任務星星
 	public Image Task2StarImage;   //未完成2任務星星
 	public Sprite TaskFinishImage;  //完成任務打勾
-	public GameObject otherTask1; //波比任務
+
+    public Image Task1bg; //任務1綠底
+    public Image Task2bg; //任務2綠底
+    public Sprite TaskFinishBg; //黃底
+
+    public GameObject Task1Content; //任務1內文
+    public GameObject Task2Content; //任務2內文
+    public GameObject Task1FinishContent; //完成任務1內文
+    public GameObject Task2FinishContent; //完成任務2內文
+
+    public GameObject otherTask1; //波比任務
 	public GameObject otherTask2; //雕像任務
 	public Button bookBtn;
 	public int bookCount = 0;
@@ -464,7 +475,11 @@ public class NPCTask : MonoBehaviour {
 				dialogsScript2.currentLine = 62;
 				dialogsScript2.endAtLine = 74;
 				dialogsScript2.NPCAppear();
-			}
+                Task2StarImage.sprite = TaskFinishImage;
+                Task2bg.sprite = TaskFinishBg;
+                Task2Content.SetActive(false);
+                Task2FinishContent.SetActive(true);
+            }
 			if (questionRight + questionFalse == questionID + 1)
 			{
 				questionID += 1;

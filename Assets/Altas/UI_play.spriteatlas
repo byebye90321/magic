@@ -68,14 +68,14 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d9a89745b74b46749bf342f46aa2f6ee, type: 3}
   - {fileID: 21300000, guid: 367b6c280bbb8cb4282b246dffec92c2, type: 3}
   - {fileID: 21300000, guid: 78cb5f14a70ea3145ba4197cdb46d202, type: 3}
-  - {fileID: 21300000, guid: 6d90e82b457ab1b4e94f6ff166363007, type: 3}
   - {fileID: 21300000, guid: 7baf07dd3dcb26a46953a5266397720d, type: 3}
   - {fileID: 21300000, guid: 5f0940394d4c41744871b619478157f6, type: 3}
   - {fileID: 21300000, guid: ee89d62d3d81b394fae98dda2ac08b4e, type: 3}
   - {fileID: 21300000, guid: a75d77bc4ff62b14695d0111e72da77f, type: 3}
-  - {fileID: 21300000, guid: 1de5bb810cedec946a13b218c2d09a71, type: 3}
+  - {fileID: 21300000, guid: c558f5b426d1fa047b4f656ee704d0c6, type: 3}
   - {fileID: 21300000, guid: d99a3393235d91348a22820b2993de0b, type: 3}
   - {fileID: 21300000, guid: 2883b6592e4ebc14bacbe637e2cc1ffc, type: 3}
+  - {fileID: 21300000, guid: 40cd6d8eca95e84458315d57a0d46c19, type: 3}
   - {fileID: 21300000, guid: 3aef7961e4905fd4ca9e1abc9224795f, type: 3}
   - {fileID: 21300000, guid: 0f44748fbd0f2424f8912a8a89b19418, type: 3}
   - {fileID: 21300000, guid: ed85d65ffed644d4f9da903d03364c5b, type: 3}
@@ -104,14 +104,14 @@ SpriteAtlas:
   - "\u5E73\u8861\u689D_\u767D\u689D"
   - "\u8840\u91CF\u689D"
   - "\u8840\u91CF\u689D_\u767D\u689D"
-  - "NPC\u4EFB\u52D9\u5DF2\u5B8C\u6210\u9A5A\u5606\u865F"
   - "\u4EFB\u52D9\u63D0\u793A"
   - "\u6307\u91DD"
   - "\u4EFB\u52D9\u52FE\u52FE"
   - "\u5929\u79E4"
-  - "NPC\u63D0\u793A\u9A5A\u5606\u865F-1"
+  - "NPC\u4EFB\u52D9\u672A\u5B8C\u6210\u554F\u865F"
   - "\u83F1\u5F62"
   - "NPC\u63D0\u793A\u9A5A\u5606\u865F\u908A\u6846_1"
+  - "NPC\u4EFB\u52D9\u5DF2\u5B8C\u6210\u9A5A\u5606\u865F 1"
   - "\u5C0F\u661F\u661F"
   - "\u4EFB\u52D9\u661F\u661FICON"
   - "\u52A0\u8840\u7B26\u865F"

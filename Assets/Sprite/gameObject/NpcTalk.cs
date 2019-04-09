@@ -13,7 +13,8 @@ public class NpcTalk : MonoBehaviour {
 	[HideInInspector]
 	public BoxCollider2D NPCBoxcollider;  
 
-	public GameObject NPCPoint;  //NPC頭上驚嘆號
+	public GameObject NPCPoint;  //未完成?
+    public GameObject finishPoint; //完成!
 	public GameObject TalkBtn;  //對話鍵
 
 	public string whoTask;
@@ -36,7 +37,14 @@ public class NpcTalk : MonoBehaviour {
 		if (col.gameObject.name == "Player")
 		{
 			NPCBoxcollider = NPC.GetComponent<BoxCollider2D>();
-			NPCPoint.SetActive(true);
+            if (right || wrong)
+            {
+                finishPoint.SetActive(true);
+            }
+            else
+            {
+                NPCPoint.SetActive(true);
+            }
 			TalkImg = TalkBtn.GetComponent<Image>();
 			TalkImg.enabled = true;
 			TalkBtn.transform.SetAsLastSibling();			
@@ -47,7 +55,14 @@ public class NpcTalk : MonoBehaviour {
 	{
 		if (col.gameObject.name == "Player")
 		{
-			NPCPoint.SetActive(false);
+            if (right || wrong)
+            {
+                finishPoint.SetActive(false);
+            }
+            else
+            {
+                NPCPoint.SetActive(false);
+            }
 			TalkImg.enabled = false;
 		}
 	}
