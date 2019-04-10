@@ -80,8 +80,6 @@ public class DG_playerController : MonoBehaviour
 	public int pickUpInt = 1;
 	public Image climb;
 
-    public Text T1;
-
     void Awake()
     {
         if (ChapterName != "0")
@@ -386,9 +384,6 @@ public class DG_playerController : MonoBehaviour
                         //ActivePickUp.PickUpInt += 1;
                         activePickUp.PickUpObjCol.enabled = false;
                         //int PickInt = activePickUp.PickUpObj.GetComponent<PickUpAddInt>().pick;                   
-                        int PickInt = ActivePickUp.PickUpInt;
-                        int TT = PickInt;
-                        T1.text = TT.ToString();
                         //Debug.Log(ActivePickUp.PickUpInt);
                         if (ActivePickUp.PickUpInt == 3)
                             StartCoroutine(dialogsScript3.pillarCameraMove());

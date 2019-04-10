@@ -34,7 +34,11 @@ public class DialogsScript4 : MonoBehaviour
     public GameObject otherImageObj; //右邊角色對話框
 	private Image otherImage;
 	public Sprite book;
+    public Sprite king;
+    public Sprite hikari;
 
+    private string anotherName;
+    private Sprite anotherSprite;
 	//----------------------------選擇---------------------------
 	//public GameObject choose1;
 	//----------------------------對話---------------------------
@@ -91,10 +95,10 @@ public class DialogsScript4 : MonoBehaviour
     }
 
 	void Start() {
-        StaticObject.whoCharacter = 2;
+        //StaticObject.whoCharacter = 2;
         if (StaticObject.whoCharacter == 1)
         {
-            TextAsset textFile1 = Resources.Load("Text/bother3") as TextAsset;
+            TextAsset textFile1 = Resources.Load("Text/bother4") as TextAsset;
             textFile = textFile1;
             playerName = "卡特";
             sister_angry = Resources.Load("characterImage/bother/bother_angry", typeof(Sprite)) as Sprite;
@@ -104,6 +108,8 @@ public class DialogsScript4 : MonoBehaviour
             sister_sad = Resources.Load("characterImage/bother/bother_sad", typeof(Sprite)) as Sprite;
             sister_smile = Resources.Load("characterImage/bother/bother_normal", typeof(Sprite)) as Sprite;
             sister_monochrome_normal = Resources.Load("characterImage/bother/bother_monochrome_normal", typeof(Sprite)) as Sprite;
+            anotherName = "緹緹";
+            anotherSprite = Resources.Load("characterImage/sister/sister_happy", typeof(Sprite)) as Sprite;
 
         }
         else if (StaticObject.whoCharacter == 2)
@@ -118,10 +124,12 @@ public class DialogsScript4 : MonoBehaviour
             sister_sad = Resources.Load("characterImage/sister/sister_sad", typeof(Sprite)) as Sprite;
             sister_smile = Resources.Load("characterImage/sister/sister_smile", typeof(Sprite)) as Sprite;
             sister_monochrome_normal = Resources.Load("characterImage/sister/sister_monochrome_normal", typeof(Sprite)) as Sprite;
+            anotherName = "卡特";
+            anotherSprite = Resources.Load("characterImage/bother/bother_happy", typeof(Sprite)) as Sprite;
         }
 
         currentLine = 1;
-        endAtLine = 1;
+        endAtLine = 12;
 
         fadeOut = FadeOut.GetComponent<Animator>();
         
@@ -181,9 +189,73 @@ public class DialogsScript4 : MonoBehaviour
             whotalk.text = playerName;
             characterImage.color = talkNow;
             otherImage.color = untalkNow;
-            characterImage.sprite = sister_smile;
+            characterImage.sprite = sister_oops;
         }
 
+        if (currentLine == 2)
+        {
+            whotalk.text = playerName;
+            characterImage.color = talkNow;
+            otherImage.color = untalkNow;
+            characterImage.sprite = sister_sad;
+        }
+
+        if (currentLine == 4 || currentLine == 8)
+        {
+            whotalk.text = "魔法書籍";
+            characterImage.color = untalkNow;
+            otherImage.color = talkNow;
+            otherImage.sprite = book;
+            otherImageObj.SetActive(true);
+        }
+
+        if (currentLine == 7 || currentLine == 10)
+        {
+            whotalk.text = playerName;
+            characterImage.color = talkNow;
+            otherImage.color = untalkNow;
+            characterImage.sprite = sister_angry;
+        }
+
+        if (currentLine == 14 || currentLine == 17)
+        {
+            whotalk.text = "框框";
+            characterImage.color = talkNow;
+            otherImage.color = untalkNow;
+            characterImage.sprite = king;
+        }
+
+        if (currentLine == 20 || currentLine==28)
+        {
+            whotalk.text = "追光者";
+            characterImage.color = untalkNow;
+            otherImage.color = talkNow;
+            otherImage.sprite = hikari;
+        }
+
+        if (currentLine == 22)
+        {
+            whotalk.text = anotherName;
+            characterImage.color = untalkNow;
+            otherImage.color = talkNow;
+            otherImage.sprite = anotherSprite;
+        }
+
+        if (currentLine == 23)
+        {
+            whotalk.text = playerName;
+            characterImage.color = talkNow;
+            otherImage.color = untalkNow;
+            otherImage.sprite = sister_happy;
+        }
+
+        if (currentLine == 25)
+        {
+            whotalk.text = playerName;
+            characterImage.color = talkNow;
+            otherImage.color = untalkNow;
+            otherImage.sprite = sister_smile;
+        }
 
         if (Input.GetMouseButtonDown(0))
 		{

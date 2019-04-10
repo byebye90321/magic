@@ -57,6 +57,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: bdaf77dc4b4b71c49aeedfe7e2dc908f, type: 3}
   - {fileID: 21300000, guid: d8079ecaf367bf1429f7a40b8bea4804, type: 3}
   - {fileID: 21300000, guid: 7cb91967a7fe64b47a8db53f7a8eb132, type: 3}
+  - {fileID: 21300000, guid: 18efaa63aa1133a4cb25ad5cb36c35e5, type: 3}
   - {fileID: 21300000, guid: e198968f973dc354889a6dc3aabdd8a8, type: 3}
   - {fileID: 21300000, guid: bc9884de23c4f344cbb407db134343ad, type: 3}
   - {fileID: 21300000, guid: 409ca29fbd0c97e45a66921078a10124, type: 3}
@@ -84,6 +85,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0f08a73a9972a674b863dc595b9c15dc, type: 3}
   - {fileID: 21300000, guid: e97f832a67e84144b9e3e172de0eaa03, type: 3}
   - {fileID: 21300000, guid: a7a067c55cbfcf243ba9b00fc78c83da, type: 3}
+  - {fileID: 21300000, guid: b0068e69bacad9341a917a5462c4c5a1, type: 3}
   - {fileID: 21300000, guid: 1bb6e27f4720c874cbcd55012525e312, type: 3}
   - {fileID: 21300000, guid: 1316e1ead5abd644aab015f6cea664bb, type: 3}
   - {fileID: 21300000, guid: e113dc00e03445044984b8f5e865e8c2, type: 3}
@@ -124,6 +126,7 @@ SpriteAtlas:
   - wiko_cry
   - wiko_good
   - "\u6846\u6846"
+  - "\u6846\u6846"
   - wiko_attack
   - "\u4EBA\u5F62\u9F8D_\u958B\u5FC3"
   - bobby_rainbow_normal
@@ -150,6 +153,7 @@ SpriteAtlas:
   - "\u5F69_\u8001\u6EF4\u7B54_\u6B63\u5E38"
   - bobby_rainbow_happy
   - "\u55AE_\u7537\u53EF\u53EF_\u54ED"
+  - "\u8FFD\u5149\u8005"
   - "\u8FFD\u5149\u8005"
   - "\u55AE_\u7537\u53EF\u53EF_\u6B63\u5E38"
   - "\u795E\u79D8\u4EBA"
