@@ -883,7 +883,7 @@ public class DialogsScript1 : MonoBehaviour
 		StaticObject.sBE1 = 1;
 		PlayerPrefs.SetInt("StaticObject.sHE1", StaticObject.sHE1);
 		PlayerPrefs.SetInt("StaticObject.sBE1", StaticObject.sBE1);
-		yield return new WaitUntil(() => currentLine == 96);
+		yield return new WaitUntil(() => currentLine >= 96);
 		vine3Collider.enabled = true;
 		yield return new WaitForSeconds(0.3f);
 		cameraFollow.isFollowTarget = true;

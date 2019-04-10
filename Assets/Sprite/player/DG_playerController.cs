@@ -80,6 +80,8 @@ public class DG_playerController : MonoBehaviour
 	public int pickUpInt = 1;
 	public Image climb;
 
+    public Text T1;
+
     void Awake()
     {
         if (ChapterName != "0")
@@ -125,7 +127,7 @@ public class DG_playerController : MonoBehaviour
         else if (ChapterName == "3")
         {
             activeClimb = GameObject.Find("ladder").GetComponent<ActiveClimb>();  //防錯誤 爬藤蔓
-            activePickUp = GameObject.Find("pillar").GetComponent<ActivePickUp>(); //防錯誤 拾取物品
+            activePickUp = GameObject.Find("pillar1").GetComponent<ActivePickUp>(); //防錯誤 拾取物品
             npcTalk = GameObject.Find("Door").GetComponent<NpcTalk>();
             ActivePickUp.PickUpInt = 0;
         }
@@ -314,7 +316,8 @@ public class DG_playerController : MonoBehaviour
 		//----------------------Pick Up--------------------------
 		if (CrossPlatformInputManager.GetButtonDown("PickUp"))
 		{
-			animator_S.SetTrigger("pickUp");
+            StartCoroutine("notClickable");
+            animator_S.SetTrigger("pickUp");
 
 			if (!audio.isPlaying)
 			{
@@ -373,18 +376,23 @@ public class DG_playerController : MonoBehaviour
                     }
                 }
 			}
-			else
-			{
-				if (activePickUp.PickUpObjBool)  //普通拾取物品
+            else  //普通拾取物品
+            {
+				if (activePickUp.PickUpObjBool)  
 				{
                     if (activePickUp.PickUpObjName == "pillar")
                     {
-                        activePickUp.PickUpObj.GetComponent<Animator>().SetBool("turnOn",true);
-                        ActivePickUp.PickUpInt += 1;
+                        activePickUp.PickUpObj.GetComponent<Animator>().SetTrigger("turnOn");
+                        //ActivePickUp.PickUpInt += 1;
                         activePickUp.PickUpObjCol.enabled = false;
-                        Debug.Log(ActivePickUp.PickUpInt);
-                        if (ActivePickUp.PickUpInt == 4)
+                        //int PickInt = activePickUp.PickUpObj.GetComponent<PickUpAddInt>().pick;                   
+                        int PickInt = ActivePickUp.PickUpInt;
+                        int TT = PickInt;
+                        T1.text = TT.ToString();
+                        //Debug.Log(ActivePickUp.PickUpInt);
+                        if (ActivePickUp.PickUpInt == 3)
                             StartCoroutine(dialogsScript3.pillarCameraMove());
+                        
                     }
                     else if (activePickUp.PickUpObjName == "handle")
                     {
@@ -392,7 +400,7 @@ public class DG_playerController : MonoBehaviour
                         ActivePickUp.PickUpInt += 1;
                         activePickUp.PickUpObjCol.enabled = false;
                         Debug.Log(ActivePickUp.PickUpInt);
-                        if (ActivePickUp.PickUpInt == 1) //開平台
+                        if (ActivePickUp.PickUpInt >= 1) //開平台
                             StartCoroutine(dialogsScript4.PlatformOpen());
                     }
                     else
@@ -407,7 +415,7 @@ public class DG_playerController : MonoBehaviour
 			Debug.Log(activePickUp.PickUpObjName);
 			isActive = false;
 			StartCoroutine("MoveWait");
-			activePickUp.PickUpImg.enabled = false;
+			//activePickUp.PickUpImg.enabled = false;
 		}
 
 		//-----------------------Talk----------------------------
@@ -691,8 +699,16 @@ public class DG_playerController : MonoBehaviour
             this.transform.parent = null;
     }
 
+    IEnumerator notClickable()
+    {
+        activePickUp.PickUpImg.enabled = false;
+        yield return new WaitForSeconds(.5f);
+    }
+
+
     IEnumerator MoveWait()
 	{
+
 		yield return new WaitForSeconds(1f);
 		isActive = true;
 	}
