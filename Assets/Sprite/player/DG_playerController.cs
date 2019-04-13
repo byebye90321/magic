@@ -84,7 +84,7 @@ public class DG_playerController : MonoBehaviour
     {
         if (ChapterName != "0")
         {
-            //StaticObject.whoCharacter = 1;
+            StaticObject.whoCharacter = 1;
             if (StaticObject.whoCharacter == 1) //哥哥
             {
                 GameObject playS = Instantiate(playerB) as GameObject;
@@ -145,15 +145,20 @@ public class DG_playerController : MonoBehaviour
 		{
 			if (curHealth < HealthSlider.value)
 			{
-				HealthSlider.value -= 1;
-			}
-			else if (curHealth == HealthSlider.value)
+                HealthSlider.value = curHealth;
+            }           
+            else if (curHealth == HealthSlider.value)
 			{
 				HealthSlider.value = curHealth;
 			}
 		}
 
-		if (ChapterName !="0")
+        if (curHealth > HealthSlider.value)
+        {
+            HealthSlider.value = curHealth;
+        }
+
+        if (ChapterName !="0")
 		{
 			if (curHealth < 100)
 			{

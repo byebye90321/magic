@@ -72,8 +72,6 @@ public class DialogsScript3 : MonoBehaviour
 
 	//----------------audio----------------------
 	public new AudioSource audio;
-    /*public AudioClip cheer;
-    public AudioClip quarrel;*/
     //-----------------其他---------------------
     public GameObject pause;
 	private Color talkNow = new Color(1, 1, 1, 1);
@@ -258,61 +256,6 @@ public class DialogsScript3 : MonoBehaviour
 	{
 		EnableTextBox();
 	}
-
-	void OnTriggerEnter2D(Collider2D col)
-	{
-		if (col.gameObject.name == "battleCollider") //進入K攻擊
-		{
-			gameManager.drawGame.TransitionTo(10f);
-			StartCoroutine("BeforeKBattle");
-		}
-
-		if (col.gameObject.name == "beatuyZoomCollider") //進入選美舞台
-		{
-			cameraFollow.moveCount = 2;
-			cameraFollow.isFollowTarget = false;
-			StartCoroutine("beatuyZoom");
-            StaticObject.Olivia = 1; //Olivia解鎖
-            PlayerPrefs.SetInt("StaticObject.Olivia", StaticObject.Olivia);
-            StaticObject.money = 1; //money解鎖
-            PlayerPrefs.SetInt("StaticObject.money", StaticObject.money);
-            StaticObject.secretK = 1; //secretK解鎖
-            PlayerPrefs.SetInt("StaticObject.secretK", StaticObject.secretK);
-            StaticObject.Grace = 1; //Grace解鎖
-            PlayerPrefs.SetInt("StaticObject.Grace", StaticObject.Grace);
-        }
-
-		if (col.gameObject.name == "NPC_Grace")
-		{
-			currentLine = 107;
-			endAtLine = 137;
-			NPCAppear();
-		}
-	}
-	//----------------------------選擇----------------------------
-	/*public void Choose1_gohome() //回家
-	{
-		currentLine = 208;
-		endAtLine = 210;
-		NPCAppear();
-		choose1.SetActive(false);
-		StaticObject.sHE2 = 0;
-		StaticObject.sBE2 = 1;
-		PlayerPrefs.SetInt("StaticObject.sHE2", StaticObject.sHE2);
-		PlayerPrefs.SetInt("StaticObject.sBE2", StaticObject.sBE2);
-	}
-
-	public void Choose1_continue() //繼續
-	{
-		currentLine = 211;
-		endAtLine = 213;
-		NPCAppear();
-		choose1.SetActive(false);
-		StaticObject.sHE2 = 1;
-		StaticObject.sBE2 = 0;
-		PlayerPrefs.SetInt("StaticObject.sHE2", StaticObject.sHE2);
-		PlayerPrefs.SetInt("StaticObject.sBE2", StaticObject.sBE2);
-	}*/
 
 	//----------------------------對話----------------------------
 	private IEnumerator TextScroll(string lineOfText)

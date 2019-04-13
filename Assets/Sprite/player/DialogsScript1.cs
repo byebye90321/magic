@@ -113,8 +113,10 @@ public class DialogsScript1 : MonoBehaviour
 	//-----------------vs
 	public GameObject vsWiko;
 	public GameObject vsYYJ;
-	//---------------場景保存物件----------------
-	public GameObject col; //碰撞器開關
+    public GameObject vsBother;
+    public GameObject vsSister;
+    //---------------場景保存物件----------------
+    public GameObject col; //碰撞器開關
 
 	void Start() {
 
@@ -137,6 +139,7 @@ public class DialogsScript1 : MonoBehaviour
                 sister_oops = Resources.Load("characterImage/bother/bother_oops", typeof(Sprite)) as Sprite;
                 sister_sad = Resources.Load("characterImage/bother/bother_sad", typeof(Sprite)) as Sprite;
                 sister_smile = Resources.Load("characterImage/bother/bother_normal", typeof(Sprite)) as Sprite;
+                vsBother.SetActive(true);
             }
             else if (StaticObject.whoCharacter == 2)
             {
@@ -149,6 +152,7 @@ public class DialogsScript1 : MonoBehaviour
                 sister_oops = Resources.Load("characterImage/sister/sister_oops", typeof(Sprite)) as Sprite;
                 sister_sad = Resources.Load("characterImage/sister/sister_sad", typeof(Sprite)) as Sprite;
                 sister_smile = Resources.Load("characterImage/sister/sister_smile", typeof(Sprite)) as Sprite;
+                vsSister.SetActive(true);
             }
 
             cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();

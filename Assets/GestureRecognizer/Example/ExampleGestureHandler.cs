@@ -28,8 +28,11 @@ public class ExampleGestureHandler : MonoBehaviour
 	public Skills skillB3;
 	public Skills skillG4;
 	public Skills skillB4;
-	//----------Particle System--------------
-	public GameObject G0_Particle;
+    public Skills skillG5;
+    public Skills skillG6;
+
+    //----------Particle System--------------
+    public GameObject G0_Particle;
 	[HideInInspector]
 	public ParticleSystem G0_ParticleP;
 	public GameObject G1_Particle;
@@ -44,8 +47,14 @@ public class ExampleGestureHandler : MonoBehaviour
 	public GameObject G4_Particle;
 	[HideInInspector]
 	public ParticleSystem G4_ParticleP;
+    public GameObject G5_Particle;
+    [HideInInspector]
+    public ParticleSystem G5_ParticleP;
+    public GameObject G6_Particle;
+    [HideInInspector]
+    public ParticleSystem G6_ParticleP;
 
-	public GameObject B1_Particle;
+    public GameObject B1_Particle;
 	[HideInInspector]
 	public ParticleSystem B1_ParticleP;
 	public GameObject B2_Particle;
@@ -64,7 +73,9 @@ public class ExampleGestureHandler : MonoBehaviour
 	public AudioClip G2;
 	public AudioClip G3;
 	public AudioClip G4;
-	public AudioClip B1;
+	public AudioClip G5;
+	public AudioClip G6;
+    public AudioClip B1;
 	public AudioClip B2;
 	public AudioClip B3;
 	public AudioClip B4;
@@ -77,7 +88,9 @@ public class ExampleGestureHandler : MonoBehaviour
 		G2_ParticleP = G2_Particle.GetComponent<ParticleSystem>();
 		G3_ParticleP = G3_Particle.GetComponent<ParticleSystem>();
 		G4_ParticleP = G4_Particle.GetComponent<ParticleSystem>();
-		B1_ParticleP = B1_Particle.GetComponent<ParticleSystem>();
+		G5_ParticleP = G4_Particle.GetComponent<ParticleSystem>();
+		G6_ParticleP = G4_Particle.GetComponent<ParticleSystem>();
+        B1_ParticleP = B1_Particle.GetComponent<ParticleSystem>();
 		B2_ParticleP = B2_Particle.GetComponent<ParticleSystem>();
 		B3_ParticleP = B3_Particle.GetComponent<ParticleSystem>();
 		B4_ParticleP = B4_Particle.GetComponent<ParticleSystem>();
@@ -113,10 +126,6 @@ public class ExampleGestureHandler : MonoBehaviour
 		{
 			if (result.gesture.id == "M")
 			{
-				/*if (ChapterName == "0")
-				{
-					enemyController.StartCoroutine("Skill0");
-				}*/
 				Debug.Log("攻擊0");
 				DG_playerController.Attack();
 				audio.PlayOneShot(G0);
@@ -257,7 +266,39 @@ public class ExampleGestureHandler : MonoBehaviour
 			{
 			}
 		}
-	}
+
+        //技能5
+        if (skillG5.attack == true)
+        {
+            if (result.gesture.id == "G5")
+            {
+                Debug.Log("G5攻擊");
+                DG_playerController.Attack();
+                audio.PlayOneShot(G5);
+                skillG5.currentCoolDown = 0;
+                G5_Particle.SetActive(true);
+                StartCoroutine("close5");
+            }
+            else
+                return;
+        }
+
+        //技能6
+        if (skillG6.attack == true)
+        {
+            if (result.gesture.id == "G6")
+            {
+                Debug.Log("G6攻擊");
+                DG_playerController.Attack();
+                audio.PlayOneShot(G6);
+                skillG6.currentCoolDown = 0;
+                G6_Particle.SetActive(true);
+                StartCoroutine("close6");
+            }
+            else
+                return;
+        }
+    }
 
 	IEnumerator Blink(string id)
 	{
@@ -307,4 +348,16 @@ public class ExampleGestureHandler : MonoBehaviour
 		G4_Particle.SetActive(false);
 		B4_Particle.SetActive(false);
 	}
+
+    IEnumerator close5()
+    {
+        yield return new WaitForSeconds(1f);
+        G5_Particle.SetActive(false);
+    }
+
+    IEnumerator close6()
+    {
+        yield return new WaitForSeconds(1f);
+        G6_Particle.SetActive(false);
+    }
 }

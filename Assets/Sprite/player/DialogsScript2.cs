@@ -117,7 +117,7 @@ public class DialogsScript2 : MonoBehaviour
 	public GameObject beatuySmokeObj; //變形的煙
 	public GameObject beatutMember; //選美型態的參賽者
     //public GameObject Audience; //觀眾圖
-    public GameObject Audienc;
+    public GameObject Audience;
 
     public GameObject secertKObj; //神秘人Obj
 	public GameObject KParticle; //神秘人變身particle
@@ -144,6 +144,8 @@ public class DialogsScript2 : MonoBehaviour
 	public GameObject BEfogParticle;
 	//-----------------vs
 	public GameObject vsYYK;
+    public GameObject vsBother;
+    public GameObject vsSister;
 
     void Awake()
     {
@@ -171,7 +173,7 @@ public class DialogsScript2 : MonoBehaviour
             sister_sad = Resources.Load("characterImage/bother/bother_sad", typeof(Sprite)) as Sprite;
             sister_smile = Resources.Load("characterImage/bother/bother_normal", typeof(Sprite)) as Sprite;
             sister_monochrome_normal = Resources.Load("characterImage/bother/bother_monochrome_normal", typeof(Sprite)) as Sprite;
-
+            vsBother.SetActive(true);
         }
         else if (StaticObject.whoCharacter == 2)
         {
@@ -185,6 +187,7 @@ public class DialogsScript2 : MonoBehaviour
             sister_sad = Resources.Load("characterImage/sister/sister_sad", typeof(Sprite)) as Sprite;
             sister_smile = Resources.Load("characterImage/sister/sister_smile", typeof(Sprite)) as Sprite;
             sister_monochrome_normal = Resources.Load("characterImage/sister/sister_monochrome_normal", typeof(Sprite)) as Sprite;
+            vsSister.SetActive(true);
         }
 
         currentLine = 1;
@@ -829,7 +832,7 @@ public class DialogsScript2 : MonoBehaviour
             didaAni.state.SetAnimation(0, "idle_C", true);
             cocoAni.state.SetAnimation(0, "idle_C", true);
             dragonAni.state.SetAnimation(0, "idle_C", true);
-            Audienc.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Audience_color");
+            Audience.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Audience_color");
             characterImage.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 

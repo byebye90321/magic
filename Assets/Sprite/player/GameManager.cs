@@ -47,12 +47,14 @@ public class GameManager : MonoBehaviour {
 	public GameObject G4;
 	public GameObject B4;
 	public GameObject G5;
+	public GameObject G6;
 
     public GameObject ParticleObj1;
 	public GameObject ParticleObj2;
 	public GameObject ParticleObj3;
 	public GameObject ParticleObj4;
 	public GameObject ParticleObj5;
+	public GameObject ParticleObj6;
     //------------------事件----------------------
     public GameObject eventObj;
 	private Animator eventAni;
@@ -338,18 +340,35 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(2f);     
         eventObj.SetActive(false);
         StartCoroutine(dialogsScript2.AfterKBattle());
-        KObj.SetActive(false);
+        KObj.SetActive(false);  //K
     }
 
     //第三章
     public IEnumerator pillarKey()
     {
         yield return new WaitForSeconds(1.5f);
-        dialogsScript3.Key.SetActive(true);
-        
+        dialogsScript3.Key.SetActive(true);        
         yield return new WaitForSeconds(2f);      
         cameraFollow.moveCount = 0;
         cameraFollow.isFollowTarget = true;
+    }
+
+    //第三章水晶室
+    public IEnumerator KingAttackWin()
+    {
+        StaticObject.EnemyKing = 1; //K解鎖
+        PlayerPrefs.SetInt("StaticObject.EnemyKing", StaticObject.EnemyKing);
+        usually.TransitionTo(3f);
+        teachHintAni.SetTrigger("close");
+        attackRedImage.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        eventObj.SetActive(true);
+        eventText.text = "擊敗框框";
+        K.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        eventObj.SetActive(false);
+        StartCoroutine(dialogsScript4.AfterKingBattle());
+        dialogsScript4.kingCollider.enabled = false;
     }
 
     public void pause()

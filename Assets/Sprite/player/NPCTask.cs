@@ -737,7 +737,7 @@ public class NPCTask : MonoBehaviour {
         dialogsScript3.currentLine = 11;
         dialogsScript3.endAtLine = 18;
         dialogsScript3.NPCAppear();
-        yield return new WaitUntil(() => dialogsScript3.currentLine == 18);
+        yield return new WaitUntil(() => dialogsScript3.currentLine >= 18);
         gameManager.eventObj.SetActive(true);
         gameManager.eventText.text = "獲得技能五";
         yield return new WaitForSeconds(0.5f);

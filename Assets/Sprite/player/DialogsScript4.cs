@@ -68,22 +68,29 @@ public class DialogsScript4 : MonoBehaviour
 	public bool teachBlood = false;
 
     public GameObject Platform;
+    public GameObject Platform2; //框框後
+    public GameObject kingChiCha;
+    public GameObject crystalCharacter;
 
-	//------------------Attack----------------------
-	//小BOSS
-	public GameObject attackColliderBorder;
-
-	//----------------audio----------------------
-	public new AudioSource audio;
+    public GameObject crystalHikari;
+    public GameObject crystalBother;
+    public GameObject crystalSister;
+    //------------------Attack----------------------
+    //小BOSS
+    //public GameObject attackColliderBorder;
+    public BoxCollider2D kingCollider;
+    //----------------audio----------------------
+    public new AudioSource audio;
     /*public AudioClip cheer;
     public AudioClip quarrel;*/
     //-----------------其他---------------------
-    public GameObject pause;
+    //public GameObject pause;
 	private Color talkNow = new Color(1, 1, 1, 1);
 	private Color untalkNow = new Color(.6f, .6f, .6f, 1);
-	public GameObject BEfogParticle;
 	//-----------------vs
-	public GameObject vsYYK;
+	public GameObject vsKing;
+    public GameObject vsBother;
+    public GameObject vsSister;
 
     void Awake()
     {
@@ -110,6 +117,10 @@ public class DialogsScript4 : MonoBehaviour
             sister_monochrome_normal = Resources.Load("characterImage/bother/bother_monochrome_normal", typeof(Sprite)) as Sprite;
             anotherName = "緹緹";
             anotherSprite = Resources.Load("characterImage/sister/sister_happy", typeof(Sprite)) as Sprite;
+            vsBother.SetActive(true);
+            GameObject sisterObj = GameObject.Find("interactObject/crystal/character/sisterEnd");
+            sisterObj.SetActive(true);
+            crystalSister.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("redCrystal_people");
 
         }
         else if (StaticObject.whoCharacter == 2)
@@ -126,6 +137,10 @@ public class DialogsScript4 : MonoBehaviour
             sister_monochrome_normal = Resources.Load("characterImage/sister/sister_monochrome_normal", typeof(Sprite)) as Sprite;
             anotherName = "卡特";
             anotherSprite = Resources.Load("characterImage/bother/bother_happy", typeof(Sprite)) as Sprite;
+            vsSister.SetActive(true);
+            GameObject botherObj = GameObject.Find("interactObject/crystal/character/botherEnd");
+            botherObj.SetActive(true);
+            crystalBother.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("blueCrystal_people");
         }
 
         currentLine = 1;
@@ -223,6 +238,13 @@ public class DialogsScript4 : MonoBehaviour
             characterImage.color = talkNow;
             otherImage.color = untalkNow;
             characterImage.sprite = king;
+            Joystick.isMove = true;
+            otherImageObj.SetActive(false);
+        }
+        if (currentLine == 16)
+        {
+            DisableTextBox();
+            StartCoroutine("BeforeKing");
         }
 
         if (currentLine == 20 || currentLine==28)
@@ -231,6 +253,9 @@ public class DialogsScript4 : MonoBehaviour
             characterImage.color = untalkNow;
             otherImage.color = talkNow;
             otherImage.sprite = hikari;
+            otherImageObj.SetActive(true);
+            characterImage.sprite = sister_smile;
+            otherImageObj.SetActive(true);
         }
 
         if (currentLine == 22)
@@ -246,7 +271,8 @@ public class DialogsScript4 : MonoBehaviour
             whotalk.text = playerName;
             characterImage.color = talkNow;
             otherImage.color = untalkNow;
-            otherImage.sprite = sister_happy;
+            characterImage.sprite = sister_happy;
+            otherImageObj.SetActive(false);
         }
 
         if (currentLine == 25)
@@ -255,6 +281,11 @@ public class DialogsScript4 : MonoBehaviour
             characterImage.color = talkNow;
             otherImage.color = untalkNow;
             otherImage.sprite = sister_smile;
+        }
+
+        if (currentLine == 19 || currentLine == 31)
+        {
+            DisableTextBox();
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -278,62 +309,108 @@ public class DialogsScript4 : MonoBehaviour
 	}
 
 	//-------------------------碰撞對話-----------------------------
-	public void BloodStation()  //補血站
+	/*public void BloodStation()  //補血站
 	{
 		teachBlood = true;
 		currentLine = 6;
 		endAtLine = 16;
 		NPCAppear();
-	}
+	}*/
 
 
-	/*IEnumerator BeforeKBattle()
+	IEnumerator BeforeKing()
 	{
         EnemyController = GameObject.Find("BossEnemy").GetComponent<DG_EnemyController>();
-        playerAddParticle.SetActive(true);
-		addText.SetActive(true);
-        UpText.SetActive(true);
-        yield return new WaitForSeconds(3);
+        
+        yield return new WaitForSeconds(1);
 		gameManager.vsPanel.SetActive(true);
-		vsYYK.SetActive(true);
+		vsKing.SetActive(true);
 		yield return new WaitForSeconds(3);
 		gameManager.teachHintAni.SetTrigger("HintOpen");
 		gameManager.teachHintText.text = "進入戰鬥";
 		gameManager.drawGame.TransitionTo(10f);
-		BossKCollider.enabled = true;
-		gesture.AddAttack = 5;
-		gameManager.attackRedImage.SetActive(true);
+		//BossKCollider.enabled = true;
+        EnemyController.GetComponent<BoxCollider2D>().enabled = true;
+        gameManager.attackRedImage.SetActive(true);
 		EnemyController.isAttack = true;
 		gameManager.vsPanel.SetActive(false);
-		vsYYK.SetActive(false);
+		vsKing.SetActive(false);
 		EnemyController.HealthCanvas.SetActive(true);
 	}
 
-	public IEnumerator AfterKBattle()
+	public IEnumerator AfterKingBattle()
 	{
-		currentLine = 189;
-		endAtLine = 197;
+		currentLine = 17;
+		endAtLine = 19;
 		NPCAppear();
-        playerAddParticle.SetActive(false);
-        addText.SetActive(false);
-        UpText.SetActive(false);
-        yield return new WaitUntil(() => currentLine == 197);
-	}*/
+        yield return new WaitUntil(() => currentLine >= 19);
+        yield return new WaitForSeconds(1f);
+        kingChiCha.SetActive(true);
+        Platform2.SetActive(true);
 
-	public void NPCAppear()
+    }
+
+    IEnumerator GetSkill6()
+    {
+        yield return new WaitForSeconds(0.1f);
+        gameManager.eventObj.SetActive(true);
+        gameManager.eventText.text = "獲得技能六";
+        yield return new WaitForSeconds(0.5f);
+        gameManager.ParticleObj6.SetActive(true); //skill Particle
+        yield return new WaitForSeconds(0.5f);
+        StaticObject.G6 = 1;
+        gameManager.G6.SetActive(true);
+        PlayerPrefs.SetInt("StaticObject.G6", StaticObject.G6);       
+        yield return new WaitForSeconds(1f);
+        gameManager.ParticleObj6.SetActive(false);
+        gameManager.eventObj.SetActive(false);
+    }
+
+    IEnumerator hikariText()
+    {
+        npcTask.bookObj.GetComponent<Animator>().SetBool("isOpen", false);
+        yield return new WaitForSeconds(1.5f);
+        crystalCharacter.SetActive(true);
+        crystalHikari.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Crystal_not");
+        crystalSister.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("redCrystal_not");
+        crystalBother.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("blueCrystal_not");
+        yield return new WaitForSeconds(1.5f);
+        currentLine = 20;
+        endAtLine = 31;
+        NPCAppear();
+        yield return new WaitUntil(() => currentLine >= 31);
+    }
+
+
+    public void NPCAppear()
 	{
 		EnableTextBox();
 	}
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.gameObject.name == "battleCollider") //進入K攻擊
+		if (col.gameObject.name == "kingCol") //進入框框範圍
 		{
-			gameManager.drawGame.TransitionTo(10f);
-			StartCoroutine("BeforeKBattle");
-		}
+            currentLine = 14;
+            endAtLine = 16;
+            NPCAppear();
+            Destroy(col);
+        }
 
-		if (col.gameObject.name == "beatuyZoomCollider") //進入選美舞台
+        if (col.gameObject.name == "skill6") //吃到技能7
+        {
+            Destroy(col.gameObject);
+            StartCoroutine("GetSkill6");
+            
+        }
+
+        if (col.gameObject.name == "crystal") //追光者對話
+        {
+            Destroy(col);
+            StartCoroutine("hikariText");
+        }
+
+        /*if (col.gameObject.name == "beatuyZoomCollider") //進入選美舞台
 		{
 			cameraFollow.moveCount = 2;
 			cameraFollow.isFollowTarget = false;
@@ -353,8 +430,8 @@ public class DialogsScript4 : MonoBehaviour
 			currentLine = 107;
 			endAtLine = 137;
 			NPCAppear();
-		}
-	}
+		}*/
+    }
 	//----------------------------選擇----------------------------
 	/*public void Choose1_gohome() //回家
 	{

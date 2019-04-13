@@ -181,7 +181,6 @@
      <Compile Include="Assets\Sprite\Chapter0\draw\cut\knife.cs" />
      <Compile Include="Assets\Sprite\Chapter0\draw\cut\Skills.cs" />
      <Compile Include="Assets\Sprite\Chapter0\draw\Defensive.cs" />
-     <Compile Include="Assets\Sprite\Chapter0\draw\DG_EnemyController.cs" />
      <Compile Include="Assets\Sprite\Chapter0\draw\DG_GameManager.cs" />
      <Compile Include="Assets\Sprite\Chapter0\draw\skill\skillInfo.cs" />
      <Compile Include="Assets\Sprite\Chapter0\draw\skill\SkillPress.cs" />
@@ -192,6 +191,8 @@
      <Compile Include="Assets\Sprite\Chapter0\run\RunGameManager.cs" />
      <Compile Include="Assets\Sprite\drawEffect.cs" />
      <Compile Include="Assets\Sprite\End\EndPoint.cs" />
+     <Compile Include="Assets\Sprite\Enemy\DG_EnemyController.cs" />
+     <Compile Include="Assets\Sprite\Enemy\EnemyKing.cs" />
      <Compile Include="Assets\Sprite\FpsTest.cs" />
      <Compile Include="Assets\Sprite\game kit\CharacterController2D.cs" />
      <Compile Include="Assets\Sprite\game kit\MovingPlatform.cs" />
