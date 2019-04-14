@@ -194,17 +194,12 @@ public class DialogsScript1 : MonoBehaviour
             StaticObject.nowClass = 1f;
             PlayerPrefs.SetFloat("StaticObject.nowClass", StaticObject.nowClass);
 
-            }
-            else 
-            {
-
-            }
-
-            //usually.TransitionTo(10f);
-            fadeOut = FadeOut.GetComponent<Animator>();
-		    
-		    		
-		    StartCoroutine("fadeIn");	
+        }
+        StaticObject.chichi = 1;
+        PlayerPrefs.SetInt("StaticObject.chichi", StaticObject.chichi);
+        //usually.TransitionTo(10f);
+        fadeOut = FadeOut.GetComponent<Animator>();
+        StartCoroutine("fadeIn");	
 	}
 
 	IEnumerator fadeIn()

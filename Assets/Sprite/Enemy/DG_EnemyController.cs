@@ -22,7 +22,8 @@ public class DG_EnemyController : MonoBehaviour{
 	bool isDead;
 	bool damaged;
 
-	private Text healthText;
+    [HideInInspector]
+	public Text healthText;
 	public GameObject healthObj;
 	public GameObject canvas;
 	//--------------attack------
@@ -82,9 +83,14 @@ public class DG_EnemyController : MonoBehaviour{
 		{
 			if (curHealth < Health.value)
 			{
-				Health.value -= 1;
+				//Health.value -= 1;
+                Health.value = curHealth;
 			}
-			else if (curHealth == Health.value)
+            else if (curHealth < Health.value)
+            {
+                Health.value = curHealth;
+            }
+            else if (curHealth == Health.value)
 			{
 				Health.value = curHealth;
 			}
@@ -110,7 +116,7 @@ public class DG_EnemyController : MonoBehaviour{
 		}
         else if(enemyName =="King")
         {
-            InvokeRepeating("KingAttack", 1f, 5f);          
+            InvokeRepeating("KingAttack", 1f, 7f);          
         }
 		else
 		{
@@ -438,6 +444,18 @@ public class DG_EnemyController : MonoBehaviour{
 		G4_beaten.SetActive(false);
 		B4_beaten.SetActive(false);
 	}
+
+    IEnumerator G5_Close()
+    {
+        yield return new WaitForSeconds(.5f);
+        G5_beaten.SetActive(false);
+    }
+
+    IEnumerator G6_Close()
+    {
+        yield return new WaitForSeconds(.5f);
+        G6_beaten.SetActive(false);
+    }
 }
 
 

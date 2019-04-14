@@ -223,6 +223,8 @@ public class DialogsScript2 : MonoBehaviour
 
         StaticObject.nowClass = 2;
         PlayerPrefs.SetFloat("StaticObject.nowClass", StaticObject.nowClass);
+        StaticObject.chacha = 1;
+        PlayerPrefs.SetInt("StaticObject.chacha", StaticObject.chacha);
     }
 
 	IEnumerator fadeIn()

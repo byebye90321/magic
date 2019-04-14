@@ -84,7 +84,7 @@ public class DG_playerController : MonoBehaviour
     {
         if (ChapterName != "0")
         {
-            StaticObject.whoCharacter = 1;
+            //StaticObject.whoCharacter = 1;
             if (StaticObject.whoCharacter == 1) //哥哥
             {
                 GameObject playS = Instantiate(playerB) as GameObject;
@@ -580,30 +580,38 @@ public class DG_playerController : MonoBehaviour
 			}
 			else if (ChapterName == "1")
 			{
-				if (StaticObject.sHE1 == 1)
+				if (StaticObject.sBE1 == 1) //BE1迷失森林
 				{
-					gameManager.sHE1.SetActive(true);
-					gameManager.win();
+                    gameManager.lose();                  
 				}
-				else
+				else  //HE1離開森林
 				{
-					gameManager.sBE1.SetActive(true);
-					gameManager.lose();
-				}
+                    gameManager.win();
+                }
 			}
 			else if (ChapterName == "2")
 			{
-				if (StaticObject.sHE2 == 1)
+				if (StaticObject.sBE2 == 1) 
 				{
-					gameManager.win();
-				}
-				else
-				{
-					gameManager.sBE2.SetActive(true);
-					gameManager.lose();
-				}
+                    gameManager.lose();
+                }
+				else  //BE2被遺忘的事
+				{			
+                    gameManager.win();
+                }
 			}
-		}
+            else if (ChapterName == "4")
+            {
+                if (StaticObject.sBE2 == 1)  //BE3萬籟俱寂的等待 
+                {
+                    gameManager.lose();                   
+                }
+                else  //HE2真實的世界 +彩蛋
+                {
+                    gameManager.win();
+                }
+            }
+        }
 
 		if (HealthSlider.value < 100) {
 			if (col.gameObject.name == "BloodStation") //補血站

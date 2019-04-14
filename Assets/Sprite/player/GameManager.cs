@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject stoneDoorObj;
 	[HideInInspector]
 	public Animator stoneDoorAni;
+
 	//-------------------對話----------------------
 	public GameObject textPanel;
 	public Text text;
@@ -90,25 +91,32 @@ public class GameManager : MonoBehaviour {
 	public GameObject monster;
 	public GameObject K;
     public GameObject KObj;
-	//--------------------結局--------------------
-	public GameObject sHE1; //離開森林
-	public GameObject sBE1; //迷失森林
-	public GameObject sBE2; //回家
+    //--------------------結局--------------------
+    public GameObject EndingCanvas;
 
+    private GameObject sHE1; //離開森林
+	private GameObject sBE1; //迷失森林
+	private GameObject sBE2; //被遺忘的事
+    private GameObject sHE2; //真實的世界
+    private GameObject sBE3; //萬籟俱寂的等待
+
+    public Text endTitle; //結局名
+    public Text endText; //短語
 	//--------------------回饋介面----------------
 	public GameObject winPanel;  //通關
 	public GameObject losePanel;  //失敗
 	public GameObject unlockPanel;  //解鎖
 	public GameObject gameOverPenal;  //gameOver
 
-	public Text gameOverText;
+	public Text gameOverText; 
 	//------------------FADE淡出-------------------
 	public GameObject FadeOut; 
     [HideInInspector]
 	public Animator FadeOutAni;
 	public bool isRun = false;
-
 	public GameObject FadeWhite;
+    public GameObject FIFO;
+    public GameObject FIFO_long;
 	//--------------------音效---------------------
 	public new AudioSource audio;
 	public AudioMixerSnapshot usually;
@@ -421,29 +429,78 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator GameOver()  //GameOver
 	{
-		yield return new WaitForSeconds(.5f);
-		gameOverPenal.SetActive(true);
-		yield return new WaitForSeconds(2.5f);
-		FadeOut.SetActive(true);
-		FadeOutAni.SetBool("FadeOut", true);
-		yield return new WaitForSeconds(1.5f);
-		SceneManager.LoadScene("LoadingToMain");  //先回主畫面
+        if (ChapterName == "4" && playerController.dialogsScript4.kingBool ==true)
+        {
+            losePanel.SetActive(true);
+            endTitle.text = "萬籟俱寂的等待";
+            endText.text = "平等的璀璨之色仍未完全消失，\n卻需要更長久的時間等待轉機到來。";
+            yield return new WaitForSeconds(3f);
+            FIFO_long.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            losePanel.SetActive(false);
+            yield return new WaitForSeconds(3f);
+            sBE2 = Resources.Load<GameObject>("EndingCanvas/BE3");
+            GameObject BE2 = Instantiate(sBE2) as GameObject;
+            BE2.transform.SetParent(EndingCanvas.transform, false);
+            yield return new WaitForSeconds(2.5f);
+            FadeOut.SetActive(true);
+            FadeOutAni.SetBool("FadeOut", true);
+            yield return new WaitForSeconds(1.5f);
+            SceneManager.LoadScene("ChooseChapter");  //先回主畫面
+        }
+        else
+        {
+            yield return new WaitForSeconds(.5f);
+            gameOverPenal.SetActive(true);
+            yield return new WaitForSeconds(2.5f);
+            FadeOut.SetActive(true);
+            FadeOutAni.SetBool("FadeOut", true);
+            yield return new WaitForSeconds(1.5f);
+            SceneManager.LoadScene("LoadingToMain");  //先回主畫面
+        }
 	}
 
 	IEnumerator Win()  //過關
 	{
 		PlayerPrefs.SetFloat("StaticObject.balanceSlider", balanceValue);
-		PlayerPrefs.SetFloat("StaticObject.playerHealth", playerController.HealthSlider.value);
-		if (ChapterName == "1")
-		{
-			yield return new WaitForSeconds(2f);
-		}
+		PlayerPrefs.SetFloat("StaticObject.playerHealth", playerController.HealthSlider.value);       
 		winPanel.SetActive(true);
-		/*if (StaticObject.sHE1 == 1)
-		{
-			winPanel.SetActive(true);
-		}*/
-		yield return new WaitForSeconds(2.5f);
+
+        if (ChapterName == "1")
+        {
+            yield return new WaitForSeconds(2f);
+            FIFO.SetActive(true);
+            FIFO.GetComponent<Animator>().SetBool("FIFO", true);
+            yield return new WaitForSeconds(1f);
+            winPanel.SetActive(false);
+            if (StaticObject.whoCharacter == 1)
+            {
+                sHE1 = Resources.Load<GameObject>("EndingCanvas/HE1b");
+                GameObject HE1 = Instantiate(sHE1) as GameObject;
+                HE1.transform.SetParent(EndingCanvas.transform, false);
+            }
+            else
+            {
+                sHE1 = Resources.Load<GameObject>("EndingCanvas/HE1s");
+                GameObject HE1 = Instantiate(sHE1) as GameObject;
+                HE1.transform.SetParent(EndingCanvas.transform, false);
+            }
+        }
+        else if (ChapterName == "4")
+        {
+            endTitle.text = "真實的世界";
+            endText.text = "恢復色彩的世界就是這麼繽紛，\n不僅是烏托邦的世界，也是我們的世界。";
+            yield return new WaitForSeconds(3f);
+            FIFO_long.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            winPanel.SetActive(false);
+            yield return new WaitForSeconds(3f);
+            sHE2 = Resources.Load<GameObject>("EndingCanvas/HE2");
+            GameObject HE2 = Instantiate(sHE2) as GameObject;
+            HE2.transform.SetParent(EndingCanvas.transform, false);
+
+        }
+        yield return new WaitForSeconds(2.5f);
 		FadeOut.SetActive(true);
 		FadeOutAni.SetBool("FadeOut", true);
 		yield return new WaitForSeconds(1.5f);
@@ -454,18 +511,61 @@ public class GameManager : MonoBehaviour {
 	{
 		PlayerPrefs.SetFloat("StaticObject.balanceSlider", balanceValue);
 		PlayerPrefs.SetFloat("StaticObject.playerHealth", playerController.HealthSlider.value);
-		yield return new WaitForSeconds(2f);
 		losePanel.SetActive(true);
-		/*if (StaticObject.sBE1 == 1)
-		{
-			losePanel.SetActive(true);
-		}*/
-		yield return new WaitForSeconds(2.5f);
-		FadeOut.SetActive(true);
+
+        if (ChapterName == "1")
+        {
+            endTitle.text = "迷失森林";
+            endText.text = "在黑霧籠罩的森林中看見一位步履蹣跚之人，\n據說那是失去色彩、迷失自我者唯一的歸處。";
+            yield return new WaitForSeconds(3f);
+            FIFO_long.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            losePanel.SetActive(false);
+            yield return new WaitForSeconds(3f);
+            if (StaticObject.whoCharacter == 1)
+            {
+                sBE1 = Resources.Load<GameObject>("EndingCanvas/BE1b");
+                GameObject BE1 = Instantiate(sBE1) as GameObject;
+                BE1.transform.SetParent(EndingCanvas.transform, false);
+            }
+            else
+            {
+                sBE1 = Resources.Load<GameObject>("EndingCanvas/BE1s");
+                GameObject BE1 = Instantiate(sBE1) as GameObject;
+                BE1.transform.SetParent(EndingCanvas.transform, false);
+            }
+        }
+        else if (ChapterName == "2")
+        {
+            endTitle.text = "被遺忘的事";
+            endText.text = "那些冒險的記憶正逐漸模糊，\n紅藍二色再次侵蝕了自我...";
+            yield return new WaitForSeconds(3f);
+            FIFO_long.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            losePanel.SetActive(false);
+            yield return new WaitForSeconds(3f);
+            sBE2 = Resources.Load<GameObject>("EndingCanvas/BE2");
+            GameObject BE2 = Instantiate(sBE2) as GameObject;
+            BE2.transform.SetParent(EndingCanvas.transform, false);
+        }
+        /*else if (ChapterName == "4")
+        {
+            endTitle.text = "萬籟俱寂的等待";
+            endText.text = "平等的璀璨之色仍未完全消失，\n卻需要更長久的時間等待轉機到來。";
+            yield return new WaitForSeconds(3f);
+            FIFO_long.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            losePanel.SetActive(false);
+            yield return new WaitForSeconds(3f);
+            sBE2 = Resources.Load<GameObject>("EndingCanvas/BE2");
+            GameObject BE2 = Instantiate(sBE2) as GameObject;
+            BE2.transform.SetParent(EndingCanvas.transform, false);
+        }*/
+        yield return new WaitForSeconds(2.5f);
+        FadeOut.SetActive(true);
 		FadeOutAni.SetBool("FadeOut", true);
 		yield return new WaitForSeconds(1.5f);
-		Debug.Log("666666");
-		SceneManager.LoadScene("ChooseChapter");  //接下一關  //先回主畫面
+		SceneManager.LoadScene("ChooseChapter");  //先回主畫面
 	}
 
 	IEnumerator WaitForAudio()

@@ -535,7 +535,7 @@ public class NPCTask : MonoBehaviour {
             StaticObject.a08 = 1; //解鎖
             PlayerPrefs.SetInt("StaticObject.a08", StaticObject.a08);
             Debug.Log(StaticObject.a08);
-            achievement.achievementName = "平橫超平衡";
+            achievement.achievementName = "平衡超平衡";
             
         }
 		else {

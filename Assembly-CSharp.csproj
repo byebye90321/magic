@@ -209,6 +209,7 @@
      <Compile Include="Assets\Sprite\gameObject\ObjectTrap.cs" />
      <Compile Include="Assets\Sprite\gameObject\PickUpAddInt.cs" />
      <Compile Include="Assets\Sprite\gameObject\ToggleParticle.cs" />
+     <Compile Include="Assets\Sprite\player\BulletsPool.cs" />
      <Compile Include="Assets\Sprite\player\DG_playerController.cs" />
      <Compile Include="Assets\Sprite\player\DialogsScript1.cs" />
      <Compile Include="Assets\Sprite\player\DialogsScript2.cs" />
@@ -410,7 +411,7 @@
      <Compile Include="Assets\unity-ui-extensions\Scripts\Utilities\UISelectableExtension.cs" />
      <Compile Include="Assets\unity-ui-extensions\Scripts\VR Extensions\VRCursor.cs" />
      <Compile Include="Assets\unity-ui-extensions\Scripts\VR Extensions\VRInputModule.cs" />
-     <None Include="Assets\Spine\enemy\gigi\GIGI.atlas.txt" />
+     <None Include="Assets\Spine\enemy\chichi\GIGI.atlas.txt" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Shaders\Utility\HiddenPass.shader" />
      <None Include="Assets\Resources\Text\bother2.txt" />
      <None Include="Assets\Spine\spine-unity\Assets\spine-unity\Modules\Shaders\Spine-Skeleton-Fill.shader" />

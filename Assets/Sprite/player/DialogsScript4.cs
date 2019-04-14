@@ -13,16 +13,16 @@ public class DialogsScript4 : MonoBehaviour
 {
     //------------------------引用程式----------------------------
     private CameraFollow cameraFollow;
-	public DG_playerController playerController;
+    public DG_playerController playerController;
     private GameManager gameManager;
     private NPCTask npcTask;
     private DG_EnemyController EnemyController;
     public ExampleGestureHandler gesture;
 
-	//---------------------------頭貼----------------------------
-	public string playerName;
-	public GameObject characterImageObj; //左邊主角對話框
-	private Image characterImage;
+    //---------------------------頭貼----------------------------
+    public string playerName;
+    public GameObject characterImageObj; //左邊主角對話框
+    private Image characterImage;
     private Sprite sister_angry;
     private Sprite sister_happy;
     private Sprite sister_normal;
@@ -32,40 +32,40 @@ public class DialogsScript4 : MonoBehaviour
     private Sprite sister_monochrome_normal;
 
     public GameObject otherImageObj; //右邊角色對話框
-	private Image otherImage;
-	public Sprite book;
+    private Image otherImage;
+    public Sprite book;
     public Sprite king;
     public Sprite hikari;
 
     private string anotherName;
     private Sprite anotherSprite;
-	//----------------------------選擇---------------------------
-	//public GameObject choose1;
-	//----------------------------對話---------------------------
-	public GameObject textBox;
+    //----------------------------選擇---------------------------
+    //public GameObject choose1;
+    //----------------------------對話---------------------------
+    public GameObject textBox;
 
-	public Text theText;
-	public TextAsset textFile;
-	public string[] textLines;
+    public Text theText;
+    public TextAsset textFile;
+    public string[] textLines;
 
-	public int currentLine;
-	public int endAtLine;
+    public int currentLine;
+    public int endAtLine;
 
-	private bool isActive = true;
-	private bool isTyping = false;
-	private bool cancelTyping = false;
-	public static bool GameEnd;
-	public Text whotalk;
-	public float typeSpeed;
+    private bool isActive = true;
+    private bool isTyping = false;
+    private bool cancelTyping = false;
+    public static bool GameEnd;
+    public Text whotalk;
+    public float typeSpeed;
 
-	public bool questionBool = false;
-	//------------------------過場黑幕---------------------------
-	public GameObject FadeOut;
-	public GameObject FadeIn;
-	Animator fadeOut;
+    public bool questionBool = false;
+    //------------------------過場黑幕---------------------------
+    public GameObject FadeOut;
+    public GameObject FadeIn;
+    Animator fadeOut;
 
-	//-----------------------教學、互動物件變數-------------------------
-	public bool teachBlood = false;
+    //-----------------------教學、互動物件變數-------------------------
+    public bool teachBlood = false;
 
     public GameObject Platform;
     public GameObject Platform2; //框框後
@@ -75,14 +75,14 @@ public class DialogsScript4 : MonoBehaviour
     public GameObject crystalHikari;
     public GameObject crystalBother;
     public GameObject crystalSister;
+
+    [HideInInspector]
+    public bool kingBool = false;
     //------------------Attack----------------------
     //小BOSS
-    //public GameObject attackColliderBorder;
     public BoxCollider2D kingCollider;
     //----------------audio----------------------
     public new AudioSource audio;
-    /*public AudioClip cheer;
-    public AudioClip quarrel;*/
     //-----------------其他---------------------
     //public GameObject pause;
 	private Color talkNow = new Color(1, 1, 1, 1);
@@ -167,7 +167,7 @@ public class DialogsScript4 : MonoBehaviour
 			DisableTextBox();
 		}
 
-        StaticObject.nowClass = 3;
+        StaticObject.nowClass = 4;
         PlayerPrefs.SetFloat("StaticObject.nowClass", StaticObject.nowClass);
     }
 
@@ -240,6 +240,7 @@ public class DialogsScript4 : MonoBehaviour
             characterImage.sprite = king;
             Joystick.isMove = true;
             otherImageObj.SetActive(false);
+            kingBool = true;
         }
         if (currentLine == 16)
         {
@@ -379,6 +380,8 @@ public class DialogsScript4 : MonoBehaviour
         endAtLine = 31;
         NPCAppear();
         yield return new WaitUntil(() => currentLine >= 31);
+        yield return new WaitForSeconds(1f);
+        gameManager.win();
     }
 
 
@@ -432,30 +435,6 @@ public class DialogsScript4 : MonoBehaviour
 			NPCAppear();
 		}*/
     }
-	//----------------------------選擇----------------------------
-	/*public void Choose1_gohome() //回家
-	{
-		currentLine = 208;
-		endAtLine = 210;
-		NPCAppear();
-		choose1.SetActive(false);
-		StaticObject.sHE2 = 0;
-		StaticObject.sBE2 = 1;
-		PlayerPrefs.SetInt("StaticObject.sHE2", StaticObject.sHE2);
-		PlayerPrefs.SetInt("StaticObject.sBE2", StaticObject.sBE2);
-	}
-
-	public void Choose1_continue() //繼續
-	{
-		currentLine = 211;
-		endAtLine = 213;
-		NPCAppear();
-		choose1.SetActive(false);
-		StaticObject.sHE2 = 1;
-		StaticObject.sBE2 = 0;
-		PlayerPrefs.SetInt("StaticObject.sHE2", StaticObject.sHE2);
-		PlayerPrefs.SetInt("StaticObject.sBE2", StaticObject.sBE2);
-	}*/
 
 	//----------------------------對話----------------------------
 	private IEnumerator TextScroll(string lineOfText)

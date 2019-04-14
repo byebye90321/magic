@@ -15,5 +15,5 @@ MonoBehaviour:
   SkillSpritebg: {fileID: 21300000, guid: 8bae5ddfb3943274397521c5142044ef, type: 3}
   SkillSpriteIcon: {fileID: 21300000, guid: b8adbb1849755f7459d6ec9a76134875, type: 3}
   coolDown: 7
-  Atk: 20
+  Atk: 25
   isAtk: 0
