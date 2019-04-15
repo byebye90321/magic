@@ -6,16 +6,17 @@ using UnityEngine.UI;
 public class EnemyKing : MonoBehaviour {
 
     public DG_EnemyController enemyController;
+    public DG_playerController playerController;
     private int skill;
     public GameObject F1; //球
     public GameObject F2; //範圍
     public GameObject addHealthParticle;
     public GameObject addHealthText; //補血字
 
+    public ballPool F1ball;
 
     public void kingSkill()
     {
-
         if (enemyController.curHealth < 150)
         {
             //80%
@@ -23,25 +24,16 @@ public class EnemyKing : MonoBehaviour {
             {
                 enemyController.enemy1.state.SetAnimation(0, "hit02", false);
                 enemyController.enemy1.state.AddAnimation(0, "idle", true, 0f);
-                //addHeart.SetActive(true);
                 enemyController.curHealth += 100;
-                enemyController.Health.value = enemyController.curHealth;
+                enemyController.addBulletsPool.addDamageInt = 100;
                 addHealthParticle.SetActive(true);
-                GameObject NEWatkpreft = Instantiate(addHealthText) as GameObject;
-                NEWatkpreft.transform.SetParent(enemyController.canvas.transform, false);
-                NEWatkpreft.GetComponent<RectTransform>().anchoredPosition = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);
-                enemyController.healthText = NEWatkpreft.GetComponentInChildren<Text>();
-                enemyController.healthText.text = "+" + 100;
+                enemyController.addBulletsPool.Fire();
                 StartCoroutine("CloseAddHeart");
                 Debug.Log("2:補血");
-
-
             }
             else //20%
             {
-                enemyController.enemy1.state.SetAnimation(0, "hit03", false);
-                enemyController.enemy1.state.AddAnimation(0, "idle", true, 0f);
-
+                StartCoroutine("F1Ball");
                 Debug.Log("3:球"); //F1
             }
         }
@@ -50,20 +42,27 @@ public class EnemyKing : MonoBehaviour {
             //80%
             if (Random.Range(1, 5) % 5 != 1)
             {
-                enemyController.enemy1.state.SetAnimation(0, "hit03", false);
-                enemyController.enemy1.state.AddAnimation(0, "idle", true, 0f);
+                StartCoroutine("F1Ball");             
                 Debug.Log("3:球");
             }
             else //20%
             {
                 enemyController.enemy1.state.SetAnimation(0, "hit01", false);
                 enemyController.enemy1.state.AddAnimation(0, "idle", true, 0f);
-                F2.SetActive(true);
+                
                 StartCoroutine("CloseF2");
                 Debug.Log("1:範圍"); //F2
             }
 
         }
+    }
+
+    IEnumerator F1Ball()
+    {
+        F1ball.F1Attack();
+        enemyController.enemy1.state.SetAnimation(0, "hit03", false);
+        enemyController.enemy1.state.AddAnimation(0, "idle", true, 0f);
+        yield return new WaitForSeconds(2);
     }
 
     IEnumerator CloseAddHeart()
@@ -80,6 +79,8 @@ public class EnemyKing : MonoBehaviour {
 
     IEnumerator CloseF2()
     {
+        yield return new WaitForSeconds(1f);
+        F2.SetActive(true);
         yield return new WaitForSeconds(2);
         F2.SetActive(false);
     }

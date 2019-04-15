@@ -19,6 +19,9 @@ public class DG_playerController : MonoBehaviour
 	public DialogsScript4 dialogsScript4; //正章2對話
     public ExampleGestureHandler gesture;
 
+    [HideInInspector]
+    public static DG_playerController playerController;
+
 	private ActiveClimb activeClimb;
 	private ActivePickUp activePickUp;
 	//[HideInInspector]
@@ -71,6 +74,7 @@ public class DG_playerController : MonoBehaviour
 	//-----------------Particle System---------------
 	public Transform attackParticle;
 	public GameObject W1_beaten;
+    public GameObject F2_beaten;
 	//------------------Audio--------------------
 	public new AudioSource audio;
 	public AudioClip pickUp;
@@ -80,11 +84,14 @@ public class DG_playerController : MonoBehaviour
 	public int pickUpInt = 1;
 	public Image climb;
 
+    public BulletsPool addBulletsPool;
+    public BulletsPool damageBulletsPool;
+
     void Awake()
     {
         if (ChapterName != "0")
         {
-            //StaticObject.whoCharacter = 1;
+            StaticObject.whoCharacter = 1;
             if (StaticObject.whoCharacter == 1) //哥哥
             {
                 GameObject playS = Instantiate(playerB) as GameObject;
@@ -560,19 +567,40 @@ public class DG_playerController : MonoBehaviour
 	{
 		if (col.gameObject.name == "BossEnemy") //觸碰到敵人
 		{
-			TakeDamage(BossAtk);
-			W1_beaten.SetActive(true);
-			StartCoroutine("Bossbeaten");
+			TakeDamage(10);
+            damageBulletsPool.addDamageInt = 10;
+            W1_beaten.SetActive(true);
+            damageBulletsPool.Fire();
+            StartCoroutine("Bossbeaten");
 		}
 
 		if (col.gameObject.name == "AtkParticle") //序章-玩家受到小BOSS攻擊
 		{
-			TakeDamage(BossAtk);
-			W1_beaten.SetActive(true);
+			//TakeDamage(BossAtk);
+            TakeDamage(30);
+            damageBulletsPool.addDamageInt = 30;
+            W1_beaten.SetActive(true);
 			StartCoroutine("Bossbeaten");
 		}
 
-		if (col.tag == "EndPoint")  //序章-結束點
+        if (col.gameObject.name == "F1(Clone)") //框框球攻擊
+        {
+            TakeDamage(5);
+            damageBulletsPool.addDamageInt = 5;
+            damageBulletsPool.Fire();
+            StartCoroutine("Bossbeaten");
+        }
+
+        if (col.gameObject.name == "F2") //框框範圍攻擊
+        {
+            TakeDamage(25);
+            damageBulletsPool.addDamageInt = 25;
+            damageBulletsPool.Fire();
+            F2_beaten.SetActive(true);           
+            StartCoroutine("Bossbeaten");
+        }
+
+        if (col.tag == "EndPoint")  //序章-結束點
 		{
 			if (ChapterName == "0")
 			{
@@ -622,14 +650,11 @@ public class DG_playerController : MonoBehaviour
 
 			if (col.tag == "heart")  //補血愛心
 			{
-				curHealth += 10;
-				GameObject NEWatkpreft = Instantiate(addHealthObj) as GameObject;
-				NEWatkpreft.transform.SetParent(canvas.transform, false);
-				NEWatkpreft.GetComponent<RectTransform>().anchoredPosition = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);
-				healthText = NEWatkpreft.GetComponentInChildren<Text>();
-				healthText.text = "+" + 10;
-				Destroy(col.gameObject);
-			}
+                addBulletsPool.addDamageInt = 10;
+                addBulletsPool.Fire();
+                curHealth += 10;
+                Destroy(col.gameObject); 
+            }
 		}
 
 		if (col.tag == "vine") //進入藤蔓
@@ -731,20 +756,16 @@ public class DG_playerController : MonoBehaviour
 			SpineBother.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0.5f);
 		}
 		animator_S.SetTrigger("beaten");		
-		SpineSister.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0.5f);
-		GameObject NEWatkpreft = Instantiate(healthObj) as GameObject;
-		NEWatkpreft.transform.SetParent(canvas.transform, false);
-		NEWatkpreft.GetComponent<RectTransform>().anchoredPosition = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);
-		healthText = NEWatkpreft.GetComponentInChildren<Text>();
-		healthText.text = "-" + BossAtk;
-		yield return new WaitForSeconds(0.7f);
+		SpineSister.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0.5f);     
+        yield return new WaitForSeconds(0.7f);
 		SpineSister.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0f);
 		if (ChapterName == "0")
 			SpineBother.GetComponent<Renderer>().material.SetFloat("_FillPhase", 0f);
 
 		yield return new WaitForSeconds(.2f);
 		W1_beaten.SetActive(false);
-		Destroy(NEWatkpreft, .5f);
+        F2_beaten.SetActive(false);
+		//Destroy(NEWatkpreft, .5f);
 	}
 
 	IEnumerator Teleportation()

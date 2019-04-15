@@ -27,8 +27,7 @@ public class ToSisGame : MonoBehaviour {
         else if (StaticObject.nowClass == 3) //圖書館
             NextSceneName = "RunGame_chapter3";
         else if (StaticObject.nowClass == 3.5) //圖書館地下道
-            NextSceneName = "Main";
-        //NextSceneName = "Sister_chapter4";
+            NextSceneName = "Sister_chapter4";
         else if (StaticObject.nowClass == 4) //水晶室
             NextSceneName = "Main";
 

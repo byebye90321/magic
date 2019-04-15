@@ -38,6 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224025110908559336}
   - component: {fileID: 95072457941064032}
+  - component: {fileID: 114754687835279074}
   m_Layer: 5
   m_Name: HealthTextPanel
   m_TagString: Untagged
@@ -110,6 +111,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 1
+--- !u!114 &114754687835279074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1758122354299720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80b8c1abd8be2b4dafc1c14dd346f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0.7
 --- !u!222 &222729384658429884
 CanvasRenderer:
   m_ObjectHideFlags: 1

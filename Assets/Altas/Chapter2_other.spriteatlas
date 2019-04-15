@@ -57,6 +57,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 99f7d82d5a257a54c96accd5fc83515b, type: 3}
   - {fileID: 21300000, guid: 52f711a54c6d1c848b4716cfd6b75e5e, type: 3}
   - {fileID: 21300000, guid: 69cd1ccd100056441a0fcaa4fe86527c, type: 3}
+  - {fileID: 21300000, guid: b32426fe17ab0e1498a8a0add8de30de, type: 3}
   - {fileID: 21300000, guid: 71d5ed9d2c58b084f957e89631a044af, type: 3}
   - {fileID: 21300000, guid: 46879a41059c9c0489227800f54b9441, type: 3}
   - {fileID: 21300000, guid: 310652cb64e73f04db72cdd805644639, type: 3}
@@ -78,6 +79,7 @@ SpriteAtlas:
   - "\u5012\u9000\u61F7\u9336_\u767C\u5149"
   - "\u6B63\u5E38\u61F7\u9336"
   - "\u5012\u9000\u61F7\u9336"
+  - "\u5C3F_\u767C\u5149"
   - "\u65D7\u5B5002"
   - "\u8B66\u544A\u724C"
   - "\u65D7\u5B5003"

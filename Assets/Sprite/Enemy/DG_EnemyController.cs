@@ -62,7 +62,12 @@ public class DG_EnemyController : MonoBehaviour{
 	public GameObject B3_beaten;
 	public GameObject B4_beaten;
 
-	void Start()
+    public BulletsPool addBulletsPool;
+    public BulletsPool damageBulletsPool;
+    public BulletsPool missBulletsPool;
+
+
+    void Start()
 	{
 		//col = GetComponent<BoxCollider2D>();
 
@@ -72,7 +77,7 @@ public class DG_EnemyController : MonoBehaviour{
 		}
 		enemy1.state.SetAnimation(0, "idle", true);
 
-		canvas = transform.Find("Enemy/EnemyHealthCanvas/GameObject").gameObject;
+		//canvas = transform.Find("Enemy/EnemyHealthCanvas/GameObject").gameObject;
 		
 	}
 	
@@ -86,7 +91,7 @@ public class DG_EnemyController : MonoBehaviour{
 				//Health.value -= 1;
                 Health.value = curHealth;
 			}
-            else if (curHealth < Health.value)
+            else if (curHealth > Health.value)
             {
                 Health.value = curHealth;
             }
@@ -257,14 +262,13 @@ public class DG_EnemyController : MonoBehaviour{
 		{
             if (enemyName == "King")
             {
-                StartCoroutine("damageActive");
-                healthText.text = "MISS";
+                StartCoroutine("missActive");
             }
             else
             {
                 TakeDamage(1);
+                damageBulletsPool.addDamageInt = 1;
                 StartCoroutine("damageActive");
-                healthText.text = "-" + 1;
                 StartCoroutine("wait");
             }
 		}
@@ -275,8 +279,8 @@ public class DG_EnemyController : MonoBehaviour{
             {
                 G0_beaten.SetActive(true);
                 TakeDamage(gesture.skill0.skillInfo.Atk + gesture.AddAttack);
+                damageBulletsPool.addDamageInt = gesture.skill0.skillInfo.Atk + gesture.AddAttack;
                 StartCoroutine("damageActive");
-                healthText.text = "-" + (gesture.skill0.skillInfo.Atk + gesture.AddAttack);
                 StartCoroutine("G0_Close");
 
             }
@@ -285,87 +289,87 @@ public class DG_EnemyController : MonoBehaviour{
             {
                 G1_beaten.SetActive(true);
                 TakeDamage(gesture.skillG1.skillInfo.Atk + gesture.AddAttack);
+                damageBulletsPool.addDamageInt = gesture.skillG1.skillInfo.Atk + gesture.AddAttack;
                 StartCoroutine("damageActive");
                 StartCoroutine("G1_Close");
-                healthText.text = "-" + (gesture.skillG1.skillInfo.Atk + gesture.AddAttack);
             }
 
             if (col.gameObject.name == "B1_Particle") //被B1攻擊
             {
                 B1_beaten.SetActive(true);
                 TakeDamage(gesture.skillB1.skillInfo.Atk + gesture.AddAttack);
+                damageBulletsPool.addDamageInt = gesture.skillB1.skillInfo.Atk + gesture.AddAttack;
                 StartCoroutine("damageActive");
                 StartCoroutine("G1_Close");
-                healthText.text = "-" + (gesture.skillB1.skillInfo.Atk + gesture.AddAttack);
             }
 
             if (col.gameObject.name == "G2_Particle") //被G2攻擊
             {
                 G2_beaten.SetActive(true);
                 TakeDamage(gesture.skillG2.skillInfo.Atk + gesture.AddAttack);
+                damageBulletsPool.addDamageInt = gesture.skillG2.skillInfo.Atk + gesture.AddAttack;
                 StartCoroutine("damageActive");
                 StartCoroutine("G2_Close");
-                healthText.text = "-" + (gesture.skillG2.skillInfo.Atk + gesture.AddAttack);
             }
             if (col.gameObject.name == "B2_Particle") //被B2攻擊
             {
                 B2_beaten.SetActive(true);
                 TakeDamage(gesture.skillB2.skillInfo.Atk + gesture.AddAttack);
+                damageBulletsPool.addDamageInt = gesture.skillB2.skillInfo.Atk + gesture.AddAttack;
                 StartCoroutine("damageActive");
                 StartCoroutine("G2_Close");
-                healthText.text = "-" + (gesture.skillB2.skillInfo.Atk + gesture.AddAttack);
             }
 
             if (col.gameObject.name == "G3_Particle") //被G3攻擊
             {
                 G3_beaten.SetActive(true);
                 TakeDamage(gesture.skillG3.skillInfo.Atk + gesture.AddAttack);
+                damageBulletsPool.addDamageInt = gesture.skillG3.skillInfo.Atk + gesture.AddAttack;
                 StartCoroutine("damageActive");
                 StartCoroutine("G3_Close");
-                healthText.text = "-" + (gesture.skillG3.skillInfo.Atk + gesture.AddAttack);
             }
             if (col.gameObject.name == "B3_Particle") //被B3攻擊
             {
                 B3_beaten.SetActive(true);
                 TakeDamage(gesture.skillB3.skillInfo.Atk + gesture.AddAttack);
+                damageBulletsPool.addDamageInt = gesture.skillB3.skillInfo.Atk + gesture.AddAttack;
                 StartCoroutine("damageActive");
                 StartCoroutine("G3_Close");
-                healthText.text = "-" + (gesture.skillB3.skillInfo.Atk + gesture.AddAttack);
             }
 
             if (col.gameObject.name == "G4_Particle") //被G4攻擊
             {
                 G4_beaten.SetActive(true);
                 TakeDamage(gesture.skillG4.skillInfo.Atk + gesture.AddAttack);
+                damageBulletsPool.addDamageInt = gesture.skillG4.skillInfo.Atk + gesture.AddAttack;
                 StartCoroutine("damageActive");
                 StartCoroutine("G4_Close");
-                healthText.text = "-" + (gesture.skillG4.skillInfo.Atk + gesture.AddAttack);
             }
             if (col.gameObject.name == "B4_Particle") //被B4攻擊
             {
                 B4_beaten.SetActive(true);
                 TakeDamage(gesture.skillB4.skillInfo.Atk + gesture.AddAttack);
+                damageBulletsPool.addDamageInt = gesture.skillB1.skillInfo.Atk + gesture.AddAttack;
                 StartCoroutine("damageActive");
                 StartCoroutine("G4_Close");
-                healthText.text = "-" + (gesture.skillB4.skillInfo.Atk + gesture.AddAttack);
             }
 
             if (col.gameObject.name == "G5_Particle") //被G5攻擊
             {
                 G5_beaten.SetActive(true);
                 TakeDamage(gesture.skillG5.skillInfo.Atk + gesture.AddAttack);
+                damageBulletsPool.addDamageInt = gesture.skillG5.skillInfo.Atk + gesture.AddAttack;
                 StartCoroutine("damageActive");
                 StartCoroutine("G5_Close");
-                healthText.text = "-" + (gesture.skillG5.skillInfo.Atk + gesture.AddAttack);
             }
 
             if (col.gameObject.name == "G6_Particle") //被G6攻擊
             {
                 G6_beaten.SetActive(true);
                 TakeDamage(gesture.skillG6.skillInfo.Atk + gesture.AddAttack);
+                damageBulletsPool.addDamageInt = gesture.skillG6.skillInfo.Atk + gesture.AddAttack;
                 StartCoroutine("damageActive");
                 StartCoroutine("G6_Close");
-                healthText.text = "-" + (gesture.skillG6.skillInfo.Atk + gesture.AddAttack);
             }
         }
 
@@ -373,6 +377,8 @@ public class DG_EnemyController : MonoBehaviour{
 
 	IEnumerator damageActive()
 	{
+        damageBulletsPool.Fire();
+
         if (enemyName != "0")
         {
             enemy1.state.SetAnimation(0, "death", false);
@@ -393,18 +399,18 @@ public class DG_EnemyController : MonoBehaviour{
                 enemy2.state.AddAnimation(0, "stun", true, 0f);
             }
         }
-	
-		//healthAni.SetTrigger("hurtText");
-		GameObject NEWatkpreft = Instantiate(healthObj) as GameObject;
-		NEWatkpreft.transform.SetParent(canvas.transform, false);
-		NEWatkpreft.GetComponent<RectTransform>().anchoredPosition = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);
-		healthText = NEWatkpreft.GetComponentInChildren<Text>();
-		//healthText.text = "-" + damageInt;
-		yield return new WaitForSeconds(.1f);
-		Destroy(NEWatkpreft, .5f);
+        yield return null;
 	}
 
-	IEnumerator wait()
+    IEnumerator missActive()
+    {
+        missBulletsPool.Fire();
+        enemy1.state.SetAnimation(0, "death", false);
+        enemy1.state.AddAnimation(0, "idle", true, 0f);
+        yield return null;
+    }
+
+    IEnumerator wait()
 	{
 		yield return new WaitForSeconds(1f);
 		G0_beaten.SetActive(false);

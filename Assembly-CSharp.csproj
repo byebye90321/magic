@@ -209,6 +209,8 @@
      <Compile Include="Assets\Sprite\gameObject\ObjectTrap.cs" />
      <Compile Include="Assets\Sprite\gameObject\PickUpAddInt.cs" />
      <Compile Include="Assets\Sprite\gameObject\ToggleParticle.cs" />
+     <Compile Include="Assets\Sprite\player\ballPool.cs" />
+     <Compile Include="Assets\Sprite\player\BulletScrite.cs" />
      <Compile Include="Assets\Sprite\player\BulletsPool.cs" />
      <Compile Include="Assets\Sprite\player\DG_playerController.cs" />
      <Compile Include="Assets\Sprite\player\DialogsScript1.cs" />

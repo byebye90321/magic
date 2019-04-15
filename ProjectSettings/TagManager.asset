@@ -83,11 +83,11 @@ TagManager:
   - name: NPC_front
     uniqueID: 774922653
     locked: 0
-  - name: player
-    uniqueID: 2076825951
-    locked: 0
   - name: monster
     uniqueID: 2505807791
+    locked: 0
+  - name: player
+    uniqueID: 2076825951
     locked: 0
   - name: Effect
     uniqueID: 1262026175
