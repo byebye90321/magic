@@ -37,7 +37,9 @@ public class DG_EnemyController : MonoBehaviour{
 
 	public bool isAttack = false; //戰鬥
 	private float AtkCount = 0;
-	//------------------Animation------------------ 
+
+    bool atk = false;
+ 	//------------------Animation------------------ 
 	public SkeletonAnimation enemy1;
 	public SkeletonAnimation enemy2;
 	public Transform enemy1Transform;
@@ -105,6 +107,15 @@ public class DG_EnemyController : MonoBehaviour{
 		{
 			StartCoroutine("Atk");
 		}
+
+        if (enemyName == "King")
+        {
+            if (atk)
+            {
+                //this.transform.position = new Vector2(transform.position.x,player.transform.position.y);
+                this.transform.position = Vector2.Lerp(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), new Vector2(gameObject.transform.position.x,player.transform.position.y-1), Time.deltaTime * 0.5f);
+            }
+        }
 	}
 
 	IEnumerator Atk()
@@ -121,6 +132,7 @@ public class DG_EnemyController : MonoBehaviour{
 		}
         else if(enemyName =="King")
         {
+            atk = true;
             InvokeRepeating("KingAttack", 1f, 7f);          
         }
 		else

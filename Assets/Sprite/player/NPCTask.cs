@@ -534,6 +534,8 @@ public class NPCTask : MonoBehaviour {
 			dialogsScript1.NPCAppear();
             StaticObject.a08 = 1; //解鎖
             PlayerPrefs.SetInt("StaticObject.a08", StaticObject.a08);
+            StaticObject.ad1_fairy_red = 1; //歷程圖解所
+            PlayerPrefs.SetInt("StaticObject.ad1_fairy_red", StaticObject.ad1_fairy_red);
             Debug.Log(StaticObject.a08);
             achievement.achievementName = "平衡超平衡";
             
@@ -542,7 +544,9 @@ public class NPCTask : MonoBehaviour {
 			dialogsScript1.currentLine = 55;
 			dialogsScript1.endAtLine = 55;
 			dialogsScript1.NPCAppear();
-		}
+            StaticObject.ad1_fairy_blue = 1; //歷程圖解所
+            PlayerPrefs.SetInt("StaticObject.ad1_fairy_blue", StaticObject.ad1_fairy_blue);
+        }
 		redFairy.enabled = false;
 		blueFairy.enabled = false;
 		yield return new WaitForSeconds(.5f);
@@ -621,13 +625,17 @@ public class NPCTask : MonoBehaviour {
 			StaticObject.G1 = 1;
 			gameManager.G1.SetActive(true);
 			PlayerPrefs.SetInt("StaticObject.G1", StaticObject.G1);
-		}
+            StaticObject.ad1_flower_blue = 1; //歷程圖解所
+            PlayerPrefs.SetInt("StaticObject.ad1_flower_blue", StaticObject.ad1_flower_blue);
+        }
 		else
 		{
 			StaticObject.B1 = 1;
 			gameManager.B1.SetActive(true);
 			PlayerPrefs.SetInt("StaticObject.B1", StaticObject.B1);
-		}
+            StaticObject.ad1_flower_red = 1; //歷程圖解所
+            PlayerPrefs.SetInt("StaticObject.ad1_flower_red", StaticObject.ad1_flower_red);
+        }
 		yield return new WaitForSeconds(1f);
 		gameManager.ParticleObj1.SetActive(false);
 		gameManager.eventObj.SetActive(false);
@@ -649,14 +657,18 @@ public class NPCTask : MonoBehaviour {
 		Task1StarImage.sprite = TaskFinishImage;
 		if (playerController.npcTalk.right) //假如選到正確的
 		{
-			dialogsScript2.currentLine = 89;
+            StaticObject.ad2_clock_right = 1; //歷程圖解所
+            PlayerPrefs.SetInt("StaticObject.ad2_clock_right", StaticObject.ad2_clock_right);
+            dialogsScript2.currentLine = 89;
 			dialogsScript2.endAtLine = 92;
 			dialogsScript2.NPCAppear();
 			yield return new WaitUntil(() => dialogsScript2.currentLine >= 92);
 		}
 		else
 		{
-			dialogsScript2.currentLine = 93;
+            StaticObject.ad2_clock_false = 1; //歷程圖解所
+            PlayerPrefs.SetInt("StaticObject.ad2_clock_false", StaticObject.ad2_clock_false);
+            dialogsScript2.currentLine = 93;
 			dialogsScript2.endAtLine = 96;
 			dialogsScript2.NPCAppear();
 			yield return new WaitUntil(() => dialogsScript2.currentLine >= 96);
@@ -853,7 +865,7 @@ public class NPCTask : MonoBehaviour {
         TaskCloseBtn.SetActive(true);
         TaskBtn.SetActive(false);
         taskTitleText.text = "波比的花";
-        taskContentText.text = "我有一朵很珍惜的<color=#ef6c00>水晶蘭花</color>，現在花被視為異端，歪歪們把牠搶走了!還把我痛毆一頓...請幫助我拿回屬於我的花兒!石鎮處的線索會幫助你順利前行!找到歪歪的下落";
+        taskContentText.text = "我有一朵很珍惜的<color=#ef6c00>水晶蘭花</color>，現在花被視為異端，歪歪們把牠搶走了!還把我痛毆一頓...請幫助我拿回屬於我的花兒!石鎮處的線索會幫助你順利前行!找到歪歪的下落。";
     }
 
     public void OpenOtherTask2()
@@ -871,7 +883,7 @@ public class NPCTask : MonoBehaviour {
         TaskCloseBtn.SetActive(true);
         TaskBtn.SetActive(false);
         taskTitleText.text = "滴答的懷錶";
-        taskContentText.text = "懷錶\n時間流逝\n青春不再\n若時光能倒流\n不再往前";
+        taskContentText.text = "我總是感嘆著光陰的流逝，無情的帶走了我的美貌，唉...為何女人老去就會被說得毫無價值呢?若時光能倒流、不再往前就好了，只有我的懷錶能做到。";
     }
 
     public void OpenOtherTask4()

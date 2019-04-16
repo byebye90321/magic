@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class EnemyKing : MonoBehaviour {
 
     public DG_EnemyController enemyController;
-    public DG_playerController playerController;
+    public GameObject playerObj;
     private int skill;
-    public GameObject F1; //球
+    //public GameObject F1; //球
     public GameObject F2; //範圍
     public GameObject addHealthParticle;
     public GameObject addHealthText; //補血字
@@ -39,19 +39,31 @@ public class EnemyKing : MonoBehaviour {
         }
         else
         {
-            //80%
-            if (Random.Range(1, 5) % 5 != 1)
+            Vector2 enemy = this.transform.position;
+            Vector2 player = playerObj.transform.position;
+
+            if (Mathf.Abs(enemy.x - player.x) > 7)
             {
-                StartCoroutine("F1Ball");             
-                Debug.Log("3:球");
+                Debug.Log(">7");
+                 StartCoroutine("F1Ball");
+                 Debug.Log("3:球");
             }
-            else //20%
+            else
             {
-                enemyController.enemy1.state.SetAnimation(0, "hit01", false);
-                enemyController.enemy1.state.AddAnimation(0, "idle", true, 0f);
-                
-                StartCoroutine("CloseF2");
-                Debug.Log("1:範圍"); //F2
+                //80%
+                if (Random.Range(1, 5) % 5 != 1)
+                {
+                    StartCoroutine("F1Ball");
+                    Debug.Log("3:球");
+                }
+                else //20%
+                {
+                    enemyController.enemy1.state.SetAnimation(0, "hit01", false);
+                    enemyController.enemy1.state.AddAnimation(0, "idle", true, 0f);
+
+                    StartCoroutine("CloseF2");
+                    Debug.Log("1:範圍"); //F2
+                }
             }
 
         }
@@ -69,12 +81,6 @@ public class EnemyKing : MonoBehaviour {
     {
         yield return new WaitForSeconds(2);
         addHealthParticle.SetActive(false);
-    }
-
-    IEnumerator CloseF1()
-    {
-        yield return new WaitForSeconds(2);
-        F1.SetActive(false);
     }
 
     IEnumerator CloseF2()

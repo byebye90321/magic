@@ -23,19 +23,35 @@ public static class StaticObject
 	public static int G4 = 0;
 	public static int B4 = 0;
 	public static int G5 = 0;
-	public static int B5 = 0;
 	public static int G6 = 0;
-	public static int B6 = 0;
 
-	//-------------------結局(圖鑑)-----------------------
-	//public static int s1 = 0;
+	//-------------------結局-----------------------
 	public static int sHE1 = 0; //離開森林
-	public static int sBE1 = 0; //迷失森林
-	public static int sHE2 = 0; 
-	public static int sBE2 = 0; //遺忘
+	public static int sBE1 = 0; //迷失森林	 
+	public static int sBE2 = 0; //被遺忘的事
+    public static int sHE2 = 0; //真實的世界 + 彩蛋
+    public static int sBE3 = 0; //萬籟俱寂的等待
 
-	//--------------------人物解鎖------------------------
-	public static int sister = 0;
+    //------------------圖鑑歷程圖--------------------
+    public static int ad0 = 0; //序章
+    public static int ad1 = 0; //第一章
+    public static int ad1_flower_red = 0; //第一章紅花
+    public static int ad1_flower_blue = 0; //第一章藍花
+    public static int ad1_fairy_red = 0; //第一章紅精靈
+    public static int ad1_fairy_blue = 0; //第一章藍精靈
+    public static int ad1_HE1 = 0;
+    public static int ad1_BE1 = 0;
+    public static int ad2 = 0; //第二章
+    public static int ad2_clock_right = 0; //第二章對懷錶
+    public static int ad2_clock_false = 0; //第二章錯懷錶
+    public static int ad2_BE2 = 0;
+    public static int ad3 = 0; //第三章
+    public static int ad3_HE2 = 0;
+    public static int ad3_BE3 = 0;
+
+
+    //--------------------人物解鎖------------------------
+    public static int sister = 0;
 	public static int bother = 0;
 	public static int hikari = 0; //追光者
 	public static int book = 0;
@@ -59,9 +75,6 @@ public static class StaticObject
     public static int money = 0;
     public static int secretK = 0;
     public static int Grace = 0;
-
-
-
 
     //-----------------------成就---------------------------
     public static int a01 = 0; //力量的覺醒

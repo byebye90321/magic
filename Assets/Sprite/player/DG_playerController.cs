@@ -91,7 +91,7 @@ public class DG_playerController : MonoBehaviour
     {
         if (ChapterName != "0")
         {
-            StaticObject.whoCharacter = 1;
+            StaticObject.whoCharacter = 2;
             if (StaticObject.whoCharacter == 1) //哥哥
             {
                 GameObject playS = Instantiate(playerB) as GameObject;

@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour {
 	private GameObject sBE2; //被遺忘的事
     private GameObject sHE2; //真實的世界
     private GameObject sBE3; //萬籟俱寂的等待
+    private GameObject Surprise; //彩蛋
 
     public Text endTitle; //結局名
     public Text endText; //短語
@@ -431,6 +432,10 @@ public class GameManager : MonoBehaviour {
 	{
         if (ChapterName == "4" && playerController.dialogsScript4.kingBool ==true)
         {
+            StaticObject.ad3_BE3 = 1; //歷程圖解所
+            PlayerPrefs.SetInt("StaticObject.ad3_BE3", StaticObject.ad3_BE3);
+            StaticObject.ad3 = 1; //歷程圖解鎖
+            PlayerPrefs.SetInt("StaticObject.ad3", StaticObject.ad3);
             losePanel.SetActive(true);
             endTitle.text = "萬籟俱寂的等待";
             endText.text = "平等的璀璨之色仍未完全消失，\n卻需要更長久的時間等待轉機到來。";
@@ -473,11 +478,15 @@ public class GameManager : MonoBehaviour {
             FIFO.GetComponent<Animator>().SetBool("FIFO", true);
             yield return new WaitForSeconds(1f);
             winPanel.SetActive(false);
+            StaticObject.ad1_HE1 = 1; //歷程圖解所
+            PlayerPrefs.SetInt("StaticObject.ad1_HE1", StaticObject.ad1_HE1);
+            StaticObject.ad1 = 1; //歷程圖解鎖
+            PlayerPrefs.SetInt("StaticObject.ad1", StaticObject.ad1);
             if (StaticObject.whoCharacter == 1)
             {
                 sHE1 = Resources.Load<GameObject>("EndingCanvas/HE1b");
                 GameObject HE1 = Instantiate(sHE1) as GameObject;
-                HE1.transform.SetParent(EndingCanvas.transform, false);
+                HE1.transform.SetParent(EndingCanvas.transform, false);               
             }
             else
             {
@@ -486,10 +495,19 @@ public class GameManager : MonoBehaviour {
                 HE1.transform.SetParent(EndingCanvas.transform, false);
             }
         }
+        if (ChapterName == "2")
+        {
+            StaticObject.ad2 = 1; //歷程圖解鎖
+            PlayerPrefs.SetInt("StaticObject.ad2", StaticObject.ad2);
+        }
         else if (ChapterName == "4")
         {
             endTitle.text = "真實的世界";
             endText.text = "恢復色彩的世界就是這麼繽紛，\n不僅是烏托邦的世界，也是我們的世界。";
+            StaticObject.ad3_HE2 = 1; //歷程圖解所
+            PlayerPrefs.SetInt("StaticObject.ad3_HE2", StaticObject.ad3_HE2);
+            StaticObject.ad3 = 1; //歷程圖解鎖
+            PlayerPrefs.SetInt("StaticObject.ad3", StaticObject.ad3);
             yield return new WaitForSeconds(3f);
             FIFO_long.SetActive(true);
             yield return new WaitForSeconds(1f);
@@ -498,7 +516,15 @@ public class GameManager : MonoBehaviour {
             sHE2 = Resources.Load<GameObject>("EndingCanvas/HE2");
             GameObject HE2 = Instantiate(sHE2) as GameObject;
             HE2.transform.SetParent(EndingCanvas.transform, false);
-
+            yield return new WaitForSeconds(2.5f);
+            FIFO.SetActive(true);
+            FIFO.GetComponent<Animator>().SetBool("FIFO", true);
+            yield return new WaitForSeconds(1f);
+            Destroy(HE2);
+            Surprise = Resources.Load<GameObject>("EndingCanvas/Surprise");
+            GameObject surprise = Instantiate(Surprise) as GameObject;
+            surprise.transform.SetParent(EndingCanvas.transform, false);
+            yield return new WaitForSeconds(.5f);
         }
         yield return new WaitForSeconds(2.5f);
 		FadeOut.SetActive(true);
@@ -515,6 +541,10 @@ public class GameManager : MonoBehaviour {
 
         if (ChapterName == "1")
         {
+            StaticObject.ad1_BE1 = 1; //歷程圖解所
+            PlayerPrefs.SetInt("StaticObject.ad1_BE1", StaticObject.ad1_BE1);
+            StaticObject.ad1 = 1; //歷程圖解所
+            PlayerPrefs.SetInt("StaticObject.ad1", StaticObject.ad1);
             endTitle.text = "迷失森林";
             endText.text = "在黑霧籠罩的森林中看見一位步履蹣跚之人，\n據說那是失去色彩、迷失自我者唯一的歸處。";
             yield return new WaitForSeconds(3f);
@@ -537,6 +567,10 @@ public class GameManager : MonoBehaviour {
         }
         else if (ChapterName == "2")
         {
+            StaticObject.ad2_BE2 = 1; //歷程圖解所
+            PlayerPrefs.SetInt("StaticObject.ad2_BE2", StaticObject.ad2_BE2);
+            StaticObject.ad2 = 1; //歷程圖解鎖
+            PlayerPrefs.SetInt("StaticObject.ad2", StaticObject.ad2);
             endTitle.text = "被遺忘的事";
             endText.text = "那些冒險的記憶正逐漸模糊，\n紅藍二色再次侵蝕了自我...";
             yield return new WaitForSeconds(3f);
@@ -548,19 +582,7 @@ public class GameManager : MonoBehaviour {
             GameObject BE2 = Instantiate(sBE2) as GameObject;
             BE2.transform.SetParent(EndingCanvas.transform, false);
         }
-        /*else if (ChapterName == "4")
-        {
-            endTitle.text = "萬籟俱寂的等待";
-            endText.text = "平等的璀璨之色仍未完全消失，\n卻需要更長久的時間等待轉機到來。";
-            yield return new WaitForSeconds(3f);
-            FIFO_long.SetActive(true);
-            yield return new WaitForSeconds(1f);
-            losePanel.SetActive(false);
-            yield return new WaitForSeconds(3f);
-            sBE2 = Resources.Load<GameObject>("EndingCanvas/BE2");
-            GameObject BE2 = Instantiate(sBE2) as GameObject;
-            BE2.transform.SetParent(EndingCanvas.transform, false);
-        }*/
+
         yield return new WaitForSeconds(2.5f);
         FadeOut.SetActive(true);
 		FadeOutAni.SetBool("FadeOut", true);

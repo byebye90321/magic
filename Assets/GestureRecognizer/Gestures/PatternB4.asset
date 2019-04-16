@@ -11,15 +11,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ce0fdb4e39b5744abf0c061bd2a3e30, type: 3}
   m_Name: PatternB4
   m_EditorClassIdentifier: 
-  id: sq
+  id: B4
   points: []
   gesture:
     lines:
     - points:
-      - {x: 0.875, y: 0.875}
-      - {x: 0.125, y: 0.875}
-      - {x: 0.125, y: 0.125}
       - {x: 0.875, y: 0.125}
+      - {x: 0.5, y: 0.875}
+      - {x: 0.125, y: 0.125}
       closedLine: 1
   useLinesOrder: 0
   useLinesDirections: 0

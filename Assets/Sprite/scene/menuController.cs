@@ -9,11 +9,7 @@ public class menuController : MonoBehaviour {
 	public GameObject Menu_Button;
 	public GameObject blackPanel;
 
-	
-	
-	void Update () {
-		
-	}
+
 	//---------------------設定
 	public void SetOpen()
 	{
@@ -38,4 +34,18 @@ public class menuController : MonoBehaviour {
 		blackPanel.SetActive(false);
 	}
 
+    public void FB()
+    {
+        Application.OpenURL("https://www.facebook.com/Castspellfindyourself/");
+    }
+
+    public void IG()
+    {
+        Application.OpenURL("https://www.instagram.com/castspell_findyourself/");
+    }
+
+    public void WEB()
+    {
+        Application.OpenURL("https://castspell2018.wixsite.com/findyourself");
+    }
 }

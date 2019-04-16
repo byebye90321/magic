@@ -41,7 +41,6 @@ public class BulletsPool : MonoBehaviour
             {
                 bulletList[i].SetActive(true);
                 Text healthText = bulletList[i].GetComponentInChildren<Text>();
-                Debug.Log(miss);
                 if (miss==true)
                 {
                     healthText.text = "MISS";

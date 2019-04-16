@@ -33,6 +33,8 @@ public class CharacterToggle : MonoBehaviour
             PlayerPrefs.SetInt("StaticObject.bother", StaticObject.bother);
             StaticObject.hikari = 1; //追光者解鎖
             PlayerPrefs.SetInt("StaticObject.hikari", StaticObject.hikari);
+            StaticObject.ad0 = 1; //歷程圖解鎖
+            PlayerPrefs.SetInt("StaticObject.ad0", StaticObject.ad0);
         }
         else  //關卡選擇
         {
