@@ -91,7 +91,7 @@ public class DG_playerController : MonoBehaviour
     {
         if (ChapterName != "0")
         {
-            StaticObject.whoCharacter = 2;
+            //StaticObject.whoCharacter = 2;
             if (StaticObject.whoCharacter == 1) //哥哥
             {
                 GameObject playS = Instantiate(playerB) as GameObject;
@@ -579,6 +579,7 @@ public class DG_playerController : MonoBehaviour
 			//TakeDamage(BossAtk);
             TakeDamage(30);
             damageBulletsPool.addDamageInt = 30;
+            damageBulletsPool.Fire();
             W1_beaten.SetActive(true);
 			StartCoroutine("Bossbeaten");
 		}

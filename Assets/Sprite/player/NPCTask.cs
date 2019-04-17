@@ -340,7 +340,7 @@ public class NPCTask : MonoBehaviour {
 
 		Debug.Log(Mathf.Abs(rigid2D.transform.position.x - Dida.transform.position.x));
 		taskTitleText.text = "滴答的懷錶";
-		taskContentText.text = "懷錶\n時間流逝\n青春不再\n若時光能倒流\n不再往前";
+		taskContentText.text = "我總是感嘆著光陰的流逝，無情的帶走了我的美貌，唉...為何女人老去就會被說得毫無價值呢?若時光能倒流、不再往前就好了，只有我的懷錶能做到。";
 		Coco.SetActive(true);
 	}
 
