@@ -255,7 +255,11 @@ public class DG_playerController : MonoBehaviour
 				G3.flipU = 0;
 				var G4 = gesture.G4_ParticleP.textureSheetAnimation;
 				G4.flipU = 0;
-				var B1 = gesture.B1_ParticleP.textureSheetAnimation;
+                var G5 = gesture.G5_ParticleP.textureSheetAnimation;
+                G5.flipU = 0;
+                var G6 = gesture.G6_ParticleP.textureSheetAnimation;
+                G6.flipU = 0;
+                var B1 = gesture.B1_ParticleP.textureSheetAnimation;
 				B1.flipU = 0;
 				var B2 = gesture.B2_ParticleP.textureSheetAnimation;
 				B2.flipU = 0;
@@ -283,7 +287,11 @@ public class DG_playerController : MonoBehaviour
 				G3.flipU = 1;
 				var G4 = gesture.G4_ParticleP.textureSheetAnimation;
 				G4.flipU = 1;
-				var B1 = gesture.B1_ParticleP.textureSheetAnimation;
+                var G5 = gesture.G5_ParticleP.textureSheetAnimation;
+                G5.flipU = 1;
+                var G6 = gesture.G6_ParticleP.textureSheetAnimation;
+                G6.flipU = 1;
+                var B1 = gesture.B1_ParticleP.textureSheetAnimation;
 				B1.flipU = 1;
 				var B2 = gesture.B2_ParticleP.textureSheetAnimation;
 				B2.flipU = 1;
@@ -577,8 +585,8 @@ public class DG_playerController : MonoBehaviour
 		if (col.gameObject.name == "AtkParticle") //序章-玩家受到小BOSS攻擊
 		{
 			//TakeDamage(BossAtk);
-            TakeDamage(30);
-            damageBulletsPool.addDamageInt = 30;
+            TakeDamage(10);
+            damageBulletsPool.addDamageInt = 10;
             damageBulletsPool.Fire();
             W1_beaten.SetActive(true);
 			StartCoroutine("Bossbeaten");

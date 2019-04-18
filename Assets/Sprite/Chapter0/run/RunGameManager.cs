@@ -179,7 +179,7 @@ public class RunGameManager : MonoBehaviour {
 		NextFlashText.SetActive(true);
 		HintAni.SetTrigger("HintOpen");
 		HintText.text = "目標！逃離地下道抵達終點";
-		yield return new WaitUntil(() => count == 1);
+		yield return new WaitUntil(() => count >= 1);
 		HintText.text = "上方為你與怪物的距離條";
 		distance.transform.SetSiblingIndex(6);
 		yield return new WaitUntil(() => count == 2);
