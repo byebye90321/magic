@@ -129,9 +129,9 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		chapterState = ChapterState.Game;
 		usually.TransitionTo(10f);
-		//balanceValue = PlayerPrefs.GetFloat("StaticObject.balanceSlider");
-		//playerController.curHealth = PlayerPrefs.GetFloat("StaticObject.playerHealth");
-		playerController.HealthSlider.value = playerController.curHealth;	
+        //balanceValue = PlayerPrefs.GetFloat("StaticObject.balanceSlider");
+        //playerController.curHealth = PlayerPrefs.GetFloat("StaticObject.playerHealth");
+        playerController.HealthSlider.value = playerController.curHealth;	
 		balanceSlider.value = balanceValue;
 		balanceText.text = Mathf.Floor(balanceValue).ToString("0");
 		Debug.Log(balanceValue);

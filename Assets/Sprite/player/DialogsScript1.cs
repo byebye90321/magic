@@ -119,7 +119,7 @@ public class DialogsScript1 : MonoBehaviour
     public GameObject col; //碰撞器開關
 
 	void Start() {
-
+        Joystick.isMove = true;
         StaticObject.nowClass = 0;     
         if (StaticObject.nowClass == 0) //目前第一關(初始)
         {       

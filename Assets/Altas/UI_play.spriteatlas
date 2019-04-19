@@ -44,7 +44,6 @@ SpriteAtlas:
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: 17a77e6370f46634982a51eeb50e04cb, type: 3}
   - {fileID: 21300000, guid: bdcff4254d0ec7b43a3b1773bfed97c6, type: 3}
   - {fileID: 21300000, guid: 3c4c34d09943e904294ae61c6fceae74, type: 3}
   - {fileID: 21300000, guid: d6c3d797cca0d4b4292ccd5f9cb6c2b7, type: 3}
@@ -73,14 +72,12 @@ SpriteAtlas:
   - {fileID: 21300000, guid: ee89d62d3d81b394fae98dda2ac08b4e, type: 3}
   - {fileID: 21300000, guid: a75d77bc4ff62b14695d0111e72da77f, type: 3}
   - {fileID: 21300000, guid: c558f5b426d1fa047b4f656ee704d0c6, type: 3}
-  - {fileID: 21300000, guid: d99a3393235d91348a22820b2993de0b, type: 3}
   - {fileID: 21300000, guid: 2883b6592e4ebc14bacbe637e2cc1ffc, type: 3}
   - {fileID: 21300000, guid: 40cd6d8eca95e84458315d57a0d46c19, type: 3}
   - {fileID: 21300000, guid: 3aef7961e4905fd4ca9e1abc9224795f, type: 3}
   - {fileID: 21300000, guid: 0f44748fbd0f2424f8912a8a89b19418, type: 3}
   - {fileID: 21300000, guid: ed85d65ffed644d4f9da903d03364c5b, type: 3}
   m_PackedSpriteNamesToIndex:
-  - "\u8A2D\u5B9A\u6846"
   - "\u6280\u80FD\u6578\u503C\u986F\u793A\u6846"
   - "\u9B54\u6CD5\u5716\u9451\u65C1\u6309\u9215"
   - "\u904A\u6232\u5167\u7372\u5F97\u6210\u5C31_"
@@ -109,7 +106,6 @@ SpriteAtlas:
   - "\u4EFB\u52D9\u52FE\u52FE"
   - "\u5929\u79E4"
   - "NPC\u4EFB\u52D9\u672A\u5B8C\u6210\u554F\u865F"
-  - "\u83F1\u5F62"
   - "NPC\u63D0\u793A\u9A5A\u5606\u865F\u908A\u6846_1"
   - "NPC\u4EFB\u52D9\u5DF2\u5B8C\u6210\u9A5A\u5606\u865F 1"
   - "\u5C0F\u661F\u661F"

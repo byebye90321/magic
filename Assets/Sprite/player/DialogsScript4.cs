@@ -102,6 +102,7 @@ public class DialogsScript4 : MonoBehaviour
     }
 
 	void Start() {
+        Joystick.isMove = true;
         //StaticObject.whoCharacter = 2;
         if (StaticObject.whoCharacter == 1)
         {

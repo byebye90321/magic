@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: UI_set
+  m_EditorData:
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 4
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+    packingParameters:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 211fe6b3ced6f5c438b666dab486d442, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 17a77e6370f46634982a51eeb50e04cb, type: 3}
+  - {fileID: 21300000, guid: ceba152992df02c499f84ecfd0abc2b8, type: 3}
+  - {fileID: 21300000, guid: 67db42b94eb3fdd4daf9304dc0a207f0, type: 3}
+  - {fileID: 21300000, guid: 3ef57cc204916c046a388c0edf58a79c, type: 3}
+  - {fileID: 21300000, guid: 03e7193c937285b4db5435350f7121e3, type: 3}
+  - {fileID: 21300000, guid: 273e36f654f8bb24cafcc0fb797a8ed9, type: 3}
+  - {fileID: 21300000, guid: eeb1a0704fc28fa409ef63277a61fd9e, type: 3}
+  - {fileID: 21300000, guid: 2e2c0a7d536669d4d89c27b5cff49f38, type: 3}
+  - {fileID: 21300000, guid: d99a3393235d91348a22820b2993de0b, type: 3}
+  - {fileID: 21300000, guid: 1fc62ffd721d1c242a524f63f8adc1c8, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - "\u8A2D\u5B9A\u6846"
+  - slider_bg
+  - button
+  - set
+  - sound_open
+  - sound_close
+  - "\u793E\u7FA4icon\u6574\u5408_ig"
+  - "\u793E\u7FA4icon\u6574\u5408_\u5B98\u65B9\u7DB2\u7AD9"
+  - "\u83F1\u5F62"
+  - "\u793E\u7FA4icon\u6574\u5408_facebook"
+  m_Tag: UI_set
+  m_IsVariant: 0

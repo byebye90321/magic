@@ -214,7 +214,7 @@ public class RunGameManager : MonoBehaviour {
     IEnumerator Conversation2()
     {
         textPanel.SetActive(true);
-        text.text = "哥哥與追光者就在前方了！";
+        text.text = "終點就在前方了！";
         yield return new WaitUntil(() => count == 1);
         text.text = "我馬上就去救你們！等等我";
         yield return new WaitUntil(() => count == 2);

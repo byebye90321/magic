@@ -46,6 +46,6 @@ public class menuController : MonoBehaviour {
 
     public void WEB()
     {
-        Application.OpenURL("https://castspell2018.wixsite.com/findyourself");
+        Application.OpenURL("http://www.castspellfindyourself.com/");
     }
 }
