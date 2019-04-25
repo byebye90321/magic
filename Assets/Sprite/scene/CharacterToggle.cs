@@ -36,10 +36,7 @@ public class CharacterToggle : MonoBehaviour
             StaticObject.ad0 = 1; //歷程圖解鎖
             PlayerPrefs.SetInt("StaticObject.ad0", StaticObject.ad0);
         }
-        else  //關卡選擇
-        {
-            classSister();
-        }
+        classSister();
 
     }
 
