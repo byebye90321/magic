@@ -115,6 +115,18 @@ public class DG_EnemyController : MonoBehaviour{
                 //this.transform.position = new Vector2(transform.position.x,player.transform.position.y);
                 this.transform.position = Vector2.Lerp(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), new Vector2(gameObject.transform.position.x,player.transform.position.y-1), Time.deltaTime * 0.5f);
             }
+
+            if (player.transform.position.x - this.transform.position.x < 0)
+            {
+                this.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                HealthCanvas.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            }
+            else
+            {
+                this.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                HealthCanvas.transform.localRotation = Quaternion.Euler(0, -180, 0);
+            }
+
         }
 	}
 

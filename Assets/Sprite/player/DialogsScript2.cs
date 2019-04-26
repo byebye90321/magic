@@ -303,7 +303,32 @@ public class DialogsScript2 : MonoBehaviour
 			AudienceTalk4.SetActive(false);
 		}
 
-		if (currentLine == 13 || currentLine == 16 || currentLine == 27 || currentLine == 73 || currentLine == 77)
+        if (currentLine == 12)
+        {
+            if (isTyping == false)
+                theText.text = "<color=#FF8888>(參與這項盛事</color>可能會得到圖書館的線索。)";
+        }
+
+        if (currentLine == 14)
+        {
+            if (isTyping == false)
+                theText.text = "(不過進入會場需要早已售罄的<color=#FF8888>入場券</color>。)";
+
+        }
+
+        if (currentLine == 16)
+        {
+            if (isTyping == false)
+                theText.text = "那就從不遠處的那位<color=#FF8888>老太太</color>開始吧！";
+        }
+
+        if (currentLine == 15)
+        {
+            if (isTyping == false)
+                theText.text = "(<color=#FF8888>幫助小鎮居民</color>或許會有所收穫。)";
+        }
+
+        if (currentLine == 13 || currentLine == 16 || currentLine == 27 || currentLine == 73 || currentLine == 77)
 		{
 			whotalk.text = playerName;
 			characterImage.color = talkNow;
@@ -331,7 +356,37 @@ public class DialogsScript2 : MonoBehaviour
             otherImage.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 
-		if (currentLine == 26)
+        if (currentLine == 25)
+        {
+            if (isTyping == false)
+                theText.text = "妳若願意幫我<color=#FF8888>找回那重要之物</color>，就給妳做為謝禮吧。";
+        }
+
+        if (currentLine == 68)
+        {
+            if (isTyping == false)
+                theText.text = "只是前天我看到有個女子經過時從口袋中<color=#FF8888>掉了東西到橋下。</color>";
+        }
+
+        if (currentLine == 28)
+        {
+            if (isTyping == false)
+                theText.text = "問問總愛在<color=#FF8888>高處</color>欣賞風景的那位先生，";
+        }
+
+        if (currentLine == 72)
+        {
+            if (isTyping == false)
+                theText.text = "還是<color=#FF8888>稍微驅趕</color>一下，有點麻煩就是了。";
+        }
+
+        if (currentLine == 104)
+        {
+            if (isTyping == false)
+                theText.text = "(乘著<color=#FF8888>雲朵</color>，抵達選美會場吧！";
+        }
+
+        if (currentLine == 26)
 		{
 			npcTask.taskPanel.SetActive(true);
 			npcTask.TaskBtn.SetActive(true);
@@ -522,7 +577,8 @@ public class DialogsScript2 : MonoBehaviour
 
 		if (currentLine == 102)
 		{
-			if (Mirror)
+            otherImage.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            if (Mirror)
 			{
 				whotalk.text = playerName;
 				characterImage.color = untalkNow;
@@ -553,7 +609,8 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.sprite = Grace;
 			GraceAni.SetTrigger("talk");
 			graceCol.enabled = false;
-            if(!audio.isPlaying)
+            otherImage.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            if (!audio.isPlaying)
                 audio.PlayOneShot(cheer);
         }
 
@@ -567,7 +624,7 @@ public class DialogsScript2 : MonoBehaviour
             otherImage.transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
 
-		if (currentLine == 112 || currentLine == 117 || currentLine == 120 || currentLine == 124 || currentLine == 132 || currentLine == 138 ||currentLine==155)
+        if (currentLine == 112 ||currentLine == 117 || currentLine == 120 || currentLine == 124 || currentLine == 132 || currentLine == 138 ||currentLine==155)
 		{
 			whotalk.text = "葛雷斯";
 			characterImage.color = talkNow;
@@ -612,9 +669,10 @@ public class DialogsScript2 : MonoBehaviour
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_normal;
 			otherImageObj.SetActive(false);
-		}
+            characterImage.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
 
-		if (currentLine == 127 || currentLine == 156 || currentLine == 201)
+        if (currentLine == 127 || currentLine == 156 || currentLine == 201)
 		{
 			whotalk.text = "奧莉薇";
 			characterImage.color = talkNow;
@@ -657,7 +715,8 @@ public class DialogsScript2 : MonoBehaviour
 			characterImage.color = talkNow;
 			otherImage.color = untalkNow;
 			characterImage.sprite = sister_normal;
-		}
+            characterImage.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
 
 		if (currentLine == 137)
 		{

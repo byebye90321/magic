@@ -103,7 +103,6 @@ public class DialogsScript4 : MonoBehaviour
 
 	void Start() {
         Joystick.isMove = true;
-        //StaticObject.whoCharacter = 2;
         if (StaticObject.whoCharacter == 1)
         {
             TextAsset textFile1 = Resources.Load("Text/bother4") as TextAsset;
@@ -258,6 +257,7 @@ public class DialogsScript4 : MonoBehaviour
             otherImageObj.SetActive(true);
             characterImage.sprite = sister_smile;
             otherImageObj.SetActive(true);
+            otherImage.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 
         if (currentLine == 22)
@@ -266,6 +266,7 @@ public class DialogsScript4 : MonoBehaviour
             characterImage.color = untalkNow;
             otherImage.color = talkNow;
             otherImage.sprite = anotherSprite;
+            otherImage.transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
 
         if (currentLine == 23)
