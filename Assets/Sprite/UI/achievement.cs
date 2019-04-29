@@ -31,6 +31,12 @@ public class achievement : MonoBehaviour
                         PlayerPrefs.SetInt("StaticObject.a05", StaticObject.a05);
                         Debug.Log(StaticObject.a05);
                     }
+                    if (gameObject.name == "beatuyZoomCollider")
+                    {
+                        StaticObject.a10 = 1; //解鎖
+                        PlayerPrefs.SetInt("StaticObject.a10", StaticObject.a10);
+                        Debug.Log(StaticObject.a10);
+                    }
                     StartCoroutine("Achievement");
                     isAchievement = true;
                 }
@@ -42,10 +48,6 @@ public class achievement : MonoBehaviour
     {
         achievementObj.SetActive(true);
         achievementText.text = achievementName;
-        /*staticValueInt = 1;
-        PlayerPrefs.SetInt(staticValueName, staticValueInt);
-        Debug.Log(StaticObject.a05);
-        Debug.Log(staticValueInt);*/
         yield return new WaitForSeconds(2);
         achievementObj.SetActive(false);
     }

@@ -68,7 +68,6 @@ public class introduceAchievement : MonoBehaviour
 
     public void a8()
     {
-
         back.SetActive(true);
         panel1.SetActive(true);
         Text.text = "幫助天平回復平衡";  //內文字
