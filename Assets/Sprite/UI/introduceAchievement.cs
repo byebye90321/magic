@@ -56,7 +56,7 @@ public class introduceAchievement : MonoBehaviour
     }
 
     //-------------------角色介紹
-    public void a5()
+    public void aa5()
     {
 
         back.SetActive(true);
@@ -66,7 +66,7 @@ public class introduceAchievement : MonoBehaviour
         characterImage.sprite = a05;
     }
 
-    public void a8()
+    public void aa8()
     {
         back.SetActive(true);
         panel1.SetActive(true);
@@ -75,6 +75,39 @@ public class introduceAchievement : MonoBehaviour
         characterImage.sprite = a08;
     }
 
+    public void aa10()
+    {
+        back.SetActive(true);
+        panel1.SetActive(true);
+        Text.text = "抵達選美會場";  //內文字
+        NameText.text = "跟著居民進來看熱鬧"; //名字
+        characterImage.sprite = a10;
+    }
 
+    public void aa11()
+    {
+        back.SetActive(true);
+        panel1.SetActive(true);
+        Text.text = "拜訪可可的住所";  //內文字
+        NameText.text = "高樓上是誰？"; //名字
+        characterImage.sprite = a11;
+    }
 
+    public void aa14()
+    {
+        back.SetActive(true);
+        panel1.SetActive(true);
+        Text.text = "探訪龍~居住的橋";  //內文字
+        NameText.text = "這才不是尼斯湖"; //名字
+        characterImage.sprite = a14;
+    }
+
+    public void aa18()
+    {
+        back.SetActive(true);
+        panel1.SetActive(true);
+        Text.text = "得到傳說中的最終技能";  //內文字
+        NameText.text = "我這有本秘技"; //名字
+        characterImage.sprite = a18;
+    }
 }

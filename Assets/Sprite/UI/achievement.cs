@@ -37,6 +37,24 @@ public class achievement : MonoBehaviour
                         PlayerPrefs.SetInt("StaticObject.a10", StaticObject.a10);
                         Debug.Log(StaticObject.a10);
                     }
+                    if (gameObject.name == "dragonCollider")
+                    {
+                        StaticObject.a14 = 1; //解鎖
+                        PlayerPrefs.SetInt("StaticObject.a14", StaticObject.a14);
+                        Debug.Log(StaticObject.a14);
+                    }
+                    if (gameObject.name == "cocoCollider")
+                    {
+                        StaticObject.a11 = 1; //解鎖
+                        PlayerPrefs.SetInt("StaticObject.a11", StaticObject.a11);
+                        Debug.Log(StaticObject.a11);
+                    }
+                    if (gameObject.name == "skill6")
+                    {
+                        StaticObject.a18 = 1; //解鎖
+                        PlayerPrefs.SetInt("StaticObject.a18", StaticObject.a18);
+                        Debug.Log(StaticObject.a18);
+                    }
                     StartCoroutine("Achievement");
                     isAchievement = true;
                 }

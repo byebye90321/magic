@@ -19201,7 +19201,7 @@ MonoBehaviour:
   LineList: 1
   LineCaps: 1
   LineJoins: 0
-  pattern: {fileID: 11400000, guid: 8077c17fbb167a1478a6b49e717faef1, type: 2}
+  pattern: {fileID: 0}
   endingSize: 0
 --- !u!222 &540401692
 CanvasRenderer:
@@ -73691,7 +73691,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 80c00d7d19428da469224d0346a7793b, type: 2}
   - {fileID: 11400000, guid: 57b46f02db2a69745a024f5407164a1f, type: 2}
   - {fileID: 11400000, guid: 4090f1c3320a2984093518585532b617, type: 2}
-  - {fileID: 11400000, guid: 8077c17fbb167a1478a6b49e717faef1, type: 2}
+  - {fileID: 11400000, guid: 57b46f02db2a69745a024f5407164a1f, type: 2}
   - {fileID: 11400000, guid: 606b6abfa65091e469f7759779697930, type: 2}
   - {fileID: 11400000, guid: 1cb3417a01157f84e9d28447e9663df1, type: 2}
 --- !u!4 &2144753596

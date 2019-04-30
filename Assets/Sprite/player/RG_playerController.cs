@@ -80,7 +80,6 @@ public class RG_playerController : MonoBehaviour
                 GameObject playS = Instantiate(playerB) as GameObject;
                 playS.transform.SetParent(playerInsPoint.transform, false);
                 playS = GameObject.Find("/Player/PlayerBother(Clone)");
-                //playS = GameObject.FindWithTag("Player");
                 sister = playS.GetComponent<Animator>();
                 skeletonAnimation_S = playS.GetComponent<SkeletonAnimation>();
                 healthCanvas.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -2.65f, 0);
@@ -90,7 +89,6 @@ public class RG_playerController : MonoBehaviour
                 GameObject playS = Instantiate(playerS) as GameObject;
                 playS.transform.SetParent(playerInsPoint.transform, false);
                 playS = GameObject.Find("/Player/PlayerSister(Clone)");
-                //playS = GameObject.FindWithTag("Player");
                 sister = playS.GetComponent<Animator>();
                 skeletonAnimation_S = playS.GetComponent<SkeletonAnimation>();
                 healthCanvas.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -3.63f, 0);

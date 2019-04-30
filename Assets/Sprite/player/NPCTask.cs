@@ -36,8 +36,10 @@ public class NPCTask : MonoBehaviour {
 
     public GameObject Task1Content; //任務1內文
     public GameObject Task2Content; //任務2內文
-    public GameObject Task1FinishContent; //完成任務1內文
-    public GameObject Task2FinishContent; //完成任務2內文
+    public GameObject Task1FinishContent; //完成任務1
+    public Text Task1FinishContentText; //完成任務1內文
+    public GameObject Task2FinishContent; //完成任務2
+    public Text Task2FinishContentText; //完成任務2內文
 
     public GameObject otherTask1; //波比任務
 	public GameObject otherTask2; //雕像任務
@@ -282,6 +284,7 @@ public class NPCTask : MonoBehaviour {
 			dialogsScript2.endAtLine = 30;
 			dialogsScript2.NPCAppear();
 			DidaTask = false;
+            Coco.SetActive(true);
             StaticObject.dida = 1; //dida解鎖
             PlayerPrefs.SetInt("StaticObject.dida", StaticObject.dida);
         }
@@ -341,7 +344,7 @@ public class NPCTask : MonoBehaviour {
 		Debug.Log(Mathf.Abs(rigid2D.transform.position.x - Dida.transform.position.x));
 		taskTitleText.text = "滴答的懷錶";
 		taskContentText.text = "我總是感嘆著光陰的流逝，無情的帶走了我的美貌，唉...為何女人老去就會被說得毫無價值呢?若時光能倒流、不再往前就好了，只有我的懷錶能做到。";
-		Coco.SetActive(true);
+		//Coco.SetActive(true);
 	}
 
 	//任務4 Coco 接任務前對話
@@ -550,7 +553,8 @@ public class NPCTask : MonoBehaviour {
 		redFairy.enabled = false;
 		blueFairy.enabled = false;
 		yield return new WaitForSeconds(.5f);
-		gameManager.eventObj.SetActive(true);
+        Task2FinishContentText.text = "完成任務";
+        gameManager.eventObj.SetActive(true);
 		gameManager.eventText.text = "完成任務二";
 		yield return new WaitForSeconds(2f);
 		gameManager.eventObj.SetActive(false);
@@ -610,7 +614,8 @@ public class NPCTask : MonoBehaviour {
 		blueFlower.enabled = false;
 		BobbyCollider.enabled = false;
 		yield return new WaitForSeconds(0.5f);
-		gameManager.eventObj.SetActive(true);
+        Task1FinishContentText.text = "完成任務";
+        gameManager.eventObj.SetActive(true);
 		gameManager.eventText.text = "完成任務一";
 		yield return new WaitForSeconds(2f);
 		gameManager.eventObj.SetActive(false);
@@ -677,6 +682,7 @@ public class NPCTask : MonoBehaviour {
 		falseClock.enabled = false;
 		dialogsScript2.cardAni.SetTrigger("getCard");
 		yield return new WaitForSeconds(.5f);
+        Task1FinishContentText.text = "完成任務";
 		gameManager.eventObj.SetActive(true);
 		gameManager.eventText.text = "完成任務三";
 		yield return new WaitForSeconds(2f);
@@ -711,7 +717,8 @@ public class NPCTask : MonoBehaviour {
 		Task2StarImage.sprite = TaskFinishImage;
 		gameManager.eventObj.SetActive(true);
 		Dragon.SetActive(true);
-		gameManager.eventText.text = "完成任務四";
+        Task2FinishContentText.text = "完成任務";
+        gameManager.eventText.text = "完成任務四";
 		yield return new WaitForSeconds(2f);
 		gameManager.eventObj.SetActive(false);
 		yield return new WaitForSeconds(0.1f);
