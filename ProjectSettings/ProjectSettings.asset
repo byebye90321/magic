@@ -241,7 +241,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 5
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/USERTY/Desktop/magic/user.keystore
+  AndroidKeystoreName: C:/Users/byeby/Desktop/magic/user.keystore
   AndroidKeyaliasName: castspellfindyourself
   AndroidTVCompatibility: 1
   AndroidIsGame: 1

@@ -99,8 +99,8 @@ public class RunGameManager : MonoBehaviour {
 		lose_Fade.SetActive(false);
 		Application.targetFrameRate = 100;  //幀數
 		//↓以下要打開
-		balanceValue = PlayerPrefs.GetFloat("StaticObject.balanceSlider");
-		playerHealth = PlayerPrefs.GetFloat("StaticObject.playerHealth");
+		//balanceValue = PlayerPrefs.GetFloat("StaticObject.balanceSlider");
+		//playerHealth = PlayerPrefs.GetFloat("StaticObject.playerHealth");
 		HealthSlider.value = playerHealth;
 		//balanceSlider.value = balanceValue;
 		//balanceText.text = Mathf.Floor(balanceValue).ToString("0");
@@ -128,7 +128,7 @@ public class RunGameManager : MonoBehaviour {
 
         if (chapterName != "0")
         {
-            if (StaticObject.whoCharacter == 1)
+			if (StaticObject.whoCharacter == 1)
             {
                 playerName = "卡特";
                 characterImageSprite = Resources.Load("characterImage/bother/bother_angry", typeof(Sprite)) as Sprite;
