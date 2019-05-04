@@ -65,6 +65,7 @@ public class knife : MonoBehaviour
 		}
 
 		previousPosition = newPosition;
+		
 	}
 
 	public void StartCutting()
